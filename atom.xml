@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Mino</title>
-  <icon>https://codermino.github.io/icon.png</icon>
+  <icon>http://yoursite.com/icon.png</icon>
   <subtitle>Mino&#39;s personal blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://codermino.github.io/"/>
+  <link href="http://yoursite.com/"/>
   <updated>2019-12-04T14:25:57.735Z</updated>
-  <id>https://codermino.github.io/</id>
+  <id>http://yoursite.com/</id>
   
   <author>
     <name>Mino</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://codermino.github.io/2019/12/04/hello-world/"/>
-    <id>https://codermino.github.io/2019/12/04/hello-world/</id>
+    <link href="http://yoursite.com/2019/12/04/hello-world/"/>
+    <id>http://yoursite.com/2019/12/04/hello-world/</id>
     <published>2019-12-04T14:25:57.734Z</published>
     <updated>2019-12-04T14:25:57.735Z</updated>
     
