@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2019-12-04T17:31:40.678Z</updated>
+  <updated>2019-12-05T05:24:37.545Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -20,8 +20,8 @@
     <title>Hello World</title>
     <link href="https://codermino.github.io/2019/12/05/hello-world/"/>
     <id>https://codermino.github.io/2019/12/05/hello-world/</id>
-    <published>2019-12-04T17:31:40.678Z</published>
-    <updated>2019-12-04T17:31:40.678Z</updated>
+    <published>2019-12-05T05:24:37.545Z</published>
+    <updated>2019-12-05T05:24:37.545Z</updated>
     
     <summary type="html">
     
@@ -33,8 +33,29 @@
     </summary>
     
     
+      <category term="hexocli" scheme="https://codermino.github.io/categories/hexocli/"/>
     
-      <category term="前端" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="hexo" scheme="https://codermino.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git基本操作</title>
+    <link href="https://codermino.github.io/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>https://codermino.github.io/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
+    <published>2019-12-05T04:50:12.000Z</published>
+    <updated>2019-12-05T05:13:30.520Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="git" scheme="https://codermino.github.io/tags/git/"/>
     
   </entry>
   
