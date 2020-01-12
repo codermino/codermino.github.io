@@ -265,8 +265,8 @@ db.stu.find(&#123;
 <h3 id="ty">投影<a class="post-anchor" href="#ty"></a><a class="post-anchor" href="#ty"></a></h3>
 <pre><code class="hljs markdown">在查询到的返回结果中，只选择必要的字段
 db.集合名称.find(&#123;&#125;,&#123;字段名称:1,.....&#125;)
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">font</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"red"</span>&gt;</span></span>参数为字段与值，值为1表示显示，值为0不显示<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">font</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">font</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"3"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"red"</span>&gt;</span></span>特殊：对于_id列默认是显示的，如果不显示需要明确设置为0<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">font</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span></span>
+参数为字段与值，值为1表示显示，值为0不显示
+特殊：对于_id列默认是显示的，如果不显示需要明确设置为0
 eq:
 <span class="hljs-code">    db.stu.find(&#123;&#125;,&#123;_id:0,name:1,age:1,gender:1&#125;)</span></code></pre>
 
