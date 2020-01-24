@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#search"><span class="toc-text">查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#search_condition"><span class="toc-text">查询条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-text">limit和skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#man_made"><span class="toc-text">自定义查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ty"><span class="toc-text">投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tj"><span class="toc-text">统计个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xccf"><span class="toc-text">消除重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data_recover"><span class="toc-text">数据备份和恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aggregate"><span class="toc-text">聚合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common_aggregate"><span class="toc-text">常用管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common_aggregate_express"><span class="toc-text">常用管道表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#project"><span class="toc-text">处理$project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text">综合实例</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#search"><span class="toc-text">查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#search_condition"><span class="toc-text">查询条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-text">limit和skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#man_made"><span class="toc-text">自定义查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ty"><span class="toc-text">投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tj"><span class="toc-text">统计个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xccf"><span class="toc-text">消除重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data_recover"><span class="toc-text">数据备份和恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aggregate"><span class="toc-text">聚合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common_aggregate"><span class="toc-text">常用管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common_aggregate_express"><span class="toc-text">常用管道表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#project"><span class="toc-text">处理$project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text">综合实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limit"><span class="toc-text">limit和skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unwind"><span class="toc-text">unwind</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#index"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#differ"><span class="toc-text">mongodb mysql redis的区别和使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#drop"><span class="toc-text">爬虫数据去重</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -378,6 +378,113 @@ db.stu.aggregate(
 <span class="hljs-code">    &#123;$group:&#123;_id:"$gender",count:&#123;$sum:1&#125;&#125;&#125;,</span>
 <span class="hljs-code">    &#123;$project:&#123;_id:0,gender:"$_id",count:1&#125;&#125;</span>
 )</code></pre>
+
+<h3 id="sort">排序<a class="post-anchor" href="#sort"></a><a class="post-anchor" href="#sort"></a></h3>
+<pre><code class="hljs markdown">$sort 
+ -将输入文档排序后输出
+eq1:
+<span class="hljs-code">    -查询学生信息，按照年龄升序排序</span>
+<span class="hljs-code">    b.stu.aggregate(&#123;$sort:&#123;age:1&#125;&#125;)</span>
+eq2:
+<span class="hljs-code">    -查询男生、女生人数。按人数降序排序</span>
+<span class="hljs-code">    db.stu.aggregate(</span>
+<span class="hljs-code">        &#123;$group:&#123;_id:'$gender',counter:&#123;$sum:1&#125;&#125;&#125;,</span>
+<span class="hljs-code">        &#123;$sort:&#123;counter:-1&#125;&#125;</span>
+<span class="hljs-code">    )</span></code></pre>
+
+<h3 id="limit">limit和skip<a class="post-anchor" href="#limit"></a><a class="post-anchor" href="#limit"></a></h3>
+<pre><code class="hljs markdown">$limit
+<span class="hljs-code">    -限制聚合管道返回的文数</span>
+<span class="hljs-code">    -eq</span>
+<span class="hljs-code">        -查询2条学生信息</span>
+<span class="hljs-code">        db.stu.aggregate(&#123;$limit:2&#125;)</span>
+$skip
+<span class="hljs-code">    -跳过指定数量的文档，并返回余下的文档</span>
+<span class="hljs-code">    -eq</span>
+<span class="hljs-code">        -查询从第3条开始的学生信息</span>
+<span class="hljs-code">        db.stu.aggregate(&#123;$skip:2&#125;)</span>
+<span class="hljs-code">    -eq</span>
+<span class="hljs-code">        统计男生、女生人数，按人数升序,取第二条数据</span>
+<span class="hljs-code">        db.stu.aggregate(</span>
+<span class="hljs-code">            &#123;$group:&#123;_id:'$gender',counter:&#123;$sum:1&#125;&#125;&#125;</span>
+<span class="hljs-code">            &#123;$sort:&#123;counter:1&#125;&#125;,</span>
+<span class="hljs-code">            &#123;$skip:1&#125;,</span>
+<span class="hljs-code">            &#123;$limit:1&#125;</span>
+<span class="hljs-code">        )</span>
+<span class="hljs-code">    tip:</span>
+<span class="hljs-code">        -注意顺序：先写skip，再写limit（这样做效率更高）</span>
+<span class="hljs-code">        -如果想要_id不显示出来，那么在$group中加上_id:null</span></code></pre>
+
+<h3 id="unwind">unwind<a class="post-anchor" href="#unwind"></a><a class="post-anchor" href="#unwind"></a></h3>
+<pre><code class="hljs markdown">$unwind
+<span class="hljs-code">    -属性值为false表示丢弃属性值为空的文档</span>
+<span class="hljs-code">    -属性preserveNullAndEmptyArrays值为true表示保留属性值为空的文档</span>
+<span class="hljs-code">    用法：</span>
+<span class="hljs-code">        db.invertory.aggregate(&#123;</span>
+<span class="hljs-code">            $unwind:&#123;</span>
+<span class="hljs-code">                path:'$字段名称',</span>
+<span class="hljs-code">                preserveNullAndEmptyArrays:&lt;boolean&gt;#防止数据丢失</span>
+<span class="hljs-code">            &#125;</span>
+<span class="hljs-code">        &#125;)</span></code></pre>
+
+<h3 id="index">索引<a class="post-anchor" href="#index"></a><a class="post-anchor" href="#index"></a></h3>
+<pre><code class="hljs markdown">索引：以提升查询速度
+测试：插入10万条数据到数据库中
+for(i=0;i<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">100000;i++)&#123;</span>
+    <span class="hljs-attr">db.t255.insert</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test</span>'+<span class="hljs-attr">i</span>,<span class="hljs-attr">age:i</span>&#125;)
+&#125;
+
+<span class="hljs-attr">db.t1.find</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test10000</span>'&#125;)
+<span class="hljs-attr">db.t1.find</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test10000</span>'&#125;)<span class="hljs-attr">.explain</span>('<span class="hljs-attr">executionStats</span>')
+
+建立索引之后的对比：
+语法：<span class="hljs-attr">db.</span>集合<span class="hljs-attr">.ensureIndex</span>(&#123;属性：<span class="hljs-attr">1</span>&#125;)，<span class="hljs-attr">1</span>表示升序，<span class="hljs-attr">-1</span>表示降序
+具体操作：<span class="hljs-attr">db.t255.ensureIndex</span>(&#123;<span class="hljs-attr">name:1</span>&#125;)
+<span class="hljs-attr">db.t1.find</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test10000</span>'&#125;)<span class="hljs-attr">.explain</span>('<span class="hljs-attr">executionStats</span>')
+
+在默认情况下索引字段的值可以相同
+创建唯一索引（索引的值是唯一的）：
+    <span class="hljs-attr">-db.t1.ensureIndex</span>(&#123;'<span class="hljs-attr">name</span>'<span class="hljs-attr">:1</span>&#125;,&#123;'<span class="hljs-attr">unique</span>'<span class="hljs-attr">:true</span>&#125;)
+建立联合索引（什么时候需要联合索引）：
+    <span class="hljs-attr">-db.t1.ensureIndex</span>(&#123;<span class="hljs-attr">name:1</span>,<span class="hljs-attr">age:1</span>&#125;)
+查看当前集合的所有索引<span class="hljs-attr">:</span>
+    <span class="hljs-attr">-db.t1.getIndexes</span>()
+删除索引：
+    <span class="hljs-attr">-db.t1.dropIndex</span>(&#123;'索引名称'<span class="hljs-attr">:1</span>&#125;)</span></span></code></pre>
+
+<h3 id="differ">mongodb mysql redis的区别和使用场景<a class="post-anchor" href="#differ"></a><a class="post-anchor" href="#differ"></a></h3>
+<pre><code class="hljs markdown">-mysql是关系型数据库，支持事务
+-MongoDB，redis非关系型数据库，不支持事务
+-mysql，mongodb,redis的使用根据如何方便进行选择
+ -希望速度快的时候，选择mongodb或者是redis
+ -数据量过大的时候，选择频繁使用的数据存入redis，其他的存入mongodb
+ -mongodb不用提前建表建数据库，使用方便，字段数量不确定的时候使用mongodb
+ -后续需要用到数据之间的关系，此时考虑mysql</code></pre>
+
+<h3 id="drop">爬虫数据去重<a class="post-anchor" href="#drop"></a><a class="post-anchor" href="#drop"></a></h3>
+<pre><code class="hljs markdown">使用数据库建立关键字段（一个或者多个）建立索引进行去重
+
+根据url地址进行去重
+ -使用场景：
+<span class="hljs-code">    url地址对应的数据不会变的情况，url地址能够唯一判别一条数据的情况</span>
+ -思路
+<span class="hljs-code">    url存在redis中</span>
+<span class="hljs-code">    拿到url地址，判断url在redis的url的集合中是否存在</span>
+<span class="hljs-code">    存在：</span>
+<span class="hljs-code">        说明url已经被请求过，不再请求</span>
+<span class="hljs-code">    不存在：</span>
+<span class="hljs-code">        url地址没有被请求过，请求，把该url存入redis的集合中</span>
+-布隆过滤器
+<span class="hljs-code">    使用多个加密算法加密url地址，得到多个值</span>
+<span class="hljs-code">    往对应值的位置把结果设置为1</span>
+<span class="hljs-code">    新来一个url地址，一样通过加密算法生成多个值</span>
+<span class="hljs-code">    如果对应的位置的值全为1，说明这个url地址已经抓取过</span>
+<span class="hljs-code">    否则没有抓过，就把对应位置的值设置为1</span>
+
+根据数据本身进行去重
+ 选择特定的字段，使用加密算法（md5,sha1）将字段进行加密，生成字符串，存入redis的集合中
+ 后续新来一条数据，同样的方法进行加密，如果得到的字符串在redis中存在，说明数据存在，对数据进行更新，否则说明数据不存在，直接插入</code></pre>
+
 
 
   
