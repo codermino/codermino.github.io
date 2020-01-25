@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      nodejs的formidable - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#install"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use"><span class="toc-text">引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router"><span class="toc-text">创建相关路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#api"><span class="toc-text">相关API参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#event"><span class="toc-text">Event</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+        <div class="top">
+          <div class="iconfont icon-zuirehotxiankuang animated infinite heartBeat"></div>
+        </div>
+      
+      <div class="title">nodejs的formidable</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/25</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/nodejs">nodejs</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/formidable文件上传">formidable文件上传</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="install">安装<a class="post-anchor" href="#install"></a><a class="post-anchor" href="#install"></a></h3>
+<pre><code class="hljs markdown">npm i -S formidable</code></pre>
+
+<h3 id="use">引用<a class="post-anchor" href="#use"></a><a class="post-anchor" href="#use"></a></h3>
+<pre><code class="hljs markdown">var formidable = require('formidable'),
+<span class="hljs-code">    http = require('http'),</span>
+<span class="hljs-code">    util = require('util');</span></code></pre>
+
+<h3 id="router">创建相关路由<a class="post-anchor" href="#router"></a><a class="post-anchor" href="#router"></a></h3>
+<pre><code class="hljs markdown">http.createServer(function(req, res) &#123;
+  if (req.url == '/upload' &amp;&amp; req.method.toLowerCase() == 'post') &#123;
+<span class="hljs-code">    // parse a file upload</span>
+<span class="hljs-code">    var form = new formidable.IncomingForm();</span>
+ 
+<span class="hljs-code">    form.parse(req, function(err, fields, files) &#123;</span>
+<span class="hljs-code">      //在fields中存储的是上传的输入框或者单选框等信息</span>
+<span class="hljs-code">      //在files中存储的是上传的图片或者视频等信息</span>
+<span class="hljs-code">      res.writeHead(200, &#123;'content-type': 'text/plain'&#125;);</span>
+<span class="hljs-code">      res.write('received upload:\n\n');</span>
+<span class="hljs-code">      res.end(util.inspect(&#123;fields: fields, files: files&#125;));</span>
+<span class="hljs-code">    &#125;);</span>
+ 
+<span class="hljs-code">    return;</span>
+  &#125;
+  
+tip:
+<span class="hljs-code">    在前端中的上传的表单中一定要加上:enctype="multipart/form-data"</span>
+<span class="hljs-code">    eq:</span>
+<span class="hljs-code">        &lt;form action="/upload" enctype="multipart/form-data" method="post"&gt;</span></code></pre>
+
+<h3 id="api">相关API参数<a class="post-anchor" href="#api"></a><a class="post-anchor" href="#api"></a></h3>
+<pre><code class="hljs markdown">-Creates a new incoming form.
+<span class="hljs-code">    var form = new formidable.IncomingForm()</span>
+-Sets encoding for incoming form fields.
+<span class="hljs-code">    form.encoding = 'utf-8';</span>
+-Sets the directory for placing file uploads in. You can move them later on using fs.rename(). The default is os.tmpdir().
+<span class="hljs-code">    form.uploadDir = "/my/dir";</span>
+-If you want the files written to form.uploadDir to include the extensions of the original files, set this property to true.
+<span class="hljs-code">    form.keepExtensions = false;</span>
+-Either 'multipart' or 'urlencoded' depending on the incoming request.
+<span class="hljs-code">    form.type</span>
+-Limits the amount of memory all fields together (except files) can allocate in bytes. If this value is exceeded, an 'error' event is emitted. The default size is 20MB.
+<span class="hljs-code">    form.maxFieldsSize = 20 * 1024 * 1024;</span>
+-Limits the size of uploaded file. If this value is exceeded, an 'error' event is emitted. The default size is 200MB.
+<span class="hljs-code">    form.maxFileSize = 200 * 1024 * 1024;</span>
+-Limits the number of fields that the querystring parser will decode. Defaults to 1000 (0 for unlimited).
+<span class="hljs-code">    form.maxFields = 1000;</span>
+-If you want checksums calculated for incoming files, set this to either 'sha1' or 'md5'.
+<span class="hljs-code">    form.hash = false;</span>
+-If this option is enabled, when you call form.parse, the files argument will contain arrays of files for inputs which submit multiple files using the HTML5 multiple attribute.
+<span class="hljs-code">    form.multiples = false;</span></code></pre>
+
+<h3 id="event">Event<a class="post-anchor" href="#event"></a><a class="post-anchor" href="#event"></a></h3>
+<pre><code class="hljs markdown">'progress'
+Emitted after each incoming chunk of data that has been parsed. Can be used to roll your own progress bar.
+form.on('progress', function(bytesReceived, bytesExpected) &#123;
+&#125;);
+
+'field'
+Emitted whenever a field / value pair has been received.
+form.on('field', function(name, value) &#123;
+&#125;);
+
+'fileBegin'
+Emitted whenever a new file is detected in the upload stream. Use this event if you want to stream the file to somewhere else while buffering the upload on the file system.
+form.on('fileBegin', function(name, file) &#123;
+&#125;);
+
+'file'
+Emitted whenever a field / file pair has been received. file is an instance of File.
+form.on('file', function(name, file) &#123;
+&#125;);
+
+'error'
+Emitted when there is an error processing the incoming form. A request that experiences an error is automatically paused, you will have to manually call request.resume() if you want the request to continue firing 'data' events.
+form.on('error', function(err) &#123;
+&#125;);
+
+'aborted'
+Emitted when the request was aborted by the user. Right now this can be due to a 'timeout' or 'close' event on the socket. After this event is emitted, an error event will follow. In the future there will be a separate 'timeout' event (needs a change in the node core).
+form.on('aborted', function() &#123;
+&#125;);
+
+'end'
+form.on('end', function() &#123;
+&#125;);
+Emitted when the entire request has been received, and all contained files have finished flushing to disk. This is a great place for you to send your response.</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/">mongodb操作</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/01/25/nodejs的formidable/">https://codermino.github.io/2020/01/25/nodejs的formidable/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
