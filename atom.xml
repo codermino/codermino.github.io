@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-01-25T04:50:29.703Z</updated>
+  <updated>2020-01-25T05:38:11.217Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>formidable上传文件改名</title>
+    <link href="https://codermino.github.io/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/"/>
+    <id>https://codermino.github.io/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/</id>
+    <published>2020-01-25T05:26:58.000Z</published>
+    <updated>2020-01-25T05:38:11.217Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS4AAACnCAMAAACYVkHVAAAAwFBMVEX///8AAADwTSHvQQDwRhPvOgDvQgb4s6efn5/97ur1loT0jHr4ua
+      
+    
+    </summary>
+    
+    
+      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
+    
+    
+      <category term="formidable文件改名" scheme="https://codermino.github.io/tags/formidable%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>nodejs的formidable</title>
