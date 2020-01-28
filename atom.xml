@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-01-25T05:38:11.217Z</updated>
+  <updated>2020-01-28T09:13:11.604Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ejs模板的使用</title>
+    <link href="https://codermino.github.io/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://codermino.github.io/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-01-28T08:25:11.000Z</published>
+    <updated>2020-01-28T09:13:11.604Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;install&quot;&gt;安装&lt;a class=&quot;post-anchor&quot; href=&quot;#install&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs markdown&quot;&gt;npm install ejs&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;u
+      
+    
+    </summary>
+    
+    
+      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
+    
+    
+      <category term="ejs模板的基本使用" scheme="https://codermino.github.io/tags/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>formidable上传文件改名</title>
@@ -45,7 +72,7 @@
     <link href="https://codermino.github.io/2020/01/25/nodejs%E7%9A%84formidable/"/>
     <id>https://codermino.github.io/2020/01/25/nodejs%E7%9A%84formidable/</id>
     <published>2020-01-25T03:21:58.000Z</published>
-    <updated>2020-01-25T04:50:29.703Z</updated>
+    <updated>2020-01-28T08:27:56.552Z</updated>
     
     <summary type="html">
     
