@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020/1 - Mino
+      express模板的使用 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#install"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other"><span class="toc-text">其他参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#show"><span class="toc-text">express的参数显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limit"><span class="toc-text">express的参数显示的格式限制</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,79 +154,140 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020/1
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="express模板的使用">
-                <span>2020/01/28</span>
-                <span>express模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="ejs模板的使用">
-                <span>2020/01/28</span>
-                <span>ejs模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/" title="formidable上传文件改名">
-                <span>2020/01/25</span>
-                <span>formidable上传文件改名</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/nodejs%E7%9A%84formidable/" title="nodejs的formidable">
-                <span>2020/01/25</span>
-                <span>nodejs的formidable</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/" title="mongodb操作">
-                <span>2020/01/12</span>
-                <span>mongodb操作</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+        <div class="top">
+          <div class="iconfont icon-zuirehotxiankuang animated infinite heartBeat"></div>
+        </div>
+      
+      <div class="title">express模板的使用</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/28</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/nodejs">nodejs</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/express">express</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="install">安装<a class="post-anchor" href="#install"></a><a class="post-anchor" href="#install"></a></h3>
+<pre><code class="hljs markdown">npm install express --save</code></pre>
+
+<h3 id="demo">Demo<a class="post-anchor" href="#demo"></a><a class="post-anchor" href="#demo"></a></h3>
+<pre><code class="hljs markdown">const express = require('express')
+const app = express()
+ 
+app.get('/', function (req, res) &#123;
+  res.send('Hello World')
+&#125;)
+ 
+app.listen(3000,function()&#123;
+<span class="hljs-code">    console,log('正在运行......');</span>
+&#125;
+)</code></pre>
+
+<h3 id="other">其他参数<a class="post-anchor" href="#other"></a><a class="post-anchor" href="#other"></a></h3>
+<pre><code class="hljs markdown">app.get('/abc',function()&#123;
+<span class="hljs-code">    res.send('这是二级路由')</span>
+&#125;)</code></pre>
+
+<h3 id="re">正则<a class="post-anchor" href="#re"></a><a class="post-anchor" href="#re"></a></h3>
+<pre><code class="hljs markdown">//匹配路由为/student/后面加上10位数字的路由
+app.get(/^\/student\/([\d]&#123;10&#125;)$/,function (req,res) &#123;
+  res.send('学号'+req.params[0]);
+&#125;);</code></pre>
+
+<h3 id="show">express的参数显示<a class="post-anchor" href="#show"></a><a class="post-anchor" href="#show"></a></h3>
+<pre><code class="hljs markdown">app.get('/teacher/:id',function (req,res) &#123;
+  res.send('工号'+req.params.id);
+&#125;);</code></pre>
+
+<h3 id="limit">express的参数显示的格式限制<a class="post-anchor" href="#limit"></a><a class="post-anchor" href="#limit"></a></h3>
+<pre><code class="hljs markdown">//限制编号后面是3-8为数字的路由
+app.get('/master/:iid([\\d]&#123;3,8&#125;)',function (req,res) &#123;
+  res.send('编号'+req.params.iid);
+&#125;);</code></pre>
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/">ejs模板的使用</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/01/28/express模板的使用/">https://codermino.github.io/2020/01/28/express模板的使用/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
