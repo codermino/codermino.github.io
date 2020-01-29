@@ -225,6 +225,16 @@ app.listen(3000,function()&#123;
 <pre><code class="hljs markdown">//匹配路由为/student/后面加上10位数字的路由
 app.get(/^\/student\/([\d]&#123;10&#125;)$/,function (req,res) &#123;
   res.send('学号'+req.params[0]);
+&#125;);
+//也可以获取到参数之后，然后再用正则进行验证
+app.get('/book/:id',function (req,res) &#123;
+  let id = req.params['id'];
+  let reg = /^[\d]&#123;6&#125;$/;
+  if (reg.test(id))&#123;
+<span class="hljs-code">    res.send(id)</span>
+  &#125;else &#123;
+<span class="hljs-code">    res.send('error');</span>
+  &#125;
 &#125;);</code></pre>
 
 <h3 id="show">express的参数显示<a class="post-anchor" href="#show"></a><a class="post-anchor" href="#show"></a></h3>
