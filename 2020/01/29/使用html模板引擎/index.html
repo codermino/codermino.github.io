@@ -224,6 +224,8 @@ app.get('/user',function (req,res) &#123;
 
 将渲染ejs文件修改为渲染html文件
 app.engine('html', ejs.__express);
+//如果不想使用views这个文件夹，可以使用下面的语句进行修改
+app.set('views','文件夹的名字');
 app.set('view engine', 'html');</code></pre>
 
 
