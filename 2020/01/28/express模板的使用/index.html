@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#install"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other"><span class="toc-text">其他参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#show"><span class="toc-text">express的参数显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limit"><span class="toc-text">express的参数显示的格式限制</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#install"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#other"><span class="toc-text">其他参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#show"><span class="toc-text">express的参数显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limit"><span class="toc-text">express的参数显示的格式限制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tips"><span class="toc-text">tips</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -243,6 +243,12 @@ app.get('/book/:id',function (req,res) &#123;
 app.get('/master/:iid([\\d]&#123;3,8&#125;)',function (req,res) &#123;
   res.send('编号'+req.params.iid);
 &#125;);</code></pre>
+
+<h3 id="tips">tips<a class="post-anchor" href="#tips"></a><a class="post-anchor" href="#tips"></a></h3>
+<pre><code class="hljs markdown">res.send()还可以send一个json对象
+res.send(&#123;
+<span class="hljs-code">    'data':'这是二级路由'</span>
+&#125;)</code></pre>
 
   
     <div class="post-reward">
