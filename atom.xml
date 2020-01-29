@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-01-29T10:36:02.633Z</updated>
+  <updated>2020-01-29T11:33:08.269Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>body-parser的使用</title>
+    <link href="https://codermino.github.io/2020/01/29/body-parser%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://codermino.github.io/2020/01/29/body-parser%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-01-29T11:26:42.000Z</published>
+    <updated>2020-01-29T11:33:08.269Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxQHBhQSBxMWFhUWFhsZGRgYGRoYGxoYFiAZFyAcGhoeHygiJCElHhUYITIjMSkrLjIuG
+      
+    
+    </summary>
+    
+    
+      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
+    
+    
+      <category term="body-parser" scheme="https://codermino.github.io/tags/body-parser/"/>
+    
+  </entry>
+  
+  <entry>
     <title>express模板的使用</title>
     <link href="https://codermino.github.io/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://codermino.github.io/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <published>2020-01-28T11:31:34.000Z</published>
-    <updated>2020-01-29T10:36:02.633Z</updated>
+    <updated>2020-01-29T11:32:33.079Z</updated>
     
     <summary type="html">
     
@@ -45,7 +69,7 @@
     <link href="https://codermino.github.io/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://codermino.github.io/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <published>2020-01-28T08:25:11.000Z</published>
-    <updated>2020-01-28T09:21:53.298Z</updated>
+    <updated>2020-01-29T11:32:25.730Z</updated>
     
     <summary type="html">
     
