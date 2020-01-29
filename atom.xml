@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-01-29T11:40:06.108Z</updated>
+  <updated>2020-01-29T11:43:03.589Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://codermino.github.io/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
     <id>https://codermino.github.io/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</id>
     <published>2020-01-29T11:35:01.000Z</published>
-    <updated>2020-01-29T11:40:06.108Z</updated>
+    <updated>2020-01-29T11:43:03.589Z</updated>
     
     <summary type="html">
     
@@ -36,7 +36,7 @@
       <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
     
     
-      <category term="html模板引擎" scheme="https://codermino.github.io/tags/html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
+      <category term="将ejs模板引擎修改为html模板引擎" scheme="https://codermino.github.io/tags/%E5%B0%86ejs%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%BF%AE%E6%94%B9%E4%B8%BAhtml%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
     
   </entry>
   
