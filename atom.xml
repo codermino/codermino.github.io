@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-01-29T11:43:03.589Z</updated>
+  <updated>2020-01-29T11:47:44.299Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>使用html模板引擎</title>
+    <title>将ejs模板引擎修改为html模板引擎</title>
     <link href="https://codermino.github.io/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
     <id>https://codermino.github.io/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</id>
     <published>2020-01-29T11:35:01.000Z</published>
-    <updated>2020-01-29T11:43:03.589Z</updated>
+    <updated>2020-01-29T11:47:44.299Z</updated>
     
     <summary type="html">
     
