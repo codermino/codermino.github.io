@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-01-29T13:17:39.229Z</updated>
+  <updated>2020-01-30T07:35:49.740Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>app.use中间件</title>
+    <link href="https://codermino.github.io/2020/01/30/app-use%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    <id>https://codermino.github.io/2020/01/30/app-use%E4%B8%AD%E9%97%B4%E4%BB%B6/</id>
+    <published>2020-01-30T06:49:49.000Z</published>
+    <updated>2020-01-30T07:35:49.740Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS4AAACnCAMAAACYVkHVAAABp1BMVEX+/v733h////8AAAD+/f/+//313yL99cfv3Cr14hz6//7///n+/+
+      
+    
+    </summary>
+    
+    
+      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
+    
+    
+      <category term="app.use中间件" scheme="https://codermino.github.io/tags/app-use%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>将ejs模板引擎修改为html模板引擎</title>
