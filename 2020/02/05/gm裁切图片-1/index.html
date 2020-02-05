@@ -25,6 +25,11 @@
 </head>
   <body>
     
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#registerfront"><span class="toc-text">引入相关包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shrink"><span class="toc-text">缩放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cutposition"><span class="toc-text">裁剪指定位置</span></a></li></ol>
+    </div>
+    
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
       <span class="icon-toc menu-reset">Toc</span>
@@ -194,7 +199,26 @@
       <div>
       </div>
     </div>
-    
+    <p><a href="/images/gm.png" data-caption data-fancybox="images"><img src="/images/gm.png" alt></a></p>
+<h3 id="registerfront">引入相关包<a class="post-anchor" href="#registerfront"></a><a class="post-anchor" href="#registerfront"></a></h3>
+<pre><code class="hljs markdown">const fs = require('fs'),gm = require('gm');</code></pre>
+
+<h3 id="shrink">缩放<a class="post-anchor" href="#shrink"></a><a class="post-anchor" href="#shrink"></a></h3>
+<pre><code class="hljs markdown">gm('input.jpg')
+  .resize(50, 50,"!")
+  .write('output.jpg', function (err) &#123;
+<span class="hljs-code">    if (err) &#123;</span>
+<span class="hljs-code">      console.log(err);</span>
+<span class="hljs-code">    &#125;</span>
+  &#125;);</code></pre>
+
+<h3 id="cutposition">裁剪指定位置<a class="post-anchor" href="#cutposition"></a><a class="post-anchor" href="#cutposition"></a></h3>
+<pre><code class="hljs markdown">gm('./demo.jpg')
+  .crop(364, 480, 82, 3)
+  .write('./cut.jpg', function (err) &#123;
+<span class="hljs-code">    if (!err) console.log('crazytown has arrived');</span>
+  &#125;);</code></pre>
+
 
   
     <div class="post-reward">
@@ -219,6 +243,8 @@
   
   <div class="post-guide">
     <div class="item left">
+        
+          <a href="/2020/02/05/gm%E8%A3%81%E5%89%AA%E5%9B%BE%E7%89%87-2/">gm裁剪图片(2)</a>
         
     </div>
     <div class="item right">
