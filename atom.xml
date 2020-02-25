@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-02-15T08:43:00.418Z</updated>
+  <updated>2020-02-25T03:07:37.515Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>nodejs的stream</title>
+    <link href="https://codermino.github.io/2020/02/25/nodejs%E7%9A%84stream/"/>
+    <id>https://codermino.github.io/2020/02/25/nodejs%E7%9A%84stream/</id>
+    <published>2020-02-25T01:49:03.000Z</published>
+    <updated>2020-02-25T03:07:37.515Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/stream.jfif&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/stream.jfif&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;readonly&quot;&gt;读取&lt;a clas
+      
+    
+    </summary>
+    
+    
+      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
+    
+    
+      <category term="stream处理大文件" scheme="https://codermino.github.io/tags/stream%E5%A4%84%E7%90%86%E5%A4%A7%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>通过控制台使用gm裁剪图片</title>
     <link href="https://codermino.github.io/2020/02/15/%E9%80%9A%E8%BF%87%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8gm%E8%A3%81%E5%89%AA%E5%9B%BE%E7%89%87/"/>
     <id>https://codermino.github.io/2020/02/15/%E9%80%9A%E8%BF%87%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8gm%E8%A3%81%E5%89%AA%E5%9B%BE%E7%89%87/</id>
     <published>2020-02-15T08:35:03.000Z</published>
-    <updated>2020-02-15T08:43:00.418Z</updated>
+    <updated>2020-02-25T03:07:54.819Z</updated>
     
     <summary type="html">
     
