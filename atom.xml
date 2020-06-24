@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-03-31T05:36:42.235Z</updated>
+  <updated>2020-06-24T05:29:38.946Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>火柴软件使用说明</title>
+    <link href="https://codermino.github.io/2020/06/24/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"/>
+    <id>https://codermino.github.io/2020/06/24/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</id>
+    <published>2020-06-24T05:08:38.000Z</published>
+    <updated>2020-06-24T05:29:38.946Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;use&quot;&gt;呼叫火柴&lt;a class=&quot;post-anchor&quot; href=&quot;#use&quot;&gt;&lt;/a&gt;&lt;a class=&quot;post-anchor&quot; href=&quot;#use&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs markdown&quot;&gt;火柴是一款P
+      
+    
+    </summary>
+    
+    
+      <category term="火柴软件" scheme="https://codermino.github.io/categories/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="火柴" scheme="https://codermino.github.io/tags/%E7%81%AB%E6%9F%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>this.$nextTick</title>
