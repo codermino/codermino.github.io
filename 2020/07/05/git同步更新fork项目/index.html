@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      cookie和session的区别 - Mino
+      git同步更新fork项目 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,11 +24,6 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
-    
-    <div id="post-toc" class="animated hiddenToc hide">
-      <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#install"><span class="toc-text">cookie 和session 的区别详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jwt"><span class="toc-text">Jwt和一些权限</span></a></li></ol>
-    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -157,15 +152,11 @@
         <article class="post-entry">
     <div class="header">
       
-        <div class="top">
-          <div class="iconfont icon-zuirehotxiankuang animated infinite heartBeat"></div>
-        </div>
-      
-      <div class="title">cookie和session的区别</div>
+      <div class="title">git同步更新fork项目</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/06/25</span>
+          <span>2020/07/05</span>
         </span>
 
         
@@ -176,7 +167,7 @@
           <span>
               
                 
-                  <a href="/categories/nodejs">nodejs</a>
+                  <a href="/categories/git">git</a>
                 
               
           </span>
@@ -189,7 +180,7 @@
             <span>
                 
                   
-                    <a href="/tags/cookie和session的区别">cookie和session的区别</a>
+                    <a href="/tags/git">git</a>
                   
                 
             </span>
@@ -199,67 +190,25 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/cookie%E5%92%8Csession.png" data-caption data-fancybox="images"><img src="/images/cookie%E5%92%8Csession.png" alt></a></p>
-<h3 id="install">cookie 和session 的区别详解<a class="post-anchor" href="#install"></a><a class="post-anchor" href="#install"></a></h3>
-<pre><code class="hljs markdown">这些都是基础知识，不过有必要做深入了解。
-先简单介绍一下。二者的定义：当你在浏览网站的时候，WEB 服务器会先送一小小资料放在你的计算机上，
-Cookie 会帮你在网站上所打的文字或是一些选择，都纪录下来。
-当下次你再光临同一个网站，WEB 服务器会先看看有没有它上次留下的 Cookie 资料，
-有的话，就会依据 Cookie里的内容来判断使用者，送出特定的网页内容给你。 
-Cookie 的使用很普遍，许多有提供个人化服务的网站，都是利用 Cookie来辨认使用者，
-以方便送出使用者量身定做的内容，像是 Web 接口的免费 email 网站，都要用到 Cookie。
+    <p><a href="data:image/png;base64,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" target="_blank" rel="noopener" data-caption="git" data-fancybox="images"><img src="data:image/png;base64,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" alt="git"></a></p>
+<div>
+    <font size="3" color="skyblue">master:</font><font size="3" color="green">git同步更新fork项目</font><br>
+</div>
 
 
-具体来说cookie机制采用的是在客户端保持状态的方案，
-而session机制采用的是在服务器端保持状态的方案。同时我们也看到，
-由于采用服务器端保持状态的方案在客户端也需要保存一个标识，
-所以session机制可能需要借助于cookie机制来达到保存标识的目的，但实际上它还有其他选择。
-cookie机制。正统的cookie分发是通过扩展HTTP协议来实现的，
-服务器通过在HTTP的响应头中加上一行特殊的指示以提示浏览器按照指示生成相应的cookie。
-然而纯粹的客户端脚本如JavaScript或者VBScript也可以生成cookie。
-而cookie的使用是由浏览器按照一定的原则在后台自动发送给服务器的。
-浏览器检查所有存储的cookie，如果某个cookie所声明的作用范围大于等于将要请求的资源所在的位置，
-则把该cookie附在请求资源的HTTP请求头上发送给服务器。
-
-
-
-cookie的内容主要包括：名字，值，过期时间，路径和域。
-路径与域一起构成cookie的作用范围。
-若不设置过期时间，则表示这个cookie的生命期为浏览器会话期间，
-关闭浏览器窗口，cookie就消失。这种生命期为浏览器会话期的cookie被称为会话cookie。
-会话cookie一般不存储在硬盘上而是保存在内存里，当然这种行为并不是规范规定的。
-若设置了过期时间，浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，
-这些cookie仍然有效直到超过设定的过期时间。
-存储在硬盘上的cookie可以在不同的浏览器进程间共享，比如两个IE窗口。
-而对于保存在内存里的cookie，不同的浏览器有不同的处理方式session机制。
-session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。
-当程序需要为某个客户端的请求创建一个session时，
-服务器首先检查这个客户端的请求里是否已包含了一个session标识（称为session id），
-如果已包含则说明以前已经为此客户端创建过session，
-服务器就按照session id把这个session检索出来使用（检索不到，会新建一个），
-如果客户端请求不包含session id，则为此客户端创建一个session并且生成一个与此session相关联的session id，
-session id的值应该是一个既不会重复，又不容易被找到规律以仿造的字符串，这个session id将被在本次响应中返回给客户端保存。保存这个session id的方式可以采用cookie，这样在交互过程中浏览器可以自动的按照规则把这个标识发送给服务器。一般这个cookie的名字都是类似于SEEESIONID。但cookie可以被人为的禁止，则必须有其他机制以便在cookie被禁止时仍然能够把session id传递回服务器。经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路径的后面。还有一种技术叫做表单隐藏字段。就是服务器会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。比如：</code></pre>
-
-<pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"testform"</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/xxx"</span>&gt;</span></span> 
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jsessionid"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ByOK3vjFD75aPnrF7C2HmdnV6QZcEbzWoWiBYEnLerjQ99zWpBng!-145788764"</span>&gt;</span></span> 
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>&gt;</span></span> 
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span></code></pre>
-
-<pre><code class="hljs markdown">实际上这种技术可以简单的用对action应用URL重写来代替。
-cookie 和session 的区别：
-<span class="hljs-code">    1、cookie数据存放在客户的浏览器上，session数据放在服务器上。</span>
-<span class="hljs-code">    2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗,考虑到安全应当使用session。</span>
-<span class="hljs-code">    3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,</span>
-<span class="hljs-code">        考虑到减轻服务器性能方面，应当使用COOKIE。</span>
-<span class="hljs-code">    4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</span>
-<span class="hljs-code">    5、所以个人建议：将登陆信息等重要信息存放为SESSION,其他信息如果需要保留，可以放在COOKIE中</span></code></pre>
-
-<h3 id="jwt">Jwt和一些权限<a class="post-anchor" href="#jwt"></a><a class="post-anchor" href="#jwt"></a></h3>
-<pre><code class="hljs markdown">JWT 一般和 OAuth2 使用。
-对外服务器使用 OAuth2，类似于三方的 API ;
-内部使用 JWT 进行服务与服务间的交互，也就是内网间的传输。
-OAuth2 进行授权用，JWT 是让系统知道你是谁。
-OAuth2 转 JWT 一般在网关层进行转换。</code></pre>
+<ul>
+    <li>1、打开fork 过来的项目如下所示：
+        <a href="/images/git同步更新/1.png" data-caption data-fancybox="images"><img src="/images/git同步更新/1.png" alt></a>
+    </li>
+    <li>2、点击new pull request</li>
+    <li>3、在进入的界面， 后进行将左边的设置为你自己的仓库， fork 过来的源在右边， 如下图：</li>
+    <li>4、当选择完后会变成下图（关键步骤，千万不可选错分支）</li>
+    <li>5、接下来， 将其展示出可以调整状态： 右边改为源fork地址</li>
+    <li>6、就会出现变更数据：</li>
+    <li>7、点击create pull request</li>
+    <li>8、进行数据的合并：</li>
+    <li>9 、最后合并!</li>
+</ul>
 
 
   
@@ -286,12 +235,10 @@ OAuth2 转 JWT 一般在网关层进行转换。</code></pre>
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/07/05/git%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0fork%E9%A1%B9%E7%9B%AE/">git同步更新fork项目</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/06/25/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%EF%BC%88Python%E6%95%99%E7%A8%8B%EF%BC%89/">网页图片批量获取（Python教程）</a>
+          <a href="/2020/06/25/cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB/">cookie和session的区别</a>
         
     </div>
   </div>
@@ -303,7 +250,7 @@ OAuth2 转 JWT 一般在网关层进行转换。</code></pre>
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/06/25/cookie和session的区别/">https://codermino.github.io/2020/06/25/cookie和session的区别/</a>
+      永久链接：<a href="https://codermino.github.io/2020/07/05/git同步更新fork项目/">https://codermino.github.io/2020/07/05/git同步更新fork项目/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
