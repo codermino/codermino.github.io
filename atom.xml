@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-05T07:36:49.960Z</updated>
+  <updated>2020-07-05T10:30:20.317Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python字符串前修饰符</title>
+    <link href="https://codermino.github.io/2020/07/05/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E4%BF%AE%E9%A5%B0%E7%AC%A6/"/>
+    <id>https://codermino.github.io/2020/07/05/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E4%BF%AE%E9%A5%B0%E7%AC%A6/</id>
+    <published>2020-07-05T08:09:22.000Z</published>
+    <updated>2020-07-05T10:30:20.317Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E4%BF%AE%E9%A5%B0%E7%AC%A6/python.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;i
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://codermino.github.io/categories/python/"/>
+    
+    
+      <category term="python字符串前修饰符" scheme="https://codermino.github.io/tags/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E4%BF%AE%E9%A5%B0%E7%AC%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>pyinstaller的使用</title>
@@ -478,30 +502,6 @@
     
     
       <category term="formidable文件改名" scheme="https://codermino.github.io/tags/formidable%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nodejs的formidable</title>
-    <link href="https://codermino.github.io/2020/01/25/nodejs%E7%9A%84formidable/"/>
-    <id>https://codermino.github.io/2020/01/25/nodejs%E7%9A%84formidable/</id>
-    <published>2020-01-25T03:21:58.000Z</published>
-    <updated>2020-01-28T08:27:56.552Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS4AAACnCAMAAACYVkHVAAAAwFBMVEX///8AAADwTSHvQQDwRhPvOgDvQgb4s6efn5/97ur1loT0jHr4ua
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="formidable文件上传" scheme="https://codermino.github.io/tags/formidable%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
   </entry>
   
