@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-05T07:15:31.969Z</updated>
+  <updated>2020-07-05T07:33:39.506Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>pyinstaller的使用</title>
+    <link href="https://codermino.github.io/2020/07/05/pyinstaller%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://codermino.github.io/2020/07/05/pyinstaller%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-07-05T07:24:49.000Z</published>
+    <updated>2020-07-05T07:33:39.506Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/pyinstaller/pyinstaller.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/pyinstaller/pyinstaller.jpg&quot; alt&gt;&lt;/a&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="python" scheme="https://codermino.github.io/categories/python/"/>
+    
+    
+      <category term="pyinstaller" scheme="https://codermino.github.io/tags/pyinstaller/"/>
+    
+  </entry>
   
   <entry>
     <title>git提交pr</title>
@@ -478,30 +502,6 @@
     
     
       <category term="formidable文件上传" scheme="https://codermino.github.io/tags/formidable%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mongodb操作</title>
-    <link href="https://codermino.github.io/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/"/>
-    <id>https://codermino.github.io/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/</id>
-    <published>2020-01-12T12:54:29.000Z</published>
-    <updated>2020-01-25T04:51:05.911Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAACBCAMAAAAYG1bYAAABOFBMVEX///9ELSKOcU4bhjQeijYgjTiHZz9CKx8jkToahDNAKByEYzjj3d
-      
-    
-    </summary>
-    
-    
-      <category term="mongodb" scheme="https://codermino.github.io/categories/mongodb/"/>
-    
-    
-      <category term="mongodb" scheme="https://codermino.github.io/tags/mongodb/"/>
     
   </entry>
   
