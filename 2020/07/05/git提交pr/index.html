@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      git同步更新fork项目 - Mino
+      git提交pr - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,19 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">简单过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">详细过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">fork</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">通过上面的步骤，已经将远程仓库建好</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">clone</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
+    创建分支
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
+    修改代码
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
+    提交
+</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
+    提交pr
+</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -152,7 +165,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">git同步更新fork项目</div>
+      <div class="title">git提交pr</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -191,40 +204,107 @@
       </div>
     </div>
     <p><a href="data:image/png;base64,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" target="_blank" rel="noopener" data-caption="git" data-fancybox="images"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAt1BMVEX////1hHB3bEz1fmn0fGb1gW1xZUL3no76w7ptYDt1akns6+b1gm65tKbz8vBuYj6RinLTz8Zva0qDel3pgmzX1M1ya0v7hXKWj3n++Pf5vrSnoI72mIj3o5X4r6P96eb2lIP708z84t772tX97On1i3iaclbh39nEwLX4tav3qJv6zsewdlzMfGSspZSEb1COcFLcf2nOfGR/dFa0d12dhm+LgmhmWS6fcVSsj3nAemHrgm2/u65xgB+dAAAKzklEQVR4nO2da3uiPBCG5WhBhHoEa7e21lNtV9u629132///u15AhSTkhFAJyPOt1Si5r0kymUzGRqNWrWpoNJuNin6GcmhyN7c0Tbp9LvpBxNdorWqW5MtSpIeiH0ZwzeaKFEl9KvpxhNZEsiRA6l3RDySwEFY1LYoSrGpaRGFY1bQImlgYVjUtrLB2VdPCimBXIa110Q8nmKYkuwqk1LRAUeyqti1ExPmqtq2EGHZV0wI00ZisaloHcdhVTeugicLFqqYVaHSrsEHVtI6qaaVRTSuNalpp1Kxp8SvFLP+j6GctRDPor3ok0jRVb6C/a1pkTTXrZFqXNhKnwX6wti0uTfd7Z4QW/5p4SbY1PcYZalpMTeOYTE2LoSkYv6ppUTWFY301LYqmaPyqpkXUNBlDRmmpiupLYQYFK0/rEWc3CK275+lsNnu8uWfhqjgtLKsErejd94whWWlaBFZEWo0b9WJpEVmRaT1fKi0KKzKtq8ukRWVFptXULpAWgxWR1oTVTmmeuSffr0fGcApoTbEtfzBMq3q0mHYlSdYc3/SBiblitDhYSRohHXLEblspWjysJOUK33g052hbHVoc81XQYdJVnVuejKSq0OKyK7+/pGtg9zxpNhWhxZ6gD93NMAyD5rfn7da36IE3PqURzmxmvLCbpb/QyTkGAxFcB9b2MKZVdtviHYNhZx+xHzHij52Wmxb3GAxkkfp6GbTS2JUvlbQepqBV2nkrJSt/jsfvDi+BVmpWkiVdKq30rHxa2mWOxFNY+VJvCcbFTUu7Lx2tE1lBKxqcG/iDm1bZbIvbk0x2Nd7k3cB1Hfhplcu2TmcFwrpSL4FWBlYQLOUCaGVhBcNCK6xUj1YmVgisqtPKxgqFVW1aGVklYFWZVlZWSVhJWpqiqKrCOk4Un1ZmVhhYCVrNm4fHx6s7SWUE5wWnlZ0VDhap6tgDK39LaFo5sMLCItZoY+XYCEwrD1Z4WERaj4yZS1haJ++dOWCRaZVzJM6Yy1MWWMTKUDesvFMhT1+ZqUHZYBFpzRlrIjGyX6AmuQxCCixSttszw7RIqUxFijUccoCFzxwZUT/OdV1CklyR4sl1yQbLmuG/mZJ16r79Wry+/m63zgSBV6ypIzss0nB6IsL6XHSHvkzd8c4DgVffDsu6J3zzFXECeB3KB+kfZ4HAK64sqkywSGfzJFjuS1eO5LTPg4FPd/l4DhRYpGFIXFq2MSvZ3J0HA5/4ciEzwJIkgi9OcvDeAMOSZUOoST4fVjTXAe8CEDMDf0KwnM65QPAon60hBRYh95to0gxY9iiQ/Y1EaLrLxS2lDEMFOw6JbtY7FdbyjxPoT1ETP3d4/ERY2KxTokFbfXjOQmxope99isJWyXUOtCiwcBueGeWjoNUQdbTGRcPKw7ZosJJpp6N7yl7nH2Baxgpp6ZlFw8rBtqiw0HjLZE7z7ty/esRqjDyofXipSFjZadFhSWpzEr0+eqLfz1eabd3RTX9raCaQDBwBYGWmxYAlacrt1dRfFmcPa4v+VUEOoN1pe167k3QQxiJYVmZaLFjBzxepqsU+ZaXmSx5HYdGwMtJiw+ITPSd+LAqsbLRygkU/p+gYsiiwMtHKBxbdrjrRKikArCy0coFFtSt748giwWqs80jAJcOygoOIozCsyHbVGozN2K58z77nRbouCtzJu2qO1dCV+j9fFq/brbzdvi5efr71YX0GHzHe9SDJQTzL1n3HS4ZkxnJQz/VsOtW2WLAst/+y7XaHx/D6cNhF9Tto/GHCCoN/LYQULL0wWKfalhYPIRwst7/oDmk99m0l7DP6X7FhNe5OsS1Ni69KY7Jy3F9DBqoDLNtB/is4rFNsS12DbveDhHrpf7u03gKwlmWDld62VOQGPhKBcRccrPawVqWDlZYWygqhBR0EMvrcMXQTA2sfSwZfMZ1IiTjOmZWKloI5kQAjofDZ1n4ZhKYw0zB8z6C3CRraq2vISwhhjQahdjEtczyItTwzHVRpaM1xYQIgo2gBguku/gU+1b/XmKD5X8v2FTW1xzoC66DrGJYIHnwsflqEkiFREgVoWMPt2951d933GNYOiVuBS2IpYKWghY8/Hb0t32uIu779jFq5/bjnG7ipXTbL4qalETa/x5RCFzisGb4BDYGDCeSMvoSwGk98JaEIFRKjzL7YsIav0O75k9T1MsLio8UqCfUGwPoHwXKjmR85HSwlLC5arGJjwGl89x1qGcOSTWiKLycsHlosy6LA+htn+EGTVklhcdDSCHcoRgfXgcuydMivLCssNi1Szuj00BBws+A5S1l/RJ2vhmVx0NLwqdvHZORPwM0CV0NlDUQYzIrAYtLC+w7xnQAAVvc9oqWsG7FhIZmjJYbFpIU1rafj3hCYxn29HWj5m28vRmLC+e5lhsWihfPhgStyUNBh+NIPT3jWqx1ABEnvKzUsFq1kjGYG/nY5mJwmD4fy69+FPATDVqYMby/LDYtFC/2R+yn0O+/vaOwPjcc7X3DzksNi2tYcyO0b3cD5Vy4jAp9IhSw7LNZveFjq7XM4z4+mT1LiwIMagzdlNA2r9LCYv3hiKdb8vnkvKbizIYpt6bvEHYryw2LSCoBZhPxH9+cWwykwK8NLpvdVABYPLZJc6RVHynR2uNsmPLA2mHZC6XRan9vDAug4ur5PYtB1Y+cNsN/DAcsU7NomRqfS6h9Z6YNOe3zd6/U+vM1qSbqAwwNLqKt1eJ1Gqy8fWfENHhIsD3BkdfQ2gYA6hVbEypT5voQEawwdSR9o2ctNwSfSZKWnFc1X/iDk+w4SrDaU8qDL3mYz7vmTn17UhTqm0tIC4qHypr3qLJfLVoveuxZwyOoAMdQBnDUSLBJmYGxiXeCElJIWGHTwjcAJ10N5t/vwxu2vQQJbq/O16YGb7N6m3WntN9ojNMXm+LHCjsOUtNwXbBbb3nnQHcP4GIO3Tr7+hCzBdwbvOtAYE1KP9GJAcCkNLXfByo7UHXMcTUwrLI6j6SwN3Kv+OOScDAtRClpMWCEM47h7ocNqtPEDUeRxyK5DB8D6xQHLt41DdxmwGmPDRF/0TbMn7gwfiN+23rjS/o6lQViwGisZTgD0N03jopPZmOKm5f7SE8aAkbk/wf/6o2MEJkLaq2s9WFHDldW8bgtPKhDvSFTvVjseWnoYW251sEKILDud1WrVGQhVTYQqPlpBFbs2YcWHTUv8OEIW8dAKWR2WMDMKz+BNq+j+fK/YtAJWq4NzZO4Gq/bY87yPnW4Yhj/vwNAcIYtt5icWraBKabTRA3Z5I7vVWna+PBkcn46w2+GcRKcVVnQ9RuxwsSwbjFBVHhaVVsgqMiwdt3SB90yccz/7+UWmta8UfPQyzR1uSmqVK1CcWSRah6rKkduAtSwgQiX2/i4v4WkdK1DHsDAwbCByJXAEL0/haEXVumOHVPdQ2+rsLmwUBkrSiiubAxcITafXXg2WLV/Lge84mOCW2CnBaU0+QmkBVeDBw4cw6ukYoUeKuKT6dYGPf2bB16KhOt2kUDAk/aPyThag57h4kQbXNB/12DEH56JYNRqzpqJovpTEz0LaPYZtmWLVBD6LZlc/fN1Mkq9s0D0zNI0ZXinid2dTayMfzkNhUMEp6aY8Ebyzadn2eqZjOFGo2DH0nVeOoHAhslvL1Vd7r69Oy654AKtWrVq1atWqVVn9D2EF6d4OgN1BAAAAAElFTkSuQmCC" alt="git"></a></p>
-<div>
-    <font size="3" color="skyblue">master:</font><font size="3" color="green">git同步更新fork项目</font><br>
-</div>
+<h3>简单过程<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    首先git分为本地仓库(自己电脑中)和远程仓库(git官网自己的账号中)，仓库可以理解为保存代码的地方，
+    简单的说是在<b>自己</b>本地仓库修改代码，提交到<b>自己</b>远程仓库，提交pr后被接受后再会被合并到master。
+    下面一步一步来。
+</p>
+<h3>详细过程<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    申请账号、添加ssh公钥等过程就不说了哈。
+</p>
+<h3>fork<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    将项目fork到自己的仓库中，可以在github的首页搜索到自己的想要的开源项目，
+    我以flink为例：
+</p>
+<a href="/images/gitpr/1.png" data-caption data-fancybox="images"><img src="/images/gitpr/1.png" alt></a>
 
+<p>
+    进去后，点出fork，稍等片刻，此项目便会出现在自己的仓库中
+</p>
+<a href="/images/gitpr/2.png" data-caption data-fancybox="images"><img src="/images/gitpr/2.png" alt></a>
 
-<ul>
-    <li>1、打开fork 过来的项目如下所示：
-        <a href="/images/git同步更新/1.png" data-caption data-fancybox="images"><img src="/images/git同步更新/1.png" alt></a>
-    </li>
-    <li>2、点击new pull request
-        <a href="/images/git同步更新/2.png" data-caption data-fancybox="images"><img src="/images/git同步更新/2.png" alt></a>
-    </li>
-    <li>3、在进入的界面， 后进行将左边的设置为你自己的仓库， fork 过来的源在右边， 如下图：
-        <a href="/images/git同步更新/3.png" data-caption data-fancybox="images"><img src="/images/git同步更新/3.png" alt></a>
-    </li>
-    <li>4、当选择完后会变成下图（关键步骤，千万不可选错分支）
-        <a href="/images/git同步更新/4.png" data-caption data-fancybox="images"><img src="/images/git同步更新/4.png" alt></a>
-    </li>
-    <li>5、接下来， 将其展示出可以调整状态： 右边改为源fork地址
-        <a href="/images/git同步更新/5.png" data-caption data-fancybox="images"><img src="/images/git同步更新/5.png" alt></a>
-    </li>
-    <li>6、就会出现变更数据：
-        <a href="/images/git同步更新/6.png" data-caption data-fancybox="images"><img src="/images/git同步更新/6.png" alt></a>
-    </li>
-    <li>7、点击create pull request
-        <a href="/images/git同步更新/7.png" data-caption data-fancybox="images"><img src="/images/git同步更新/7.png" alt></a>
-    </li>
-    <li>8、进行数据的合并：
-        <a href="/images/git同步更新/8.png" data-caption data-fancybox="images"><img src="/images/git同步更新/8.png" alt></a>
-    </li>
-    <li>9 、最后合并!
-        <a href="/images/git同步更新/9.png" data-caption data-fancybox="images"><img src="/images/git同步更新/9.png" alt></a>
-    </li>
-</ul>
+<p>
+    进到自己fork的项目中，就能看到Clone or download按钮，如下，记下这个https链接。
+</p>
+<a href="/images/gitpr/3.png" data-caption data-fancybox="images"><img src="/images/gitpr/3.png" alt></a>
+
+<h4>通过上面的步骤，已经将远程仓库建好<a class="post-anchor" href="#undefined"></a></h4>
+<h3>clone<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    需要将远程仓库clone到本地，此处省略安装本地github的过程，
+    随便在哪个目录(项目存放的目录)，右键打开一个Git base，
+    执行一下git clone https://github.com/***/***.git(使用上一步的https链接)，
+    等待命令完成，时间视下载速度而定，也许会比较慢，
+    网上也有些可以提高git clone速度的方法，不防一试。
+</p>
+<a href="/images/gitpr/4.png" data-caption data-fancybox="images"><img src="/images/gitpr/4.png" alt></a>
+
+<p>
+    上面的命令完成后，当前目录下会多一个目录，我clone的是flink，
+    所以会多一个flink目录，进到flink目录中，试试跑一下git status试试，会提示现在是master分支。
+</p>
+<a href="/images/gitpr/5.png" data-caption data-fancybox="images"><img src="/images/gitpr/5.png" alt></a>
+
+<p>
+    用git remote -v命令，可以看到此时只与自己的远程仓库建立了连接
+</p>
+<a href="/images/gitpr/6.png" data-caption data-fancybox="images"><img src="/images/gitpr/6.png" alt></a>
+
+<p>
+    还需要与上游建立连接，这里上游指的是一开始fork的那个项目源，以flink为例，执行如下命令：
+    git remote add upstream https://github.com/apache/flink.git
+    再用git remote -v可以看到：
+</p>
+<a href="/images/gitpr/7.png" data-caption data-fancybox="images"><img src="/images/gitpr/7.png" alt></a>
+
+<p>
+    接下来就能创建分支了。
+</p>
+<h3>
+    创建分支
+<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    接着上面的运行命令：git checkout -b flink-fs，
+    这个命令的意思是创建一个叫flink-fs的分支，运行这个命令后bash将自动切换到新的分支下.
+</p>
+<h3>
+    修改代码
+<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    自行修改代码.
+</p>
+<h3>
+    提交
+<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    可以先使用git status来查看有哪些文件被修改了
+</p>
+<a href="/images/gitpr/8.png" data-caption data-fancybox="images"><img src="/images/gitpr/8.png" alt></a>
+
+<p>
+    然后再git add ***.java将要提交的文件都加上
+    然后再git commit -m "modify XX"，需要注意的是git commit只是把修改的代码提交到当前分支(当前分支是flink-fs，而不是master)，”modify XX”是本次提交的简单说明
+    然后再git push origin flink-fs，这一步才是将当前分支推送到自己的远程仓库。
+    这时，在自己的远程仓库便能看刚才push上去的分支了
+</p>
+<h3>
+    提交pr
+<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    找到New pull request
+</p>
+<a href="/images/gitpr/9.png" data-caption data-fancybox="images"><img src="/images/gitpr/9.png" alt></a>
+
+<p>
+    需要注意的是compare处选择刚才提交上来的分支
+</p>
+<p>
+    然后点Create pull request
+    写好名字，写好说明，提交，就OK啦。
+</p>
 
 
   
@@ -251,12 +331,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/07/05/git%E6%8F%90%E4%BA%A4pr/">git提交pr</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/06/25/cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB/">cookie和session的区别</a>
+          <a href="/2020/07/05/git%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0fork%E9%A1%B9%E7%9B%AE/">git同步更新fork项目</a>
         
     </div>
   </div>
@@ -268,7 +346,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/07/05/git同步更新fork项目/">https://codermino.github.io/2020/07/05/git同步更新fork项目/</a>
+      永久链接：<a href="https://codermino.github.io/2020/07/05/git提交pr/">https://codermino.github.io/2020/07/05/git提交pr/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
