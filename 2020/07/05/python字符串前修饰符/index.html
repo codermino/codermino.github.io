@@ -223,23 +223,10 @@
     在 Python3 中，bytes 和 str 的互相转换方式是
     str.encode('utf-8')
     bytes.decode('utf-8')
+    <span style="color:red;">具体见底部代码</span>
 <p></p>
-<span style="color: red;">python str与bytes之间的转换</span>
-<p>
-    # bytes object  
-    b = b"example"
-    # str object  
-    s = "example"
-    # str to bytes  
-    sb = bytes(s, encoding = "utf8")
-    # bytes to str  
-    bs = str(b, encoding = "utf8")
-    # an alternative method  
-    # str to bytes  
-    sb2 = str.encode(s)
-    # bytes to str  
-    bs2 = bytes.decode(b)
-</p>
+
+<p><span style="color: red;">python str与bytes之间的转换</span></p>
 <h3>4、字符串前加 f<a class="post-anchor" href="#undefined"></a></h3>
 <p>
     import time
@@ -251,6 +238,20 @@
     </p><h4>输出：<a class="post-anchor" href="#undefined"></a></h4>
     processing done in 1.00 s
 <p></p>
+
+<pre><code class="hljs markdown"><span class="hljs-section"># bytes object  </span>
+b = b"example"
+<span class="hljs-section"># str object  </span>
+s = "example"
+<span class="hljs-section"># str to bytes  </span>
+sb = bytes(s, encoding = "utf8")
+<span class="hljs-section"># bytes to str  </span>
+bs = str(b, encoding = "utf8")
+<span class="hljs-section"># an alternative method  </span>
+<span class="hljs-section"># str to bytes  </span>
+sb2 = str.encode(s)
+<span class="hljs-section"># bytes to str  </span>
+bs2 = bytes.decode(b)</code></pre>
 
 
   
