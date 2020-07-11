@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、同步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、异步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、同步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">同步方式Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、异步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
     最后的tip:
 </span></a></li></ol>
     </div>
@@ -249,6 +249,53 @@
         <span class="hljs-comment"># 关闭游标和连接</span>
         self.cursor.close()
         self.conn.close()</code></pre>
+
+<h3>同步方式Demo2<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WhfjPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        dbparams = &#123;
+            <span class="hljs-string">'host'</span>: <span class="hljs-string">'127.0.0.1'</span>,
+            <span class="hljs-string">'user'</span>: <span class="hljs-string">'root'</span>,
+            <span class="hljs-string">'password'</span>: <span class="hljs-string">'19980211'</span>,
+            <span class="hljs-string">'database'</span>: <span class="hljs-string">'fangjia'</span>,
+            <span class="hljs-string">'port'</span>: <span class="hljs-number">3306</span>,
+            <span class="hljs-string">'charset'</span>: <span class="hljs-string">'utf8'</span>
+        &#125;
+        self.conn = pymysql.connect(**dbparams)
+        self.cursor = self.conn.cursor()
+        self._sql = <span class="hljs-literal">None</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span>
+        self.cursor.execute(self.sql, (item[<span class="hljs-string">'xiaoqu_name'</span>],
+                                       item[<span class="hljs-string">'position'</span>],
+                                       item[<span class="hljs-string">'price'</span>]))
+        self.conn.commit()
+        <span class="hljs-keyword">return</span> item
+
+    <span class="hljs-comment">#将一个方法变为属性进行调用</span>
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sql</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self._sql:
+            self._sql = <span class="hljs-string">"""
+            insert into fangchan2(id,xiaoqu_name,position,price) values(null,%s,%s,%s);
+            """</span>
+            <span class="hljs-keyword">return</span> self._sql
+        <span class="hljs-keyword">return</span> self._sql</code></pre>
+
+<pre><code class="hljs python">tip:
+    <span class="hljs-comment">###</span>
+    <span class="hljs-comment">#   我们可以使用@property装饰器来创建只读属性，@property装饰器会将方法转换为相同名称的只读属性,可以与所定义的属性配合使用，这样可以防止属性被修改。</span>
+    <span class="hljs-comment">#   class DataSet(object):</span>
+    <span class="hljs-comment">#   @property</span>
+    <span class="hljs-comment">#   def method_with_property(self): ##含有@property</span>
+    <span class="hljs-comment">#       return 15</span>
+    <span class="hljs-comment">#   def method_without_property(self): ##不含@property</span>
+    <span class="hljs-comment">#       return 15</span>
+    <span class="hljs-comment"># </span>
+    <span class="hljs-comment">#   l = DataSet()</span>
+    <span class="hljs-comment">#   print(l.method_with_property) # 加了@property后，可以用调用属性的形式来调用方法,后面不需要加（）。</span>
+    <span class="hljs-comment">#   print(l.method_without_property())  #没有加@property , 必须使用正常的调用方法的形式，即在后面加()</span>
+    <span class="hljs-comment">###</span></code></pre>
 
 
 

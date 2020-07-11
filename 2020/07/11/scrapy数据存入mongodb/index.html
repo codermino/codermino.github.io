@@ -219,21 +219,6 @@
     self.post.insert(data)
     <span class="hljs-keyword">return</span> item</code></pre>
 
-<pre><code class="hljs python">tip:
-    <span class="hljs-comment">###</span>
-    <span class="hljs-comment">#   我们可以使用@property装饰器来创建只读属性，@property装饰器会将方法转换为相同名称的只读属性,可以与所定义的属性配合使用，这样可以防止属性被修改。</span>
-    <span class="hljs-comment">#   class DataSet(object):</span>
-    <span class="hljs-comment">#   @property</span>
-    <span class="hljs-comment">#   def method_with_property(self): ##含有@property</span>
-    <span class="hljs-comment">#       return 15</span>
-    <span class="hljs-comment">#   def method_without_property(self): ##不含@property</span>
-    <span class="hljs-comment">#       return 15</span>
-    <span class="hljs-comment"># </span>
-    <span class="hljs-comment">#   l = DataSet()</span>
-    <span class="hljs-comment">#   print(l.method_with_property) # 加了@property后，可以用调用属性的形式来调用方法,后面不需要加（）。</span>
-    <span class="hljs-comment">#   print(l.method_without_property())  #没有加@property , 必须使用正常的调用方法的形式，即在后面加()</span>
-    <span class="hljs-comment">###</span></code></pre>
-
 
   
     <div class="post-reward">
