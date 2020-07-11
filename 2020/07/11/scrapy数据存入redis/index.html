@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      分类 - Mino
+      scrapy数据存入redis - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -66,7 +66,7 @@
           标签
         </a>
         
-        <a href="/categories" class="current">
+        <a href="/categories" class="">
           分类
         </a>
         
@@ -116,7 +116,7 @@
             标签
           </a>
           
-          <a href="/categories" class="current">
+          <a href="/categories" class="">
             分类
           </a>
           
@@ -149,60 +149,122 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-     
-        <div class="title">
-            分类 - scrapy
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5redis/" title="scrapy数据存入redis">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入redis</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/" title="scrapy数据存入mongodb">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mongodb</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/" title="scrapy数据存入mysql">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mysql</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+      <div class="title">scrapy数据存入redis</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/07/11</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/scrapy">scrapy</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/scrapy数据存入redis">scrapy数据存入redis</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
+<pre><code class="hljs markdown">import redis
+
+class QiubaiproPipelineByRedis(object):
+<span class="hljs-code">    conn = None</span>
+<span class="hljs-code">    def open_spider(self,spider):</span>
+<span class="hljs-code">        print('开始爬虫')</span>
+<span class="hljs-code">        # 创建链接对象</span>
+<span class="hljs-code">        self.conn = redis.Redis(host='127.0.0.1',port=6379)</span>
+<span class="hljs-code">    def process_item(self, item, spider):</span>
+<span class="hljs-code">        dict = &#123;</span>
+<span class="hljs-code">            'author':item['author'],</span>
+<span class="hljs-code">            'content':item['content']</span>
+<span class="hljs-code">        &#125;</span>
+<span class="hljs-code">        # 写入redis中</span>
+<span class="hljs-code">        self.conn.lpush('data', dict)</span>
+<span class="hljs-code">        return item</span></code></pre>
+
+<pre><code class="hljs markdown">from scrapy.exceptions import DropItem
+if self.conn.sadd('data',item['author'])
+<span class="hljs-code">    return item</span>
+return raise DropItem</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/">scrapy数据存入mongodb</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/07/11/scrapy数据存入redis/">https://codermino.github.io/2020/07/11/scrapy数据存入redis/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020

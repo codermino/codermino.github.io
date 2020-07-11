@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-11T14:12:44.058Z</updated>
+  <updated>2020-07-11T15:16:22.753Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scrapy数据存入redis</title>
+    <link href="https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5redis/"/>
+    <id>https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5redis/</id>
+    <published>2020-07-11T15:07:16.000Z</published>
+    <updated>2020-07-11T15:16:22.753Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/scrapy/scrapy.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scrapy/scrapy.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code clas
+      
+    
+    </summary>
+    
+    
+      <category term="scrapy" scheme="https://codermino.github.io/categories/scrapy/"/>
+    
+    
+      <category term="scrapy数据存入redis" scheme="https://codermino.github.io/tags/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5redis/"/>
+    
+  </entry>
   
   <entry>
     <title>scrapy数据存入mongodb</title>
@@ -481,30 +506,6 @@
     
     
       <category term="app.use中间件" scheme="https://codermino.github.io/tags/app-use%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>将ejs模板引擎修改为html模板引擎</title>
-    <link href="https://codermino.github.io/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
-    <id>https://codermino.github.io/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/</id>
-    <published>2020-01-29T11:35:01.000Z</published>
-    <updated>2020-01-30T07:37:02.399Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUEAAACdCAMAAAAdWzrjAAAAilBMVEUwMDD///83NzctLS1RUVEXFxceHh4qKiomJiYjIyMTExMoKCgbGx
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="将ejs模板引擎修改为html模板引擎" scheme="https://codermino.github.io/tags/%E5%B0%86ejs%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%BF%AE%E6%94%B9%E4%B8%BAhtml%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
     
   </entry>
   
