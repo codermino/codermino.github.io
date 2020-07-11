@@ -25,6 +25,11 @@
 </head>
   <body>
     
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、使用终端命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、使用pipelines</span></a></li></ol>
+    </div>
+    
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
       <span class="icon-toc menu-reset">Toc</span>
@@ -191,6 +196,10 @@
       </div>
     </div>
     <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
+<h3>方法一、使用终端命令<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs python">scrapy crawl novel -o novel.json</code></pre>
+
+<h3>方法一、使用pipelines<a class="post-anchor" href="#undefined"></a></h3>
 <pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonItemExporter   <span class="hljs-comment">#  JsonItemExporter：一次性写入大量数据，占用内存</span>
 <span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter
 
