@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-11T05:30:34.034Z</updated>
+  <updated>2020-07-11T10:22:01.749Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scrapy数据存入mysql</title>
+    <link href="https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/"/>
+    <id>https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/</id>
+    <published>2020-07-11T08:47:45.000Z</published>
+    <updated>2020-07-11T10:22:01.749Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/scrapy/scrapy.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scrapy/scrapy.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;1、同步方式&lt;a cl
+      
+    
+    </summary>
+    
+    
+      <category term="scrapy" scheme="https://codermino.github.io/categories/scrapy/"/>
+    
+    
+      <category term="scrapy数据存入mysql" scheme="https://codermino.github.io/tags/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown基本语法</title>
@@ -479,30 +504,6 @@
     
     
       <category term="body-parser" scheme="https://codermino.github.io/tags/body-parser/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>express模板的使用</title>
-    <link href="https://codermino.github.io/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://codermino.github.io/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-01-28T11:31:34.000Z</published>
-    <updated>2020-01-29T13:23:04.426Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS4AAACnCAMAAACYVkHVAAABp1BMVEX+/v733h////8AAAD+/f/+//313yL99cfv3Cr14hz6//7///n+/+
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="express" scheme="https://codermino.github.io/tags/express/"/>
     
   </entry>
   

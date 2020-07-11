@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      markdown基本语法 - Mino
+      scrapy数据存入mysql - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,13 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、同步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、异步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
+    最后的tip:
+</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -152,7 +159,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">markdown基本语法</div>
+      <div class="title">scrapy数据存入mysql</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -167,7 +174,7 @@
           <span>
               
                 
-                  <a href="/categories/markdown">markdown</a>
+                  <a href="/categories/scrapy">scrapy</a>
                 
               
           </span>
@@ -180,7 +187,7 @@
             <span>
                 
                   
-                    <a href="/tags/markdown基本语法">markdown基本语法</a>
+                    <a href="/tags/scrapy数据存入mysql">scrapy数据存入mysql</a>
                   
                 
             </span>
@@ -190,27 +197,175 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/markdown/markdown.png" data-caption data-fancybox="images"><img src="/images/markdown/markdown.png" alt></a></p>
-<pre><code class="hljs markdown"><span class="hljs-bullet">+ </span>space = 原点
+    <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
+<h3>1、同步方式<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    import pymysql  #引入相关库
+    class MysqlPipeline(object):
+        """
+        同步操作
+        """
+        def __init__(self):
+            # 建立连接,下面是两种方式
+            1. self.conn = pymysql.connect(
+                        host='localhost',
+                        db='bole',
+                        user='root',
+                        passwd='123456',
+                        charset='utf8',
+                        port=330,
+                        use_unicode=True)
+            2. self.conn = pymysql.connect('localhost','root','Abcd1234','test')  # 有中文要存入数据库的话要加charset='utf8'
+            # 创建游标
+            self.cursor = self.conn.cursor()
+         #每爬取到一条数据就会调用一次process_item函数
+        def process_item(self,item,spider):
+            # sql语句
+            try:
+                # 查重处理,根据表的主键进行一次查询，查看是否有重复数据
+                self.cursor.execute(
+                    """select * from doubanmovie where img_url = %s""",
+                    item['img_url'])
+                # 是否有重复数据
+                repetition = self.cursor.fetchone()
+                if repetition:
+                    #两种方式丢弃无效数据
+                    1. pass
+                    2. raise DropItem("Missing price in %s" % item) #需要引入相关的模块from scrapy.exceptions import DropItem
+                else:
+                    insert_sql = """
+                    insert into test_zxf(quote,author,tags,born_date,born_location) VALUES(%s,%s,%s,%s,%s)
+                    """
+                    # 执行插入数据到数据库操作
+                    self.cursor.execute(insert_sql,(item['quote'],item['author'],item['tags'],item['born_date'],
+                                                    item['born_location']))
+                    # 提交，不进行提交无法保存到数据库
+                    self.conn.commit()  
+            except Exception as error:
+                # 出现错误时打印错误日志
+                log(error)
+            return item
+        def close_spider(self,spider):
+            # 关闭游标和连接
+            self.cursor.close()
+            self.conn.close()
+</p>
 
-数字+.+space=有序列表
+<h3>1、异步方式<a class="post-anchor" href="#undefined"></a></h3>
+<p>
+    #piplines调用
+    from scrapyDemo.db.dbhelper import DBHelper
+    class ScrapydemoPipeline(object):
+        # 连接数据库
+        def __init__(self):
+            self.db = DBHelper()
+        def process_item(self, item, spider):
+            # 插入数据库
+            self.db.insert(item)
+            return item
+    #这里面我们用到了数据库的操作DBHelper类，那
+    #么我们在scrapyDemo/db目录下创建dbhelper.py 模块，记得再创建一个__init__.py哦。
+    import pymysql
+    from twisted.enterprise import adbapi
+    from scrapy.utils.project import get_project_settings  #导入seetings配置
+    import time
+    class DBHelper():
+        '''这个类也是读取settings中的配置，自行修改代码进行操作'''
+        def __init__(self):
+            settings = get_project_settings()  #获取settings配置，设置需要的信息
+            #或者使用这种方式来获取settings中定义的变量 userAgent = settings.get('USER_AGENT')
+            dbparams = dict(
+                host=settings['MYSQL_HOST'],  #读取settings中的配置
+                db=settings['MYSQL_DBNAME'],
+                user=settings['MYSQL_USER'],
+                passwd=settings['MYSQL_PASSWD'],
+                charset='utf8',  #编码要加上，否则可能出现中文乱码问题
+                cursorclass=pymysql.cursors.DictCursor,
+                use_unicode=False,
+            )
+            #**表示将字典扩展为关键字参数,相当于host=xxx,db=yyy....
+            dbpool = adbapi.ConnectionPool('pymysql', **dbparams)
+            self.dbpool = dbpool
+        def connect(self):
+            return self.dbpool
+        #创建数据库
+        def insert(self, item):
+            sql = "insert into tech_courses(title,image,brief,course_url,created_at) values(%s,%s,%s,%s,%s)"
+            #调用插入的方法
+            query = self.dbpool.runInteraction(self._conditional_insert, sql, item)
+            #调用异常处理方法
+            query.addErrback(self._handle_error)
+            return item
+        #写入数据库中
+        def _conditional_insert(self, tx, sql, item):
+            item['created_at'] = time.strftime('%Y-%m-%d %H:%M:%S',
+                                               time.localtime(time.time()))
+            params = (item["title"], item['image'], item['brief'],
+                      item['course_url'], item['created_at'])
+            tx.execute(sql, params)
+        #错误处理方法
+        def _handle_error(self, failue):
+            print('--------------database operation exception!!-----------------')
+            print(failue)
+</p>
 
-<span class="hljs-section">#+space一级标题</span>
+<p>
+    #demo2:
+    #tip: 
+        1. @classmethod不需要self参数，但第一个参数需要是表示自身类的cls参数。
+    # 用twisted库将数据进行异步插入到数据库
+    class MysqlTwistedPipeline(object):
+        def __init__(self, dbpool):
+            self.dbpool = dbpool
+        #这个函数会自动调用
+        @classmethod
+        def from_settings(cls, settings):
+            # 需要在setting中设置数据库配置参数
+            dbparms = dict(
+                host=settings['MYSQL_HOST'],
+                db=settings['MYSQL_DBNAME'],
+                user=settings['MYSQL_USER'],
+                passwd=settings['MYSQL_PASSWORD'],
+                charset='utf8',
+                cursorclass=MySQLdb.cursors.DictCursor,
+                use_unicode=True,
+            )
+            # 连接ConnectionPool（使用MySQLdb连接，或者pymysql）
+            dbpool = adbapi.ConnectionPool("pymysql", **dbparms)  # **让参数变成可变化参数
+            return cls(dbpool)   # # 返回一个pipeline实例化对象
+        def process_item(self, item, spider):
+            # 使用twisted将MySQL插入变成异步执行
+            #使用数据库连接池对象进行数据库操作,自动传递cursor对象到数据库操作方法的第一个参数
+            query = self.dbpool.runInteraction(self.do_insert, item)
+            # 添加异常处理
+            query.addCallback(self.handle_error)
+        def handle_error(self, failure):
+            # 处理异步插入时的异常
+            print(failure)
+        def do_insert(self, cursor, item):
+            # 执行具体的插入
+            insert_sql = """
+                        insert into jobbole_artitle(name, base_url, date, comment)
+                        VALUES (%s, %s, %s, %s)
+                    """
+            #这里不需要进行commit()提交，adbapi会进行自动的commit
+            cursor.execute(insert_sql, (item['name'], item['base_url'], item['date'], item['coment'],))
+</p>
 
-<span class="hljs-section">##+space二级标题</span>
+<h3>
+    最后的tip:
+<a class="post-anchor" href="#undefined"></a></h3>
 
-<span class="hljs-strong">**字符**</span>加粗
-
-<span class="hljs-emphasis">*字符*</span>斜体
-
-&gt;+space说明文字
-
-<span class="hljs-code">```</span>+语言=代码块
-
-内容原封不动的显示使用`
-
-超链接 [<span class="hljs-string">百度</span>](<span class="hljs-link">https://www.baidu.com</span>)</code></pre>
-
+<p>
+    在python1.7以前的版本引入settings中定义的常量的方式可以使用:
+        from scrapy.conf import settings
+    但是在1.7版本之后,scrapy.conf就被移除了，1.7以后的版本里，正确使用
+    settings.py中配置的方法是:
+        from scrapy.utils.project import get_project_settings
+        settings = get_project_settings()
+        host = settings['MONGODB_HOST]
+        port = settings['MONGODB_PORT']
+</p>
 
 
   
@@ -237,12 +392,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/">scrapy数据存入mysql</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/07/11/python%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/">python引入模块四种方式</a>
+          <a href="/2020/07/11/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">markdown基本语法</a>
         
     </div>
   </div>
@@ -254,7 +407,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/07/11/markdown基本语法/">https://codermino.github.io/2020/07/11/markdown基本语法/</a>
+      永久链接：<a href="https://codermino.github.io/2020/07/11/scrapy数据存入mysql/">https://codermino.github.io/2020/07/11/scrapy数据存入mysql/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
