@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-11T15:57:29.533Z</updated>
+  <updated>2020-07-11T16:10:36.888Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scrapy数据存入csv文件</title>
+    <link href="https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5csv%E6%96%87%E4%BB%B6/"/>
+    <id>https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5csv%E6%96%87%E4%BB%B6/</id>
+    <published>2020-07-11T15:58:29.000Z</published>
+    <updated>2020-07-11T16:10:36.888Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/scrapy/scrapy.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scrapy/scrapy.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;方法一、通过终端方式&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="scrapy" scheme="https://codermino.github.io/categories/scrapy/"/>
+    
+    
+      <category term="scrapy数据存入csv文件" scheme="https://codermino.github.io/tags/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5csv%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>scrapy数据写入json文件</title>
@@ -482,31 +507,6 @@
     
     
       <category term="session的使用" scheme="https://codermino.github.io/tags/session%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cookie的使用</title>
-    <link href="https://codermino.github.io/2020/02/01/cookie%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://codermino.github.io/2020/02/01/cookie%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-02-01T11:49:11.000Z</published>
-    <updated>2020-02-05T12:56:42.704Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/cookie.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/cookie.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;use&quot;&gt;基本使用&lt;a class=&quot;po
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="cookie的使用" scheme="https://codermino.github.io/tags/cookie%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     
   </entry>
   
