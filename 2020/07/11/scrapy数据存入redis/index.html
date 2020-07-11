@@ -211,7 +211,7 @@ class QiubaiproPipelineByRedis(object):
 <pre><code class="hljs markdown">from scrapy.exceptions import DropItem
 if self.conn.sadd('data',item['author'])
 <span class="hljs-code">    return item</span>
-return raise DropItem</code></pre>
+raise DropItem</code></pre>
 
 
   
