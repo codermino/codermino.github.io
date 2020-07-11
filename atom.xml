@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-11T10:39:35.196Z</updated>
+  <updated>2020-07-11T14:12:44.058Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scrapy数据存入mongodb</title>
+    <link href="https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/"/>
+    <id>https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/</id>
+    <published>2020-07-11T11:52:34.000Z</published>
+    <updated>2020-07-11T14:12:44.058Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/scrapy/scrapy.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scrapy/scrapy.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;存入mongodb&lt;a
+      
+    
+    </summary>
+    
+    
+      <category term="scrapy" scheme="https://codermino.github.io/categories/scrapy/"/>
+    
+    
+      <category term="scrapy数据存入mongodb" scheme="https://codermino.github.io/tags/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/"/>
+    
+  </entry>
   
   <entry>
     <title>scrapy数据存入mysql</title>
@@ -480,30 +505,6 @@
     
     
       <category term="将ejs模板引擎修改为html模板引擎" scheme="https://codermino.github.io/tags/%E5%B0%86ejs%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E%E4%BF%AE%E6%94%B9%E4%B8%BAhtml%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>body-parser的使用</title>
-    <link href="https://codermino.github.io/2020/01/29/body-parser%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://codermino.github.io/2020/01/29/body-parser%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-01-29T11:26:42.000Z</published>
-    <updated>2020-01-30T07:36:57.062Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxQHBhQSBxMWFhUWFhsZGRgYGRoYGxoYFiAZFyAcGhoeHygiJCElHhUYITIjMSkrLjIuG
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="body-parser" scheme="https://codermino.github.io/tags/body-parser/"/>
     
   </entry>
   
