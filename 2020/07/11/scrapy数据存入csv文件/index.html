@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、通过终端方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、通过pipelines方式</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、通过终端方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、通过pipelines方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">Demo2--pipelines方式</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -220,6 +220,29 @@ class CsvPipeline（object）：
         self.exporter.export_item（item）
         return item</code></pre>
 
+<h3>Demo2--pipelines方式<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> csv
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyProjectPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-comment"># 保存为csv格式</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># 打开文件，指定方式为写，利用第3个参数把csv写数据时产生的空行消除</span>
+        self.f = open(<span class="hljs-string">"myproject.csv"</span>,<span class="hljs-string">"a"</span>,newline=<span class="hljs-string">""</span>)
+        <span class="hljs-comment"># 设置文件第一行的字段名，注意要跟spider传过来的字典key名称相同</span>
+        self.fieldnames = [<span class="hljs-string">"goods_sketch"</span>,<span class="hljs-string">"goods_img"</span>,<span class="hljs-string">"good_price"</span>,<span class="hljs-string">"goods_shop"</span>,<span class="hljs-string">"b_href"</span>,<span class="hljs-string">"title"</span>]
+        <span class="hljs-comment"># 指定文件的写入方式为csv字典写入，参数1为指定具体文件，参数2为指定字段名</span>
+        self.writer = csv.DictWriter(self.f, fieldnames=self.fieldnames)
+        <span class="hljs-comment"># 写入第一行字段名，因为只要写入一次，所以文件放在__init__里面</span>
+        self.writer.writeheader()
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span>
+        <span class="hljs-comment"># 写入spider传过来的具体数值</span>
+        self.writer.writerow(item)
+        <span class="hljs-comment"># 写入完返回</span>
+        <span class="hljs-keyword">return</span> item
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close</span><span class="hljs-params">(self,spider)</span>:</span>
+        self.f.close()</code></pre>
 
 
   
