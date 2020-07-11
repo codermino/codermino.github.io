@@ -242,6 +242,7 @@
                 self.conn.commit()  
         <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> error:
             <span class="hljs-comment"># 出现错误时打印错误日志</span>
+            self.conn.rollback()
             log(error)
         <span class="hljs-keyword">return</span> item
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self,spider)</span>:</span>
