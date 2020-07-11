@@ -199,55 +199,55 @@
     </div>
     <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
 <h3>1、同步方式<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown">import pymysql  #引入相关库
-class MysqlPipeline(object):
-<span class="hljs-code">    """</span>
-<span class="hljs-code">    同步操作</span>
-<span class="hljs-code">    """</span>
-<span class="hljs-code">    def __init__(self):</span>
-<span class="hljs-code">        # 建立连接,下面是两种方式</span>
-<span class="hljs-bullet">        1. </span>self.conn = pymysql.connect(
-<span class="hljs-code">                    host='localhost',</span>
-<span class="hljs-code">                    db='bole',</span>
-<span class="hljs-code">                    user='root',</span>
-<span class="hljs-code">                    passwd='123456',</span>
-<span class="hljs-code">                    charset='utf8',</span>
-<span class="hljs-code">                    port=330,</span>
-<span class="hljs-code">                    use_unicode=True)</span>
-<span class="hljs-bullet">        2. </span>self.conn = pymysql.connect('localhost','root','Abcd1234','test')  # 有中文要存入数据库的话要加charset='utf8'
-<span class="hljs-code">        # 创建游标</span>
-<span class="hljs-code">        self.cursor = self.conn.cursor()</span>
-<span class="hljs-code">     #每爬取到一条数据就会调用一次process_item函数</span>
-<span class="hljs-code">    def process_item(self,item,spider):</span>
-<span class="hljs-code">        # sql语句</span>
-<span class="hljs-code">        try:</span>
-<span class="hljs-code">            # 查重处理,根据表的主键进行一次查询，查看是否有重复数据</span>
-<span class="hljs-code">            self.cursor.execute(</span>
-<span class="hljs-code">                """select * from doubanmovie where img_url = %s""",</span>
-<span class="hljs-code">                item['img_url'])</span>
-<span class="hljs-code">            # 是否有重复数据</span>
-<span class="hljs-code">            repetition = self.cursor.fetchone()</span>
-<span class="hljs-code">            if repetition:</span>
-<span class="hljs-code">                #两种方式丢弃无效数据</span>
-<span class="hljs-bullet">                1. </span>pass
-<span class="hljs-bullet">                2. </span>raise DropItem("Missing price in %s" % item) #需要引入相关的模块from scrapy.exceptions import DropItem
-<span class="hljs-code">            else:</span>
-<span class="hljs-code">                insert_sql = """</span>
-<span class="hljs-code">                insert into test_zxf(quote,author,tags,born_date,born_location) VALUES(%s,%s,%s,%s,%s)</span>
-<span class="hljs-code">                """</span>
-<span class="hljs-code">                # 执行插入数据到数据库操作</span>
-<span class="hljs-code">                self.cursor.execute(insert_sql,(item['quote'],item['author'],item['tags'],item['born_date'],</span>
-<span class="hljs-code">                                                item['born_location']))</span>
-<span class="hljs-code">                # 提交，不进行提交无法保存到数据库</span>
-<span class="hljs-code">                self.conn.commit()  </span>
-<span class="hljs-code">        except Exception as error:</span>
-<span class="hljs-code">            # 出现错误时打印错误日志</span>
-<span class="hljs-code">            log(error)</span>
-<span class="hljs-code">        return item</span>
-<span class="hljs-code">    def close_spider(self,spider):</span>
-<span class="hljs-code">        # 关闭游标和连接</span>
-<span class="hljs-code">        self.cursor.close()</span>
-<span class="hljs-code">        self.conn.close()</span></code></pre>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> pymysql  <span class="hljs-comment">#引入相关库</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MysqlPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-string">"""
+    同步操作
+    """</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># 建立连接,下面是两种方式</span>
+        <span class="hljs-number">1.</span> self.conn = pymysql.connect(
+                    host=<span class="hljs-string">'localhost'</span>,
+                    db=<span class="hljs-string">'bole'</span>,
+                    user=<span class="hljs-string">'root'</span>,
+                    passwd=<span class="hljs-string">'123456'</span>,
+                    charset=<span class="hljs-string">'utf8'</span>,
+                    port=<span class="hljs-number">330</span>,
+                    use_unicode=<span class="hljs-literal">True</span>)
+        <span class="hljs-number">2.</span> self.conn = pymysql.connect(<span class="hljs-string">'localhost'</span>,<span class="hljs-string">'root'</span>,<span class="hljs-string">'Abcd1234'</span>,<span class="hljs-string">'test'</span>)  <span class="hljs-comment"># 有中文要存入数据库的话要加charset='utf8'</span>
+        <span class="hljs-comment"># 创建游标</span>
+        self.cursor = self.conn.cursor()
+     <span class="hljs-comment">#每爬取到一条数据就会调用一次process_item函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self,item,spider)</span>:</span>
+        <span class="hljs-comment"># sql语句</span>
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-comment"># 查重处理,根据表的主键进行一次查询，查看是否有重复数据</span>
+            self.cursor.execute(
+                <span class="hljs-string">"""select * from doubanmovie where img_url = %s"""</span>,
+                item[<span class="hljs-string">'img_url'</span>])
+            <span class="hljs-comment"># 是否有重复数据</span>
+            repetition = self.cursor.fetchone()
+            <span class="hljs-keyword">if</span> repetition:
+                <span class="hljs-comment">#两种方式丢弃无效数据</span>
+                <span class="hljs-number">1.</span> <span class="hljs-keyword">pass</span>
+                <span class="hljs-number">2.</span> <span class="hljs-keyword">raise</span> DropItem(<span class="hljs-string">"Missing price in %s"</span> % item) <span class="hljs-comment">#需要引入相关的模块from scrapy.exceptions import DropItem</span>
+            <span class="hljs-keyword">else</span>:
+                insert_sql = <span class="hljs-string">"""
+                insert into test_zxf(quote,author,tags,born_date,born_location) VALUES(%s,%s,%s,%s,%s)
+                """</span>
+                <span class="hljs-comment"># 执行插入数据到数据库操作</span>
+                self.cursor.execute(insert_sql,(item[<span class="hljs-string">'quote'</span>],item[<span class="hljs-string">'author'</span>],item[<span class="hljs-string">'tags'</span>],item[<span class="hljs-string">'born_date'</span>],
+                                                item[<span class="hljs-string">'born_location'</span>]))
+                <span class="hljs-comment"># 提交，不进行提交无法保存到数据库</span>
+                self.conn.commit()  
+        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> error:
+            <span class="hljs-comment"># 出现错误时打印错误日志</span>
+            log(error)
+        <span class="hljs-keyword">return</span> item
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self,spider)</span>:</span>
+        <span class="hljs-comment"># 关闭游标和连接</span>
+        self.cursor.close()
+        self.conn.close()</code></pre>
 
 
 
