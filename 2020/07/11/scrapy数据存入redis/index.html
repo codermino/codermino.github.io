@@ -209,9 +209,13 @@ class QiubaiproPipelineByRedis(object):
 <span class="hljs-code">        return item</span></code></pre>
 
 <pre><code class="hljs markdown">from scrapy.exceptions import DropItem
-if self.conn.sadd('data',item['author'])
-<span class="hljs-code">    return item</span>
-raise DropItem</code></pre>
+
+def process_item(self, item, spider):
+<span class="hljs-code">    #当添加失败的时候会返回一个0</span>
+<span class="hljs-code">    if self.conn.sadd('data',item['author'])</span>
+<span class="hljs-code">        return item</span>
+<span class="hljs-code">    #丢掉不符合条件的item</span>
+<span class="hljs-code">    raise DropItem</span></code></pre>
 
 
   
