@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-11T04:57:34.097Z</updated>
+  <updated>2020-07-11T05:30:34.034Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>markdown基本语法</title>
+    <link href="https://codermino.github.io/2020/07/11/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+    <id>https://codermino.github.io/2020/07/11/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</id>
+    <published>2020-07-11T04:59:25.000Z</published>
+    <updated>2020-07-11T05:30:34.034Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/markdown/markdown.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/markdown/markdown.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;c
+      
+    
+    </summary>
+    
+    
+      <category term="markdown" scheme="https://codermino.github.io/categories/markdown/"/>
+    
+    
+      <category term="markdown基本语法" scheme="https://codermino.github.io/tags/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>python引入模块四种方式</title>
@@ -478,30 +503,6 @@
     
     
       <category term="express" scheme="https://codermino.github.io/tags/express/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ejs模板的使用</title>
-    <link href="https://codermino.github.io/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://codermino.github.io/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-01-28T08:25:11.000Z</published>
-    <updated>2020-01-29T11:32:25.730Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUEAAACdCAMAAAAdWzrjAAAAilBMVEUwMDD///83NzctLS1RUVEXFxceHh4qKiomJiYjIyMTExMoKCgbGx
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="ejs模板的基本使用" scheme="https://codermino.github.io/tags/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/"/>
     
   </entry>
   
