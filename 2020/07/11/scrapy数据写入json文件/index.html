@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、使用终端命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、使用pipelines</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、使用终端命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用pipelines</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -199,9 +199,9 @@
 <h3>方法一、使用终端命令<a class="post-anchor" href="#undefined"></a></h3>
 <pre><code class="hljs python">scrapy crawl novel -o novel.json</code></pre>
 
-<h3>方法一、使用pipelines<a class="post-anchor" href="#undefined"></a></h3>
+<h3>方法二、使用pipelines<a class="post-anchor" href="#undefined"></a></h3>
 <pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonItemExporter   <span class="hljs-comment">#  JsonItemExporter：一次性写入大量数据，占用内存</span>
-<span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter
+<span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter <span class="hljs-comment"># 逐条写入</span>
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonPipeline</span><span class="hljs-params">(object)</span>:</span>
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
@@ -209,8 +209,8 @@
         <span class="hljs-comment"># ensure_ascii=False:以中文字符保存</span>
         self.exporter = JsonItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>, encoding=<span class="hljs-string">'utf-8'</span>)
         <span class="hljs-comment">#   JsonLinesItemExporter：一个字典一行，整个文件不满足json格式的；数据都直接存到磁盘文件中，内存占用少.</span>
-        self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>, encoding=<span class="hljs-string">'utf-8'</span>)
-        <span class="hljs-comment"># self.exporter.start_exporting()  # 以标识 exporting 过程的开始。</span>
+        <span class="hljs-comment">#   self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=False, encoding='utf-8') #不需要start_exporting和finish_exporting</span>
+        self.exporter.start_exporting()  <span class="hljs-comment"># 以标识 exporting 过程的开始。</span>
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_sprider</span><span class="hljs-params">(self)</span>:</span>
         <span class="hljs-keyword">pass</span>
