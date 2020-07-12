@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">crawl.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">items.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、同步的方式进行图片下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">对应的settings.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用scrapy自带的ImagesPipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">Demo2对应的settings.py文件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">ImagesPipelines的其他作用---保存缩略图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的相关配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">piplines文件内容---更改thumbs缩略图保存的文件路径</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-text">为什么使用ImagesPipelines进行图片下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">crawl.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">items.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、同步的方式进行图片下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">对应的settings.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用scrapy自带的ImagesPipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">Demo2对应的settings.py文件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">ImagesPipelines的其他作用---保存缩略图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的相关配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">piplines文件内容---更改thumbs缩略图保存的文件路径</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -196,6 +196,14 @@
       </div>
     </div>
     <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
+<h2>为什么使用ImagesPipelines进行图片下载<a class="post-anchor" href="#undefined"></a></h2>
+<pre><code class="hljs markdown"><span class="hljs-bullet">1. </span>避免重新下载最近已经下载过的数据
+<span class="hljs-bullet">2. </span>可以方便的指定文件存储的路径
+<span class="hljs-bullet">3. </span>可以将下载的图片转换成通用的格式。比如png或jpg
+<span class="hljs-bullet">4. </span>可以方便的成成缩略图
+<span class="hljs-bullet">5. </span>可以方便的检测图片的宽和高，确保他们满足最小限制
+<span class="hljs-bullet">6. </span>异步下载，效率非常高</code></pre>
+
 <h3>crawl.py文件内容<a class="post-anchor" href="#undefined"></a></h3>
 <pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy
 <span class="hljs-keyword">from</span> bmw.items <span class="hljs-keyword">import</span> BmwItem <span class="hljs-comment">#引入item文件的BmwItem类</span>
