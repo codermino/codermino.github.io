@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">crawl.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">items.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、同步的方式进行图片下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">对应的settings.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用scrapy自带的ImagesPipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">Demo2对应的settings.py文件配置</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">crawl.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">items.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、同步的方式进行图片下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">对应的settings.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用scrapy自带的ImagesPipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">Demo2对应的settings.py文件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">ImagesPipelines的其他作用---保存缩略图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的相关配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">piplines文件内容---更改thumbs缩略图保存的文件路径</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -362,6 +362,46 @@ IMAGES_EXPIRES = <span class="hljs-number">90</span>  <span class="hljs-comment"
 ITEM_PIPELINES = &#123;
     <span class="hljs-string">'bmw.pipelines.BMWImagePipeline'</span>:<span class="hljs-number">1</span>
 &#125;</code></pre>
+
+<h3>ImagesPipelines的其他作用---保存缩略图<a class="post-anchor" href="#undefined"></a></h3>
+<h4>settings.py文件的相关配置<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs python"><span class="hljs-comment"># 设置图片缩略图</span>
+IMAGES_THUMBS = &#123;
+    <span class="hljs-string">'small'</span>: (<span class="hljs-number">50</span>, <span class="hljs-number">50</span>),
+    <span class="hljs-string">'big'</span>: (<span class="hljs-number">250</span>, <span class="hljs-number">250</span>),
+&#125;
+<span class="hljs-comment"># 图片过滤器，最小高度和宽度，低于此尺寸不下载</span>
+<span class="hljs-comment"># 注意：这些尺寸的限制不会影响缩略图生成</span>
+<span class="hljs-comment"># 默认情况下，没有限制，所有的图片都会被处理。</span>
+IMAGES_MIN_HEIGHT = <span class="hljs-number">70</span>
+IMAGES_MIN_WIDTH = <span class="hljs-number">70</span></code></pre>
+
+<h4>piplines文件内容---更改thumbs缩略图保存的文件路径<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">thumb_path</span><span class="hljs-params">(self, request, thumb_id, response=None, info=None)</span>:</span>
+    <span class="hljs-comment">## start of deprecation warning block (can be removed in the future)</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_warn</span><span class="hljs-params">()</span>:</span>
+        <span class="hljs-keyword">from</span> scrapy.exceptions <span class="hljs-keyword">import</span> ScrapyDeprecationWarning
+        <span class="hljs-keyword">import</span> warnings
+        warnings.warn(<span class="hljs-string">'ImagesPipeline.thumb_key(url) method is deprecated, please use '</span>
+                      <span class="hljs-string">'thumb_path(request, thumb_id, response=None, info=None) instead'</span>,
+                      category=ScrapyDeprecationWarning, stacklevel=<span class="hljs-number">1</span>)
+
+    <span class="hljs-comment"># check if called from thumb_key with url as first argument</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> isinstance(request, Request):
+        _warn()
+        url = request
+    <span class="hljs-keyword">else</span>:
+        url = request.url
+
+    <span class="hljs-comment"># detect if thumb_key() method has been overridden</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> hasattr(self.thumb_key, <span class="hljs-string">'_base'</span>):
+        _warn()
+        <span class="hljs-keyword">return</span> self.thumb_key(url, thumb_id)
+    <span class="hljs-comment">## end of deprecation warning block</span>
+
+    thumb_guid = hashlib.sha1(to_bytes(url)).hexdigest()  <span class="hljs-comment"># change to request.url after deprecation</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'thumbs/%s/%s/%s.jpg'</span> % (category,thumb_id, thumb_guid)</code></pre>
+
 
 
   
