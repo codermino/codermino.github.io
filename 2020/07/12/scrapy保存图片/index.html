@@ -197,170 +197,170 @@
     </div>
     <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
 <h3>crawl.py文件内容<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown">import scrapy
-from bmw.items import BmwItem #引入item文件的BmwItem类
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy
+<span class="hljs-keyword">from</span> bmw.items <span class="hljs-keyword">import</span> BmwItem <span class="hljs-comment">#引入item文件的BmwItem类</span>
 
-class Bmw5Spider(scrapy.Spider):
-<span class="hljs-code">    name = 'bmw5'</span>
-<span class="hljs-code">    start_urls = ['https://car.autohome.com.cn/pic/series/4350.html']</span>
-<span class="hljs-code">    def parse(self, response):</span>
-<span class="hljs-code">         uiboxs=response.xpath("//div[@class='uibox']")[1:]</span>
-<span class="hljs-code">         for uibox in uiboxs:</span>
-<span class="hljs-code">             title=uibox.xpath(".//div[@class='uibox-title']/a/text()").get() #获取分类的标题</span>
-<span class="hljs-code">             images=uibox.xpath(".//ul/li/a/img/@src").getall() #获取所有图片的url地址</span>
-<span class="hljs-code">             urls=list(map(lambda url:response.urljoin(url),images)) #将图片的url地址进行处理，前面加上https://</span>
-<span class="hljs-code">             item=BmwItem(title=title,image_urls=urls) #进行包装</span>
-<span class="hljs-code">             yield item #返回给items.py文件</span></code></pre>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Bmw5Spider</span><span class="hljs-params">(scrapy.Spider)</span>:</span>
+    name = <span class="hljs-string">'bmw5'</span>
+    start_urls = [<span class="hljs-string">'https://car.autohome.com.cn/pic/series/4350.html'</span>]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span>
+         uiboxs=response.xpath(<span class="hljs-string">"//div[@class='uibox']"</span>)[<span class="hljs-number">1</span>:]
+         <span class="hljs-keyword">for</span> uibox <span class="hljs-keyword">in</span> uiboxs:
+             title=uibox.xpath(<span class="hljs-string">".//div[@class='uibox-title']/a/text()"</span>).get() <span class="hljs-comment">#获取分类的标题</span>
+             images=uibox.xpath(<span class="hljs-string">".//ul/li/a/img/@src"</span>).getall() <span class="hljs-comment">#获取所有图片的url地址</span>
+             urls=list(map(<span class="hljs-keyword">lambda</span> url:response.urljoin(url),images)) <span class="hljs-comment">#将图片的url地址进行处理，前面加上https://</span>
+             item=BmwItem(title=title,image_urls=urls) <span class="hljs-comment">#进行包装</span>
+             <span class="hljs-keyword">yield</span> item <span class="hljs-comment">#返回给items.py文件</span></code></pre>
 
 <h3>items.py文件内容<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown">import scrapy
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy
 
-class BmwItem(scrapy.Item):
-<span class="hljs-code">    title=scrapy.Field()  #用来存储图片分类的名称标题</span>
-<span class="hljs-code">    image_urls=scrapy.Field() #用来存储需要下载的图片的url</span>
-<span class="hljs-code">    images=scrapy.Field() #用来保存下载之后图片的本地路径</span></code></pre>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BmwItem</span><span class="hljs-params">(scrapy.Item)</span>:</span>
+    title=scrapy.Field()  <span class="hljs-comment">#用来存储图片分类的名称标题</span>
+    image_urls=scrapy.Field() <span class="hljs-comment">#用来存储需要下载的图片的url</span>
+    images=scrapy.Field() <span class="hljs-comment">#用来保存下载之后图片的本地路径</span></code></pre>
 
 <h3>方法一、同步的方式进行图片下载<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown">这样下载的方式是一个一个的下载，下载的效率比较低，
+<pre><code class="hljs python">这样下载的方式是一个一个的下载，下载的效率比较低，
 同步的方式进行下载
 
-import os
-from urllib import request
+<span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request
 
-class BmwPipeline(object):
-<span class="hljs-code">    def __init__(self):</span>
-<span class="hljs-code">        #os.path.dirname(__file__)获得当前文件所在的上级目录</span>
-<span class="hljs-code">        </span>
-<span class="hljs-code">        #创建项目工程下的iamges文件夹</span>
-<span class="hljs-code">        self.path=os.path.join(os.path.dirname(os.path.dirname(__file__)),'images')</span>
-<span class="hljs-code">        #判断images文件夹是否存在，如果不存在则创建</span>
-<span class="hljs-code">        if not os.path.exists(self.path):</span>
-<span class="hljs-code">            os.mkdir(self.path)</span>
-<span class="hljs-code">    </span>
-<span class="hljs-code">    #这个函数会自动调用,每次爬取一个item就会调用一次进行数据的处理</span>
-<span class="hljs-code">    def process_item(self, item, spider):</span>
-<span class="hljs-code">        title=item['title'] #图片所在分类的标题</span>
-<span class="hljs-code">        urls=item['image_urls'] #分类下图片的url地址</span>
-<span class="hljs-code">        category_path=os.path.join(self.path,title) #创建分类文件夹</span>
-<span class="hljs-code">        if not os.path.exists(category_path):</span>
-<span class="hljs-code">            os.mkdir(category_path)</span>
-<span class="hljs-code">        #遍历urls数组，进行图片下载</span>
-<span class="hljs-code">        for url in urls:</span>
-<span class="hljs-code">            image_name=url.split('_')[-1] #按照_进行拆分得到图片的名称</span>
-<span class="hljs-code">            request.urlretrieve(url,os.path.join(category_path,image_name)) #进行图片的下载</span>
-<span class="hljs-code">        return item</span></code></pre>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BmwPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment">#os.path.dirname(__file__)获得当前文件所在的上级目录</span>
+        
+        <span class="hljs-comment">#创建项目工程下的iamges文件夹</span>
+        self.path=os.path.join(os.path.dirname(os.path.dirname(__file__)),<span class="hljs-string">'images'</span>)
+        <span class="hljs-comment">#判断images文件夹是否存在，如果不存在则创建</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(self.path):
+            os.mkdir(self.path)
+    
+    <span class="hljs-comment">#这个函数会自动调用,每次爬取一个item就会调用一次进行数据的处理</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span>
+        title=item[<span class="hljs-string">'title'</span>] <span class="hljs-comment">#图片所在分类的标题</span>
+        urls=item[<span class="hljs-string">'image_urls'</span>] <span class="hljs-comment">#分类下图片的url地址</span>
+        category_path=os.path.join(self.path,title) <span class="hljs-comment">#创建分类文件夹</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(category_path):
+            os.mkdir(category_path)
+        <span class="hljs-comment">#遍历urls数组，进行图片下载</span>
+        <span class="hljs-keyword">for</span> url <span class="hljs-keyword">in</span> urls:
+            image_name=url.split(<span class="hljs-string">'_'</span>)[<span class="hljs-number">-1</span>] <span class="hljs-comment">#按照_进行拆分得到图片的名称</span>
+            request.urlretrieve(url,os.path.join(category_path,image_name)) <span class="hljs-comment">#进行图片的下载</span>
+        <span class="hljs-keyword">return</span> item</code></pre>
 
 <h3>对应的settings.py文件内容<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown">ITEM_PIPELINES = &#123;
-   'bmw.pipelines.BmwPipeline': 300, #开启pipelines
+<pre><code class="hljs python">ITEM_PIPELINES = &#123;
+   <span class="hljs-string">'bmw.pipelines.BmwPipeline'</span>: <span class="hljs-number">300</span>, <span class="hljs-comment">#开启pipelines</span>
 &#125;</code></pre>
 
 
 <h3>方法二、使用scrapy自带的ImagesPipeline<a class="post-anchor" href="#undefined"></a></h3>
 <h4>settings.py文件的内容<a class="post-anchor" href="#undefined"></a></h4>
-<pre><code class="hljs markdown">IMAGES_EXPIRES = 90  # 90天内抓取的都不会被重抓
+<pre><code class="hljs python">IMAGES_EXPIRES = <span class="hljs-number">90</span>  <span class="hljs-comment"># 90天内抓取的都不会被重抓</span>
 ITEM_PIPELINES = &#123;
-   'scrapy.pipelines.images.ImagesPipeline': 1,
+   <span class="hljs-string">'scrapy.pipelines.images.ImagesPipeline'</span>: <span class="hljs-number">1</span>,
 &#125;</code></pre>
 
 <h3>方法三、重写ImagesPipeline---Demo1<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown">import os
-from urllib import request
-from scrapy.pipelines.images import ImagesPipeline
-from bmw import settings
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> os
+<span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request
+<span class="hljs-keyword">from</span> scrapy.pipelines.images <span class="hljs-keyword">import</span> ImagesPipeline
+<span class="hljs-keyword">from</span> bmw <span class="hljs-keyword">import</span> settings
 
-<span class="hljs-section">#继承了ImagesPipeline这个类</span>
-class BMWImagePipeline(ImagesPipeline):
-<span class="hljs-code">    def get_media_requests(self, item, info):</span>
-<span class="hljs-code">        #这个方法是在发送下载请求之前调用</span>
-<span class="hljs-code">        #其实这个方法本身就是去发送下载请求的</span>
-<span class="hljs-code">         request_objs=super(BMWImagePipeline, self).get_media_requests(item,info)</span>
-<span class="hljs-code">         for request_obj in request_objs:</span>
-<span class="hljs-code">             request_obj.item=item</span>
-<span class="hljs-code">         return request_objs</span>
+<span class="hljs-comment">#继承了ImagesPipeline这个类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BMWImagePipeline</span><span class="hljs-params">(ImagesPipeline)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_media_requests</span><span class="hljs-params">(self, item, info)</span>:</span>
+        <span class="hljs-comment">#这个方法是在发送下载请求之前调用</span>
+        <span class="hljs-comment">#其实这个方法本身就是去发送下载请求的</span>
+         request_objs=super(BMWImagePipeline, self).get_media_requests(item,info)
+         <span class="hljs-keyword">for</span> request_obj <span class="hljs-keyword">in</span> request_objs:
+             request_obj.item=item
+         <span class="hljs-keyword">return</span> request_objs
 
-<span class="hljs-code">    # 我们可以通过继承FilesPipeline重写file_path()</span>
-<span class="hljs-code">    # 方法来重定义文件名</span>
-<span class="hljs-code">    def file_path(self, request, response=None, info=None):</span>
-<span class="hljs-code">        #这个方法是在图片将要被存储的时候调用的，来获取这个图片存储的路径</span>
-<span class="hljs-code">        path=super(BMWImagePipeline, self).file_path(request,response,info)</span>
-<span class="hljs-code">        category=request.item.get('title')</span>
-<span class="hljs-code">        </span>
-<span class="hljs-code">        image_store=settings.IMAGES_STORE</span>
-<span class="hljs-code">        category_path=os.path.join(image_store,category)</span>
-<span class="hljs-code">        if not os.path.exists(category_path):</span>
-<span class="hljs-code">            os.mkdir(category_path)</span>
-<span class="hljs-code">        image_name=path.replace("full/",'')</span>
-<span class="hljs-code">        image_path=os.path.join(category_path,image_name)</span>
-<span class="hljs-code">        return image_path</span>
+    <span class="hljs-comment"># 我们可以通过继承FilesPipeline重写file_path()</span>
+    <span class="hljs-comment"># 方法来重定义文件名</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_path</span><span class="hljs-params">(self, request, response=None, info=None)</span>:</span>
+        <span class="hljs-comment">#这个方法是在图片将要被存储的时候调用的，来获取这个图片存储的路径</span>
+        path=super(BMWImagePipeline, self).file_path(request,response,info)
+        category=request.item.get(<span class="hljs-string">'title'</span>)
+        
+        image_store=settings.IMAGES_STORE
+        category_path=os.path.join(image_store,category)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(category_path):
+            os.mkdir(category_path)
+        image_name=path.replace(<span class="hljs-string">"full/"</span>,<span class="hljs-string">''</span>)
+        image_path=os.path.join(category_path,image_name)
+        <span class="hljs-keyword">return</span> image_path
 
-<span class="hljs-code">    def item_completed(self, results, item, info):</span>
-<span class="hljs-code">        """</span>
-<span class="hljs-code">        将图片的本地路径赋值给item['image_paths']</span>
-<span class="hljs-code">        :param results:下载结果，二元组定义如下：(success, image_info_or_failure)。</span>
-<span class="hljs-code">        第一个元素表示图片是否下载成功；第二个元素是一个字典。</span>
-<span class="hljs-code">        如果success=true，image_info_or_error词典包含以下键值对。失败则包含一些出错信息。</span>
-<span class="hljs-code">         字典内包含* url：原始URL * path：本地存储路径 * checksum：校验码</span>
-<span class="hljs-code">        :param item:</span>
-<span class="hljs-code">        :param info:</span>
-<span class="hljs-code">        :return:</span>
-<span class="hljs-code">        """</span>
-<span class="hljs-code">        # print(results)</span>
-<span class="hljs-code">        image_paths = [x['path'] for ok, x in results if ok]</span>
-<span class="hljs-code">        if not image_paths:</span>
-<span class="hljs-code">            raise DropItem("Item contains no images")  # 如果没有路径则抛出异常</span>
-<span class="hljs-code">        item['images'] = image_paths</span>
-<span class="hljs-code">        return item</span></code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">item_completed</span><span class="hljs-params">(self, results, item, info)</span>:</span>
+        <span class="hljs-string">"""
+        将图片的本地路径赋值给item['image_paths']
+        :param results:下载结果，二元组定义如下：(success, image_info_or_failure)。
+        第一个元素表示图片是否下载成功；第二个元素是一个字典。
+        如果success=true，image_info_or_error词典包含以下键值对。失败则包含一些出错信息。
+         字典内包含* url：原始URL * path：本地存储路径 * checksum：校验码
+        :param item:
+        :param info:
+        :return:
+        """</span>
+        <span class="hljs-comment"># print(results)</span>
+        image_paths = [x[<span class="hljs-string">'path'</span>] <span class="hljs-keyword">for</span> ok, x <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> ok]
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> image_paths:
+            <span class="hljs-keyword">raise</span> DropItem(<span class="hljs-string">"Item contains no images"</span>)  <span class="hljs-comment"># 如果没有路径则抛出异常</span>
+        item[<span class="hljs-string">'images'</span>] = image_paths
+        <span class="hljs-keyword">return</span> item</code></pre>
 
 <h3>方法三、重写ImagesPipeline---Demo2<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown"><span class="hljs-section">#引入其他所需的相关模块</span>
-from scrapy import Request
-from scrapy.exceptions import DropItem
-category = ''
-<span class="hljs-section">#继承了ImagesPipeline这个类</span>
-class BMWImagePipeline(ImagesPipeline):
-<span class="hljs-code">        global category #用来存储下载的图片所属的分类标题</span>
-<span class="hljs-code">        category = item['title']</span>
-<span class="hljs-code">        for img_url in item['image_urls']: #遍历image_urls并发起请求</span>
-<span class="hljs-code">            yield Request(img_url)</span>
+<pre><code class="hljs python"><span class="hljs-comment">#引入其他所需的相关模块</span>
+<span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> Request
+<span class="hljs-keyword">from</span> scrapy.exceptions <span class="hljs-keyword">import</span> DropItem
+category = <span class="hljs-string">''</span>
+<span class="hljs-comment">#继承了ImagesPipeline这个类</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BMWImagePipeline</span><span class="hljs-params">(ImagesPipeline)</span>:</span>
+        <span class="hljs-keyword">global</span> category <span class="hljs-comment">#用来存储下载的图片所属的分类标题</span>
+        category = item[<span class="hljs-string">'title'</span>]
+        <span class="hljs-keyword">for</span> img_url <span class="hljs-keyword">in</span> item[<span class="hljs-string">'image_urls'</span>]: <span class="hljs-comment">#遍历image_urls并发起请求</span>
+            <span class="hljs-keyword">yield</span> Request(img_url)
 
-<span class="hljs-code">    # 我们可以通过继承FilesPipeline重写file_path()</span>
-<span class="hljs-code">    # 方法来重定义文件名</span>
-<span class="hljs-code">    def file_path(self, request, response=None, info=None):</span>
+    <span class="hljs-comment"># 我们可以通过继承FilesPipeline重写file_path()</span>
+    <span class="hljs-comment"># 方法来重定义文件名</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_path</span><span class="hljs-params">(self, request, response=None, info=None)</span>:</span>
 
-<span class="hljs-code">        image_store=settings.IMAGES_STORE #获取settings.py中配置的图片下载路径</span>
-<span class="hljs-code">        category_path=os.path.join(image_store,category) #创建分类名称文件夹</span>
-<span class="hljs-code">        if not os.path.exists(category_path): #不存在则进行创建</span>
-<span class="hljs-code">            os.mkdir(category_path)</span>
-<span class="hljs-code">        image_name = request.url.split("__")[-1] #将图片的url地址按照_进行拆分得到图片的名称</span>
-<span class="hljs-code">        return os.path.join(category_path,image_name) #拼接下载的图片的路径</span>
+        image_store=settings.IMAGES_STORE <span class="hljs-comment">#获取settings.py中配置的图片下载路径</span>
+        category_path=os.path.join(image_store,category) <span class="hljs-comment">#创建分类名称文件夹</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(category_path): <span class="hljs-comment">#不存在则进行创建</span>
+            os.mkdir(category_path)
+        image_name = request.url.split(<span class="hljs-string">"__"</span>)[<span class="hljs-number">-1</span>] <span class="hljs-comment">#将图片的url地址按照_进行拆分得到图片的名称</span>
+        <span class="hljs-keyword">return</span> os.path.join(category_path,image_name) <span class="hljs-comment">#拼接下载的图片的路径</span>
 
-<span class="hljs-code">    def item_completed(self, results, item, info):</span>
-<span class="hljs-code">        """</span>
-<span class="hljs-code">        将图片的本地路径赋值给item['image_paths']</span>
-<span class="hljs-code">        :param results:下载结果，二元组定义如下：(success, image_info_or_failure)。</span>
-<span class="hljs-code">        第一个元素表示图片是否下载成功；第二个元素是一个字典。</span>
-<span class="hljs-code">        如果success=true，image_info_or_error词典包含以下键值对。失败则包含一些出错信息。</span>
-<span class="hljs-code">         字典内包含* url：原始URL * path：本地存储路径 * checksum：校验码</span>
-<span class="hljs-code">        :param item:</span>
-<span class="hljs-code">        :param info:</span>
-<span class="hljs-code">        :return:</span>
-<span class="hljs-code">        """</span>
-<span class="hljs-code">        # print(results)</span>
-<span class="hljs-code">        image_paths = [x['path'] for ok, x in results if ok]</span>
-<span class="hljs-code">        if not image_paths:</span>
-<span class="hljs-code">            raise DropItem("Item contains no images")  # 如果没有路径则抛出异常</span>
-<span class="hljs-code">        item['images'] = image_paths #将下载之后的图片的本地路径保存在items.py的images中</span>
-<span class="hljs-code">        return item</span></code></pre>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">item_completed</span><span class="hljs-params">(self, results, item, info)</span>:</span>
+        <span class="hljs-string">"""
+        将图片的本地路径赋值给item['image_paths']
+        :param results:下载结果，二元组定义如下：(success, image_info_or_failure)。
+        第一个元素表示图片是否下载成功；第二个元素是一个字典。
+        如果success=true，image_info_or_error词典包含以下键值对。失败则包含一些出错信息。
+         字典内包含* url：原始URL * path：本地存储路径 * checksum：校验码
+        :param item:
+        :param info:
+        :return:
+        """</span>
+        <span class="hljs-comment"># print(results)</span>
+        image_paths = [x[<span class="hljs-string">'path'</span>] <span class="hljs-keyword">for</span> ok, x <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> ok]
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> image_paths:
+            <span class="hljs-keyword">raise</span> DropItem(<span class="hljs-string">"Item contains no images"</span>)  <span class="hljs-comment"># 如果没有路径则抛出异常</span>
+        item[<span class="hljs-string">'images'</span>] = image_paths <span class="hljs-comment">#将下载之后的图片的本地路径保存在items.py的images中</span>
+        <span class="hljs-keyword">return</span> item</code></pre>
 
 <h3>Demo2对应的settings.py文件配置<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown"><span class="hljs-section">#设置图片的存储路径</span>
-IMAGES<span class="hljs-emphasis">_STORE=os.path.join(os.path.dirname(os.path.dirname(_</span><span class="hljs-emphasis">_file_</span>_)),'images4')
-<span class="hljs-section">#90天内抓取的都不会被重抓</span>
-IMAGES_EXPIRES = 90  #90天内抓取的都不会被重抓
+<pre><code class="hljs python"><span class="hljs-comment">#设置图片的存储路径</span>
+IMAGES_STORE=os.path.join(os.path.dirname(os.path.dirname(__file__)),<span class="hljs-string">'images4'</span>)
+<span class="hljs-comment">#90天内抓取的都不会被重抓</span>
+IMAGES_EXPIRES = <span class="hljs-number">90</span>  <span class="hljs-comment">#90天内抓取的都不会被重抓</span>
 
 ITEM_PIPELINES = &#123;
-<span class="hljs-code">    'bmw.pipelines.BMWImagePipeline':1</span>
+    <span class="hljs-string">'bmw.pipelines.BMWImagePipeline'</span>:<span class="hljs-number">1</span>
 &#125;</code></pre>
 
 
