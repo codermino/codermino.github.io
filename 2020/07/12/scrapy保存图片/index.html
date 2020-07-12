@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      scrapy保存图片 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">crawl.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">items.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、同步的方式进行图片下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">对应的settings.py文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用scrapy自带的ImagesPipeline</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">settings.py文件的内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、重写ImagesPipeline---Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">Demo2对应的settings.py文件配置</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">scrapy保存图片</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/07/12</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/scrapy">scrapy</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/scrapy保存图片">scrapy保存图片</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
+<h3>crawl.py文件内容<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs markdown">import scrapy
+from bmw.items import BmwItem #引入item文件的BmwItem类
+
+class Bmw5Spider(scrapy.Spider):
+<span class="hljs-code">    name = 'bmw5'</span>
+<span class="hljs-code">    start_urls = ['https://car.autohome.com.cn/pic/series/4350.html']</span>
+<span class="hljs-code">    def parse(self, response):</span>
+<span class="hljs-code">         uiboxs=response.xpath("//div[@class='uibox']")[1:]</span>
+<span class="hljs-code">         for uibox in uiboxs:</span>
+<span class="hljs-code">             title=uibox.xpath(".//div[@class='uibox-title']/a/text()").get() #获取分类的标题</span>
+<span class="hljs-code">             images=uibox.xpath(".//ul/li/a/img/@src").getall() #获取所有图片的url地址</span>
+<span class="hljs-code">             urls=list(map(lambda url:response.urljoin(url),images)) #将图片的url地址进行处理，前面加上https://</span>
+<span class="hljs-code">             item=BmwItem(title=title,image_urls=urls) #进行包装</span>
+<span class="hljs-code">             yield item #返回给items.py文件</span></code></pre>
+
+<h3>items.py文件内容<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs markdown">import scrapy
+
+class BmwItem(scrapy.Item):
+<span class="hljs-code">    title=scrapy.Field()  #用来存储图片分类的名称标题</span>
+<span class="hljs-code">    image_urls=scrapy.Field() #用来存储需要下载的图片的url</span>
+<span class="hljs-code">    images=scrapy.Field() #用来保存下载之后图片的本地路径</span></code></pre>
+
+<h3>方法一、同步的方式进行图片下载<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs markdown">这样下载的方式是一个一个的下载，下载的效率比较低，
+同步的方式进行下载
+
+import os
+from urllib import request
+
+class BmwPipeline(object):
+<span class="hljs-code">    def __init__(self):</span>
+<span class="hljs-code">        #os.path.dirname(__file__)获得当前文件所在的上级目录</span>
+<span class="hljs-code">        </span>
+<span class="hljs-code">        #创建项目工程下的iamges文件夹</span>
+<span class="hljs-code">        self.path=os.path.join(os.path.dirname(os.path.dirname(__file__)),'images')</span>
+<span class="hljs-code">        #判断images文件夹是否存在，如果不存在则创建</span>
+<span class="hljs-code">        if not os.path.exists(self.path):</span>
+<span class="hljs-code">            os.mkdir(self.path)</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    #这个函数会自动调用,每次爬取一个item就会调用一次进行数据的处理</span>
+<span class="hljs-code">    def process_item(self, item, spider):</span>
+<span class="hljs-code">        title=item['title'] #图片所在分类的标题</span>
+<span class="hljs-code">        urls=item['image_urls'] #分类下图片的url地址</span>
+<span class="hljs-code">        category_path=os.path.join(self.path,title) #创建分类文件夹</span>
+<span class="hljs-code">        if not os.path.exists(category_path):</span>
+<span class="hljs-code">            os.mkdir(category_path)</span>
+<span class="hljs-code">        #遍历urls数组，进行图片下载</span>
+<span class="hljs-code">        for url in urls:</span>
+<span class="hljs-code">            image_name=url.split('_')[-1] #按照_进行拆分得到图片的名称</span>
+<span class="hljs-code">            request.urlretrieve(url,os.path.join(category_path,image_name)) #进行图片的下载</span>
+<span class="hljs-code">        return item</span></code></pre>
+
+<h3>对应的settings.py文件内容<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs markdown">ITEM_PIPELINES = &#123;
+   'bmw.pipelines.BmwPipeline': 300, #开启pipelines
+&#125;</code></pre>
+
+
+<h3>方法二、使用scrapy自带的ImagesPipeline<a class="post-anchor" href="#undefined"></a></h3>
+<h4>settings.py文件的内容<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">IMAGES_EXPIRES = 90  # 90天内抓取的都不会被重抓
+ITEM_PIPELINES = &#123;
+   'scrapy.pipelines.images.ImagesPipeline': 1,
+&#125;</code></pre>
+
+<h3>方法三、重写ImagesPipeline---Demo1<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs markdown">import os
+from urllib import request
+from scrapy.pipelines.images import ImagesPipeline
+from bmw import settings
+
+<span class="hljs-section">#继承了ImagesPipeline这个类</span>
+class BMWImagePipeline(ImagesPipeline):
+<span class="hljs-code">    def get_media_requests(self, item, info):</span>
+<span class="hljs-code">        #这个方法是在发送下载请求之前调用</span>
+<span class="hljs-code">        #其实这个方法本身就是去发送下载请求的</span>
+<span class="hljs-code">         request_objs=super(BMWImagePipeline, self).get_media_requests(item,info)</span>
+<span class="hljs-code">         for request_obj in request_objs:</span>
+<span class="hljs-code">             request_obj.item=item</span>
+<span class="hljs-code">         return request_objs</span>
+
+<span class="hljs-code">    # 我们可以通过继承FilesPipeline重写file_path()</span>
+<span class="hljs-code">    # 方法来重定义文件名</span>
+<span class="hljs-code">    def file_path(self, request, response=None, info=None):</span>
+<span class="hljs-code">        #这个方法是在图片将要被存储的时候调用的，来获取这个图片存储的路径</span>
+<span class="hljs-code">        path=super(BMWImagePipeline, self).file_path(request,response,info)</span>
+<span class="hljs-code">        category=request.item.get('title')</span>
+<span class="hljs-code">        </span>
+<span class="hljs-code">        image_store=settings.IMAGES_STORE</span>
+<span class="hljs-code">        category_path=os.path.join(image_store,category)</span>
+<span class="hljs-code">        if not os.path.exists(category_path):</span>
+<span class="hljs-code">            os.mkdir(category_path)</span>
+<span class="hljs-code">        image_name=path.replace("full/",'')</span>
+<span class="hljs-code">        image_path=os.path.join(category_path,image_name)</span>
+<span class="hljs-code">        return image_path</span>
+
+<span class="hljs-code">    def item_completed(self, results, item, info):</span>
+<span class="hljs-code">        """</span>
+<span class="hljs-code">        将图片的本地路径赋值给item['image_paths']</span>
+<span class="hljs-code">        :param results:下载结果，二元组定义如下：(success, image_info_or_failure)。</span>
+<span class="hljs-code">        第一个元素表示图片是否下载成功；第二个元素是一个字典。</span>
+<span class="hljs-code">        如果success=true，image_info_or_error词典包含以下键值对。失败则包含一些出错信息。</span>
+<span class="hljs-code">         字典内包含* url：原始URL * path：本地存储路径 * checksum：校验码</span>
+<span class="hljs-code">        :param item:</span>
+<span class="hljs-code">        :param info:</span>
+<span class="hljs-code">        :return:</span>
+<span class="hljs-code">        """</span>
+<span class="hljs-code">        # print(results)</span>
+<span class="hljs-code">        image_paths = [x['path'] for ok, x in results if ok]</span>
+<span class="hljs-code">        if not image_paths:</span>
+<span class="hljs-code">            raise DropItem("Item contains no images")  # 如果没有路径则抛出异常</span>
+<span class="hljs-code">        item['images'] = image_paths</span>
+<span class="hljs-code">        return item</span></code></pre>
+
+<h3>方法三、重写ImagesPipeline---Demo2<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs markdown"><span class="hljs-section">#引入其他所需的相关模块</span>
+from scrapy import Request
+from scrapy.exceptions import DropItem
+category = ''
+<span class="hljs-section">#继承了ImagesPipeline这个类</span>
+class BMWImagePipeline(ImagesPipeline):
+<span class="hljs-code">        global category #用来存储下载的图片所属的分类标题</span>
+<span class="hljs-code">        category = item['title']</span>
+<span class="hljs-code">        for img_url in item['image_urls']: #遍历image_urls并发起请求</span>
+<span class="hljs-code">            yield Request(img_url)</span>
+
+<span class="hljs-code">    # 我们可以通过继承FilesPipeline重写file_path()</span>
+<span class="hljs-code">    # 方法来重定义文件名</span>
+<span class="hljs-code">    def file_path(self, request, response=None, info=None):</span>
+
+<span class="hljs-code">        image_store=settings.IMAGES_STORE #获取settings.py中配置的图片下载路径</span>
+<span class="hljs-code">        category_path=os.path.join(image_store,category) #创建分类名称文件夹</span>
+<span class="hljs-code">        if not os.path.exists(category_path): #不存在则进行创建</span>
+<span class="hljs-code">            os.mkdir(category_path)</span>
+<span class="hljs-code">        image_name = request.url.split("__")[-1] #将图片的url地址按照_进行拆分得到图片的名称</span>
+<span class="hljs-code">        return os.path.join(category_path,image_name) #拼接下载的图片的路径</span>
+
+<span class="hljs-code">    def item_completed(self, results, item, info):</span>
+<span class="hljs-code">        """</span>
+<span class="hljs-code">        将图片的本地路径赋值给item['image_paths']</span>
+<span class="hljs-code">        :param results:下载结果，二元组定义如下：(success, image_info_or_failure)。</span>
+<span class="hljs-code">        第一个元素表示图片是否下载成功；第二个元素是一个字典。</span>
+<span class="hljs-code">        如果success=true，image_info_or_error词典包含以下键值对。失败则包含一些出错信息。</span>
+<span class="hljs-code">         字典内包含* url：原始URL * path：本地存储路径 * checksum：校验码</span>
+<span class="hljs-code">        :param item:</span>
+<span class="hljs-code">        :param info:</span>
+<span class="hljs-code">        :return:</span>
+<span class="hljs-code">        """</span>
+<span class="hljs-code">        # print(results)</span>
+<span class="hljs-code">        image_paths = [x['path'] for ok, x in results if ok]</span>
+<span class="hljs-code">        if not image_paths:</span>
+<span class="hljs-code">            raise DropItem("Item contains no images")  # 如果没有路径则抛出异常</span>
+<span class="hljs-code">        item['images'] = image_paths #将下载之后的图片的本地路径保存在items.py的images中</span>
+<span class="hljs-code">        return item</span></code></pre>
+
+<h3>Demo2对应的settings.py文件配置<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs markdown"><span class="hljs-section">#设置图片的存储路径</span>
+IMAGES<span class="hljs-emphasis">_STORE=os.path.join(os.path.dirname(os.path.dirname(_</span><span class="hljs-emphasis">_file_</span>_)),'images4')
+<span class="hljs-section">#90天内抓取的都不会被重抓</span>
+IMAGES_EXPIRES = 90  #90天内抓取的都不会被重抓
+
+ITEM_PIPELINES = &#123;
+<span class="hljs-code">    'bmw.pipelines.BMWImagePipeline':1</span>
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/07/12/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E4%B8%BAxml%E6%A0%BC%E5%BC%8F/">scrapy数据存为xml格式</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/07/12/scrapy保存图片/">https://codermino.github.io/2020/07/12/scrapy保存图片/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
