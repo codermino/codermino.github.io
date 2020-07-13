@@ -359,10 +359,13 @@ category = <span class="hljs-string">''</span>
         :return:
         """</span>
         <span class="hljs-comment"># print(results)</span>
+        <span class="hljs-comment">#results 数组第一个参数为表示图片是否下载成功；第二个元素是一个字典。</span>
+        <span class="hljs-comment">#ok, x in results  遍历results数组 if ok 成立 去除x['path']并且包装成数组返回给image_paths</span>
         image_paths = [x[<span class="hljs-string">'path'</span>] <span class="hljs-keyword">for</span> ok, x <span class="hljs-keyword">in</span> results <span class="hljs-keyword">if</span> ok]
         <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> image_paths:
             <span class="hljs-keyword">raise</span> DropItem(<span class="hljs-string">"Item contains no images"</span>)  <span class="hljs-comment"># 如果没有路径则抛出异常</span>
         item[<span class="hljs-string">'images'</span>] = image_paths <span class="hljs-comment">#将下载之后的图片的本地路径保存在items.py的images中</span>
+        <span class="hljs-comment">#也可以在这里使用os.rename进行文件的重命名</span>
         <span class="hljs-keyword">return</span> item</code></pre>
 
 <h3>Demo2对应的settings.py文件配置<a class="post-anchor" href="#undefined"></a></h3>
