@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-13T15:13:14.001Z</updated>
+  <updated>2020-07-24T16:25:21.493Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Excel打开UTF8编码CSV文件乱码</title>
+    <link href="https://codermino.github.io/2020/07/25/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/"/>
+    <id>https://codermino.github.io/2020/07/25/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</id>
+    <published>2020-07-24T16:16:44.000Z</published>
+    <updated>2020-07-24T16:25:21.493Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/excel/excel.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/excel/excel.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;h
+      
+    
+    </summary>
+    
+    
+      <category term="excel" scheme="https://codermino.github.io/categories/excel/"/>
+    
+    
+      <category term="Excel打开UTF8编码CSV文件乱码" scheme="https://codermino.github.io/tags/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>scrapy保存图片</title>
@@ -71,7 +96,7 @@
     <link href="https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5csv%E6%96%87%E4%BB%B6/"/>
     <id>https://codermino.github.io/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5csv%E6%96%87%E4%BB%B6/</id>
     <published>2020-07-11T15:58:29.000Z</published>
-    <updated>2020-07-11T16:13:00.349Z</updated>
+    <updated>2020-07-24T15:39:34.532Z</updated>
     
     <summary type="html">
     
@@ -482,31 +507,6 @@
     
     
       <category term="gm" scheme="https://codermino.github.io/tags/gm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gm裁切图片(1)</title>
-    <link href="https://codermino.github.io/2020/02/05/gm%E8%A3%81%E5%88%87%E5%9B%BE%E7%89%87-1/"/>
-    <id>https://codermino.github.io/2020/02/05/gm%E8%A3%81%E5%88%87%E5%9B%BE%E7%89%87-1/</id>
-    <published>2020-02-05T13:57:26.000Z</published>
-    <updated>2020-02-15T08:43:15.544Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/gm.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/gm.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;registerfront&quot;&gt;引入相关包&lt;a class=
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="gm裁切图片(1)" scheme="https://codermino.github.io/tags/gm%E8%A3%81%E5%88%87%E5%9B%BE%E7%89%87-1/"/>
     
   </entry>
   

@@ -209,7 +209,7 @@ class CsvPipeline（object）：
 
     def __init __（self）：
         self.file = open（“xxx.csv”，'wb'）
-        self.exporter = CsvItemExporter（self.file，ensure_ascii=False, encoding='utf-8'）
+        self.exporter = CsvItemExporter（self.file， encoding='utf-8'）
         self.exporter.start_exporting（）
 
     def close_spider（ self，spider）：
