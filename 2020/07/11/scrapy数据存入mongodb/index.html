@@ -220,21 +220,21 @@
     <span class="hljs-keyword">return</span> item</code></pre>
 
 <h3>Demo2<a class="post-anchor" href="#undefined"></a></h3>
-<pre><code class="hljs markdown">from pymongo import MongoClient
-class xxxPipeline(object):
-<span class="hljs-code">    def open_spider(self,spider):</span>
-<span class="hljs-code">        client = MongoClient()</span>
-<span class="hljs-code">        self.collection = client['test']['test']</span>
-<span class="hljs-code">    def process_item(self,item,spider):</span>
-<span class="hljs-code">        spider.setting,get('MONGO_HOST')</span>
-<span class="hljs-code">        item['content'] = self.process_content(item['content'])</span>
-<span class="hljs-code">        print(item)</span>
-<span class="hljs-code">        return item</span>
-<span class="hljs-code">        </span>
-<span class="hljs-code">    def process_content(self,content):</span>
-<span class="hljs-code">        content = [re.sub(r"\xa0|\s","",i) for i in content]</span>
-<span class="hljs-code">        content = [i for i in content if len(i)&gt;0] #去除列表中的空字符串</span>
-<span class="hljs-code">        return content</span></code></pre>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> pymongo <span class="hljs-keyword">import</span> MongoClient
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">xxxPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self,spider)</span>:</span>
+        client = MongoClient()
+        self.collection = client[<span class="hljs-string">'test'</span>][<span class="hljs-string">'test'</span>]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self,item,spider)</span>:</span>
+        spider.setting,get(<span class="hljs-string">'MONGO_HOST'</span>)
+        item[<span class="hljs-string">'content'</span>] = self.process_content(item[<span class="hljs-string">'content'</span>])
+        print(item)
+        <span class="hljs-keyword">return</span> item
+        
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_content</span><span class="hljs-params">(self,content)</span>:</span>
+        content = [re.sub(<span class="hljs-string">r"\xa0|\s"</span>,<span class="hljs-string">""</span>,i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> content]
+        content = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> content <span class="hljs-keyword">if</span> len(i)&gt;<span class="hljs-number">0</span>] <span class="hljs-comment">#去除列表中的空字符串</span>
+        <span class="hljs-keyword">return</span> content</code></pre>
 
 
   
