@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-25T16:21:39.209Z</updated>
+  <updated>2020-07-25T16:42:13.924Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scrapy的shell的使用</title>
+    <link href="https://codermino.github.io/2020/07/26/scrapy%E7%9A%84shell%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://codermino.github.io/2020/07/26/scrapy%E7%9A%84shell%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-07-25T16:22:21.000Z</published>
+    <updated>2020-07-25T16:42:13.924Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/scrapy/scrapy.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scrapy/scrapy.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code clas
+      
+    
+    </summary>
+    
+    
+      <category term="scrapy" scheme="https://codermino.github.io/categories/scrapy/"/>
+    
+    
+      <category term="scrapy的shell的使用" scheme="https://codermino.github.io/tags/scrapy%E7%9A%84shell%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>scrapy添加cookie的三种方式</title>
@@ -482,31 +507,6 @@
     
     
       <category term="火柴" scheme="https://codermino.github.io/tags/%E7%81%AB%E6%9F%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>this.$nextTick</title>
-    <link href="https://codermino.github.io/2020/03/31/this-nextTick/"/>
-    <id>https://codermino.github.io/2020/03/31/this-nextTick/</id>
-    <published>2020-03-31T03:33:28.000Z</published>
-    <updated>2020-06-24T05:32:15.540Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vue.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vue.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;principle&quot;&gt;原理&lt;a class=&quot;post
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="this.$nextTick" scheme="https://codermino.github.io/tags/this-nextTick/"/>
     
   </entry>
   
