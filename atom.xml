@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-25T16:10:19.248Z</updated>
+  <updated>2020-07-25T16:19:49.088Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scrapy添加cookie的三种方式</title>
+    <link href="https://codermino.github.io/2020/07/26/scrapy%E6%B7%BB%E5%8A%A0cookie%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    <id>https://codermino.github.io/2020/07/26/scrapy%E6%B7%BB%E5%8A%A0cookie%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-07-25T16:12:09.000Z</published>
+    <updated>2020-07-25T16:19:49.088Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/scrapy/scrapy.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scrapy/scrapy.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;commit&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="scrapy" scheme="https://codermino.github.io/categories/scrapy/"/>
+    
+    
+      <category term="scrapy添加cookie的三种方式" scheme="https://codermino.github.io/tags/scrapy%E6%B7%BB%E5%8A%A0cookie%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>scrapy爬虫细节</title>
@@ -482,31 +507,6 @@
     
     
       <category term="this.$nextTick" scheme="https://codermino.github.io/tags/this-nextTick/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nodejs的stream</title>
-    <link href="https://codermino.github.io/2020/02/25/nodejs%E7%9A%84stream/"/>
-    <id>https://codermino.github.io/2020/02/25/nodejs%E7%9A%84stream/</id>
-    <published>2020-02-25T01:49:03.000Z</published>
-    <updated>2020-03-31T05:39:07.355Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/stream.jfif&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/stream.jfif&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;readonly&quot;&gt;读取&lt;a clas
-      
-    
-    </summary>
-    
-    
-      <category term="nodejs" scheme="https://codermino.github.io/categories/nodejs/"/>
-    
-    
-      <category term="stream处理大文件" scheme="https://codermino.github.io/tags/stream%E5%A4%84%E7%90%86%E5%A4%A7%E6%96%87%E4%BB%B6/"/>
     
   </entry>
   
