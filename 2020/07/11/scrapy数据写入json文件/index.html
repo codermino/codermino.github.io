@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、使用终端命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用pipelines</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法一、使用终端命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法二、使用pipelines</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">方法三、文件读写方式</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -222,6 +222,18 @@
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_sprider</span><span class="hljs-params">(self, spider)</span>:</span>
         self.exporter.finish_exporting()  <span class="hljs-comment"># 以标识 exporting 过程的结束</span>
         self.fp.close()</code></pre>
+
+<h3>方法三、文件读写方式<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> json
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonWriterPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self, spider)</span>:</span>  <span class="hljs-comment">#在爬虫开启的时候执行,仅执行一次</span>
+        self. file =open(spider. settings.get( <span class="hljs-string">"SAVE_FILE"</span>, <span class="hljs-string">"./temp.json"</span>), <span class="hljs-string">'w'</span>)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self, spider)</span>:</span> <span class="hljs-comment">#在爬虫关闭的时候执行,仅执行一次</span>
+        self.file.close()
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span>
+        line=json. dumps(dict(item))+<span class="hljs-string">"\n"</span>
+        self.file.write(line)
+        <span class="hljs-keyword">return</span> item <span class="hljs-comment">#不return的情况下,另个一个权重较低的 pipeline就不会获取到该item</span></code></pre>
 
 
   
