@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-14T07:58:04.628Z</updated>
+  <updated>2020-08-14T08:01:42.747Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -21,14 +21,13 @@
     <link href="https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/"/>
     <id>https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/</id>
     <published>2020-08-14T07:54:34.000Z</published>
-    <updated>2020-08-14T07:58:04.628Z</updated>
+    <updated>2020-08-14T08:01:42.747Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;/images/vuex/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;1、vuex主要包括以下几个模
+        &lt;h4 id=&quot;1、vuex主要包括以下几个模块：&quot;&gt;1、vuex主要包括以下几个模块：&lt;a class=&quot;post-anchor&quot; href=&quot;#1、vuex主要包括以下几个模块：&quot;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;/images/vuex/vuex.png&quot; dat
       
     
     </summary>
