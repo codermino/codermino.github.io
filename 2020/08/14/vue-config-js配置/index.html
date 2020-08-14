@@ -412,6 +412,71 @@
 <pre><code class="hljs javascript">npm run build</code></pre>
 
 
+<p>清除缓存</p>
+<p>tip:</p>
+<pre><code class="hljs markdown">直接在vue项目中新建vue.config.js，然后复制进去即可。</code></pre>
+
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-comment">// 获取当前时间戳</span>
+<span class="hljs-keyword">const</span> Timestamp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();
+<span class="hljs-comment">// 定义版本号</span>
+<span class="hljs-keyword">const</span> VUE_APP_Version = <span class="hljs-string">'1.0.0'</span>
+<span class="hljs-keyword">const</span> resolve = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dir</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> path.join(__dirname, dir);
+&#125;;
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-attr">configureWebpack</span>: &#123;
+    <span class="hljs-attr">output</span>: &#123; <span class="hljs-comment">//输出重构，打包编译后的文件名称 【模块名称.版本号.时间戳】</span>
+      <span class="hljs-attr">filename</span>: <span class="hljs-string">`[name].<span class="hljs-subst">$&#123;VUE_APP_Version&#125;</span>.<span class="hljs-subst">$&#123;Timestamp&#125;</span>.js`</span>,
+      <span class="hljs-attr">chunkFilename</span>: <span class="hljs-string">`[name].<span class="hljs-subst">$&#123;VUE_APP_Version&#125;</span>.<span class="hljs-subst">$&#123;Timestamp&#125;</span>.js`</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">publicPath</span>: process.env.NODE_ENV === <span class="hljs-string">"production"</span> ? <span class="hljs-string">"./"</span> : <span class="hljs-string">"./"</span>,
+  <span class="hljs-comment">//   publicPath: './',</span>
+  <span class="hljs-attr">outputDir</span>: <span class="hljs-string">"dist"</span>,
+  <span class="hljs-attr">assetsDir</span>: <span class="hljs-string">"static"</span>,
+  <span class="hljs-attr">lintOnSave</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否开启eslint保存检测</span>
+  <span class="hljs-attr">productionSourceMap</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否在构建生产包时生成sourcdeMap</span>
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    config.resolve.alias
+      .set(<span class="hljs-string">"@"</span>, resolve(<span class="hljs-string">"src"</span>))
+      .set(<span class="hljs-string">"@v"</span>, resolve(<span class="hljs-string">"src/views"</span>))
+      .set(<span class="hljs-string">"@c"</span>, resolve(<span class="hljs-string">"src/components"</span>))
+      .set(<span class="hljs-string">"@u"</span>, resolve(<span class="hljs-string">"src/utils"</span>))
+      .set(<span class="hljs-string">"@s"</span>, resolve(<span class="hljs-string">"src/service"</span>)); <span class="hljs-comment">/* 别名配置 */</span>
+    config.optimization.runtimeChunk(<span class="hljs-string">"single"</span>);
+  &#125;,
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-comment">// host: "localhost",</span>
+    <span class="hljs-comment">/* 本地ip地址 */</span>
+    <span class="hljs-comment">//host: "192.168.1.107",</span>
+    <span class="hljs-attr">host</span>: <span class="hljs-string">"0.0.0.0"</span>, <span class="hljs-comment">//局域网和本地访问</span>
+    <span class="hljs-attr">port</span>: <span class="hljs-string">"8080"</span>,
+    <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">/* 自动打开浏览器 */</span>
+    <span class="hljs-attr">open</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">overlay</span>: &#123;
+      <span class="hljs-attr">warning</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">error</span>: <span class="hljs-literal">true</span>
+    &#125;,
+    <span class="hljs-comment">/* 跨域代理 */</span>
+    <span class="hljs-attr">proxy</span>: &#123;
+      <span class="hljs-string">"/api"</span>: &#123;
+        <span class="hljs-comment">/* 目标代理服务器地址 */</span>
+        <span class="hljs-attr">target</span>: <span class="hljs-string">"http://m260048y71.zicp.vip"</span>, <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// target: "http://192.168.1.102:8888", //</span>
+        <span class="hljs-comment">/* 允许跨域 */</span>
+        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">ws</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">pathRewrite</span>: &#123;
+          <span class="hljs-string">"^/api"</span>: <span class="hljs-string">""</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+&#125;;</code></pre>
+
+
   
     <div class="post-reward">
     <div id="reward-button">打赏</div>
