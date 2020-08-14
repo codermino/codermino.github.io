@@ -72,14 +72,14 @@
     <link href="https://codermino.github.io/2020/08/14/%E8%A7%A3%E5%86%B3vuex%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1/"/>
     <id>https://codermino.github.io/2020/08/14/%E8%A7%A3%E5%86%B3vuex%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1/</id>
     <published>2020-08-14T09:22:38.000Z</published>
-    <updated>2020-08-14T10:14:36.892Z</updated>
+    <updated>2020-08-14T10:23:25.192Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;/images/vuexpic/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuexpic/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;vuex 数据在页面刷新后数
+        &lt;p&gt;&lt;a href=&quot;/images/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vuex 数据在页面刷新后数据丢失问题&lt;br&gt;解决方法：在A
       
     
     </summary>
@@ -97,14 +97,14 @@
     <link href="https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/"/>
     <id>https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/</id>
     <published>2020-08-14T07:54:34.000Z</published>
-    <updated>2020-08-14T10:14:27.850Z</updated>
+    <updated>2020-08-14T10:23:25.309Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;/images/vuexpic/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuexpic/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;search&quot;&gt;1
+        &lt;p&gt;&lt;a href=&quot;/images/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;search&quot;&gt;1、vuex主要包括以下几个模块：
       
     
     </summary>
