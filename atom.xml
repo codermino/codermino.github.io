@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-14T10:57:51.703Z</updated>
+  <updated>2020-08-14T11:10:19.076Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>找回密码功能流程</title>
+    <link href="https://codermino.github.io/2020/08/14/%E6%89%BE%E5%9B%9E%E5%AF%86%E7%A0%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B/"/>
+    <id>https://codermino.github.io/2020/08/14/%E6%89%BE%E5%9B%9E%E5%AF%86%E7%A0%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B/</id>
+    <published>2020-08-14T11:08:19.000Z</published>
+    <updated>2020-08-14T11:10:19.076Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;pre&gt;&lt;code class=&quot;hljs markdown&quot;&gt;找回密码流程
+1、注册时要求每个用户使用唯一的邮箱，注册后向用户的邮箱发一封邮件
+2、找回密码时要求用户填写邮箱地址，提示用户如果不记得地址请在邮箱中搜索
+3、找回密码功能限制每帐号每天只能使用三次(只能发三次邮件
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="找回密码功能流程" scheme="https://codermino.github.io/tags/%E6%89%BE%E5%9B%9E%E5%AF%86%E7%A0%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>vuex页面刷新数据丢失问题</title>
@@ -489,30 +516,6 @@
     
     
       <category term="markdown基本语法" scheme="https://codermino.github.io/tags/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python引入模块四种方式</title>
-    <link href="https://codermino.github.io/2020/07/11/python%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
-    <id>https://codermino.github.io/2020/07/11/python%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/</id>
-    <published>2020-07-11T03:32:42.000Z</published>
-    <updated>2020-07-11T04:57:34.097Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E4%BF%AE%E9%A5%B0%E7%AC%A6/python.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;i
-      
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://codermino.github.io/categories/python/"/>
-    
-    
-      <category term="python引入模块的四种方式" scheme="https://codermino.github.io/tags/python%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
     
   </entry>
   
