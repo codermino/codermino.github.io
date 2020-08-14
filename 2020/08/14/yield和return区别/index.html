@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      yield和return区别 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#迭代器与可迭代对象"><span class="toc-text">迭代器与可迭代对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#可迭代对象"><span class="toc-text">可迭代对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-text">迭代器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield简单案例及执行步骤"><span class="toc-text">yield简单案例及执行步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield中的send函数"><span class="toc-text">yield中的send函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#深层次补充：-上面的案例描述只是为了容易理解，描述为暂停和赋值"><span class="toc-text">深层次补充：(上面的案例描述只是为了容易理解，描述为暂停和赋值)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield的好处是什么？"><span class="toc-text">yield的好处是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yield的好处总结："><span class="toc-text">yield的好处总结：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#补充："><span class="toc-text">补充：</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">yield和return区别</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/14</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/python">python</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/yield和return区别">yield和return区别</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="迭代器与可迭代对象">迭代器与可迭代对象<a class="post-anchor" href="#迭代器与可迭代对象"></a></h3><p>开始之前，先理解一下迭代器与可迭代对象，因为yield其实是一种特殊的迭代器，不过这种迭代器更加优雅。</p>
+<h4 id="可迭代对象">可迭代对象<a class="post-anchor" href="#可迭代对象"></a></h4><pre><code class="hljs markdown">//可迭代对象：列表为例
+s = 'ABC'
+l = list(s)
+print(l)
+
+['A', 'B', 'C']</code></pre>
+
+<h4 id="迭代器">迭代器<a class="post-anchor" href="#迭代器"></a></h4><pre><code class="hljs markdown"><span class="hljs-section"># 迭代器对象l1</span>
+s = 'ABC'
+l = list(s)
+l1 = iter(l)
+print(l1)
+<span class="hljs-section"># 取出迭代器容器中的值，没有值后就抛出异常</span>
+print(next(l1))
+print(next(l1))
+print(next(l1))
+print(next(l1))
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">list_iterator</span> <span class="hljs-attr">object</span> <span class="hljs-attr">at</span> <span class="hljs-attr">0x0000020D793D95C0</span>&gt;</span></span>
+A
+B
+C
+StopIteration</code></pre>
+<p>上面案例中l是一个列表，是一个可迭代对象<br>l1是一个迭代器，直接打印，结果是&lt;list_iterator object at 0x0000020D793D95C0&gt;，访问其中的值可以使用for循环或者next函数，所有值都被访问后，最后会抛出StopIteration异常</p>
+<p>关于迭代器与可迭代对象参考我另一篇博文，里面有详细解释：<br><a href="https://blog.csdn.net/u011318077/article/details/93754013" target="_blank" rel="noopener">https://blog.csdn.net/u011318077/article/details/93754013</a></p>
+<p>yield生成器就是一个优雅的迭代器，访问也会用到next函数，理解迭代器后可以更轻松的理解yield生成器的执行过程和原理。</p>
+<h3 id="yield简单案例及执行步骤">yield简单案例及执行步骤<a class="post-anchor" href="#yield简单案例及执行步骤"></a></h3><p>下面进入正题，如果你还没有对yield有个初步分认识，那么你先把yield看做“return”，<br>这个是直观的，它首先是个return，普通的return是什么意思，就是在程序中返回某个值，返回之后程序就不再往下运行了。<br>看做return之后再把它看做一个是生成器（generator）的一部分<br>（带yield的函数才是真正的迭代器），好了，如果你对这些不明白的话，<br>那先把yield看做return,然后直接看下面的程序，你就会明白yield的全部意思了(只是先当做return，本质向后看就会明白)。</p>
+<p>先看一个普通函数</p>
+<pre><code class="hljs markdown">// 一个普通函数：
+def foo():
+<span class="hljs-code">    print('Starting.....')</span>
+// 调用函数，直接执行语句
+g = foo()
+print("<span class="hljs-emphasis">*" *</span> 100)
+
+Starting.....
+<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>**</code></pre>
+
+<p>生成器函数</p>
+<pre><code class="hljs markdown">// 包含yield关键字，就变成了生成器函数
+//调用函数并不会执行语句
+def foo():
+<span class="hljs-code">    print('Starting.....')</span>
+<span class="hljs-code">    while True:</span>
+<span class="hljs-code">        res = yield 4</span>
+<span class="hljs-code">        print("res:", res)</span>
+
+// 下面调用函数并没有执行，可以先将后面的语句注释掉
+// 逐行运行代码观察效果
+g = foo()
+print("第一次调用执行结果：")
+print(next(g))
+print("<span class="hljs-emphasis">*" *</span> 100)
+
+print("第二次调用执行结果：")
+print(next(g))
+print("<span class="hljs-emphasis">*" *</span> 100）
+
+第一次调用执行结果：
+Starting.....
+4
+<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-emphasis">***</span>
+第二次调用执行结果：
+res: None
+4
+<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-emphasis">***</span></code></pre>
+<p>下面解释代码运行顺序，相当于代码单步调试()：<br>程序开始执行以后，因为foo函数中有yield关键字，所以foo函数并不会真的执行，<br>而是先得到一个生成器g(相当于一个对象)，函数的一个状态，函数相当于暂停了<br>执行第一次调用，直到遇到next方法，foo函数正式开始执行，先执行foo函数中的print方法，然后进入while循环<br>程序遇到yield关键字，然后把yield想想成return,return了一个4之后，程序停止，<br>但是，程序只是返回了一个值4，并没有执行将4赋值给res操作，此时next(g)语句执行完成，<br>所以第一次调用后的结果有两行（第一个是while上面的print的结果,第二个是return出的结果）<br>也就是执行print(next(g))先调用函数，最后打印出了返回值4<br>程序执行print(“” * 100)，输出100个<br>执行第二次调用，又开始执行下面的print(next(g)),这个时候和上面那个差不多，不过不同的是，<br>这个时候是从刚才那个next程序停止的地方开始执行的，也就是要执行res的赋值操作语句，<br>这时候要注意，yield 4返回值4后就停止了，并没有赋值给前面的res, （因为刚才那个是return出去了，<br>并没有给赋值操作的左边传参数），此时代码实际是从print(“res:”, res)开始执行，<br>这个时候res赋值是空，是None,所以接着下面的输出就是res:None,<br>程序会继续在while里执行，又一次碰到yield,这个时候同样return出4，然后程序停止，print函数输出的4就是这次return出的4.<br>到这里你可能就明白yield和return的关系和区别了，带yield的函数是一个生成器，而不是一个函数了，<br>这个生成器有一个函数就是next函数，next就相当于“下一步”生成哪个数，<br>这一次的next开始的地方是接着上一次的next停止的地方执行的，所以调用next的时候，<br>生成器并不会从foo函数的开始执行，只是接着上一步停止的地方开始，然后遇到yield后，return出要生成的数，此步就结束。</p>
+<h4 id="总结">总结<a class="post-anchor" href="#总结"></a></h4><p>上面的foo()就是一个生成器函数，当一个生成器函数调用yield，生成器函数的“状态”会被冻结，所有的变量的值会被保留下来，<br>下一行要执行的代码的位置也会被记录，就是yield这行代码结束的位置直到再次调用next()。<br>一旦next()再次被调用，生成器函数会从它上次离开的地方开始。如果永远不调用next()，yield保存的状态就被无视了。</p>
+<p>generator是用来产生一系列值的，yield则像是generator函数的返回结果，(yield也可以看似return)，<br>yield唯一所做的另一件事就是保存一个generator函数的状态</p>
+<p>yield和return的区别，return执行后会继续执行后面的代码，但是yield会停止之后的代码继续执行，注意，<br>只是停止生成器函数内部的代码，生成器函数外部代码不受影响</p>
+<p>generator就是一个特殊类型的迭代器（iterator）和迭代器相似，我们可以通过使用next()来从generator中获取下一个值</p>
+<h3 id="yield中的send函数">yield中的send函数<a class="post-anchor" href="#yield中的send函数"></a></h3><p>yield生成器函数中另外一重要函数就是send(），可以传入一个值作为返回值，看下面案例，第二次调用时候传入数字7</p>
+<pre><code class="hljs markdown"><span class="hljs-section"># 包含yield关键字，就变成了生成器函数</span>
+def foo():
+<span class="hljs-code">    print('Starting.....')</span>
+<span class="hljs-code">    while True:</span>
+<span class="hljs-code">        res = yield 4</span>
+<span class="hljs-code">        print("res:", res)</span>
+
+<span class="hljs-section"># 下面调用函数并没有执行，可以先将后面的语句注释掉</span>
+<span class="hljs-section"># 逐行运行代码观察效果</span>
+g = foo()
+print("第一次调用执行结果：")
+print(next(g))
+print("<span class="hljs-emphasis">*" *</span> 100)
+
+print("第二次调用执行结果(传入参数)：")
+print(g.send(7))
+print("<span class="hljs-emphasis">*" *</span> 100)
+
+print("第三次调用执行结果：")
+print(next(g))
+print("<span class="hljs-emphasis">*" *</span> 100)
+
+第一次调用执行结果：
+Starting.....
+4
+<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>
+第二次调用执行结果(传入参数)：
+res: 7
+4
+<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>*
+第三次调用执行结果：
+res: None
+4
+<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>*</code></pre>
+<p>send函数的概念：003案例中第二次调用时res的值为什么是None，这个变成了7，到底为什么？<br>这是因为，send是发送一个参数给res的，因为上面讲到，return的时候，并没有把4赋值给res，<br>下次执行的时候只好继续执行赋值操作，只好赋值为None了，而如果用send的话，开始执行的时候，<br>先接着上一次（return 4之后）执行，先把7赋值给了res,然后执行next的作用，遇见下一回的yield，<br>return出结果后结束（return的结果都是4，每次代码最后的结果都是4）。</p>
+<p>上面代码执行步骤：<br>    程序执行g.send(7)，程序会从yield关键字那一行继续向下运行，send会把7这个值赋值给res变量<br>    由于send方法中包含next()方法，所以程序会继续向下运行执行print方法，然后再次进入while循环<br>    程序执行再次遇到yield关键字，yield会返回后面的值后，程序再次暂停，直到再次调用next方法或send方法。</p>
+<h4 id="深层次补充：-上面的案例描述只是为了容易理解，描述为暂停和赋值">深层次补充：(上面的案例描述只是为了容易理解，描述为暂停和赋值)<a class="post-anchor" href="#深层次补充：-上面的案例描述只是为了容易理解，描述为暂停和赋值"></a></h4><p>比如说“send方法中包含next()”send先赋值然后在执行next，从一些代码直观上来讲好像是这样，但其实并不是，<br>第一，其实并不是赋值，<br>第二，底层send和next其实都是调用gen_send_ex(PyGenObject *gen,PyObject *arg,int exc)这个函数，<br>只是第二个参数不一样，send也不一定要带参数，尤其是第一次使用send来启动生成器，send带参数还是不允许的。<br>如果对中断了解的话，其实不要把这个当成return来看，因为根本就不是，应该当成中断来理解，<br>因为底层的实现就是中断的原理，保存栈帧，加载栈帧。</p>
+<h3 id="yield的好处是什么？">yield的好处是什么？<a class="post-anchor" href="#yield的好处是什么？"></a></h3><p>通过上面的阅读和敲代码已经理解了什么是yield，和整个执行原理都应该很清楚了，单究竟为什么要使用yield，而不是用return？？？</p>
+<p>我们以列表list为例，为什么用这个生成器，是因为如果用List的话，会占用更大的空间，<br>比如说取0,1,2,3,4,5,6…1000，下面举例，只取到10,1000结果太长了</p>
+<pre><code class="hljs markdown">for n in range(10):
+<span class="hljs-code">    a=n</span>
+<span class="hljs-code">    print(a) # 相当于return a</span>
+print("<span class="hljs-emphasis">*" *</span> 100)
+
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+<span class="hljs-code">``` 
+#### 生成器实现上面功能
+```markdown
+//生成器实现
+def foo(num):
+    print("starting...")
+    while num&lt;10:
+        num=num+1
+        yield num
+
+for n in foo(0):
+    print(n)
+
+starting...
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10</span></code></pre>
+
+<p>上面两种方式都可以得到0-10之间的数字，但是占用内存不同：</p>
+<p>第一种直接使用for循环：<br>for循环运行时，所有的0-10之间数字都存在内存之中需要消耗极大的内存，如果数字是10000，<br>可能for循环直接就将电脑内存消耗完了后面的代码，其它程序就无内存可用了</p>
+<p>第二种，虽然也是for循环，但是内部加入了yield：for循环每次调用时，<br>yield生成器(generator)能够迭代的关键是它有一个next()方法，工作原理就是通过重复调用next()方法，<br>直到捕获一个异常,for循环自动结束</p>
+<p>每次执行到yield，因为底层的实现就是中断的原理，保存栈帧，加载栈帧。 每次执行结束内存释放，<br>执行的时候占用一点内存，消耗的内存资源就很少</p>
+<p>上面for循环执行过程，并没有写next函数，其实自动调用的next函数(参考迭代器与迭代对象中详细解释)：</p>
+<p>for循环执行过程：</p>
+<p>1、调用可迭代对象的<strong>iter</strong>方法返回一个迭代器对象（iterator）<br>2、不断调用迭代器的<strong>next</strong>方法返回元素<br>3、直到迭代完成后，处理StopIteration异常</p>
+<h3 id="yield的好处总结：">yield的好处总结：<a class="post-anchor" href="#yield的好处总结："></a></h3><p>1、不会将所有数据取出来存入内存中；而是返回了一个对象；可以通过对象获取数据；用多少取多少，可以节省内容空间。<br>2、除了能返回一个值，还不会终止循环的运行；<br>3、每次执行到yield，因为底层的实现就是中断的原理，保存栈帧，加载栈帧。<br>4、每次执行结束内存释放，执行的时候占用一点内存，消耗的内存资源就很少</p>
+<h4 id="补充：">补充：<a class="post-anchor" href="#补充："></a></h4><p>1、通常yield都是放在一个函数中，该函数就变成了生成器函数，该函数就变成了一个迭代器<br>2、生成器函数一般都是通过for循环调用，for循环自带next方法<br>3、分布式爬虫会经常使用yield,yield直接放在for循环的内部<br>4、爬虫代码运行时候，for循环自动调用next方法，yield就会不断执行，直到爬取结束<br>5、使用yield也会大大减少爬虫运行时候的内存消耗</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A84/">mysql知识点总结和应用4</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/14/yield和return区别/">https://codermino.github.io/2020/08/14/yield和return区别/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
