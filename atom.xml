@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-07-25T16:42:13.924Z</updated>
+  <updated>2020-08-14T07:58:04.628Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vuex总结</title>
+    <link href="https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/"/>
+    <id>https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/</id>
+    <published>2020-08-14T07:54:34.000Z</published>
+    <updated>2020-08-14T07:58:04.628Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuex/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;1、vuex主要包括以下几个模
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vuex总结" scheme="https://codermino.github.io/tags/vuex%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>scrapy的shell的使用</title>
@@ -482,31 +507,6 @@
     
     
       <category term="爬虫下载图片" scheme="https://codermino.github.io/tags/%E7%88%AC%E8%99%AB%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>火柴软件使用说明</title>
-    <link href="https://codermino.github.io/2020/06/24/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"/>
-    <id>https://codermino.github.io/2020/06/24/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</id>
-    <published>2020-06-24T05:08:38.000Z</published>
-    <updated>2020-07-12T15:53:51.414Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/hc1.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/hc1.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;use&quot;&gt;呼叫火柴&lt;a class=&quot;post-anc
-      
-    
-    </summary>
-    
-    
-      <category term="火柴软件" scheme="https://codermino.github.io/categories/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="火柴" scheme="https://codermino.github.io/tags/%E7%81%AB%E6%9F%B4/"/>
     
   </entry>
   
