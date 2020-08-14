@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-14T10:08:36.413Z</updated>
+  <updated>2020-08-14T10:17:41.046Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue.config.js配置</title>
+    <link href="https://codermino.github.io/2020/08/14/vue-config-js%E9%85%8D%E7%BD%AE/"/>
+    <id>https://codermino.github.io/2020/08/14/vue-config-js%E9%85%8D%E7%BD%AE/</id>
+    <published>2020-08-14T10:10:45.000Z</published>
+    <updated>2020-08-14T10:17:41.046Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;简易版&lt;/p&gt;
+&lt;pre&gt;&lt;code
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue.config.js配置" scheme="https://codermino.github.io/tags/vue-config-js%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>ecahrts自适应和切换问题</title>
@@ -46,14 +72,14 @@
     <link href="https://codermino.github.io/2020/08/14/%E8%A7%A3%E5%86%B3vuex%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1/"/>
     <id>https://codermino.github.io/2020/08/14/%E8%A7%A3%E5%86%B3vuex%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1/</id>
     <published>2020-08-14T09:22:38.000Z</published>
-    <updated>2020-08-14T09:34:37.108Z</updated>
+    <updated>2020-08-14T10:14:36.892Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;/images/vuex/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;vuex 数据在页面刷新后数据丢失问题&lt;
+        &lt;p&gt;&lt;a href=&quot;/images/vuexpic/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuexpic/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vuex 数据在页面刷新后数
       
     
     </summary>
@@ -71,14 +97,14 @@
     <link href="https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/"/>
     <id>https://codermino.github.io/2020/08/14/vuex%E6%80%BB%E7%BB%93/</id>
     <published>2020-08-14T07:54:34.000Z</published>
-    <updated>2020-08-14T08:56:38.777Z</updated>
+    <updated>2020-08-14T10:14:27.850Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;a href=&quot;/images/vuex/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;search&quot;&gt;1、vuex主
+        &lt;p&gt;&lt;a href=&quot;/images/vuexpic/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuexpic/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;search&quot;&gt;1
       
     
     </summary>
@@ -469,30 +495,6 @@
     <id>https://codermino.github.io/2020/07/05/git%E6%8F%90%E4%BA%A4pr/</id>
     <published>2020-07-05T06:47:37.000Z</published>
     <updated>2020-07-05T07:15:31.969Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAt1BMVEX////1hHB3bEz1fmn0fGb1gW1xZUL3no76w7ptYDt1akns6+b1gm
-      
-    
-    </summary>
-    
-    
-      <category term="git" scheme="https://codermino.github.io/categories/git/"/>
-    
-    
-      <category term="git" scheme="https://codermino.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git同步更新fork项目</title>
-    <link href="https://codermino.github.io/2020/07/05/git%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0fork%E9%A1%B9%E7%9B%AE/"/>
-    <id>https://codermino.github.io/2020/07/05/git%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0fork%E9%A1%B9%E7%9B%AE/</id>
-    <published>2020-07-05T05:43:29.000Z</published>
-    <updated>2020-07-05T06:42:59.945Z</updated>
     
     <summary type="html">
     
