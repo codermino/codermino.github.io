@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-14T10:20:52.105Z</updated>
+  <updated>2020-08-14T10:27:04.130Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在本地运行webpack打包后的vue项目文件</title>
+    <link href="https://codermino.github.io/2020/08/14/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8Cwebpack%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84vue%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/"/>
+    <id>https://codermino.github.io/2020/08/14/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8Cwebpack%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84vue%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/</id>
+    <published>2020-08-14T10:25:11.000Z</published>
+    <updated>2020-08-14T10:27:04.130Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hlj
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="在本地运行webpack打包后的vue项目文件" scheme="https://codermino.github.io/tags/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8Cwebpack%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84vue%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>vue.config.js配置</title>
@@ -486,30 +511,6 @@
     
     
       <category term="pyinstaller" scheme="https://codermino.github.io/tags/pyinstaller/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git提交pr</title>
-    <link href="https://codermino.github.io/2020/07/05/git%E6%8F%90%E4%BA%A4pr/"/>
-    <id>https://codermino.github.io/2020/07/05/git%E6%8F%90%E4%BA%A4pr/</id>
-    <published>2020-07-05T06:47:37.000Z</published>
-    <updated>2020-07-05T07:15:31.969Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAt1BMVEX////1hHB3bEz1fmn0fGb1gW1xZUL3no76w7ptYDt1akns6+b1gm
-      
-    
-    </summary>
-    
-    
-      <category term="git" scheme="https://codermino.github.io/categories/git/"/>
-    
-    
-      <category term="git" scheme="https://codermino.github.io/tags/git/"/>
     
   </entry>
   
