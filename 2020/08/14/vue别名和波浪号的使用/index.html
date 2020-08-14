@@ -208,6 +208,9 @@
 <p>html中使用，可以加入‘<del>’也可以不加入‘</del>’。</p>
 <pre><code class="hljs markdown"><span class="hljs-code">`&lt;img class="pic-404__child left" src="@/assets/404_images/404_cloud.png" alt="404"&gt;`</span></code></pre>
 
+<p>在引入文件的时候，路径前面需要加上”~”。</p>
+<pre><code class="hljs markdown">@import '~@/css/index.css'</code></pre>
+
 <p>tip:<br>    图片以及一些静态资源尽量放入src/assets目录内，不要放入static目录内，访问不易出错。以@/assets/……方式访问。<br>    在写路径时候，尽量不要使用绝对路径，请使用@别名方式访问资源。</p>
 
 
