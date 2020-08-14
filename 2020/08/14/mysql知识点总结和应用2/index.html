@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020 - Mino
+      mysql知识点总结和应用2 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#视图概述"><span class="toc-text">视图概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建或者修改视图"><span class="toc-text">创建或者修改视图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建"><span class="toc-text">创建</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修改"><span class="toc-text">修改</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除视图"><span class="toc-text">删除视图</span></a></li></ol></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,79 +154,117 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="express模板的使用">
-                <span>2020/01/28</span>
-                <span>express模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="ejs模板的使用">
-                <span>2020/01/28</span>
-                <span>ejs模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/" title="formidable上传文件改名">
-                <span>2020/01/25</span>
-                <span>formidable上传文件改名</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/nodejs%E7%9A%84formidable/" title="nodejs的formidable">
-                <span>2020/01/25</span>
-                <span>nodejs的formidable</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/" title="mongodb操作">
-                <span>2020/01/12</span>
-                <span>mongodb操作</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="page-number current">5</span>
-</div>
-</div>
+      <div class="title">mysql知识点总结和应用2</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/14</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/mysql">mysql</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/mysql知识点总结和应用2">mysql知识点总结和应用2</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/mysql/mysql.png" data-caption data-fancybox="images"><img src="/images/mysql/mysql.png" alt></a></p>
+<h3 id="视图">视图<a class="post-anchor" href="#视图"></a></h3><h4 id="视图概述">视图概述<a class="post-anchor" href="#视图概述"></a></h4><p>视图（View）是一种虚拟存在的表。视图并不在数据库中实际存在，行和列数据来自定义视图的查询中使用的表，<br>并且是在使用视图时动态生成的。通俗的讲，视图就是一条SELECT语句执行后返回的结果集。所以我们在创建视图的时候，<br>主要的工作就落在创建这条SQL查询语句上。</p>
+<p>视图相对于普通的表的优势主要包括以下几项。</p>
+<ul>
+<li>简单：使用视图的用户完全不需要关心后面对应的表的结构、关联条件和筛选条件，对用户来说已经是过滤好的复合条件的结果集。</li>
+<li>安全：使用视图的用户只能访问他们被允许查询的结果集，对表的权限管理并不能限制到某个行某个列，但是通过视图就可以简单的实现。</li>
+<li>数据独立：一旦视图的结构确定了，可以屏蔽表结构变化对用户的影响，源表增加列对视图没有影响；源表修改列名，则可以通过修改视图来解决，不会造成对访问者的影响。</li>
+</ul>
+<h4 id="创建或者修改视图">创建或者修改视图<a class="post-anchor" href="#创建或者修改视图"></a></h4><h5 id="创建">创建<a class="post-anchor" href="#创建"></a></h5><p>CREATE [OR REPLACE] [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]</p>
+<p>VIEW view_name [(column_list)]</p>
+<p>AS select_statement</p>
+<p>[WITH [CASCADED | LOCAL] CHECK OPTION]</p>
+<h5 id="修改">修改<a class="post-anchor" href="#修改"></a></h5><p>ALTER [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]</p>
+<p>VIEW view_name [(column_list)]</p>
+<p>AS select_statement</p>
+<p>[WITH [CASCADED | LOCAL] CHECK OPTION]<br>选项 :<br>    WITH [CASCADED | LOCAL] CHECK OPTION 决定了是否允许更新数据使记录不再满足视图的条件。<br>    LOCAL ： 只要满足本视图的条件就可以更新。<br>    CASCADED ： 必须满足所有针对该视图的所有视图的条件才可以更新。 默认值.(级联)<br>示例 , 创建city_country_view视图 , 执行如下SQL :<br>    create or replace view city_country_view<br>    as<br>    select t.*,c.country_name from country c , city t where c.country_id = t.country_id;</p>
+<h4 id="删除视图">删除视图<a class="post-anchor" href="#删除视图"></a></h4><p>DROP VIEW [IF EXISTS] view_name [, view_name] …[RESTRICT | CASCADE]<br>示例 , 删除视图city_country_view :<br>    DROP VIEW city_country_view ;</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A81/">mysql知识点总结和应用1</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/14/mysql知识点总结和应用2/">https://codermino.github.io/2020/08/14/mysql知识点总结和应用2/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
