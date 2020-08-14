@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-14T08:56:38.777Z</updated>
+  <updated>2020-08-14T09:34:37.108Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决vuex刷新页面数据丢失</title>
+    <link href="https://codermino.github.io/2020/08/14/%E8%A7%A3%E5%86%B3vuex%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1/"/>
+    <id>https://codermino.github.io/2020/08/14/%E8%A7%A3%E5%86%B3vuex%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1/</id>
+    <published>2020-08-14T09:22:38.000Z</published>
+    <updated>2020-08-14T09:34:37.108Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuex/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vuex 数据在页面刷新后数据丢失问题&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="解决vuex刷新页面数据丢失" scheme="https://codermino.github.io/tags/%E8%A7%A3%E5%86%B3vuex%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>vuex总结</title>
@@ -482,31 +507,6 @@
     
     
       <category term="cookie和session的区别" scheme="https://codermino.github.io/tags/cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网页图片批量获取（Python教程）</title>
-    <link href="https://codermino.github.io/2020/06/25/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%EF%BC%88Python%E6%95%99%E7%A8%8B%EF%BC%89/"/>
-    <id>https://codermino.github.io/2020/06/25/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%EF%BC%88Python%E6%95%99%E7%A8%8B%EF%BC%89/</id>
-    <published>2020-06-25T06:12:55.000Z</published>
-    <updated>2020-06-25T08:52:12.257Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/spiderre3.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/spiderre3.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;principle&quot;&gt;图片下载
-      
-    
-    </summary>
-    
-    
-      <category term="python" scheme="https://codermino.github.io/categories/python/"/>
-    
-    
-      <category term="爬虫下载图片" scheme="https://codermino.github.io/tags/%E7%88%AC%E8%99%AB%E4%B8%8B%E8%BD%BD%E5%9B%BE%E7%89%87/"/>
     
   </entry>
   
