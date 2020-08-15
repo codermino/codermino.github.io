@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020/8 - Mino
+      computed的get和set - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#计算属性的一般使用-双向绑定"><span class="toc-text">计算属性的一般使用(双向绑定)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算属性的一般使用-单向绑定"><span class="toc-text">计算属性的一般使用(单向绑定)</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,79 +154,131 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020/8
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/08/14/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E5%B0%BA%E5%AF%B8%E5%88%92%E5%88%86/" title="响应式布局尺寸划分">
-                <span>2020/08/14</span>
-                <span>响应式布局尺寸划分</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/echarts%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F/" title="echarts自定义样式">
-                <span>2020/08/14</span>
-                <span>echarts自定义样式</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8Cwebpack%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84vue%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/" title="在本地运行webpack打包后的vue项目文件">
-                <span>2020/08/14</span>
-                <span>在本地运行webpack打包后的vue项目文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/vue-config-js%E9%85%8D%E7%BD%AE/" title="vue.config.js配置">
-                <span>2020/08/14</span>
-                <span>vue.config.js配置</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/ecahrts%E8%87%AA%E9%80%82%E5%BA%94%E5%92%8C%E5%88%87%E6%8D%A2%E9%97%AE%E9%A2%98/" title="ecahrts自适应和切换问题">
-                <span>2020/08/14</span>
-                <span>ecahrts自适应和切换问题</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/08/">1</a><span class="page-number current">2</span>
-</div>
-</div>
+      <div class="title">computed的get和set</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/15</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/computed的get和set">computed的get和set</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="计算属性的一般使用-双向绑定">计算属性的一般使用(双向绑定)<a class="post-anchor" href="#计算属性的一般使用-双向绑定"></a></h3><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span>&#123;&#123;fullName&#125;&#125;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span></span>
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"firstName"</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">label</span>&gt;</span></span>
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">"lastName"</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span>
+
+
+computed: &#123;
+<span class="hljs-code">    fullName() &#123;</span>
+<span class="hljs-code">      return this.firstName + ' ' + this.lastName;</span>
+<span class="hljs-code">    &#125;</span>
+  &#125;,</code></pre>
+
+<h3 id="计算属性的一般使用-单向绑定">计算属性的一般使用(单向绑定)<a class="post-anchor" href="#计算属性的一般使用-单向绑定"></a></h3><pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span>&#123;&#123;fullName&#125;&#125;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"fullName = 'sun he'"</span>&gt;</span></span>changename<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+
+computed: &#123;
+<span class="hljs-code">    fullName: &#123;</span>
+<span class="hljs-code">      get: function () &#123;</span>
+<span class="hljs-code">        return this.firstName + ' ' + this.lastName</span>
+<span class="hljs-code">      &#125;,</span>
+<span class="hljs-code">      set: function (newValue) &#123;</span>
+<span class="hljs-code">        var names = newValue.split(' ');</span>
+<span class="hljs-code">        this.firstName = names[0];</span>
+<span class="hljs-code">        this.lastName = names[names.length - 1];</span>
+<span class="hljs-code">      &#125;</span>
+<span class="hljs-code">    &#125;</span>
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/14/vue%E5%88%AB%E5%90%8D%E5%92%8C%E6%B3%A2%E6%B5%AA%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8/">vue别名和波浪号的使用</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/15/computed的get和set/">https://codermino.github.io/2020/08/15/computed的get和set/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
