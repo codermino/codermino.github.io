@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-15T02:01:34.168Z</updated>
+  <updated>2020-08-16T09:56:39.976Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webstorm常用快捷键</title>
+    <link href="https://codermino.github.io/2020/08/16/webstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    <id>https://codermino.github.io/2020/08/16/webstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</id>
+    <published>2020-08-16T09:51:01.000Z</published>
+    <updated>2020-08-16T09:56:39.976Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/webstorm/webstorm.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/webstorm/webstorm.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;c
+      
+    
+    </summary>
+    
+    
+      <category term="webstorm" scheme="https://codermino.github.io/categories/webstorm/"/>
+    
+    
+      <category term="webstorm常用快捷键" scheme="https://codermino.github.io/tags/webstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>computed的get和set</title>
@@ -490,31 +515,6 @@
     
     
       <category term="Excel打开UTF8编码CSV文件乱码" scheme="https://codermino.github.io/tags/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>scrapy保存图片</title>
-    <link href="https://codermino.github.io/2020/07/12/scrapy%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87/"/>
-    <id>https://codermino.github.io/2020/07/12/scrapy%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87/</id>
-    <published>2020-07-12T14:11:58.000Z</published>
-    <updated>2020-07-13T15:13:14.001Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/scrapy/scrapy.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scrapy/scrapy.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;为什么使用Images
-      
-    
-    </summary>
-    
-    
-      <category term="scrapy" scheme="https://codermino.github.io/categories/scrapy/"/>
-    
-    
-      <category term="scrapy保存图片" scheme="https://codermino.github.io/tags/scrapy%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87/"/>
     
   </entry>
   
