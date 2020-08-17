@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      js学习笔记之数组方法 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原型"><span class="toc-text">原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象原型"><span class="toc-text">对象原型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型constructor"><span class="toc-text">原型constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型链"><span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原型链查找规则"><span class="toc-text">原型链查找规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拓展方法"><span class="toc-text">拓展方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#call方法"><span class="toc-text">call方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#借助构造函数继承属性"><span class="toc-text">借助构造函数继承属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束原型继承方法"><span class="toc-text">结束原型继承方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类的本质"><span class="toc-text">类的本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#foreach方法"><span class="toc-text">foreach方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter方法"><span class="toc-text">filter方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#some函数"><span class="toc-text">some函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#foreach和some的区别"><span class="toc-text">foreach和some的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#trim方法删除两边的空格"><span class="toc-text">trim方法删除两边的空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-keys遍历对象"><span class="toc-text">Object.keys遍历对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-defineProperty-定义新属性或修改原有的属性"><span class="toc-text">Object.defineProperty() 定义新属性或修改原有的属性</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">js学习笔记之数组方法</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/17</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js学习笔记之数组方法">js学习笔记之数组方法</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="原型">原型<a class="post-anchor" href="#原型"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 1. 构造函数的问题. </span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Star</span>(<span class="hljs-params">uname, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.uname = uname;
+    <span class="hljs-keyword">this</span>.age = age;
+    <span class="hljs-comment">// this.sing = function() &#123;</span>
+    <span class="hljs-comment">//     console.log('我会唱歌');</span>
+
+    <span class="hljs-comment">// &#125;</span>
+&#125;
+Star.prototype.sing = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我会唱歌'</span>);
+&#125;
+<span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>);
+<span class="hljs-keyword">var</span> zxy = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'张学友'</span>, <span class="hljs-number">19</span>);
+<span class="hljs-built_in">console</span>.log(ldh.sing === zxy.sing);
+<span class="hljs-comment">// console.dir(Star);</span>
+ldh.sing();
+zxy.sing();
+<span class="hljs-comment">// 2. 一般情况下,我们的公共属性定义到构造函数里面, 公共的方法我们放到原型对象身上</span></code></pre>
+
+<h3 id="对象原型">对象原型<a class="post-anchor" href="#对象原型"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Star</span>(<span class="hljs-params">uname, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.uname = uname;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+Star.prototype.sing = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我会唱歌'</span>);
+&#125;
+<span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>);
+<span class="hljs-keyword">var</span> zxy = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'张学友'</span>, <span class="hljs-number">19</span>);
+ldh.sing();
+<span class="hljs-built_in">console</span>.log(ldh); <span class="hljs-comment">// 对象身上系统自己添加一个 __proto__ 指向我们构造函数的原型对象 prototype</span>
+<span class="hljs-built_in">console</span>.log(ldh.__proto__ === Star.prototype);
+<span class="hljs-comment">// 方法的查找规则: 首先先看ldh 对象身上是否有 sing 方法,如果有就执行这个对象上的sing</span>
+<span class="hljs-comment">// 如果么有sing 这个方法,因为有__proto__ 的存在,就去构造函数原型对象prototype身上去查找sing这个方法</span></code></pre>
+
+<h3 id="原型constructor">原型constructor<a class="post-anchor" href="#原型constructor"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Star</span>(<span class="hljs-params">uname, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.uname = uname;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+<span class="hljs-comment">// 很多情况下,我们需要手动的利用constructor 这个属性指回 原来的构造函数</span>
+<span class="hljs-comment">// Star.prototype.sing = function() &#123;</span>
+<span class="hljs-comment">//     console.log('我会唱歌');</span>
+<span class="hljs-comment">// &#125;;</span>
+<span class="hljs-comment">// Star.prototype.movie = function() &#123;</span>
+<span class="hljs-comment">//     console.log('我会演电影');</span>
+<span class="hljs-comment">// &#125;</span>
+Star.prototype = &#123;
+    <span class="hljs-comment">// 如果我们修改了原来的原型对象,给原型对象赋值的是一个对象,则必须手动的利用constructor指回原来的构造函数</span>
+    <span class="hljs-attr">constructor</span>: Star,
+    <span class="hljs-attr">sing</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我会唱歌'</span>);
+    &#125;,
+    <span class="hljs-attr">movie</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我会演电影'</span>);
+    &#125;
+&#125;
+<span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>);
+<span class="hljs-keyword">var</span> zxy = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'张学友'</span>, <span class="hljs-number">19</span>);
+<span class="hljs-built_in">console</span>.log(Star.prototype);
+<span class="hljs-built_in">console</span>.log(ldh.__proto__);
+<span class="hljs-built_in">console</span>.log(Star.prototype.constructor);
+<span class="hljs-built_in">console</span>.log(ldh.__proto__.constructor);</code></pre>
+
+<h3 id="原型链">原型链<a class="post-anchor" href="#原型链"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Star</span>(<span class="hljs-params">uname, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.uname = uname;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+Star.prototype.sing = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我会唱歌'</span>);
+&#125;
+<span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>);
+<span class="hljs-comment">// 1. 只要是对象就有__proto__ 原型, 指向原型对象</span>
+<span class="hljs-built_in">console</span>.log(Star.prototype);
+<span class="hljs-built_in">console</span>.log(Star.prototype.__proto__ === <span class="hljs-built_in">Object</span>.prototype);
+<span class="hljs-comment">// 2.我们Star原型对象里面的__proto__原型指向的是 Object.prototype</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.__proto__);
+<span class="hljs-comment">// 3. 我们Object.prototype原型对象里面的__proto__原型  指向为 null</span></code></pre>
+
+<h3 id="原型链查找规则">原型链查找规则<a class="post-anchor" href="#原型链查找规则"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Star</span>(<span class="hljs-params">uname, age</span>) </span>&#123;
+    <span class="hljs-keyword">this</span>.uname = uname;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+Star.prototype.sing = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我会唱歌'</span>);
+
+&#125;
+Star.prototype.sex = <span class="hljs-string">'女'</span>;
+<span class="hljs-comment">// Object.prototype.sex = '男';</span>
+<span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>);
+ldh.sex = <span class="hljs-string">'男'</span>;
+<span class="hljs-built_in">console</span>.log(ldh.sex);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype);
+<span class="hljs-built_in">console</span>.log(ldh);
+<span class="hljs-built_in">console</span>.log(Star.prototype);
+<span class="hljs-built_in">console</span>.log(ldh.toString());</code></pre>
+
+<h3 id="拓展方法">拓展方法<a class="post-anchor" href="#拓展方法"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 原型对象的应用 扩展内置对象方法</span>
+
+<span class="hljs-built_in">Array</span>.prototype.sum = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.length; i++) &#123;
+        sum += <span class="hljs-keyword">this</span>[i];
+    &#125;
+    <span class="hljs-keyword">return</span> sum;
+&#125;;
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-built_in">console</span>.log(arr.sum());
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.prototype);
+<span class="hljs-keyword">var</span> arr1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>);
+<span class="hljs-built_in">console</span>.log(arr1.sum());</code></pre>
+
+<h3 id="call方法">call方法<a class="post-anchor" href="#call方法"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// call 方法</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">x, y</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'我想喝手磨咖啡'</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);
+    <span class="hljs-built_in">console</span>.log(x + y);
+
+
+&#125;
+<span class="hljs-keyword">var</span> o = &#123;
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'andy'</span>
+&#125;;
+<span class="hljs-comment">// fn();</span>
+<span class="hljs-comment">// 1. call() 可以调用函数</span>
+<span class="hljs-comment">// fn.call();</span>
+<span class="hljs-comment">// 2. call() 可以改变这个函数的this指向 此时这个函数的this 就指向了o这个对象</span>
+fn.call(o, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</code></pre>
+
+<h3 id="借助构造函数继承属性">借助构造函数继承属性<a class="post-anchor" href="#借助构造函数继承属性"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 借用父构造函数继承属性</span>
+<span class="hljs-comment">// 1. 父构造函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Father</span>(<span class="hljs-params">uname, age</span>) </span>&#123;
+    <span class="hljs-comment">// this 指向父构造函数的对象实例</span>
+    <span class="hljs-keyword">this</span>.uname = uname;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+<span class="hljs-comment">// 2 .子构造函数 </span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Son</span>(<span class="hljs-params">uname, age, score</span>) </span>&#123;
+    <span class="hljs-comment">// this 指向子构造函数的对象实例</span>
+    Father.call(<span class="hljs-keyword">this</span>, uname, age);
+    <span class="hljs-keyword">this</span>.score = score;
+&#125;
+<span class="hljs-keyword">var</span> son = <span class="hljs-keyword">new</span> Son(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>, <span class="hljs-number">100</span>);
+<span class="hljs-built_in">console</span>.log(son);</code></pre>
+
+<h3 id="结束原型继承方法">结束原型继承方法<a class="post-anchor" href="#结束原型继承方法"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 借用父构造函数继承属性</span>
+<span class="hljs-comment">// 1. 父构造函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Father</span>(<span class="hljs-params">uname, age</span>) </span>&#123;
+    <span class="hljs-comment">// this 指向父构造函数的对象实例</span>
+    <span class="hljs-keyword">this</span>.uname = uname;
+    <span class="hljs-keyword">this</span>.age = age;
+&#125;
+Father.prototype.money = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">100000</span>);
+
+&#125;;
+<span class="hljs-comment">// 2 .子构造函数 </span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Son</span>(<span class="hljs-params">uname, age, score</span>) </span>&#123;
+    <span class="hljs-comment">// this 指向子构造函数的对象实例</span>
+    Father.call(<span class="hljs-keyword">this</span>, uname, age);
+    <span class="hljs-keyword">this</span>.score = score;
+&#125;
+<span class="hljs-comment">// Son.prototype = Father.prototype;  这样直接赋值会有问题,如果修改了子原型对象,父原型对象也会跟着一起变化</span>
+Son.prototype = <span class="hljs-keyword">new</span> Father();
+<span class="hljs-comment">// 如果利用对象的形式修改了原型对象,别忘了利用constructor 指回原来的构造函数</span>
+Son.prototype.constructor = Son;
+<span class="hljs-comment">// 这个是子构造函数专门的方法</span>
+Son.prototype.exam = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'孩子要考试'</span>);
+
+&#125;
+<span class="hljs-keyword">var</span> son = <span class="hljs-keyword">new</span> Son(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>, <span class="hljs-number">100</span>);
+<span class="hljs-built_in">console</span>.log(son);
+<span class="hljs-built_in">console</span>.log(Father.prototype);
+<span class="hljs-built_in">console</span>.log(Son.prototype.constructor);</code></pre>
+
+<h3 id="类的本质">类的本质<a class="post-anchor" href="#类的本质"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// ES6 之前通过 构造函数+ 原型实现面向对象 编程</span>
+<span class="hljs-comment">// (1) 构造函数有原型对象prototype </span>
+<span class="hljs-comment">// (2) 构造函数原型对象prototype 里面有constructor 指向构造函数本身</span>
+<span class="hljs-comment">// (3) 构造函数可以通过原型对象添加方法</span>
+<span class="hljs-comment">// (4) 构造函数创建的实例对象有__proto__ 原型指向 构造函数的原型对象</span>
+<span class="hljs-comment">// ES6 通过 类 实现面向对象编程 </span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Star</span> </span>&#123;
+
+&#125;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> Star);
+<span class="hljs-comment">// 1. 类的本质其实还是一个函数 我们也可以简单的认为 类就是 构造函数的另外一种写法</span>
+<span class="hljs-comment">// (1) 类有原型对象prototype </span>
+<span class="hljs-built_in">console</span>.log(Star.prototype);
+<span class="hljs-comment">// (2) 类原型对象prototype 里面有constructor 指向类本身</span>
+<span class="hljs-built_in">console</span>.log(Star.prototype.constructor);
+<span class="hljs-comment">// (3)类可以通过原型对象添加方法</span>
+Star.prototype.sing = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'冰雨'</span>);
+
+&#125;
+<span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star();
+<span class="hljs-built_in">console</span>.dir(ldh);
+<span class="hljs-comment">// (4) 类创建的实例对象有__proto__ 原型指向 类的原型对象</span>
+<span class="hljs-built_in">console</span>.log(ldh.__proto__ === Star.prototype);
+i = i + <span class="hljs-number">1</span>;
+i++</code></pre>
+
+<h3 id="foreach方法">foreach方法<a class="post-anchor" href="#foreach方法"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// forEach 迭代(遍历) 数组</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
+<span class="hljs-keyword">var</span> sum = <span class="hljs-number">0</span>;
+arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, index, array</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'每个数组元素'</span> + value);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'每个数组元素的索引号'</span> + index);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'数组本身'</span> + array);
+    sum += value;
+&#125;)
+<span class="hljs-built_in">console</span>.log(sum);</code></pre>
+
+<h3 id="filter方法">filter方法<a class="post-anchor" href="#filter方法"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// filter 筛选数组</span>
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">12</span>, <span class="hljs-number">66</span>, <span class="hljs-number">4</span>, <span class="hljs-number">88</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>];
+<span class="hljs-keyword">var</span> newArr = arr.filter(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value, index</span>) </span>&#123;
+    <span class="hljs-comment">// return value &gt;= 20;</span>
+    <span class="hljs-keyword">return</span> value % <span class="hljs-number">2</span> === <span class="hljs-number">0</span>;
+&#125;);
+<span class="hljs-built_in">console</span>.log(newArr);</code></pre>
+
+<h3 id="some函数">some函数<a class="post-anchor" href="#some函数"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// some 查找数组中是否有满足条件的元素 </span>
+<span class="hljs-comment">// var arr = [10, 30, 4];</span>
+<span class="hljs-comment">// var flag = arr.some(function(value) &#123;</span>
+<span class="hljs-comment">//     // return value &gt;= 20;</span>
+<span class="hljs-comment">//     return value &lt; 3;</span>
+<span class="hljs-comment">// &#125;);</span>
+<span class="hljs-comment">// console.log(flag);</span>
+<span class="hljs-keyword">var</span> arr1 = [<span class="hljs-string">'red'</span>, <span class="hljs-string">'pink'</span>, <span class="hljs-string">'blue'</span>];
+<span class="hljs-keyword">var</span> flag1 = arr1.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;
+    <span class="hljs-keyword">return</span> value === <span class="hljs-string">'pink'</span>;
+&#125;);
+<span class="hljs-built_in">console</span>.log(flag1);
+<span class="hljs-comment">// 1. filter 也是查找满足条件的元素 返回的是一个数组 而且是把所有满足条件的元素返回回来</span>
+<span class="hljs-comment">// 2. some 也是查找满足条件的元素是否存在  返回的是一个布尔值 如果查找到第一个满足条件的元素就终止循环</span></code></pre>
+
+<h3 id="foreach和some的区别">foreach和some的区别<a class="post-anchor" href="#foreach和some的区别"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'red'</span>, <span class="hljs-string">'green'</span>, <span class="hljs-string">'blue'</span>, <span class="hljs-string">'pink'</span>];
+<span class="hljs-comment">// 1. forEach迭代 遍历</span>
+<span class="hljs-comment">// arr.forEach(function(value) &#123;</span>
+<span class="hljs-comment">//     if (value == 'green') &#123;</span>
+<span class="hljs-comment">//         console.log('找到了该元素');</span>
+<span class="hljs-comment">//         return true; // 在forEach 里面 return 不会终止迭代</span>
+<span class="hljs-comment">//     &#125;</span>
+<span class="hljs-comment">//     console.log(11);</span>
+
+<span class="hljs-comment">// &#125;)</span>
+<span class="hljs-comment">// 如果查询数组中唯一的元素, 用some方法更合适,</span>
+arr.some(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (value === <span class="hljs-string">'green'</span>) &#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'找到了该元素'</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>; <span class="hljs-comment">//  在some 里面 遇到 return true 就是终止遍历 迭代效率更高</span>
+    &#125;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">11</span>);
+
+&#125;);
+<span class="hljs-comment">// arr.filter(function(value) &#123;</span>
+<span class="hljs-comment">//     if (value == 'green') &#123;</span>
+<span class="hljs-comment">//         console.log('找到了该元素');</span>
+<span class="hljs-comment">//         return true; //  // filter 里面 return 不会终止迭代</span>
+<span class="hljs-comment">//     &#125;</span>
+<span class="hljs-comment">//     console.log(11);</span>
+
+<span class="hljs-comment">// &#125;);</span></code></pre>
+
+<h3 id="trim方法删除两边的空格">trim方法删除两边的空格<a class="post-anchor" href="#trim方法删除两边的空格"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// trim 方法去除字符串两侧空格</span>
+<span class="hljs-keyword">var</span> str = <span class="hljs-string">'   an  dy   '</span>;
+<span class="hljs-built_in">console</span>.log(str);
+<span class="hljs-keyword">var</span> str1 = str.trim();
+<span class="hljs-built_in">console</span>.log(str1);
+<span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'input'</span>);
+<span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'button'</span>);
+<span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'div'</span>);
+btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">var</span> str = input.value.trim();
+    <span class="hljs-keyword">if</span> (str === <span class="hljs-string">''</span>) &#123;
+        alert(<span class="hljs-string">'请输入内容'</span>);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-built_in">console</span>.log(str);
+        <span class="hljs-built_in">console</span>.log(str.length);
+        div.innerHTML = str;
+    &#125;
+&#125;</code></pre>
+
+<h3 id="Object-keys遍历对象">Object.keys遍历对象<a class="post-anchor" href="#Object-keys遍历对象"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 用于获取对象自身所有的属性</span>
+<span class="hljs-keyword">var</span> obj = &#123;
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">pname</span>: <span class="hljs-string">'小米'</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">1999</span>,
+    <span class="hljs-attr">num</span>: <span class="hljs-number">2000</span>
+&#125;;
+<span class="hljs-keyword">var</span> arr = <span class="hljs-built_in">Object</span>.keys(obj);
+<span class="hljs-built_in">console</span>.log(arr);
+arr.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(value);
+
+&#125;)</code></pre>
+
+<h3 id="Object-defineProperty-定义新属性或修改原有的属性">Object.defineProperty() 定义新属性或修改原有的属性<a class="post-anchor" href="#Object-defineProperty-定义新属性或修改原有的属性"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// Object.defineProperty() 定义新属性或修改原有的属性</span>
+<span class="hljs-keyword">var</span> obj = &#123;
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">pname</span>: <span class="hljs-string">'小米'</span>,
+    <span class="hljs-attr">price</span>: <span class="hljs-number">1999</span>
+&#125;;
+<span class="hljs-comment">// 1. 以前的对象添加和修改属性的方式</span>
+<span class="hljs-comment">// obj.num = 1000;</span>
+<span class="hljs-comment">// obj.price = 99;</span>
+<span class="hljs-comment">// console.log(obj);</span>
+<span class="hljs-comment">// 2. Object.defineProperty() 定义新属性或修改原有的属性</span>
+<span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">'num'</span>, &#123;
+    <span class="hljs-attr">value</span>: <span class="hljs-number">1000</span>,
+    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>
+&#125;);
+<span class="hljs-built_in">console</span>.log(obj);
+<span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">'price'</span>, &#123;
+    <span class="hljs-attr">value</span>: <span class="hljs-number">9.9</span>
+&#125;);
+<span class="hljs-built_in">console</span>.log(obj);
+<span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">'id'</span>, &#123;
+    <span class="hljs-comment">// 如果值为false 不允许修改这个属性值 默认值也是false</span>
+    <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,
+&#125;);
+obj.id = <span class="hljs-number">2</span>;
+<span class="hljs-built_in">console</span>.log(obj);
+<span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">'address'</span>, &#123;
+    <span class="hljs-attr">value</span>: <span class="hljs-string">'中国山东蓝翔技校xx单元'</span>,
+    <span class="hljs-comment">// 如果只为false 不允许修改这个属性值 默认值也是false</span>
+    <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-comment">// enumerable 如果值为false 则不允许遍历, 默认的值是 false</span>
+    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-comment">// configurable 如果为false 则不允许删除这个属性 不允许在修改第三个参数里面的特性 默认为false</span>
+    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">false</span>
+&#125;);
+<span class="hljs-built_in">console</span>.log(obj);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.keys(obj));
+<span class="hljs-keyword">delete</span> obj.address;
+<span class="hljs-built_in">console</span>.log(obj);
+<span class="hljs-keyword">delete</span> obj.pname;
+<span class="hljs-built_in">console</span>.log(obj);
+<span class="hljs-built_in">Object</span>.defineProperty(obj, <span class="hljs-string">'address'</span>, &#123;
+    <span class="hljs-attr">value</span>: <span class="hljs-string">'中国山东蓝翔技校xx单元'</span>,
+    <span class="hljs-comment">// 如果值为false 不允许修改这个属性值 默认值也是false</span>
+    <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">// enumerable 如果值为false 则不允许遍历, 默认的值是 false</span>
+    <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">// configurable 如果为false 则不允许删除这个属性 默认为false</span>
+    <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>
+&#125;);
+<span class="hljs-built_in">console</span>.log(obj.address);</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/">js学习笔记之函数</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/17/js学习笔记之数组方法/">https://codermino.github.io/2020/08/17/js学习笔记之数组方法/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
