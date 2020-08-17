@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-16T09:56:39.976Z</updated>
+  <updated>2020-08-17T03:19:56.002Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js学习笔记之类</title>
+    <link href="https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/"/>
+    <id>https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/</id>
+    <published>2020-08-17T02:26:38.000Z</published>
+    <updated>2020-08-17T03:19:56.002Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
+    
+    
+      <category term="js学习笔记之类" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>webstorm常用快捷键</title>
@@ -490,31 +514,6 @@
     
     
       <category term="scrapy爬虫细节" scheme="https://codermino.github.io/tags/scrapy%E7%88%AC%E8%99%AB%E7%BB%86%E8%8A%82/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Excel打开UTF8编码CSV文件乱码</title>
-    <link href="https://codermino.github.io/2020/07/25/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/"/>
-    <id>https://codermino.github.io/2020/07/25/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</id>
-    <published>2020-07-24T16:16:44.000Z</published>
-    <updated>2020-07-24T16:25:21.493Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/excel/excel.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/excel/excel.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;h
-      
-    
-    </summary>
-    
-    
-      <category term="excel" scheme="https://codermino.github.io/categories/excel/"/>
-    
-    
-      <category term="Excel打开UTF8编码CSV文件乱码" scheme="https://codermino.github.io/tags/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/"/>
     
   </entry>
   
