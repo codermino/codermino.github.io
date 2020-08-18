@@ -220,24 +220,24 @@
     len--;
 &#125;</code></pre>
 
-<h3 id="字符串方法">字符串方法<a class="post-anchor" href="#字符串方法"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">+ </span>charAt 返回指定位置处的字符
-<span class="hljs-bullet">+ </span>toUpperCase 将字符串转换成大写
-<span class="hljs-bullet">+ </span>toLowerCase 将字符串转换成小写
-<span class="hljs-bullet">+ </span>indexOf 返回特定字符在字符串中第一次出现的位置，参数2为查询的起始下标，未找到则返回-1
-<span class="hljs-bullet">+ </span>lastIndexOf 从后往前找。原理和结果都和indexOf一样
-<span class="hljs-bullet">+ </span>search 和indexOf返回值一样。但是参数只支持一个。且这个参数可以是正则
-<span class="hljs-bullet">+ </span>startsWith(x) 检测字符串是否以x开头，返回true/false
-<span class="hljs-bullet">+ </span>endsWith(x) 检测字符串是否以x结尾，返回true/false
-<span class="hljs-bullet">+ </span>substr(x, y) 从下标x开始往后截取y个字符串 包括x
-<span class="hljs-bullet">+ </span>substring(x, y) 从下标x截取到y,只包下标小的，不区分x和y谁大,并且结果字符串的顺序不会因为x比y大而变成倒序
-<span class="hljs-bullet">+ </span>slice(x,y) 支持负数,只包下标小的,并且左面数字一定比右面要大，-1为最大下标
-<span class="hljs-bullet">+ </span>split('<span class="hljs-emphasis">_') 用字符串中的_</span>来分割成多段。生成一个数组。返回值---&gt;&gt;&gt;数组
-<span class="hljs-bullet">+ </span>replace(reg, 'a') str中符合正则的字符,替换为"a",注意：参数2可以是函数，参数1正则如果不带g标识符则只替换第一个
-<span class="hljs-bullet">+ </span>match(reg) 返回符合字符串中符合正则的字符串组成的数组
-<span class="hljs-bullet">+ </span>conca(s,s1) 将参数转换为字符串并依次按照顺序将其连接到自身的尾部
-<span class="hljs-bullet">+ </span>trim 清空自身两边的空字符，和此类似的还有trimLeft/trimRight
-<span class="hljs-bullet">+ </span>charCodeAt(index) index默认为0，返回下标为index位置的字符的Unicode编码(结果是数字,且数据类型是Number类型的);
-<span class="hljs-bullet">+ </span>codePointAt(index) 同charCodeAt，新增的，识别方位比charCodeAt更广</code></pre>
+<h3 id="字符串方法">字符串方法<a class="post-anchor" href="#字符串方法"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">* </span>charAt 返回指定位置处的字符
+<span class="hljs-bullet">* </span>toUpperCase 将字符串转换成大写
+<span class="hljs-bullet">* </span>toLowerCase 将字符串转换成小写
+<span class="hljs-bullet">* </span>indexOf 返回特定字符在字符串中第一次出现的位置，参数2为查询的起始下标，未找到则返回-1
+<span class="hljs-bullet">* </span>lastIndexOf 从后往前找。原理和结果都和indexOf一样
+<span class="hljs-bullet">* </span>search 和indexOf返回值一样。但是参数只支持一个。且这个参数可以是正则
+<span class="hljs-bullet">* </span>startsWith(x) 检测字符串是否以x开头，返回true/false
+<span class="hljs-bullet">* </span>endsWith(x) 检测字符串是否以x结尾，返回true/false
+<span class="hljs-bullet">* </span>substr(x, y) 从下标x开始往后截取y个字符串 包括x
+<span class="hljs-bullet">* </span>substring(x, y) 从下标x截取到y,只包下标小的，不区分x和y谁大,并且结果字符串的顺序不会因为x比y大而变成倒序
+<span class="hljs-bullet">* </span>slice(x,y) 支持负数,只包下标小的,并且左面数字一定比右面要大，-1为最大下标
+<span class="hljs-bullet">* </span>split('<span class="hljs-emphasis">_') 用字符串中的_</span>来分割成多段。生成一个数组。返回值---&gt;&gt;&gt;数组
+<span class="hljs-bullet">* </span>replace(reg, 'a') str中符合正则的字符,替换为"a",注意：参数2可以是函数，参数1正则如果不带g标识符则只替换第一个
+<span class="hljs-bullet">* </span>match(reg) 返回符合字符串中符合正则的字符串组成的数组
+<span class="hljs-bullet">* </span>conca(s,s1) 将参数转换为字符串并依次按照顺序将其连接到自身的尾部
+<span class="hljs-bullet">* </span>trim 清空自身两边的空字符，和此类似的还有trimLeft/trimRight
+<span class="hljs-bullet">* </span>charCodeAt(index) index默认为0，返回下标为index位置的字符的Unicode编码(结果是数字,且数据类型是Number类型的);
+<span class="hljs-bullet">* </span>codePointAt(index) 同charCodeAt，新增的，识别方位比charCodeAt更广</code></pre>
 
 <h3 id="charCodeAt和codePointAt">charCodeAt和codePointAt<a class="post-anchor" href="#charCodeAt和codePointAt"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 返回字符串中下标为index位置的字符的Unicode编码(结果是数字,且数据类型是Number类型的);</span>
 <span class="hljs-comment">// 中文和中文标点符号的Unicode码是大于255的</span>
@@ -254,7 +254,7 @@ str.codePointAt();<span class="hljs-comment">// 97</span>
 str.codePointAt(<span class="hljs-number">0</span>);<span class="hljs-comment">// 97</span>
 str.codePointAt(<span class="hljs-number">1</span>);<span class="hljs-comment">// 98</span></code></pre>
 
-<h3 id="字符串构造函数上的静态方法">字符串构造函数上的静态方法<a class="post-anchor" href="#字符串构造函数上的静态方法"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">+ </span>String.fromCharCode和String.fromCodePoint接收一个数字参数，将其根据Unicode编码转换成字符串</code></pre>
+<h3 id="字符串构造函数上的静态方法">字符串构造函数上的静态方法<a class="post-anchor" href="#字符串构造函数上的静态方法"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">* </span>String.fromCharCode和String.fromCodePoint接收一个数字参数，将其根据Unicode编码转换成字符串</code></pre>
 <h4 id="String-fromCharCode和String-fromCodePoint">String.fromCharCode和String.fromCodePoint<a class="post-anchor" href="#String-fromCharCode和String-fromCodePoint"></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">// 接收一个数字参数，将其根据Unicode编码转换成字符串</span>
 <span class="hljs-built_in">String</span>.fromCharCode(<span class="hljs-number">97</span>);<span class="hljs-comment">// 'a'</span>
 <span class="hljs-built_in">String</span>.fromCodePoint(<span class="hljs-number">97</span>);<span class="hljs-comment">// 'a'</span></code></pre>

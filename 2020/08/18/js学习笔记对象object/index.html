@@ -196,9 +196,9 @@
       </div>
     </div>
     <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
-<h3 id="对象默认特性">对象默认特性<a class="post-anchor" href="#对象默认特性"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">+ </span>对象的属性是唯一的。定义多个重复属性时，只有最后一个会生效。也就是后来居上覆盖前面的。
-<span class="hljs-bullet">+ </span>对象的属性值可以是基础数据类型中任意类型值。
-<span class="hljs-bullet">+ </span>对象是引用值。实际上一个对象变量仅代表了一个空间的引用。相当于一个地址。而非数据</code></pre>
+<h3 id="对象默认特性">对象默认特性<a class="post-anchor" href="#对象默认特性"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">* </span>对象的属性是唯一的。定义多个重复属性时，只有最后一个会生效。也就是后来居上覆盖前面的。
+<span class="hljs-bullet">* </span>对象的属性值可以是基础数据类型中任意类型值。
+<span class="hljs-bullet">* </span>对象是引用值。实际上一个对象变量仅代表了一个空间的引用。相当于一个地址。而非数据</code></pre>
 
 <h3 id="对象基本使用">对象基本使用<a class="post-anchor" href="#对象基本使用"></a></h3><h4 id="1-创建对象">1.创建对象<a class="post-anchor" href="#1-创建对象"></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">// 1通过构造函数创建</span>
 <span class="hljs-keyword">var</span> o1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();<span class="hljs-comment">// &#123;&#125;</span>
@@ -231,38 +231,38 @@ o.name = <span class="hljs-string">"xiaoxie"</span>;
     <span class="hljs-built_in">console</span>.log(o[i]);<span class="hljs-comment">// 属性值</span>
 &#125;</code></pre>
 
-<h3 id="Object构造函数的一些常用api">Object构造函数的一些常用api<a class="post-anchor" href="#Object构造函数的一些常用api"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">+ </span>is将两个值以《类似===的比较》进行对比。返回值true或false，这个函数神奇的地方是：Object.is(NaN, NaN);//---&gt;&gt;true
+<h3 id="Object构造函数的一些常用api">Object构造函数的一些常用api<a class="post-anchor" href="#Object构造函数的一些常用api"></a></h3><pre><code class="hljs markdown"><span class="hljs-bullet">* </span>is将两个值以《类似===的比较》进行对比。返回值true或false，这个函数神奇的地方是：Object.is(NaN, NaN);//---&gt;&gt;true
   assign合并别的对象的值到第一个对象中。并且相同属性，将使用别的对象提供的
 <span class="hljs-bullet">
-+ </span>defineProperty更改单个属性特性
+* </span>defineProperty更改单个属性特性
 <span class="hljs-bullet">
-+ </span>defineProperties更改多个属性特性
+* </span>defineProperties更改多个属性特性
 <span class="hljs-bullet">
-+ </span>getOwnPropertyDescriptor(o ,"name")返回o对象的name属性的特性信息
+* </span>getOwnPropertyDescriptor(o ,"name")返回o对象的name属性的特性信息
 <span class="hljs-bullet">
-+ </span>getOwnPropertyDescriptors(o)返回o对象的所有自由属性的特性信息
+* </span>getOwnPropertyDescriptors(o)返回o对象的所有自由属性的特性信息
 <span class="hljs-bullet">
-+ </span>keys(o)返回o自有属性中的可枚举key数组。["name", "age"]
+* </span>keys(o)返回o自有属性中的可枚举key数组。["name", "age"]
 <span class="hljs-bullet">
-+ </span>getOwnPropertyNames(o)返回o的所有自有属性key数组，包括不可枚举属性
+* </span>getOwnPropertyNames(o)返回o的所有自有属性key数组，包括不可枚举属性
 <span class="hljs-bullet">
-+ </span>values(o)返回o自有属性中的可枚举key所对应的值数组["xiaoxie", "23"]
+* </span>values(o)返回o自有属性中的可枚举key所对应的值数组["xiaoxie", "23"]
 <span class="hljs-bullet">
-+ </span>entries(o)返回o的可迭代key和value数组----&gt;&gt;&gt;[["x", "1"],["y", "2"]]
+* </span>entries(o)返回o的可迭代key和value数组----&gt;&gt;&gt;[["x", "1"],["y", "2"]]
 <span class="hljs-bullet">
-+ </span>getPrototypeOf(o)获取o对象的原型
+* </span>getPrototypeOf(o)获取o对象的原型
 <span class="hljs-bullet">
-+ </span>isExtensible(o)检测o对象是否是---&gt;&gt;《可扩展的》(不可扩展意为不可以新增属性)，返回true或false
+* </span>isExtensible(o)检测o对象是否是---&gt;&gt;《可扩展的》(不可扩展意为不可以新增属性)，返回true或false
 <span class="hljs-bullet">
-+ </span>preventExtensions(o)将o变为不可扩展对象，并返回o对象的引用，此法只针对o，对于o的属性没有影响
+* </span>preventExtensions(o)将o变为不可扩展对象，并返回o对象的引用，此法只针对o，对于o的属性没有影响
 <span class="hljs-bullet">
-+ </span>isSealed(o)获取o是否是----&gt;&gt;《不可扩展，且所有自有属性也都是不可配置》，返回true或false
+* </span>isSealed(o)获取o是否是----&gt;&gt;《不可扩展，且所有自有属性也都是不可配置》，返回true或false
 <span class="hljs-bullet">
-+ </span>seal(o)将o变为不可扩展对象，且将o的所有自有属性的特性设置为不可配置。并返回对象的引用
+* </span>seal(o)将o变为不可扩展对象，且将o的所有自有属性的特性设置为不可配置。并返回对象的引用
 <span class="hljs-bullet">
-+ </span>isFreeze(o)获取o是否是----&gt;&gt;《不可扩展，且所有自有属性也都是不可配置和只读》，返回true或false
+* </span>isFreeze(o)获取o是否是----&gt;&gt;《不可扩展，且所有自有属性也都是不可配置和只读》，返回true或false
 <span class="hljs-bullet">
-+ </span>freeze(o)将o变为不可扩展对象，且将o的所有自有属性的特性设
+* </span>freeze(o)将o变为不可扩展对象，且将o的所有自有属性的特性设
 置为不可配置和只读。但是存取器属性setter依然可以通过
 赋值来调用，但是setter函数内的修改属性值的语句不会生效；</code></pre>
 
@@ -677,6 +677,8 @@ o.prop.name = <span class="hljs-string">'son'</span>;
   
   <div class="post-guide">
     <div class="item left">
+        
+          <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%BB%84array/">js学习笔记数组array</a>
         
     </div>
     <div class="item right">
