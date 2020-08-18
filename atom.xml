@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-18T10:00:04.032Z</updated>
+  <updated>2020-08-18T10:09:52.049Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js学习笔记Promise</title>
+    <link href="https://codermino.github.io/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Promise/"/>
+    <id>https://codermino.github.io/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Promise/</id>
+    <published>2020-08-18T10:00:45.000Z</published>
+    <updated>2020-08-18T10:09:52.049Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
+    
+    
+      <category term="js学习笔记Promise" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Promise/"/>
+    
+  </entry>
   
   <entry>
     <title>js学习笔记回收机制</title>
@@ -479,31 +503,6 @@
     
     
       <category term="找回密码功能流程" scheme="https://codermino.github.io/tags/%E6%89%BE%E5%9B%9E%E5%AF%86%E7%A0%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vuex页面刷新数据丢失问题</title>
-    <link href="https://codermino.github.io/2020/08/14/vuex%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/"/>
-    <id>https://codermino.github.io/2020/08/14/vuex%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/</id>
-    <published>2020-08-14T10:56:01.000Z</published>
-    <updated>2020-08-14T10:57:51.703Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;vuex 数据在页面刷新后数据丢失问题&lt;br&gt;解决方法：在A
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vuex页面刷新数据丢失问题" scheme="https://codermino.github.io/tags/vuex%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
