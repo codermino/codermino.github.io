@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      js学习笔记回收机制 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JS何时回收一个内存"><span class="toc-text">JS何时回收一个内存</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#例1："><span class="toc-text">例1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#例2："><span class="toc-text">例2：</span></a></li></ol></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,135 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/07/05/pyinstaller%E7%9A%84%E4%BD%BF%E7%94%A8/" title="pyinstaller的使用">
-                <span>2020/07/05</span>
-                <span>pyinstaller的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/05/git%E6%8F%90%E4%BA%A4pr/" title="git提交pr">
-                <span>2020/07/05</span>
-                <span>git提交pr</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/05/git%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0fork%E9%A1%B9%E7%9B%AE/" title="git同步更新fork项目">
-                <span>2020/07/05</span>
-                <span>git同步更新fork项目</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/06/25/cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB/" title="cookie和session的区别">
-                <span>2020/06/25</span>
-                <span>cookie和session的区别</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/06/25/%E7%BD%91%E9%A1%B5%E5%9B%BE%E7%89%87%E6%89%B9%E9%87%8F%E8%8E%B7%E5%8F%96%EF%BC%88Python%E6%95%99%E7%A8%8B%EF%BC%89/" title="网页图片批量获取（Python教程）">
-                <span>2020/06/25</span>
-                <span>网页图片批量获取（Python教程）</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/06/24/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" title="火柴软件使用说明">
-                <span>2020/06/24</span>
-                <span>火柴软件使用说明</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/03/31/this-nextTick/" title="this.$nextTick">
-                <span>2020/03/31</span>
-                <span>this.$nextTick</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/25/nodejs%E7%9A%84stream/" title="nodejs的stream">
-                <span>2020/02/25</span>
-                <span>nodejs的stream</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/15/%E9%80%9A%E8%BF%87%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BD%BF%E7%94%A8gm%E8%A3%81%E5%89%AA%E5%9B%BE%E7%89%87/" title="通过控制台使用gm裁剪图片">
-                <span>2020/02/15</span>
-                <span>通过控制台使用gm裁剪图片</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/05/gm%E8%A3%81%E5%88%87%E5%9B%BE%E7%89%87-1/" title="gm裁切图片(1)">
-                <span>2020/02/05</span>
-                <span>gm裁切图片(1)</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a>
-</div>
-</div>
+      <div class="title">js学习笔记回收机制</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/18</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js学习笔记回收机制">js学习笔记回收机制</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="JS何时回收一个内存">JS何时回收一个内存<a class="post-anchor" href="#JS何时回收一个内存"></a></h3><p>满足以下两个条件的《变量》的内存会被回收<br>1.该变量是在局部作用域(函数作用域)内声明，而非全局作用域下声明。<br>2.没有《任何别域下的变量》可以通过间接或直接的方式访问到它。</p>
+<h4 id="例1：">例1：<a class="post-anchor" href="#例1："></a></h4><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">var</span> b = <span class="hljs-number">2</span>
+    c = <span class="hljs-number">3</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+        <span class="hljs-keyword">return</span> a
+    &#125;
+&#125;
+<span class="hljs-keyword">var</span> x = f1();
+<span class="hljs-comment">// 本次f1执行所产生的执行期上下文中有</span>
+<span class="hljs-comment">// a 变量</span>
+<span class="hljs-comment">// b 变量</span>
+<span class="hljs-comment">// 一个匿名函数function</span>
+
+<span class="hljs-comment">// 在这里f1执行完毕。开始进行垃圾内存检测</span>
+<span class="hljs-comment">// a 可以被 x() 访问到，所以不会被回收</span>
+<span class="hljs-comment">// b没有《任何别域下的变量》可以访问到，会被回收</span>
+<span class="hljs-comment">// 匿名函数function被x访问到。所以不会被回收</span>
+<span class="hljs-comment">// c 相当于在全局window.c上，所以不会被回收</span></code></pre>
+
+<h4 id="例2：">例2：<a class="post-anchor" href="#例2："></a></h4><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-keyword">var</span> a = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> &#123;
+        <span class="hljs-attr">num</span>: a++
+    &#125;
+&#125;
+<span class="hljs-keyword">var</span> x = f1();
+<span class="hljs-comment">// 本次f1执行所产生的执行期上下文中有</span>
+<span class="hljs-comment">// a 变脸</span>
+<span class="hljs-comment">// 一个对象匿名对象object</span>
+
+<span class="hljs-comment">// a 可以被 x.num 访问到，所以当f1执行完后不会被回收</span>
+<span class="hljs-comment">// 匿名对象被x访问到。所以不会被回收</span></code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%AD%A3%E5%88%99reg/">js学习笔记正则reg</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/18/js学习笔记回收机制/">https://codermino.github.io/2020/08/18/js学习笔记回收机制/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
