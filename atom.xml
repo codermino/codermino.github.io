@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-18T11:32:49.755Z</updated>
+  <updated>2020-08-19T05:54:38.390Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>scss语法</title>
+    <link href="https://codermino.github.io/2020/08/19/scss%E8%AF%AD%E6%B3%95/"/>
+    <id>https://codermino.github.io/2020/08/19/scss%E8%AF%AD%E6%B3%95/</id>
+    <published>2020-08-19T04:40:48.000Z</published>
+    <updated>2020-08-19T05:54:38.390Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/scss/scss.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/scss/scss.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;嵌套&quot;&gt;嵌套&lt;a class=
+      
+    
+    </summary>
+    
+    
+      <category term="scss" scheme="https://codermino.github.io/categories/scss/"/>
+    
+    
+      <category term="scss语法" scheme="https://codermino.github.io/tags/scss%E8%AF%AD%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>冷门且有用的css</title>
@@ -476,31 +501,6 @@
     
     
       <category term="mysql知识点总结和应用2" scheme="https://codermino.github.io/tags/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A82/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql知识点总结和应用1</title>
-    <link href="https://codermino.github.io/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A81/"/>
-    <id>https://codermino.github.io/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A81/</id>
-    <published>2020-08-14T11:18:48.000Z</published>
-    <updated>2020-08-14T11:58:11.813Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/mysql/mysql.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/mysql/mysql.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;索引&quot;&gt;索引&lt;a cl
-      
-    
-    </summary>
-    
-    
-      <category term="mysql" scheme="https://codermino.github.io/categories/mysql/"/>
-    
-    
-      <category term="mysql知识点总结和应用1" scheme="https://codermino.github.io/tags/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A81/"/>
     
   </entry>
   
