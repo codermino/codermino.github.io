@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020/8 - Mino
+      客户端渲染和服务端渲染 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端渲染-vs-客户端渲染"><span class="toc-text">服务端渲染 vs 客户端渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#服务端渲染"><span class="toc-text">服务端渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端渲染"><span class="toc-text">客户端渲染</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异同"><span class="toc-text">异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利弊"><span class="toc-text">利弊</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,115 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020/8
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AF%B9%E8%B1%A1object/" title="js学习笔记对象object">
-                <span>2020/08/18</span>
-                <span>js学习笔记对象object</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AD%97%E7%AC%A6%E4%B8%B2string/" title="js学习笔记字符串string">
-                <span>2020/08/18</span>
-                <span>js学习笔记字符串string</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bes6/" title="js学习笔记之es6">
-                <span>2020/08/17</span>
-                <span>js学习笔记之es6</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="js学习笔记之正则表达式">
-                <span>2020/08/17</span>
-                <span>js学习笔记之正则表达式</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" title="js学习笔记之数组方法">
-                <span>2020/08/17</span>
-                <span>js学习笔记之数组方法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/" title="js学习笔记之函数">
-                <span>2020/08/17</span>
-                <span>js学习笔记之函数</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/" title="js学习笔记之类">
-                <span>2020/08/17</span>
-                <span>js学习笔记之类</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/16/webstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="webstorm常用快捷键">
-                <span>2020/08/16</span>
-                <span>webstorm常用快捷键</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/15/computed%E7%9A%84get%E5%92%8Cset/" title="computed的get和set">
-                <span>2020/08/15</span>
-                <span>computed的get和set</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/vue%E5%88%AB%E5%90%8D%E5%92%8C%E6%B3%A2%E6%B5%AA%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="vue别名和波浪号的使用">
-                <span>2020/08/14</span>
-                <span>vue别名和波浪号的使用</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/08/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/08/page/3/">3</a><a class="page-number" href="/archives/2020/08/page/4/">4</a>
-</div>
-</div>
+      <div class="title">客户端渲染和服务端渲染</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/21</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/客户端渲染和服务端渲染">客户端渲染和服务端渲染</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="服务端渲染-vs-客户端渲染">服务端渲染 vs 客户端渲染<a class="post-anchor" href="#服务端渲染-vs-客户端渲染"></a></h3><h4 id="服务端渲染">服务端渲染<a class="post-anchor" href="#服务端渲染"></a></h4><pre><code class="hljs markdown">服务端在返回 html 之前，在特定的区域，符号里用数据填充，再给客户端，客户端只负责解析 HTML 。</code></pre>
+
+<p><a href="/images/csrssr/ssr.png" data-caption="ssr" data-fancybox="images"><img src="/images/csrssr/ssr.png" alt="ssr"></a></p>
+<p>服务端渲染<br>也被称为 fat-server, thin-client 模式<br><a href="/images/csrssr/ssr2.webp" data-caption="ssr2" data-fancybox="images"><img src="/images/csrssr/ssr2.webp" alt="ssr2"></a></p>
+<h4 id="客户端渲染">客户端渲染<a class="post-anchor" href="#客户端渲染"></a></h4><pre><code class="hljs markdown">html 仅仅作为静态文件，客户端端在请求时，
+服务端不做任何处理，直接以原文件的形式返回给客户端客户端，
+然后根据 html 上的 JavaScript，生成 DOM 插入 html。</code></pre>
+<p><a href="/images/csrssr/csr.webp" data-caption="csr" data-fancybox="images"><img src="/images/csrssr/csr.webp" alt="csr"></a><br>客户端渲染<br>也被称为 fat-client, thin-server 模式<br><a href="/images/csrssr/csr2.webp" data-caption="csr2" data-fancybox="images"><img src="/images/csrssr/csr2.webp" alt="csr2"></a></p>
+<h3 id="异同">异同<a class="post-anchor" href="#异同"></a></h3><ul>
+<li><p>渲染本质一样，都是字符串拼接，将数据渲染进一些固定格式的html代码中形成最终的html展示在用户页面上。</p>
+</li>
+<li><p>拼接字符串必然引起性能的消耗。<br>服务端渲染性能消耗在服务端，当用户量比较多时，缓存部分数据以避免过多数据重复渲染。<br>客户端渲染，如当下火热的 spa 框架，Angular、React、Vue，在首次渲染时，<br>大多是将原 html 中的数据标记（如  ）替换。<br>客户端渲染较难的一点是数据更新以后，页面响应式更新时如何节省资源，直接 DOM 的读写，是很消耗性能的。<br>Vue 2.0 + 有 Vnode，进行 diff 后，渲染到页面上。</p>
+<h3 id="利弊">利弊<a class="post-anchor" href="#利弊"></a></h3><p><a href="/images/csrssr/lb.webp" data-caption="lb" data-fancybox="images"><img src="/images/csrssr/lb.webp" alt="lb"></a></p>
+</li>
+</ul>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/19/win10%E5%BF%AB%E6%8D%B7%E9%94%AE/">win10快捷键</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/21/客户端渲染和服务端渲染/">https://codermino.github.io/2020/08/21/客户端渲染和服务端渲染/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
