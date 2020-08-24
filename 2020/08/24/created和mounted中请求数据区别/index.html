@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020 - Mino
+      created和mounted中请求数据区别 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,159 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/02/01/session%E7%9A%84%E4%BD%BF%E7%94%A8/" title="session的使用">
-                <span>2020/02/01</span>
-                <span>session的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/01/cookie%E7%9A%84%E4%BD%BF%E7%94%A8/" title="cookie的使用">
-                <span>2020/02/01</span>
-                <span>cookie的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/30/app-use%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="app.use中间件">
-                <span>2020/01/30</span>
-                <span>app.use中间件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" title="将ejs模板引擎修改为html模板引擎">
-                <span>2020/01/29</span>
-                <span>将ejs模板引擎修改为html模板引擎</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/29/body-parser%E7%9A%84%E4%BD%BF%E7%94%A8/" title="body-parser的使用">
-                <span>2020/01/29</span>
-                <span>body-parser的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="express模板的使用">
-                <span>2020/01/28</span>
-                <span>express模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="ejs模板的使用">
-                <span>2020/01/28</span>
-                <span>ejs模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/" title="formidable上传文件改名">
-                <span>2020/01/25</span>
-                <span>formidable上传文件改名</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/nodejs%E7%9A%84formidable/" title="nodejs的formidable">
-                <span>2020/01/25</span>
-                <span>nodejs的formidable</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/" title="mongodb操作">
-                <span>2020/01/12</span>
-                <span>mongodb操作</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/5/">5</a><a class="page-number" href="/archives/2020/page/6/">6</a><span class="page-number current">7</span>
-</div>
-</div>
+      <div class="title">created和mounted中请求数据区别</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/24</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/created和mounted中请求数据区别">created和mounted中请求数据区别</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<ol>
+<li>JavaScript 的 EventLoop 。</li>
+<li>vue 生命周期钩子函数中的异步操作会放在事件队列中，也就是说不会在这个钩子函数中执行。<br> 所以在 created 和 mounted 中请求异步数据是一样的，两者都不会立即进行数据更新，所以不会导致虚拟 DOM 的重载，<br> 更不会影响到真实视图。</li>
+<li>vue 生命周期钩子函数中异步数据的赋值，是不会在该钩子函数中执行的，而是在一遍流程结束后，才会处理其中的异步操作。<br> 所以本阶段不会触发数据更新，也不会触发虚拟 DOM 重新载入，更不存在找不到 DOM 元素渲染。</li>
+</ol>
+<h4 id="例子">例子<a class="post-anchor" href="#例子"></a></h4><pre><code class="hljs js"><span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> Vue(&#123;
+  <span class="hljs-attr">el</span>: <span class="hljs-string">'#app'</span>,
+
+  <span class="hljs-attr">data</span>: &#123;
+    <span class="hljs-attr">num</span>: <span class="hljs-number">0</span>
+  &#125;,
+
+  <span class="hljs-keyword">async</span> created() &#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'created'</span>)
+    <span class="hljs-keyword">this</span>.num = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.getData(<span class="hljs-string">'created'</span>)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'获取异步数据结束'</span>)
+    <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'created获取异步数据完成时长'</span>)
+  &#125;,
+
+  beforeMount() &#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'beforeMounted'</span>)
+  &#125;,
+
+  <span class="hljs-keyword">async</span> mounted() &#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'mounted'</span>)
+    <span class="hljs-keyword">this</span>.num = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.getData(<span class="hljs-string">'mounted'</span>)
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'获取异步数据结束'</span>)
+    <span class="hljs-built_in">console</span>.timeEnd(<span class="hljs-string">'mounted获取异步数据完成时长'</span>)
+  &#125;,
+
+  updated() &#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'updated'</span>)
+  &#125;,
+
+  <span class="hljs-attr">methods</span>: &#123;
+    <span class="hljs-comment">// 模拟异步请求</span>
+    getData(lifecycle) &#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span class="hljs-subst">$&#123;lifecycle&#125;</span>开始获取异步数据`</span>)
+      <span class="hljs-keyword">if</span> (lifecycle === <span class="hljs-string">'created'</span>) &#123;
+        <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'created获取异步数据完成时长'</span>)
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-built_in">console</span>.time(<span class="hljs-string">'mounted获取异步数据完成时长'</span>)
+      &#125;
+      <span class="hljs-keyword">const</span> genRandomNum = <span class="hljs-function">(<span class="hljs-params">min, max</span>) =&gt;</span> (<span class="hljs-built_in">Math</span>.random() * (max - min + <span class="hljs-number">1</span>) | <span class="hljs-number">0</span>) + min
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> &#123;
+        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+          resolve(genRandomNum(<span class="hljs-number">100</span>, <span class="hljs-number">3000</span>))
+        &#125;, <span class="hljs-number">2000</span>)
+      &#125;)
+    &#125;
+  &#125;,
+&#125;)</code></pre>
+
+<p><a href="/images/createdmounted/createdmounted.jpg" data-caption data-fancybox="images"><img src="/images/createdmounted/createdmounted.jpg" alt></a></p>
+<pre><code class="hljs markdown">以上代码运行结果如下图所示，可以看到，在 created 和 mounted 中请求异步数据，
+都不会立即触发数据的更新，并且在这两个生命周期中获取异步数据更新的时长可以说是几乎一致的。
+vue 生命周期的钩子函数中的异步操作，都会在一遍流程走完之后，才会进行数据赋值操作，触发 update ，
+此外 DOM 的更新也是异步的，监听数据变化时，启动一个队列，进行视图更新。</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/24/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/">localstorage和sessionstorage区别</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/24/created和mounted中请求数据区别/">https://codermino.github.io/2020/08/24/created和mounted中请求数据区别/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
