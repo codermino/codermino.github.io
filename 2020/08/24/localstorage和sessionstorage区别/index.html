@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      客户端渲染和服务端渲染 - Mino
+      localstorage和sessionstorage区别 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端渲染-vs-客户端渲染"><span class="toc-text">服务端渲染 vs 客户端渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#服务端渲染"><span class="toc-text">服务端渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#客户端渲染"><span class="toc-text">客户端渲染</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异同"><span class="toc-text">异同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利弊"><span class="toc-text">利弊</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sessionStorage"><span class="toc-text">sessionStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#localStorage"><span class="toc-text">localStorage</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#同源的判断规则："><span class="toc-text">同源的判断规则：</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">客户端渲染和服务端渲染</div>
+      <div class="title">localstorage和sessionstorage区别</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/08/21</span>
+          <span>2020/08/24</span>
         </span>
 
         
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/客户端渲染和服务端渲染">客户端渲染和服务端渲染</a>
+                    <a href="/tags/localstorage和sessionstorage区别">localstorage和sessionstorage区别</a>
                   
                 
             </span>
@@ -195,21 +195,81 @@
       <div>
       </div>
     </div>
-    <h3 id="服务端渲染-vs-客户端渲染">服务端渲染 vs 客户端渲染<a class="post-anchor" href="#服务端渲染-vs-客户端渲染"></a></h3><h4 id="服务端渲染">服务端渲染<a class="post-anchor" href="#服务端渲染"></a></h4><pre><code class="hljs markdown">服务端在返回 html 之前，在特定的区域，符号里用数据填充，再给客户端，客户端只负责解析 HTML 。</code></pre>
+    <h3 id="概述">概述<a class="post-anchor" href="#概述"></a></h3><pre><code class="hljs markdown">localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。
+他们均只能存储字符串类型的对象（虽然规范中可以存储其他原生类型的对象，但是目前为止没有浏览器对其进行实现）。
+localStorage生命周期是永久，这意味着除非用户主动在浏览器上清除localStorage信息，否则这些信息将永远存在。
+sessionStorage生命周期为当前窗口或标签页，一旦窗口或标签页被永久关闭了，那么所有通过sessionStorage存储的数据也就被清空了。</code></pre>
 
-<p><a href="/images/csrssr/ssr.png" data-caption="ssr" data-fancybox="images"><img src="/images/csrssr/ssr.png" alt="ssr"></a></p>
-<p>服务端渲染<br>也被称为 fat-server, thin-client 模式<br><a href="/images/csrssr/ssr2.webp" data-caption="ssr2" data-fancybox="images"><img src="/images/csrssr/ssr2.webp" alt="ssr2"></a></p>
-<h4 id="客户端渲染">客户端渲染<a class="post-anchor" href="#客户端渲染"></a></h4><pre><code class="hljs markdown">html 仅仅作为静态文件，客户端端在请求时，
-服务端不做任何处理，直接以原文件的形式返回给客户端客户端，
-然后根据 html 上的 JavaScript，生成 DOM 插入 html。</code></pre>
-<p><a href="/images/csrssr/csr.webp" data-caption="csr" data-fancybox="images"><img src="/images/csrssr/csr.webp" alt="csr"></a><br>客户端渲染<br>也被称为 fat-client, thin-server 模式<br><a href="/images/csrssr/csr2.webp" data-caption="csr2" data-fancybox="images"><img src="/images/csrssr/csr2.webp" alt="csr2"></a></p>
-<h3 id="异同">异同<a class="post-anchor" href="#异同"></a></h3><ul>
-<li><p>渲染本质一样，都是字符串拼接，将数据渲染进一些固定格式的html代码中形成最终的html展示在用户页面上。</p>
+<h4 id="sessionStorage">sessionStorage<a class="post-anchor" href="#sessionStorage"></a></h4><pre><code class="hljs markdown">sessionStorage 是HTML5新增的一个会话存储对象,用于临时保存同一窗口(或标签页)的数据,
+在关闭窗口或标签页之后将会删除这些数据。</code></pre>
+
+<h5 id="使用">使用<a class="post-anchor" href="#使用"></a></h5><ol>
+<li><p>setItem 存储 value<br>用途：将 value 存储到 key 字段</p>
+<p>用法：.setItem( key, value)</p>
+<p>代码示例：</p>
+<pre><code class="hljs js">sessionStorage.setItem(<span class="hljs-string">"key"</span>, <span class="hljs-string">"value"</span>); 	
+localStorage.setItem(<span class="hljs-string">"site"</span>, <span class="hljs-string">"js8.in"</span>);</code></pre>
 </li>
-<li><p>拼接字符串必然引起性能的消耗。<br>服务端渲染性能消耗在服务端，当用户量比较多时，缓存部分数据以避免过多数据重复渲染。<br>客户端渲染，如当下火热的 spa 框架，Angular、React、Vue，在首次渲染时，<br>大多是将原 html 中的数据标记（如  ）替换。<br>客户端渲染较难的一点是数据更新以后，页面响应式更新时如何节省资源，直接 DOM 的读写，是很消耗性能的。<br>Vue 2.0 + 有 Vnode，进行 diff 后，渲染到页面上。</p>
-<h3 id="利弊">利弊<a class="post-anchor" href="#利弊"></a></h3><p><a href="/images/csrssr/lb.webp" data-caption="lb" data-fancybox="images"><img src="/images/csrssr/lb.webp" alt="lb"></a></p>
+<li><p>getItem 获取 value<br> 用途：获取指定 key 本地存储的值</p>
+<p> 用法： .getItem(key)</p>
+<p> 代码示例：</p>
+<pre><code class="hljs js">  <span class="hljs-keyword">var</span> value = sessionStorage.getItem(<span class="hljs-string">"key"</span>); 	<span class="hljs-keyword">var</span> site = localStorage.getItem(<span class="hljs-string">"site"</span>);
+
+<span class="hljs-comment">//滚动时保存滚动位置</span>
+$(<span class="hljs-built_in">window</span>).scroll(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+<span class="hljs-keyword">if</span>($(<span class="hljs-built_in">document</span>).scrollTop()!=<span class="hljs-number">0</span>)&#123;
+    sessionStorage.setItem(<span class="hljs-string">"offsetTop"</span>, $(<span class="hljs-built_in">window</span>).scrollTop());<span class="hljs-comment">//保存滚动位置</span>
+    &#125; 
+&#125;);
+<span class="hljs-comment">//onload时，取出并滚动到上次保存位置</span>
+ 
+<span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)
+</span>&#123;
+    <span class="hljs-keyword">var</span> _offset = sessionStorage.getItem(<span class="hljs-string">"offsetTop"</span>);
+    $(<span class="hljs-built_in">document</span>).scrollTop(offsetTop);
+&#125;;</code></pre>
+
 </li>
-</ul>
+</ol>
+<h4 id="localStorage">localStorage<a class="post-anchor" href="#localStorage"></a></h4><pre><code class="hljs markdown">不同浏览器无法共享localStorage或sessionStorage中的信息。
+相同浏览器的不同页面间可以共享相同的 localStorage（页面属于相同域名和端口），
+但是不同页面或标签页间无法共享sessionStorage的信息。这里需要注意的是，页面及标 签页仅指顶级窗口，
+如果一个标签页包含多个iframe标签且他们属于同源页面，那么他们之间是可以共享sessionStorage的。</code></pre>
+
+<h5 id="同源的判断规则：">同源的判断规则：<a class="post-anchor" href="#同源的判断规则："></a></h5><pre><code class="hljs markdown">www.test.com
+
+www.test.com （不同源，因为协议不同）
+
+my.test.com（不同源，因为主机名不同）
+
+www.test.com:8080（不同源，因为端口不同）</code></pre>
+
+<p>localStorage和sessionStorage使用时使用相同的API：</p>
+<pre><code class="hljs js">localStorage.setItem(<span class="hljs-string">"key"</span>,<span class="hljs-string">"value"</span>);    <span class="hljs-comment">//以“key”为名称存储一个值“value”</span>
+
+localStorage.getItem(<span class="hljs-string">"key"</span>);    <span class="hljs-comment">//获取名称为“key”的值</span></code></pre>
+<p>枚举localStorage的方法：</p>
+<pre><code class="hljs js"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;localStorage.length;i++)&#123;
+
+    <span class="hljs-keyword">var</span> name = localStorage.key(i);
+
+    <span class="hljs-keyword">var</span> value = localStorage.getItem(name);
+
+&#125;</code></pre>
+<p>删除localStorage中存储信息的方法：</p>
+<pre><code class="hljs js">localStorage.removeItem(<span class="hljs-string">"key"</span>); <span class="hljs-comment">//删除名称为“key”的信息。</span>
+
+localStorage.clear();   <span class="hljs-comment">//清空localStorage中所有信息</span></code></pre>
+
+<p>例如：</p>
+<pre><code class="hljs js">localStorage.key = <span class="hljs-built_in">JSON</span>.stringify(&#123;<span class="hljs-attr">value1</span>:<span class="hljs-string">"value1"</span>&#125;);
+
+localStorage.key.value1=<span class="hljs-string">'a'</span>; <span class="hljs-comment">// 无效</span></code></pre>
+
+<p>这里是无法对实际存储的值产生作用的，下面的写法也不可以：</p>
+<pre><code class="hljs js">localStorage.getItem(<span class="hljs-string">"key"</span>).value1=<span class="hljs-string">"a"</span>;</code></pre>
+
+<p>localStorage 中的键值对总是以字符串的形式存储。这意味着数值类型、复杂数据类型会自动转化为字符串类型。</p>
 
 
   
@@ -236,12 +296,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/08/24/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/">localstorage和sessionstorage区别</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/08/19/win10%E5%BF%AB%E6%8D%B7%E9%94%AE/">win10快捷键</a>
+          <a href="/2020/08/21/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/">客户端渲染和服务端渲染</a>
         
     </div>
   </div>
@@ -253,7 +311,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/08/21/客户端渲染和服务端渲染/">https://codermino.github.io/2020/08/21/客户端渲染和服务端渲染/</a>
+      永久链接：<a href="https://codermino.github.io/2020/08/24/localstorage和sessionstorage区别/">https://codermino.github.io/2020/08/24/localstorage和sessionstorage区别/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-21T16:12:03.547Z</updated>
+  <updated>2020-08-24T08:15:02.408Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>localstorage和sessionstorage区别</title>
+    <link href="https://codermino.github.io/2020/08/24/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/"/>
+    <id>https://codermino.github.io/2020/08/24/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/</id>
+    <published>2020-08-24T07:45:18.000Z</published>
+    <updated>2020-08-24T08:15:02.408Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;概述&quot;&gt;概述&lt;a class=&quot;post-anchor&quot; href=&quot;#概述&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs markdown&quot;&gt;localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。
+他们均
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="localstorage和sessionstorage区别" scheme="https://codermino.github.io/tags/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>客户端渲染和服务端渲染</title>
@@ -476,31 +501,6 @@
     
     
       <category term="computed的get和set" scheme="https://codermino.github.io/tags/computed%E7%9A%84get%E5%92%8Cset/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue别名和波浪号的使用</title>
-    <link href="https://codermino.github.io/2020/08/14/vue%E5%88%AB%E5%90%8D%E5%92%8C%E6%B3%A2%E6%B5%AA%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://codermino.github.io/2020/08/14/vue%E5%88%AB%E5%90%8D%E5%92%8C%E6%B3%A2%E6%B5%AA%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-08-14T15:44:48.000Z</published>
-    <updated>2020-08-14T16:04:47.791Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;使用方法&quot;&gt;使用方法&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue别名和波浪号的使用" scheme="https://codermino.github.io/tags/vue%E5%88%AB%E5%90%8D%E5%92%8C%E6%B3%A2%E6%B5%AA%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     
   </entry>
   
