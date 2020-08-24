@@ -255,6 +255,13 @@
 vue 生命周期的钩子函数中的异步操作，都会在一遍流程走完之后，才会进行数据赋值操作，触发 update ，
 此外 DOM 的更新也是异步的，监听数据变化时，启动一个队列，进行视图更新。</code></pre>
 
+<ol>
+<li>在 created 或 mounted 钩子函数中请求数据都是可以的。</li>
+<li>在 vue ssr 中，vue 的生命周期中没有 mounted 这个钩子函数，所以 ssr 中无法在 mounted 获取异步数据。</li>
+<li>宏任务之后是微任务，微任务过后是布局渲染，此时再执行请求后的回调并完成赋值。created 和 mounted 的区别就出现了，这样相比，created 中请求比 mounted 更快一点。</li>
+<li>也要考虑业务场景，需要 DOM 触发的请求，放在 created 中去，怎么放都请求不到。</li>
+</ol>
+
 
   
     <div class="post-reward">
