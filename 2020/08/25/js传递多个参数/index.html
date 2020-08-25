@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020 - Mino
+      js传递多个参数 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在es6之前，一半使用arguments作为不定数参数传输的参数获取途径"><span class="toc-text">在es6之前，一半使用arguments作为不定数参数传输的参数获取途径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在es6中可以用…来命名不定数参数名，"><span class="toc-text">在es6中可以用…来命名不定数参数名，</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,127 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/02/05/gm%E8%A3%81%E5%88%87%E5%9B%BE%E7%89%87-1/" title="gm裁切图片(1)">
-                <span>2020/02/05</span>
-                <span>gm裁切图片(1)</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/05/md5%E5%8A%A0%E5%AF%86%E6%B3%A8%E5%86%8C%E8%A1%A8%E5%8D%95/" title="md5加密注册表单">
-                <span>2020/02/05</span>
-                <span>md5加密注册表单</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/01/session%E7%9A%84%E4%BD%BF%E7%94%A8/" title="session的使用">
-                <span>2020/02/01</span>
-                <span>session的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/01/cookie%E7%9A%84%E4%BD%BF%E7%94%A8/" title="cookie的使用">
-                <span>2020/02/01</span>
-                <span>cookie的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/30/app-use%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="app.use中间件">
-                <span>2020/01/30</span>
-                <span>app.use中间件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/29/%E4%BD%BF%E7%94%A8html%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" title="将ejs模板引擎修改为html模板引擎">
-                <span>2020/01/29</span>
-                <span>将ejs模板引擎修改为html模板引擎</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/29/body-parser%E7%9A%84%E4%BD%BF%E7%94%A8/" title="body-parser的使用">
-                <span>2020/01/29</span>
-                <span>body-parser的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="express模板的使用">
-                <span>2020/01/28</span>
-                <span>express模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="ejs模板的使用">
-                <span>2020/01/28</span>
-                <span>ejs模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/" title="formidable上传文件改名">
-                <span>2020/01/25</span>
-                <span>formidable上传文件改名</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/5/">5</a><a class="page-number" href="/archives/2020/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/2020/page/8/">8</a>
-</div>
-</div>
+      <div class="title">js传递多个参数</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/25</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js传递多个参数">js传递多个参数</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="在es6之前，一半使用arguments作为不定数参数传输的参数获取途径">在es6之前，一半使用arguments作为不定数参数传输的参数获取途径<a class="post-anchor" href="#在es6之前，一半使用arguments作为不定数参数传输的参数获取途径"></a></h3><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc</span>(<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">let</span> len = <span class="hljs-built_in">arguments</span>.length;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt;len ; j++) &#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>[i]);
+  &#125;
+&#125;
+abc(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);</code></pre>
+
+<h3 id="在es6中可以用…来命名不定数参数名，">在es6中可以用…来命名不定数参数名，<a class="post-anchor" href="#在es6中可以用…来命名不定数参数名，"></a></h3><p>这样比之前版本比可以起一个更有意义的参数名<br>需要注意的是不定参数只能是最后一个参数，且一个函数定义中只能有一个不定参数</p>
+<pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc1</span>(<span class="hljs-params">...vars</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> len = vars.length;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt;len ; j++) &#123;
+    <span class="hljs-built_in">console</span>.log(vars[i]);
+  &#125;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc2</span>(<span class="hljs-params">name,...vars</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> len = vars.length;
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt;len ; j++) &#123;
+    <span class="hljs-built_in">console</span>.log(name);
+    <span class="hljs-built_in">console</span>.log(vars[i]);
+  &#125;
+&#125;
+
+abc1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
+abc2(<span class="hljs-string">'zhangsan'</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/24/Math-max-apply%E5%92%8CMath-max%E7%9A%84%E5%8C%BA%E5%88%AB/">Math.max.apply和Math.max的区别</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/25/js传递多个参数/">https://codermino.github.io/2020/08/25/js传递多个参数/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020

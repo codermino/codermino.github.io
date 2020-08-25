@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-24T12:30:18.788Z</updated>
+  <updated>2020-08-25T14:45:03.929Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js传递多个参数</title>
+    <link href="https://codermino.github.io/2020/08/25/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/"/>
+    <id>https://codermino.github.io/2020/08/25/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/</id>
+    <published>2020-08-25T14:39:40.000Z</published>
+    <updated>2020-08-25T14:45:03.929Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
+    
+    
+      <category term="js传递多个参数" scheme="https://codermino.github.io/tags/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Math.max.apply和Math.max的区别</title>
@@ -477,30 +501,6 @@
     
     
       <category term="js学习笔记之函数" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js学习笔记之类</title>
-    <link href="https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/"/>
-    <id>https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/</id>
-    <published>2020-08-17T02:26:38.000Z</published>
-    <updated>2020-08-17T03:19:56.002Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js学习笔记之类" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/"/>
     
   </entry>
   
