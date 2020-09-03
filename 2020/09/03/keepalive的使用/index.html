@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      js传递多个参数 - Mino
+      keepalive的使用 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在es6之前，一半使用arguments作为不定数参数传输的参数获取途径"><span class="toc-text">在es6之前，一半使用arguments作为不定数参数传输的参数获取途径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在es6中可以用…来命名不定数参数名，"><span class="toc-text">在es6中可以用…来命名不定数参数名，</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue中keep-alive的深入理解和使用"><span class="toc-text">Vue中keep-alive的深入理解和使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是keep-alive"><span class="toc-text">什么是keep-alive?</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参数理解"><span class="toc-text">参数理解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配合router使用"><span class="toc-text">配合router使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#防坑指南"><span class="toc-text">防坑指南</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">js传递多个参数</div>
+      <div class="title">keepalive的使用</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/08/25</span>
+          <span>2020/09/03</span>
         </span>
 
         
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/javascript">javascript</a>
+                  <a href="/categories/vue">vue</a>
                 
               
           </span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/js传递多个参数">js传递多个参数</a>
+                    <a href="/tags/keepalive的使用">keepalive的使用</a>
                   
                 
             </span>
@@ -195,33 +195,101 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
-<h3 id="在es6之前，一半使用arguments作为不定数参数传输的参数获取途径">在es6之前，一半使用arguments作为不定数参数传输的参数获取途径<a class="post-anchor" href="#在es6之前，一半使用arguments作为不定数参数传输的参数获取途径"></a></h3><pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc</span>(<span class="hljs-params"></span>) </span>&#123;
-  <span class="hljs-keyword">let</span> len = <span class="hljs-built_in">arguments</span>.length;
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt;len ; j++) &#123;
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">arguments</span>[i]);
-  &#125;
-&#125;
-abc(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);</code></pre>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="Vue中keep-alive的深入理解和使用">Vue中keep-alive的深入理解和使用<a class="post-anchor" href="#Vue中keep-alive的深入理解和使用"></a></h3><h4 id="什么是keep-alive">什么是keep-alive?<a class="post-anchor" href="#什么是keep-alive"></a></h4><pre><code class="hljs markdown">在平常开发中，有部分组件没有必要多次初始化，这时，我们需要将组件进行持久化，使组件的状态维持不变，
+在下一次展示时，也不会进行重新初始化组件。
+也就是说，kee-alive 是 Vue 内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染 。
+也就是所谓的组件缓存</code></pre>
+<h4 id="基本用法">基本用法<a class="post-anchor" href="#基本用法"></a></h4><pre><code class="hljs vue">&#x2F;&#x2F;被keep-alive包含的组件会被缓存
+&lt;keep-alive&gt;
+    &lt;component &#x2F;&gt;
+&lt;&#x2F;keep-alive&gt;</code></pre>
+<p>被keep-alive包含的组件不会被再次初始化，也就意味着不会重走生命周期函数<br>但是有时候是希望我们缓存的组件可以能够再次进行渲染，这时Vue为我们解决了这个问题<br>被包含在 keep-alive 中创建的组件，会多出两个生命周期的钩子: activated 与 deactivated：</p>
+<ul>
+<li>activated 当 keep-alive 包含的组件再次渲染的时候触发</li>
+<li>deactivated 当 keep-alive 包含的组件销毁的时候触发</li>
+</ul>
+<p>keep-alive是一个抽象的组件，缓存的组件不会被mounted,为此提供activated和deactivated钩子函数<br>在2.1.0 版本后keep-alive新加入了两个属性: include(包含的组件缓存生效) 与<br>exclude(排除的组件不缓存，优先级大于include) 。</p>
+<h4 id="参数理解">参数理解<a class="post-anchor" href="#参数理解"></a></h4><p>keep-alive可以接收3个属性做为参数进行匹配对应的组件进行缓存:</p>
+<ul>
+<li>include包含的组件(可以为字符串，数组，以及正则表达式,只有匹配的组件会被缓存)</li>
+<li>exclude排除的组件(以为字符串，数组，以及正则表达式,任何匹配的组件都不会被缓存)</li>
+<li>max缓存组件的最大值(类型为字符或者数字,可以控制缓存组件的个数)</li>
+</ul>
+<p>注：当使用正则表达式或者数组时，一定要使用v-bind<br>代码示例:</p>
+<pre><code class="hljs vue">&#x2F;&#x2F; 只缓存组件name为a或者b的组件
+&lt;keep-alive include&#x3D;&quot;a,b&quot;&gt; 
+  &lt;component &#x2F;&gt;
+&lt;&#x2F;keep-alive&gt;
 
-<h3 id="在es6中可以用…来命名不定数参数名，">在es6中可以用…来命名不定数参数名，<a class="post-anchor" href="#在es6中可以用…来命名不定数参数名，"></a></h3><p>这样比之前版本比可以起一个更有意义的参数名<br>需要注意的是不定参数只能是最后一个参数，且一个函数定义中只能有一个不定参数</p>
-<pre><code class="hljs js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc1</span>(<span class="hljs-params">...vars</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> len = vars.length;
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt;len ; j++) &#123;
-    <span class="hljs-built_in">console</span>.log(vars[i]);
-  &#125;
-&#125;
+&#x2F;&#x2F; 组件name为c的组件不缓存(可以保留它的状态或避免重新渲染)
+&lt;keep-alive exclude&#x3D;&quot;c&quot;&gt; 
+  &lt;component &#x2F;&gt;
+&lt;&#x2F;keep-alive&gt;
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abc2</span>(<span class="hljs-params">name,...vars</span>) </span>&#123;
-  <span class="hljs-keyword">let</span> len = vars.length;
-  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> j = <span class="hljs-number">0</span>; j &lt;len ; j++) &#123;
-    <span class="hljs-built_in">console</span>.log(name);
-    <span class="hljs-built_in">console</span>.log(vars[i]);
-  &#125;
-&#125;
+&#x2F;&#x2F; 如果同时使用include,exclude,那么exclude优先于include， 下面的例子只缓存a组件
+&lt;keep-alive include&#x3D;&quot;a,b&quot; exclude&#x3D;&quot;b&quot;&gt; 
+  &lt;component &#x2F;&gt;
+&lt;&#x2F;keep-alive&gt;
 
-abc1(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-abc2(<span class="hljs-string">'zhangsan'</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>);</code></pre>
+&#x2F;&#x2F; 如果缓存的组件超过了max设定的值5，那么将删除第一个缓存的组件
+&lt;keep-alive exclude&#x3D;&quot;c&quot; max&#x3D;&quot;5&quot;&gt; 
+  &lt;component &#x2F;&gt;
+&lt;&#x2F;keep-alive&gt;</code></pre>
+
+<h4 id="配合router使用">配合router使用<a class="post-anchor" href="#配合router使用"></a></h4><p>router-view也是一个组件，如果直接被包在keepalive里面，那么所有路径匹配到的视图组件都会被缓存，如下：</p>
+<pre><code class="hljs vue">&lt;keep-alive&gt;
+    &lt;router-view&gt;
+        &lt;!-- 所有路径匹配到的视图组件都会被缓存！ --&gt;
+    &lt;&#x2F;router-view&gt;
+&lt;&#x2F;keep-alive&gt;</code></pre>
+
+<p>如果只想要router-view里面的某个组件被缓存，怎么办？</p>
+<ul>
+<li>使用 include/exclude</li>
+<li>使用 meta 属性</li>
+</ul>
+<p>1.使用 include (exclude例子类似)</p>
+<pre><code class="hljs vue">&#x2F;&#x2F;只有路径匹配到的 name 为 a 组件会被缓存
+&lt;keep-alive include&#x3D;&quot;a&quot;&gt;
+    &lt;router-view&gt;&lt;&#x2F;router-view&gt;
+&lt;&#x2F;keep-alive&gt;</code></pre>
+
+<p>2.使用 meta 属性</p>
+<pre><code class="hljs vue">&#x2F;&#x2F; routes 配置
+export default [
+  &#123;
+    path: &#39;&#x2F;&#39;,
+    name: &#39;home&#39;,
+    component: Home,
+    meta: &#123;
+      keepAlive: true &#x2F;&#x2F; 需要被缓存
+    &#125;
+  &#125;, &#123;
+    path: &#39;&#x2F;profile&#39;,
+    name: &#39;profile&#39;,
+    component: Profile,
+    meta: &#123;
+      keepAlive: false &#x2F;&#x2F; 不需要被缓存
+    &#125;
+  &#125;
+]</code></pre>
+<pre><code class="hljs vue">&lt;keep-alive&gt;
+    &lt;router-view v-if&#x3D;&quot;$route.meta.keepAlive&quot;&gt;
+        &lt;!-- 这里是会被缓存的视图组件，比如 Home！ --&gt;
+    &lt;&#x2F;router-view&gt;
+&lt;&#x2F;keep-alive&gt;
+
+&lt;router-view v-if&#x3D;&quot;!$route.meta.keepAlive&quot;&gt;
+    &lt;!-- 这里是不会被缓存的视图组件，比如 Profile！ --&gt;
+&lt;&#x2F;router-view&gt;</code></pre>
+
+<h4 id="防坑指南">防坑指南<a class="post-anchor" href="#防坑指南"></a></h4><ol>
+<li>keep-alive 先匹配被包含组件的 name 字段，如果 name 不可用，则匹配当前组件 components 配置中的注册名称。</li>
+<li>keep-alive 不会在函数式组件中正常工作，因为它们没有缓存实例。</li>
+<li>当匹配条件同时在 include 与 exclude 存在时，以 exclude 优先级最高(当前vue 2.4.2 version)。比如：包含于排除同时匹配到了组件A，那组件A不会被缓存。</li>
+<li>包含在 keep-alive 中，但符合 exclude ，不会调用activated和 deactivated。</li>
+</ol>
 
 
   
@@ -248,12 +316,10 @@ abc2(<span class="hljs-string">'zhangsan'</span>,<span class="hljs-number">1</sp
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/09/03/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/">keepalive的使用</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/08/24/Math-max-apply%E5%92%8CMath-max%E7%9A%84%E5%8C%BA%E5%88%AB/">Math.max.apply和Math.max的区别</a>
+          <a href="/2020/08/25/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/">js传递多个参数</a>
         
     </div>
   </div>
@@ -265,7 +331,7 @@ abc2(<span class="hljs-string">'zhangsan'</span>,<span class="hljs-number">1</sp
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/08/25/js传递多个参数/">https://codermino.github.io/2020/08/25/js传递多个参数/</a>
+      永久链接：<a href="https://codermino.github.io/2020/09/03/keepalive的使用/">https://codermino.github.io/2020/09/03/keepalive的使用/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！

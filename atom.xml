@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-08-25T14:45:03.929Z</updated>
+  <updated>2020-09-03T10:30:21.778Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>keepalive的使用</title>
+    <link href="https://codermino.github.io/2020/09/03/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://codermino.github.io/2020/09/03/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-09-03T10:15:01.000Z</published>
+    <updated>2020-09-03T10:30:21.778Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Vue中keep-aliv
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="keepalive的使用" scheme="https://codermino.github.io/tags/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>js传递多个参数</title>
@@ -477,30 +502,6 @@
     
     
       <category term="js学习笔记之数组方法" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js学习笔记之函数</title>
-    <link href="https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/"/>
-    <id>https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/</id>
-    <published>2020-08-17T07:11:32.000Z</published>
-    <updated>2020-08-17T09:20:38.237Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js学习笔记之函数" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
