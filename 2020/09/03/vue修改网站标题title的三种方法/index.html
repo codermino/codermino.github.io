@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      vue修改网站标题title的三种方法 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-text">方法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三"><span class="toc-text">方法三</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,165 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/07/26/scrapy%E6%B7%BB%E5%8A%A0cookie%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="scrapy添加cookie的三种方式">
-                <span>2020/07/26</span>
-                <span>scrapy添加cookie的三种方式</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/25/scrapy%E7%88%AC%E8%99%AB%E7%BB%86%E8%8A%82/" title="scrapy爬虫细节">
-                <span>2020/07/25</span>
-                <span>scrapy爬虫细节</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/25/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/" title="Excel打开UTF8编码CSV文件乱码">
-                <span>2020/07/25</span>
-                <span>Excel打开UTF8编码CSV文件乱码</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/12/scrapy%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87/" title="scrapy保存图片">
-                <span>2020/07/12</span>
-                <span>scrapy保存图片</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/12/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E4%B8%BAxml%E6%A0%BC%E5%BC%8F/" title="scrapy数据存为xml格式">
-                <span>2020/07/12</span>
-                <span>scrapy数据存为xml格式</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5csv%E6%96%87%E4%BB%B6/" title="scrapy数据存入csv文件">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入csv文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%86%99%E5%85%A5json%E6%96%87%E4%BB%B6/" title="scrapy数据写入json文件">
-                <span>2020/07/11</span>
-                <span>scrapy数据写入json文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5redis/" title="scrapy数据存入redis">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入redis</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/" title="scrapy数据存入mongodb">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mongodb</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/" title="scrapy数据存入mysql">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mysql</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a>
-</div>
-</div>
+      <div class="title">vue修改网站标题title的三种方法</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/09/03</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue修改网站标题title的三种方法">vue修改网站标题title的三种方法</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="方法一">方法一<a class="post-anchor" href="#方法一"></a></h3><p>调用Vue.directive()</p>
+<ol>
+<li>main.js里面添加一个全局指令<pre><code class="hljs vue">Vue.directive(&#39;title&#39;, &#123;
+  inserted: function (el, binding) &#123;
+    document.title &#x3D; el.dataset.title
+  &#125;
+&#125;)</code></pre></li>
+<li>调用的组件里面，随便找一个div加入，v-title data-title=”你的标题”<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div v-title data-title&#x3D;&quot;标题&quot;&gt;
+     ......
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;</code></pre>
+
+</li>
+</ol>
+<h3 id="方法二">方法二<a class="post-anchor" href="#方法二"></a></h3><p>利用路由的导航守卫beforeEach在每次页面跳转前更改对应的title</p>
+<ol>
+<li>router中给每个路由加上meta属性<pre><code class="hljs vue">&#123;
+    path: &#39;&#x2F;login&#39;,
+    name: &#39;login&#39;,
+    component(resolve) &#123;
+        require([&#39;.&#x2F;views&#x2F;login.vue&#39;], resolve)
+    &#125;,
+    meta: &#123;
+        title: &#39;登录页&#39;,
+        keepAlive: true, &#x2F;&#x2F; 需要被缓存
+    &#125;
+&#125;</code></pre></li>
+<li>在main.js里面加上导航守卫<pre><code class="hljs vue">router.beforeEach((to, from, next) &#x3D;&gt; &#123;
+    &#x2F;&#x2F;路由发生改变时,触发
+    window.document.title &#x3D; to.meta.title &#x3D;&#x3D; undefined ? &#39;默认标题&#39; : to.meta.title
+    if (to.meta.requireAuth) &#123;        
+        let token &#x3D; Cookies.get(&#39;access_token&#39;);        
+        let anonymous &#x3D; Cookies.get(&#39;user_name&#39;);        
+        if (token) &#123;                             
+             next(&#123;                    
+                 path: &#39;&#x2F;login&#39;,  
+                 query: &#123;       
+                     redirect: to.fullPath                    
+                 &#125;
+             &#125;)             
+        &#125; 
+    &#125;    
+    next();
+&#125;)</code></pre>
+<h3 id="方法三">方法三<a class="post-anchor" href="#方法三"></a></h3></li>
+<li>安装插件 npm install vue-wechat-title  –save</li>
+<li>引入插件，main.js中import<pre><code class="hljs vue">import VueWechatTitle from &#39;vue-wechat-title&#39;
+Vue.use(VueWechatTitle)</code></pre></li>
+<li>路由配置文件router.js里面配置的页面标题<pre><code class="hljs vue">routers: [&#123;
+    path: &#39;&#x2F;&#39;,
+    name: &#39;index&#39;,
+    component: Index,
+    meta: &#123;
+        title: &#39;title&#39;
+    &#125;
+&#125;]</code></pre></li>
+<li>app.vue里面添加指令v-wechat-title即可<pre><code class="hljs vue"> 
+&lt;!-- 任意元素中加 v-wechat-title 指令 建议将标题放在 route 对应meta对象的定义中 --&gt;&lt;div v-wechat-title&#x3D;&quot;$route.meta.title&quot;&gt;&lt;&#x2F;div&gt;
+&lt;!--或者--&gt;
+&lt;router-view v-wechat-title&#x3D;&quot;$route.meta.title&quot;&gt;&lt;&#x2F;router-view&gt;
+&#x2F;&#x2F;来自官方npm页面</code></pre>
+</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/09/03/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/">keepalive的使用</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/09/03/vue修改网站标题title的三种方法/">https://codermino.github.io/2020/09/03/vue修改网站标题title的三种方法/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020

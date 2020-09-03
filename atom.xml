@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-09-03T10:30:21.778Z</updated>
+  <updated>2020-09-03T14:32:05.222Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue修改网站标题title的三种方法</title>
+    <link href="https://codermino.github.io/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/"/>
+    <id>https://codermino.github.io/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</id>
+    <published>2020-09-03T14:28:50.000Z</published>
+    <updated>2020-09-03T14:32:05.222Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;方法一&quot;&gt;方法一&lt;a cl
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue修改网站标题title的三种方法" scheme="https://codermino.github.io/tags/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>keepalive的使用</title>
@@ -478,30 +503,6 @@
     
     
       <category term="js学习笔记之正则表达式" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js学习笔记之数组方法</title>
-    <link href="https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
-    <id>https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/</id>
-    <published>2020-08-17T09:21:58.000Z</published>
-    <updated>2020-08-18T03:24:47.721Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js学习笔记之数组方法" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/"/>
     
   </entry>
   
