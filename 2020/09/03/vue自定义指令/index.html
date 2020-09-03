@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue修改网站标题title的三种方法 - Mino
+      vue自定义指令 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-text">方法二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三"><span class="toc-text">方法三</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册自定义指令"><span class="toc-text">注册自定义指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钩子函数"><span class="toc-text">钩子函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钩子区别"><span class="toc-text">钩子区别</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,7 +157,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue修改网站标题title的三种方法</div>
+      <div class="title">vue自定义指令</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue修改网站标题title的三种方法">vue修改网站标题title的三种方法</a>
+                    <a href="/tags/vue自定义指令">vue自定义指令</a>
                   
                 
             </span>
@@ -196,74 +196,115 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="方法一">方法一<a class="post-anchor" href="#方法一"></a></h3><p>调用Vue.directive()</p>
-<ol>
-<li>main.js里面添加一个全局指令<pre><code class="hljs vue">Vue.directive(&#39;title&#39;, &#123;
-  inserted: function (el, binding) &#123;
-    document.title &#x3D; el.dataset.title
-  &#125;
-&#125;)</code></pre></li>
-<li>调用的组件里面，随便找一个div加入，v-title data-title=”你的标题”<pre><code class="hljs vue">&lt;template&gt;
-    &lt;div v-title data-title&#x3D;&quot;标题&quot;&gt;
-     ......
+<h3 id="注册自定义指令">注册自定义指令<a class="post-anchor" href="#注册自定义指令"></a></h3><pre><code class="hljs markdown">Vue自定义指令和组件一样存在着全局注册和局部注册两种方式。
+先来看看注册全局指令的方式，通过 Vue.directive( id, [definition] ) 方式注册全局指令，
+第一个参数为自定义指令名称（指令名称不需要加 v- 前缀，默认是自动加上前缀的，使用指令的时候一定要加上前缀），
+第二个参数可以是对象数据，也可以是一个指令函数。</code></pre>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot; class&#x3D;&quot;demo&quot;&gt;
+    &lt;!-- 全局注册 --&gt;
+    &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;我是全局自定义指令&quot; v-focus&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    Vue.directive(&quot;focus&quot;, &#123;
+        inserted: function(el)&#123;
+            el.focus();
+        &#125;
+    &#125;)
+    new Vue(&#123;
+        el: &quot;#app&quot;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<p>这个简单案例当中，我们通过注册一个 v-focus 指令，<br>实现了在页面加载完成之后自动让输入框获取到焦点的小功能。<br>其中 inserted 是自定义指令的钩子函数，后面的内容会详细讲解。</p>
+<hr>
+<p>全局注册好了，那么再来看看如何注册局部自定义指令，<br>通过在Vue实例中添加 directives 对象数据注册局部自定义指令。</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot; class&#x3D;&quot;demo&quot;&gt;
+    &lt;!-- 局部注册 --&gt;
+    &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;我是局部自定义指令&quot; v-focus2&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    new Vue(&#123;
+        el: &quot;#app&quot;,
+        directives: &#123;
+            focus2: &#123;
+                inserted: function(el)&#123;
+                    el.focus();
+                &#125;
+            &#125;
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<h3 id="钩子函数">钩子函数<a class="post-anchor" href="#钩子函数"></a></h3><p>一个指令定义对象可以提供如下几个钩子函数 (均为可选)：</p>
+<ul>
+<li>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置</li>
+<li>inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。</li>
+<li>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，<br>  也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新 。</li>
+<li>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。</li>
+<li>unbind：只调用一次，指令与元素解绑时调用。</li>
+</ul>
+<p>假设这样的看一个场景：当你在阅览某网站的图片时，可能会由于图片资源比较大而加载缓慢，<br>需要消耗一小段时间来呈现到眼前，这个体验肯定是不太友好的（就像网站切换页面，<br>有时候会加载资源比较慢，为了给用户较好的体验，一般都会先出一个正在加载的友好提示页面），<br>所以这个案例的功能就是在图片资源还没加载出来时，先显示默认背景图，当图片资源真正加载出来了之后，<br>再把真实图片放置到对应的位置上并显示出来。</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app2&quot; class&#x3D;&quot;demo&quot;&gt;
+    &lt;div v-for&#x3D;&quot;item in imageList&quot;&gt;
+        &lt;img src&#x3D;&quot;..&#x2F;assets&#x2F;image&#x2F;bg.png&quot; alt&#x3D;&quot;默认图&quot; v-image&#x3D;&quot;item.url&quot;&gt;
     &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;</code></pre>
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    Vue.directive(&quot;image&quot;, &#123;
+        inserted: function(el, binding) &#123;
+            &#x2F;&#x2F;为了真实体现效果，用了延时操作
+            setTimeout(function()&#123;
+                el.setAttribute(&quot;src&quot;, binding.value);
+            &#125;, Math.random() * 1200)
+        &#125;
+    &#125;)
+    new Vue(&#123;
+        el: &quot;#app2&quot;,
+        data: &#123;
+            imageList: [
+                &#123;
+                    url: &quot;http:&#x2F;&#x2F;consumer-img.huawei.com&#x2F;content&#x2F;dam&#x2F;huawei-cbg-site&#x2F;greate-china&#x2F;cn&#x2F;mkt&#x2F;homepage&#x2F;section4&#x2F;home-s4-p10-plus.jpg&quot;
+                &#125;,
+                &#123;
+                    url: &quot;http:&#x2F;&#x2F;consumer-img.huawei.com&#x2F;content&#x2F;dam&#x2F;huawei-cbg-site&#x2F;greate-china&#x2F;cn&#x2F;mkt&#x2F;homepage&#x2F;section4&#x2F;home-s4-watch2-pro-banner.jpg&quot;
+                &#125;,
+                &#123;
+                    url: &quot;http:&#x2F;&#x2F;consumer-img.huawei.com&#x2F;content&#x2F;dam&#x2F;huawei-cbg-site&#x2F;en&#x2F;mkt&#x2F;homepage&#x2F;section4&#x2F;home-s4-matebook-x.jpg&quot;
+                &#125;
+            ]
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
 
-</li>
-</ol>
-<h3 id="方法二">方法二<a class="post-anchor" href="#方法二"></a></h3><p>利用路由的导航守卫beforeEach在每次页面跳转前更改对应的title</p>
-<ol>
-<li>router中给每个路由加上meta属性<pre><code class="hljs vue">&#123;
-    path: &#39;&#x2F;login&#39;,
-    name: &#39;login&#39;,
-    component(resolve) &#123;
-        require([&#39;.&#x2F;views&#x2F;login.vue&#39;], resolve)
-    &#125;,
-    meta: &#123;
-        title: &#39;登录页&#39;,
-        keepAlive: true, &#x2F;&#x2F; 需要被缓存
-    &#125;
-&#125;</code></pre></li>
-<li>在main.js里面加上导航守卫<pre><code class="hljs vue">router.beforeEach((to, from, next) &#x3D;&gt; &#123;
-    &#x2F;&#x2F;路由发生改变时,触发
-    window.document.title &#x3D; to.meta.title &#x3D;&#x3D; undefined ? &#39;默认标题&#39; : to.meta.title
-    if (to.meta.requireAuth) &#123;        
-        let token &#x3D; Cookies.get(&#39;access_token&#39;);        
-        let anonymous &#x3D; Cookies.get(&#39;user_name&#39;);        
-        if (token) &#123;                             
-             next(&#123;                    
-                 path: &#39;&#x2F;login&#39;,  
-                 query: &#123;       
-                     redirect: to.fullPath                    
-                 &#125;
-             &#125;)             
-        &#125; 
-    &#125;    
-    next();
-&#125;)</code></pre>
+<h3 id="钩子区别">钩子区别<a class="post-anchor" href="#钩子区别"></a></h3><p>update 和 componentUpdated</p>
+<ul>
+<li>共同点：组件更新都会调用，update在componentUpdated之前</li>
+<li>不同点：<br>  update 组件更新前的状态<br>  componentUpdated 组件更新后的状态</li>
+</ul>
+<p>场景：点击事件，div的内容追加 ！；</p>
+<pre><code class="hljs vue">update(el, binding,vnode,oldVnode)&#123;
+    console.log(el.innerHTML);       &#x2F;&#x2F; &lt;div&gt;！&lt;&#x2F;div&gt;
+&#125;
 
-</li>
-</ol>
-<h3 id="方法三">方法三<a class="post-anchor" href="#方法三"></a></h3><p>使用插件</p>
-<ol>
-<li>安装插件 npm install vue-wechat-title  –save</li>
-<li>引入插件，main.js中import<pre><code class="hljs vue">import VueWechatTitle from &#39;vue-wechat-title&#39;
-Vue.use(VueWechatTitle)</code></pre></li>
-<li>路由配置文件router.js里面配置的页面标题<pre><code class="hljs vue">routers: [&#123;
-    path: &#39;&#x2F;&#39;,
-    name: &#39;index&#39;,
-    component: Index,
-    meta: &#123;
-        title: &#39;title&#39;
-    &#125;
-&#125;]</code></pre></li>
-<li>app.vue里面添加指令v-wechat-title即可<pre><code class="hljs vue"> 
-&lt;!-- 任意元素中加 v-wechat-title 指令 建议将标题放在 route 对应meta对象的定义中 --&gt;&lt;div v-wechat-title&#x3D;&quot;$route.meta.title&quot;&gt;&lt;&#x2F;div&gt;
-&lt;!--或者--&gt;
-&lt;router-view v-wechat-title&#x3D;&quot;$route.meta.title&quot;&gt;&lt;&#x2F;router-view&gt;
-&#x2F;&#x2F;来自官方npm页面</code></pre>
-</li>
-</ol>
+componentUpdated(el, binding,vnode,oldVnode)&#123;
+    console.log(el.innerHTML);       &#x2F;&#x2F; &#x2F;&#x2F;&lt;div&gt;！！&lt;&#x2F;div&gt;
+&#125;
+
+&#x2F;&#x2F; 注意： 区别是div里面的！数量</code></pre>
+<p>bind 和 inserted</p>
+<ul>
+<li>共同点： dom插入都会调用，bind在inserted之前</li>
+<li>不同点：<br>  bind 时父节点为 null<br>  inserted 时父节点存在。<br>  bind是在dom树绘制前调用，inserted在dom树绘制后调用</li>
+</ul>
+<pre><code class="hljs vue">bind: function (el) &#123;
+    console.log(el.parentNode)  &#x2F;&#x2F; null
+    console.log(&#39;bind&#39;)
+&#125;,
+inserted: function (el) &#123;
+    console.log(el.parentNode)  &#x2F;&#x2F; &lt;div class&#x3D;&quot;directive-box&quot;&gt;...&lt;&#x2F;div&gt;
+    console.log(&#39;inserted&#39;)
+&#125;</code></pre>
+
+<p><em>tip 注意：</em></p>
+<pre><code class="hljs markdown">自定义指令的钩子里面没有vue实例，this指向undefined；</code></pre>
 
 
   
@@ -290,12 +331,10 @@ Vue.use(VueWechatTitle)</code></pre></li>
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/09/03/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">vue自定义指令</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/09/03/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/">keepalive的使用</a>
+          <a href="/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/">vue修改网站标题title的三种方法</a>
         
     </div>
   </div>
@@ -307,7 +346,7 @@ Vue.use(VueWechatTitle)</code></pre></li>
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/09/03/vue修改网站标题title的三种方法/">https://codermino.github.io/2020/09/03/vue修改网站标题title的三种方法/</a>
+      永久链接：<a href="https://codermino.github.io/2020/09/03/vue自定义指令/">https://codermino.github.io/2020/09/03/vue自定义指令/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
