@@ -200,6 +200,7 @@
 <ol>
 <li>main.js里面添加一个全局指令<pre><code class="hljs vue">Vue.directive(&#39;title&#39;, &#123;
   inserted: function (el, binding) &#123;
+  &#x2F;&#x2F; el是自定义属性绑定的元素
     document.title &#x3D; el.dataset.title
   &#125;
 &#125;)</code></pre></li>

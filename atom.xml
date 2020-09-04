@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-09-03T15:40:22.837Z</updated>
+  <updated>2020-09-04T13:54:53.972Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue自定义属性</title>
+    <link href="https://codermino.github.io/2020/09/04/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/"/>
+    <id>https://codermino.github.io/2020/09/04/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/</id>
+    <published>2020-09-04T13:50:33.000Z</published>
+    <updated>2020-09-04T13:54:53.972Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;标签元素&quot;&gt;标签元素&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue自定义属性" scheme="https://codermino.github.io/tags/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>vue自定义指令</title>
@@ -46,7 +71,7 @@
     <link href="https://codermino.github.io/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/"/>
     <id>https://codermino.github.io/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/</id>
     <published>2020-09-03T14:28:50.000Z</published>
-    <updated>2020-09-03T14:36:58.410Z</updated>
+    <updated>2020-09-04T13:52:28.793Z</updated>
     
     <summary type="html">
     
@@ -480,30 +505,6 @@
     
     
       <category term="js学习笔记字符串string" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AD%97%E7%AC%A6%E4%B8%B2string/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js学习笔记之es6</title>
-    <link href="https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bes6/"/>
-    <id>https://codermino.github.io/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bes6/</id>
-    <published>2020-08-17T11:45:20.000Z</published>
-    <updated>2020-08-17T14:40:45.627Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js学习笔记之es6" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bes6/"/>
     
   </entry>
   
