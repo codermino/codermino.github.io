@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-09-04T13:54:53.972Z</updated>
+  <updated>2020-09-06T09:48:37.074Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>better-scroll的使用</title>
+    <link href="https://codermino.github.io/2020/09/06/better-scroll%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://codermino.github.io/2020/09/06/better-scroll%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2020-09-06T09:14:01.000Z</published>
+    <updated>2020-09-06T09:48:37.074Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;滚动原理&quot;&gt;滚动原理&lt;a class=&quot;post-anchor&quot; href=&quot;#滚动原理&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;/images/bs/bs1.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=
+      
+    
+    </summary>
+    
+    
+      <category term="better-scroll" scheme="https://codermino.github.io/categories/better-scroll/"/>
+    
+    
+      <category term="better-scroll的使用" scheme="https://codermino.github.io/tags/better-scroll%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>vue自定义属性</title>
@@ -481,30 +505,6 @@
     
     
       <category term="js学习笔记对象object" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AF%B9%E8%B1%A1object/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js学习笔记字符串string</title>
-    <link href="https://codermino.github.io/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AD%97%E7%AC%A6%E4%B8%B2string/"/>
-    <id>https://codermino.github.io/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AD%97%E7%AC%A6%E4%B8%B2string/</id>
-    <published>2020-08-18T08:29:23.000Z</published>
-    <updated>2020-08-18T08:51:57.067Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js学习笔记字符串string" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AD%97%E7%AC%A6%E4%B8%B2string/"/>
     
   </entry>
   
