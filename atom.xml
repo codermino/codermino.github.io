@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-09-13T05:16:28.211Z</updated>
+  <updated>2020-09-13T09:03:08.388Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue中引入本地文件的方式</title>
+    <link href="https://codermino.github.io/2020/09/13/vue%E4%B8%AD%E5%BC%95%E5%85%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F/"/>
+    <id>https://codermino.github.io/2020/09/13/vue%E4%B8%AD%E5%BC%95%E5%85%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F/</id>
+    <published>2020-09-13T08:58:36.000Z</published>
+    <updated>2020-09-13T09:03:08.388Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;第一种方式使用import
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue中引入本地文件的方式" scheme="https://codermino.github.io/tags/vue%E4%B8%AD%E5%BC%95%E5%85%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>iview多级抽屉优化</title>
@@ -483,30 +508,6 @@
     
     
       <category term="js学习笔记回收机制" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js学习笔记正则reg</title>
-    <link href="https://codermino.github.io/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%AD%A3%E5%88%99reg/"/>
-    <id>https://codermino.github.io/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%AD%A3%E5%88%99reg/</id>
-    <published>2020-08-18T09:02:22.000Z</published>
-    <updated>2020-08-18T09:46:26.697Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js学习笔记正则reg" scheme="https://codermino.github.io/tags/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%AD%A3%E5%88%99reg/"/>
     
   </entry>
   
