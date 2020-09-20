@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-09-20T14:42:30.558Z</updated>
+  <updated>2020-09-20T14:51:47.616Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql优化一般步骤</title>
+    <link href="https://codermino.github.io/2020/09/20/mysql%E4%BC%98%E5%8C%96%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://codermino.github.io/2020/09/20/mysql%E4%BC%98%E5%8C%96%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4/</id>
+    <published>2020-09-20T14:44:39.000Z</published>
+    <updated>2020-09-20T14:51:47.616Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/mysql/mysql.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/mysql/mysql.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建索引&lt;/li&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="mysql" scheme="https://codermino.github.io/categories/mysql/"/>
+    
+    
+      <category term="mysql优化一般步骤" scheme="https://codermino.github.io/tags/mysql%E4%BC%98%E5%8C%96%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql查询某时间范围的数据</title>
@@ -485,31 +512,6 @@
     
     
       <category term="scss语法" scheme="https://codermino.github.io/tags/scss%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>冷门且有用的css</title>
-    <link href="https://codermino.github.io/2020/08/18/%E5%86%B7%E9%97%A8%E4%B8%94%E6%9C%89%E7%94%A8%E7%9A%84css/"/>
-    <id>https://codermino.github.io/2020/08/18/%E5%86%B7%E9%97%A8%E4%B8%94%E6%9C%89%E7%94%A8%E7%9A%84css/</id>
-    <published>2020-08-18T11:20:06.000Z</published>
-    <updated>2020-08-18T11:32:49.755Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/css/css.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/css/css.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;多选按钮自定义背景色&quot;&gt;多选按钮自定义
-      
-    
-    </summary>
-    
-    
-      <category term="css" scheme="https://codermino.github.io/categories/css/"/>
-    
-    
-      <category term="冷门且有用的css" scheme="https://codermino.github.io/tags/%E5%86%B7%E9%97%A8%E4%B8%94%E6%9C%89%E7%94%A8%E7%9A%84css/"/>
     
   </entry>
   
