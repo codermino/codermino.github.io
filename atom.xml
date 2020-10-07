@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-10-07T06:55:13.883Z</updated>
+  <updated>2020-10-07T07:06:45.042Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>uniapp的navigator的open-type跳转问题</title>
+    <link href="https://codermino.github.io/2020/10/07/uniapp%E7%9A%84navigator%E7%9A%84open-type%E8%B7%B3%E8%BD%AC%E9%97%AE%E9%A2%98/"/>
+    <id>https://codermino.github.io/2020/10/07/uniapp%E7%9A%84navigator%E7%9A%84open-type%E8%B7%B3%E8%BD%AC%E9%97%AE%E9%A2%98/</id>
+    <published>2020-10-07T06:57:40.000Z</published>
+    <updated>2020-10-07T07:06:45.042Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/uniapp/uniapp.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/uniapp/uniapp.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;nav
+      
+    
+    </summary>
+    
+    
+      <category term="uniapp" scheme="https://codermino.github.io/categories/uniapp/"/>
+    
+    
+      <category term="uniapp的navigator的open" scheme="https://codermino.github.io/tags/uniapp%E7%9A%84navigator%E7%9A%84open/"/>
+    
+  </entry>
   
   <entry>
     <title>css3动画控制元素淡入淡出</title>
@@ -487,31 +513,6 @@
     
     
       <category term="created和mounted中请求数据区别" scheme="https://codermino.github.io/tags/created%E5%92%8Cmounted%E4%B8%AD%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%88%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>localstorage和sessionstorage区别</title>
-    <link href="https://codermino.github.io/2020/08/24/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/"/>
-    <id>https://codermino.github.io/2020/08/24/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/</id>
-    <published>2020-08-24T07:45:18.000Z</published>
-    <updated>2020-08-24T08:15:02.408Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;概述&quot;&gt;概述&lt;a class=&quot;post-anchor&quot; href=&quot;#概述&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs markdown&quot;&gt;localStorage和sessionStorage一样都是用来存储客户端临时信息的对象。
-他们均
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="localstorage和sessionstorage区别" scheme="https://codermino.github.io/tags/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/"/>
     
   </entry>
   
