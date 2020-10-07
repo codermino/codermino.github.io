@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解createElement"><span class="toc-text">理解createElement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解深入data对象。"><span class="toc-text">理解深入data对象。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VNodes-不一定必须唯一-（文档中说要唯一）"><span class="toc-text">VNodes 不一定必须唯一 （文档中说要唯一）</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解createElement"><span class="toc-text">理解createElement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解深入data对象。"><span class="toc-text">理解深入data对象。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VNodes-不一定必须唯一-（文档中说要唯一）"><span class="toc-text">VNodes 不一定必须唯一 （文档中说要唯一）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟DOM"><span class="toc-text">虚拟DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#createElement参数"><span class="toc-text">createElement参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#深入data对象"><span class="toc-text">深入data对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何在render中实现v-model双向数据绑定的效果"><span class="toc-text">如何在render中实现v-model双向数据绑定的效果</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -400,6 +400,11 @@ createElement(
     &#125;);
   </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></code></pre>
+
+<h3 id="虚拟DOM">虚拟DOM<a class="post-anchor" href="#虚拟DOM"></a></h3><p>Vue通过建立一个虚拟DOM对真实DOM发生的变化保持追踪<br>上面的createElement 返回的不是一个实际的DOM元素，更准确的名字是createNodeDescription，它包含的信息<br>会告知vue页面上需要渲染出上面样的节点，这种节点描述为虚拟节点 Virtual Node ,简称 Vcode,<br>虚拟DOM是我们对有Vue组件建立起来的整个VNode树的称呼</p>
+<h4 id="createElement参数">createElement参数<a class="post-anchor" href="#createElement参数"></a></h4><p>需要了解在createElement函数中接受的参数<br><a href="/images/render/render1.png" data-caption data-fancybox="images"><img src="/images/render/render1.png" alt></a><br>接受两个参数:<br>    createElement(A,B,C);  A:可以是标签名，组件名<br>    B:就是标签/vue组件里面需要的数据 C :子节点</p>
+<h4 id="深入data对象">深入data对象<a class="post-anchor" href="#深入data对象"></a></h4><p>在vnode数据对象中，下列属性名是级别最高的字段，<br>vnode数据对象中允许绑定普通的HTML特性，<br>就像DOM属性一样，比如innerHTML会取代v-html指令,<br>下面贴出的是数据对象中常用的属性名称<br><a href="/images/render/render2.png" data-caption data-fancybox="images"><img src="/images/render/render2.png" alt></a><br>注意到 DOM属性的innerHTML和字节点的创建不能并存，innerHTML会覆盖子节点<br><a href="/images/render/render3.png" data-caption data-fancybox="images"><img src="/images/render/render3.png" alt></a><br>但是如果想要去动态渲染自己定义的模板呢，就需要先全局注册这个组件才行.<br>在动态渲染自定义的<br>组件的时候，创建的子节点是不生效的<br><a href="/images/render/render4.png" data-caption data-fancybox="images"><img src="/images/render/render4.png" alt></a><br>VNodes必须唯一<br>组件树中，所有的VNodes必须是唯一的，例如<br>var mc = createElement(‘p’,’hello world’);<br>return createElement(‘div’,[mc,mc]);//这种写法是无效的</p>
+<h4 id="如何在render中实现v-model双向数据绑定的效果">如何在render中实现v-model双向数据绑定的效果<a class="post-anchor" href="#如何在render中实现v-model双向数据绑定的效果"></a></h4><p><a href="/images/render/render5.png" data-caption data-fancybox="images"><img src="/images/render/render5.png" alt></a></p>
 
 
   
