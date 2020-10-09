@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-10-07T08:41:46.263Z</updated>
+  <updated>2020-10-09T01:10:09.397Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue数据赋值但视图没更新</title>
+    <link href="https://codermino.github.io/2020/10/09/vue%E6%95%B0%E6%8D%AE%E8%B5%8B%E5%80%BC%E4%BD%86%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9B%B4%E6%96%B0/"/>
+    <id>https://codermino.github.io/2020/10/09/vue%E6%95%B0%E6%8D%AE%E8%B5%8B%E5%80%BC%E4%BD%86%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9B%B4%E6%96%B0/</id>
+    <published>2020-10-09T00:57:54.000Z</published>
+    <updated>2020-10-09T01:10:09.397Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;出现的问题&quot;&gt;出现的问题&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue数据赋值但视图没更新" scheme="https://codermino.github.io/tags/vue%E6%95%B0%E6%8D%AE%E8%B5%8B%E5%80%BC%E4%BD%86%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9B%B4%E6%96%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>vue的render函数</title>
@@ -488,30 +513,6 @@
     
     
       <category term="keepalive的使用" scheme="https://codermino.github.io/tags/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js传递多个参数</title>
-    <link href="https://codermino.github.io/2020/08/25/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/"/>
-    <id>https://codermino.github.io/2020/08/25/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/</id>
-    <published>2020-08-25T14:39:40.000Z</published>
-    <updated>2020-08-25T14:45:03.929Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js传递多个参数" scheme="https://codermino.github.io/tags/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/"/>
     
   </entry>
   
