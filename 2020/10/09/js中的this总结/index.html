@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-优先级：new绑定-gt-显式绑定-gt-隐式绑定-gt-默认绑定"><span class="toc-text">一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-this绑定的特殊情况"><span class="toc-text">二.this绑定的特殊情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式丢失"><span class="toc-text">隐式丢失</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#引用赋值丢失"><span class="toc-text">引用赋值丢失</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#传参丢失"><span class="toc-text">传参丢失</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Function-prototype-bind"><span class="toc-text">Function.prototype.bind()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#间接引用"><span class="toc-text">间接引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6箭头函数"><span class="toc-text">ES6箭头函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-优先级：new绑定-gt-显式绑定-gt-隐式绑定-gt-默认绑定"><span class="toc-text">一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-this绑定的特殊情况"><span class="toc-text">二.this绑定的特殊情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#隐式丢失"><span class="toc-text">隐式丢失</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#引用赋值丢失"><span class="toc-text">引用赋值丢失</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#传参丢失"><span class="toc-text">传参丢失</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Function-prototype-bind"><span class="toc-text">Function.prototype.bind()</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#间接引用"><span class="toc-text">间接引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6箭头函数"><span class="toc-text">ES6箭头函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setTimeOut函数"><span class="toc-text">setTimeOut函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo1"><span class="toc-text">Demo1</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -352,8 +352,40 @@ b.getName()        <span class="hljs-comment">//  'bobo'</span></code></pre></li
 &#125;
 d.call(list1)     <span class="hljs-comment">//  'andy' </span>
 d.call(list2)     <span class="hljs-comment">//  'peter'</span></code></pre>
+
 </li>
 </ol>
+<h3 id="setTimeOut函数">setTimeOut函数<a class="post-anchor" href="#setTimeOut函数"></a></h3><h4 id="Demo1">Demo1<a class="post-anchor" href="#Demo1"></a></h4><pre><code class="hljs vue">var num &#x3D; 0;
+function Obj ()&#123;
+ this.num &#x3D; 1,
+ this.getNum &#x3D; function()&#123;
+ console.log(this.num);
+ &#125;,
+ this.getNumLater &#x3D; function()&#123;
+ setTimeout(function()&#123;
+  console.log(this.num);
+ &#125;, 1000)
+ &#125;
+&#125;
+var obj &#x3D; new Obj; 
+obj.getNum();&#x2F;&#x2F;1　　打印的为obj.num，值为1
+obj.getNumLater()&#x2F;&#x2F;0　　打印的为window.num，值为0</code></pre>
+<p>从上述例子中可以看到setTimeout中函数内的this是指向了window对象，<br>这是由于setTimeout()调用的代码运行在与所在函数完全分离的执行环境上.<br>这会导致这些代码中包含的 this 关键字会指向 window (或全局)对象。</p>
+<p><strong><em>但是在setTimeout中传入的不是函数时，this则指向当前对象</em></strong></p>
+<pre><code class="hljs vue">var num &#x3D; 0;
+function Obj ()&#123;
+ this.num &#x3D; 1,
+ this.getNum &#x3D; function()&#123;
+ console.log(this.num);
+ &#125;,
+ this.getNumLater &#x3D; function()&#123;
+ setTimeout(console.log(this.num), 1000)
+ &#125;
+&#125;
+var obj &#x3D; new Obj; 
+obj.getNum();&#x2F;&#x2F;1　　打印的为obj.num，值为1
+obj.getNumLater()&#x2F;&#x2F;1　　打印的为obj.num，值为1</code></pre>
+<p>从以上两个例子可以看出，当在setTimeout中传入的参数为函数时，函数内部的this才会指向window对象。</p>
 
 
   
