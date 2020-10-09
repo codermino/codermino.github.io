@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue数据赋值但视图没更新 - Mino
+      css3的animation-fill-mode - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,11 +24,6 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
-    
-    <div id="post-toc" class="animated hiddenToc hide">
-      <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#出现的问题"><span class="toc-text">出现的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一-将本来要新增的属性在data中提前定义好"><span class="toc-text">方法一:将本来要新增的属性在data中提前定义好</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二-直接替换掉userInfo"><span class="toc-text">方法二:直接替换掉userInfo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法三"><span class="toc-text">方法三:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式四：使用-forceUpdate"><span class="toc-text">方式四：使用$forceUpdate</span></a></li></ol>
-    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -157,7 +152,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue数据赋值但视图没更新</div>
+      <div class="title">css3的animation-fill-mode</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -172,7 +167,7 @@
           <span>
               
                 
-                  <a href="/categories/vue">vue</a>
+                  <a href="/categories/css">css</a>
                 
               
           </span>
@@ -185,7 +180,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue数据赋值但视图没更新">vue数据赋值但视图没更新</a>
+                    <a href="/tags/css3动画控制元素淡入淡出">css3动画控制元素淡入淡出</a>
                   
                 
             </span>
@@ -195,111 +190,93 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="出现的问题">出现的问题<a class="post-anchor" href="#出现的问题"></a></h3><pre><code class="hljs javascript">&lt;script&gt;
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
-  data() &#123;
-    <span class="hljs-keyword">return</span> &#123;
-      <span class="hljs-attr">userInfo</span>: &#123;
-        <span class="hljs-attr">name</span>: <span class="hljs-string">'子君'</span>,
-        <span class="hljs-attr">sex</span>: <span class="hljs-string">'男'</span>
-      &#125;
-    &#125;
-  &#125;,
-  <span class="hljs-attr">methods</span>: &#123;
-    <span class="hljs-comment">// 在这里添加用户的公众号</span>
-    handleAddOfficialAccount() &#123;
-      <span class="hljs-keyword">this</span>.userInfo.officialAccount = <span class="hljs-string">'前端有的玩'</span>
-    &#125;
-  &#125;
-&#125;
-&lt;<span class="hljs-regexp">/script&gt;</span></code></pre>
+    <p><a href="/images/css/css.jpg" data-caption data-fancybox="images"><img src="/images/css/css.jpg" alt></a></p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
 
-<p>在上边的代码中，我们触发事件之后添加一个新的属性，但是，点击按钮之后没有并没有生效。<br>原因:在vue内部,数据响应是通过Object.definePrototype监听对象每一个键的getter、setter方法来实现的，<br>但是通过这种方法只能监听到已有的属性，新增的属性是无法监测到的，下边提供四种方式:</p>
-<h3 id="方法一-将本来要新增的属性在data中提前定义好">方法一:将本来要新增的属性在data中提前定义好<a class="post-anchor" href="#方法一-将本来要新增的属性在data中提前定义好"></a></h3><pre><code class="hljs vue">userInfo: &#123;
-  name: &#39;子君&#39;,
-  sex: &#39;男&#39;,
-  officialAccount: &#39;&#39;
-&#125;
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span> &#123;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background</span>: red;
+            <span class="hljs-attribute">position</span>: relative;
+            <span class="hljs-attribute">animation</span>: mymove <span class="hljs-number">5s</span> infinite alternate;
+            <span class="hljs-attribute">-moz-animation</span>: mymove <span class="hljs-number">5s</span> infinite alternate;
+            <span class="hljs-comment">/* Firefox */</span>
+            <span class="hljs-attribute">-webkit-animation</span>: mymove <span class="hljs-number">5s</span> infinite alternate;
+            <span class="hljs-comment">/* Safari and Chrome */</span>
+            <span class="hljs-attribute">-o-animation</span>: mymove <span class="hljs-number">5s</span> infinite alternate;
+            <span class="hljs-comment">/* Opera */</span>
+            <span class="hljs-attribute">animation-fill-mode</span>: both;
+        &#125;
 
-&#x2F;&#x2F; 在这里添加用户的公众号
-handleAddOfficialAccount() &#123;
-  console.log(&#39;点击了&#39;)
-  this.userInfo.officialAccount &#x3D; &#39;我来了&#39;
-&#125;</code></pre>
-<h3 id="方法二-直接替换掉userInfo">方法二:直接替换掉userInfo<a class="post-anchor" href="#方法二-直接替换掉userInfo"></a></h3><pre><code class="hljs vue">&#x2F;&#x2F; 在这里添加用户的公众号
-handleAddOfficialAccount() &#123;
-  this.userInfo &#x3D; &#123;
-    ...this.userInfo,
-    officialAccount: &#39;我来了&#39;
-  &#125;
-&#125;</code></pre>
+        @<span class="hljs-keyword">keyframes</span> mymove &#123;
+            <span class="hljs-selector-tag">from</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>;
+            &#125;
 
-<h3 id="方法三">方法三:<a class="post-anchor" href="#方法三"></a></h3><p>使用 Vue.set<br>其实上边两种方法都有点取巧的嫌疑，其实对于新增属性，<br>vue官方专门提供了一个新的方法Vue.set用来解决新增属性无法触发数据响应。<br>Vue.set方法定义:</p>
-<pre><code class="hljs markdown">/**
-<span class="hljs-bullet">* </span>target 要修改的对象
-<span class="hljs-bullet">* </span>prpertyName 要添加的属性名称
-<span class="hljs-bullet">* </span>value 要添加的属性值
-*/
-Vue.set( target, propertyName, value )</code></pre>
-<pre><code class="hljs vue">&#x2F;&#x2F; 在这里添加用户的公众号
-handleAddOfficialAccount() &#123;
-  this.$set(this.userInfo, &#39;officialAccount&#39;, &#39;我来了&#39;)
-&#125;</code></pre>
+            <span class="hljs-selector-tag">to</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">200px</span>;
+            &#125;
+        &#125;
 
-<h3 id="方式四：使用-forceUpdate">方式四：使用$forceUpdate<a class="post-anchor" href="#方式四：使用-forceUpdate"></a></h3><p>$forceUpdate的存在，让许多前端开发者不会再去注意 数据双向绑定的原理，<br>无论什么时候，反正我修改了data之后，<br>调用一下$forceUpdate就会让vue组件重新去渲染，bug是不会存在的。<br>但是实际上这个方法并不建议使用，因为它会引起许多不必要的性能消耗。<br><strong>针对数组的特定方法</strong><br>其实不仅仅是对象，数组也存在数据修改之后不响应的情况</p>
-<pre><code class="hljs vue">&lt;template&gt;
-&lt;div&gt;
-  &lt;ul&gt;
-    &lt;li v-for&#x3D;&quot;item in list&quot; :key&#x3D;&quot;item&quot;&gt;
-      &#123;&#123; item &#125;&#125;
-    &lt;&#x2F;li&gt;
-  &lt;&#x2F;ul&gt;
-  &lt;button @click&#x3D;&quot;handleChangeName&quot;&gt;修改名称&lt;&#x2F;button&gt;
-&lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-&lt;script&gt;
-export default &#123;
-  data() &#123;
-    return &#123;
-      list: [&#39;张三&#39;, &#39;李四&#39;]
-    &#125;
-  &#125;,
-  methods: &#123;
-    &#x2F;&#x2F; 修改用户名称
-    handleChangeName() &#123;
-      this.list[0] &#x3D; &#39;王五&#39;
-    &#125;
-  &#125;
-&#125;
-&lt;&#x2F;script&gt;</code></pre>
-<p>上边代码希望将张三的名字换成王五，实际上这个修改并不能生效，这是因为vue不能检测到以下变动的数组：</p>
-<p>当你利用索引直接设置一个项时，例如this.list[index] = newVal</p>
-<ol>
-<li>修改数组的length属性，例如:this.list.length = 0</li>
-<li>向上边提到的Vue.set和$forceUpdate()都可以解决这个问题<pre><code class="hljs vue">&#x2F;&#x2F; 修改用户名称
-handleChangeName() &#123;
-  this.list[0] &#x3D; &#39;王五&#39;
-  this.$forceUpdate()
-&#125;
+        @-<span class="hljs-keyword">moz</span>-<span class="hljs-keyword">keyframes</span> mymove
 
-&#x2F;&#x2F; 修改用户名称
-handleChangeName() &#123;
-  this.$set(this.list, 0, &#39;王二&#39;)
-&#125;</code></pre>
-在操作数组的时候，我们一般会用到数据提供的很多方法，<br>比如push、pop、splice等等,在vue中调用数组上面提供的这些方法修改数组的值是可以触发数据响应的，<br>比如上面的代码可以改为以下的代码即可触发数据响应<pre><code class="hljs vue">&#x2F;&#x2F; 修改用户名称
-handleChangeName() &#123;
-  this.list.splice(0, 1, &#39;王石&#39;)
-&#125;</code></pre>
-实际上，如果vue仅仅依赖getter和setter，是无法做到在数组调用push、pop等方法来触发数据响应的，因此vue实际上是通过劫持这些方法，对这些方法进行包装变异来实现的<br>vue对数组的以下方法进行的包装变异:</li>
-<li>push</li>
-<li>pop</li>
-<li>shift</li>
-<li>unshift</li>
-<li>splice</li>
-<li>sort</li>
-<li>reverse</li>
-</ol>
+        /* Firefox */
+            &#123;
+            <span class="hljs-selector-tag">from</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>;
+            &#125;
+
+            <span class="hljs-selector-tag">to</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">200px</span>;
+            &#125;
+        &#125;
+
+        @-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> mymove
+
+        /* Safari and Chrome */
+            &#123;
+            <span class="hljs-selector-tag">from</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>;
+            &#125;
+
+            <span class="hljs-selector-tag">to</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">200px</span>;
+            &#125;
+        &#125;
+
+        @-<span class="hljs-keyword">o</span>-<span class="hljs-keyword">keyframes</span> mymove
+
+        /* Opera */
+            &#123;
+            <span class="hljs-selector-tag">from</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">0px</span>;
+            &#125;
+
+            <span class="hljs-selector-tag">to</span> &#123;
+                <span class="hljs-attribute">top</span>: <span class="hljs-number">200px</span>;
+            &#125;
+        &#125;
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>注释：<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>本例在 Internet Explorer 中无效。<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 这是摘自w3school的一段关于keyframes的代码，大家有兴趣的可以看一下，
+http://www.w3school.com.cn/tiy/t.asp?f=css3_keyframes
+大家可以看到一个红色正方形，从上方运动到下面，再快速回到上面，再按animation:5s;从上面运动到下方，这样周而复始.那么在这个里面起关键的是keyframes，定义了动画，而animation:infinite 5s；则定义了动画效果，其中infinite代表的是循环，周而复始的这个过程。去掉这个，我们则看到红色正方形缓缓下来之后再快速回到上面后就不再动了。
+那么我们想使正方形运动一次后留在下面，应该如何处理，这就是animation-fill-mode的作用，我今天在teambition网站上看到了他们的导航条的效果便是利用了这个，根据w3，animation-fill-mode有四个属性，none,forwards,backwards,both，其中none和forwards使得运动物体动画结束后回到动画前的状态，而both和forwards则使运动物体在动画结束后保留动画结束前最后一帧的效果，因此如 果我们希望正方形运动一次后停在下方，则需要使用animation-fill-mode这个属性。
+而alternate则是达到往返效果，我们在实现摆钟动画时往往可能需要这个，我们不可能希望摆钟从左摆到右是一个我们确定的频率，从右摆到左又是一个急速的状态，没有保持一致。这样视觉上会大打折扣，大家可以在这个红色正方形上实验一下。譬如animation:mymove 5s infinite;变为 animation:mymove 5s infinite alternate；
+来实际观察一下效果。 --&gt;</span></code></pre>
 
 
   
@@ -326,12 +303,10 @@ handleChangeName() &#123;
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/10/09/css3%E7%9A%84animation-fill-mode/">css3的animation-fill-mode</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/10/07/vue%E7%9A%84render%E5%87%BD%E6%95%B0/">vue的render函数</a>
+          <a href="/2020/10/09/vue%E6%95%B0%E6%8D%AE%E8%B5%8B%E5%80%BC%E4%BD%86%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9B%B4%E6%96%B0/">vue数据赋值但视图没更新</a>
         
     </div>
   </div>
@@ -343,7 +318,7 @@ handleChangeName() &#123;
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/10/09/vue数据赋值但视图没更新/">https://codermino.github.io/2020/10/09/vue数据赋值但视图没更新/</a>
+      永久链接：<a href="https://codermino.github.io/2020/10/09/css3的animation-fill-mode/">https://codermino.github.io/2020/10/09/css3的animation-fill-mode/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
