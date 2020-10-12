@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-10-09T08:43:46.934Z</updated>
+  <updated>2020-10-12T07:11:45.874Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vite笔记</title>
+    <link href="https://codermino.github.io/2020/10/12/vite%E7%AC%94%E8%AE%B0/"/>
+    <id>https://codermino.github.io/2020/10/12/vite%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-10-12T02:52:15.000Z</published>
+    <updated>2020-10-12T07:11:45.874Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vite.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vite.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;vite的优点&quot;&gt;vite的优点&lt;a class=
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vite笔记" scheme="https://codermino.github.io/tags/vite%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>vue3reactive(响应式对象)和toRefs</title>
@@ -487,31 +512,6 @@
     
     
       <category term="better-scroll的使用" scheme="https://codermino.github.io/tags/better-scroll%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue自定义属性</title>
-    <link href="https://codermino.github.io/2020/09/04/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/"/>
-    <id>https://codermino.github.io/2020/09/04/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/</id>
-    <published>2020-09-04T13:50:33.000Z</published>
-    <updated>2020-09-04T13:54:53.972Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;标签元素&quot;&gt;标签元素&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue自定义属性" scheme="https://codermino.github.io/tags/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/"/>
     
   </entry>
   
