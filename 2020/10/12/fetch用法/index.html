@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      fetch用法 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get方式"><span class="toc-text">get方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#post方式"><span class="toc-text">post方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol></li></ol></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,161 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5redis/" title="scrapy数据存入redis">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入redis</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/" title="scrapy数据存入mongodb">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mongodb</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/" title="scrapy数据存入mysql">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mysql</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="markdown基本语法">
-                <span>2020/07/11</span>
-                <span>markdown基本语法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/python%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="python引入模块四种方式">
-                <span>2020/07/11</span>
-                <span>python引入模块四种方式</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/05/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%89%8D%E4%BF%AE%E9%A5%B0%E7%AC%A6/" title="python字符串前修饰符">
-                <span>2020/07/05</span>
-                <span>python字符串前修饰符</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/05/pyinstaller%E7%9A%84%E4%BD%BF%E7%94%A8/" title="pyinstaller的使用">
-                <span>2020/07/05</span>
-                <span>pyinstaller的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/05/git%E6%8F%90%E4%BA%A4pr/" title="git提交pr">
-                <span>2020/07/05</span>
-                <span>git提交pr</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/05/git%E5%90%8C%E6%AD%A5%E6%9B%B4%E6%96%B0fork%E9%A1%B9%E7%9B%AE/" title="git同步更新fork项目">
-                <span>2020/07/05</span>
-                <span>git同步更新fork项目</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/06/25/cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB/" title="cookie和session的区别">
-                <span>2020/06/25</span>
-                <span>cookie和session的区别</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/page/9/">9</a><a class="page-number" href="/archives/page/10/">10</a>
-</div>
-</div>
+      <div class="title">fetch用法</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/10/12</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/fetch用法">fetch用法</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="介绍">介绍<a class="post-anchor" href="#介绍"></a></h3><p>fetch是新一代XMLHttpRequest的一种替代方案。无需安装其他库。<br>可以在浏览器中直接提供其提供的api轻松与后台进行数据交互。</p>
+<h4 id="基本用法">基本用法<a class="post-anchor" href="#基本用法"></a></h4><pre><code class="hljs vue">fetch（url，&#123;parmas&#125;）.then(res&#x3D;&gt;
+  return res.json()  &#x2F;&#x2F;返回promise对象
+ ).then(data&#x3D;&gt;&#123;
+  return data     &#x2F;&#x2F;返回真正数据
+&#125;).catch(err&#x3D;&gt;&#123;
+ throw new Error(err)
+&#125;)</code></pre>
+
+<h4 id="get方式">get方式<a class="post-anchor" href="#get方式"></a></h4><pre><code class="hljs vue">fetch(&#96;&#x2F;api&#x2F;goodbook&#x2F;catalog?key&#x3D;d6c40ecb5a128109903810ca9c21d878&amp;dtype&#x3D;&#39;json&#39;&#96;)
+  .then(res &#x3D;&gt; &#123;
+    return res.json();
+  &#125;)
+  .then(res &#x3D;&gt; &#123;
+    &#x2F;&#x2F; 这里返回的数据就是我们想要请求的json数据
+    console.log(res);
+  &#125;)</code></pre>
+
+<h4 id="post方式">post方式<a class="post-anchor" href="#post方式"></a></h4><pre><code class="hljs vue">fetch(url+&quot;&#x2F;stats&#x2F;getUserList&quot;,&#123;
+   method:&quot;POST&quot;,
+   headers:&#123;
+        &#39;Content-Type&#39;: &#39;application&#x2F;x-www-form-urlencoded&#39;
+   &#125;,
+   body:qs.stringify(data)
+ &#125;).then(res&#x3D;&gt;&#123;
+     console.log(res)
+      return res.json();
+ &#125;).then(data&#x3D;&gt;&#123;
+     console.log(&quot;返回值：&quot;,data)
+ &#125;).catch(err&#x3D;&gt;&#123;
+     console.log(err)
+ &#125;)</code></pre>
+<h5 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h5><pre><code class="hljs vue">fetch(&#39;http:&#x2F;&#x2F;localhost:3000&#x2F;books&#39;, &#123;
+        method: &#39;post&#39;,
+        body: JSON.stringify(&#123;
+            uname: &#39;zhangsan&#39;,
+            pwd: &#39;456&#39;
+        &#125;),
+        headers: &#123;
+            &#39;Content-Type&#39;: &#39;application&#x2F;json&#39;
+        &#125;
+    &#125;)
+    .then(function(data) &#123;
+        &#x2F;&#x2F; return data.text();
+        return response.json();
+    &#125;).then(function(data) &#123;
+        console.log(data);
+
+    &#125;)</code></pre>
+
+<p><strong>note</strong></p>
+<ol>
+<li>fetch返回的是promise对象。所以fetch().then()第一个then里返回的并不是真正的数据。<br> 而是一个promise，所以我们需要通过链式操作第二个then()来获取真正的数据。</li>
+<li>fetch发送参数是通过body字段来实现的。body是fetch第二个参数的必选参数之一。<br> params的参数如下:<pre><code>* method(String): HTTP请求方法，默认为GET
+* body(String): HTTP的请求参数
+* headers(Object): HTTP的请求头，默认为{}
+* credentials(String): 默认为omit,忽略的意思，也就是不带cookie;还有两个参数，
+    same-origin，意思就是同源请求带cookie；include,表示无论跨域还是同源请求都会带cookie</code></pre></li>
+<li>body带的参数是一个序列化以后的字符串。类似 name=”coc”&amp;age=30.所以这里我们通过qs库进行了序列化。</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/10/12/vitenote/">vitenote</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/10/12/fetch用法/">https://codermino.github.io/2020/10/12/fetch用法/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
