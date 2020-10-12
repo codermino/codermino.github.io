@@ -27,7 +27,39 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vite的优点"><span class="toc-text">vite的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对编译的支持"><span class="toc-text">对编译的支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TypeScript"><span class="toc-text">TypeScript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-JSON-Importing"><span class="toc-text">CSS / JSON Importing</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用xxx-module-css的方式引入"><span class="toc-text">使用xxx.module.css的方式引入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在-vue文件中使用style-module的方式引入"><span class="toc-text">在.vue文件中使用style module的方式引入</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dev-Server-Proxy"><span class="toc-text">Dev Server Proxy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alias-设置别名"><span class="toc-text">alias(设置别名)</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vite的优点"><span class="toc-text">vite的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对编译的支持"><span class="toc-text">对编译的支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TypeScript"><span class="toc-text">TypeScript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-JSON-Importing"><span class="toc-text">CSS / JSON Importing</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用xxx-module-css的方式引入"><span class="toc-text">使用xxx.module.css的方式引入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#在-vue文件中使用的方式引入"><span class="toc-text">在.vue文件中使用的方式引入&lt;/h5&gt;&lt;p&gt; 引入&lt;br&gt; &lt;pre&gt;&lt;code class=&quot;hljs vue&quot;&gt;&amp;lt;style scoped vars&amp;#x3D;&amp;quot;&amp;#123; color &amp;#125;&amp;quot; module&amp;gt;
+  .text &amp;#123;
+    color: var(--color);
+  &amp;#125;
+&amp;lt;&amp;#x2F;style&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;br&gt;使用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs html&quot;&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;h3&lt;/span&gt; &lt;span class=&quot;hljs-attr&quot;&gt;:class&lt;/span&gt;=&lt;span class=&quot;hljs-string&quot;&gt;&quot;$style.text&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&amp;#123;&amp;#123;people.name&amp;#125;&amp;#125;-&amp;#123;&amp;#123;people.id&amp;#125;&amp;#125;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;h3&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;Dev-Server-Proxy&quot;&gt;&lt;a href=&quot;#Dev-Server-Proxy&quot; class=&quot;headerlink&quot; title=&quot;Dev Server Proxy&quot;&gt;&lt;/a&gt;Dev Server Proxy&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;hljs vue&quot;&gt;const path &amp;#x3D; require(&amp;#39;path&amp;#39;)
+
+module.exports &amp;#x3D; &amp;#123;
+  proxy: &amp;#123;
+    &amp;#39;&amp;#x2F;api&amp;#39;: &amp;#123;
+      target: &amp;#39;http:&amp;#x2F;&amp;#x2F;apis.juhe.cn&amp;#39;,
+      changeOrigin: true,
+      rewrite: path &amp;#x3D;&amp;gt; path.replace(&amp;#x2F;^\&amp;#x2F;api&amp;#x2F;, &amp;#39;&amp;#39;)
+    &amp;#125;
+  &amp;#125;,
+  alias: &amp;#123;
+    &amp;#x2F;&amp;#x2F; 键必须以斜线开始和结束
+    &amp;#39;&amp;#x2F;@&amp;#x2F;&amp;#39;: path.resolve(__dirname, &amp;#39;.&amp;#x2F;src&amp;#39;)
+    &amp;#x2F;&amp;#x2F; &amp;#39;&amp;#x2F;@components&amp;#x2F;&amp;#39;: path.resolve(__dirname, &amp;#39;.&amp;#x2F;src&amp;#x2F;components&amp;#39;)
+  &amp;#125;
+&amp;#125;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;alias-设置别名&quot;&gt;&lt;a href=&quot;#alias-设置别名&quot; class=&quot;headerlink&quot; title=&quot;alias(设置别名)&quot;&gt;&lt;/a&gt;alias(设置别名)&lt;/h4&gt;&lt;p&gt;设置&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs vue&quot;&gt;alias: &amp;#123;
+    &amp;#x2F;&amp;#x2F; 键必须以斜线开始和结束
+    &amp;#39;&amp;#x2F;@&amp;#x2F;&amp;#39;: path.resolve(__dirname, &amp;#39;.&amp;#x2F;src&amp;#39;)
+    &amp;#x2F;&amp;#x2F; &amp;#39;&amp;#x2F;@components&amp;#x2F;&amp;#39;: path.resolve(__dirname, &amp;#39;.&amp;#x2F;src&amp;#x2F;components&amp;#39;)
+  &amp;#125;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hljs vue&quot;&gt;import sonCom from &amp;#39;&amp;#x2F;@&amp;#x2F;components&amp;#x2F;sonCom.vue&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -239,14 +271,15 @@ setup(props,context)&#123;
     <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"sonstyle.title"</span>&gt;</span>456<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-<h5 id="在-vue文件中使用style-module的方式引入">在.vue文件中使用style module的方式引入<a class="post-anchor" href="#在-vue文件中使用style-module的方式引入"></a></h5><p> 引入<br> <pre><code class="hljs vue">&lt;style scoped vars&#x3D;&quot;&#123; color &#125;&quot; module&gt;
+
+<h5 id="在-vue文件中使用的方式引入">在.vue文件中使用<style module>的方式引入</h5><p> 引入<br> <pre><code class="hljs vue">&lt;style scoped vars&#x3D;&quot;&#123; color &#125;&quot; module&gt;
   .text &#123;
     color: var(--color);
   &#125;
 &lt;&#x2F;style&gt;</code></pre><br>使用</p>
 <pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"$style.text"</span>&gt;</span>&#123;&#123;people.name&#125;&#125;-&#123;&#123;people.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></code></pre>
 
-<h4 id="Dev-Server-Proxy">Dev Server Proxy<a class="post-anchor" href="#Dev-Server-Proxy"></a></h4><pre><code class="hljs vue">const path &#x3D; require(&#39;path&#39;)
+<h4 id="Dev-Server-Proxy"><a href="#Dev-Server-Proxy" class="headerlink" title="Dev Server Proxy"></a>Dev Server Proxy</h4><pre><code class="hljs vue">const path &#x3D; require(&#39;path&#39;)
 
 module.exports &#x3D; &#123;
   proxy: &#123;
@@ -263,7 +296,7 @@ module.exports &#x3D; &#123;
   &#125;
 &#125;</code></pre>
 
-<h4 id="alias-设置别名">alias(设置别名)<a class="post-anchor" href="#alias-设置别名"></a></h4><p>设置</p>
+<h4 id="alias-设置别名"><a href="#alias-设置别名" class="headerlink" title="alias(设置别名)"></a>alias(设置别名)</h4><p>设置</p>
 <pre><code class="hljs vue">alias: &#123;
     &#x2F;&#x2F; 键必须以斜线开始和结束
     &#39;&#x2F;@&#x2F;&#39;: path.resolve(__dirname, &#39;.&#x2F;src&#39;)
@@ -271,7 +304,7 @@ module.exports &#x3D; &#123;
   &#125;</code></pre>
 <p>使用</p>
 <pre><code class="hljs vue">import sonCom from &#39;&#x2F;@&#x2F;components&#x2F;sonCom.vue&#39;</code></pre>
-
+</style><a class="post-anchor" href="#在-vue文件中使用的方式引入"></a></h5>
 
   
     <div class="post-reward">
