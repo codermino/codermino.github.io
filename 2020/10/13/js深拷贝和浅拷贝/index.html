@@ -316,7 +316,18 @@ o2.msg.age = <span class="hljs-number">20</span>;
 a[<span class="hljs-number">3</span>] = <span class="hljs-number">7</span>;
 a[<span class="hljs-number">7</span>][<span class="hljs-number">0</span>].name=<span class="hljs-string">'sunhe'</span>
 <span class="hljs-built_in">console</span>.log(a);
-<span class="hljs-built_in">console</span>.log(b);</code></pre>
+<span class="hljs-built_in">console</span>.log(b);
+
+<span class="hljs-keyword">var</span> obj = &#123;
+    <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'andy'</span>,
+    <span class="hljs-attr">msg</span>: &#123;
+        <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>
+    &#125;,
+    <span class="hljs-attr">color</span>: [<span class="hljs-string">'pink'</span>, <span class="hljs-string">'red'</span>]
+&#125;;
+<span class="hljs-keyword">let</span> data = deepClone(obj)
+<span class="hljs-built_in">console</span>.log(data)</code></pre>
 
 
   
