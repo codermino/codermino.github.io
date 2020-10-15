@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#css三角形"><span class="toc-text">css三角形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-实现一个简单的三角形"><span class="toc-text">1.实现一个简单的三角形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现原理："><span class="toc-text">实现原理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-实现带边框的三角形"><span class="toc-text">2.实现带边框的三角形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-绘制其它角度的三角形"><span class="toc-text">3.绘制其它角度的三角形</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#css三角形"><span class="toc-text">css三角形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-实现一个简单的三角形"><span class="toc-text">1.实现一个简单的三角形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现原理："><span class="toc-text">实现原理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-实现带边框的三角形"><span class="toc-text">2.实现带边框的三角形</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-绘制其它角度的三角形"><span class="toc-text">3.绘制其它角度的三角形</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -311,6 +311,13 @@ div &#123;
 <span class="hljs-code">    border-color: transparent transparent #fff;</span>
 &#125;</code></pre>
 <h4 id="3-绘制其它角度的三角形">3.绘制其它角度的三角形<a class="post-anchor" href="#3-绘制其它角度的三角形"></a></h4><p>绘制其它角度的三角形，如：<br><a href="/images/sanjiaoxing/s15.webp" data-caption data-fancybox="images"><img src="/images/sanjiaoxing/s15.webp" alt></a><br>或者<br><a href="/images/sanjiaoxing/s16.webp" data-caption data-fancybox="images"><img src="/images/sanjiaoxing/s16.webp" alt></a><br>就更简单了，其实它们都是基于之前绘制的三角形而来的。<br>如果想绘制右直角三角，则将左border设置为0；<br>如果想绘制左直角三角，将右border设置为0即可（其它情况同理）。</p>
+<h5 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h5><pre><code class="hljs markdown">div &#123;
+<span class="hljs-code">    width: 0;</span>
+<span class="hljs-code">    height: 0;</span>
+<span class="hljs-code">    border: 40px solid;</span>
+<span class="hljs-code">    border-left: 0;</span>
+<span class="hljs-code">    border-color: transparent transparent red;</span>
+&#125;</code></pre>
 
 
   
