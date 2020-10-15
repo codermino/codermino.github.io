@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1点击按钮进行编辑和保存"><span class="toc-text">Demo1点击按钮进行编辑和保存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2点击单元格编辑自动聚焦和可选择表格"><span class="toc-text">Demo2点击单元格编辑自动聚焦和可选择表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo3功能同Demo2，无操作按钮"><span class="toc-text">Demo3功能同Demo2，无操作按钮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo4更改ref设置方式"><span class="toc-text">Demo4更改ref设置方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo5增加回车事件"><span class="toc-text">Demo5增加回车事件</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1点击按钮进行编辑和保存"><span class="toc-text">Demo1点击按钮进行编辑和保存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2点击单元格编辑自动聚焦和可选择表格"><span class="toc-text">Demo2点击单元格编辑自动聚焦和可选择表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo3功能同Demo2，无操作按钮"><span class="toc-text">Demo3功能同Demo2，无操作按钮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo4更改ref设置方式"><span class="toc-text">Demo4更改ref设置方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo5增加回车事件"><span class="toc-text">Demo5增加回车事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo6"><span class="toc-text">Demo6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo7"><span class="toc-text">Demo7</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo8"><span class="toc-text">Demo8</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -827,6 +827,832 @@ export default &#123;
   &#125;
 &#125;
 &lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="Demo6">Demo6<a class="post-anchor" href="#Demo6"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;i-table  border :columns&#x3D;&quot;columns2&quot; :data&#x3D;&quot;data3&quot;&gt;&lt;&#x2F;i-table&gt;
+  &lt;Divider &#x2F;&gt;
+  &#123;&#123;data3&#125;&#125;
+  &lt;Divider &#x2F;&gt;
+  &lt;Button @click&#x3D;&quot;submit&quot;&gt;
+    提交
+  &lt;&#x2F;Button&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  data () &#123;
+    return &#123;
+      columns2: [
+        &#123;
+          type: &#39;selection&#39;,
+          width: 60,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          width: 80,
+          type: &#39;index&#39;,
+          title: &#39;序号&#39;,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          title: &#39;Name&#39;,
+          key: &#39;name&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              return h(&#39;Input&#39;, &#123;
+                props: &#123;
+                  value: params.row.name
+                &#125;,
+                on: &#123;
+                  input: (event)&#x3D;&gt; &#123;
+                    params.row.name &#x3D; event
+                  &#125;
+                &#125;
+              &#125;);
+            &#125; else  &#123;
+              return h(&#39;div&#39;, params.row.name);
+            &#125;
+          &#125;
+        &#125;,
+        &#123;
+          title: &#39;Age&#39;,
+          key: &#39;age&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              return h(&#39;Input&#39;, &#123;
+                props: &#123;
+                  value: params.row.age
+                &#125;,
+                on: &#123;
+                  input: (event)&#x3D;&gt; &#123;
+                    params.row.age &#x3D; event
+                  &#125;
+                &#125;
+              &#125;);
+            &#125; else  &#123;
+              return h(&#39;div&#39;, params.row.age);
+            &#125;
+          &#125;
+        &#125;,
+        &#123;
+          title: &#39;Address&#39;,
+          key: &#39;address&#39;,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          title: &#39;操作&#39;,
+          key: &#39;action&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            return h(&#39;Button&#39;, &#123;
+              props: &#123;
+                type: &#39;primary&#39;,
+                size: &#39;small&#39;,
+                type: params.row.$isEdit ? &#39;success&#39; : &#39;primary&#39;,
+              &#125;,
+              on: &#123;
+                click: () &#x3D;&gt; &#123;
+                  if (params.row.$isEdit) &#123;
+                    this.handleSave(params.row,params.index)
+                  &#125; else &#123;
+                    this.handleEdit(params.row)
+                  &#125;
+                &#125;
+              &#125;
+            &#125;, params.row.$isEdit ? &#39;保存&#39; : &#39;编辑&#39;)
+          &#125; 
+        &#125;
+      ],
+      data3: [
+        &#123;
+          name: &#39;哈哈&#39;,
+          age: 18,
+          address: &#39;上海&#39;,
+          $isEdit: false
+        &#125;,
+        &#123;
+          name: &#39;&#39;,
+          age: 24,
+          address: &#39;北京&#39;,
+          $isEdit: false
+        &#125;
+      ],
+      data4: [
+        &#123;
+          name: &#39;哈哈&#39;,
+          age: 18,
+          address: &#39;上海&#39;,
+          $isEdit: false
+        &#125;,
+        &#123;
+          name: &#39;&#39;,
+          age: 24,
+          address: &#39;北京&#39;,
+          $isEdit: false
+        &#125;
+      ]
+    &#125;
+  &#125;,
+  methods: &#123;
+    handleEdit (row) &#123;
+      this.$set(row, &#39;$isEdit&#39;, true)
+    &#125;,
+    handleSave (row, index) &#123;
+      this.$set(row, &#39;$isEdit&#39;, false)
+      this.$set(this.data4, index, row)
+    &#125;,
+    submit()&#123;
+      console.log(this.data4)
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="Demo7">Demo7<a class="post-anchor" href="#Demo7"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;i-table  border :columns&#x3D;&quot;columns2&quot; :data&#x3D;&quot;data3&quot;&gt;&lt;&#x2F;i-table&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  data () &#123;
+    return &#123;
+      columns2: [
+        &#123;
+          type: &#39;selection&#39;,
+          width: 60,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          width: 80,
+          type: &#39;index&#39;,
+          title: &#39;序号&#39;,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          title: &#39;Name&#39;,
+          key: &#39;name&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              return h(&#39;Input&#39;, &#123;
+                props: &#123;
+                  value: params.row.name
+                &#125;,
+                on: &#123;
+                  input: function (event) &#123;
+                    params.row.name &#x3D; event.target.value
+                  &#125;
+                &#125;
+              &#125;);
+            &#125; else  &#123;
+              return h(&#39;div&#39;, params.row.name);
+            &#125;
+          &#125;
+        &#125;,
+        &#123;
+          title: &#39;Age&#39;,
+          key: &#39;age&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              return h(&#39;Input&#39;, &#123;
+                props: &#123;
+                  value: params.row.age
+                &#125;,
+                on: &#123;
+                  input: function (event) &#123;
+                    params.row.age &#x3D; event.target.value
+                  &#125;
+                &#125;
+              &#125;);
+            &#125; else  &#123;
+              return h(&#39;div&#39;, params.row.age);
+            &#125;
+          &#125;
+        &#125;,
+        &#123;
+          title: &#39;Address&#39;,
+          key: &#39;address&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            return h(&#39;a&#39;, &#123;
+              domProps: &#123;
+                text: params.row.address
+              &#125;,
+              on: &#123;
+                  click: (event)&#x3D;&gt; &#123;
+                    this.clickAddress(params.row)
+                  &#125;
+                &#125;
+            &#125;);
+          &#125;
+        &#125;,
+        &#123;
+          title: &#39;操作&#39;,
+          key: &#39;action&#39;,
+          align: &#39;center&#39;,
+          width: 80,
+          render: (h, params) &#x3D;&gt; &#123;
+            return h(&#39;Icon&#39;, &#123;
+              props: &#123;
+                type: params.row.$isEdit ? &#39;ios-checkmark&#39; : &#39;md-add&#39;,
+                size: 48
+              &#125;,
+              on: &#123;
+                click: () &#x3D;&gt; &#123;
+                  if (params.row.$isEdit) &#123;
+                    this.handleSave(params.row)
+                  &#125; else &#123;
+                    this.handleEdit(params.row)
+                  &#125;
+                &#125;
+              &#125;
+            &#125;)
+          &#125;
+        &#125;
+      ],
+      data3: [
+        &#123;
+          name: &#39;哈哈&#39;,
+          age: 18,
+          address: &#39;上海&#39;,
+          $isEdit: false
+        &#125;,
+        &#123;
+          name: &#39;&#39;,
+          age: 24,
+          address: &#39;北京&#39;,
+          $isEdit: false
+        &#125;
+      ]
+    &#125;
+  &#125;,
+  methods: &#123;
+    handleEdit (row) &#123;
+      this.$set(row, &#39;$isEdit&#39;, true)
+    &#125;,
+    handleSave (row) &#123;
+      this.$set(row, &#39;$isEdit&#39;, false)
+    &#125;,
+    clickAddress(row)&#123;
+      console.log(row);
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+<h4 id="Demo8">Demo8<a class="post-anchor" href="#Demo8"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div style&#x3D;&quot;width: 600px;margin: 0 auto;&quot;&gt;
+    &lt;i-table  border :columns&#x3D;&quot;columns2&quot; :data&#x3D;&quot;data3&quot;&gt;&lt;&#x2F;i-table&gt;
+    &lt;Divider &#x2F;&gt;
+    &#123;&#123;data3&#125;&#125;
+    &lt;Divider &#x2F;&gt;
+    &lt;Button @click&#x3D;&quot;submit&quot;&gt;
+      提交
+    &lt;&#x2F;Button&gt;
+    &lt;Divider &#x2F;&gt;
+    &#123;&#123;data4&#125;&#125;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  data () &#123;
+    return &#123;
+      columns2: [
+        &#123;
+          type: &#39;selection&#39;,
+          width: 60,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          width: 80,
+          type: &#39;index&#39;,
+          title: &#39;序号&#39;,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          title: &#39;Name&#39;,
+          key: &#39;name&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              return h(&#39;Input&#39;, &#123;
+                props: &#123;
+                  value: params.row.name
+                &#125;,
+                on: &#123;
+                  input: (event)&#x3D;&gt; &#123;
+                    params.row.name &#x3D; event
+                  &#125;
+                &#125;
+              &#125;);
+            &#125; else  &#123;
+              return h(&#39;div&#39;, params.row.name);
+            &#125;
+          &#125;
+        &#125;,
+        &#123;
+          title: &#39;Age&#39;,
+          key: &#39;age&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              return h(&#39;Input&#39;, &#123;
+                props: &#123;
+                  value: params.row.age
+                &#125;,
+                on: &#123;
+                  input: (event)&#x3D;&gt; &#123;
+                    params.row.age &#x3D; event
+                  &#125;
+                &#125;
+              &#125;);
+            &#125; else  &#123;
+              return h(&#39;div&#39;, params.row.age);
+            &#125;
+          &#125;
+        &#125;,
+        &#123;
+          title: &#39;Address&#39;,
+          key: &#39;address&#39;,
+          align: &#39;center&#39;
+        &#125;,
+        &#123;
+          title: &#39;操作&#39;,
+          key: &#39;action&#39;,
+          align: &#39;center&#39;,
+          render: (h, params) &#x3D;&gt; &#123;
+            let children &#x3D; [];
+            children.push(this.iconRender(h, params))
+            children.push(this.buttonRender(h, params))
+            return h(&#39;div&#39;, children);
+          &#125;
+        &#125;
+      ],
+      data3: [
+        &#123;
+          name: &#39;哈哈&#39;,
+          age: 18,
+          address: &#39;上海&#39;,
+          $isEdit: false
+        &#125;,
+        &#123;
+          name: &#39;&#39;,
+          age: 24,
+          address: &#39;北京&#39;,
+          $isEdit: false
+        &#125;
+      ],
+      data4: [
+        &#123;
+          name: &#39;哈哈&#39;,
+          age: 18,
+          address: &#39;上海&#39;,
+          $isEdit: false
+        &#125;,
+        &#123;
+          name: &#39;&#39;,
+          age: 24,
+          address: &#39;北京&#39;,
+          $isEdit: false
+        &#125;
+      ]
+    &#125;
+  &#125;,
+  methods: &#123;
+    iconRender(h,params)&#123;
+      return h(&#39;Icon&#39;, &#123;
+        props: &#123;
+          custom: params.row.$isEdit ? &#39;iconfont icon-save1&#39; : &#39;iconfont icon-edit&#39;,
+        &#125;,
+        style:&#123;
+          cursor:&#39;pointer&#39;
+        &#125;,
+        on: &#123;
+          click: () &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              this.handleSave(params.row,params.index)
+            &#125; else &#123;
+              this.handleEdit(params.row)
+            &#125;
+          &#125;
+        &#125;
+      &#125;)
+    &#125;,
+    buttonRender(h,params)&#123;
+      return h(&#39;Button&#39;, &#123;
+        props: &#123;
+          size: &#39;small&#39;,
+          type: params.row.$isEdit ? &#39;success&#39; : &#39;primary&#39;,
+        &#125;,
+        on: &#123;
+          click: () &#x3D;&gt; &#123;
+            if (params.row.$isEdit) &#123;
+              this.handleSave(params.row,params.index)
+            &#125; else &#123;
+              this.handleEdit(params.row)
+            &#125;
+          &#125;
+        &#125;
+      &#125;, params.row.$isEdit ? &#39;保存&#39; : &#39;编辑&#39;)
+    &#125;,
+    handleEdit (row) &#123;
+      this.$set(row, &#39;$isEdit&#39;, true)
+    &#125;,
+    handleSave (row, index) &#123;
+      this.$set(row, &#39;$isEdit&#39;, false)
+      this.$set(this.data4, index, row)
+    &#125;,
+    submit()&#123;
+      console.log(this.data4)
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;!--&lt;template&gt;--&gt;
+&lt;!--  &lt;div style&#x3D;&quot;width: 600px;margin: 0 auto;&quot;&gt;--&gt;
+&lt;!--    &lt;i-table  border :columns&#x3D;&quot;columns2&quot; :data&#x3D;&quot;data3&quot;&gt;&lt;&#x2F;i-table&gt;--&gt;
+&lt;!--    &lt;Divider &#x2F;&gt;--&gt;
+&lt;!--    &#123;&#123;data3&#125;&#125;--&gt;
+&lt;!--    &lt;Divider &#x2F;&gt;--&gt;
+&lt;!--    &lt;Button @click&#x3D;&quot;submit&quot;&gt;--&gt;
+&lt;!--      提交--&gt;
+&lt;!--    &lt;&#x2F;Button&gt;--&gt;
+&lt;!--    &lt;Divider &#x2F;&gt;--&gt;
+&lt;!--    &#123;&#123;data4&#125;&#125;--&gt;
+&lt;!--  &lt;&#x2F;div&gt;--&gt;
+&lt;!--&lt;&#x2F;template&gt;--&gt;
+&lt;!--&lt;script&gt;--&gt;
+&lt;!--export default &#123;--&gt;
+&lt;!--  data () &#123;--&gt;
+&lt;!--    return &#123;--&gt;
+&lt;!--      columns2: [--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          type: &#39;selection&#39;,--&gt;
+&lt;!--          width: 60,--&gt;
+&lt;!--          align: &#39;center&#39;--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          width: 80,--&gt;
+&lt;!--          type: &#39;index&#39;,--&gt;
+&lt;!--          title: &#39;序号&#39;,--&gt;
+&lt;!--          align: &#39;center&#39;--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          title: &#39;Name&#39;,--&gt;
+&lt;!--          key: &#39;name&#39;,--&gt;
+&lt;!--          align: &#39;center&#39;,--&gt;
+&lt;!--          render: (h, params) &#x3D;&gt; &#123;--&gt;
+&lt;!--            if (params.row.$isEdit) &#123;--&gt;
+&lt;!--              return h(&#39;Input&#39;, &#123;--&gt;
+&lt;!--                props: &#123;--&gt;
+&lt;!--                  value: params.row.name--&gt;
+&lt;!--                &#125;,--&gt;
+&lt;!--                on: &#123;--&gt;
+&lt;!--                  input: (event)&#x3D;&gt; &#123;--&gt;
+&lt;!--                    params.row.name &#x3D; event--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                &#125;--&gt;
+&lt;!--              &#125;);--&gt;
+&lt;!--            &#125; else  &#123;--&gt;
+&lt;!--              return h(&#39;div&#39;, params.row.name);--&gt;
+&lt;!--            &#125;--&gt;
+&lt;!--          &#125;--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          title: &#39;Age&#39;,--&gt;
+&lt;!--          key: &#39;age&#39;,--&gt;
+&lt;!--          align: &#39;center&#39;,--&gt;
+&lt;!--          render: (h, params) &#x3D;&gt; &#123;--&gt;
+&lt;!--            if (params.row.$isEdit) &#123;--&gt;
+&lt;!--              return h(&#39;Input&#39;, &#123;--&gt;
+&lt;!--                props: &#123;--&gt;
+&lt;!--                  value: params.row.age--&gt;
+&lt;!--                &#125;,--&gt;
+&lt;!--                on: &#123;--&gt;
+&lt;!--                  input: (event)&#x3D;&gt; &#123;--&gt;
+&lt;!--                    params.row.age &#x3D; event--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                &#125;--&gt;
+&lt;!--              &#125;);--&gt;
+&lt;!--            &#125; else  &#123;--&gt;
+&lt;!--              return h(&#39;div&#39;, params.row.age);--&gt;
+&lt;!--            &#125;--&gt;
+&lt;!--          &#125;--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          title: &#39;Address&#39;,--&gt;
+&lt;!--          key: &#39;address&#39;,--&gt;
+&lt;!--          align: &#39;center&#39;--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          title: &#39;操作&#39;,--&gt;
+&lt;!--          key: &#39;action&#39;,--&gt;
+&lt;!--          align: &#39;center&#39;,--&gt;
+&lt;!--          render: (h, params) &#x3D;&gt; &#123;--&gt;
+&lt;!--            return h(&#39;Button&#39;, &#123;--&gt;
+&lt;!--              props: &#123;--&gt;
+&lt;!--                size: &#39;small&#39;,--&gt;
+&lt;!--                type: params.row.$isEdit ? &#39;success&#39; : &#39;primary&#39;,--&gt;
+&lt;!--              &#125;,--&gt;
+&lt;!--              on: &#123;--&gt;
+&lt;!--                click: () &#x3D;&gt; &#123;--&gt;
+&lt;!--                  if (params.row.$isEdit) &#123;--&gt;
+&lt;!--                    this.handleSave(params.row,params.index)--&gt;
+&lt;!--                  &#125; else &#123;--&gt;
+&lt;!--                    this.handleEdit(params.row)--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                &#125;--&gt;
+&lt;!--              &#125;--&gt;
+&lt;!--            &#125;, params.row.$isEdit ? &#39;保存&#39; : &#39;编辑&#39;)--&gt;
+&lt;!--          &#125;--&gt;
+&lt;!--        &#125;--&gt;
+&lt;!--      ],--&gt;
+&lt;!--      data3: [--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;哈哈&#39;,--&gt;
+&lt;!--          age: 18,--&gt;
+&lt;!--          address: &#39;上海&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;&#39;,--&gt;
+&lt;!--          age: 24,--&gt;
+&lt;!--          address: &#39;北京&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;--&gt;
+&lt;!--      ],--&gt;
+&lt;!--      data4: [--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;哈哈&#39;,--&gt;
+&lt;!--          age: 18,--&gt;
+&lt;!--          address: &#39;上海&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;&#39;,--&gt;
+&lt;!--          age: 24,--&gt;
+&lt;!--          address: &#39;北京&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;--&gt;
+&lt;!--      ]--&gt;
+&lt;!--    &#125;--&gt;
+&lt;!--  &#125;,--&gt;
+&lt;!--  methods: &#123;--&gt;
+&lt;!--    handleEdit (row) &#123;--&gt;
+&lt;!--      this.$set(row, &#39;$isEdit&#39;, true)--&gt;
+&lt;!--    &#125;,--&gt;
+&lt;!--    handleSave (row, index) &#123;--&gt;
+&lt;!--      this.$set(row, &#39;$isEdit&#39;, false)--&gt;
+&lt;!--      this.$set(this.data4, index, row)--&gt;
+&lt;!--    &#125;,--&gt;
+&lt;!--    submit()&#123;--&gt;
+&lt;!--      console.log(this.data4)--&gt;
+&lt;!--    &#125;--&gt;
+&lt;!--  &#125;--&gt;
+&lt;!--&#125;--&gt;
+&lt;!--&lt;&#x2F;script&gt;--&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;!--&lt;template&gt;--&gt;
+&lt;!--  &lt;div style&#x3D;&quot;width: 600px;margin: 0 auto&quot;&gt;--&gt;
+&lt;!--    &lt;i-table  border :columns&#x3D;&quot;columns2&quot; :data&#x3D;&quot;data3&quot;&gt;&lt;&#x2F;i-table&gt;--&gt;
+&lt;!--    &lt;Divider orientation&#x3D;&quot;left&quot;&gt;Left Text&lt;&#x2F;Divider&gt;--&gt;
+&lt;!--    &#123;&#123;data3&#125;&#125;--&gt;
+&lt;!--    &lt;Divider orientation&#x3D;&quot;left&quot;&gt;Left Text&lt;&#x2F;Divider&gt;--&gt;
+&lt;!--    &#123;&#123;data4&#125;&#125;--&gt;
+&lt;!--  &lt;&#x2F;div&gt;--&gt;
+&lt;!--&lt;&#x2F;template&gt;--&gt;
+&lt;!--&lt;script&gt;--&gt;
+&lt;!--export default &#123;--&gt;
+&lt;!--  data () &#123;--&gt;
+&lt;!--    return &#123;--&gt;
+&lt;!--      columns2: [--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          title: &#39;姓名&#39;,--&gt;
+&lt;!--          key: &#39;name&#39;,--&gt;
+&lt;!--          render: (h, params) &#x3D;&gt; &#123;--&gt;
+&lt;!--            let create &#x3D; this.$createElement;--&gt;
+&lt;!--            let dom1 &#x3D; create(&#39;Input&#39;, &#123;--&gt;
+&lt;!--              ref: params.row[Object.keys(params.row)[Object.keys(params.row).length-2]]+&#39;_name&#39;,--&gt;
+&lt;!--              props: &#123;--&gt;
+&lt;!--                type: &quot;text&quot;,--&gt;
+&lt;!--                value: params.row.name,--&gt;
+&lt;!--                placeholder:&#39;请输入姓名&#39;--&gt;
+&lt;!--              &#125;,--&gt;
+&lt;!--              on: &#123;--&gt;
+&lt;!--                &quot;on-blur&quot;: event &#x3D;&gt; &#123;--&gt;
+&lt;!--                  this.blur &#x3D; this.lastIndex !&#x3D;&#x3D; params.index;--&gt;
+&lt;!--                  if (this.firstClick)&#123;--&gt;
+&lt;!--                    this.blur&#x3D;true--&gt;
+&lt;!--                    this.firstClick&#x3D;false--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  console.log(&#39;name&#39;,this.blur);--&gt;
+&lt;!--                  if (this.blur)&#123;--&gt;
+&lt;!--                    this.$set(params.row, &#39;$isEdit&#39;, false);--&gt;
+&lt;!--                    this.lastIndex&#x3D;params.index--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  params.row.name &#x3D; event.target.value;--&gt;
+&lt;!--                  this.data4[params.index].name &#x3D; event.target.value;--&gt;
+&lt;!--                &#125;--&gt;
+&lt;!--              &#125;--&gt;
+&lt;!--            &#125;)--&gt;
+&lt;!--            let dom2 &#x3D; create(&#39;div&#39;, &#123;--&gt;
+&lt;!--              on: &#123;--&gt;
+&lt;!--                click: (e) &#x3D;&gt; &#123;--&gt;
+&lt;!--                  console.log(&#39;name&#39;,this.lastIndex, params.index)--&gt;
+&lt;!--                  if (params.index &#x3D;&#x3D;&#x3D; this.lastIndex)&#123;--&gt;
+&lt;!--                    this.blur&#x3D;false--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  if (this.lastIndex&#x3D;&#x3D;&#x3D;-1)&#123;--&gt;
+&lt;!--                    this.lastIndex &#x3D; params.index--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  this.$set(params.row, &#39;$isEdit&#39;, true);--&gt;
+&lt;!--                  this.$nextTick( () &#x3D;&gt;&#123;--&gt;
+&lt;!--                    this.$refs[params.row[Object.keys(params.row)[Object.keys(params.row).length-2]]+&#39;_name&#39;].focus()--&gt;
+&lt;!--                  &#125;)--&gt;
+&lt;!--                &#125;,--&gt;
+&lt;!--              &#125; &#125;,params.row.name)--&gt;
+&lt;!--            if (params.row.$isEdit)&#123;--&gt;
+&lt;!--              return dom1--&gt;
+&lt;!--            &#125;--&gt;
+&lt;!--            else&#123;return dom2&#125;--&gt;
+&lt;!--          &#125;--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          title: &#39;Age&#39;,--&gt;
+&lt;!--          key: &#39;age&#39;,--&gt;
+&lt;!--          render: (h, params) &#x3D;&gt; &#123;--&gt;
+&lt;!--            let create &#x3D; this.$createElement--&gt;
+&lt;!--            let dom3 &#x3D; create(&#39;Input&#39;, &#123;--&gt;
+&lt;!--              ref: params.row[Object.keys(params.row)[Object.keys(params.row).length-2]]+&#39;_age&#39;,--&gt;
+&lt;!--              props: &#123;--&gt;
+&lt;!--                type: &quot;text&quot;,--&gt;
+&lt;!--                value: params.row.age,--&gt;
+&lt;!--                placeholder:&#39;请输入年龄&#39;--&gt;
+&lt;!--              &#125;,--&gt;
+&lt;!--              on: &#123;--&gt;
+&lt;!--                &quot;on-blur&quot;: event &#x3D;&gt; &#123;--&gt;
+&lt;!--                  this.blur &#x3D; this.lastIndex !&#x3D;&#x3D; params.index;--&gt;
+&lt;!--                  if (this.firstClick)&#123;--&gt;
+&lt;!--                    this.blur&#x3D;true--&gt;
+&lt;!--                    this.firstClick&#x3D;false--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  console.log(&#39;age&#39;,this.blur);--&gt;
+&lt;!--                  if (this.blur)&#123;--&gt;
+&lt;!--                    this.$set(params.row, &#39;$isEdit&#39;, false);--&gt;
+&lt;!--                    this.lastIndex&#x3D;params.index--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  params.row.age &#x3D; event.target.value;--&gt;
+&lt;!--                  this.data4[params.index].age &#x3D; event.target.value;--&gt;
+&lt;!--                &#125;--&gt;
+&lt;!--              &#125;--&gt;
+&lt;!--            &#125;)--&gt;
+&lt;!--            let dom4 &#x3D; create(&#39;div&#39;, &#123;--&gt;
+&lt;!--              on: &#123;--&gt;
+&lt;!--                click: (e) &#x3D;&gt; &#123;--&gt;
+&lt;!--                  console.log(&#39;age&#39;,this.lastIndex, params.index)--&gt;
+&lt;!--                  if (params.index &#x3D;&#x3D;&#x3D; this.lastIndex)&#123;--&gt;
+&lt;!--                    this.blur&#x3D;false--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  if (this.lastIndex&#x3D;&#x3D;&#x3D;-1)&#123;--&gt;
+&lt;!--                    this.lastIndex &#x3D; params.index--&gt;
+&lt;!--                  &#125;--&gt;
+&lt;!--                  this.$set(params.row, &#39;$isEdit&#39;, true);--&gt;
+&lt;!--                  this.$nextTick( () &#x3D;&gt;&#123;--&gt;
+&lt;!--                    this.$refs[params.row[Object.keys(params.row)[Object.keys(params.row).length-2]]+&#39;_age&#39;].focus()--&gt;
+&lt;!--                  &#125; )--&gt;
+&lt;!--                &#125;,--&gt;
+&lt;!--              &#125; &#125;,params.row.age)--&gt;
+&lt;!--            if (params.row.$isEdit)&#123;--&gt;
+&lt;!--              return dom3--&gt;
+&lt;!--            &#125;--&gt;
+&lt;!--            else&#123;return dom4&#125;--&gt;
+&lt;!--          &#125;--&gt;
+&lt;!--        &#125;--&gt;
+&lt;!--      ],--&gt;
+&lt;!--      data3: [--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;王小明&#39;,--&gt;
+&lt;!--          age: &#39;18&#39;,--&gt;
+&lt;!--          address:&#39;123&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;张小刚&#39;,--&gt;
+&lt;!--          age: &#39;25&#39;,--&gt;
+&lt;!--          address:&#39;123&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;李小红&#39;,--&gt;
+&lt;!--          age: &#39;30&#39;,--&gt;
+&lt;!--          address:&#39;123&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;周小伟&#39;,--&gt;
+&lt;!--          age: &#39;26&#39;,--&gt;
+&lt;!--          $isEdit: false,--&gt;
+&lt;!--          address:&#39;123&#39;--&gt;
+&lt;!--        &#125;--&gt;
+&lt;!--      ],--&gt;
+&lt;!--      data4: [--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;王小明&#39;,--&gt;
+&lt;!--          age: &#39;18&#39;,--&gt;
+&lt;!--          address:&#39;123&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;张小刚&#39;,--&gt;
+&lt;!--          age: &#39;25&#39;,--&gt;
+&lt;!--          address:&#39;123&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;李小红&#39;,--&gt;
+&lt;!--          age: &#39;30&#39;,--&gt;
+&lt;!--          address:&#39;123&#39;,--&gt;
+&lt;!--          $isEdit: false--&gt;
+&lt;!--        &#125;,--&gt;
+&lt;!--        &#123;--&gt;
+&lt;!--          name: &#39;周小伟&#39;,--&gt;
+&lt;!--          age: &#39;26&#39;,--&gt;
+&lt;!--          $isEdit: false,--&gt;
+&lt;!--          address:&#39;123&#39;--&gt;
+&lt;!--        &#125;--&gt;
+&lt;!--      ],--&gt;
+&lt;!--      blur:true,--&gt;
+&lt;!--      lastIndex:-1,--&gt;
+&lt;!--      firstClick:true--&gt;
+&lt;!--    &#125;--&gt;
+&lt;!--  &#125;,--&gt;
+&lt;!--  methods: &#123;--&gt;
+&lt;!--    handleEdit (row) &#123;--&gt;
+&lt;!--      this.$set(row, &#39;$isEdit&#39;, true)--&gt;
+&lt;!--    &#125;,--&gt;
+&lt;!--    handleSave (row) &#123;--&gt;
+&lt;!--      this.$set(row, &#39;$isEdit&#39;, false)--&gt;
+&lt;!--    &#125;--&gt;
+&lt;!--  &#125;--&gt;
+&lt;!--&#125;--&gt;
+&lt;!--&lt;&#x2F;script&gt;--&gt;</code></pre>
 
 
   
