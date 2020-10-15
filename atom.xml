@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-10-15T07:49:10.451Z</updated>
+  <updated>2020-10-15T08:52:12.698Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue的is属性</title>
+    <link href="https://codermino.github.io/2020/10/15/vue%E7%9A%84is%E5%B1%9E%E6%80%A7/"/>
+    <id>https://codermino.github.io/2020/10/15/vue%E7%9A%84is%E5%B1%9E%E6%80%A7/</id>
+    <published>2020-10-15T08:45:24.000Z</published>
+    <updated>2020-10-15T08:52:12.698Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;vue的is属性简单说就是
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的is属性" scheme="https://codermino.github.io/tags/vue%E7%9A%84is%E5%B1%9E%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>proxy笔记</title>
@@ -486,31 +511,6 @@
     
     
       <category term="vue路由调转传递参数" scheme="https://codermino.github.io/tags/vue%E8%B7%AF%E7%94%B1%E8%B0%83%E8%BD%AC%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue中引入本地文件的方式</title>
-    <link href="https://codermino.github.io/2020/09/13/vue%E4%B8%AD%E5%BC%95%E5%85%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F/"/>
-    <id>https://codermino.github.io/2020/09/13/vue%E4%B8%AD%E5%BC%95%E5%85%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F/</id>
-    <published>2020-09-13T08:58:36.000Z</published>
-    <updated>2020-09-13T09:03:08.388Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;第一种方式使用import
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue中引入本地文件的方式" scheme="https://codermino.github.io/tags/vue%E4%B8%AD%E5%BC%95%E5%85%A5%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%B9%E5%BC%8F/"/>
     
   </entry>
   
