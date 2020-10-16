@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-10-16T05:44:25.453Z</updated>
+  <updated>2020-10-16T07:42:26.714Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue3的watch和watchEffect</title>
+    <link href="https://codermino.github.io/2020/10/16/vue3%E7%9A%84watch%E5%92%8CwatchEffect/"/>
+    <id>https://codermino.github.io/2020/10/16/vue3%E7%9A%84watch%E5%92%8CwatchEffect/</id>
+    <published>2020-10-16T05:54:50.000Z</published>
+    <updated>2020-10-16T07:42:26.714Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;watchEffect&quot;&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="vue3" scheme="https://codermino.github.io/categories/vue3/"/>
+    
+    
+      <category term="vue3的watch和watchEffect" scheme="https://codermino.github.io/tags/vue3%E7%9A%84watch%E5%92%8CwatchEffect/"/>
+    
+  </entry>
   
   <entry>
     <title>vue3的props和attrs</title>
@@ -485,31 +510,6 @@
     
     
       <category term="vue3note" scheme="https://codermino.github.io/tags/vue3note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue父子组件数据双向绑定</title>
-    <link href="https://codermino.github.io/2020/10/06/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
-    <id>https://codermino.github.io/2020/10/06/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/</id>
-    <published>2020-10-06T06:31:26.000Z</published>
-    <updated>2020-10-06T08:10:52.837Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;方法一&quot;&gt;方法一&lt;a cl
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue父子组件数据双向绑定" scheme="https://codermino.github.io/tags/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
     
   </entry>
   
