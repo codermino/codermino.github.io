@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020 - Mino
+      vue3的props和attrs - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#都知道props这个属性而-attrs属性可以看做props的加强版，用来简化vue组件传值，那么这两个属性具体有什么区别呢？"><span class="toc-text">都知道props这个属性而$attrs属性可以看做props的加强版，用来简化vue组件传值，那么这两个属性具体有什么区别呢？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#官方说明"><span class="toc-text">官方说明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li></ol></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,153 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/08/19/scss%E8%AF%AD%E6%B3%95/" title="scss语法">
-                <span>2020/08/19</span>
-                <span>scss语法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/%E5%86%B7%E9%97%A8%E4%B8%94%E6%9C%89%E7%94%A8%E7%9A%84css/" title="冷门且有用的css">
-                <span>2020/08/18</span>
-                <span>冷门且有用的css</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0Promise/" title="js学习笔记Promise">
-                <span>2020/08/18</span>
-                <span>js学习笔记Promise</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" title="js学习笔记回收机制">
-                <span>2020/08/18</span>
-                <span>js学习笔记回收机制</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%AD%A3%E5%88%99reg/" title="js学习笔记正则reg">
-                <span>2020/08/18</span>
-                <span>js学习笔记正则reg</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%BB%84array/" title="js学习笔记数组array">
-                <span>2020/08/18</span>
-                <span>js学习笔记数组array</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AF%B9%E8%B1%A1object/" title="js学习笔记对象object">
-                <span>2020/08/18</span>
-                <span>js学习笔记对象object</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AD%97%E7%AC%A6%E4%B8%B2string/" title="js学习笔记字符串string">
-                <span>2020/08/18</span>
-                <span>js学习笔记字符串string</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bes6/" title="js学习笔记之es6">
-                <span>2020/08/17</span>
-                <span>js学习笔记之es6</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="js学习笔记之正则表达式">
-                <span>2020/08/17</span>
-                <span>js学习笔记之正则表达式</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/2020/page/6/">6</a><a class="page-number" href="/archives/2020/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/11/">11</a>
-</div>
-</div>
+      <div class="title">vue3的props和attrs</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/10/16</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue3">vue3</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue3的props和attrs">vue3的props和attrs</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="都知道props这个属性而-attrs属性可以看做props的加强版，用来简化vue组件传值，那么这两个属性具体有什么区别呢？">都知道props这个属性而$attrs属性可以看做props的加强版，用来简化vue组件传值，那么这两个属性具体有什么区别呢？<a class="post-anchor" href="#都知道props这个属性而-attrs属性可以看做props的加强版，用来简化vue组件传值，那么这两个属性具体有什么区别呢？"></a></h3><ol>
+<li>props 要先声明才能取值，attrs 不用先声明</li>
+<li>props 声明过的属性，attrs 里不会再出现</li>
+<li>props 不包含事件，attrs 包含</li>
+<li>props 支持 string 以外的类型，attrs 只有 string 类型</li>
+</ol>
+<h4 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h4><p>父组件中引用子组件</p>
+<ol>
+<li>msg传递的值，是通过props进行接受了 msg2没有被props接收<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">HelloWorld</span> <span class="hljs-attr">msg</span>=<span class="hljs-string">"Welcome to Your Vue.js App"</span> <span class="hljs-attr">msg2</span>=<span class="hljs-string">"true"</span>/&gt;</span></code></pre>
+
+</li>
+</ol>
+<h3 id="官方说明">官方说明<a class="post-anchor" href="#官方说明"></a></h3><pre><code class="hljs markdown">解释：包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。 
+意思就是父组件往子组件传没有在props里声明过的值时，子组件可以通过$attrs接受，
+且只包含父组件没有在props里声明的值。</code></pre>
+
+<h4 id="父组件">父组件<a class="post-anchor" href="#父组件"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;home&quot;&gt;
+    &lt;child gender&#x3D;&quot;male&quot; age&#x3D;&quot;18&quot;&#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Child from &#39;..&#x2F;components&#x2F;Child&#39;
+
+export default &#123;
+  name: &#39;home&#39;,
+  components: &#123;
+    Child,
+  &#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h4 id="子组件">子组件<a class="post-anchor" href="#子组件"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+     -----------------Child------------------
+     &lt;br&gt;
+     &lt;span&gt;gender: &#123;&#123;$attrs[&#39;gender&#39;]&#125;&#125;&lt;&#x2F;span&gt;
+     &lt;br&gt;
+     &lt;span&gt;age: &#123;&#123;$attrs[&#39;age&#39;]&#125;&#125;&lt;&#x2F;span&gt;
+     &lt;br&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+    name: &#39;Child&#39;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style&gt;
+
+&lt;&#x2F;style&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/10/15/css%E5%AF%B9%E8%AF%9D%E6%A1%86%E6%97%81%E8%BE%B9%E7%9A%84%E7%AE%AD%E5%A4%B4/">css对话框旁边的箭头</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/10/16/vue3的props和attrs/">https://codermino.github.io/2020/10/16/vue3的props和attrs/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020

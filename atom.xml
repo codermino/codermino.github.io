@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-10-15T15:25:38.479Z</updated>
+  <updated>2020-10-16T05:44:25.453Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue3的props和attrs</title>
+    <link href="https://codermino.github.io/2020/10/16/vue3%E7%9A%84props%E5%92%8Cattrs/"/>
+    <id>https://codermino.github.io/2020/10/16/vue3%E7%9A%84props%E5%92%8Cattrs/</id>
+    <published>2020-10-16T02:57:01.000Z</published>
+    <updated>2020-10-16T05:44:25.453Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;都知道props这个属性而
+      
+    
+    </summary>
+    
+    
+      <category term="vue3" scheme="https://codermino.github.io/categories/vue3/"/>
+    
+    
+      <category term="vue3的props和attrs" scheme="https://codermino.github.io/tags/vue3%E7%9A%84props%E5%92%8Cattrs/"/>
+    
+  </entry>
   
   <entry>
     <title>css对话框旁边的箭头</title>
@@ -485,30 +510,6 @@
     
     
       <category term="vue父子组件数据双向绑定" scheme="https://codermino.github.io/tags/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>callback函数</title>
-    <link href="https://codermino.github.io/2020/09/28/callback%E5%87%BD%E6%95%B0/"/>
-    <id>https://codermino.github.io/2020/09/28/callback%E5%87%BD%E6%95%B0/</id>
-    <published>2020-09-28T09:12:21.000Z</published>
-    <updated>2020-09-28T09:13:44.509Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="callback函数" scheme="https://codermino.github.io/tags/callback%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
