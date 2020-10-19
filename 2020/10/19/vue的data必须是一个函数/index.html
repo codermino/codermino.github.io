@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解开疑问"><span class="toc-text">解开疑问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解开疑问"><span class="toc-text">解开疑问</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -236,6 +236,56 @@ componentA.data.age=<span class="hljs-number">55</span>;
 <p>此时，componentA 和 componentB data之间相互独立,<br>age 分别是 55 和 22 ，没有问题！</p>
 <h3 id="总结">总结<a class="post-anchor" href="#总结"></a></h3><p>在函数内声明实例属性保存data，<br>每个实例对象的data都是经过一次函数执行得到有不同的返回结果，<br>所以返回data的值具有自己独立的作用域。</p>
 <p>在定义Vue实例时，给Vue传参是一个对象，对象中data就是一个函数，<br>Vue在实例化的时候会调用这个函数每个实例都会返回新的值，data得到不同的值作用域<br>另外，赋值函数不一定要定义在原型上，也可以定义为函数或类的实例方法<br><strong>总结</strong><br>对象为引用关系，当复用组件时，由于数据对象都指向同一个data对象，<br>当找一个组件中修改data时，其他重用的组件中的data会同时被修改，<br>但是使用返回的对象的函数，由于每次返回的都是一个新对象，<br>保障了引用地址不同，则不会出现修改同一个数据的问题.</p>
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs vue">&lt;body&gt;
+    &lt;div id&#x3D;&quot;app&quot;&gt;
+        &lt;counter&gt;&lt;&#x2F;counter&gt;
+    &lt;&#x2F;div&gt;
+    &lt;template id&#x3D;&quot;temp1&quot;&gt;
+        &lt;div&gt;
+            &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;+1&quot; @click&#x3D;&quot;increment&quot;&gt;
+            &lt;h3&gt;&#123;&#123;count&#125;&#125;&lt;&#x2F;h3&gt;
+        &lt;&#x2F;div&gt;
+    &lt;&#x2F;template&gt;
+    &lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;
+        var dataObj &#x3D; &#123;count: 0&#125;;
+        Vue.component(&#39;counter&#39;,&#123;
+            template:&#39;#temp1&#39;,
+            data()&#123;
+                return dataObj
+            &#125;,
+            methods:&#123;
+                increment() &#123;
+                    this.count++
+                &#125;
+            &#125;
+        &#125;)
+        var vm &#x3D; new Vue(&#123;
+            el: &quot;#app&quot;,
+            data:&#123;&#125;,
+            methods: &#123;&#125;
+        &#125;)
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;</code></pre>
+<p>分析如上代码：</p>
+<ol>
+<li>首先创建一个名字为counter的组件，<br>data函数中返回一个外部定义的对象的值，<br>如果直接给data属性设置一个对象而不是函数，那么会在浏览器中直接报错</li>
+<li>在浏览器中运行代码<br>每次点击+1按钮，下边的值就会加一</li>
+<li>如果我们在页面上同时使用三个counter组件<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;counter&gt;&lt;&#x2F;counter&gt;
+    &lt;hr&gt;
+    &lt;counter&gt;&lt;&#x2F;counter&gt;
+    &lt;hr&gt;
+    &lt;counter&gt;&lt;&#x2F;counter&gt;
+    &lt;hr&gt;
+ &lt;&#x2F;div&gt;</code></pre>
+然后在浏览器中再次浏览<br>点击任意一个+1按钮，三个数同时变化。<br>因为它们都指向了同一个对象。<br>我们当然希望点击不同的按钮只实现当前组件内数据的变化，<br>那么，我们在函数中返回一个对象，<br>每次创建一个组建的时候，<br>在内存中同时开辟一块空间给当前组件存放data，<br>这样，就不会出现共用一个data的现象。我们只需将如上代码进行一点更改<pre><code class="hljs vue">data: function ()&#123;
+    &#x2F;&#x2F;return dataObj
+    return&#123;
+        count：0
+    &#125;
+&#125;,</code></pre>
+</li>
+</ol>
 
 
   
