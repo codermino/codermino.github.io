@@ -278,14 +278,15 @@ componentA.data.age=<span class="hljs-number">55</span>;
     &lt;counter&gt;&lt;&#x2F;counter&gt;
     &lt;hr&gt;
  &lt;&#x2F;div&gt;</code></pre>
-然后在浏览器中再次浏览<br>点击任意一个+1按钮，三个数同时变化。<br>因为它们都指向了同一个对象。<br>我们当然希望点击不同的按钮只实现当前组件内数据的变化，<br>那么，我们在函数中返回一个对象，<br>每次创建一个组建的时候，<br>在内存中同时开辟一块空间给当前组件存放data，<br>这样，就不会出现共用一个data的现象。我们只需将如上代码进行一点更改<pre><code class="hljs vue">data: function ()&#123;
+然后在浏览器中再次浏览<br>点击任意一个+1按钮，三个数同时变化。<br>因为它们都指向了同一个对象。<br>我们当然希望点击不同的按钮只实现当前组件内数据的变化，<br>那么，我们在函数中返回一个对象，<br>每次创建一个组建的时候，<br>在内存中同时开辟一块空间给当前组件存放data，<br>这样，就不会出现共用一个data的现象。我们只需将如上代码进行一点更改</li>
+</ol>
+<p><strong>因为此时我们每次返回的对象的地址都是不一样的，</strong><br><strong>所以在组件对值修改时，会去寻找对应该组件data返回对象的地址，</strong><br><strong>这样就能很好地控制组件数据独立。</strong></p>
+<pre><code class="hljs vue">data: function ()&#123;
     &#x2F;&#x2F;return dataObj
     return&#123;
         count：0
     &#125;
 &#125;,</code></pre>
-</li>
-</ol>
 
 
   
