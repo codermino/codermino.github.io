@@ -197,7 +197,11 @@
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
 <h3 id="案例">案例<a class="post-anchor" href="#案例"></a></h3><p>在点击编辑按钮的时候需要传入数据，但是在打开的对话框中修改对应的表单数据<br>展示界面的数据也被修改了。</p>
-<h3 id="解决">解决<a class="post-anchor" href="#解决"></a></h3><p><strong>需要避免直接赋值导致的数据双向绑定</strong><br>如： this.list = this.list2,    结果在list改变后 list2也改变，这不是我们想要的效果<br>第一种：利用 JSON.parse 和 JSON.stringify<br>this.list= JSON.parse( JSON.stringify(this.list2))<br>第二种：ES6 的解构语法<br>this.list= { …this.list2}<br>this.arr= […this.arr2]</p>
+<h3 id="解决">解决<a class="post-anchor" href="#解决"></a></h3><p><strong>需要避免直接赋值导致的数据双向绑定</strong><br>如： this.list = this.list2,    结果在list改变后 list2也改变，这不是我们想要的效果<br>第一种：利用 JSON.parse 和 JSON.stringify</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">this</span>.list= <span class="hljs-built_in">JSON</span>.parse( <span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-keyword">this</span>.list2))</code></pre>
+<p>第二种：ES6 的解构语法</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">this</span>.list= &#123; ...this.list2&#125;
+<span class="hljs-keyword">this</span>.arr= [...this.arr2]</code></pre>
 
 
   
