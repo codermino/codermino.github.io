@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解"><span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟DOM"><span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createElement的定义"><span class="toc-text">createElement的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data对象属性表"><span class="toc-text">data对象属性表</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解"><span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟DOM"><span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createElement的定义"><span class="toc-text">createElement的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data对象属性表"><span class="toc-text">data对象属性表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -296,6 +296,47 @@ Children　　类型：String/Array　　　　　　　
   key: 'myKey',
   ref: 'myRef'
 &#125;</code></pre>
+
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs vue">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+  &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;
+  &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;ie&#x3D;edge&quot;&gt;
+  &lt;title&gt;Render&lt;&#x2F;title&gt;
+  &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;vue&#x2F;dist&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+    &lt;div id&#x3D;&quot;container&quot;&gt;
+      &lt;tb-heading&gt;&lt;&#x2F;tb-heading&gt;
+    &lt;&#x2F;div&gt;
+    
+    &lt;script&gt;
+    Vue.component(&#39;tb-heading&#39;, &#123;
+      render: function(createElement) &#123;
+        const menu_items &#x3D; [&quot;首页&quot;,&quot;搜索&quot;,&quot;分类&quot;,&quot;系统&quot;]
+        return createElement(&#39;ul&#39;, 
+          menu_items.map(item &#x3D;&gt; &#123;
+            return createElement(&#39;li&#39;, &#123;
+              class: &#123;
+                &#39;uk-nav&#39;: true
+              &#125;,
+              domProps: &#123;
+                innerHTML: item
+              &#125;
+            &#125;)
+          &#125;)
+        )
+      &#125;,
+    &#125;);
+    new Vue(&#123;
+      el: &#39;#container&#39;,
+      methods: &#123;
+      &#125;
+    &#125;);
+    &lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
 
 
   
