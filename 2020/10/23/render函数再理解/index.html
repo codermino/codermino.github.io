@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue中的.capture事件修饰符的用法 - Mino
+      render函数再理解 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#capture事件修饰符的作用添加事件侦听器时使用事件捕获模式"><span class="toc-text">.capture事件修饰符的作用添加事件侦听器时使用事件捕获模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解"><span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟DOM"><span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createElement的定义"><span class="toc-text">createElement的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data对象属性表"><span class="toc-text">data对象属性表</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue中的.capture事件修饰符的用法</div>
+      <div class="title">render函数再理解</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2020/10/22</span>
+          <span>2020/10/23</span>
         </span>
 
         
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue中的.capture事件修饰符的用法">vue中的.capture事件修饰符的用法</a>
+                    <a href="/tags/render函数再理解">render函数再理解</a>
                   
                 
             </span>
@@ -196,72 +196,106 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="capture事件修饰符的作用添加事件侦听器时使用事件捕获模式">.capture事件修饰符的作用添加事件侦听器时使用事件捕获模式<a class="post-anchor" href="#capture事件修饰符的作用添加事件侦听器时使用事件捕获模式"></a></h3><p>即是给元素添加一个监听器，当元素发生冒泡时，<br>先触发带有该修饰符的元素。若有多个该修饰符，则由外而内触发。<br>就是谁有该事件修饰符，就先触发谁。</p>
-<h4 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h4><pre><code class="hljs vue">&lt;!DOCTYPE html&gt;
-&lt;html lang&#x3D;&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
-    &lt;title&gt;.capture事件修饰符&lt;&#x2F;title&gt;
-    &lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;
-        * &#123;
-            margin: 0 auto;
-            text-align:center;
-            line-height: 40px;
-        &#125;
-        div &#123;
-            width: 100px;
-        &#125;
-        #obj1 &#123;
-            background: deeppink;
-        &#125;
-        #obj2 &#123;
-            background: pink;
-        &#125;
-        #obj3 &#123;
-            background: hotpink;
-        &#125;#obj4 &#123;
-             background: #ff4225;
-         &#125;
-    &lt;&#x2F;style&gt;
-    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;cdn.bootcdn.net&#x2F;ajax&#x2F;libs&#x2F;vue&#x2F;2.6.7&#x2F;vue.min.js&quot;&gt;&lt;&#x2F;script&gt;
-&lt;&#x2F;head&gt;
-&lt;body&gt;
+<h3 id="理解">理解<a class="post-anchor" href="#理解"></a></h3><p>render是为补救template缺点而诞生的<br>template是有标签，根据标签插值内容<br>render厉害一点，可以渲染标签，并添加到虚拟DOM中<br>注意下：</p>
+<ol>
+<li>template是模板语法，而render是js语法，render其实是用来生成模板；</li>
+<li>render用多了，发现挺麻烦，有一个插件jsx可以让render代码写得更自在</li>
+</ol>
+<h3 id="虚拟DOM">虚拟DOM<a class="post-anchor" href="#虚拟DOM"></a></h3><p>Vue通过建立一个虚拟DOM对真实DOM发生的变化保持追踪。<br>return createElement(‘h1’, ‘Hello World!’)<br>createElement 到底会返回什么呢？<br>其实不是一个实际的 DOM 元素。<br>它更准确的名字是createNodeDescription，<br>因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，<br>及其子节点。我们把这样的节点描述为“虚拟节点 (Virtual Node)”，<br>也常简写它为“VNode”。<br>“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。</p>
+<p>render方法会传入一个createElement函数，<br>它是一个用于创建DOM元素或者用于实例化其他组件的构造方法。<br>render方法必须返回一个createElement函数的调用结果，<br>也就是模版内的顶层元素（这个方法在vue2的习惯性使用中经常用h来命名）。</p>
+<p><strong>Demo</strong></p>
+<pre><code class="hljs vue">export default &#123;
+  render: function(createElement) &#123;
+        const menu_items &#x3D; [&quot;首页&quot;,&quot;搜索&quot;,&quot;分类&quot;,&quot;系统&quot;]
+        return createElement(&#39;ul&#39;, 
+          menu_items.map(item &#x3D;&gt; &#123;
+            return createElement(&#39;li&#39;, &#123;
+              class: &#123;
+                &#39;uk-nav&#39;: true
+              &#125;,
+              domProps: &#123;
+                innerHTML: item
+              &#125;
+            &#125;)
+          &#125;)
+        )
+      &#125;,
+&#125;</code></pre>
+<p>相当于模板语法：</p>
+<pre><code class="hljs vue">&lt;ul&gt;
+  &lt;li v-for&#x3D;&quot;item in menu_items&quot;  :class&#x3D;&quot;&#123;&#39;uk-nav&#39;: true&#125;&quot;&gt;
+    &#123;&#123; item &#125;&#125;
+  &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;</code></pre>
+<h3 id="createElement的定义">createElement的定义<a class="post-anchor" href="#createElement的定义"></a></h3><pre><code class="hljs markdown">createElement(tag,data,children)
+返回值vNode（虚拟节点）
+参数说明:
+tag　　　　  类型：String/Object/Function　  
+<span class="hljs-code">            说明：一个HTML标签，组件类型,或一个函数</span>
+Data　　　   类型：Object                   
+<span class="hljs-code">            说明：一个对应属性的数据对象,用于向创建的节点对象设置属性值</span>
+Children　　类型：String/Array　　　　　　　
+<span class="hljs-code">            说明：子节点</span></code></pre>
 
-&lt;div id&#x3D;&quot;content&quot;&gt;
-    &lt;div id&#x3D;&quot;obj1&quot; v-on:click.capture&#x3D;&quot;doc&quot;&gt;
-        obj1
-        &lt;div id&#x3D;&quot;obj2&quot; v-on:click.capture&#x3D;&quot;doc&quot;&gt;
-            obj2
-            &lt;div id&#x3D;&quot;obj3&quot; v-on:click&#x3D;&quot;doc&quot;&gt;
-                obj3
-                &lt;div id&#x3D;&quot;obj4&quot; v-on:click&#x3D;&quot;doc&quot;&gt;
-                obj4
-                &lt;!--点击obj4的时候，弹出的顺序为：obj1、obj2、obj4、obj3；
-                由于1，2有修饰符，故而先触发事件，然后就是4本身触发，最后冒泡事件。
-                --&gt;
-            &lt;&#x2F;div&gt;
-            &lt;&#x2F;div&gt;
-        &lt;&#x2F;div&gt;
-    &lt;&#x2F;div&gt;
-
-&lt;&#x2F;div&gt;
-&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;
-    var content &#x3D; new Vue(&#123;
-        el: &quot;#content&quot;,
-        data: &#123;
-            id: &#39;&#39;
-        &#125;,
-        methods: &#123;
-            doc: function () &#123;
-                this.id&#x3D; event.currentTarget.id;
-                alert(this.id)
-            &#125;
-        &#125;
-    &#125;)
-&lt;&#x2F;script&gt;
-&lt;&#x2F;body&gt;
-
-&lt;&#x2F;html&gt;</code></pre>
+<p>向构造的VNode对象设置文本时可以直接传入字符串，例如：<br>    createElement(‘div’,’这是行内文本’)<br>    输出结果就是：<br>    <div>这是行内文本</div></p>
+<h3 id="data对象属性表">data对象属性表<a class="post-anchor" href="#data对象属性表"></a></h3><pre><code class="hljs markdown">&#123;
+  // 和<span class="hljs-code">`v-bind:class`</span>一样的 API
+  'class': &#123;
+<span class="hljs-code">    foo: true,</span>
+<span class="hljs-code">    bar: false</span>
+  &#125;,
+  // 和<span class="hljs-code">`v-bind:style`</span>一样的 API
+  style: &#123;
+<span class="hljs-code">    color: 'red',</span>
+<span class="hljs-code">    fontSize: '14px'</span>
+  &#125;,
+  // 正常的 HTML 特性
+  attrs: &#123;
+<span class="hljs-code">    id: 'foo'</span>
+  &#125;,
+  // 组件 props
+  props: &#123;
+<span class="hljs-code">    myProp: 'bar'</span>
+  &#125;,
+  // DOM 属性
+  domProps: &#123;
+<span class="hljs-code">    innerHTML: 'baz'</span>
+  &#125;,
+  // 事件监听器基于 <span class="hljs-code">`on`</span>
+  // 所以不再支持如 <span class="hljs-code">`v-on:keyup.enter`</span> 修饰器
+  // 需要手动匹配 keyCode。
+  on: &#123;
+<span class="hljs-code">    click: this.clickHandler</span>
+  &#125;,
+  // 仅对于组件，用于监听原生事件，而不是组件内部使用
+  // <span class="hljs-code">`vm.$emit`</span> 触发的事件。
+  nativeOn: &#123;
+<span class="hljs-code">    click: this.nativeClickHandler</span>
+  &#125;,
+  // 自定义指令。注意，你无法对 <span class="hljs-code">`binding`</span> 中的 <span class="hljs-code">`oldValue`</span>
+  // 赋值，因为 Vue 已经自动为你进行了同步。
+  directives: [
+<span class="hljs-code">    &#123;</span>
+<span class="hljs-code">      name: 'my-custom-directive',</span>
+<span class="hljs-code">      value: '2',</span>
+<span class="hljs-code">      expression: '1 + 1',</span>
+<span class="hljs-code">      arg: 'foo',</span>
+<span class="hljs-code">      modifiers: &#123;</span>
+<span class="hljs-code">        bar: true</span>
+<span class="hljs-code">      &#125;</span>
+<span class="hljs-code">    &#125;</span>
+  ],
+  // Scoped slots in the form of
+  // &#123; name: props =&gt; VNode | Array<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">VNode</span>&gt;</span></span> &#125;
+  scopedSlots: &#123;
+<span class="hljs-code">    default: props =&gt; createElement('span', props.text)</span>
+  &#125;,
+  // 如果组件是其他组件的子组件，需为插槽指定名称
+  slot: 'name-of-slot',
+  // 其他特殊顶层属性
+  key: 'myKey',
+  ref: 'myRef'
+&#125;</code></pre>
 
 
   
@@ -288,12 +322,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/10/23/render%E5%87%BD%E6%95%B0%E5%86%8D%E7%90%86%E8%A7%A3/">render函数再理解</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/10/20/vue%E6%82%AC%E5%81%9C%E4%B9%8B%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8A%BD%E5%B1%89/">vue悬停之后显示抽屉</a>
+          <a href="/2020/10/22/vue%E4%B8%AD%E7%9A%84-capture%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E7%94%A8%E6%B3%95/">vue中的.capture事件修饰符的用法</a>
         
     </div>
   </div>
@@ -305,7 +337,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/10/22/vue中的-capture事件修饰符的用法/">https://codermino.github.io/2020/10/22/vue中的-capture事件修饰符的用法/</a>
+      永久链接：<a href="https://codermino.github.io/2020/10/23/render函数再理解/">https://codermino.github.io/2020/10/23/render函数再理解/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
