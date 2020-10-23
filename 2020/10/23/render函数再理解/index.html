@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解"><span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟DOM"><span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createElement的定义"><span class="toc-text">createElement的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data对象属性表"><span class="toc-text">data对象属性表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解"><span class="toc-text">理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟DOM"><span class="toc-text">虚拟DOM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#createElement的定义"><span class="toc-text">createElement的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data对象属性表"><span class="toc-text">data对象属性表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解createElement"><span class="toc-text">理解createElement</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#createElement参数"><span class="toc-text">createElement参数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#第一个参数：-String-Object-Function"><span class="toc-text">第一个参数：{String | Object | Function}</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第二个参数-Object"><span class="toc-text">第二个参数:{Object}</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#第三个参数：-String-Array"><span class="toc-text">第三个参数：{String | Array}</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#看看template和render方式怎么创建相同效果的一个组件"><span class="toc-text">看看template和render方式怎么创建相同效果的一个组件:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用JavaScript代替模板功能"><span class="toc-text">使用JavaScript代替模板功能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#v-if和v-for"><span class="toc-text">v-if和v-for</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#v-model"><span class="toc-text">v-model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插槽"><span class="toc-text">插槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JSX"><span class="toc-text">JSX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -337,6 +337,290 @@ Children　　类型：String/Array　　　　　　　
     &lt;&#x2F;script&gt;
 &lt;&#x2F;body&gt;
 &lt;&#x2F;html&gt;</code></pre>
+
+<h3 id="理解createElement">理解createElement<a class="post-anchor" href="#理解createElement"></a></h3><p>在使用render函数，其中还有另一个需要掌握的部分，<br>那就是createElement。<br>接下来我们需要熟悉的是如何在createElement函数中生成模板。<br>那么我们分两个部分来对createElement进行理解。</p>
+<h4 id="createElement参数">createElement参数<a class="post-anchor" href="#createElement参数"></a></h4><p>createElement可以是接受多个参数:</p>
+<h5 id="第一个参数：-String-Object-Function">第一个参数：{String | Object | Function}<a class="post-anchor" href="#第一个参数：-String-Object-Function"></a></h5><p>第一个参数对于createElement而言是一个必须的参数，<br>这个参数可以是字符串string、是一个对象object，<br>也可以是一个函数function。</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;custom-element&gt;&lt;&#x2F;custom-element&gt;
+&lt;&#x2F;div&gt;
+
+Vue.component(&#39;custom-element&#39;, &#123;
+    render: function (createElement) &#123;
+        return createElement(&#39;div&#39;)
+    &#125;
+&#125;)
+
+let app &#x3D; new Vue(&#123;
+    el: &#39;#app&#39;
+&#125;)</code></pre>
+<p>接着把上例中的String换成一个Object，比如：</p>
+<pre><code class="hljs vue">Vue.component(&#39;custom-element&#39;, &#123;
+    render: function (createElement) &#123;
+        return createElement(&#123;
+            template: &#96;&lt;div&gt;Hello Vue!&lt;&#x2F;div&gt;&#96;
+        &#125;)
+    &#125;
+&#125;)</code></pre>
+<p>除此之外，还可以传一个Function，比如：</p>
+<pre><code class="hljs vue">Vue.component(&#39;custom-element&#39;, &#123;
+    render: function (createElement) &#123;
+        var eleFun &#x3D; function () &#123;
+            return &#123;
+                template: &#96;&lt;div&gt;Hello Vue!&lt;&#x2F;div&gt;&#96;
+            &#125;
+        &#125;
+        return createElement(eleFun())
+    &#125;
+&#125;)</code></pre>
+<p>这里传了一个eleFun()函数给createElement，<br>而这个函数返回的是一个对象。</p>
+<h5 id="第二个参数-Object">第二个参数:{Object}<a class="post-anchor" href="#第二个参数-Object"></a></h5><p>createElement是一个可选参数，<br>这个参数是一个Object。来看一个小示例：</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;custom-element&gt;&lt;&#x2F;custom-element&gt;
+&lt;&#x2F;div&gt;
+
+Vue.component(&#39;custom-element&#39;, &#123;
+    render: function (createElement) &#123;
+        var self &#x3D; this
+
+        &#x2F;&#x2F; 第一个参数是一个简单的HTML标签字符 “必选”
+        &#x2F;&#x2F; 第二个参数是一个包含模板相关属性的数据对象 “可选”
+        return createElement(&#39;div&#39;, &#123;
+            &#39;class&#39;: &#123;
+                foo: true,
+                bar: false
+            &#125;,
+            style: &#123;
+                color: &#39;red&#39;,
+                fontSize: &#39;14px&#39;
+            &#125;,
+            attrs: &#123;
+                id: &#39;boo&#39;
+            &#125;,
+            domProps: &#123;
+                innerHTML: &#39;Hello Vue!&#39;
+            &#125;
+        &#125;)
+    &#125;
+&#125;)
+
+let app &#x3D; new Vue(&#123;
+    el: &#39;#app&#39;
+&#125;)</code></pre>
+<h5 id="第三个参数：-String-Array">第三个参数：{String | Array}<a class="post-anchor" href="#第三个参数：-String-Array"></a></h5><p>createElement还有第三个参数，<br>这个参数是可选的，<br>可以给其传一个String或Array。比如下面这个小示例：</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;custom-element&gt;&lt;&#x2F;custom-element&gt;
+&lt;&#x2F;div&gt;
+
+Vue.component(&#39;custom-element&#39;, &#123;
+    render: function (createElement) &#123;
+        var self &#x3D; this
+
+        return createElement(
+            &#39;div&#39;, &#x2F;&#x2F; 第一个参数是一个简单的HTML标签字符 “必选”
+            &#123;
+                class: &#123;
+                    title: true
+                &#125;,
+                style: &#123;
+                    border: &#39;1px solid&#39;,
+                    padding: &#39;10px&#39;
+                &#125;
+            &#125;, &#x2F;&#x2F; 第二个参数是一个包含模板相关属性的数据对象 “可选”
+            [
+                createElement(&#39;h1&#39;, &#39;Hello Vue!&#39;),
+                createElement(&#39;p&#39;, &#39;开始学习Vue!&#39;)
+            ] &#x2F;&#x2F; 第三个参数是传了多个子元素的一个数组 “可选”
+        )
+    &#125;
+&#125;)
+
+let app &#x3D; new Vue(&#123;
+    el: &#39;#app&#39;
+&#125;)</code></pre>
+
+<h4 id="看看template和render方式怎么创建相同效果的一个组件">看看template和render方式怎么创建相同效果的一个组件:<a class="post-anchor" href="#看看template和render方式怎么创建相同效果的一个组件"></a></h4><p>template</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;custom-element&gt;&lt;&#x2F;custom-element&gt;
+&lt;&#x2F;div&gt;
+
+Vue.component(&#39;custom-element&#39;, &#123;
+    template: &#96;&lt;div id&#x3D;&quot;box&quot; :class&#x3D;&quot;&#123;show: show&#125;&quot; @click&#x3D;&quot;handleClick&quot;&gt;Hello Vue!&lt;&#x2F;div&gt;&#96;,
+    data () &#123;
+        return &#123;
+            show: true
+        &#125;
+    &#125;,
+    methods: &#123;
+        handleClick: function () &#123;
+            console.log(&#39;Clicked!&#39;)
+        &#125;
+    &#125;
+&#125;)</code></pre>
+<p>render</p>
+<pre><code class="hljs vue">Vue.component(&#39;custom-element&#39;, &#123;
+    render: function (createElement) &#123;
+        return createElement(&#39;div&#39;, &#123;
+            class: &#123;
+                show: this.show
+            &#125;,
+            attrs: &#123;
+                id: &#39;box&#39;
+            &#125;,
+            on: &#123;
+                click: this.handleClick
+            &#125;
+        &#125;, &#39;Hello Vue!&#39;)
+    &#125;,
+    data () &#123;
+        return &#123;
+            show: true
+        &#125;
+    &#125;,
+    methods: &#123;
+        handleClick: function () &#123;
+            console.log(&#39;Clicked!&#39;)
+        &#125;
+    &#125;
+&#125;)</code></pre>
+<p>最后声明一个Vue实例，并挂载到id为#app的一个元素上：</p>
+<pre><code class="hljs vue">let app &#x3D; new Vue(&#123;
+    el: &#39;#app&#39;
+&#125;)</code></pre>
+<h3 id="使用JavaScript代替模板功能">使用JavaScript代替模板功能<a class="post-anchor" href="#使用JavaScript代替模板功能"></a></h3><p>在使用Vue模板的时候，<br>我们可以在模板中灵活的使用v-if、v-for、v-model和<slot>之类的。<br>但在render函数中是没有提供专用的API。<br>如果在render使用这些，需要使用原生的JavaScript来实现。</slot></p>
+<h4 id="v-if和v-for">v-if和v-for<a class="post-anchor" href="#v-if和v-for"></a></h4><p>在render函数中可以使用if/else和map来实现template中的v-if和v-for。</p>
+<pre><code class="hljs vue">&lt;ul v-if&#x3D;&quot;items.length&quot;&gt;
+    &lt;li v-for&#x3D;&quot;item in items&quot;&gt;&#123;&#123; item &#125;&#125;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p v-else&gt;No items found.&lt;&#x2F;p&gt;</code></pre>
+<p>换成render函数，可以这样写：</p>
+<pre><code class="hljs vue">Vue.component(&#39;item-list&#39;,&#123;
+    props: [&#39;items&#39;],
+    render: function (createElement) &#123;
+        if (this.items.length) &#123;
+            return createElement(&#39;ul&#39;, this.items.map((item) &#x3D;&gt; &#123;
+                return createElement(&#39;item&#39;)
+            &#125;))
+        &#125; else &#123;
+            return createElement(&#39;p&#39;, &#39;No items found.&#39;)
+        &#125;
+    &#125;
+&#125;)
+
+&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;item-list :items&#x3D;&quot;items&quot;&gt;&lt;&#x2F;item-list&gt;
+&lt;&#x2F;div&gt;
+
+let app &#x3D; new Vue(&#123;
+    el: &#39;#app&#39;,
+    data () &#123;
+        return &#123;
+            items: [&#39;大漠&#39;, &#39;W3cplus&#39;, &#39;blog&#39;]
+        &#125;
+    &#125;
+&#125;)</code></pre>
+<h4 id="v-model">v-model<a class="post-anchor" href="#v-model"></a></h4><p>render函数中也没有与v-model相应的API，<br>如果要实现v-model类似的功能，<br>同样需要使用原生JavaScript来实现。</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;el-input :name&#x3D;&quot;name&quot; @input&#x3D;&quot;val &#x3D;&gt; name &#x3D; val&quot;&gt;&lt;&#x2F;el-input&gt;
+&lt;&#x2F;div&gt;
+
+Vue.component(&#39;el-input&#39;, &#123;
+    render: function (createElement) &#123;
+        var self &#x3D; this
+        return createElement(&#39;input&#39;, &#123;
+            domProps: &#123;
+                value: self.name
+            &#125;,
+            on: &#123;
+                input: function (event) &#123;
+                    self.$emit(&#39;input&#39;, event.target.value)
+                &#125;
+            &#125;
+        &#125;)
+    &#125;,
+    props: &#123;
+        name: String
+    &#125;
+&#125;)
+
+let app &#x3D; new Vue(&#123;
+    el: &#39;#app&#39;,
+    data () &#123;
+        return &#123;
+            name: &#39;大漠&#39;
+        &#125;
+    &#125;
+&#125;)</code></pre>
+<h4 id="插槽">插槽<a class="post-anchor" href="#插槽"></a></h4><p>你可以从this.$slots获取VNodes列表中的静态内容</p>
+<pre><code class="hljs vue">render: function (createElement) &#123;
+    &#x2F;&#x2F; 相当于 &#96;&lt;div&gt;&lt;slot&gt;&lt;&#x2F;slot&gt;&lt;&#x2F;div&gt;&#96;
+    return createElement(&#39;div&#39;, this.$slots.default)
+&#125;</code></pre>
+<p>还可以从this.$scopedSlots中获得能用作函数的作用域插槽，<br>这个函数返回VNodes:</p>
+<pre><code class="hljs vue">props: [&#39;message&#39;],
+render: function (createElement) &#123;
+    &#x2F;&#x2F; &#96;&lt;div&gt;&lt;slot :text&#x3D;&quot;message&quot;&gt;&lt;&#x2F;slot&gt;&lt;&#x2F;div&gt;&#96;
+    return createElement(&#39;div&#39;, [
+        this.$scopedSlots.default(&#123;
+            text: this.message
+        &#125;)
+    ])
+&#125;</code></pre>
+<p>如果要用渲染函数向子组件中传递作用域插槽，<br>可以利用VNode数据中的scopedSlots域：</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;custom-ele&gt;&lt;&#x2F;custom-ele&gt;
+&lt;&#x2F;div&gt;
+
+Vue.component(&#39;custom-ele&#39;, &#123;
+    render: function (createElement) &#123;
+        return createElement(&#39;div&#39;, [
+            createElement(&#39;child&#39;, &#123;
+                scopedSlots: &#123;
+                    default: function (props) &#123;
+                        return [
+                            createElement(&#39;span&#39;, &#39;From Parent Component&#39;),
+                            createElement(&#39;span&#39;, props.text)
+                        ]
+                    &#125;
+                &#125;
+            &#125;)
+        ])
+    &#125;
+&#125;)
+
+Vue.component(&#39;child&#39;, &#123;
+    render: function (createElement) &#123;
+        return createElement(&#39;strong&#39;, this.$scopedSlots.default(&#123;
+            text: &#39;This is Child Component&#39;
+        &#125;))
+    &#125;
+&#125;)
+
+let app &#x3D; new Vue(&#123;
+    el: &#39;#app&#39;
+&#125;)</code></pre>
+<h3 id="JSX">JSX<a class="post-anchor" href="#JSX"></a></h3><p>如果写习惯了template，然后要用render函数来写，<br>一定会感觉好痛苦，特别是面对复杂的组件的时候。<br>不过我们在Vue中使用JSX可以让我们回到更接近于模板的语法上。</p>
+<pre><code class="hljs vue">import AnchoredHeading from &#39;.&#x2F;AnchoredHeading.vue&#39;
+
+new Vue(&#123;
+    el: &#39;#demo&#39;,
+    render: function (h) &#123;
+        return (
+            &lt;AnchoredHeading level&#x3D;&#123;1&#125;&gt;
+                &lt;span&gt;Hello&lt;&#x2F;span&gt; world!
+            &lt;&#x2F;AnchoredHeading&gt;
+        )
+    &#125;
+&#125;)</code></pre>
+<p>将 h 作为 createElement 的别名是 Vue 生态系统中的一个通用惯例，<br>实际上也是 JSX 所要求的，如果在作用域中 h 失去作用，<br>在应用中会触发报错。</p>
+<h3 id="总结">总结<a class="post-anchor" href="#总结"></a></h3><p>回过头来看，Vue中的渲染核心关键的几步流程还是非常清晰的：</p>
+<ul>
+<li>new Vue，执行初始化</li>
+<li>挂载$mount方法，通过自定义render方法、template、el等生成render函数</li>
+<li>通过Watcher监听数据的变化</li>
+<li>当数据发生变化时，render函数执行生成VNode对象</li>
+<li>通过patch方法，对比新旧VNode对象，通过DOM Diff算法，添加、修改、删除真正的DOM元素<br>至此，整个new Vue的渲染过程完毕。</li>
+</ul>
 
 
   
