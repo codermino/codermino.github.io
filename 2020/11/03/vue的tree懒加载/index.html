@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue的tree懒加载 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#el-tree懒加载树"><span class="toc-text">el-tree懒加载树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#el-tree"><span class="toc-text">el-tree</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#props"><span class="toc-text">props</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#loadNode"><span class="toc-text">loadNode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#剩余的一些参数"><span class="toc-text">剩余的一些参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#剩余的一些方法"><span class="toc-text">剩余的一些方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tree的Demo1"><span class="toc-text">tree的Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tree的Demo1-1"><span class="toc-text">tree的Demo1</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue的tree懒加载</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/03</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue的tree懒加载">vue的tree懒加载</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="el-tree懒加载树">el-tree懒加载树<a class="post-anchor" href="#el-tree懒加载树"></a></h3><h4 id="el-tree">el-tree<a class="post-anchor" href="#el-tree"></a></h4><pre><code class="hljs vue">&lt;el-tree
+  ref&#x3D;&quot;async-router-tree&quot;
+  :props&#x3D;&quot;props&quot;
+  node-key&#x3D;&quot;id&quot;
+  :expand-on-click-node&#x3D;&quot;false&quot;
+  :default-expanded-keys&#x3D;&quot;[0]&quot;
+  lazy
+  :load&#x3D;&quot;loadNode&quot;
+  draggable
+  @node-drag-end&#x3D;&quot;handleDragEnd&quot;
+  :allow-drop&#x3D;&quot;allowDrop&quot;
+  :allow-drag&#x3D;&quot;allowDrag&quot;&gt;
+  &lt;span class&#x3D;&quot;custom-tree-node&quot; slot-scope&#x3D;&quot;&#123; node, data &#125;&quot;&gt;
+    &lt;span&gt;&#123;&#123; node.label &#125;&#125;&lt;&#x2F;span&gt;
+    &lt;span&gt;
+      &lt;template v-if&#x3D;&quot;data.id &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+        &lt;Button class&#x3D;&quot;add-root-btn&quot; type&#x3D;&quot;primary&quot; size&#x3D;&quot;small&quot; icon&#x3D;&quot;ios-add&quot; @click&#x3D;&quot;editNode(node, data, &#39;append&#39;)&quot;&gt;&lt;&#x2F;Button&gt;
+      &lt;&#x2F;template&gt;
+      &lt;template v-else&gt;
+        &lt;Button type&#x3D;&quot;default&quot; icon&#x3D;&quot;ios-add&quot; size&#x3D;&quot;small&quot; @click&#x3D;&quot;editNode(node, data, &#39;append&#39;)&quot;&gt;&lt;&#x2F;Button&gt;
+        &lt;Button type&#x3D;&quot;default&quot; icon&#x3D;&quot;ios-remove&quot; size&#x3D;&quot;small&quot; @click&#x3D;&quot;removeNodeConfirmed(node, data)&quot;&gt;&lt;&#x2F;Button&gt;
+        &lt;Button type&#x3D;&quot;default&quot; icon&#x3D;&quot;md-create&quot; size&#x3D;&quot;small&quot; @click&#x3D;&quot;editNode(node, data, &#39;update&#39;)&quot;&gt;&lt;&#x2F;Button&gt;
+      &lt;&#x2F;template&gt;
+    &lt;&#x2F;span&gt;
+  &lt;&#x2F;span&gt;
+&lt;&#x2F;el-tree&gt;</code></pre>
+
+<h4 id="props">props<a class="post-anchor" href="#props"></a></h4><pre><code class="hljs vue">props: &#123;
+  label: &#39;title&#39;,
+  children: &#39;children&#39;
+&#125;,</code></pre>
+
+<h4 id="loadNode">loadNode<a class="post-anchor" href="#loadNode"></a></h4><pre><code class="hljs vue">loadNode (node, resolve) &#123;
+  if (node.level &#x3D;&#x3D;&#x3D; 0) &#123;
+    &#x2F;&#x2F; init root of tree
+    let root &#x3D; &#123;
+      id: 0,
+      title: &#39;异步路由配置&#39;,
+      parentId: null
+    &#125;
+    resolve([root])
+  &#125; else &#123;
+    &#x2F;&#x2F; init leaves of tree
+    this.getNodes(node.data.id).then(value &#x3D;&gt; &#123;
+      return resolve(value)
+    &#125;)
+  &#125;
+&#125;,
+getNodes (parentId) &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    const msg &#x3D; this.$Message.loading(&#123;
+      content: &#39;正在获取数据&#39;,
+      duration: 0
+    &#125;)
+    const [url, httpConfig] &#x3D; [
+      &#39;&#x2F;api&#x2F;system&#x2F;menu&#x2F;getMenu&#39;,
+      &#123;
+        params: &#123;
+          parentId
+        &#125;
+      &#125;
+    ]
+    this.$http.get(url, httpConfig).then(response &#x3D;&gt; &#123;
+      msg()
+      resolve(response.data.data)
+    &#125;).catch(error &#x3D;&gt; &#123;
+      msg()
+      this.$Message.error(&#39;获取数据失败！&#39;)
+      reject(error)
+    &#125;)
+  &#125;)
+&#125;,</code></pre>
+
+<h4 id="剩余的一些参数">剩余的一些参数<a class="post-anchor" href="#剩余的一些参数"></a></h4><pre><code class="hljs vue">props: &#123;
+    label: &#39;title&#39;,
+    children: &#39;children&#39;
+  &#125;,
+  currentNode: null,
+  isSubmitDisabled: false,
+  isNodeEdited: false,
+  asyncRoute: null,
+  ruleAsyncRoute: &#123;
+    title: [&#123;
+      required: true,
+      message: &#39;请填写路由标题&#39;,
+      trigger: &#39;blur&#39;
+    &#125;],
+    name: [
+      &#123;
+        required: true,
+        message: &#39;请填写路由名&#39;,
+        trigger: &#39;blur&#39;
+      &#125;,
+      &#123;
+        validator: (rule, value, callback) &#x3D;&gt; &#123;
+          let reg &#x3D; new RegExp(&#39;[\\u4E00-\\u9FFF]+&#39;, &#39;g&#39;)
+          if (!reg.test(value)) &#123;
+            callback()
+          &#125; else &#123;
+            callback(new Error(&#39;请输入合法的路由名，不能包含中文。&#39;))
+          &#125;
+        &#125;,
+        trigger: &#39;blur&#39;
+      &#125;
+    ],
+    url: [
+      &#123;
+        required: true,
+        message: &#39;请填写路由访问路径&#39;,
+        trigger: &#39;blur&#39;
+      &#125;,
+      &#123;
+        validator: (rule, value, callback) &#x3D;&gt; &#123;
+          let reg &#x3D; new RegExp(&#39;[\\u4E00-\\u9FFF]+&#39;, &#39;g&#39;)
+          if (!reg.test(value)) &#123;
+            callback()
+          &#125; else &#123;
+            callback(new Error(&#39;请输入合法的路由路径，不能包含中文。&#39;))
+          &#125;
+        &#125;,
+        trigger: &#39;blur&#39;
+      &#125;
+    ],
+    component: [
+      &#123;
+        required: true,
+        message: &#39;请填写路由对应的Vue组件&#39;,
+        trigger: &#39;blur&#39;
+      &#125;,
+      &#123;
+        validator: (rule, value, callback) &#x3D;&gt; &#123;
+          let reg &#x3D; new RegExp(&#39;[\\u4E00-\\u9FFF]+&#39;, &#39;g&#39;)
+          if (!reg.test(value)) &#123;
+            callback()
+          &#125; else &#123;
+            callback(new Error(&#39;请输入合法的组件路径，不能包含中文。&#39;))
+          &#125;
+        &#125;,
+        trigger: &#39;blur&#39;
+      &#125;
+    ],
+    type: [
+      &#123;
+        required: true,
+        message: &#39;请选择该节点的数据类型&#39;,
+        trigger: &#39;blur&#39;
+      &#125;
+    ]
+  &#125;</code></pre>
+
+<h4 id="剩余的一些方法">剩余的一些方法<a class="post-anchor" href="#剩余的一些方法"></a></h4><pre><code class="hljs vue">initAsyncRoute () &#123;
+      this.asyncRoute &#x3D; &#123;
+        type: &#39;&#39;,
+        name: &#39;&#39;,
+        icon: &#39;ios-folder-outline&#39;,
+        title: &#39;&#39;,
+        url: &#39;&#39;,
+        component: &#39;&#39;,
+        permissionCode: &#39;&#39;,
+        parentId: null,
+        id: null,
+        orderby: 0
+      &#125;
+    &#125;,
+    loadNode (node, resolve) &#123;
+      if (node.level &#x3D;&#x3D;&#x3D; 0) &#123;
+        &#x2F;&#x2F; init root of tree
+        let root &#x3D; &#123;
+          id: 0,
+          title: &#39;异步路由配置&#39;,
+          parentId: null
+        &#125;
+        resolve([root])
+      &#125; else &#123;
+        &#x2F;&#x2F; init leaves of tree
+        this.getNodes(node.data.id).then(value &#x3D;&gt; &#123;
+          return resolve(value)
+        &#125;)
+      &#125;
+    &#125;,
+    getNodes (parentId) &#123;
+      return new Promise((resolve, reject) &#x3D;&gt; &#123;
+        const msg &#x3D; this.$Message.loading(&#123;
+          content: &#39;正在获取数据&#39;,
+          duration: 0
+        &#125;)
+        const [url, httpConfig] &#x3D; [
+          &#39;&#x2F;api&#x2F;system&#x2F;menu&#x2F;getMenu&#39;,
+          &#123;
+            params: &#123;
+              parentId
+            &#125;
+          &#125;
+        ]
+        this.$http.get(url, httpConfig).then(response &#x3D;&gt; &#123;
+          msg()
+          resolve(response.data.data)
+        &#125;).catch(error &#x3D;&gt; &#123;
+          msg()
+          this.$Message.error(&#39;获取数据失败！&#39;)
+          reject(error)
+        &#125;)
+      &#125;)
+    &#125;,
+    editNode (node, data, act) &#123;
+      this.currentNode &#x3D; node
+      if (act &#x3D;&#x3D;&#x3D; &#39;append&#39;) &#123;
+        this.initAsyncRoute()
+        this.asyncRoute.parentId &#x3D; data.parentId &#x3D;&#x3D;&#x3D; null ? 0 : data.id
+      &#125; else if (act &#x3D;&#x3D;&#x3D; &#39;update&#39;) &#123;
+        this.asyncRoute &#x3D; data
+      &#125;
+      this.isNodeEdited &#x3D; true
+    &#125;,
+    removeNodeConfirmed (node, data) &#123;
+      this.$Modal.confirm(&#123;
+        title: &#39;警告&#39;,
+        content: &#39;确定删除该节点（包括子节点）数据？&#39;,
+        onOk: () &#x3D;&gt; &#123;
+          this.deleteNode(node, data)
+        &#125;
+      &#125;)
+    &#125;,
+    deleteNode (node, data) &#123;
+      const url &#x3D; &#96;&#x2F;api&#x2F;system&#x2F;menu&#x2F;deleteMenu&#x2F;$&#123;data.id&#125;&#96;
+      this.$http.delete(url).then(() &#x3D;&gt; &#123;
+        this.$Message.success(&#39;删除成功！&#39;)
+        this.remove(node)
+      &#125;).catch(() &#x3D;&gt; &#123;
+        this.$Message.error(&#39;删除失败！&#39;)
+      &#125;)
+    &#125;,
+    remove (node) &#123;
+      this.$refs[&#39;async-router-tree&#39;].remove(node)
+    &#125;,
+    handleSubmit (name) &#123;
+      this.$refs[name].validate(valid &#x3D;&gt; &#123;
+        if (valid) &#123;
+          this.isSubmitDisabled &#x3D; true
+          const isAppendNode &#x3D; this.asyncRoute.id &#x3D;&#x3D;&#x3D; null
+          const msg &#x3D; this.$Message.loading(&#123;
+            content: isAppendNode ? &#39;正在添加新节点&#39; : &#39;正在更新节点&#39;,
+            duration: 0
+          &#125;)
+          const [url, data] &#x3D; [
+            &#39;&#x2F;api&#x2F;system&#x2F;menu&#x2F;addMenu&#39;,
+            this.asyncRoute
+          ]
+          this.$http.put(url, data).then(response &#x3D;&gt; &#123;
+            if (isAppendNode) &#123;
+              this.asyncRoute.id &#x3D; Number(response.data.id)
+              this.append(this.asyncRoute, this.currentNode)
+            &#125;
+            msg()
+            this.$Message.success(isAppendNode ? &#39;添加节点成功！&#39; : &#39;更新节点成功！&#39;)
+            this.isNodeEdited &#x3D; false
+            this.isSubmitDisabled &#x3D; false
+          &#125;).catch(() &#x3D;&gt; &#123;
+            msg()
+            this.isNodeEdited &#x3D; false
+            this.isSubmitDisabled &#x3D; false
+            this.$Message.error(isAppendNode ? &#39;添加节点失败！&#39; : &#39;更新节点失败！&#39;)
+          &#125;)
+        &#125;
+      &#125;)
+    &#125;,
+    initPutData (node, referenceNode, dropType) &#123;
+      const data &#x3D; this.getItemsUpdated(node, referenceNode, dropType)
+      this.updateDragData(data)
+    &#125;,
+    getItemsUpdated (node, referenceNode, dropType) &#123;
+      switch (dropType) &#123;
+        case &#39;inner&#39;:
+          if (referenceNode.childNodes.length &gt; 1) &#123;
+            return this.filterItemsUpdated(referenceNode.childNodes)
+          &#125; else &#123;
+            node.data.parentId &#x3D; referenceNode.data.id
+            node.data.orderby &#x3D; 0
+            return [node.data]
+          &#125;
+        case &#39;before&#39;:
+        case &#39;after&#39;:
+          return this.filterItemsUpdated(referenceNode.parent.childNodes, referenceNode.data.parentId)
+        default:
+          break
+      &#125;
+    &#125;,
+    filterItemsUpdated (children, parentId) &#123;
+      const tempArray &#x3D; []
+      for (let i &#x3D; 0; i &lt; children.length; i++) &#123;
+        if (children[i].data.orderby !&#x3D;&#x3D; (i + 1)) &#123;
+          children[i].data.orderby &#x3D; i + 1
+          tempArray.push(children[i].data)
+        &#125;
+        if (children[i].data.parentId !&#x3D;&#x3D; parentId) &#123;
+          children[i].data.parentId &#x3D; parentId
+          if (!tempArray.includes(children[i].data)) &#123;
+            tempArray.push(children[i].data)
+          &#125;
+        &#125;
+      &#125;
+      return tempArray
+    &#125;,
+    updateDragData (data) &#123;
+      const url &#x3D; &#39;&#x2F;api&#x2F;system&#x2F;menu&#x2F;updateMenu&#39;
+      this.$http.put(url, data).catch(() &#x3D;&gt; &#123;
+        this.$Message.error(&#39;拖拽的节点数据更新失败，请刷新数据重新尝试！&#39;)
+      &#125;)
+    &#125;,
+    append (data, node) &#123;
+      this.$refs[&#39;async-router-tree&#39;].append(data, node)
+    &#125;,
+    cancel () &#123;
+      this.isNodeEdited &#x3D; false
+    &#125;,
+    handleDragEnd (draggingNode, dropNode, dropType, ev) &#123;
+      if (dropType !&#x3D;&#x3D; &#39;none&#39;) &#123;
+        &#x2F;&#x2F; drag success
+        this.initPutData(draggingNode, dropNode, dropType)
+      &#125;
+    &#125;,
+    allowDrop (draggingNode, dropNode, type) &#123;
+      if (draggingNode.data.parentId &#x3D;&#x3D;&#x3D; 0 &amp;&amp; dropNode.data.parentId &#x3D;&#x3D;&#x3D; 0 &amp;&amp; type &#x3D;&#x3D;&#x3D; &#39;inner&#39;) &#123;
+        &#x2F;&#x2F; 一级菜单节点不允许降为二、三级节点
+        return false
+      &#125; else if (draggingNode.data.parentId !&#x3D;&#x3D; 0 &amp;&amp; !!!dropNode.data.parentId) &#123;
+        &#x2F;&#x2F; 非一级节点不允许拖拽成为一级节点
+        return false
+      &#125; else if (dropNode.data.id &#x3D;&#x3D;&#x3D; 0) &#123;
+        return type &#x3D;&#x3D;&#x3D; &#39;inner&#39;
+      &#125; else &#123;
+        return true
+      &#125;
+    &#125;,
+    allowDrag (draggingNode) &#123;
+      return draggingNode.data.id !&#x3D;&#x3D; 0
+    &#125;
+  &#125;,
+  created () &#123;
+    this.initAsyncRoute()
+  &#125;</code></pre>
+
+<h3 id="tree的Demo1">tree的Demo1<a class="post-anchor" href="#tree的Demo1"></a></h3><p>描述：</p>
+<ul>
+<li>一开始请求第一级节点并且将第一级节点展开，并且记录下node和node.childNodes<br>  并且this.tableData = value用于右侧表格展示数据</li>
+<li>点击左侧的树(tree)请求数据，并且记录下currentNode和nodeList</li>
+<li>在编辑、添加和修改的时候操作node和nodeList即可</li>
+<li><em>结构*</em><pre><code class="hljs vue">&lt;Modal
+  title&#x3D;&quot;删除数据&quot;
+  :mask-closable&#x3D;&quot;false&quot;
+  v-model&#x3D;&quot;showModal&quot;
+  @on-ok&#x3D;&quot;confirmDel&quot;
+  @on-cancel&#x3D;&quot;cancelDel&quot;
+&gt;
+  &lt;p style&#x3D;&quot;color: red;&quot;&gt;确认删除该条信息?&lt;&#x2F;p&gt;
+&lt;&#x2F;Modal&gt;
+&lt;Modal
+  v-model&#x3D;&quot;addmodalshow&quot;
+  :title&#x3D;&quot;title&quot;
+  :mask-closable&#x3D;&quot;false&quot;&gt;
+  &lt;Form :model&#x3D;&quot;editformData&quot; :label-width&#x3D;&quot;80&quot;&gt;
+    &lt;FormItem label&#x3D;&quot;分类名称&quot;&gt;
+      &lt;Input v-model&#x3D;&quot;editformData.catalogname&quot;&gt;&lt;&#x2F;Input&gt;
+    &lt;&#x2F;FormItem&gt;
+    &lt;FormItem label&#x3D;&quot;备注&quot;&gt;
+      &lt;Input v-model&#x3D;&quot;editformData.remarks&quot; type&#x3D;&quot;textarea&quot;&gt;&lt;&#x2F;Input&gt;
+    &lt;&#x2F;FormItem&gt;
+    &lt;FormItem label&#x3D;&quot;排序字段&quot;&gt;
+      &lt;Input v-model&#x3D;&quot;editformData.ordernum&quot; type&#x3D;&quot;number&quot;&gt;&lt;&#x2F;Input&gt;
+    &lt;&#x2F;FormItem&gt;
+  &lt;&#x2F;Form&gt;
+  &lt;div slot&#x3D;&quot;footer&quot;&gt;
+    &lt;bottom-button :confirmButtonName&#x3D;&quot;confirmButtonName&quot; :hasMargin&#x3D;&quot;false&quot; @clickCreate&#x3D;&quot;ok&quot; @clickCancle&#x3D;&quot;cancel&quot;&gt;&lt;&#x2F;bottom-button&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;Modal&gt;
+&lt;div class&#x3D;&quot;container&quot;&gt;
+  &lt;Card class&#x3D;&quot;card-tree&quot;&gt;
+    &lt;el-tree
+      @node-click&#x3D;&quot;clickNode&quot;
+      ref&#x3D;&quot;tree&quot;
+      :props&#x3D;&quot;props&quot;
+      node-key&#x3D;&quot;id&quot;
+      :expand-on-click-node&#x3D;&quot;true&quot;
+      :default-expanded-keys&#x3D;&quot;defaultExpandsId&quot;
+      lazy
+      :load&#x3D;&quot;loadNode&quot;&gt;
+      &lt;span class&#x3D;&quot;custom-tree-node&quot; slot-scope&#x3D;&quot;&#123; node, data &#125;&quot;&gt;
+        &#123;&#123;data.catalogname&#125;&#125;
+      &lt;&#x2F;span&gt;
+    &lt;&#x2F;el-tree&gt;
+  &lt;&#x2F;Card&gt;
+  &lt;Card class&#x3D;&quot;table-content&quot;&gt;
+    &lt;Row style&#x3D;&quot;text-align: right&quot; class&#x3D;&quot;margin-bottom-10&quot;&gt;
+      &lt;Button type&#x3D;&quot;primary&quot; class&#x3D;&quot;blue-button&quot; @click&#x3D;&quot;addApp&quot;&gt;添加应用&lt;&#x2F;Button&gt;
+    &lt;&#x2F;Row&gt;
+    &lt;Table :columns&#x3D;&quot;columns1&quot; :data&#x3D;&quot;tableData.slice((currentPage-1)*5,5*currentPage)&quot;&gt;
+      &lt;template slot-scope&#x3D;&quot;&#123; row, index &#125;&quot; slot&#x3D;&quot;action&quot;&gt;
+        &lt;Button class&#x3D;&quot;blue-button&quot; type&#x3D;&quot;primary&quot; size&#x3D;&quot;small&quot; style&#x3D;&quot;margin-right: 5px&quot; @click&#x3D;&quot;edit(row, index)&quot;&gt;编辑&lt;&#x2F;Button&gt;
+        &lt;Button class&#x3D;&quot;red-button&quot; type&#x3D;&quot;primary&quot; size&#x3D;&quot;small&quot; @click&#x3D;&quot;deleteRow(row,index)&quot;&gt;删除&lt;&#x2F;Button&gt;
+      &lt;&#x2F;template&gt;
+    &lt;&#x2F;Table&gt;
+    &lt;Page style&#x3D;&quot;text-align: right;&quot; class&#x3D;&quot;margin-top-10&quot; :total&#x3D;&quot;tableData.length&quot; :page-size&#x3D;&quot;5&quot; @on-change&#x3D;&quot;pageChange&quot;&#x2F;&gt;
+  &lt;&#x2F;Card&gt;
+&lt;&#x2F;div&gt;</code></pre></li>
+<li><em>数据*</em><pre><code class="hljs vue">props: &#123;
+    label: &#39;catalogname&#39;,
+    children: &#39;children&#39;
+&#125;,
+defaultExpandsId: [],
+columns1: [
+&#123;
+  type: &#39;index&#39;,
+  title: &#39;序号&#39;,
+  align: &#39;center&#39;
+&#125;,
+&#123;
+  title: &#39;分类名称&#39;,
+  key: &#39;catalogname&#39;,
+  align: &#39;center&#39;
+&#125;,
+&#123;
+  title: &#39;备注&#39;,
+  key: &#39;remarks&#39;,
+  align: &#39;center&#39;
+&#125;,
+&#123;
+  title: &#39;操作&#39;,
+  slot: &#39;action&#39;,
+  width: 150,
+  align: &#39;center&#39;
+&#125;
+],
+tableData: [],
+showModal: false,
+selectRow: &#123;&#125;,
+nodeList: [],
+treeNodeIndex: -1,
+currentNode: &#123;&#125;,
+addmodalshow: false,
+formType: &#39;add&#39;,
+editformData: &#123;
+    id: null,
+    catalogcode: null,
+    catalogname: null,
+    parentid: null,
+    statue: null,
+    creator: null,
+    creatertime: null,
+    modifytime: null,
+    modifytor: null,
+    remarks: null,
+    ordernum: null,
+    flag: null
+&#125;,
+currentPage: 1,
+title: &#39;添加应用&#39;,
+confirmButtonName: &#39;创建&#39;</code></pre>
+
+</li>
+</ul>
+<p><strong>method</strong></p>
+<pre><code class="hljs vue">loadNode (node, resolve) &#123;
+  if (node.level &#x3D;&#x3D;&#x3D; 0) &#123;
+    let root &#x3D; &#123;&#125;
+    this.$http.get(&#96;&#x2F;api&#x2F;getDmpAppCatalogsByParentId&#x2F;0&#96;).then(response &#x3D;&gt; &#123;
+      root &#x3D; response.data.data[0]
+      this.defaultExpandsId.push(root.id)
+      resolve([root])
+    &#125;).catch(error &#x3D;&gt; &#123;
+      this.$Message.error(&#39;获取数据失败！&#39;)
+    &#125;)
+  &#125; else &#123;
+    this.getNodes(node.data.id).then(value &#x3D;&gt; &#123;
+      this.$nextTick(() &#x3D;&gt; &#123;
+        if (node.level &#x3D;&#x3D;&#x3D; 1) &#123;
+          this.currentNode &#x3D; node
+        &#125;
+        this.nodeList &#x3D; node.childNodes
+      &#125;)
+      this.tableData &#x3D; value
+      return resolve(value)
+    &#125;)
+  &#125;
+&#125;,
+getNodes (parentId) &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    const msg &#x3D; this.$Message.loading(&#123;
+      content: &#39;正在获取数据&#39;,
+      duration: 0
+    &#125;)
+    const [url, httpConfig] &#x3D; [
+      &#96;&#x2F;api&#x2F;getDmpAppCatalogsByParentId&#x2F;$&#123;parentId&#125;&#96;
+    ]
+    this.$http.get(url, httpConfig).then(response &#x3D;&gt; &#123;
+      msg()
+      resolve(response.data.data)
+    &#125;).catch(error &#x3D;&gt; &#123;
+      msg()
+      this.$Message.error(&#39;获取数据失败！&#39;)
+      reject(error)
+    &#125;)
+  &#125;)
+&#125;,
+clickNode (data, node) &#123;
+  this.currentNode &#x3D; node
+  this.nodeList &#x3D; node.childNodes
+  this.getNodes(data.id).then(value &#x3D;&gt; &#123;
+    this.tableData &#x3D; value
+  &#125;)
+&#125;,
+deleteRow (row, index) &#123;
+  this.showModal &#x3D; true
+  this.selectRow &#x3D; row
+  this.treeNodeIndex &#x3D; index
+&#125;,
+confirmDel () &#123;
+  this.$http.delete(&#96;&#x2F;api&#x2F;dmpAppCatalogs&#x2F;$&#123;this.selectRow.id&#125;&#96;).then(resposne &#x3D;&gt; &#123;
+    if (resposne.data.success) &#123;
+      this.$Message.success(&#39;删除成功！&#39;)
+      this.$refs[&#39;tree&#39;].remove(this.nodeList[this.treeNodeIndex])
+      this.removeTableData(this.tableData, this.selectRow.id)
+      this.selectRow &#x3D; &#123;&#125;
+      this.treeNodeIndex &#x3D; -1
+    &#125;
+  &#125;).catch(error &#x3D;&gt; &#123;
+    if (error.response) &#123;
+      this.$Message.error(&#39;删除失败！&#39;)
+      this.selectRow &#x3D; &#123;&#125;
+      this.treeNodeIndex &#x3D; -1
+    &#125;
+  &#125;)
+&#125;,
+cancelDel () &#123;
+  this.selectRow &#x3D; &#123;&#125;
+  this.treeNodeIndex &#x3D; -1
+&#125;,
+removeTableData (data, id) &#123;
+  let index &#x3D; data.findIndex((item) &#x3D;&gt; &#123;
+    return item.id &#x3D;&#x3D;&#x3D; id
+  &#125;)
+  data.splice(index, 1)
+&#125;,
+addApp () &#123;
+  this.confirmButtonName &#x3D; &#39;创建&#39;
+  this.title &#x3D; &#39;添加应用&#39;
+  this.addmodalshow &#x3D; true
+  this.formType &#x3D; &#39;add&#39;
+&#125;,
+ok () &#123;
+  if (this.formType &#x3D;&#x3D;&#x3D; &#39;add&#39;) &#123;
+    this.editformData.parentid &#x3D; this.currentNode.key
+    this.$http.post(&#39;&#x2F;api&#x2F;dmpAppCatalogs&#39;, this.editformData).then(response &#x3D;&gt; &#123;
+      if (response.data.success) &#123;
+        this.tableData.push(response.data.data)
+        this.append(response.data.data, this.currentNode)
+        this.cancel()
+        this.$Message.success(response.data.msg)
+      &#125; else &#123;
+        this.$Message.error(response.data.msg)
+      &#125;
+    &#125;).catch()
+  &#125; else &#123;
+    this.$http.put(&#39;&#x2F;api&#x2F;dmpAppCatalogs&#39;, this.editformData).then(response &#x3D;&gt; &#123;
+      if (response.data.success) &#123;
+        this.currentNode.loaded &#x3D; false
+        this.currentNode.expand()
+        this.cancel()
+        this.$Message.success(response.data.msg)
+      &#125; else &#123;
+        this.$Message.error(response.data.msg)
+      &#125;
+    &#125;).catch()
+  &#125;
+&#125;,
+cancel () &#123;
+  this.addmodalshow &#x3D; false
+  this.editformData &#x3D; &#123;
+    id: null,
+    catalogcode: null,
+    catalogname: null,
+    parentid: null,
+    statue: null,
+    creator: null,
+    creatertime: null,
+    modifytime: null,
+    modifytor: null,
+    remarks: null,
+    ordernum: null,
+    flag: null
+  &#125;
+&#125;,
+append (data, node) &#123;
+  this.$refs[&#39;tree&#39;].append(data, node)
+&#125;,
+edit (row, index) &#123;
+  &#x2F;&#x2F; 这里通过解构的方式即可
+  this.confirmButtonName &#x3D; &#39;确定&#39;
+  this.title &#x3D; &#39;编辑应用&#39;
+  this.formType &#x3D; &#39;edit&#39;
+  this.editformData.id &#x3D; row.id
+  this.editformData.catalogcode &#x3D; row.catalogcode
+  this.editformData.catalogname &#x3D; row.catalogname
+  this.editformData.parentid &#x3D; row.parentid
+  this.editformData.statue &#x3D; row.statue
+  this.editformData.creator &#x3D; row.creator
+  this.editformData.creatertime &#x3D; row.creatertime
+  this.editformData.modifytime &#x3D; row.modifytime
+  this.editformData.modifytor &#x3D; row.modifytor
+  this.editformData.remarks &#x3D; row.remarks
+  this.editformData.ordernum &#x3D; row.ordernum
+  this.editformData.flag &#x3D; row.flag
+  &#x2F;&#x2F; this.addmodalshow2 &#x3D; true
+  this.addmodalshow &#x3D; true
+&#125;,
+updateTable (table, id) &#123;
+  let index &#x3D; table.findIndex((item) &#x3D;&gt; &#123;
+    return item.id &#x3D;&#x3D;&#x3D; id
+  &#125;)
+  table[index] &#x3D; this.editformData
+&#125;,
+pageChange (currentPage) &#123;
+  this.currentPage &#x3D; currentPage
+&#125;</code></pre>
+
+<h3 id="tree的Demo1-1">tree的Demo1<a class="post-anchor" href="#tree的Demo1-1"></a></h3><p>描述：</p>
+<ul>
+<li>一开始的时候展开自定义的root节点，然后请求数据第一级节点</li>
+<li>点击的时候发起请求加载节点和请求右侧表格数据</li>
+<li><em>结构*</em><pre><code class="hljs vue">&lt;el-tree
+    ref&#x3D;&quot;tree&quot;
+    :props&#x3D;&quot;props&quot;
+    node-key&#x3D;&quot;ctou&quot;
+    :expand-on-click-node&#x3D;&quot;true&quot;
+    :default-expanded-keys&#x3D;&quot;[&#39;&#39;]&quot;
+    lazy
+    @node-click&#x3D;&quot;clickNode&quot;
+    :load&#x3D;&quot;loadNode&quot;&gt;
+      &lt;span class&#x3D;&quot;custom-tree-node&quot; slot-scope&#x3D;&quot;&#123; node, data &#125;&quot;&gt;
+        &#123;&#123;data.deptName&#125;&#125;
+      &lt;&#x2F;span&gt;
+&lt;&#x2F;el-tree&gt;</code></pre>
+
+</li>
+</ul>
+<p><strong>数据</strong></p>
+<pre><code class="hljs vue">&#x2F;&#x2F; 树节点数据
+props: &#123;
+  label: &#39;deptName&#39;,
+  children: &#39;children&#39;
+&#125;,</code></pre>
+
+<p><strong>方法</strong></p>
+<pre><code class="hljs vue">loadNode (node, resolve) &#123;
+  if (node.level &#x3D;&#x3D;&#x3D; 0) &#123;
+    let root &#x3D; &#123;
+      deptName: &#39;部门列表&#39;,
+      ctou: &#39;&#39;
+    &#125;
+    resolve([root])
+  &#125; else &#123;
+    this.getNodes(node.data.ctou).then(value &#x3D;&gt; &#123;
+      return resolve(value)
+    &#125;)
+  &#125;
+&#125;,
+getNodes (parentId) &#123;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    const msg &#x3D; this.$Message.loading(&#123;
+      content: &#39;正在获取数据&#39;,
+      duration: 0
+    &#125;)
+    const [url, httpConfig] &#x3D; [
+      this.$util.carBaseUrlUS + &#39;&#x2F;api&#x2F;usOrganizesAllList&#39;,
+      &#123; &#39;parentCode&#39;: parentId &#125;
+    ]
+    this.$http.post(url, httpConfig).then(response &#x3D;&gt; &#123;
+      msg()
+      resolve(response.data)
+    &#125;).catch(error &#x3D;&gt; &#123;
+      msg()
+      this.$Message.error(&#39;获取数据失败！&#39;)
+      reject(error)
+    &#125;)
+  &#125;)
+&#125;,
+clickNode (data, node) &#123;
+  this.searchDepName &#x3D; data.deptName
+  this.query2.organizeId &#x3D; data.ctou
+  this.getNodes(data.ctou)
+  this.getData2()
+&#125;,
+getData2 (currentPage &#x3D; 1) &#123;
+  this.currentPage &#x3D; currentPage
+  this.$http.post(this.$util.carBaseUrl + &#39;&#x2F;api&#x2F;carManagement&#x2F;queryList&#39;, &#123; t: this.query2, currentPage: this.currentPage, pageSize: this.pageSize &#125;).then(response &#x3D;&gt; &#123;
+    if (response.data.success) &#123;
+      this.tableData &#x3D; response.data.data.data
+      this.total &#x3D; response.data.data.total
+    &#125; else &#123;
+      this.$Message.error(response.data.msg)
+    &#125;
+  &#125;).catch()
+&#125;,</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/03/vue%E8%A1%A8%E6%A0%BC%E8%B7%A8%E9%A1%B5%E9%80%89%E4%B8%AD/">vue表格跨页选中</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/03/vue的tree懒加载/">https://codermino.github.io/2020/11/03/vue的tree懒加载/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
