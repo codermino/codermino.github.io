@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-10-23T02:38:13.713Z</updated>
+  <updated>2020-11-03T06:37:59.586Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue表格跨页选中</title>
+    <link href="https://codermino.github.io/2020/11/03/vue%E8%A1%A8%E6%A0%BC%E8%B7%A8%E9%A1%B5%E9%80%89%E4%B8%AD/"/>
+    <id>https://codermino.github.io/2020/11/03/vue%E8%A1%A8%E6%A0%BC%E8%B7%A8%E9%A1%B5%E9%80%89%E4%B8%AD/</id>
+    <published>2020-11-03T03:06:00.000Z</published>
+    <updated>2020-11-03T06:37:59.586Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;view-design表格
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue表格跨页选中" scheme="https://codermino.github.io/tags/vue%E8%A1%A8%E6%A0%BC%E8%B7%A8%E9%A1%B5%E9%80%89%E4%B8%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>render函数再理解</title>
@@ -492,30 +517,6 @@
     
     
       <category term="vue的is属性" scheme="https://codermino.github.io/tags/vue%E7%9A%84is%E5%B1%9E%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>proxy笔记</title>
-    <link href="https://codermino.github.io/2020/10/14/proxy%E7%AC%94%E8%AE%B0/"/>
-    <id>https://codermino.github.io/2020/10/14/proxy%E7%AC%94%E8%AE%B0/</id>
-    <published>2020-10-14T01:23:40.000Z</published>
-    <updated>2020-10-15T07:49:10.451Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="proxy笔记" scheme="https://codermino.github.io/tags/proxy%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
