@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      js循环异步事件返回结果 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#其他用到的方法"><span class="toc-text">其他用到的方法</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">js循环异步事件返回结果</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/03</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js循环异步事件返回结果">js循环异步事件返回结果</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><p>描述:</p>
+<ul>
+<li>功能：进行多个系统的切换，不同的系统有不同的菜单。<br> 首先要进行，所有的routes和menu的获取<br> 并且要在initAsyncRouter中进行<br> resolve([…menus, …menus2])才能完全创建所有的系统菜单路由</li>
+<li>开始的时候调用initAsyncRouter方法，进行异步菜单和路由的初始化</li>
+<li>获取name为defaultMenu的一个菜单，作为默认显示的菜单</li>
+<li>获取其他系统的菜单getOtherDynamicMenus()</li>
+<li>这个时候是一个数组，然后要循环异步获取到的数据，并且返回<pre><code class="hljs vue">async function initAsyncRouter () &#123;
+  try &#123;
+    const menus &#x3D; await getDynamicMenus()
+    let menus2 &#x3D; await getOtherDynamicMenus()
+    const asyncMenuRes &#x3D; initMenuTree(menus)
+    &#x2F;&#x2F; 添加动态获取的菜单
+    store.commit(&#39;app&#x2F;setMenuList&#39;, asyncMenuRes.menuList || [])
+    &#x2F;&#x2F; 添加动态路由
+    store.commit(&#39;app&#x2F;updateAppRouter&#39;, asyncMenuRes.menuRoutes || [])
+    return new Promise((resolve, reject) &#x3D;&gt; &#123;
+      resolve([...menus, ...menus2])
+    &#125;)
+  &#125; catch (error) &#123;
+    return new Promise((resolve, reject) &#x3D;&gt; &#123;
+      reject(error)
+    &#125;)
+  &#125;
+&#125;
+
+async function getDynamicMenus () &#123;
+  let parentId &#x3D; localStorage.parentId
+  if (!localStorage.parentId) &#123;
+    await util.http.get(&#39;&#x2F;api&#x2F;system&#x2F;menu&#x2F;getMenu&#39;, &#123; params: &#123; parentId: 0 &#125; &#125;).then(response &#x3D;&gt; &#123;
+      parentId &#x3D; response.data.data.filter((item) &#x3D;&gt; &#123;
+        return item.name &#x3D;&#x3D;&#x3D; &#39;defaultMenu&#39;
+      &#125;)[0].id || 0
+    &#125;).catch(error &#x3D;&gt; &#123;
+      console.log(error)
+      this.$Message.error(&#39;获取数据失败！&#39;)
+    &#125;)
+  &#125;
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    util.http.get(&#39;&#x2F;api&#x2F;getCscpMenusList&#x2F;&#39; + parentId).then(response &#x3D;&gt; &#123;
+      if (response &amp;&amp; response.data.data) &#123;
+        resolve(response.data.data)
+      &#125; else &#123;
+        reject(new Error(&#39;getDynamicMenus error!&#39;))
+      &#125;
+    &#125;).catch(error &#x3D;&gt; &#123;
+      reject(error)
+    &#125;)
+  &#125;)
+&#125;
+
+function getOtherDynamicMenus () &#123;
+  let menus2 &#x3D; []
+  return new Promise((resolve, reject) &#x3D;&gt; &#123;
+    util.http.get(&#39;&#x2F;api&#x2F;system&#x2F;menu&#x2F;getMenu&#39;, &#123; params: &#123; parentId: 0 &#125; &#125;).then(response &#x3D;&gt; &#123;
+      request(menus2, response.data.data.filter(item &#x3D;&gt; item.name !&#x3D;&#x3D; &#39;defaultMenu&#39;), resolve)
+    &#125;).catch(error &#x3D;&gt; &#123;
+      console.log(error)
+      this.$Message.error(&#39;获取数据失败！&#39;)
+    &#125;)
+  &#125;)
+&#125;
+
+function request (menus2, data, callback, index &#x3D; 0) &#123;
+  if (index &lt; data.length) &#123;
+    let item &#x3D; data[index]
+    util.http.get(&#39;&#x2F;api&#x2F;getCscpMenusList&#x2F;&#39; + item.id).then(response &#x3D;&gt; &#123;
+      if (response &amp;&amp; response.data.data) &#123;
+        menus2.push(...response.data.data)
+        const asyncMenuRes &#x3D; initMenuTree(response.data.data)
+        &#x2F;&#x2F; 添加动态获取的菜单
+        store.commit(&#39;app&#x2F;setMenuList&#39;, asyncMenuRes.menuList || [])
+        &#x2F;&#x2F; 添加动态路由
+        store.commit(&#39;app&#x2F;updateAppRouter&#39;, asyncMenuRes.menuRoutes || [])
+        request(menus2, data, callback, index + 1)
+      &#125; else &#123;
+        console.log(new Error(&#39;getDynamicMenus error!&#39;))
+      &#125;
+    &#125;).catch(error &#x3D;&gt; &#123;
+      console.log((error))
+    &#125;)
+  &#125; else &#123;
+    callback(menus2)
+  &#125;
+&#125;</code></pre>
+
+</li>
+</ul>
+<h4 id="其他用到的方法">其他用到的方法<a class="post-anchor" href="#其他用到的方法"></a></h4><pre><code class="hljs vue">function initMenuTree (menus) &#123;
+  menus &#x3D; cleanData(menus)
+  &#x2F;&#x2F; map映射
+  const menusMap &#x3D; new Map()
+  for (let i &#x3D; 0; i &lt; menus.length; i++) &#123;
+    menusMap.set(menus[i].id, true)
+  &#125;
+  const tree &#x3D; []
+  let leaves &#x3D; []
+  for (let i &#x3D; 0; i &lt; menus.length; i++) &#123;
+    if (menusMap.has(menus[i].parentId)) &#123;
+      &#x2F;&#x2F; 叶节点
+      leaves.push(menus[i])
+    &#125; else &#123;
+      &#x2F;&#x2F; 根节点
+      tree.push(menus[i])
+    &#125;
+  &#125;
+  buildTree(tree, leaves)
+  &#x2F;&#x2F; 保存路由数据原始的关系树
+  store.commit(&#39;app&#x2F;setRoutesTree&#39;, tree || [])
+  const menuList &#x3D; getMenuList(tree)
+  const menuRoutes &#x3D; getMenuRoutes(tree)
+  return &#123;
+    menuList,
+    menuRoutes
+  &#125;
+&#125;
+
+&#x2F;&#x2F; 保存按钮权限 &amp; 清理无用数据
+function cleanData (menus) &#123;
+  const menusCleaned &#x3D; []
+  const btnPermissionCode &#x3D; []
+  for (let i &#x3D; 0; i &lt; menus.length; i++) &#123;
+    if (menus[i].permissionCode) &#123;
+      btnPermissionCode.push(menus[i].permissionCode)
+    &#125;
+    if (menus[i].type !&#x3D;&#x3D; &#39;button&#39;) &#123;
+      menusCleaned.push(menus[i])
+    &#125;
+  &#125;
+  &#x2F;&#x2F; 保存按钮权限码
+  store.commit(&#39;app&#x2F;setBtnLimitedCodes&#39;, btnPermissionCode)
+  return menusCleaned
+&#125;
+
+function buildTree (tree, leaves) &#123;
+  leaves &#x3D; deleteUselessElement(leaves)
+  while (leaves.length &gt; 0) &#123;
+    leaves.forEach((leaf, index) &#x3D;&gt; &#123;
+      if (leaf) &#123;
+        addLeaf(tree, leaf, index, leaves)
+      &#125;
+    &#125;)
+    leaves &#x3D; deleteUselessElement(leaves)
+  &#125;
+&#125;
+
+function addLeaf (parents, leaf, index, leaves) &#123;
+  for (const parent of parents) &#123;
+    if (parent.id &#x3D;&#x3D;&#x3D; leaf.parentId) &#123;
+      if (parent.children &amp;&amp; Array.isArray(parent.children)) &#123;
+        parent.children.push(leaf)
+      &#125; else &#123;
+        parent.children &#x3D; []
+        parent.children.push(leaf)
+      &#125;
+      &#x2F;&#x2F; 将leaf标记为null
+      leaves[index] &#x3D; null
+      break
+    &#125; else &#123;
+      if (parent.children &amp;&amp; Array.isArray(parent.children)) &#123;
+        addLeaf(parent.children, leaf, index, leaves)
+      &#125;
+    &#125;
+  &#125;
+&#125;
+
+function deleteUselessElement (array) &#123;
+  let temp &#x3D; []
+  array.forEach(ele &#x3D;&gt; &#123;
+    if (ele) &#123;
+      temp.push(ele)
+    &#125;
+  &#125;)
+  return temp
+&#125;
+
+function getMenuList (menus) &#123;
+  const tempList &#x3D; []
+  menus.forEach(ele &#x3D;&gt; &#123;
+    if (ele.type &amp;&amp; ele.type.startsWith(&#39;menu&#39;)) &#123;
+      const tempObj &#x3D; &#123;&#125;
+      if (ele.children) &#123;
+        tempObj.children &#x3D; getMenuList(ele.children)
+      &#125;
+      tempObj.name &#x3D; ele.name
+      tempObj.icon &#x3D; ele.icon || &#39;ios-cube-outline&#39;
+      tempObj.title &#x3D; ele.title
+      tempObj.url &#x3D; ele.url
+      tempList.push(tempObj)
+    &#125;
+  &#125;)
+  return tempList
+&#125;
+
+function getMenuRoutes (tree) &#123;
+  const menuRoutes &#x3D; buildMenuRoutesStep1(tree)
+  &#x2F;&#x2F; 将三级路由结构改为二级
+  buildMenuRoutesStep2(menuRoutes)
+  &#x2F;&#x2F; 删除无用的路由数据
+  buildMenuRoutesStep3(menuRoutes)
+  return menuRoutes
+&#125;
+
+function buildMenuRoutesStep1 (menus) &#123;
+  const tempRoutes &#x3D; []
+  menus.forEach(ele &#x3D;&gt; &#123;
+    const tempObj &#x3D; &#123;&#125;
+    if (ele.children) &#123;
+      tempObj.children &#x3D; buildMenuRoutesStep1(ele.children)
+    &#125;
+    tempObj.parentId &#x3D; ele.parentId
+    tempObj.path &#x3D; ele.url
+    tempObj.name &#x3D; ele.name
+    tempObj.meta &#x3D; &#123;
+      title: ele.title
+    &#125;
+    if (ele.url) &#123;
+      if (routeMap[ele.name]) &#123;
+        tempObj.component &#x3D; routeMap[ele.name]
+      &#125; else if (typeof ele.component &#x3D;&#x3D;&#x3D; &#39;string&#39; &amp;&amp; ele.component.length &gt; 0) &#123;
+        tempObj.component &#x3D; () &#x3D;&gt; import(&#96;@&#x2F;$&#123;ele.component&#125;&#96;)
+      &#125;
+    &#125; else &#123;
+      tempObj.component &#x3D; ele.component
+    &#125;
+    tempRoutes.push(tempObj)
+  &#125;)
+  return tempRoutes
+&#125;
+
+function buildMenuRoutesStep2 (routes, root) &#123;
+  routes.forEach(ele &#x3D;&gt; &#123;
+    if (ele.children) &#123;
+      root &#x3D; ele.parentId &#x3D;&#x3D;&#x3D; 0 ? ele : root
+      buildMenuRoutesStep2(ele.children, root)
+      if (ele.parentId !&#x3D;&#x3D; 0) &#123;
+        if (!ele.component) &#123;
+          ele.children.forEach(item &#x3D;&gt; &#123;
+            &#x2F;&#x2F; 将二级菜单的信息放入子路由中
+            item.meta.parentName &#x3D; ele.name
+          &#125;)
+        &#125;
+        root.children &#x3D; root.children.concat(ele.children)
+        delete ele.children
+      &#125;
+    &#125;
+  &#125;)
+&#125;
+
+function buildMenuRoutesStep3 (routes) &#123;
+  const temp &#x3D; []
+  routes.forEach((ele, index) &#x3D;&gt; &#123;
+    if (ele.children) &#123;
+      buildMenuRoutesStep3(ele.children)
+    &#125;
+    if (!ele.component || !ele.path) &#123;
+      routes[index] &#x3D; undefined
+    &#125; else &#123;
+      temp.push(routes[index])
+    &#125;
+  &#125;)
+  routes.splice(0, routes.length)
+  temp.forEach(el &#x3D;&gt; &#123;
+    routes.push(el)
+  &#125;)
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/03/vue%E7%9A%84tree%E6%87%92%E5%8A%A0%E8%BD%BD/">vue的tree懒加载</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/03/js循环异步事件返回结果/">https://codermino.github.io/2020/11/03/js循环异步事件返回结果/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
