@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-03T08:43:44.825Z</updated>
+  <updated>2020-11-03T08:53:03.249Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue基于view-design封装的底部按钮组件</title>
+    <link href="https://codermino.github.io/2020/11/03/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%BA%95%E9%83%A8%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6/"/>
+    <id>https://codermino.github.io/2020/11/03/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%BA%95%E9%83%A8%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6/</id>
+    <published>2020-11-03T08:46:01.000Z</published>
+    <updated>2020-11-03T08:53:03.249Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hlj
+      
+    
+    </summary>
+    
+    
+      <category term="vue3" scheme="https://codermino.github.io/categories/vue3/"/>
+    
+    
+      <category term="vue基于view-design封装的底部按钮组件" scheme="https://codermino.github.io/tags/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%BA%95%E9%83%A8%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>js循环异步事件返回结果</title>
@@ -491,31 +516,6 @@
     
     
       <category term="css对话框旁边的箭头" scheme="https://codermino.github.io/tags/css%E5%AF%B9%E8%AF%9D%E6%A1%86%E6%97%81%E8%BE%B9%E7%9A%84%E7%AE%AD%E5%A4%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue生命周期和MVVM</title>
-    <link href="https://codermino.github.io/2020/10/15/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8CMVVM/"/>
-    <id>https://codermino.github.io/2020/10/15/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8CMVVM/</id>
-    <published>2020-10-15T09:13:10.000Z</published>
-    <updated>2020-10-15T09:15:10.278Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;一、MVVM模式&quot;&gt;一、M
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue生命周期和MVVM" scheme="https://codermino.github.io/tags/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%92%8CMVVM/"/>
     
   </entry>
   
