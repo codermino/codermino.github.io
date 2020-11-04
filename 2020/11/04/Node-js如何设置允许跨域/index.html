@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      Node.js如何设置允许跨域 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#设置允许所有域名跨域："><span class="toc-text">设置允许所有域名跨域：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置允许指定域名“http-www-xxx-com”跨域："><span class="toc-text">设置允许指定域名“http://www.xxx.com”跨域：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设置允许多个域名跨域："><span class="toc-text">设置允许多个域名跨域：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果允许的域名较多，可以将允许跨域的域名放到数组当中："><span class="toc-text">如果允许的域名较多，可以将允许跨域的域名放到数组当中：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo–-gt-多个域名跨域"><span class="toc-text">Demo–&gt;多个域名跨域</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">Node.js如何设置允许跨域</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/04</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/nodejs">nodejs</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/Node.js如何设置允许跨域">Node.js如何设置允许跨域</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="data:image/png;base64,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" target="_blank" rel="noopener" data-caption="git" data-fancybox="images"><img src="data:image/png;base64,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" alt="git"></a></p>
+<h3 id="设置允许所有域名跨域：">设置允许所有域名跨域：<a class="post-anchor" href="#设置允许所有域名跨域："></a></h3><pre><code class="hljs javascript">app.all(<span class="hljs-string">"*"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>)</span>&#123;
+    <span class="hljs-comment">//设置允许跨域的域名，*代表允许任意域名跨域</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Origin"</span>,<span class="hljs-string">"*"</span>);
+    <span class="hljs-comment">//允许的header类型</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Headers"</span>,<span class="hljs-string">"content-type"</span>);
+    <span class="hljs-comment">//跨域允许的请求方式 </span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Methods"</span>,<span class="hljs-string">"DELETE,PUT,POST,GET,OPTIONS"</span>);
+    <span class="hljs-keyword">if</span> (req.method.toLowerCase() == <span class="hljs-string">'options'</span>)
+        res.send(<span class="hljs-number">200</span>);  <span class="hljs-comment">//让options尝试请求快速结束</span>
+    <span class="hljs-keyword">else</span>
+        next();
+&#125;</code></pre>
+
+<h3 id="设置允许指定域名“http-www-xxx-com”跨域：">设置允许指定域名“<a href="http://www.xxx.com”跨域：" target="_blank" rel="noopener">http://www.xxx.com”跨域：</a><a class="post-anchor" href="#设置允许指定域名“http-www-xxx-com”跨域："></a></h3><pre><code class="hljs javascript">app.all(<span class="hljs-string">"*"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>)</span>&#123;
+    <span class="hljs-comment">//设置允许跨域的域名，*代表允许任意域名跨域</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Origin"</span>,<span class="hljs-string">"http://www.xxx.com"</span>);
+    <span class="hljs-comment">//允许的header类型</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Headers"</span>,<span class="hljs-string">"content-type"</span>);
+    <span class="hljs-comment">//跨域允许的请求方式 </span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Methods"</span>,<span class="hljs-string">"DELETE,PUT,POST,GET,OPTIONS"</span>);
+    <span class="hljs-keyword">if</span> (req.method.toLowerCase() == <span class="hljs-string">'options'</span>)
+        res.send(<span class="hljs-number">200</span>);  <span class="hljs-comment">//让options尝试请求快速结束</span>
+    <span class="hljs-keyword">else</span>
+        next();
+&#125;</code></pre>
+
+<h3 id="设置允许多个域名跨域：">设置允许多个域名跨域：<a class="post-anchor" href="#设置允许多个域名跨域："></a></h3><pre><code class="hljs javascript">app.all(<span class="hljs-string">"*"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>)</span>&#123;
+    <span class="hljs-keyword">if</span>( req.headers.origin.toLowerCase() == <span class="hljs-string">"http://www.xxx.com"</span>
+        || req.headers.origin.toLowerCase() ==<span class="hljs-string">"http://127.0.0.1"</span> ) &#123;
+        <span class="hljs-comment">//设置允许跨域的域名，*代表允许任意域名跨域</span>
+        res.header(<span class="hljs-string">"Access-Control-Allow-Origin"</span>, req.headers.origin);
+    &#125;
+    <span class="hljs-comment">//允许的header类型</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Headers"</span>, <span class="hljs-string">"content-type"</span>);
+    <span class="hljs-comment">//跨域允许的请求方式 </span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Methods"</span>, <span class="hljs-string">"DELETE,PUT,POST,GET,OPTIONS"</span>);
+    <span class="hljs-keyword">if</span> (req.method.toLowerCase() == <span class="hljs-string">'options'</span>)
+        res.send(<span class="hljs-number">200</span>);  <span class="hljs-comment">//让options尝试请求快速结束</span>
+    <span class="hljs-keyword">else</span>
+        next();    
+&#125;</code></pre>
+
+<h3 id="如果允许的域名较多，可以将允许跨域的域名放到数组当中：">如果允许的域名较多，可以将允许跨域的域名放到数组当中：<a class="post-anchor" href="#如果允许的域名较多，可以将允许跨域的域名放到数组当中："></a></h3><pre><code class="hljs javascript">app.all(<span class="hljs-string">"*"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>)</span>&#123;
+    <span class="hljs-keyword">var</span> orginList=[
+        <span class="hljs-string">"http://www.xxx.com"</span>,
+        <span class="hljs-string">"http://www.aaa.com"</span>,
+        <span class="hljs-string">"http://www.bbb.com"</span>,
+        <span class="hljs-string">"http://www.baidu.com"</span>
+    ]
+    <span class="hljs-keyword">if</span>(orginList.includes(req.headers.origin.toLowerCase()))&#123;
+        <span class="hljs-comment">//设置允许跨域的域名，*代表允许任意域名跨域</span>
+        res.header(<span class="hljs-string">"Access-Control-Allow-Origin"</span>,req.headers.origin);
+    &#125;
+    <span class="hljs-comment">//允许的header类型</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Headers"</span>, <span class="hljs-string">"content-type"</span>);
+    <span class="hljs-comment">//跨域允许的请求方式</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Methods"</span>, <span class="hljs-string">"DELETE,PUT,POST,GET,OPTIONS"</span>);
+    <span class="hljs-keyword">if</span> (req.method.toLowerCase() == <span class="hljs-string">'options'</span>)
+        res.send(<span class="hljs-number">200</span>);  <span class="hljs-comment">//让options尝试请求快速结束</span>
+    <span class="hljs-keyword">else</span>
+        next();
+&#125;</code></pre>
+
+<h3 id="Demo–-gt-多个域名跨域">Demo–&gt;多个域名跨域<a class="post-anchor" href="#Demo–-gt-多个域名跨域"></a></h3><pre><code class="hljs javascript">app.all(<span class="hljs-string">'*'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req,res,next</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> allowDomains = [<span class="hljs-string">'http://localhost:8080'</span>,<span class="hljs-string">'http://localhost:8804'</span>];
+  <span class="hljs-comment">// console.log(req.headers);</span>
+  <span class="hljs-keyword">let</span> origin ;
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> req.headers.referer == <span class="hljs-string">"undefined"</span>) &#123;
+    origin = req.headers.origin;
+  &#125;<span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">const</span> p = URL.parse(req.headers.referer,<span class="hljs-literal">true</span>);
+    origin = p.protocol + <span class="hljs-string">'//'</span> + p.host;
+  &#125;
+  <span class="hljs-keyword">if</span> (allowDomains.includes(origin))&#123;
+    <span class="hljs-comment">//设置允许跨域的域名，*代表允许任意域名跨域</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Origin"</span>,origin);
+    <span class="hljs-comment">//设置允许跨域的域名，*代表允许任意域名跨域</span>
+    <span class="hljs-comment">// res.header("Access-Control-Allow-Origin",originHeads);</span>
+    <span class="hljs-comment">//允许的header类型</span>
+    res.header(<span class="hljs-string">'Access-Control-Allow-Headers'</span>, <span class="hljs-string">'Content-Type, Content-Length, Authorization, Accept, X-Requested-With'</span>);
+    <span class="hljs-comment">//跨域允许的请求方式</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Methods"</span>,<span class="hljs-string">"DELETE,PUT,POST,GET,OPTIONS"</span>);
+    res.header(<span class="hljs-string">'Access-Control-Allow-Credentials'</span>, <span class="hljs-literal">true</span>);
+    <span class="hljs-keyword">if</span> (req.method.toLowerCase() === <span class="hljs-string">'options'</span>)
+      res.sendStatus(<span class="hljs-number">200</span>);  <span class="hljs-comment">//让options尝试请求快速结束</span>
+    <span class="hljs-keyword">else</span>
+      next();
+  &#125;
+&#125;);</code></pre>
+
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/03/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%88%A0%E9%99%A4%E5%AF%B9%E8%AF%9D%E6%A1%86/">vue基于view-design封装的删除对话框</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/04/Node-js如何设置允许跨域/">https://codermino.github.io/2020/11/04/Node-js如何设置允许跨域/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
