@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-04T06:58:28.793Z</updated>
+  <updated>2020-11-04T07:16:22.420Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端清除浮动</title>
+    <link href="https://codermino.github.io/2020/11/04/%E5%89%8D%E7%AB%AF%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/"/>
+    <id>https://codermino.github.io/2020/11/04/%E5%89%8D%E7%AB%AF%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/</id>
+    <published>2020-11-04T07:11:29.000Z</published>
+    <updated>2020-11-04T07:16:22.420Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;额外标签清除法&quot;&gt;额外标签清除法&lt;a class=&quot;post-anchor&quot; href=&quot;#额外标签清除法&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div style=&quot;clear: both;&quot;&gt;&lt;/div&gt; 
+优点:简单易懂
+缺点:添加了很多额外没用的标签破坏结构
+
+&lt;pre&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端清除浮动" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>前端盒子模型</title>
@@ -487,33 +515,6 @@
     
     
       <category term="vue3composition抽离" scheme="https://codermino.github.io/tags/vue3composition%E6%8A%BD%E7%A6%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue3的ref和reactive区别</title>
-    <link href="https://codermino.github.io/2020/10/19/vue3%E7%9A%84ref%E5%92%8Creactive%E5%8C%BA%E5%88%AB/"/>
-    <id>https://codermino.github.io/2020/10/19/vue3%E7%9A%84ref%E5%92%8Creactive%E5%8C%BA%E5%88%AB/</id>
-    <published>2020-10-19T01:39:53.000Z</published>
-    <updated>2020-10-19T02:28:55.988Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###区别&lt;/p&gt;
-&lt;ol&gt;
-&lt;li
-      
-    
-    </summary>
-    
-    
-      <category term="vue3" scheme="https://codermino.github.io/categories/vue3/"/>
-    
-    
-      <category term="vue3的ref和reactive区别" scheme="https://codermino.github.io/tags/vue3%E7%9A%84ref%E5%92%8Creactive%E5%8C%BA%E5%88%AB/"/>
     
   </entry>
   
