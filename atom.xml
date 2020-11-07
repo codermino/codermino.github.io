@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-07T08:31:57.505Z</updated>
+  <updated>2020-11-07T09:26:46.084Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js的switch优化</title>
+    <link href="https://codermino.github.io/2020/11/07/js%E7%9A%84switch%E4%BC%98%E5%8C%96/"/>
+    <id>https://codermino.github.io/2020/11/07/js%E7%9A%84switch%E4%BC%98%E5%8C%96/</id>
+    <published>2020-11-07T09:01:48.000Z</published>
+    <updated>2020-11-07T09:26:46.084Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
+    
+    
+      <category term="js的switch优化" scheme="https://codermino.github.io/tags/js%E7%9A%84switch%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>前端自定义滚动条</title>
@@ -490,31 +514,6 @@
     
     
       <category term="insertAdjacentHTML方法详解" scheme="https://codermino.github.io/tags/insertAdjacentHTML%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的data必须是一个函数</title>
-    <link href="https://codermino.github.io/2020/10/19/vue%E7%9A%84data%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0/"/>
-    <id>https://codermino.github.io/2020/10/19/vue%E7%9A%84data%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0/</id>
-    <published>2020-10-19T03:26:53.000Z</published>
-    <updated>2020-10-19T06:54:39.279Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Vue组件为什么da
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的data必须是一个函数" scheme="https://codermino.github.io/tags/vue%E7%9A%84data%E5%BF%85%E9%A1%BB%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   

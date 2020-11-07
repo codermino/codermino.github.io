@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      前端自定义滚动条 - Mino
+      归档 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,11 +24,6 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
-    
-    <div id="post-toc" class="animated hiddenToc hide">
-      <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义滚动条css样式"><span class="toc-text">自定义滚动条css样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在vue中使用"><span class="toc-text">在vue中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改事件日期选择器的滚动条样式"><span class="toc-text">修改事件日期选择器的滚动条样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改下拉选择的滚动条样式"><span class="toc-text">修改下拉选择的滚动条样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改iview的table横向滚动条样式"><span class="toc-text">修改iview的table横向滚动条样式</span></a></li></ol></li></ol>
-    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -75,7 +70,7 @@
           分类
         </a>
         
-        <a href="/archives" class="">
+        <a href="/archives" class="current">
           归档
         </a>
         
@@ -125,7 +120,7 @@
             分类
           </a>
           
-          <a href="/archives" class="">
+          <a href="/archives" class="current">
             归档
           </a>
           
@@ -154,170 +149,43 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <article class="post-entry">
-    <div class="header">
-      
-      <div class="title">前端自定义滚动条</div>
-      <div class="meta">
-        <span class="item">
-          <span class="iconfont icon-time-circle"></span>
-          <span>2020/11/07</span>
-        </span>
-
-        
-
-         
-        <span class="item">
-          <span class="iconfont icon-folder"></span>
-          <span>
-              
-                
-                  <a href="/categories/前端">前端</a>
-                
-              
-          </span>
-        </span>
-        
-        
-         
-          <span class="item">
-            <span class="iconfont icon-tag1"></span>
-            <span>
-                
-                  
-                    <a href="/tags/前端自定义滚动条">前端自定义滚动条</a>
-                  
-                
-            </span>
-          </span>
-         
-      </div>
-      <div>
-      </div>
-    </div>
-    <h3 id="自定义滚动条css样式">自定义滚动条css样式<a class="post-anchor" href="#自定义滚动条css样式"></a></h3><pre><code class="hljs css">// 滚动条样式
-.menu-scrollbar::-webkit-scrollbar,
-.common-scrollbar::-webkit-scrollbar &#123;
-  /*滚动条整体样式*/
-  width: 6px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 1px;
-&#125;
-
-// 滚动条样式1
-.menu-scrollbar::-webkit-scrollbar-thumb &#123;
-  /*滚动条里面小方块*/
-  border-radius: 2px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-  background: #808695;
-&#125;
-
-// 滚动条样式2
-.common-scrollbar::-webkit-scrollbar-thumb &#123;
-  /*滚动条里面小方块*/
-  border-radius: 2px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-  background: #dcdee2;
-&#125;</code></pre>
-
-<h3 id="在vue中使用">在vue中使用<a class="post-anchor" href="#在vue中使用"></a></h3><h4 id="修改事件日期选择器的滚动条样式">修改事件日期选择器的滚动条样式<a class="post-anchor" href="#修改事件日期选择器的滚动条样式"></a></h4><pre><code class="hljs less">/deep/ .ivu-time-picker-cells-list&#123;
-    &amp;::-webkit-scrollbar &#123;
-      /*滚动条整体样式*/
-      width: 3px;
-      /*高宽分别对应横竖滚动条的尺寸*/
-      height: 3px;
-    &#125;
-    &amp;::-webkit-scrollbar-thumb &#123;
-      /*滚动条里面小方块*/
-      border-radius: 2px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-      background: #808695;
-    &#125;
-  &#125;</code></pre>
-
-<h4 id="修改下拉选择的滚动条样式">修改下拉选择的滚动条样式<a class="post-anchor" href="#修改下拉选择的滚动条样式"></a></h4><pre><code class="hljs less">/deep/ .ivu-select-dropdown&#123;
-    &amp;::-webkit-scrollbar &#123;
-      /*滚动条整体样式*/
-      width: 3px;
-      /*高宽分别对应横竖滚动条的尺寸*/
-      height: 3px;
-    &#125;
-    &amp;::-webkit-scrollbar-thumb &#123;
-      /*滚动条里面小方块*/
-      border-radius: 2px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-      background: #808695;
-    &#125;
-  &#125;</code></pre>
-
-<h4 id="修改iview的table横向滚动条样式">修改iview的table横向滚动条样式<a class="post-anchor" href="#修改iview的table横向滚动条样式"></a></h4><pre><code class="hljs less">/deep/ .ivu-table-overflowX&#123;
-  &amp;::-webkit-scrollbar &#123;
-    /*滚动条整体样式*/
-    width: 3px;
-    /*高宽分别对应横竖滚动条的尺寸*/
-    height: 7px;
-  &#125;
-  &amp;::-webkit-scrollbar-thumb &#123;
-    /*滚动条里面小方块*/
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-    background: #808695;
-  &#125;
-&#125;</code></pre>
-
-
-  
-    <div class="post-reward">
-    <div id="reward-button">打赏</div>
-      <div id="qr">
-        <div class="wrap">
-            
-            <div class="bg-wrap">
-              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
-              支付宝
-            </div>
-            
-            
-            <div class="bg-wrap">
-                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
-              微信
-            </div>
+        <div id="archives">
+    
+        <div class="title">
+            归档 
             
         </div>
-      </div>
-    </div>
-  
-  <div class="post-guide">
-    <div class="item left">
-        
-          <a href="/2020/11/07/js%E7%9A%84switch%E4%BC%98%E5%8C%96/">js的switch优化</a>
-        
-    </div>
-    <div class="item right">
-        
-          <a href="/2020/11/07/vue%E7%94%9F%E6%88%90%E6%A0%91%E7%BB%93%E6%9E%84/">vue生成树结构</a>
-        
-    </div>
-  </div>
+    
 
-  
 
-  <div class="post-copyright">
-    <div class="auth">
-      本文作者：<a href="https://codermino.github.io">Mino</a>
-    </div>
-    <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/11/07/前端自定义滚动条/">https://codermino.github.io/2020/11/07/前端自定义滚动条/</a>
-    </div>
-    <div class="declare">
-      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
-    </div>
-  </div>
 
-  <div id="comment"></div>
 
-  
-  
-</article>
+    
+    
+    <section class="wrap">
+        <div class="meta">
+            <a href="/archives/2019" >
+                2019
+            </a>
+        </div>
+        <div class="year">
+            
+            <article class="item">
+            <a href="/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="Git基本操作">
+                <span>2019/12/05</span>
+                <span>Git基本操作</span>
+            </a>
+            </article>
+            
+    
+        </div>
+    </section>
+      
+<div class="paginator">
+    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/12/">12</a><a class="page-number" href="/archives/page/13/">13</a><span class="page-number current">14</span>
+</div>
+</div>
+
         <footer>
           <div class="copyright">
             ©2020

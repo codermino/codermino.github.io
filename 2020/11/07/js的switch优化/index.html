@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      前端自定义滚动条 - Mino
+      js的switch优化 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义滚动条css样式"><span class="toc-text">自定义滚动条css样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在vue中使用"><span class="toc-text">在vue中使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#修改事件日期选择器的滚动条样式"><span class="toc-text">修改事件日期选择器的滚动条样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改下拉选择的滚动条样式"><span class="toc-text">修改下拉选择的滚动条样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改iview的table横向滚动条样式"><span class="toc-text">修改iview的table横向滚动条样式</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原来的switch…case语法"><span class="toc-text">原来的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化后的switch…case语法"><span class="toc-text">优化后的switch…case语法</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,7 +157,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">前端自定义滚动条</div>
+      <div class="title">js的switch优化</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/前端">前端</a>
+                  <a href="/categories/javascript">javascript</a>
                 
               
           </span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/前端自定义滚动条">前端自定义滚动条</a>
+                    <a href="/tags/js的switch优化">js的switch优化</a>
                   
                 
             </span>
@@ -195,74 +195,30 @@
       <div>
       </div>
     </div>
-    <h3 id="自定义滚动条css样式">自定义滚动条css样式<a class="post-anchor" href="#自定义滚动条css样式"></a></h3><pre><code class="hljs css">// 滚动条样式
-.menu-scrollbar::-webkit-scrollbar,
-.common-scrollbar::-webkit-scrollbar &#123;
-  /*滚动条整体样式*/
-  width: 6px;
-  /*高宽分别对应横竖滚动条的尺寸*/
-  height: 1px;
-&#125;
-
-// 滚动条样式1
-.menu-scrollbar::-webkit-scrollbar-thumb &#123;
-  /*滚动条里面小方块*/
-  border-radius: 2px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-  background: #808695;
-&#125;
-
-// 滚动条样式2
-.common-scrollbar::-webkit-scrollbar-thumb &#123;
-  /*滚动条里面小方块*/
-  border-radius: 2px;
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-  background: #dcdee2;
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="原来的switch…case语法">原来的switch…case语法<a class="post-anchor" href="#原来的switch…case语法"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">switch</span>(column.property) &#123;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"money"</span>:
+      sums[index] = (<span class="hljs-keyword">this</span>.sumFooter.moneySum / <span class="hljs-number">100</span>).toFixed(<span class="hljs-number">2</span>)；
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">"profit"</span>:
+      sums[index] = <span class="hljs-keyword">this</span>.sumFooter.profitSum / <span class="hljs-number">100</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+      <span class="hljs-keyword">break</span>;
 &#125;</code></pre>
 
-<h3 id="在vue中使用">在vue中使用<a class="post-anchor" href="#在vue中使用"></a></h3><h4 id="修改事件日期选择器的滚动条样式">修改事件日期选择器的滚动条样式<a class="post-anchor" href="#修改事件日期选择器的滚动条样式"></a></h4><pre><code class="hljs less">/deep/ .ivu-time-picker-cells-list&#123;
-    &amp;::-webkit-scrollbar &#123;
-      /*滚动条整体样式*/
-      width: 3px;
-      /*高宽分别对应横竖滚动条的尺寸*/
-      height: 3px;
+<h3 id="优化后的switch…case语法">优化后的switch…case语法<a class="post-anchor" href="#优化后的switch…case语法"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> mapSum = &#123;
+    <span class="hljs-string">'money'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>&#123;
+      <span class="hljs-keyword">return</span> sums[index] = (f.moneySum / <span class="hljs-number">100</span>).toFixed(<span class="hljs-number">2</span>)
+    &#125;,
+    <span class="hljs-string">'profit'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">f</span>) </span>&#123;
+      <span class="hljs-keyword">return</span> sums[index] = f.profitSum / <span class="hljs-number">100</span>
     &#125;
-    &amp;::-webkit-scrollbar-thumb &#123;
-      /*滚动条里面小方块*/
-      border-radius: 2px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-      background: #808695;
-    &#125;
-  &#125;</code></pre>
-
-<h4 id="修改下拉选择的滚动条样式">修改下拉选择的滚动条样式<a class="post-anchor" href="#修改下拉选择的滚动条样式"></a></h4><pre><code class="hljs less">/deep/ .ivu-select-dropdown&#123;
-    &amp;::-webkit-scrollbar &#123;
-      /*滚动条整体样式*/
-      width: 3px;
-      /*高宽分别对应横竖滚动条的尺寸*/
-      height: 3px;
-    &#125;
-    &amp;::-webkit-scrollbar-thumb &#123;
-      /*滚动条里面小方块*/
-      border-radius: 2px;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-      background: #808695;
-    &#125;
-  &#125;</code></pre>
-
-<h4 id="修改iview的table横向滚动条样式">修改iview的table横向滚动条样式<a class="post-anchor" href="#修改iview的table横向滚动条样式"></a></h4><pre><code class="hljs less">/deep/ .ivu-table-overflowX&#123;
-  &amp;::-webkit-scrollbar &#123;
-    /*滚动条整体样式*/
-    width: 3px;
-    /*高宽分别对应横竖滚动条的尺寸*/
-    height: 7px;
-  &#125;
-  &amp;::-webkit-scrollbar-thumb &#123;
-    /*滚动条里面小方块*/
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-    background: #808695;
-  &#125;
-&#125;</code></pre>
+&#125;
+<span class="hljs-keyword">let</span> action = mapSum[column.property]
+<span class="hljs-keyword">if</span>(!action)
+  <span class="hljs-keyword">return</span>
+action(action)</code></pre>
 
 
   
@@ -289,12 +245,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/11/07/js%E7%9A%84switch%E4%BC%98%E5%8C%96/">js的switch优化</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/11/07/vue%E7%94%9F%E6%88%90%E6%A0%91%E7%BB%93%E6%9E%84/">vue生成树结构</a>
+          <a href="/2020/11/07/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1/">前端自定义滚动条</a>
         
     </div>
   </div>
@@ -306,7 +260,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/11/07/前端自定义滚动条/">https://codermino.github.io/2020/11/07/前端自定义滚动条/</a>
+      永久链接：<a href="https://codermino.github.io/2020/11/07/js的switch优化/">https://codermino.github.io/2020/11/07/js的switch优化/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
