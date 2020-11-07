@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原来的switch…case语法"><span class="toc-text">原来的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化后的switch…case语法"><span class="toc-text">优化后的switch…case语法</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原来的switch…case语法"><span class="toc-text">原来的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化后的switch…case语法"><span class="toc-text">优化后的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -218,7 +218,42 @@
 <span class="hljs-keyword">let</span> action = mapSum[column.property]
 <span class="hljs-keyword">if</span>(!action)
   <span class="hljs-keyword">return</span>
-action(action)</code></pre>
+action(somedata)</code></pre>
+
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"zh-CN"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-keyword">const</span> switchTest = <span class="hljs-function">(<span class="hljs-params">param</span>) =&gt;</span> &#123;
+            <span class="hljs-keyword">let</span> mapSum = &#123;
+                <span class="hljs-string">'money'</span>: <span class="hljs-function">(<span class="hljs-params">param</span>) =&gt;</span> &#123;
+                    <span class="hljs-keyword">return</span> <span class="hljs-string">'money'</span> + param
+                &#125;,
+                <span class="hljs-string">'profit'</span>: <span class="hljs-function">(<span class="hljs-params">param</span>) =&gt;</span> &#123;
+                    <span class="hljs-keyword">return</span> <span class="hljs-string">'profit'</span> + param
+                &#125;
+            &#125;
+            <span class="hljs-keyword">const</span> temp = mapSum[param]
+            <span class="hljs-keyword">if</span>(temp)&#123;
+                <span class="hljs-keyword">return</span> temp(param)
+            &#125;<span class="hljs-keyword">else</span>&#123;
+                <span class="hljs-keyword">return</span> <span class="hljs-string">'无效参数'</span>
+            &#125;
+        &#125;
+        <span class="hljs-built_in">console</span>.log(switchTest(<span class="hljs-string">'money'</span>))
+        <span class="hljs-built_in">console</span>.log(switchTest(<span class="hljs-string">'profit'</span>))
+        <span class="hljs-built_in">console</span>.log(switchTest(<span class="hljs-string">'123'</span>))
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
 
   
