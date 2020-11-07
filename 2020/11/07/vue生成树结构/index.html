@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue生成树结构 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1"><span class="toc-text">Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2"><span class="toc-text">Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo3"><span class="toc-text">Demo3</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue生成树结构</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/07</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue生成树结构">vue生成树结构</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="Demo1">Demo1<a class="post-anchor" href="#Demo1"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;el-tree
+    :data&#x3D;&quot;treeData&quot;
+    :props&#x3D;&quot;defaultProps&quot;
+    accordion
+    @node-click&#x3D;&quot;handleNodeClick&quot;&gt;
+  &lt;&#x2F;el-tree&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;Test&quot;,
+  data()&#123;
+    return &#123;
+      &#x2F;&#x2F; data : [
+      &#x2F;&#x2F;   &#123;id:1,parentId:0,name:&quot;一级菜单A&quot;,rank:1&#125;,
+      &#x2F;&#x2F;   &#123;id:2,parentId:0,name:&quot;一级菜单B&quot;,rank:1&#125;,
+      &#x2F;&#x2F;   &#123;id:3,parentId:0,name:&quot;一级菜单C&quot;,rank:1&#125;,
+      &#x2F;&#x2F;   &#123;id:4,parentId:1,name:&quot;二级菜单A-A&quot;,rank:2&#125;,
+      &#x2F;&#x2F;   &#123;id:5,parentId:1,name:&quot;二级菜单A-B&quot;,rank:2&#125;,
+      &#x2F;&#x2F;   &#123;id:6,parentId:2,name:&quot;二级菜单B-A&quot;,rank:2&#125;,
+      &#x2F;&#x2F;   &#123;id:7,parentId:4,name:&quot;三级菜单A-A-A&quot;,rank:3&#125;,
+      &#x2F;&#x2F;   &#123;id:8,parentId:7,name:&quot;四级菜单A-A-A-A&quot;,rank:4&#125;,
+      &#x2F;&#x2F;   &#123;id:9,parentId:8,name:&quot;五级菜单A-A-A-A-A&quot;,rank:5&#125;,
+      &#x2F;&#x2F;   &#123;id:10,parentId:9,name:&quot;六级菜单A-A-A-A-A-A&quot;,rank:6&#125;,
+      &#x2F;&#x2F;   &#123;id:11,parentId:10,name:&quot;七级菜单A-A-A-A-A-A-A&quot;,rank:7&#125;,
+      &#x2F;&#x2F;   &#123;id:12,parentId:11,name:&quot;八级菜单A-A-A-A-A-A-A-A&quot;,rank:8&#125;,
+      &#x2F;&#x2F;   &#123;id:13,parentId:12,name:&quot;九级菜单A-A-A-A-A-A-A-A-A&quot;,rank:9&#125;,
+      &#x2F;&#x2F;   &#123;id:14,parentId:13,name:&quot;十级菜单A-A-A-A-A-A-A-A-A-A&quot;,rank:10&#125;,
+      &#x2F;&#x2F; ],
+      data1: [
+        &#123;
+          &quot;id&quot;: &quot;1&quot;,
+          &quot;ctou&quot;: &quot;JN0089&quot;,
+          &quot;deptName&quot;: &quot;山东&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;2&quot;,
+          &quot;ctou&quot;: &quot;JN0039&quot;,
+          &quot;deptName&quot;: &quot;济南&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;JN0089&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;3&quot;,
+          &quot;ctou&quot;: &quot;JN0029&quot;,
+          &quot;deptName&quot;: &quot;历下&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;002&quot;,
+          &quot;parentCode&quot;: &quot;JN0039&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;002&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;离开&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;4&quot;,
+          &quot;ctou&quot;: &quot;JN0040&quot;,
+          &quot;deptName&quot;: &quot;青岛&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;JN0089&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;青岛&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;5&quot;,
+          &quot;ctou&quot;: &quot;JN0030&quot;,
+          &quot;deptName&quot;: &quot;黄岛&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;JN0089&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;
+      ],
+      defaultProps: &#123;
+        children: &#39;children&#39;,
+        label: &#39;deptName&#39;
+      &#125;
+      &#x2F;&#x2F; defaultProps: &#123;
+      &#x2F;&#x2F;   children: &#39;children&#39;,
+      &#x2F;&#x2F;   label: &#39;name&#39;
+      &#x2F;&#x2F; &#125;,
+    &#125;
+  &#125;,
+  computed:&#123;
+    treeData()&#123;
+      &#x2F;&#x2F; let cloneData &#x3D; JSON.parse(JSON.stringify(this.data))    &#x2F;&#x2F; 对源数据深度克隆
+      let cloneData &#x3D; Object.assign([],this.data1)    &#x2F;&#x2F; 对源数据深度克隆
+      return cloneData.filter(father&#x3D;&gt;&#123;
+        &#x2F;&#x2F; let branchArr &#x3D; cloneData.filter(child&#x3D;&gt;father.id &#x3D;&#x3D;&#x3D; child.parentId)    &#x2F;&#x2F;返回每一项的子级数组
+        let branchArr &#x3D; cloneData.filter(child&#x3D;&gt;father.ctou &#x3D;&#x3D;&#x3D; child.parentCode)    &#x2F;&#x2F;返回每一项的子级数组
+        branchArr.length&gt;0 ? father.children &#x3D; branchArr : &#39;&#39;   &#x2F;&#x2F;如果存在子级，则给父级添加一个children属性，并赋值
+        &#x2F;&#x2F; return father.parentId &#x3D;&#x3D;&#x3D; 0;      &#x2F;&#x2F;返回第一层
+        return father.parentCode &#x3D;&#x3D;&#x3D; &#39;&#39;;      &#x2F;&#x2F;返回第一层
+      &#125;);
+    &#125;
+  &#125;,
+  methods:&#123;
+    handleNodeClick(data)&#123;
+      console.log(this.treeData)
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;!--将树形结构转为扁平结构--&gt;
+
+&lt;!--let res &#x3D; []        &#x2F;&#x2F; 用于存储递归结果（扁平数据）--&gt;
+&lt;!--&#x2F;&#x2F; 递归函数--&gt;
+&lt;!--const fn &#x3D; (source)&#x3D;&gt;&#123;--&gt;
+&lt;!--source.forEach(el&#x3D;&gt;&#123;--&gt;
+&lt;!--res.push(el)--&gt;
+&lt;!--el.children &amp;&amp; el.children.length&gt;0 ? fn(el.children) : &quot;&quot;        &#x2F;&#x2F; 子级递归--&gt;
+&lt;!--&#125;)--&gt;
+&lt;!--&#125;--&gt;
+
+&lt;!--&#x2F;&#x2F; 树形数据--&gt;
+&lt;!--const arr &#x3D; [--&gt;
+&lt;!--&#123; id: &quot;1&quot;, rank: 1 &#125;,--&gt;
+&lt;!--&#123; id: &quot;2&quot;, rank: 1,--&gt;
+&lt;!--children:[--&gt;
+&lt;!--&#123; id: &quot;2.1&quot;, rank: 2 &#125;,--&gt;
+&lt;!--&#123; id: &quot;2.2&quot;, rank: 2 &#125;--&gt;
+&lt;!--]--&gt;
+&lt;!--&#125;,--&gt;
+&lt;!--&#123; id: &quot;3&quot;, rank:1,--&gt;
+&lt;!--children:[--&gt;
+&lt;!--&#123; id: &quot;3.1&quot;, rank:2,--&gt;
+&lt;!--children: [--&gt;
+&lt;!--&#123; id:&#39;3.1.1&#39;, rank:3,--&gt;
+&lt;!--children:[--&gt;
+&lt;!--&#123; id: &quot;3.1.1.1&quot;, rank: 4,--&gt;
+&lt;!--children:[--&gt;
+&lt;!--&#123; id: &quot;3.1.1.1.1&quot;, rank: 5 &#125;--&gt;
+&lt;!--]--&gt;
+&lt;!--&#125;--&gt;
+&lt;!--]--&gt;
+&lt;!--&#125;--&gt;
+&lt;!--]--&gt;
+&lt;!--&#125;--&gt;
+&lt;!--]--&gt;
+&lt;!--&#125;--&gt;
+&lt;!--]--&gt;
+
+&lt;!--fn(arr)             &#x2F;&#x2F; 执行递归函数--&gt;
+&lt;!--console.log(res)    &#x2F;&#x2F; 查看结果--&gt;</code></pre>
+
+<h3 id="Demo2">Demo2<a class="post-anchor" href="#Demo2"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;test2&quot;&gt;
+    &lt;el-button @click&#x3D;&quot;getData&quot;&gt;
+      获取数据
+    &lt;&#x2F;el-button&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import toTree from &#39;..&#x2F;util&#x2F;toTree&#39;
+export default &#123;
+  name: &quot;tree2&quot;,
+  data() &#123;
+    return &#123;
+      data: [
+        &#123;
+        &quot;id&quot;: &quot;1&quot;,
+        &quot;ctou&quot;: &quot;JN0089&quot;,
+        &quot;deptName&quot;: &quot;山东&quot;,
+        &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+        &quot;ctOrgType&quot;: &quot;001&quot;,
+        &quot;parentCode&quot;: &quot;&quot;,
+        &quot;showNum&quot;: 1,
+        &quot;deptStatus&quot;: &quot;1&quot;,
+        &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+        &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+        &quot;ctDeptLevel&quot;: &quot;1&quot;,
+        &quot;isAsync&quot;: &quot;1&quot;,
+        &quot;cityCode&quot;: &quot;255&quot;,
+        &quot;provinceCode&quot;: &quot;300&quot;,
+        &quot;parkId&quot;: &quot;济南&quot;,
+        &quot;createDate&quot;: &quot;2020-10-23&quot;,
+        &quot;lastChangeDate&quot;: null,
+        &quot;deptType&quot;: &quot;001&quot;,
+        &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+        &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+        &quot;deptTypeName&quot;: &quot;进入&quot;,
+        &quot;ctOrgTypeName&quot;: null
+      &#125;,
+        &#123;
+          &quot;id&quot;: &quot;2&quot;,
+          &quot;ctou&quot;: &quot;JN0039&quot;,
+          &quot;deptName&quot;: &quot;济南&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;JN0089&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;3&quot;,
+          &quot;ctou&quot;: &quot;JN0029&quot;,
+          &quot;deptName&quot;: &quot;历下&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;002&quot;,
+          &quot;parentCode&quot;: &quot;JN0039&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;002&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;离开&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;4&quot;,
+          &quot;ctou&quot;: &quot;JN0040&quot;,
+          &quot;deptName&quot;: &quot;青岛&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;JN0089&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;青岛&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;5&quot;,
+          &quot;ctou&quot;: &quot;JN0030&quot;,
+          &quot;deptName&quot;: &quot;黄岛&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;JN0089&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;6&quot;,
+          &quot;ctou&quot;: &quot;JN0001&quot;,
+          &quot;deptName&quot;: &quot;北京&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;,
+        &#123;
+          &quot;id&quot;: &quot;7&quot;,
+          &quot;ctou&quot;: &quot;JN0002&quot;,
+          &quot;deptName&quot;: &quot;济大&quot;,
+          &quot;ctDeptEname&quot;: &quot;人事部&quot;,
+          &quot;ctOrgType&quot;: &quot;001&quot;,
+          &quot;parentCode&quot;: &quot;JN0029&quot;,
+          &quot;showNum&quot;: 1,
+          &quot;deptStatus&quot;: &quot;1&quot;,
+          &quot;ctOrgManager&quot;: &quot;沈腾&quot;,
+          &quot;ctViceManager&quot;: &quot;沈腾&quot;,
+          &quot;ctDeptLevel&quot;: &quot;1&quot;,
+          &quot;isAsync&quot;: &quot;1&quot;,
+          &quot;cityCode&quot;: &quot;255&quot;,
+          &quot;provinceCode&quot;: &quot;300&quot;,
+          &quot;parkId&quot;: &quot;济南&quot;,
+          &quot;createDate&quot;: &quot;2020-10-23&quot;,
+          &quot;lastChangeDate&quot;: null,
+          &quot;deptType&quot;: &quot;001&quot;,
+          &quot;unitAffiliaated&quot;: &quot;李鹏&quot;,
+          &quot;chargeLeader&quot;: &quot;李鹏&quot;,
+          &quot;deptTypeName&quot;: &quot;进入&quot;,
+          &quot;ctOrgTypeName&quot;: null
+        &#125;
+      ],
+      treeData: []
+    &#125;
+  &#125;,
+  methods: &#123;
+    getData() &#123;
+      this.treeData &#x3D; toTree(this.data)
+      console.log(this.treeData);
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<p>js部分</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toTree</span>(<span class="hljs-params">data</span>) </span>&#123;
+  <span class="hljs-comment">// 删除 所有 children,以防止多次调用</span>
+  data.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">delete</span> item.children;
+  &#125;);
+
+  <span class="hljs-comment">// 将数据存储为 以 id 为 KEY 的 map 索引数据列</span>
+  <span class="hljs-keyword">let</span> map = &#123;&#125;;
+  data.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;
+    <span class="hljs-comment">// map[item.id] = item;</span>
+    map[item.ctou] = item;
+  &#125;);
+  <span class="hljs-comment">// console.log(map);</span>
+  <span class="hljs-keyword">let</span> val = [];
+  data.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>&#123;
+    <span class="hljs-comment">// 以当前遍历项，的pid,去map对象中找到索引的id</span>
+    <span class="hljs-comment">// let parent = map[item.pid];</span>
+    <span class="hljs-keyword">let</span> parent = map[item.parentCode];
+    <span class="hljs-comment">// 如果找到索引，那么说明此项不在顶级当中,那么需要把此项添加到，他对应的父级中</span>
+    <span class="hljs-keyword">if</span> (parent) &#123;
+      (parent.children || (parent.children = [])).push(item);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-comment">//如果没有在map中找到对应的索引ID,那么直接把 当前的item添加到 val结果集中，作为顶级</span>
+      val.push(item);
+    &#125;
+  &#125;);
+  <span class="hljs-keyword">return</span> val;
+&#125;</code></pre>
+
+<h3 id="Demo3">Demo3<a class="post-anchor" href="#Demo3"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+&lt;div class&#x3D;&quot;test3&quot;&gt;
+  &lt;el-button @click&#x3D;&quot;getData&quot;&gt;
+    获取数据
+  &lt;&#x2F;el-button&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import toTree from &#39;..&#x2F;util&#x2F;toTree2&#39;
+export default &#123;
+  name: &quot;tree3&quot;,
+  data() &#123;
+    return &#123;
+      data: [
+        &#123;
+        id: 1,
+        name: &quot;办公管理&quot;,
+        pid: 0
+      &#125;,
+        &#123;
+          id: 2,
+          name: &quot;请假申请&quot;,
+          pid: 1
+        &#125;,
+        &#123;
+          id: 3,
+          name: &quot;出差申请&quot;,
+          pid: 1
+        &#125;,
+        &#123;
+          id: 4,
+          name: &quot;请假记录&quot;,
+          pid: 2
+        &#125;,
+        &#123;
+          id: 5,
+          name: &quot;系统设置&quot;,
+          pid: 0
+        &#125;,
+        &#123;
+          id: 6,
+          name: &quot;权限管理&quot;,
+          pid: 5
+        &#125;,
+        &#123;
+          id: 7,
+          name: &quot;用户角色&quot;,
+          pid: 6
+        &#125;,
+        &#123;
+          id: 8,
+          name: &quot;菜单设置&quot;,
+          pid: 6
+        &#125;,
+      ],
+      treeData: []
+    &#125;
+  &#125;,
+  methods: &#123;
+    getData() &#123;
+      this.treeData &#x3D; toTree(this.data, 0)
+      console.log(this.treeData)
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<p>js部分</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parentDeal</span>(<span class="hljs-params">data, pid</span>) </span>&#123;
+  <span class="hljs-comment">//声明返回数组</span>
+  <span class="hljs-keyword">let</span> returnArr = [];
+  data.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (item.pid === pid) &#123;
+      <span class="hljs-comment">//除去最高层级的数据（id === 0）</span>
+      returnArr.push(item)
+      <span class="hljs-comment">//进入递归中处理</span>
+      childrenDeal(data, item, item.id)
+    &#125;
+  &#125;)
+  <span class="hljs-keyword">return</span> returnArr;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">childrenDeal</span>(<span class="hljs-params">arr, itemData, itemId</span>) </span>&#123;
+  <span class="hljs-comment">//首先判断是否有子类  没有默认为空</span>
+  itemData.children = itemData.children ? itemData.children : [];
+  arr.forEach(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;
+    <span class="hljs-comment">//递归条件</span>
+    <span class="hljs-keyword">if</span> (item.pid === itemId) &#123;
+      <span class="hljs-comment">//找到则追加至上层数据children中</span>
+      itemData.children.push(item)
+      <span class="hljs-comment">//不断递归查找子类直到找不到子类本次递归结束才进入parentDeal函数进行下一最高层级操作</span>
+      childrenDeal(arr, item, item.id)
+    &#125;
+  &#125;)
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/04/%E5%89%8D%E7%AB%AF%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">前端清除浮动</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/07/vue生成树结构/">https://codermino.github.io/2020/11/07/vue生成树结构/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
