@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      less语法 - Mino
+      vue的props - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#可变插值"><span class="toc-text">可变插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#props"><span class="toc-text">props</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#props-验证"><span class="toc-text">props 验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单向数据绑定的时候，子组件随父组件数据更新"><span class="toc-text">单向数据绑定的时候，子组件随父组件数据更新</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,7 +157,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">less语法</div>
+      <div class="title">vue的props</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/前端">前端</a>
+                  <a href="/categories/vue">vue</a>
                 
               
           </span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/less语法">less语法</a>
+                    <a href="/tags/vue的props">vue的props</a>
                   
                 
             </span>
@@ -195,26 +195,136 @@
       <div>
       </div>
     </div>
-    <h3 id="可变插值">可变插值<a class="post-anchor" href="#可变插值"></a></h3><p>上面的示例着重于使用变量来控制CSS规则中的值，<br>但是它们也可以在其他地方使用，<br>例如选择器名称，属性名称，URL和@import语句。</p>
-<pre><code class="hljs less"><span class="hljs-comment">// Variables</span>
-<span class="hljs-variable">@my-selector:</span> banner;
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="props">props<a class="post-anchor" href="#props"></a></h3><h4 id="基本用法">基本用法<a class="post-anchor" href="#基本用法"></a></h4><pre><code class="hljs vue">props:[&#39;hello&#39;]</code></pre>
 
-<span class="hljs-comment">// Usage</span>
-<span class="hljs-selector-class">.@&#123;my-selector&#125;</span> &#123;
-  <span class="hljs-attribute">font-weight</span>: bold;
-  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+<h3 id="props-验证">props 验证<a class="post-anchor" href="#props-验证"></a></h3><pre><code class="hljs vuejs">props: &#123;
+    &#x2F;&#x2F; 基础类型检测, null意味着任何类型都行
+    propA: Number,
+    &#x2F;&#x2F; 多种类型
+    propB: [String, Number],
+    &#x2F;&#x2F; 必传且是String
+    propC: &#123;
+      type: String,
+      required: true
+    &#125;,
+    &#x2F;&#x2F; 数字有默认值
+    propD: &#123;
+      type: Number,
+      default: 101
+    &#125;,
+    &#x2F;&#x2F; 数组、默认值是一个工厂函数返回对象
+    propE: &#123;
+      type: Object,
+      default: function() &#123;
+        console.log(&quot;propE default invoked.&quot;);
+        return &#123; message: &quot;I am from propE.&quot; &#125;;
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 自定义验证函数
+    propF: &#123;
+      isValid: function(value) &#123;
+        return value &gt; 100;
+      &#125;
+    &#125;,
+    user: &#123;
+        required: true,
+        type: Array,
+        default: () &#x3D;&gt; []
+    &#125;,
+    userObject: &#123;
+      required: true,
+      type: Object,
+      default: () &#x3D;&gt; &#123;&#125;
+    &#125;,
+    getNodeFun: &#123; &#x2F;&#x2F; 重要！！！ 在父组件中实现访问数据接口，返回根节点。
+        required: true,
+        type: Function
+    &#125;,
+    treeProps: &#123;
+        type: Object,
+        default: () &#x3D;&gt; &#123;
+          return &#123;
+            nodeKey: &#39;id&#39;,
+            parentCode: &#39;ctou&#39;,
+            label: &#39;tName&#39;,
+            isLeaf: &#39;isLeaf&#39;,
+            disabled: &#39;disabled&#39;,
+            children: &#39;children&#39;,
+          &#125;
+        &#125;
+      &#125;,
 &#125;</code></pre>
-<p>编译为</p>
-<pre><code class="hljs less"><span class="hljs-selector-class">.banner</span> &#123;
-  <span class="hljs-attribute">font-weight</span>: bold;
-  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+<p>还可以在 props 定义的数据中加入自定义验证函数，当函数返回 false 时，输出警告。<br>比如我们把上述例子中的 childNode 的for-child-msg修改成一个对象，<br>并包含一个名叫validator的函数，<br>该命名是规定叫validator的，自定义函数名不会生效。</p>
+<pre><code class="hljs vuejs">let childNode &#x3D; &#123;
+  template: &quot;&lt;div&gt;&#123;&#123;forChildMsg&#125;&#125;&lt;&#x2F;div&gt;&quot;,
+  props: &#123;
+    &quot;for-child-msg&quot;: &#123;
+      validator: function(value) &#123;
+        return value &gt; 100;
+      &#125;
+    &#125;
+  &#125;
 &#125;</code></pre>
-<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs less"><span class="hljs-variable">@deep:</span> <span class="hljs-string">~'&gt;&gt;&gt;'</span>;
-<span class="hljs-variable">@&#123;deep&#125;</span> <span class="hljs-selector-class">.ivu-input</span> &#123;
-  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#dcdee2</span>;
-&#125;</code></pre>
+<p>在这里我们给for-child-msg变量设置了validator函数，并且要求传入的值必须大于 100，否则报出警告。</p>
+<h3 id="单向数据绑定的时候，子组件随父组件数据更新">单向数据绑定的时候，子组件随父组件数据更新<a class="post-anchor" href="#单向数据绑定的时候，子组件随父组件数据更新"></a></h3><p>父组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+&lt;div class&#x3D;&quot;father&quot;&gt;
+  &lt;a-input v-model&#x3D;&quot;msg2&quot;&gt;&lt;&#x2F;a-input&gt;
+  &lt;son2 :msg&#x3D;&quot;msg2&quot;&gt;&lt;&#x2F;son2&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Son2 from &#39;.&#x2F;son2&#39;
+export default &#123;
+  name: &quot;father&quot;,
+  components:&#123;
+    Son2
+  &#125;,
+  data() &#123;
+    return &#123;
+      msg2: &#39;父组件传递过来的data&#39;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>子组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;son2&quot;&gt;
+    &#123;&#123;msg&#125;&#125;
+&lt;!--    由于定义的 sonMsg 只能接受 msg 的初始值，当父组件要传递的值变化发生时，sonMsg 无法收到更新。--&gt;
+    &#123;&#123;sonMsg&#125;&#125;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;son2&quot;,
+  props: &#123;
+    msg: &#123;
+      type: String,
+      default: &#39;&#39;
+    &#125;,
+  &#125;,
+  watch: &#123;
+    msg() &#123;
+      this.sonMsg &#x3D; this.msg;
+    &#125;
+  &#125;,
+  &#x2F;&#x2F; 更加妥帖的方式是使用变量存储 prop 的初始值，并用 watch 来观察 prop 值得变化。发生变化时，更新变量的值。
+  &#x2F;&#x2F; computed: &#123;
+  &#x2F;&#x2F;   sonMsg() &#123;
+  &#x2F;&#x2F;     return this.msg + &quot;---sonMsg&quot;;
+  &#x2F;&#x2F;   &#125;
+  &#x2F;&#x2F; &#125;
+  data() &#123;
+    return &#123;
+      sonMsg: this.msg
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
 
 
   
@@ -241,12 +351,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/11/08/vue%E7%9A%84props/">vue的props</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/11/08/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">vue的sync父子组件双向绑定</a>
+          <a href="/2020/11/08/less%E8%AF%AD%E6%B3%95/">less语法</a>
         
     </div>
   </div>
@@ -258,7 +366,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/11/08/less语法/">https://codermino.github.io/2020/11/08/less语法/</a>
+      永久链接：<a href="https://codermino.github.io/2020/11/08/vue的props/">https://codermino.github.io/2020/11/08/vue的props/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
