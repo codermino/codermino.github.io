@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      less语法 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#可变插值"><span class="toc-text">可变插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,120 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/07/25/Excel%E6%89%93%E5%BC%80UTF8%E7%BC%96%E7%A0%81CSV%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/" title="Excel打开UTF8编码CSV文件乱码">
-                <span>2020/07/25</span>
-                <span>Excel打开UTF8编码CSV文件乱码</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/12/scrapy%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87/" title="scrapy保存图片">
-                <span>2020/07/12</span>
-                <span>scrapy保存图片</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/12/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E4%B8%BAxml%E6%A0%BC%E5%BC%8F/" title="scrapy数据存为xml格式">
-                <span>2020/07/12</span>
-                <span>scrapy数据存为xml格式</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5csv%E6%96%87%E4%BB%B6/" title="scrapy数据存入csv文件">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入csv文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%86%99%E5%85%A5json%E6%96%87%E4%BB%B6/" title="scrapy数据写入json文件">
-                <span>2020/07/11</span>
-                <span>scrapy数据写入json文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5redis/" title="scrapy数据存入redis">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入redis</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/" title="scrapy数据存入mongodb">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mongodb</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mysql/" title="scrapy数据存入mysql">
-                <span>2020/07/11</span>
-                <span>scrapy数据存入mysql</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="markdown基本语法">
-                <span>2020/07/11</span>
-                <span>markdown基本语法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/07/11/python%E5%BC%95%E5%85%A5%E6%A8%A1%E5%9D%97%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/" title="python引入模块四种方式">
-                <span>2020/07/11</span>
-                <span>python引入模块四种方式</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="page-number" href="/archives/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/archives/page/12/">12</a><a class="page-number" href="/archives/page/13/">13</a><a class="page-number" href="/archives/page/14/">14</a>
-</div>
-</div>
+      <div class="title">less语法</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/08</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/less语法">less语法</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="可变插值">可变插值<a class="post-anchor" href="#可变插值"></a></h3><p>上面的示例着重于使用变量来控制CSS规则中的值，<br>但是它们也可以在其他地方使用，<br>例如选择器名称，属性名称，URL和@import语句。</p>
+<pre><code class="hljs less"><span class="hljs-comment">// Variables</span>
+<span class="hljs-variable">@my-selector:</span> banner;
+
+<span class="hljs-comment">// Usage</span>
+<span class="hljs-selector-class">.@&#123;my-selector&#125;</span> &#123;
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+&#125;</code></pre>
+<p>编译为</p>
+<pre><code class="hljs less"><span class="hljs-selector-class">.banner</span> &#123;
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+&#125;</code></pre>
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs less"><span class="hljs-variable">@deep:</span> <span class="hljs-string">~'&gt;&gt;&gt;'</span>;
+<span class="hljs-variable">@&#123;deep&#125;</span> <span class="hljs-selector-class">.ivu-input</span> &#123;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#dcdee2</span>;
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/08/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/">vue的sync父子组件双向绑定</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/08/less语法/">https://codermino.github.io/2020/11/08/less语法/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
