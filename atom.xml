@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-07T15:20:32.936Z</updated>
+  <updated>2020-11-08T14:42:37.275Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue的sync父子组件双向绑定</title>
+    <link href="https://codermino.github.io/2020/11/08/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
+    <id>https://codermino.github.io/2020/11/08/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/</id>
+    <published>2020-11-08T14:14:42.000Z</published>
+    <updated>2020-11-08T14:42:37.275Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;官方推荐使用一种update:my-
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的sync父子组件双向绑定" scheme="https://codermino.github.io/tags/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
+    
+  </entry>
   
   <entry>
     <title>js的switch优化</title>
@@ -490,30 +515,6 @@
     
     
       <category term="vue3的provide和Inject" scheme="https://codermino.github.io/tags/vue3%E7%9A%84provide%E5%92%8CInject/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>insertAdjacentHTML方法详解</title>
-    <link href="https://codermino.github.io/2020/10/19/insertAdjacentHTML%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://codermino.github.io/2020/10/19/insertAdjacentHTML%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
-    <published>2020-10-19T07:02:28.000Z</published>
-    <updated>2020-10-19T07:15:13.639Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="insertAdjacentHTML方法详解" scheme="https://codermino.github.io/tags/insertAdjacentHTML%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
     
   </entry>
   
