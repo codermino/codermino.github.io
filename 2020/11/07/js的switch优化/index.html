@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原来的switch…case语法"><span class="toc-text">原来的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化后的switch…case语法"><span class="toc-text">优化后的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#原来的switch…case语法"><span class="toc-text">原来的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化后的switch…case语法"><span class="toc-text">优化后的switch…case语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2"><span class="toc-text">Demo2</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -254,6 +254,29 @@ action(somedata)</code></pre>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<h3 id="Demo2">Demo2<a class="post-anchor" href="#Demo2"></a></h3><pre><code class="hljs javascript">
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDrink</span>(<span class="hljs-params">type</span>) </span>&#123;
+    <span class="hljs-keyword">var</span> drinks = &#123;
+        <span class="hljs-string">'coke'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'Coke'</span>;
+        &#125;,
+        <span class="hljs-string">'pepsi'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'Pepsi'</span>;
+        &#125;,
+        <span class="hljs-string">'lemonade'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'Lemonade'</span>;
+        &#125;,
+        <span class="hljs-string">'default'</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+            <span class="hljs-keyword">return</span> <span class="hljs-string">'Default item'</span>;
+        &#125;
+    &#125;;
+    <span class="hljs-keyword">return</span> (drinks[type] || drinks[<span class="hljs-string">'default'</span>])();
+&#125;
+<span class="hljs-comment">// called with "dr pepper"</span>
+<span class="hljs-keyword">var</span> drink = getDrink(<span class="hljs-string">'dr pepper'</span>);
+<span class="hljs-built_in">console</span>.log(drink); <span class="hljs-comment">// 'Default item'</span></code></pre>
 
 
   
