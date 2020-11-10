@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-10T09:17:13.480Z</updated>
+  <updated>2020-11-10T09:26:51.502Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>合并多个iconfont字体图标</title>
+    <link href="https://codermino.github.io/2020/11/10/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/"/>
+    <id>https://codermino.github.io/2020/11/10/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/</id>
+    <published>2020-11-10T09:22:30.000Z</published>
+    <updated>2020-11-10T09:26:51.502Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;合并字体图标网站–iconmoon: &lt;a href=&quot;https://icomoon.io/app/#/select&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://icomoon.io/app/#/select&lt;/a&gt;&lt;br&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="响应式" scheme="https://codermino.github.io/categories/%E5%93%8D%E5%BA%94%E5%BC%8F/"/>
+    
+    
+      <category term="合并多个iconfont字体图标" scheme="https://codermino.github.io/tags/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/"/>
+    
+  </entry>
   
   <entry>
     <title>vue动态绑定style</title>
@@ -486,30 +511,6 @@
     
     
       <category term="vue基于view-design封装的底部按钮组件" scheme="https://codermino.github.io/tags/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%BA%95%E9%83%A8%E6%8C%89%E9%92%AE%E7%BB%84%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js循环异步事件返回结果</title>
-    <link href="https://codermino.github.io/2020/11/03/js%E5%BE%AA%E7%8E%AF%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C/"/>
-    <id>https://codermino.github.io/2020/11/03/js%E5%BE%AA%E7%8E%AF%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C/</id>
-    <published>2020-11-03T08:24:58.000Z</published>
-    <updated>2020-11-03T08:43:44.825Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js循环异步事件返回结果" scheme="https://codermino.github.io/tags/js%E5%BE%AA%E7%8E%AF%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C/"/>
     
   </entry>
   
