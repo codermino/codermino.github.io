@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-10T11:04:31.178Z</updated>
+  <updated>2020-11-10T11:43:16.388Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Promise.all代替axios.all</title>
+    <link href="https://codermino.github.io/2020/11/10/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/"/>
+    <id>https://codermino.github.io/2020/11/10/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/</id>
+    <published>2020-11-10T11:40:52.000Z</published>
+    <updated>2020-11-10T11:43:16.388Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;介绍&quot;&gt;介绍&lt;a class=&quot;post-anchor&quot; href=&quot;#介绍&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;前端调用十几个接口，十几个接口完成后，再刷新页面，&lt;br&gt;然后看了一下axios的官网（&lt;a href=&quot;https://github.com/axios/ax
+      
+    
+    </summary>
+    
+    
+      <category term="axios" scheme="https://codermino.github.io/categories/axios/"/>
+    
+    
+      <category term="Promise.all代替axios.all" scheme="https://codermino.github.io/tags/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/"/>
+    
+  </entry>
   
   <entry>
     <title>js将Set集合转换为Array数组</title>
@@ -485,31 +509,6 @@
     
     
       <category term="vue基于view-design封装的删除对话框" scheme="https://codermino.github.io/tags/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%88%A0%E9%99%A4%E5%AF%B9%E8%AF%9D%E6%A1%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue步骤条封装</title>
-    <link href="https://codermino.github.io/2020/11/03/vue%E6%AD%A5%E9%AA%A4%E6%9D%A1%E5%B0%81%E8%A3%85/"/>
-    <id>https://codermino.github.io/2020/11/03/vue%E6%AD%A5%E9%AA%A4%E6%9D%A1%E5%B0%81%E8%A3%85/</id>
-    <published>2020-11-03T09:01:14.000Z</published>
-    <updated>2020-11-03T09:28:50.878Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Steps&quot;&gt;Steps&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue步骤条封装" scheme="https://codermino.github.io/tags/vue%E6%AD%A5%E9%AA%A4%E6%9D%A1%E5%B0%81%E8%A3%85/"/>
     
   </entry>
   
