@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020 - Mino
+      js向对象中无添加属性有则替换 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#js文件"><span class="toc-text">js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引入"><span class="toc-text">引入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,144 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" title="js学习笔记之数组方法">
-                <span>2020/08/17</span>
-                <span>js学习笔记之数组方法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/" title="js学习笔记之函数">
-                <span>2020/08/17</span>
-                <span>js学习笔记之函数</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/" title="js学习笔记之类">
-                <span>2020/08/17</span>
-                <span>js学习笔记之类</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/16/webstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="webstorm常用快捷键">
-                <span>2020/08/16</span>
-                <span>webstorm常用快捷键</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/15/computed%E7%9A%84get%E5%92%8Cset/" title="computed的get和set">
-                <span>2020/08/15</span>
-                <span>computed的get和set</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/vue%E5%88%AB%E5%90%8D%E5%92%8C%E6%B3%A2%E6%B5%AA%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="vue别名和波浪号的使用">
-                <span>2020/08/14</span>
-                <span>vue别名和波浪号的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/yield%E5%92%8Creturn%E5%8C%BA%E5%88%AB/" title="yield和return区别">
-                <span>2020/08/14</span>
-                <span>yield和return区别</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A84/" title="mysql知识点总结和应用4">
-                <span>2020/08/14</span>
-                <span>mysql知识点总结和应用4</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A83/" title="mysql知识点总结和应用3">
-                <span>2020/08/14</span>
-                <span>mysql知识点总结和应用3</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A82/" title="mysql知识点总结和应用2">
-                <span>2020/08/14</span>
-                <span>mysql知识点总结和应用2</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/7/">7</a><a class="page-number" href="/archives/2020/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/2020/page/10/">10</a><a class="page-number" href="/archives/2020/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/14/">14</a>
-</div>
-</div>
+      <div class="title">js向对象中无添加属性有则替换</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/10</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js向对象中无添加属性有则替换">js向对象中无添加属性有则替换</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="js文件">js文件<a class="post-anchor" href="#js文件"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">/**
+ * 判断数组对象中是否有某个对象，有则替换无则添加
+ * @param &#123;*&#125; initialArr 源数组
+ * @param &#123;*&#125; obj 判定的对象
+ * @param &#123;*&#125; pro 对象中的某个属性名（唯一，通常为id）
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (initialArr, obj, pro) =&gt; &#123;
+  <span class="hljs-comment">// 判定数据是否为数组</span>
+  <span class="hljs-keyword">if</span> (!(initialArr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>)) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'请传入正确格式的数组'</span>
+  &#125;
+  <span class="hljs-comment">// 判定数据是否为对象</span>
+  <span class="hljs-keyword">if</span> (!(obj <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>)) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'请传入正确格式的对象'</span>
+  &#125;
+  <span class="hljs-keyword">if</span> (!pro) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'请传入正确格式的属性名'</span>
+  &#125;
+
+  <span class="hljs-keyword">let</span> index = initialArr.findIndex(<span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> val[pro] === obj[pro])
+  <span class="hljs-comment">// 如果有就替换  没有就添加</span>
+  <span class="hljs-keyword">if</span> (initialArr.findIndex(<span class="hljs-function">(<span class="hljs-params">val</span>) =&gt;</span> val[pro] === obj[pro]) !== <span class="hljs-number">-1</span>) &#123;
+    initialArr.splice(index, <span class="hljs-number">1</span>, obj)
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    initialArr.push(obj)
+  &#125;
+  <span class="hljs-keyword">return</span> initialArr
+&#125;
+
+<span class="hljs-comment">// 使用：this.tableArr = formateArrObjData(this.tableArr, tempObj, tempId)</span>
+<span class="hljs-comment">// 这里的源数组如果是一维的，可以用扩展运算符、Object.assign()拷贝</span></code></pre>
+
+<h3 id="引入">引入<a class="post-anchor" href="#引入"></a></h3><pre><code class="hljs markdown">import addOrReplaceData from '../module-components/tool/replaceOrAddData'</code></pre>
+
+<h3 id="使用">使用<a class="post-anchor" href="#使用"></a></h3><pre><code class="hljs javascript">changeSearchList () &#123;
+  <span class="hljs-keyword">const</span> tempData = &#123;
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'searchDepName'</span>,
+    <span class="hljs-attr">label</span>: <span class="hljs-string">'机构名称'</span>,
+    <span class="hljs-attr">showValue</span>: <span class="hljs-keyword">this</span>.searchDepName,
+    <span class="hljs-attr">value</span>: <span class="hljs-keyword">this</span>.searchDepName
+  &#125;
+  <span class="hljs-keyword">this</span>.searchList = addOrReplaceData(<span class="hljs-keyword">this</span>.searchList, tempData, <span class="hljs-string">'name'</span>)
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/08/vue%E7%9A%84props/">vue的props</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/10/js向对象中无添加属性有则替换/">https://codermino.github.io/2020/11/10/js向对象中无添加属性有则替换/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
