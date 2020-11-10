@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-10T06:58:36.687Z</updated>
+  <updated>2020-11-10T07:39:20.254Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue中侦听器watch时调用this时出现undefined问题</title>
+    <link href="https://codermino.github.io/2020/11/10/vue%E4%B8%AD%E4%BE%A6%E5%90%AC%E5%99%A8watch%E6%97%B6%E8%B0%83%E7%94%A8this%E6%97%B6%E5%87%BA%E7%8E%B0undefined%E9%97%AE%E9%A2%98/"/>
+    <id>https://codermino.github.io/2020/11/10/vue%E4%B8%AD%E4%BE%A6%E5%90%AC%E5%99%A8watch%E6%97%B6%E8%B0%83%E7%94%A8this%E6%97%B6%E5%87%BA%E7%8E%B0undefined%E9%97%AE%E9%A2%98/</id>
+    <published>2020-11-10T07:35:02.000Z</published>
+    <updated>2020-11-10T07:39:20.254Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;错误用法&quot;&gt;错误用法&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue中侦听器watch时调用this时出现undefined问题" scheme="https://codermino.github.io/tags/vue%E4%B8%AD%E4%BE%A6%E5%90%AC%E5%99%A8watch%E6%97%B6%E8%B0%83%E7%94%A8this%E6%97%B6%E5%87%BA%E7%8E%B0undefined%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>vue里dom节点和window对象</title>
@@ -485,31 +510,6 @@
     
     
       <category term="vue中的.capture事件修饰符的用法" scheme="https://codermino.github.io/tags/vue%E4%B8%AD%E7%9A%84-capture%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E7%94%A8%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue悬停之后显示抽屉</title>
-    <link href="https://codermino.github.io/2020/10/20/vue%E6%82%AC%E5%81%9C%E4%B9%8B%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8A%BD%E5%B1%89/"/>
-    <id>https://codermino.github.io/2020/10/20/vue%E6%82%AC%E5%81%9C%E4%B9%8B%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8A%BD%E5%B1%89/</id>
-    <published>2020-10-20T03:18:33.000Z</published>
-    <updated>2020-10-20T03:23:09.602Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;具体页面&quot;&gt;具体页面&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue悬停之后显示抽屉" scheme="https://codermino.github.io/tags/vue%E6%82%AC%E5%81%9C%E4%B9%8B%E5%90%8E%E6%98%BE%E7%A4%BA%E6%8A%BD%E5%B1%89/"/>
     
   </entry>
   
