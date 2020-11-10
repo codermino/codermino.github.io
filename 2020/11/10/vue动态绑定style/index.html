@@ -240,7 +240,14 @@ const app &#x3D; new Vue(&#123;
      marginLeft: &quot;40px&quot;
  &#125;,</code></pre>
 
-<h3 id="数组语法例子">数组语法例子<a class="post-anchor" href="#数组语法例子"></a></h3><pre><code class="vue">&lt;div class=&quot;right userPicture&quot; :style=&quot;[{&apos;background&apos;:`url(${userImg}) no-repeat center`},{&apos;background-size&apos;: &apos;cover&apos;}]&quot;&gt;&lt;/div&gt;</code></pre>
+<h3 id="数组语法例子">数组语法例子<a class="post-anchor" href="#数组语法例子"></a></h3><pre><code class="hljs vue">&lt;div class&#x3D;&quot;right userPicture&quot; :style&#x3D;&quot;[&#123;&#39;background&#39;:&#96;url($&#123;userImg&#125;) no-repeat center&#96;&#125;,&#123;&#39;background-size&#39;: &#39;cover&#39;&#125;]&quot;&gt;&lt;&#x2F;div&gt;
+&#96;&#96;&#96; 
+
+### Demo
+&#96;&#96;&#96;vue
+v-bind:style&#x3D;&quot;&#123;background: &#39;url(&#39; + list.Cover + &#39;)&#39;&#125;&quot;
+background: &#39;linear-gradient(#8DA7C5,&#39;+backgroundColor+&#39;)&#39;
+&lt;div class&#x3D;&quot;cover-bg&quot; :style&#x3D;&quot;&#123;backgroundImage: &#39;url(&#39; + playlist.coverImgUrl + &#39;)&#39;&#125;&quot;&gt;</code></pre>
 
 
   
