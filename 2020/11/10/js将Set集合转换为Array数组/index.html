@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      分类 - Mino
+      js将Set集合转换为Array数组 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -66,7 +66,7 @@
           标签
         </a>
         
-        <a href="/categories" class="current">
+        <a href="/categories" class="">
           分类
         </a>
         
@@ -116,7 +116,7 @@
             标签
           </a>
           
-          <a href="/categories" class="current">
+          <a href="/categories" class="">
             分类
           </a>
           
@@ -149,51 +149,133 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-     
-        <div class="title">
-            分类 - javascript
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/" title="js学习笔记之函数">
-                <span>2020/08/17</span>
-                <span>js学习笔记之函数</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/" title="js学习笔记之类">
-                <span>2020/08/17</span>
-                <span>js学习笔记之类</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/categories/javascript/">1</a><a class="page-number" href="/categories/javascript/page/2/">2</a><span class="page-number current">3</span>
-</div>
-</div>
+      <div class="title">js将Set集合转换为Array数组</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/10</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js将Set集合转换为Array数组">js将Set集合转换为Array数组</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<p>在JavaScript中，想要将Set（集合）转换为Array数组，可以通过以下方式实现。<br><strong>方法1：使用Array.from()方法</strong><br>Array.from()方法从对象或可迭代对象（如Map，Set等）返回一个新数组。<br><strong>语法：</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.from(arrayLike object);</code></pre>
+<p><strong>Demo</strong></p>
+<pre><code class="hljs javascript">&lt;script&gt; 
+     <span class="hljs-keyword">const</span> <span class="hljs-keyword">set</span> =  new Set(['welcome',  'you','!']); 
+     console.log(<span class="hljs-keyword">set</span>);
+     console.log(Array.from(<span class="hljs-keyword">set</span>))
+&lt;/script&gt;</code></pre>
+<p><strong>方法二：使用扩展运算符(三点运算符)“…”</strong><br>使用扩展运算符“…”也可以帮助我们将Set转换为数组。<br><strong>语法：</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> variablename = [...value];</code></pre>
+<p><strong>Demo</strong></p>
+<pre><code class="hljs javascript">&lt;script&gt; 
+       <span class="hljs-keyword">const</span> <span class="hljs-keyword">set</span> =  new Set(['HELLO', 'JS']); 
+       console.log(<span class="hljs-keyword">set</span>);
+       const array = [...<span class="hljs-keyword">set</span>]; 
+       console.log(array); 
+&lt;/script&gt;</code></pre>
+<p><strong>方法三：使用forEach</strong><br><strong>Demo</strong></p>
+<pre><code class="hljs javascript">&lt;script&gt; 
+<span class="hljs-keyword">var</span> <span class="hljs-built_in">Set</span> = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>();
+<span class="hljs-keyword">var</span> <span class="hljs-built_in">Array</span> = [];
+<span class="hljs-built_in">Set</span>.add(<span class="hljs-string">"Hello"</span>);
+<span class="hljs-built_in">Set</span>.add(<span class="hljs-string">"World"</span>);
+<span class="hljs-built_in">Set</span>.add(<span class="hljs-string">"!"</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Set</span>);
+<span class="hljs-keyword">var</span> someFunction = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">
+ val1, val2, setItself</span>) </span>&#123;
+ <span class="hljs-built_in">Array</span>.push(val1);
+&#125;;
+<span class="hljs-built_in">Set</span>.forEach(someFunction);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Array: "</span> + <span class="hljs-built_in">Array</span>); 
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/10/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/">合并多个iconfont字体图标</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/10/js将Set集合转换为Array数组/">https://codermino.github.io/2020/11/10/js将Set集合转换为Array数组/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
