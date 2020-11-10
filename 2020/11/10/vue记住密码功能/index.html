@@ -309,6 +309,10 @@ export default &#123;
         decodeURIComponent(value) +
         (expiredays &#x3D;&#x3D; null ? &quot;&quot; : &quot;;expires&#x3D;&quot; + exdate.toGMTString());
     &#125;,
+    &#x2F;&#x2F;清除cookie
+    clearCookie: function () &#123;
+      this.setCookie(&quot;username&quot;, &quot;&quot;, -1);
+    &#125;,
   &#125;,
 &#125;;
 &lt;&#x2F;script&gt;
