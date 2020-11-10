@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误用法"><span class="toc-text">错误用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正确用法"><span class="toc-text">正确用法</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误用法"><span class="toc-text">错误用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正确用法"><span class="toc-text">正确用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#官网解释"><span class="toc-text">官网解释</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -248,6 +248,12 @@ export default &#123;
   &#125;,
 &#125;
 &lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="官网解释">官网解释<a class="post-anchor" href="#官网解释"></a></h3><pre><code class="hljs markdown">注意，不应该使用箭头函数来定义 watcher 函数 
+(例如 searchQuery: newValue =&gt; this.updateAutocomplete(newValue))。
+理由是箭头函数绑定了父级作用域的上下文，
+所以 this 将不会按照期望指向 Vue 实例，
+this.updateAutocomplete 将是 undefined。</code></pre>
 
 
   
