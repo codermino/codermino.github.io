@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020 - Mino
+      vue的$set使用总结 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue的-set使用总结"><span class="toc-text">vue的$set使用总结</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,165 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/10/12/vitenote/" title="vitenote">
-                <span>2020/10/12</span>
-                <span>vitenote</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/vue3reactive-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AF%B9%E8%B1%A1-%E5%92%8CtoRefs/" title="vue3reactive(响应式对象)和toRefs">
-                <span>2020/10/09</span>
-                <span>vue3reactive(响应式对象)和toRefs</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/js%E4%B8%AD%E7%9A%84this%E6%80%BB%E7%BB%93/" title="js中的this总结">
-                <span>2020/10/09</span>
-                <span>js中的this总结</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/css3%E7%9A%84animation-fill-mode/" title="css3的animation-fill-mode">
-                <span>2020/10/09</span>
-                <span>css3的animation-fill-mode</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/vue%E6%95%B0%E6%8D%AE%E8%B5%8B%E5%80%BC%E4%BD%86%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9B%B4%E6%96%B0/" title="vue数据赋值但视图没更新">
-                <span>2020/10/09</span>
-                <span>vue数据赋值但视图没更新</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/07/vue%E7%9A%84render%E5%87%BD%E6%95%B0/" title="vue的render函数">
-                <span>2020/10/07</span>
-                <span>vue的render函数</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/07/es6%E8%A7%A3%E6%9E%84/" title="es6解构">
-                <span>2020/10/07</span>
-                <span>es6解构</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/07/uniapp%E7%9A%84navigator%E7%9A%84open-type%E8%B7%B3%E8%BD%AC%E9%97%AE%E9%A2%98/" title="uniapp的navigator的open-type跳转问题">
-                <span>2020/10/07</span>
-                <span>uniapp的navigator的open-type跳转问题</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/07/css3%E5%8A%A8%E7%94%BB%E6%8E%A7%E5%88%B6%E5%85%83%E7%B4%A0%E6%B7%A1%E5%85%A5%E6%B7%A1%E5%87%BA/" title="css3动画控制元素淡入淡出">
-                <span>2020/10/07</span>
-                <span>css3动画控制元素淡入淡出</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/07/iview%E8%BE%93%E5%85%A5%E6%A1%86%E5%8E%BB%E6%8E%89%E8%BE%B9%E6%A1%86/" title="iview输入框去掉边框">
-                <span>2020/10/07</span>
-                <span>iview输入框去掉边框</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/4/">4</a><a class="page-number" href="/archives/2020/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/2020/page/7/">7</a><a class="page-number" href="/archives/2020/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/15/">15</a>
-</div>
-</div>
+      <div class="title">vue的$set使用总结</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/11</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue的$set使用总结">vue的$set使用总结</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="vue的-set使用总结">vue的$set使用总结<a class="post-anchor" href="#vue的-set使用总结"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;setprac&quot;&gt;
+    &lt;div v-for&#x3D;&quot;(item,index) in userdata&quot; :key&#x3D;&quot;index&quot;&gt;
+      &lt;span&gt;name:&#123;&#123;item.name&#125;&#125;&lt;&#x2F;span&gt;
+      &lt;span&gt; age:&#123;&#123;item.age&#125;&#125;&lt;&#x2F;span&gt;
+      &lt;span v-if&#x3D;&quot;item.sex&quot;&gt; sex:&#123;&#123;item.sex&#125;&#125;&lt;&#x2F;span&gt;
+      &lt;AButton @click&#x3D;&quot;changeDataName(item.name,index)&quot;&gt;更改姓名&lt;&#x2F;AButton&gt;
+      &lt;AButton @click&#x3D;&quot;changeDataSex(item,index)&quot;&gt;添加性别&lt;&#x2F;AButton&gt;
+      &lt;AButton @click&#x3D;&quot;changeDataItem(item,index)&quot;&gt;更改该条数据&lt;&#x2F;AButton&gt;
+    &lt;&#x2F;div&gt;
+    &lt;hr&gt;
+    &lt;div&gt;&#123;&#123;user.name&#125;&#125;---&#123;&#123;user.age&#125;&#125;&lt;&#x2F;div&gt;
+    &lt;a-button @click&#x3D;&quot;addSex&quot;&gt;添加sex&lt;&#x2F;a-button&gt;
+    &#123;&#123;user&#125;&#125;
+    &lt;hr&gt;
+    &lt;span v-for&#x3D;&quot;(item,index) in numList&quot; :key&#x3D;&quot;&#39;num&#39;+index&quot;&gt;
+      &#123;&#123;item&#125;&#125;
+    &lt;&#x2F;span&gt;
+    &lt;a-button @click&#x3D;&quot;changeNumList&quot;&gt;改变数字数组的值&lt;&#x2F;a-button&gt;
+    &lt;a-button @click&#x3D;&quot;changeNumListSingle&quot;&gt;改变单个数字数组的值&lt;&#x2F;a-button&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;setprac&quot;,
+  data() &#123;
+    return &#123;
+      userdata: [
+        &#123;name:&#39;zs&#39;,age:11&#125;,
+        &#123;name:&#39;ls&#39;,age:12&#125;,
+        &#123;name:&#39;ww&#39;,age:13&#125;
+      ],
+      user:&#123;name:&#39;sunhe&#39;,age:18&#125;,
+      numList:[1,2,3,4,5]
+    &#125;
+  &#125;,
+  methods: &#123;
+    changeDataName(name,index) &#123;
+      &#x2F;&#x2F; 修改本来存在的字段不需要使用$set也可以触发更新
+      this.userdata[index].name &#x3D; &#39;update&#39;
+    &#125;,
+    changeDataSex(item,index)&#123;
+      &#x2F;&#x2F; this.userdata[index].sex &#x3D; &#39;男&#39;
+      this.$set(this.userdata[index],&#39;sex&#39;,&#39;男&#39;)
+    &#125;,
+    addSex()&#123;
+      &#x2F;&#x2F; this.user.sex &#x3D; &#39;男&#39;
+      this.$set(this.user,&#39;sex&#39;,&#39;男&#39;)
+    &#125;,
+    changeNumList()&#123;
+      this.numList &#x3D; [6,7,8,9,10]
+    &#125;,
+    changeNumListSingle()&#123;
+      &#x2F;&#x2F; this.numList[0] &#x3D; 10
+      this.$set(this.numList,0,10)
+    &#125;,
+    changeDataItem(item,index)&#123;
+     &#x2F;&#x2F; this.userdata[index] &#x3D; &#123;name:&#39;zl&#39;,age:100&#125;
+      this.$set(this.userdata,index,&#123;name:&#39;zl&#39;,age:100&#125;)
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/11/vue%E4%B8%AD-forceUpdate%E7%9A%84%E4%BD%BF%E7%94%A8/">vue中$forceUpdate的使用</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/11/vue的-set使用总结/">https://codermino.github.io/2020/11/11/vue的-set使用总结/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
