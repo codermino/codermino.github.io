@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-11-10T11:43:16.388Z</updated>
+  <updated>2020-11-11T06:06:05.236Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iview中render函数与renderHeader函数</title>
+    <link href="https://codermino.github.io/2020/11/11/iview%E4%B8%ADrender%E5%87%BD%E6%95%B0%E4%B8%8ErenderHeader%E5%87%BD%E6%95%B0/"/>
+    <id>https://codermino.github.io/2020/11/11/iview%E4%B8%ADrender%E5%87%BD%E6%95%B0%E4%B8%8ErenderHeader%E5%87%BD%E6%95%B0/</id>
+    <published>2020-11-11T06:04:56.000Z</published>
+    <updated>2020-11-11T06:06:05.236Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Demo&quot;&gt;Demo&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
+    
+    
+      <category term="iview中render函数与renderHeader函数" scheme="https://codermino.github.io/tags/iview%E4%B8%ADrender%E5%87%BD%E6%95%B0%E4%B8%8ErenderHeader%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Promise.all代替axios.all</title>
@@ -484,31 +509,6 @@
     
     
       <category term="Node.js如何设置允许跨域" scheme="https://codermino.github.io/tags/Node-js%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%85%81%E8%AE%B8%E8%B7%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue基于view-design封装的删除对话框</title>
-    <link href="https://codermino.github.io/2020/11/03/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%88%A0%E9%99%A4%E5%AF%B9%E8%AF%9D%E6%A1%86/"/>
-    <id>https://codermino.github.io/2020/11/03/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%88%A0%E9%99%A4%E5%AF%B9%E8%AF%9D%E6%A1%86/</id>
-    <published>2020-11-03T09:05:50.000Z</published>
-    <updated>2020-11-03T09:07:17.383Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hlj
-      
-    
-    </summary>
-    
-    
-      <category term="vue3" scheme="https://codermino.github.io/categories/vue3/"/>
-    
-    
-      <category term="vue基于view-design封装的删除对话框" scheme="https://codermino.github.io/tags/vue%E5%9F%BA%E4%BA%8Eview-design%E5%B0%81%E8%A3%85%E7%9A%84%E5%88%A0%E9%99%A4%E5%AF%B9%E8%AF%9D%E6%A1%86/"/>
     
   </entry>
   
