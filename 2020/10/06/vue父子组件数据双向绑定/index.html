@@ -226,7 +226,7 @@ export default &#123;
 
 <h3 id="方法二-使用v-model">方法二(使用v-model)<a class="post-anchor" href="#方法二-使用v-model"></a></h3><p>官方介绍</p>
 <pre><code class="hljs markdown">允许一个自定义组件在使用 v-model 时定制 prop 和 event。默认情况下，
-一个组件上的 v-model 会把 value 用作 prop 且把 input 用作 event，
+<span class="hljs-strong">**一个组件上的 v-model 会把 value 用作 prop 且把 input 用作 event**</span>
 但是一些输入类型比如单选框和复选框按钮可能想使用 value prop 来达到不同的目的。
 使用 model 选项可以回避这些情况产生的冲突。</code></pre>
 <p>父组件不需要做方法监听，而是通过v-model指令绑定一个变量即可。<br>1、子组件通过props接受一个父组件通过v-model指令绑定的变量</p>
