@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、MVVM模式"><span class="toc-text">一、MVVM模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、生命周期"><span class="toc-text">二、生命周期</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、MVVM模式"><span class="toc-text">一、MVVM模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、生命周期"><span class="toc-text">二、生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、生命周期图解"><span class="toc-text">三、生命周期图解</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -222,6 +222,107 @@ ViewModel负责连接 View 和 Model，保证视图和数据的一致性，这�
 <li>beforeDestory—销毁前：组件销毁之前调用。</li>
 <li>destoryed—销毁后： 组件销毁之后调用，对data的改变不会再触发周期函数，vue实例已解除事件监听和dom绑定，<br>  但dom结构依然存在。</li>
 </ul>
+<h3 id="三、生命周期图解">三、生命周期图解<a class="post-anchor" href="#三、生命周期图解"></a></h3><p><a href="/images/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" data-caption data-fancybox="images"><img src="/images/vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt></a></p>
+<pre><code class="hljs markdown">什么是生命周期?
+简而言之:从生到死的过程,从Vue实例创建-运行-销毁的过程
+Vue实例有一个完整的生命周期，也就是从开始创建、初始化数据、编译模板、挂载Dom、渲染→更新→渲染、销毁等一系列过程
+生命周期方法?
+Vue从生到死的过程中伴随着各种各样的事件,这些事件会自动触发一些方法.这些方法我们统称为生命周期方法
+生命周期钩子 = 生命周期函数 = 生命周期事件
+ 
+创建期间生命周期方法
+<span class="hljs-code">    beforeCreate:</span>
+<span class="hljs-code">    created:</span>
+<span class="hljs-code">    beforeMount</span>
+<span class="hljs-code">    mounted</span>
+运行期间生命周期方法
+<span class="hljs-code">    beforeUpdate</span>
+<span class="hljs-code">    updated</span>
+销毁期间的生命周期方法
+<span class="hljs-code">    beforeDestroy</span>
+<span class="hljs-code">    destroyed</span></code></pre>
+<pre><code class="hljs vue">&lt;!DOCTYPE html&gt;
+&lt;html lang&#x3D;&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Vue生命周期方法&lt;&#x2F;title&gt;
+    &lt;!--引入vue框架--&gt;
+    &lt;script src&#x3D;&quot;js&#x2F;vue.js&quot;&gt;&lt;&#x2F;script&gt;
+&lt;&#x2F;head&gt;
+&lt;body&gt;
+&lt;div id&#x3D;&quot;app&quot;&gt;
+    &lt;p&gt;&#123;&#123;msg&#125;&#125;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+ 
+&lt;script&gt;
+   
+    let vm &#x3D; new Vue(&#123;
+        el:&#39;#app&#39;,
+        data:&#123;
+            msg:&quot;IT程序员的日常&quot;
+        &#125;,
+        methods:&#123;
+            say:function () &#123;
+                console.log(&quot;IT程序员的日常&quot;);
+            &#125;
+        &#125;,
+        beforeCreate:function () &#123;
+            &#x2F;*执行beforeCreate的时候,表示Vue刚刚出生,还没有任何内容,data&#x2F;methods都没有初始化*&#x2F;
+            &#x2F;&#x2F;console.log(this.msg);
+            &#x2F;&#x2F;this.say();
+            &#x2F;&#x2F;console.log(this.say);
+        &#125;,
+        created:function () &#123;
+            &#x2F;*执行created的时候,表示Vue实例已经初始化好了部分内容,data&#x2F;methods
+            * 想在Vue实例中最早访问到data&#x2F;methods,只有在这个方法才能访问
+            *&#x2F;
+            &#x2F;&#x2F;console.log(this.msg);
+            &#x2F;&#x2F;this.say();
+            &#x2F;&#x2F; console.log(this.say);
+        &#125;,
+        beforeMount:function () &#123;
+            &#x2F;*执行beforeMount,表示已经根据数据编译好了模板,但是还没有渲染到界面上*&#x2F;
+            &#x2F;&#x2F; console.log(document.querySelector(&quot;p&quot;).innerText);
+            &#x2F;&#x2F; console.log(document.querySelector(&quot;p&quot;).innerHTML);
+        &#125;,
+        mounted:function () &#123;
+            &#x2F;*执行mounted,表示已经根据数据编译好了模板,已经将模板有渲染到界面上,此时可以对界面进行其他操作了*&#x2F;
+            console.log(document.querySelector(&quot;p&quot;).innerText);
+            console.log(document.querySelector(&quot;p&quot;).innerHTML);
+        &#125;,
+        beforeUpdate:function()&#123;
+            &#x2F;*主要data中的数据发生了变化就会执行
+            * 执行beforeUpdate时候,data的数据已经是最新的了,但是没有更新界面上的数据
+            *
+            * *&#x2F;
+            &#x2F;&#x2F; console.log(this.msg);
+            &#x2F;&#x2F; console.log(document.querySelector(&quot;p&quot;).innerText);
+            &#x2F;&#x2F; console.log(document.querySelector(&quot;p&quot;).innerHTML);
+        &#125;,
+        updated:function () &#123;
+            &#x2F;*主要data中的数据发生了变化就会执行
+           * 执行updated时候,data的数据已经是最新的了,界面上的数据也已经更新
+           *
+           * *&#x2F;
+            console.log(this.msg);
+            console.log(document.querySelector(&quot;p&quot;).innerText);
+            console.log(document.querySelector(&quot;p&quot;).innerHTML);
+        &#125;,
+         beforeDestroy:function()&#123;
+            &#x2F;*执行beforeDestroy的时候,表示Vue实例即将销毁,但是还未销毁,实例中的数据等都可以使用
+            * 最后能使用Vue实例的地址
+            * *&#x2F;
+        &#125;,
+        destroyed:function () &#123;
+            &#x2F;*
+            * 执行destroyed的时候,表示vue实例完全销毁,实例中的任何内容都不能被使用了
+            * *&#x2F;
+        &#125;
+ 
+    &#125;)
+&lt;&#x2F;script&gt;
+&lt;&#x2F;body&gt;
+&lt;&#x2F;html&gt;</code></pre>
 
 
   
