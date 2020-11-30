@@ -363,6 +363,23 @@ watch(count, (count, prevCount) =&gt; &#123;
     <span class="hljs-attr">immediate</span>:<span class="hljs-literal">true</span>,
     <span class="hljs-attr">deep</span>:<span class="hljs-literal">true</span>
   &#125;
+)</code></pre></li>
+<li><em>Demo2*</em><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> age = ref(<span class="hljs-number">18</span>)
+<span class="hljs-keyword">const</span> state = reactive(&#123;
+    <span class="hljs-attr">count</span>:<span class="hljs-number">0</span>,
+    <span class="hljs-attr">employee</span>:[
+      &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'张三'</span>,<span class="hljs-attr">sex</span>:<span class="hljs-string">'男'</span>&#125;,
+      &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'张三2'</span>,<span class="hljs-attr">sex</span>:<span class="hljs-string">'男'</span>&#125;,
+      &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'张三3'</span>,<span class="hljs-attr">sex</span>:<span class="hljs-string">'男'</span>&#125;,
+      &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'张三4'</span>,<span class="hljs-attr">sex</span>:<span class="hljs-string">'男'</span>&#125;,
+      &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">'张三5'</span>,<span class="hljs-attr">sex</span>:<span class="hljs-string">'男'</span>&#125;
+    ]
+&#125;)
+watch(
+  [age,()=&gt;state.count],
+  ([newAge, newCount], [oldAge, oldCount]) =&gt; &#123;
+    <span class="hljs-built_in">console</span>.log(newAge, newCount);
+  &#125;
 )</code></pre>
 </li>
 </ul>
