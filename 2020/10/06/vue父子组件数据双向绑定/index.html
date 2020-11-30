@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二-使用v-model"><span class="toc-text">方法二(使用v-model)</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二-使用v-model"><span class="toc-text">方法二(使用v-model)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -276,6 +276,54 @@ export default &#123;
   &#125;,
 &#125;
 在input框改变的事件里通过$emit触发在model对象里面定义的change方法,并传入输入的的值。
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><p><strong>父组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;model-test-son v-model&#x3D;&quot;msg&quot;&gt;&lt;&#x2F;model-test-son&gt;
+    &#123;&#123;msg&#125;&#125;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import modelTestSon from &#39;.&#x2F;modelTestSon&#39;
+export default &#123;
+  name: &quot;modelTest&quot;,
+  components:&#123;
+    modelTestSon
+  &#125;,
+  data() &#123;
+    return &#123;
+      msg: &#39;123&#39;
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p><strong>子组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+&lt;div @click&#x3D;&quot;changeMsg&quot;&gt;点击改变msg&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;modelTestSon&quot;,
+  model: &#123;
+    prop: &#39;msg&#39;,  &#x2F;&#x2F; props接受的变量名称
+    event: &#39;change&#39;  &#x2F;&#x2F;定义一个方法(默认为input)
+  &#125;,
+  props: &#123;
+    msg: &#123;
+      type: String,
+      default:&#39;&#39;
+    &#125;
+  &#125;,
+  methods: &#123;
+    changeMsg() &#123;
+      this.$emit(&#39;change&#39;, &#39;456&#39;)
+    &#125;
+  &#125;,
+&#125;
 &lt;&#x2F;script&gt;</code></pre>
 
 
