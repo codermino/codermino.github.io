@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-01T07:31:46.964Z</updated>
+  <updated>2020-12-02T02:28:42.120Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue配置浏览器兼容性</title>
+    <link href="https://codermino.github.io/2020/12/02/vue%E9%85%8D%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
+    <id>https://codermino.github.io/2020/12/02/vue%E9%85%8D%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/</id>
+    <published>2020-12-02T00:52:56.000Z</published>
+    <updated>2020-12-02T02:28:42.120Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;官网解释&quot;&gt;官网解释&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue配置浏览器兼容性" scheme="https://codermino.github.io/tags/vue%E9%85%8D%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>axios取消上一个页面的请求</title>
@@ -488,31 +513,6 @@
     
     
       <category term="less语法" scheme="https://codermino.github.io/tags/less%E8%AF%AD%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的sync父子组件双向绑定</title>
-    <link href="https://codermino.github.io/2020/11/08/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
-    <id>https://codermino.github.io/2020/11/08/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/</id>
-    <published>2020-11-08T14:14:42.000Z</published>
-    <updated>2020-11-08T14:42:37.275Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;官方推荐使用一种update:my-
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的sync父子组件双向绑定" scheme="https://codermino.github.io/tags/vue%E7%9A%84sync%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
     
   </entry>
   
