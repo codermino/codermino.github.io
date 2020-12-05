@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-05T10:40:31.180Z</updated>
+  <updated>2020-12-05T11:09:41.213Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端HTTP协议知识</title>
+    <link href="https://codermino.github.io/2020/12/05/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/"/>
+    <id>https://codermino.github.io/2020/12/05/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/</id>
+    <published>2020-12-05T10:43:39.000Z</published>
+    <updated>2020-12-05T11:09:41.213Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;HTTP协议&quot;&gt;HTTP协议&lt;a class=&quot;post-anchor&quot; href=&quot;#HTTP协议&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;HTTP&amp;lt;超文本传输协议&amp;gt;的缩写。&lt;br&gt;是用于从WWW服务器传输超文本到本地浏览器的传输协议.&lt;br&gt;HTTP是一个应用层
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端HTTP协议知识" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>前端开发中常用图片格式</title>
@@ -492,31 +516,6 @@
     
     
       <category term="vue中侦听器watch时调用this时出现undefined问题" scheme="https://codermino.github.io/tags/vue%E4%B8%AD%E4%BE%A6%E5%90%AC%E5%99%A8watch%E6%97%B6%E8%B0%83%E7%94%A8this%E6%97%B6%E5%87%BA%E7%8E%B0undefined%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue里dom节点和window对象</title>
-    <link href="https://codermino.github.io/2020/11/10/vue%E9%87%8Cdom%E8%8A%82%E7%82%B9%E5%92%8Cwindow%E5%AF%B9%E8%B1%A1/"/>
-    <id>https://codermino.github.io/2020/11/10/vue%E9%87%8Cdom%E8%8A%82%E7%82%B9%E5%92%8Cwindow%E5%AF%B9%E8%B1%A1/</id>
-    <published>2020-11-10T06:48:14.000Z</published>
-    <updated>2020-11-10T06:58:36.687Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;一、window对象
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue里dom节点和window对象" scheme="https://codermino.github.io/tags/vue%E9%87%8Cdom%E8%8A%82%E7%82%B9%E5%92%8Cwindow%E5%AF%B9%E8%B1%A1/"/>
     
   </entry>
   
