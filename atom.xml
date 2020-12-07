@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-05T11:09:41.213Z</updated>
+  <updated>2020-12-07T02:26:13.966Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue图片转base64</title>
+    <link href="https://codermino.github.io/2020/12/07/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/"/>
+    <id>https://codermino.github.io/2020/12/07/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/</id>
+    <published>2020-12-07T02:21:38.000Z</published>
+    <updated>2020-12-07T02:26:13.966Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用原生的input&quot;&gt;使
+      
+    
+    </summary>
+    
+    
+      <category term="vue3" scheme="https://codermino.github.io/categories/vue3/"/>
+    
+    
+      <category term="vue图片转base64" scheme="https://codermino.github.io/tags/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/"/>
+    
+  </entry>
   
   <entry>
     <title>前端HTTP协议知识</title>
@@ -491,31 +516,6 @@
     
     
       <category term="iview的table组件自定义样式" scheme="https://codermino.github.io/tags/iview%E7%9A%84table%E7%BB%84%E4%BB%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue中侦听器watch时调用this时出现undefined问题</title>
-    <link href="https://codermino.github.io/2020/11/10/vue%E4%B8%AD%E4%BE%A6%E5%90%AC%E5%99%A8watch%E6%97%B6%E8%B0%83%E7%94%A8this%E6%97%B6%E5%87%BA%E7%8E%B0undefined%E9%97%AE%E9%A2%98/"/>
-    <id>https://codermino.github.io/2020/11/10/vue%E4%B8%AD%E4%BE%A6%E5%90%AC%E5%99%A8watch%E6%97%B6%E8%B0%83%E7%94%A8this%E6%97%B6%E5%87%BA%E7%8E%B0undefined%E9%97%AE%E9%A2%98/</id>
-    <published>2020-11-10T07:35:02.000Z</published>
-    <updated>2020-11-10T07:43:07.156Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;错误用法&quot;&gt;错误用法&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue中侦听器watch时调用this时出现undefined问题" scheme="https://codermino.github.io/tags/vue%E4%B8%AD%E4%BE%A6%E5%90%AC%E5%99%A8watch%E6%97%B6%E8%B0%83%E7%94%A8this%E6%97%B6%E5%87%BA%E7%8E%B0undefined%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   

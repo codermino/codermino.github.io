@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020 - Mino
+      vue图片转base64 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用原生的input"><span class="toc-text">使用原生的input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用el-upload"><span class="toc-text">使用el-upload</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,206 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/11/11/vue%E7%9A%84-set%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" title="vue的$set使用总结">
-                <span>2020/11/11</span>
-                <span>vue的$set使用总结</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/11/vue%E4%B8%AD-forceUpdate%E7%9A%84%E4%BD%BF%E7%94%A8/" title="vue中$forceUpdate的使用">
-                <span>2020/11/11</span>
-                <span>vue中$forceUpdate的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/11/iview%E4%B8%ADrender%E5%87%BD%E6%95%B0%E4%B8%8ErenderHeader%E5%87%BD%E6%95%B0/" title="iview中render函数与renderHeader函数">
-                <span>2020/11/11</span>
-                <span>iview中render函数与renderHeader函数</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/10/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/" title="Promise.all代替axios.all">
-                <span>2020/11/10</span>
-                <span>Promise.all代替axios.all</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/10/js%E5%B0%86Set%E9%9B%86%E5%90%88%E8%BD%AC%E6%8D%A2%E4%B8%BAArray%E6%95%B0%E7%BB%84/" title="js将Set集合转换为Array数组">
-                <span>2020/11/10</span>
-                <span>js将Set集合转换为Array数组</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/10/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/" title="合并多个iconfont字体图标">
-                <span>2020/11/10</span>
-                <span>合并多个iconfont字体图标</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/10/vue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Astyle/" title="vue动态绑定style">
-                <span>2020/11/10</span>
-                <span>vue动态绑定style</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/10/vue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Aclass/" title="vue动态绑定class">
-                <span>2020/11/10</span>
-                <span>vue动态绑定class</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/10/vue%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81%E5%8A%9F%E8%83%BD/" title="vue记住密码功能">
-                <span>2020/11/10</span>
-                <span>vue记住密码功能</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/11/10/iview%E7%9A%84table%E7%BB%84%E4%BB%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F/" title="iview的table组件自定义样式">
-                <span>2020/11/10</span>
-                <span>iview的table组件自定义样式</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/16/">16</a>
-</div>
-</div>
+      <div class="title">vue图片转base64</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/07</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue3">vue3</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue图片转base64">vue图片转base64</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="使用原生的input">使用原生的input<a class="post-anchor" href="#使用原生的input"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;imageUpload&quot;&gt;
+    &lt;input id&#x3D;&quot;fileId1&quot; type&#x3D;&quot;file&quot; accept&#x3D;&quot;image&#x2F;png,image&#x2F;gif,&#39;image&#x2F;jpeg&#39;&quot; name&#x3D;&quot;file&quot; @change&#x3D;&quot;fileChange&quot;&#x2F;&gt;
+    &lt;img v-if&#x3D;&quot;imageUrl&quot; :src&#x3D;&quot;imageUrl&quot; class&#x3D;&quot;uploadAvatar&quot;&#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;imageUpload&quot;,
+  data() &#123;
+    return &#123;
+      imageUrl: &#39;&#39;,
+      imageBaseUrl: &#39;&#39;,
+    &#125;
+  &#125;,
+  methods: &#123;
+    fileChange (e)&#123;
+      const file &#x3D; e.target.files[0]
+      const isJPGORPNG &#x3D; file.type &#x3D;&#x3D;&#x3D; &#39;image&#x2F;jpeg&#39; || file.type &#x3D;&#x3D;&#x3D; &#39;image&#x2F;png&#39;
+      const isLt1M &#x3D; file.size &#x2F; 1024 &#x2F; 1024 &lt; 1;
+      if (!isJPGORPNG) &#123;
+        this.$message.info(&#39;上传头像图片只能是 JPG 或 PNG 格式!&#39;);
+        return;
+      &#125;
+      if (!isLt1M) &#123;
+        this.$message.info(&#39;上传头像图片大小不能超过 1MB!&#39;);
+        return;
+      &#125;
+      let This &#x3D; this;
+      let reader &#x3D; new FileReader()
+      reader.readAsDataURL(file);
+      reader.onload &#x3D; function(e)&#123;
+        this.result; &#x2F;&#x2F;base64编码
+        console.log(this.result)
+        This.imageBaseUrl &#x3D; this.result;
+        This.imageUrl &#x3D; this.result;
+      &#125;
+      reader.onerror &#x3D; function (error) &#123;
+        console.log(&#39;Error: &#39;, error)
+      &#125;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="使用el-upload">使用el-upload<a class="post-anchor" href="#使用el-upload"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;imageUpload&quot;&gt;
+      &lt;el-upload
+            class&#x3D;&quot;avatar-uploader&quot;
+            action&#x3D;&quot;&quot;
+            ref&#x3D;&quot;uploadAvatar&quot;
+            :show-file-list&#x3D;&quot;false&quot;
+            :auto-upload&#x3D;&quot;false&quot;
+            :on-change&#x3D;&quot;changeFile&quot;&gt;
+            &lt;img v-if&#x3D;&quot;imageUrl&quot; :src&#x3D;&quot;imageUrl&quot; class&#x3D;&quot;uploadAvatar&quot;&gt;
+            &lt;i v-else class&#x3D;&quot;el-icon-plus avatar-uploader-icon&quot;&gt;&lt;&#x2F;i&gt;
+      &lt;&#x2F;el-upload&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;imageUpload&quot;,
+  data() &#123;
+    return &#123;
+      imageUrl: &#39;&#39;,
+      imageBaseUrl: &#39;&#39;,
+    &#125;
+  &#125;,
+  methods: &#123;
+    &#x2F;**
+     * 文件框改变事件
+     * @param file
+     * @param fileList
+     *&#x2F;
+    changeFile(file, fileList) &#123;
+      const isJPGORPNG &#x3D; (file.raw.type &#x3D;&#x3D;&#x3D; &#39;image&#x2F;jpeg&#39; || file.raw.type &#x3D;&#x3D;&#x3D; &#39;image&#x2F;png&#39;);
+      const isLt1M &#x3D; file.size &#x2F; 1024 &#x2F; 1024 &lt; 1;
+
+      if (!isJPGORPNG) &#123;
+        this.$message.info(&#39;上传头像图片只能是 JPG 或 PNG 格式!&#39;);
+        return;
+      &#125;
+      if (!isLt1M) &#123;
+        this.$message.info(&#39;上传头像图片大小不能超过 1MB!&#39;);
+        return;
+      &#125;
+
+      let This &#x3D; this;
+      let reader &#x3D; new FileReader();
+      reader.readAsDataURL(file.raw);
+      reader.onload &#x3D; function(e)&#123;
+        this.result; &#x2F;&#x2F;base64编码
+        console.log(this.result)
+        This.imageBaseUrl &#x3D; this.result;
+        This.imageUrl &#x3D; this.result;
+      &#125;
+      reader.onerror &#x3D; function (error) &#123;
+        console.log(&#39;Error: &#39;, error)
+      &#125;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/05/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/">前端HTTP协议知识</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/07/vue图片转base64/">https://codermino.github.io/2020/12/07/vue图片转base64/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
