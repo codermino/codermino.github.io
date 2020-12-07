@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      js将多维数组转为一维数组 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#将多维数组转为一维数组"><span class="toc-text">将多维数组转为一维数组</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#flatMap函数Demo"><span class="toc-text">flatMap函数Demo</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">js将多维数组转为一维数组</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/07</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js将多维数组转为一维数组">js将多维数组转为一维数组</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="将多维数组转为一维数组">将多维数组转为一维数组<a class="post-anchor" href="#将多维数组转为一维数组"></a></h3><ol>
+<li><p>常用的处理方式</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr1 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,[<span class="hljs-number">3</span>,[<span class="hljs-number">4</span>]]];
+<span class="hljs-keyword">let</span> arr2 = arr1.toString().split(<span class="hljs-string">','</span>);  <span class="hljs-comment">// ["1", "2", "3", "4"]</span>
+<span class="hljs-keyword">let</span> arr3 = arr1.join().split(<span class="hljs-string">','</span>);   <span class="hljs-comment">// ["1", "2", "3", "4"]</span>
+<span class="hljs-built_in">console</span>.log(arr2,arr3)</code></pre>
+<p>上述代码缺点：数组每一项都成字符串了。</p>
+</li>
+<li><p>apply结合concat拉平数组</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr=[[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">4</span>,<span class="hljs-number">5</span>],[<span class="hljs-number">6</span>]];
+<span class="hljs-built_in">console</span>.log([].concat.apply([],arr));
+<span class="hljs-comment">//输出 [1, 2, 3, 4, 5, 6]</span></code></pre>
+</li>
+<li><p>数组map()方法</p>
+</li>
+</ol>
+<p>**对上述转为字符串数组进行再一次的处理</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr2_dealWith = arr2.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> <span class="hljs-built_in">Number</span>(item))
+<span class="hljs-built_in">console</span>.log(arr2_dealWith) <span class="hljs-comment">// [1, 2, 3, 4]</span>
+<span class="hljs-keyword">let</span> arr3_detailWith = arr3.map(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> <span class="hljs-built_in">Number</span>(item))
+<span class="hljs-built_in">console</span>.log(arr3_detailWith) <span class="hljs-comment">//  [1, 2, 3, 4]</span>
+
+<span class="hljs-comment">// 或者直接这样使用</span>
+[<span class="hljs-string">'1'</span>,<span class="hljs-string">'2'</span>,<span class="hljs-string">'3'</span>].map(<span class="hljs-built_in">Number</span>)
+arr2.map(<span class="hljs-built_in">Number</span>)</code></pre>
+
+<ol start="4">
+<li>ES6提供了flat()方法</li>
+<li><ol>
+<li>该方法返回一个新数组，不会更改原数组。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>该方法默认只会“拉平”一层，如果想要“拉平”多层的嵌套数组，<br>可以将flat()方法的参数写成一个整数，表示想要拉平的层数，默认为1。<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array_1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>], <span class="hljs-number">6</span>];
+<span class="hljs-keyword">let</span> array_1_result = array_1.flat();
+<span class="hljs-built_in">console</span>.log(array_1_result); <span class="hljs-comment">// [1, 2, 3, 4, 5, 6]</span></code></pre></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>如果嵌套20、30等层，用参数就比较麻烦（数起来，当然这么多嵌套实际项目中是没有的）所以，<br>提供了用Infinity关键字作为参数.此时不管有多少层嵌套，都可以转成一维数组。<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> array_3 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, [[<span class="hljs-number">4</span>, [<span class="hljs-number">10</span>]], <span class="hljs-number">5</span>], <span class="hljs-number">6</span>];
+<span class="hljs-keyword">let</span> array_3_result = array_3.flat(<span class="hljs-literal">Infinity</span>); 
+<span class="hljs-built_in">console</span>.log(array_3_result); <span class="hljs-comment">//  [1, 2, 3, 4, 10, 5, 6]</span></code></pre></li>
+</ol>
+</li>
+<li><ol start="4">
+<li>如果有空位，flat()方法会跳过空位,这样可以延伸出，flat()不仅能拉平数组，<br>还能去除数组的空位这一能力。<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> vacancyArray = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, , <span class="hljs-number">4</span>, , <span class="hljs-number">6</span>];
+<span class="hljs-keyword">let</span> vacancyArray_result = vacancyArray.flat();
+<span class="hljs-built_in">console</span>.log(vacancyArray_result); <span class="hljs-comment">//[1, 2, 3, 4, 6]</span></code></pre></li>
+</ol>
+</li>
+<li><ol start="5">
+<li>flatMap()方法对原数组的每个成员执行一个函数（相当于执行Array.prototype.map()），<br>然后对返回值组成的数组执行flat()方法。该方法返回一个新数组，不改变原数组。<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<span class="hljs-keyword">let</span> res = a.flatMap(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> [x, x * <span class="hljs-number">2</span>])
+<span class="hljs-comment">// 相当于 [[1, 2], [2, 4], [3, 6]].flat()</span>
+<span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// [1, 2, 2, 4, 3, 6]</span></code></pre>
+
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="flatMap函数Demo">flatMap函数Demo<a class="post-anchor" href="#flatMap函数Demo"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> scattered = [ <span class="hljs-string">"my favorite"</span>, <span class="hljs-string">"hamburger"</span>, <span class="hljs-string">"is a"</span>, <span class="hljs-string">"chicken sandwich"</span> ];
+
+<span class="hljs-comment">// map() 返回的是嵌套的数组results in nested arrays</span>
+<span class="hljs-keyword">const</span> result = scattered.map( <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.split( <span class="hljs-string">" "</span> ) );
+<span class="hljs-built_in">console</span>.log( result ); <span class="hljs-comment">// [ [ "my", "favorite" ], [ "hamburger" ], [ "is", "a" ], [ "chicken", "sandwich" ] ]</span>
+
+<span class="hljs-keyword">const</span> result = scattered.flatMap( <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.split( <span class="hljs-string">" "</span> ) );
+<span class="hljs-built_in">console</span>.log( result ); <span class="hljs-comment">// [ "my", "favorite", "hamburger", "is", "a", "chicken", "sandwich" ]</span></code></pre>
+
+<ol start="4">
+<li><p>递归处理</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> ary = [<span class="hljs-number">1</span>, [<span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]]], <span class="hljs-number">6</span>];
+<span class="hljs-keyword">let</span> result = [];
+<span class="hljs-keyword">let</span> fn = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ary</span>) </span>&#123;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; ary.length; i++) &#123;
+      <span class="hljs-keyword">let</span> item = ary[i];
+      <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Array</span>.isArray(ary[i]))&#123;
+        fn(item);
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        result.push(item);
+      &#125;
+    &#125;
+&#125;
+fn(ary)
+<span class="hljs-built_in">console</span>.log(result)</code></pre>
+</li>
+<li><p>使用es6的拓展运算符</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> ary = [<span class="hljs-number">1</span>, [<span class="hljs-number">2</span>, [<span class="hljs-number">3</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>]]], <span class="hljs-number">6</span>];
+<span class="hljs-keyword">while</span> (ary.some(<span class="hljs-built_in">Array</span>.isArray)) &#123;
+  ary = [].concat(...ary);
+&#125;
+<span class="hljs-built_in">console</span>.log(ary)</code></pre>
+</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/07/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B9%B6%E4%BC%A0%E9%80%92formdata/">vue自定义图片上传并传递formdata</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/07/js将多维数组转为一维数组/">https://codermino.github.io/2020/12/07/js将多维数组转为一维数组/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
