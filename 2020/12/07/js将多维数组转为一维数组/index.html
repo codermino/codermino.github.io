@@ -247,7 +247,7 @@ arr2.map(<span class="hljs-built_in">Number</span>)</code></pre>
 </ol>
 </li>
 <li><ol start="5">
-<li>flatMap()方法对原数组的每个成员执行一个函数（相当于执行Array.prototype.map()），<br>然后对返回值组成的数组执行flat()方法。该方法返回一个新数组，不改变原数组。<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
+<li>flatMap()方法对原数组的每个成员执行一个函数（相当于执行Array.prototype.map()），<br>然后对返回值组成的数组执行flat()方法。该方法返回一个新数组，不改变原数组。<br>// only one level is flattened<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
 <span class="hljs-keyword">let</span> res = a.flatMap(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> [x, x * <span class="hljs-number">2</span>])
 <span class="hljs-comment">// 相当于 [[1, 2], [2, 4], [3, 6]].flat()</span>
 <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// [1, 2, 2, 4, 3, 6]</span></code></pre>
