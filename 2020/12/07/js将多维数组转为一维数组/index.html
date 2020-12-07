@@ -256,7 +256,8 @@ arr2.map(<span class="hljs-built_in">Number</span>)</code></pre>
 </ol>
 </li>
 </ol>
-<h4 id="flatMap函数Demo">flatMap函数Demo<a class="post-anchor" href="#flatMap函数Demo"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> scattered = [ <span class="hljs-string">"my favorite"</span>, <span class="hljs-string">"hamburger"</span>, <span class="hljs-string">"is a"</span>, <span class="hljs-string">"chicken sandwich"</span> ];
+<h4 id="flatMap函数Demo">flatMap函数Demo<a class="post-anchor" href="#flatMap函数Demo"></a></h4><p><strong>Demo1</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> scattered = [ <span class="hljs-string">"my favorite"</span>, <span class="hljs-string">"hamburger"</span>, <span class="hljs-string">"is a"</span>, <span class="hljs-string">"chicken sandwich"</span> ];
 
 <span class="hljs-comment">// map() 返回的是嵌套的数组results in nested arrays</span>
 <span class="hljs-keyword">const</span> result = scattered.map( <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.split( <span class="hljs-string">" "</span> ) );
@@ -264,6 +265,18 @@ arr2.map(<span class="hljs-built_in">Number</span>)</code></pre>
 
 <span class="hljs-keyword">const</span> result = scattered.flatMap( <span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> item.split( <span class="hljs-string">" "</span> ) );
 <span class="hljs-built_in">console</span>.log( result ); <span class="hljs-comment">// [ "my", "favorite", "hamburger", "is", "a", "chicken", "sandwich" ]</span></code></pre>
+<p><strong>Demo2</strong><br>flatMap(callback, thisArg): 很像map方法的一个方法，第一个参数为回调函数，<br>第二个参数为希望传入回调函数的并作为回调函数内部this参数书写的参数。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">50</span>, <span class="hljs-number">40</span>]
+<span class="hljs-keyword">let</span> a = arr.flatMap(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">return</span> [[x]]
+&#125;)
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// [[10], [20], [30], [50], [40]]</span></code></pre>
+<p>它和map方法不同的就是它可以为参数嵌套数组层数（维度）,<br>且输入数组和输出数组并不是一对一的关系了，<br>输入数组有n个成员，输出数组可以有不同于n个数量的成员。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">30</span>, <span class="hljs-number">50</span>, <span class="hljs-number">40</span>]
+<span class="hljs-keyword">let</span> a = arr.flatMap(<span class="hljs-function"><span class="hljs-params">x</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">return</span> [[x], <span class="hljs-number">10</span>]
+&#125;)
+<span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// [[10], 10, [20], 10, [30], 10, [50], 10, [40], 10]</span></code></pre>
 
 <ol start="4">
 <li><p>递归处理</p>
