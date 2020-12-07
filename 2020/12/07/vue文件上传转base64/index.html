@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#上传页面"><span class="toc-text">上传页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#acceptFileType-js文件"><span class="toc-text">acceptFileType.js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件类型验证-Demo2"><span class="toc-text">文件类型验证 Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-text">使用方式</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#上传页面"><span class="toc-text">上传页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#acceptFileType-js文件"><span class="toc-text">acceptFileType.js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件类型验证-Demo2"><span class="toc-text">文件类型验证 Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用原生js进行文件上传转base64"><span class="toc-text">使用原生js进行文件上传转base64</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -317,6 +317,57 @@ export default &#123;
   <span class="hljs-built_in">console</span>.log(file.raw)
   <span class="hljs-built_in">console</span>.log(vavilidFileType(<span class="hljs-string">'file'</span>, file.raw))
 &#125;</code></pre>
+
+<h3 id="使用原生js进行文件上传转base64">使用原生js进行文件上传转base64<a class="post-anchor" href="#使用原生js进行文件上传转base64"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;imageUpload&quot;&gt;
+    &lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;file&quot; multiple&#x3D;&quot;multiple&quot; @change&#x3D;&quot;handleFile&quot; :accept&#x3D;&quot;acceptFile(&#39;file&#39;)&quot;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import acceptFileType from &#39;..&#x2F;util&#x2F;acceptFileType&#39;
+import vavilidFileType from &#39;..&#x2F;util&#x2F;vavilidFileType&#39;
+export default &#123;
+  name: &quot;imageUpload&quot;,
+  methods: &#123;
+    acceptFile(type)&#123;
+      this.acceptTypeList &#x3D; acceptFileType(type)
+      return this.acceptTypeList
+    &#125;,
+    handleFile(e)&#123;
+      const file &#x3D; e.target.files[0]
+      console.log(file)
+      const canAccept &#x3D; vavilidFileType(&#39;file&#39;, file)
+      if (!canAccept)&#123;
+        this.$message.info(&#39;上传的文件格式不对!&#39;);
+        return;
+      &#125;
+      const isLt5M &#x3D; file.size &#x2F; 1024 &#x2F; 1024 &lt; 5;
+      if (!isLt5M) &#123;
+        this.$message.info(&#39;上传头像图片大小不能超过 5MB!&#39;);
+        return;
+      &#125;
+      let This &#x3D; this;
+      let reader &#x3D; new FileReader();
+      reader.readAsDataURL(file);
+      &#x2F;&#x2F;开始转
+      reader.onload &#x3D; function(e)&#123;
+        this.result; &#x2F;&#x2F;base64编码
+        &#x2F;&#x2F; console.log(this.result)
+        console.log(e.target.result)
+      &#125;
+      &#x2F;&#x2F;转 失败
+      reader.onerror &#x3D; function (error) &#123;
+        console.log(&#39;Error: &#39;, error)
+      &#125;
+      &#x2F;&#x2F;转 结束  咱就 resolve 出去
+      reader.onloadend &#x3D; function() &#123;
+        console.log(&#39;转换结束&#39;)
+      &#125;;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
 
 
   
