@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#上传页面"><span class="toc-text">上传页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#acceptFileType-js文件"><span class="toc-text">acceptFileType.js文件</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#上传页面"><span class="toc-text">上传页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#acceptFileType-js文件"><span class="toc-text">acceptFileType.js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件类型验证-Demo2"><span class="toc-text">文件类型验证 Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-text">使用方式</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -277,6 +277,45 @@ export default &#123;
     srt += allowHook[k]
   &#125;
   <span class="hljs-keyword">return</span> srt
+&#125;</code></pre>
+
+<h3 id="文件类型验证-Demo2">文件类型验证 Demo2<a class="post-anchor" href="#文件类型验证-Demo2"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">/*
+*  校验上传文件
+* */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validUploadFile</span>(<span class="hljs-params">type = <span class="hljs-string">'img'</span>, file</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (!file) &#123;
+    file = type;
+    type = <span class="hljs-string">'img'</span>
+  &#125;
+  <span class="hljs-keyword">const</span> fileName = file.name;
+  <span class="hljs-keyword">const</span> m = fileName.match(<span class="hljs-regexp">/\.(\w+)(#|\?|$)/</span>);
+  <span class="hljs-keyword">const</span> fileType = (m &amp;&amp; m[<span class="hljs-number">1</span>]).toString().toLowerCase();
+  <span class="hljs-keyword">const</span> allowHook = &#123;
+    <span class="hljs-attr">video</span>: [<span class="hljs-string">'mp4'</span>, <span class="hljs-string">'ogv'</span>, <span class="hljs-string">'ogg'</span>, <span class="hljs-string">'webm'</span>],
+    <span class="hljs-attr">audio</span>: [<span class="hljs-string">'wav'</span>, <span class="hljs-string">'mp3'</span>, <span class="hljs-string">'ogg'</span>, <span class="hljs-string">'acc'</span>, <span class="hljs-string">'webm'</span>, <span class="hljs-string">'amr'</span>],
+    <span class="hljs-attr">file</span>: [<span class="hljs-string">'doc'</span>, <span class="hljs-string">'docx'</span>, <span class="hljs-string">'xlsx'</span>, <span class="hljs-string">'xls'</span>, <span class="hljs-string">'pdf'</span>],
+    <span class="hljs-attr">excel</span>: [<span class="hljs-string">'xlsx'</span>, <span class="hljs-string">'xls'</span>],
+    <span class="hljs-attr">img</span>: [<span class="hljs-string">'jpg'</span>, <span class="hljs-string">'jpeg'</span>, <span class="hljs-string">'png'</span>, <span class="hljs-string">'gif'</span>]
+  &#125;
+  <span class="hljs-keyword">const</span> validType = (allowHook[type] || []).includes(fileType);
+  <span class="hljs-keyword">if</span> (!validType) &#123;
+    <span class="hljs-keyword">const</span> supprtTypes = allowHook[type].join(<span class="hljs-string">','</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`只支持<span class="hljs-subst">$&#123;supprtTypes&#125;</span>类型文件上传`</span>;
+  &#125;
+  <span class="hljs-keyword">if</span> (fileName.indexOf(<span class="hljs-string">'%'</span>) &gt; <span class="hljs-number">-1</span> || fileName.indexOf(<span class="hljs-string">'&amp;'</span>) &gt; <span class="hljs-number">-1</span>) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'上传文件名称不能带有字符"%","&amp;"'</span>;
+  &#125;
+  <span class="hljs-keyword">const</span> isLt10M = file.size / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> &lt; <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">if</span> (type === file &amp;&amp; !isLt10M) &#123;
+    <span class="hljs-keyword">this</span>.$message.error(<span class="hljs-string">'上传资料大小不能超过 10MB!'</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+&#125;</code></pre>
+
+<h3 id="使用方式">使用方式<a class="post-anchor" href="#使用方式"></a></h3><pre><code class="hljs javascript">changeFile(file, fileList) &#123;
+  <span class="hljs-built_in">console</span>.log(file.raw)
+  <span class="hljs-built_in">console</span>.log(vavilidFileType(<span class="hljs-string">'file'</span>, file.raw))
 &#125;</code></pre>
 
 
