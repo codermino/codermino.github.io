@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二-使用v-model"><span class="toc-text">方法二(使用v-model)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue单向数据流"><span class="toc-text">Vue单向数据流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二-使用v-model"><span class="toc-text">方法二(使用v-model)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -196,6 +196,12 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="Vue单向数据流">Vue单向数据流<a class="post-anchor" href="#Vue单向数据流"></a></h3><p>单向数据流：父组件可以向子组件通过属性形式传递参数，<br>传递的参数也可以随时随意修改；<br>但子组件不能修改父组件传递过来的参数。<br>只能用父组件传递的数据。</p>
+<p><strong>原因</strong></p>
+<pre><code class="hljs markdown">原因：因为子组件接收父组件传递过来的数据，并不是一个基础类型的数据类型，
+而是类似于object这种引用类型的数据类型。如果修改了引用类型的数据，
+在使用子组件时，则会造成其他子组件接收数据的错误</code></pre>
+
 <h3 id="方法一">方法一<a class="post-anchor" href="#方法一"></a></h3><pre><code class="hljs vue">父组件
 &lt;child-test :inputData&#x3D;&quot;inputData&quot; @inputdataChange&#x3D;&quot;inputdataChange&quot;&gt;&lt;&#x2F;child-test&gt;
 &lt;span&gt;&#123;&#123;inputData&#125;&#125;&lt;&#x2F;span&gt;
