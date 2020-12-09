@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#commit"><span class="toc-text">修改和提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#log"><span class="toc-text">查看提交历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reset"><span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#branch"><span class="toc-text">分支与标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#merge"><span class="toc-text">合并与衍合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remote"><span class="toc-text">远程操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remotebranch"><span class="toc-text">在github远程端删除一个分支</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#clone"><span class="toc-text">创建版本库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#commit"><span class="toc-text">修改和提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#log"><span class="toc-text">查看提交历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reset"><span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#branch"><span class="toc-text">分支与标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#merge"><span class="toc-text">合并与衍合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remote"><span class="toc-text">远程操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#remotebranch"><span class="toc-text">在github远程端删除一个分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git创建tag标签"><span class="toc-text">git创建tag标签</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -278,6 +278,14 @@ OVER</code></pre>
 
 <h3 id="remotebranch">在github远程端删除一个分支<a class="post-anchor" href="#remotebranch"></a><a class="post-anchor" href="#remotebranch"></a></h3>
 <pre><code class="hljs markdown">git push origin :newbranch (分支名前的冒号代表删除)</code></pre>
+
+<h3 id="git创建tag标签">git创建tag标签<a class="post-anchor" href="#git创建tag标签"></a></h3><ol>
+<li>git add .</li>
+<li>git commit -m ‘xxxxx’</li>
+<li>git tag ‘xxxx’</li>
+<li>git pull</li>
+<li>git push –tags</li>
+</ol>
 
 
   
