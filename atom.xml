@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-14T06:49:02.502Z</updated>
+  <updated>2020-12-14T08:18:32.104Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BFC</title>
+    <link href="https://codermino.github.io/2020/12/14/BFC/"/>
+    <id>https://codermino.github.io/2020/12/14/BFC/</id>
+    <published>2020-12-14T07:02:38.000Z</published>
+    <updated>2020-12-14T08:18:32.104Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;BFC定义&quot;&gt;BFC定义&lt;a class=&quot;post-anchor&quot; href=&quot;#BFC定义&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;hljs markdown&quot;&gt;BFC(Block formatting context)直译为&quot;块级格式化上下文
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="BFC" scheme="https://codermino.github.io/tags/BFC/"/>
+    
+  </entry>
   
   <entry>
     <title>==和===的使用场景</title>
@@ -494,30 +518,6 @@
     
     
       <category term="Promise.all代替axios.all" scheme="https://codermino.github.io/tags/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js将Set集合转换为Array数组</title>
-    <link href="https://codermino.github.io/2020/11/10/js%E5%B0%86Set%E9%9B%86%E5%90%88%E8%BD%AC%E6%8D%A2%E4%B8%BAArray%E6%95%B0%E7%BB%84/"/>
-    <id>https://codermino.github.io/2020/11/10/js%E5%B0%86Set%E9%9B%86%E5%90%88%E8%BD%AC%E6%8D%A2%E4%B8%BAArray%E6%95%B0%E7%BB%84/</id>
-    <published>2020-11-10T10:12:32.000Z</published>
-    <updated>2020-11-10T11:04:31.178Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js将Set集合转换为Array数组" scheme="https://codermino.github.io/tags/js%E5%B0%86Set%E9%9B%86%E5%90%88%E8%BD%AC%E6%8D%A2%E4%B8%BAArray%E6%95%B0%E7%BB%84/"/>
     
   </entry>
   
