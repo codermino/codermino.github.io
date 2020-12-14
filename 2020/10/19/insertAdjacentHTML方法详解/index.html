@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#insertAdjacentHTML"><span class="toc-text">insertAdjacentHTML</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#insertHtml"><span class="toc-text">insertHtml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#insertAdjacentHTML"><span class="toc-text">insertAdjacentHTML</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -196,6 +196,8 @@
       </div>
     </div>
     <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="insertHtml">insertHtml<a class="post-anchor" href="#insertHtml"></a></h3><p>方法名称：insertHtml(where,el,html)</p>
+<p>参数介绍：<br>where：插入位置。包括beforeBegin,beforeEnd,afterBegin,afterEnd。<br>el：用于参照插入位置的html元素对象<br>html：要插入的html代码</p>
 <h3 id="insertAdjacentHTML">insertAdjacentHTML<a class="post-anchor" href="#insertAdjacentHTML"></a></h3><p>原型：insertAdajcentHTML(swhere,stext)</p>
 <p>参数：<br>swhere: 指定插入html标签语句的地方，<br>stext:要插入的内容</p>
 <p>有四种值可用：</p>
@@ -205,6 +207,15 @@
 <li>beforeEnd:插入到标签结束标记前</li>
 <li>afterEnd:插入到标签结束标记后<br><a href="/images/insertAdajcentHTML.jpg" data-caption data-fancybox="images"><img src="/images/insertAdajcentHTML.jpg" alt></a><br>insertAdjacentText方法与insertAdjacentHTML方法类似，<br>只不过只能插入纯文本，参数相同</li>
 </ol>
+<p><strong>Demo</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"btn1"</span>);  
+obj.insertAdjacentHTML(<span class="hljs-string">"afterEnd"</span>,<span class="hljs-string">"&lt;br&gt;&lt;input name='txt1'&gt;"</span>);  
+
+<span class="hljs-keyword">var</span> obj2 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"paral"</span>);  
+obj2.insertAdjacentHTML(<span class="hljs-string">"afterBegin"</span>,<span class="hljs-string">"&lt;h1&gt; 在文本前容器内插入内容1&lt;/h1&gt;"</span>);  
+obj2.insertAdjacentHTML(<span class="hljs-string">"beforeEnd"</span>,<span class="hljs-string">"&lt;h2&gt; 在文本后容器内插入内容2&lt;/h2&gt;"</span>);  
+obj2.insertAdjacentHTML(<span class="hljs-string">"beforeBegin"</span>,<span class="hljs-string">"&lt;h4&gt; 在文本前容器外插入内容4&lt;/h1&gt;"</span>);  
+obj2.insertAdjacentHTML(<span class="hljs-string">"afterEnd"</span>,<span class="hljs-string">"&lt;h5&gt; 在文本后容器外插入内容5&lt;/h2&gt;"</span>);</code></pre>
 
 
   
