@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-14T06:11:55.412Z</updated>
+  <updated>2020-12-14T06:49:02.502Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>==和===的使用场景</title>
+    <link href="https://codermino.github.io/2020/12/14/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
+    <id>https://codermino.github.io/2020/12/14/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</id>
+    <published>2020-12-14T06:46:39.000Z</published>
+    <updated>2020-12-14T06:49:02.502Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;首先, == 隐含意思是尽量让等号两边转换后相等, 也就是发生类型转换;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;绝大多数场合应该使用===，&lt;br&gt;只有检测null/undefined的时候可以使用x==null，&lt;br&gt;因为一般我们不区分null和undefined，&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="==和===的使用场景" scheme="https://codermino.github.io/tags/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>meta标签用法</title>
@@ -491,31 +518,6 @@
     
     
       <category term="js将Set集合转换为Array数组" scheme="https://codermino.github.io/tags/js%E5%B0%86Set%E9%9B%86%E5%90%88%E8%BD%AC%E6%8D%A2%E4%B8%BAArray%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>合并多个iconfont字体图标</title>
-    <link href="https://codermino.github.io/2020/11/10/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/"/>
-    <id>https://codermino.github.io/2020/11/10/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/</id>
-    <published>2020-11-10T09:22:30.000Z</published>
-    <updated>2020-11-10T09:26:51.502Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;合并字体图标网站–iconmoon: &lt;a href=&quot;https://icomoon.io/app/#/select&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://icomoon.io/app/#/select&lt;/a&gt;&lt;br&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="响应式" scheme="https://codermino.github.io/categories/%E5%93%8D%E5%BA%94%E5%BC%8F/"/>
-    
-    
-      <category term="合并多个iconfont字体图标" scheme="https://codermino.github.io/tags/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/"/>
     
   </entry>
   
