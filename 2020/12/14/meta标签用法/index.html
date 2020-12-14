@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      meta标签用法 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义和用法"><span class="toc-text">定义和用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#必需的属性"><span class="toc-text">必需的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可选的属性"><span class="toc-text">可选的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意"><span class="toc-text">注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#http-equiv-属性"><span class="toc-text">http-equiv 属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#name属性"><span class="toc-text">name属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#meta的charset"><span class="toc-text">meta的charset</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">meta标签用法</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/14</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/meta标签用法">meta标签用法</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="定义和用法">定义和用法<a class="post-anchor" href="#定义和用法"></a></h3><ol>
+<li><meta> 标签始终位于 head 元素中。<meta> 元素可提供有关页面的元信息（meta-information），
+ 元数据不会显示在页面上，但是对于机器是可读的。比如针对搜索引擎和更新频度的描述和关键词。</li>
+<li>元数据（metadata）是关于数据的信息。元数据总是以名称/值的形式被成对传递的。<br> 典型的情况是，meta 元素被用于规定页面的描述、关键词、文档的作者、最后修改时间以及其他元数据。</li>
+<li>元数据可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。</li>
+</ol>
+<h3 id="必需的属性">必需的属性<a class="post-anchor" href="#必需的属性"></a></h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>content</td>
+<td>some_text</td>
+<td>定义与 http-equiv 或 name 属性相关的元信息/</td>
+</tr>
+</tbody></table>
+<h3 id="可选的属性">可选的属性<a class="post-anchor" href="#可选的属性"></a></h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>http-equiv</td>
+<td>content-type expires refresh set-cookie</td>
+<td>把 content 属性关联到 HTTP 头部。/</td>
+</tr>
+<tr>
+<td>name</td>
+<td>author description keywords generator revised others</td>
+<td>把 content 属性关联到一个名称。/</td>
+</tr>
+<tr>
+<td>scheme</td>
+<td>some_text</td>
+<td>定义用于翻译 content 属性值的格式。/</td>
+</tr>
+</tbody></table>
+<h3 id="注意">注意<a class="post-anchor" href="#注意"></a></h3><p>当有http-equiv或者name属性时，必须要有content属性，<br>content 属性提供了名称/值对中的值，<br>content属性定义与 http-equiv 或 name 属性相关的元信息。<br>content始终要和 name 属性或 http-equiv 属性一起使用</p>
+<h3 id="http-equiv-属性">http-equiv 属性<a class="post-anchor" href="#http-equiv-属性"></a></h3><ol>
+<li>http-equiv 属性为名称/值对提供了名称。<br> 并指示服务器在发送实际的文档之前先在要传送给浏览器的 MIME 文档头部包含名称/值对。</li>
+<li>http-equiv属性是添加http头部内容，对一些自定义的，或者需要额外添加的http头部内容，<br> 需要发送到浏览器中，我们就可以是使用这个属性。</li>
+<li>使用带有 http-equiv 属性的 <meta> 标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。<pre><code class="hljs markdown">1、content-Type(显示字符集的设定)：设定页面使用的字符集。
+用法：<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"content-Type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"text/html;charset=utf-8"</span>&gt;</span></span>
+注意：charset是声明文档使用的字符编码，解决乱码问题主要用的就是它，
+charset一定要写第一行，不然就可能会产生乱码了。
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Content-Type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"text/html; charset=utf-8"</span>&gt;</span></span>
+两个都是等效的。
+
+使用带有 http-equiv 属性的 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span>&gt;</span></span> 标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。例如，添加：
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"charset"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"iso-8859-1"</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"expires"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"31 Dec 2008"</span>&gt;</span></span>
+这样发送到浏览器的头部就应该包含：
+content-type: text/html
+charset:iso-8859-1
+expires:31 Dec 2008
+
+2、Expires(期限)：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。 
+用法： <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"expires"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"Fri,12Jan200118:18:18GMT"</span>&gt;</span></span> 
+注意：必须使用GMT的时间格式。 
+
+3、Refresh(刷新)：自动刷新并指向新页面。 
+用法： <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Refresh"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"2; URL=http://www.baidu.com"</span>&gt;</span></span> 
+(注意后面的引号，分别在秒数的前面和网址的后面) 
+注意：其中的2是指停留2秒钟后自动刷新到URL网址。
+
+4、Set-Cookie(cookie设定)：如果网页过期，那么存盘的cookie将被删除。
+用法： <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"Set-Cookie"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"cookie value=xxx; expires=Friday,12-Jan-200118:18:18GMT；path=/"</span>&gt;</span></span> 
+注意：必须使用GMT的时间格式。</code></pre>
+
+</li>
+</ol>
+<h3 id="name属性">name属性<a class="post-anchor" href="#name属性"></a></h3><ol>
+<li>name 属性提供了名称/值对中的名称。<br> 通常情况下，您可以自由使用对自己和源文档的读者来说富有意义的名称。</li>
+<li>如果没有提供 name 属性，那么名称/值对中的名称会采用 http-equiv 属性的值。<pre><code class="hljs markdown">分成两部分：一个是SEO部分（搜索引擎优化）
+1、Keywords(关键字)：keywords用来告诉搜索引擎你网页的关键字是什么。
+举例：
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"keywords"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"xxxx"</span>&gt;</span></span>
+2、description(网站内容描述)：description用来告诉搜索引擎你的网站主要内容。
+举例：
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"xxx"</span>&gt;</span></span>
+3、author(作者)：标注网页的作者
+举例：
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"author"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"github.com/lihuijuan"</span>&gt;</span></span>
+
+另一部分是viewport
+viewport：主要是影响移动端页面布局的
+举例：
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span>
+content 有参数：
+<span class="hljs-code">    width viewport 宽度(数值/device-width)；height viewport 高度(数值/device-height)；</span>
+<span class="hljs-code">    initial-scale 初始缩放比例；maximum-scale 最大缩放比例；</span>
+<span class="hljs-code">    minimum-scale 最小缩放比例；user-scalable 是否允许用户缩放(yes/no)</span></code></pre>
+
+</li>
+</ol>
+<h3 id="meta的charset">meta的charset<a class="post-anchor" href="#meta的charset"></a></h3><p>各个字符编码含义： </p>
+<ol>
+<li>gb2312：代表国家标准第2312条，其中是不包含繁体的（虽然咱们不怎么使用繁体了，但是台湾还在使用繁体啊。那怎么办呢？）。 </li>
+<li>gbk：国家标准扩展版（增加了繁体，包含所有亚洲字符集）。 </li>
+<li>unicode：万国码（字面意思你也懂的）。 </li>
+</ol>
+<p><strong>utf-8：unicode的升级版。</strong></p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/07/js%E5%B0%86%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/">js将多维数组转为一维数组</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/14/meta标签用法/">https://codermino.github.io/2020/12/14/meta标签用法/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

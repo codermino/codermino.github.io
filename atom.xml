@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-07T15:46:48.671Z</updated>
+  <updated>2020-12-14T03:29:47.615Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>meta标签用法</title>
+    <link href="https://codermino.github.io/2020/12/14/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/"/>
+    <id>https://codermino.github.io/2020/12/14/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/</id>
+    <published>2020-12-14T02:37:36.000Z</published>
+    <updated>2020-12-14T03:29:47.615Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;定义和用法&quot;&gt;定义和用法&lt;a class=&quot;post-anchor&quot; href=&quot;#定义和用法&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;meta&gt; 标签始终位于 head 元素中。&lt;meta&gt; 元素可提供有关页面的元信息（meta-information），
+ 元
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="meta标签用法" scheme="https://codermino.github.io/tags/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>js将多维数组转为一维数组</title>
@@ -490,31 +516,6 @@
     
     
       <category term="合并多个iconfont字体图标" scheme="https://codermino.github.io/tags/%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAiconfont%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue动态绑定style</title>
-    <link href="https://codermino.github.io/2020/11/10/vue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Astyle/"/>
-    <id>https://codermino.github.io/2020/11/10/vue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Astyle/</id>
-    <published>2020-11-10T09:07:49.000Z</published>
-    <updated>2020-11-10T09:17:13.480Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;对象语法&quot;&gt;对象语法&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue动态绑定style" scheme="https://codermino.github.io/tags/vue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Astyle/"/>
     
   </entry>
   
