@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的副作用"><span class="toc-text">函数的副作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#纯函数-Pure-Function"><span class="toc-text">纯函数 ( Pure Function )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非纯函数-Impure-Function"><span class="toc-text">非纯函数 ( Impure Function )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引用透明-Referential-Transparent"><span class="toc-text">引用透明 ( Referential Transparent )</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的副作用"><span class="toc-text">函数的副作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#纯函数-Pure-Function"><span class="toc-text">纯函数 ( Pure Function )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非纯函数-Impure-Function"><span class="toc-text">非纯函数 ( Impure Function )</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引用透明-Referential-Transparent"><span class="toc-text">引用透明 ( Referential Transparent )</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -195,7 +195,11 @@
       <div>
       </div>
     </div>
-    <h3 id="函数的副作用">函数的副作用<a class="post-anchor" href="#函数的副作用"></a></h3><ul>
+    <h3 id="概念">概念<a class="post-anchor" href="#概念"></a></h3><ol>
+<li>函数或者表达式修改了它的SCOPE之外的状态</li>
+<li>函数或者表达式除了返回语句外还与外部世界或者它所调用的函数有明显的交互行为</li>
+</ol>
+<h3 id="函数的副作用">函数的副作用<a class="post-anchor" href="#函数的副作用"></a></h3><ul>
 <li>函数副作用指当调用函数时，除了返回函数值之外，还对主调用函数产生附加的影响。<br>  例如修改全局变量（函数外的变量）或修改参数。</li>
 <li>函数副作用会给程序设计带来不必要的麻烦，给程序带来十分难以查找的错误，<br>  并且降低程序的可读性。严格的函数式语言要求函数必须无副作用。</li>
 <li>函数的副作用相关的几个概念，<br>  Pure Function、 Impure Function、 Referential Transparent。</li>
