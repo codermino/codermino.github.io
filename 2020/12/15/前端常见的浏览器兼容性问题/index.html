@@ -314,7 +314,13 @@ a:active &#123;&#125;</code></pre>
 碰到频率:100%
 解决方案：CSS里*&#123;margin:0;padding:0;&#125;
 备注：这个是最常见的也是最易解决的一个浏览器兼容性问题，几乎所有的CSS文件开头都会用通配符*来设置各个标签的内外补丁是0。</code></pre>
-<h3 id="js兼容性问题">js兼容性问题<a class="post-anchor" href="#js兼容性问题"></a></h3></li>
+</li>
+<li><p>边距重叠问题；当相邻两个元素都设置了margin 边距时，margin 将取最大值，舍弃最小值</p>
+<pre><code class="hljs markdown">为了不让边重叠，可以给子元素增加一个父级元素，并设置父级元素为overflow:hidden；</code></pre>
+
+</li>
+</ol>
+<h3 id="js兼容性问题">js兼容性问题<a class="post-anchor" href="#js兼容性问题"></a></h3><ol>
 <li><p>const问题<br>说明:Firefox下,可以使用const关键字或var关键字来定义常量;<br>IE下,只能使用var关键字来定义常量.<br>解决方法：统一使用var关键字来定义常量.</p>
 </li>
 <li><p>event.srcElement问题<br>说明：IE下，event对象有srcElement属性，但是没有target属性；Firefox下，even对象有target属性，但是没有srcElement属性。<br>解决方法：使用srcObj =event.srcElement ?event.srcElement : event.target;</p>
