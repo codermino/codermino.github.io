@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-15T07:49:08.277Z</updated>
+  <updated>2020-12-15T09:22:44.169Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML行内元素与块级元素</title>
+    <link href="https://codermino.github.io/2020/12/15/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/"/>
+    <id>https://codermino.github.io/2020/12/15/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/</id>
+    <published>2020-12-15T09:05:16.000Z</published>
+    <updated>2020-12-15T09:22:44.169Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;行内元素和块级元素&quot;&gt;行内元素和块级元素&lt;a class=&quot;post-anchor&quot; href=&quot;#行内元素和块级元素&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;行内元素一般是内容的容器，而块级元素一般是其他容器的容器。&lt;br&gt;一般情况下，行内元素只能包含内容或者其它行内元素，宽
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="HTML行内元素与块级元素" scheme="https://codermino.github.io/tags/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>前端常见的浏览器兼容性问题</title>
@@ -493,31 +517,6 @@
     
     
       <category term="vue的$set使用总结" scheme="https://codermino.github.io/tags/vue%E7%9A%84-set%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue中$forceUpdate的使用</title>
-    <link href="https://codermino.github.io/2020/11/11/vue%E4%B8%AD-forceUpdate%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://codermino.github.io/2020/11/11/vue%E4%B8%AD-forceUpdate%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2020-11-11T06:46:40.000Z</published>
-    <updated>2020-11-11T06:55:23.951Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;介绍&quot;&gt;介绍&lt;a clas
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue中$forceUpdate的使用" scheme="https://codermino.github.io/tags/vue%E4%B8%AD-forceUpdate%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     
   </entry>
   
