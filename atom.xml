@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-14T08:20:09.002Z</updated>
+  <updated>2020-12-15T02:22:03.490Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue单页面应用过渡动画</title>
+    <link href="https://codermino.github.io/2020/12/15/vue%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/"/>
+    <id>https://codermino.github.io/2020/12/15/vue%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/</id>
+    <published>2020-12-15T01:57:11.000Z</published>
+    <updated>2020-12-15T02:22:03.490Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;router配置&quot;&gt;rou
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue单页面应用过渡动画" scheme="https://codermino.github.io/tags/vue%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>BFC</title>
@@ -494,30 +519,6 @@
     
     
       <category term="iview中render函数与renderHeader函数" scheme="https://codermino.github.io/tags/iview%E4%B8%ADrender%E5%87%BD%E6%95%B0%E4%B8%8ErenderHeader%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Promise.all代替axios.all</title>
-    <link href="https://codermino.github.io/2020/11/10/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/"/>
-    <id>https://codermino.github.io/2020/11/10/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/</id>
-    <published>2020-11-10T11:40:52.000Z</published>
-    <updated>2020-11-10T11:43:16.388Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;介绍&quot;&gt;介绍&lt;a class=&quot;post-anchor&quot; href=&quot;#介绍&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;前端调用十几个接口，十几个接口完成后，再刷新页面，&lt;br&gt;然后看了一下axios的官网（&lt;a href=&quot;https://github.com/axios/ax
-      
-    
-    </summary>
-    
-    
-      <category term="axios" scheme="https://codermino.github.io/categories/axios/"/>
-    
-    
-      <category term="Promise.all代替axios.all" scheme="https://codermino.github.io/tags/Promise-all%E4%BB%A3%E6%9B%BFaxios-all/"/>
     
   </entry>
   
