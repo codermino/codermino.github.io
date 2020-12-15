@@ -195,7 +195,23 @@
       <div>
       </div>
     </div>
-    <h3 id="行内元素和块级元素">行内元素和块级元素<a class="post-anchor" href="#行内元素和块级元素"></a></h3><p>行内元素一般是内容的容器，而块级元素一般是其他容器的容器。<br>一般情况下，行内元素只能包含内容或者其它行内元素，宽度和长度依据内容而定，<br>不可以设置，可以和其它元素和平共处于一行；<br>而块级元素可以包含行内元素和其它块级元素，且占据父元素的整个空间，<br>可以设置 width 和 height 属性，浏览器通常会在块级元素前后另起一个新行。<br>因此，行内元素适合显示具体内容，而块级元素适合做布局。常用的行内和块级元素如下：<br>|  级别   | 元素  |<br>|  —-  | —-  |<br>| 行内元素  | a,b,strong,span,img,label,button,input,select,textarea |<br>| 块级元素  | header,form,ul,ol,table,article,div,hr,aside,figure,canvas,video,audio,footer |</p>
+    <h3 id="行内元素和块级元素">行内元素和块级元素<a class="post-anchor" href="#行内元素和块级元素"></a></h3><p>行内元素一般是内容的容器，而块级元素一般是其他容器的容器。<br>一般情况下，行内元素只能包含内容或者其它行内元素，宽度和长度依据内容而定，<br>不可以设置，可以和其它元素和平共处于一行；<br>而块级元素可以包含行内元素和其它块级元素，且占据父元素的整个空间，<br>可以设置 width 和 height 属性，浏览器通常会在块级元素前后另起一个新行。<br>因此，行内元素适合显示具体内容，而块级元素适合做布局。常用的行内和块级元素如下：</p>
+<table>
+<thead>
+<tr>
+<th>级别</th>
+<th>元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>行内元素</td>
+<td>a,b,strong,span,img,label,button,input,select,textarea</td>
+</tr>
+<tr>
+<td>块级元素</td>
+<td>header,form,ul,ol,table,article,div,hr,aside,figure,canvas,video,audio,footer</td>
+</tr>
+</tbody></table>
 <h3 id="常用的display值">常用的display值<a class="post-anchor" href="#常用的display值"></a></h3><table>
 <thead>
 <tr>
@@ -246,7 +262,31 @@
 </tbody></table>
 <h3 id="行内元素和块级元素盒模型区别">行内元素和块级元素盒模型区别<a class="post-anchor" href="#行内元素和块级元素盒模型区别"></a></h3><p>行内元素尺寸由内含的内容决定，盒模型中 padding, border 与块级元素并无差异，<br>都是标准的盒模型，但是 margin 却只有水平方向的值，垂直方向并没有起作用。</p>
 <p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，<br>当指定了 width 和 height 的值时，内容超出块级元素的尺寸就会溢出，<br>这时块级元素要呈现什么行为要看其 overflow 的值.<br>块级元素的 padding, border 和标准的盒模型一致，<br>但是如果 width + padding + border + 指定的margin 小于其父元素的宽度时，<br>浏览器会通过补margin 来填满整行。</p>
-<h3 id="块级元素与overflow">块级元素与overflow<a class="post-anchor" href="#块级元素与overflow"></a></h3><p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，<br>当指定了 width 和 height 的值时，内容超出规定的尺寸就会溢出，<br>元素的尺寸并不会随着内容改变。<br>这时候使用 overflow 可以指定内容超出时的行为，当<br>然， overflow 只对块级元素起作用，指定当内容超出块级容器的时候，<br>块级元素该如何处理内容的显示。overflow 可能的值如下表<br>/  值   / 说明  /<br>/  —-  / —-  /<br>/ visible  / 默认值，如果内容超出容器尺寸，不做任何处理 /<br>/ hidden  / 超出的内容被截断并隐藏 /<br>/ scroll  / 无论内容是否超出，总是显示滚动条。可以控制只显示一个方向的滚动条，这时应该设置 overflow-x 和 overflow-y /<br>/ auto  / 内容没有超出时，不显示滚动条；内容超出时，显示滚动条，且如果只有一个方向超出，那么只显示该方向上的滚动条 /</p>
+<h3 id="块级元素与overflow">块级元素与overflow<a class="post-anchor" href="#块级元素与overflow"></a></h3><p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，<br>当指定了 width 和 height 的值时，内容超出规定的尺寸就会溢出，<br>元素的尺寸并不会随着内容改变。<br>这时候使用 overflow 可以指定内容超出时的行为，当<br>然， overflow 只对块级元素起作用，指定当内容超出块级容器的时候，<br>块级元素该如何处理内容的显示。overflow 可能的值如下表</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>visible</td>
+<td>默认值，如果内容超出容器尺寸，不做任何处理</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>超出的内容被截断并隐藏</td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>无论内容是否超出，总是显示滚动条。可以控制只显示一个方向的滚动条，这时应该设置 overflow-x 和 overflow-y</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>内容没有超出时，不显示滚动条；内容超出时，显示滚动条，且如果只有一个方向超出，那么只显示该方向上的滚动条</td>
+</tr>
+</tbody></table>
 
 
   
