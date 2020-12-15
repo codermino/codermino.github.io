@@ -301,9 +301,18 @@ a:active &#123;&#125;</code></pre>
 </li>
 <li><p>event.srcElement问题<br>说明：IE下，event对象有srcElement属性，但是没有target属性；Firefox下，even对象有target属性，但是没有srcElement属性。<br>解决方法：使用srcObj =event.srcElement ?event.srcElement : event.target;</p>
 </li>
+</ol>
+<p><strong>监听输入框输入事件</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chnputchang</span>(<span class="hljs-params">event</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> eventObj = event.srcElement ? event.srcElement : event.target;
+  <span class="hljs-keyword">let</span> inputValue = eventObj.value;
+  <span class="hljs-built_in">console</span>.log(inputValue)
+&#125;</code></pre>
+
+<ol start="3">
 <li><p>事件绑定<br>IE：dom.attachEvent();<br>其他浏览器：dom.addEventListener();<br>标准浏览器采用事件捕获的方式对应IE的事件冒泡机制（即标准由最外元素至最内元素或者IE由最内元素到最外元素）最后标准方亦觉得IE这<br>方面的比较合理，所以便将事件冒泡纳入了标准，这也是addEventListener第三个参数的由来，而且事件冒泡作为了默认值。</p>
 </li>
-<li><p>ajax略有不同<br>IE:ActiveXObject<br>其他：xmlHttpReuest</p>
+<li><p>ajax略有不同<br>IE:ActiveXObject (在IE 5和IE 6)<br>其他：xmlHttpReuest</p>
 </li>
 </ol>
 
