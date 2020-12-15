@@ -246,7 +246,7 @@
 </tbody></table>
 <h3 id="行内元素和块级元素盒模型区别">行内元素和块级元素盒模型区别<a class="post-anchor" href="#行内元素和块级元素盒模型区别"></a></h3><p>行内元素尺寸由内含的内容决定，盒模型中 padding, border 与块级元素并无差异，<br>都是标准的盒模型，但是 margin 却只有水平方向的值，垂直方向并没有起作用。</p>
 <p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，<br>当指定了 width 和 height 的值时，内容超出块级元素的尺寸就会溢出，<br>这时块级元素要呈现什么行为要看其 overflow 的值.<br>块级元素的 padding, border 和标准的盒模型一致，<br>但是如果 width + padding + border + 指定的margin 小于其父元素的宽度时，<br>浏览器会通过补margin 来填满整行。</p>
-<h3 id="块级元素与overflow">块级元素与overflow<a class="post-anchor" href="#块级元素与overflow"></a></h3><p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，<br>当指定了 width 和 height 的值时，内容超出规定的尺寸就会溢出，<br>元素的尺寸并不会随着内容改变。<br>这时候使用 overflow 可以指定内容超出时的行为，当<br>然， overflow 只对块级元素起作用，指定当内容超出块级容器的时候，<br>块级元素该如何处理内容的显示。overflow 可能的值如下表：<br>|  值   | 说明  |<br>|  —-  | —-  |<br>| visible  | 默认值，如果内容超出容器尺寸，不做任何处理 |<br>| hidden  | 超出的内容被截断并隐藏 |<br>| scroll  | 无论内容是否超出，总是显示滚动条。可以控制只显示一个方向的滚动条，这时应该设置 overflow-x 和 overflow-y |<br>| auto  | 内容没有超出时，不显示滚动条；内容超出时，显示滚动条，且如果只有一个方向超出，那么只显示该方向上的滚动条 |</p>
+<h3 id="块级元素与overflow">块级元素与overflow<a class="post-anchor" href="#块级元素与overflow"></a></h3><p>块级元素当没有明确指定 width 和 height 值时，块级元素尺寸由内容确定，<br>当指定了 width 和 height 的值时，内容超出规定的尺寸就会溢出，<br>元素的尺寸并不会随着内容改变。<br>这时候使用 overflow 可以指定内容超出时的行为，当<br>然， overflow 只对块级元素起作用，指定当内容超出块级容器的时候，<br>块级元素该如何处理内容的显示。overflow 可能的值如下表<br>/  值   / 说明  /<br>/  —-  / —-  /<br>/ visible  / 默认值，如果内容超出容器尺寸，不做任何处理 /<br>/ hidden  / 超出的内容被截断并隐藏 /<br>/ scroll  / 无论内容是否超出，总是显示滚动条。可以控制只显示一个方向的滚动条，这时应该设置 overflow-x 和 overflow-y /<br>/ auto  / 内容没有超出时，不显示滚动条；内容超出时，显示滚动条，且如果只有一个方向超出，那么只显示该方向上的滚动条 /</p>
 
 
   
