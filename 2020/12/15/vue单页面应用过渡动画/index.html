@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#router配置"><span class="toc-text">router配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1-使用animate-css"><span class="toc-text">Demo1(使用animate.css)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2-使用原生js"><span class="toc-text">Demo2(使用原生js)</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#router配置"><span class="toc-text">router配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1-使用animate-css"><span class="toc-text">Demo1(使用animate.css)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2-使用原生js"><span class="toc-text">Demo2(使用原生js)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mode"><span class="toc-text">mode</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -296,6 +296,12 @@
     <span class="hljs-attribute">visibility</span>: visible;
     <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
   &#125;</code></pre>
+
+<h3 id="mode">mode<a class="post-anchor" href="#mode"></a></h3><p><transition> 的默认行为 - 进入和离开同时发生。<br>同时生效的进入和离开的过渡不能满足所有要求，所以 Vue 提供了过渡模式</transition></p>
+<ul>
+<li>in-out：新元素先进行过渡，完成之后当前元素过渡离开。</li>
+<li>out-in：当前元素先进行过渡，完成之后新元素过渡进入。</li>
+</ul>
 
 
   
