@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-15T09:30:05.362Z</updated>
+  <updated>2020-12-16T07:19:59.838Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js的rAF的使用和优点</title>
+    <link href="https://codermino.github.io/2020/12/16/js%E7%9A%84rAF%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BC%98%E7%82%B9/"/>
+    <id>https://codermino.github.io/2020/12/16/js%E7%9A%84rAF%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BC%98%E7%82%B9/</id>
+    <published>2020-12-16T05:44:51.000Z</published>
+    <updated>2020-12-16T07:19:59.838Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;动画&quot;&gt;动画&lt;a class=&quot;post-anchor&quot; href=&quot;#动画&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;我们经常通过setInterval或setTimeout定时修改DOM、CSS实现动画,&lt;/p&gt;
+&lt;p&gt;利用seTimeout实现的动画在某些低端机上会出现卡顿
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="js的rAF的使用和优点" scheme="https://codermino.github.io/tags/js%E7%9A%84rAF%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BC%98%E7%82%B9/"/>
+    
+  </entry>
   
   <entry>
     <title>HTML行内元素与块级元素</title>
@@ -492,31 +517,6 @@
     
     
       <category term="前端性能优化" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的$set使用总结</title>
-    <link href="https://codermino.github.io/2020/11/11/vue%E7%9A%84-set%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
-    <id>https://codermino.github.io/2020/11/11/vue%E7%9A%84-set%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</id>
-    <published>2020-11-11T08:35:25.000Z</published>
-    <updated>2020-11-11T08:39:24.333Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;vue的-set使用总结&quot;
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的$set使用总结" scheme="https://codermino.github.io/tags/vue%E7%9A%84-set%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   
