@@ -249,24 +249,33 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-        <span class="hljs-selector-class">.sj</span>&#123;
-            <span class="hljs-attribute">width</span>:<span class="hljs-number">50px</span>;
-            <span class="hljs-attribute">height</span>:<span class="hljs-number">50px</span>;
-            <span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> solid red;
-            <span class="hljs-attribute">position</span>:absolute;
-            <span class="hljs-attribute">left</span>:<span class="hljs-number">0</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+        .sj&#123;
+            width:50px;
+            height:50px;
+            border:1px solid red;
+            position: relative;;
+            left:0
         &#125;
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+        #button&#123;
+            float: right;
+        &#125;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sj"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sj"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sj"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sj"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"button"</span>&gt;</span>开始动画<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
         <span class="hljs-comment">//ele为要移动的盒子，target为目标位置（像素），spd为计数器的频率</span>
         <span class="hljs-comment">// var ele = document.getElementById('sj')</span>
-        <span class="hljs-keyword">const</span> startTime = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
-        <span class="hljs-built_in">console</span>.log(startTime)
-        animateWidth();
+        <span class="hljs-comment">// var button = document.getElementById('button')</span>
+        <span class="hljs-comment">// button.onclick=()=&gt;&#123;</span>
+        <span class="hljs-comment">//     animateWidth();</span>
+        <span class="hljs-comment">// &#125;</span>
+        <span class="hljs-comment">// const startTime = +new Date();</span>
+        <span class="hljs-comment">// console.log(startTime)</span>
         <span class="hljs-comment">// animate(ele,1000/60)</span>
         <span class="hljs-comment">// function animate(ele,spd)&#123;</span>
         <span class="hljs-comment">//     var start = Date.now(); // remember start time</span>
@@ -280,14 +289,37 @@
         <span class="hljs-comment">//         ele.style.left = ele.offsetLeft + step + 'px'</span>
         <span class="hljs-comment">//     &#125;, spd);</span>
         <span class="hljs-comment">// &#125;</span>
-        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animateWidth</span>(<span class="hljs-params"></span>) </span>&#123;
-            <span class="hljs-keyword">var</span> ele = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'sj'</span>)
-            <span class="hljs-keyword">let</span> timePass = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>() - startTime;
-            <span class="hljs-keyword">const</span> curOffsetLeft = ele.offsetLeft;
-            ele.style.left = <span class="hljs-number">10</span> + curOffsetLeft + <span class="hljs-string">'px'</span>;
-            <span class="hljs-keyword">if</span>(timePass &lt; <span class="hljs-number">2000</span>) &#123;
-                requestAnimationFrame(animateWidth)
-            &#125;
+
+
+        <span class="hljs-comment">// function animateWidth() &#123;</span>
+        <span class="hljs-comment">//     var ele = document.getElementById('sj')</span>
+        <span class="hljs-comment">//     let timePass = +new Date() - startTime;</span>
+        <span class="hljs-comment">//     const curOffsetLeft = ele.offsetLeft;</span>
+        <span class="hljs-comment">//     ele.style.left = 1 + curOffsetLeft + 'px';</span>
+        <span class="hljs-comment">//     if(timePass &lt; 3000) &#123;</span>
+        <span class="hljs-comment">//         requestAnimationFrame(animateWidth)</span>
+        <span class="hljs-comment">//     &#125;</span>
+        <span class="hljs-comment">// &#125;</span>
+
+
+        <span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'button'</span>)
+        <span class="hljs-keyword">var</span> ele = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'sj'</span>)
+        <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>;
+        button.onclick=<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+            animateTimeout(ele);
+        &#125;
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animateTimeout</span>(<span class="hljs-params">ele</span>) </span>&#123;
+            <span class="hljs-keyword">const</span> startTime = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+            timer = setInterval(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+                <span class="hljs-keyword">const</span> nowtime = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+                <span class="hljs-keyword">const</span> spendTime = nowtime - startTime;
+                <span class="hljs-keyword">const</span> curOffsetLeft = ele.offsetLeft; 
+                ele.style.left = <span class="hljs-number">1</span> + curOffsetLeft + <span class="hljs-string">'px'</span>;
+                <span class="hljs-keyword">if</span>(spendTime &gt;= <span class="hljs-number">2000</span>)&#123;
+                    clearInterval(timer)
+                &#125;
+            &#125;,<span class="hljs-number">1000</span>/<span class="hljs-number">60</span>)
         &#125;
     </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
