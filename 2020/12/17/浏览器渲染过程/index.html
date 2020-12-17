@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2020/12 - Mino
+      浏览器渲染过程 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#webkit引擎的处理流程"><span class="toc-text">webkit引擎的处理流程</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,102 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020/12
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/12/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B/" title="浏览器渲染过程">
-                <span>2020/12/17</span>
-                <span>浏览器渲染过程</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/16/js%E7%9A%84rAF%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BC%98%E7%82%B9/" title="js的rAF的使用和优点">
-                <span>2020/12/16</span>
-                <span>js的rAF的使用和优点</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/15/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/" title="HTML行内元素与块级元素">
-                <span>2020/12/15</span>
-                <span>HTML行内元素与块级元素</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/15/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/" title="前端常见的浏览器兼容性问题">
-                <span>2020/12/15</span>
-                <span>前端常见的浏览器兼容性问题</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/15/vue%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/" title="vue单页面应用过渡动画">
-                <span>2020/12/15</span>
-                <span>vue单页面应用过渡动画</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/14/BFC/" title="BFC">
-                <span>2020/12/14</span>
-                <span>BFC</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/14/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" title="==和===的使用场景">
-                <span>2020/12/14</span>
-                <span>==和===的使用场景</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/14/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/" title="meta标签用法">
-                <span>2020/12/14</span>
-                <span>meta标签用法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/07/js%E5%B0%86%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/" title="js将多维数组转为一维数组">
-                <span>2020/12/07</span>
-                <span>js将多维数组转为一维数组</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/07/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B9%B6%E4%BC%A0%E9%80%92formdata/" title="vue自定义图片上传并传递formdata">
-                <span>2020/12/07</span>
-                <span>vue自定义图片上传并传递formdata</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2020/12/page/2/">2</a>
-</div>
-</div>
+      <div class="title">浏览器渲染过程</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/17</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/浏览器渲染过程">浏览器渲染过程</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="webkit引擎的处理流程">webkit引擎的处理流程<a class="post-anchor" href="#webkit引擎的处理流程"></a></h3><p><a href="/images/webkit.webp" data-caption data-fancybox="images"><img src="/images/webkit.webp" alt></a></p>
+<p>所有浏览器的引擎工作流程都差不多，如上图大致分5步：<br>创建DOM tree –&gt; 创建Style Rules -&gt; 构建Render tree -&gt; 布局Layout –&gt; 绘制Painting<br>第一步，用HTML分析器，分析HTML元素，构建一颗DOM树。<br>第二步：用CSS分析器，分析CSS文件和元素上的inline样式，生成页面的样式表。<br>第三步：将上面的DOM树和样式表，关联起来，构建一颗Render树。这一过程又称为Attachment。<br>        每个DOM节点都有attach方法，接受样式信息，返回一个render对象（又名renderer）。<br>        这些render对象最终会被构建成一颗Render树。<br>第四步：有了Render树后，浏览器开始布局，会为每个Render树上的节点确定一个在显示屏上出现的精确坐标值。<br>第五步：Render数有了，节点显示的位置坐标也有了，最后就是调用每个节点的paint方法，让它们显示出来。</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/16/js%E7%9A%84rAF%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BC%98%E7%82%B9/">js的rAF的使用和优点</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/17/浏览器渲染过程/">https://codermino.github.io/2020/12/17/浏览器渲染过程/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
