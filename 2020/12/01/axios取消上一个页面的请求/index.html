@@ -224,7 +224,7 @@ util.http.interceptors.request.use(function (config) &#123;
 util.http.interceptors.response.use(function (res) &#123;
   return res
 &#125;, function (error) &#123;
-  if (axios.isCancel(error)) &#123; &#x2F;&#x2F; 判断错误是否是取消请求导致的,取消请求的情况下，终端Promise调用链
+  if (axios.isCancel(error)) &#123; &#x2F;&#x2F; 判断错误是否是取消请求导致的,取消请求的情况下，中断Promise调用链
     return new Promise(() &#x3D;&gt; &#123;&#125;)
   &#125;
 &#125;)</code></pre>
