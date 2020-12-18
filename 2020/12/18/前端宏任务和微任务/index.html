@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      前端宏任务和微任务 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#宏任务："><span class="toc-text">宏任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微任务："><span class="toc-text">微任务：</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,112 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/12/18/%E5%89%8D%E7%AB%AF%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/" title="前端宏任务和微任务">
-                <span>2020/12/18</span>
-                <span>前端宏任务和微任务</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/17/vue%E7%9A%84activated%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="vue的activated生命周期">
-                <span>2020/12/17</span>
-                <span>vue的activated生命周期</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B/" title="浏览器渲染过程">
-                <span>2020/12/17</span>
-                <span>浏览器渲染过程</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/16/js%E7%9A%84rAF%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BC%98%E7%82%B9/" title="js的rAF的使用和优点">
-                <span>2020/12/16</span>
-                <span>js的rAF的使用和优点</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/15/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/" title="HTML行内元素与块级元素">
-                <span>2020/12/15</span>
-                <span>HTML行内元素与块级元素</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/15/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/" title="前端常见的浏览器兼容性问题">
-                <span>2020/12/15</span>
-                <span>前端常见的浏览器兼容性问题</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/15/vue%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/" title="vue单页面应用过渡动画">
-                <span>2020/12/15</span>
-                <span>vue单页面应用过渡动画</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/14/BFC/" title="BFC">
-                <span>2020/12/14</span>
-                <span>BFC</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/14/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" title="==和===的使用场景">
-                <span>2020/12/14</span>
-                <span>==和===的使用场景</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/12/14/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/" title="meta标签用法">
-                <span>2020/12/14</span>
-                <span>meta标签用法</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a>
-</div>
-</div>
+      <div class="title">前端宏任务和微任务</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/18</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/前端宏任务和微任务">前端宏任务和微任务</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="宏任务：">宏任务：<a class="post-anchor" href="#宏任务："></a></h3><p>分类：setTimeout setInterval requrestAnimationFrame</p>
+<ol>
+<li>宏任务所处的队列就是宏任务队列</li>
+<li>第一个宏任务列中只有一个任务，执行主线程的js代码</li>
+<li>宏任务队列可以有多个</li>
+</ol>
+<h3 id="微任务：">微任务：<a class="post-anchor" href="#微任务："></a></h3><p>分类：new promise().then(回调) process.nextTick</p>
+<ol>
+<li>微任务所处的队列 就是微任务队列</li>
+<li>只有一个微任务队列</li>
+<li>在上一个宏任务队列执行完毕后如果有微任务队列就会执行微任务队列中所有的任务</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/17/vue%E7%9A%84activated%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">vue的activated生命周期</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/18/前端宏任务和微任务/">https://codermino.github.io/2020/12/18/前端宏任务和微任务/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
