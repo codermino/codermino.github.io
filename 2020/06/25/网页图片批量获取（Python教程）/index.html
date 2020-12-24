@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      网页图片批量获取（Python教程） - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#principle"><span class="toc-text">图片下载（知识点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">urllib 库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">使用 urlopen() 发送请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">IO open()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">OS库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">正则表达式（知识点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">为什么使用正则表达式？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">正则表达式的重复限定符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">正则表达式的特殊字符类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">正则表达式的分组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">re 库的 findall 函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">正则表达式的懒惰匹配算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#link"><span class="toc-text">图片链接提取（例题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#content"><span class="toc-text">文本内容分析（例题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#download"><span class="toc-text">图片批量下载（例题）</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">网页图片批量获取（Python教程）</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/06/25</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/python">python</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/爬虫下载图片">爬虫下载图片</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/spiderre3.jpg" data-caption data-fancybox="images"><img src="/images/spiderre3.jpg" alt></a></p>
+<h3 id="principle">图片下载（知识点）<a class="post-anchor" href="#use"></a><a class="post-anchor" href="#principle"></a></h3>
+
+<h4>urllib 库<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">我们首先了解一下 urllib 库，它是 Python 内置的 HTTP 请求库，也就是说我们不需要额外安装即可使用，它包含四个模块：
+
+<span class="hljs-code">    第一个模块 request，它是最基本的 HTTP 请求模块，我们可以用它来模拟发送一请求。</span>
+<span class="hljs-code">    就像在浏览器里输入网址，然后敲击回车一样，只需要给库方法传入 URL ，</span>
+<span class="hljs-code">    还有额外的参数，就可以模拟实现这个过程了；</span>
+
+<span class="hljs-code">    第二个 error 模块即异常处理模块，如果出现请求错误，我们可以捕获这些异常，</span>
+<span class="hljs-code">    然后进行重试或其他操作，保证程序不会意外终止；</span>
+
+<span class="hljs-code">    第三个 parse 模块是一个工具模块，提供了许多 URL 处理方法，比如拆分、解析、合并等等的方法；</span>
+
+<span class="hljs-code">    第四个模块是 robotparser，主要是用来识别网站的 robots.txt 文件，</span>
+<span class="hljs-code">    然后判断哪些网站可以爬，哪些网站不可以爬，其实用的比较少。</span></code></pre>
+
+<h4>使用 urlopen() 发送请求<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">urllib.request 模块提供了最基本的构造 HTTP 请求的方法，利用它可以模拟浏览器的一个请求发起过程，同时它还带有处理 authenticaton（授权验证）、 redirections（重定向)、 cookies（浏览器 Cookies）以及其它内容。
+
+接下来，我们来感受下它的强大之处，以百度为例 ，我们把网页爬取下来。
+
+code:
+<span class="hljs-code">    import urllib.request</span>
+<span class="hljs-code">    response = urllib.request.urlopen('https://www.baidu.com')</span>
+<span class="hljs-code">    print(response.read().decode('utf-8'))</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    urllib.request.urlopen（URL） ：发送 HTTP 请求，返回为 HTTPResponse；</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    response.read() : 获取 HTTP 请求之后响应的内容。</span></code></pre>
+
+<h4>IO open()<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown"> file object = open(file<span class="hljs-emphasis">_name [, access_</span>mode][, buffering])
+
+
+<span class="hljs-code">    打开 file 对象，并返回对应的数据流。如果打开失败，则抛出 IOError异常。</span>
+<span class="hljs-code">    file_name： file_name 变量是一个包含了你要访问的文件名称的字符串值；</span>
+<span class="hljs-code">    access_mode ： access_mode 决定了打开文件的模式：只读( r)，写入(w)，追加(a)，创建(x)等。这个参数是非强制的，默认文件访问模式为只读( r)；</span>
+<span class="hljs-code">    buffering : 如果 buffering 的值被设为 0，就不会有寄存。如果 buffering 的值取 1，访问文件时会寄存行。如果将 buffering 的值设为大于 1 的整数，表明这就是寄存区的缓冲大小。如果取负值，则寄存区的缓冲大小为系统默认。</span>
+
+上面介绍了这么多知识点，接下来举个“栗子”吧，让我们体验下如何使用 open() 函数。
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 打开一个文件(文件必须已经存在)</span>
+<span class="hljs-code">    fo = open("example.txt", "w")</span>
+<span class="hljs-code">    fo.write( """这个博主值得你关注!</span>
+<span class="hljs-code">    这篇博客值得你点赞！</span>
+<span class="hljs-code">    """)</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 关闭打开的文件</span>
+<span class="hljs-code">    fo.close()</span></code></pre>
+
+<h4>OS库<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">os 模块代表了程序所在的操作系统，主要用于获取程序运行所在操作系统的相关信息。
+
+举个“栗子”：创建目录：
+<span class="hljs-code">    import os</span>
+<span class="hljs-code">    # 创建的目录</span>
+<span class="hljs-code">    path = "/tmp/home/monthly/daily/hourly"</span>
+<span class="hljs-code">    os.mkdir(path);</span>
+<span class="hljs-code">    print("目录已创建")</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    os.mkdir()创建该目录，若目录已存在会报错</span>
+<span class="hljs-code">    </span>
+再举个“栗子”：判断文件或目录是否已存在：
+<span class="hljs-code">    import os</span>
+<span class="hljs-code">    exists = os.path.exists("foo.txt")</span>
+<span class="hljs-code">    if exists:</span>
+<span class="hljs-code">        abspath = os.path.abspath("foo.txt")</span>
+<span class="hljs-code">        print(abspath)</span>
+<span class="hljs-code">    else:</span>
+<span class="hljs-code">        print("文件不存在")</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    os.path.exists()判断目录或文件是否存在</span>
+<span class="hljs-code">    os.path.abspath()返回绝对路径</span></code></pre>
+
+
+<h3 id="re">正则表达式（知识点）<a class="post-anchor" href="#re"></a><a class="post-anchor" href="#re"></a></h3>
+
+<h4>为什么使用正则表达式？<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">1、典型的搜索和替换操作，要求您提供与预期的搜索结果匹配的确切文本。虽然这种技术，
+对于对静态文本执行简单搜索和替换任务，可能已经足够了，但它缺乏灵活性，
+若采用这种方法搜索动态文本，也不是不可能，至少也会变得很困难。
+
+2、比如说，判断邮箱格式是否正确、手机号格式是否正确。
+这种需求如果不使用正则匹配的话，那么就需要写很多逻辑进行 equals 操作。
+想一想都很麻烦，麻烦的原因是 equals 操作只能确切匹配，缺乏灵活度。
+
+3、而正则就不同了，正则可以使用限定符，匹配字符出现的次数，这样一来灵活度都高了。
+
+4、正则表达式是一个以简单直观的方式通过寻找模式匹配文本的工具</code></pre>
+
+<p><a href="/images/spiderre.jpg" data-caption data-fancybox="images"><img src="/images/spiderre.jpg" alt></a><br><a href="/images/spiderre2.jpg" data-caption data-fancybox="images"><img src="/images/spiderre2.jpg" alt></a></p>
+<h4>正则表达式的重复限定符<a class="post-anchor" href="#undefined"></a></h4>
+
+<pre><code class="hljs markdown">限定符用来指定正则表达式的一个给定组件，必须要出现多少次才能满足匹配。
+有 * 或 + 或 ? 或 &#123;n&#125; 或 &#123;n,&#125; 或 &#123;n,m&#125; 共 6种。
+如上图</code></pre>
+<h4>正则表达式的特殊字符类<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">如上图</code></pre>
+
+
+<h4>正则表达式的分组<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">要实现分组很简单，使用 ()即可。
+从正则表达式的左边开始看，看到的第一个左括号 (表示表示第一个分组，第二个表示第二个分组，依次类推。
+
+a='<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://support.google.com/chrome/?p=ui_hotword_search"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span></span>python正则表达式之分组<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span>dfsl<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>'
+print(re.search(r'<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">a.*</span>&gt;</span></span>(.*)<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span>',a).group(1))
+
+输出： python正则表达式之分组
+
+<span class="hljs-code">    需要注意的是，有一个隐含的全局分组（就是索引号为 0的分组），就是整个正则表达式匹配的结果。</span>
+<span class="hljs-code">    如果正则表达式包含组，则re.findall()返回组的列表</span></code></pre>
+
+<h4>re 库的 findall 函数<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">在字符串中，找到正则表达式所匹配的所有子串，并返回一个列表。如果没有找到匹配的，则返回空列表。
+举个“栗子”：查找字符串中的所有数字。
+ort re
+result1 = re.findall(r'\d+', 'runoob 123 google 456')
+result2 = re.findall(r'\d+', 'run88oob123google456', 0, 10)
+print(result1)
+print(result2)
+
+['123', '456']
+['88', '12']</code></pre>
+
+<h4>正则表达式的懒惰匹配算法<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs markdown">针对 正则表达式的重复限定符
+默认情况下，Python正则表达式的匹配算法采用贪婪性算法（尽可能多的重复前导字符）
+如果正则表达式的重复限定符的后面加后缀?，则正则表达式引擎使用懒惰性匹配算法（尽可能少的重复前导字符）</code></pre>
+
+<h3 id="link">图片链接提取（例题）<a class="post-anchor" href="#link"></a><a class="post-anchor" href="#link"></a></h3>
+<pre><code class="hljs markdown">使用 urllib 访问 http://www.tencent.com/ 网页，提取其网页中所有的图片链接。
+
+import urllib.request as req
+import re
+
+"""
+爬取网页内容
+"""
+def getHTML(url):
+<span class="hljs-code">    response = req.urlopen(url)</span>
+<span class="hljs-code">    return response.read().decode('utf-8') # 所爬取网站为utf-8编码</span>
+
+"""
+获取网页中全部图片的链接
+<span class="hljs-bullet">- </span>如果网页爬取的超链接为相对路径，需要与网页根路径进行补全
+<span class="hljs-bullet">- </span>网页爬取的超链接如果有重复项，需要去重（不一定有重复，但保险起见）
+"""
+def getImgUrls(html):
+<span class="hljs-code">    root = 'http://www.tencent.com/'</span>
+<span class="hljs-code">    imgUrls = re.findall(r'img src="(.*?)".*&gt;', html)</span>
+<span class="hljs-code">    temp = []</span>
+<span class="hljs-code">    for url in imgUrls:</span>
+<span class="hljs-code">        if url not in temp:</span>
+<span class="hljs-code">            temp.append(url)</span>
+<span class="hljs-code">    for index, url in enumerate(temp):</span>
+<span class="hljs-code">        if root not in url:</span>
+<span class="hljs-code">            temp[index] = root + url</span>
+<span class="hljs-code">    return temp</span>
+
+if <span class="hljs-strong">__name__</span> == '<span class="hljs-strong">__main__</span>':
+<span class="hljs-code">    url = 'http://www.tencent.com/'</span>
+<span class="hljs-code">    html = getHTML(url)</span>
+<span class="hljs-code">    imgUrls = getImgUrls(html)</span>
+<span class="hljs-code">    for url in imgUrls:</span>
+<span class="hljs-code">        print(url)</span>
+
+输出效果（运行时间为2020年5月7日，网站内容可能会变哦）：
+<span class="hljs-code">    http://www.tencent.com//data/index/index_detail_1.jpg</span>
+<span class="hljs-code">    http://www.tencent.com//data/index/index_detail_2.jpg</span>
+<span class="hljs-code">    http://www.tencent.com//data/index/index_detail_3.jpg</span>
+<span class="hljs-code">    http://www.tencent.com//img/index/tencent_logo.png</span></code></pre>
+
+<h3 id="content">文本内容分析（例题）<a class="post-anchor" href="#content"></a><a class="post-anchor" href="#content"></a></h3>
+<pre><code class="hljs markdown">通过路径 /root/score.txt，以只读的方式读取 score.txt 文件；
+获取 2016年一本线最高的的三个省份，并将其打印到控制台（格式为： 省份<span class="hljs-strong">*****</span><span class="hljs-strong">*****</span>分数）
+
+score.txt 文件数据类似如下：
+<span class="hljs-code">    甘肃	490	632	621	625	630	597	608	</span>
+<span class="hljs-code">    吉林	530	658	639	649	634	599	615	</span>
+<span class="hljs-code">    新疆	464	673	617	630	612	534	578	</span>
+<span class="hljs-code">    广西	502	642	601	620	603	584	592	</span>
+<span class="hljs-code">    上海	360	489	475	480	/	/	/	</span>
+<span class="hljs-code">    广东	508	641	600	613	619	585	597	</span>
+<span class="hljs-code">    内蒙古	484	641	615	627	623	558	597	</span>
+<span class="hljs-code">    陕西	470	665	628	638	639	596	615	</span>
+<span class="hljs-code">    四川	532	665	626	643	651	612	623	</span>
+<span class="hljs-code">    黑龙江	486	667	623	641	628	580	600	</span>
+<span class="hljs-code">    安徽	518	655	620	631	647	608	621	</span>
+<span class="hljs-code">    河北	525	682	654	667	669	640	649	</span>
+<span class="hljs-code">    江西	529	645	614	629	613	589	599	</span>
+<span class="hljs-code">    浙江	600	692	670	679	676	652	661	</span>
+<span class="hljs-code">    湖南	517	662	635	644	646	593	609	</span>
+<span class="hljs-code">    宁夏	465	637	565	597	590	481	526	</span>
+<span class="hljs-code">    山东	537	679	655	665	660	597	637	</span>
+<span class="hljs-code">    河南	523	665	644	652	659	629	638	</span>
+<span class="hljs-code">    山西	519	639	617	625	638	579	599	</span>
+<span class="hljs-code">    天津	512	659	634	649	600	537	567	</span>
+<span class="hljs-code">    北京	548	662	607	629	613	570	592	</span>
+<span class="hljs-code">    重庆	525	671	644	655	654	634	642	</span>
+<span class="hljs-code">    云南	525	680	653	663	663	627	639	</span>
+<span class="hljs-code">    青海	416	596	562	580	571	502	533	</span>
+<span class="hljs-code">    江苏	353	404	376	386	384	355	366	</span>
+<span class="hljs-code">    福建	465	632	614	623	606	485	576	</span>
+<span class="hljs-code">    海南	602	829	710	750	737	672	700	</span>
+<span class="hljs-code">    贵州	473	671	627	643	658	600	616	</span>
+<span class="hljs-code">    辽宁	498	660	624	637	641	607	621	</span>
+<span class="hljs-code">    湖北	512	665	622	640	637	604	614	﻿</span>
+<span class="hljs-code">    </span>
+以第一行数据为例，对数据结构进行说明：
+<span class="hljs-code">    甘肃 490 632 621 625 630 597 608 ， 第一列为省份，</span>
+<span class="hljs-code">    第二列为 2016年的一本线分数 490，</span>
+<span class="hljs-code">    第三列为 2015年的一本线分数 632，</span>
+<span class="hljs-code">    其次类推，分别是 2014、 2013、 2012、 2011、 2010 年的分数线。</span>
+
+代码：
+<span class="hljs-code">    # 先读取所有省份和对应的2016年一本线分数，分别存入列表prov和score</span>
+<span class="hljs-code">    prov, score = [], []</span>
+<span class="hljs-code">    with open(r'/root/score.txt', 'r') as f:</span>
+<span class="hljs-code">        for line in f.readlines():</span>
+<span class="hljs-code">            t = line.split()</span>
+<span class="hljs-code">            prov.append(t[0])</span>
+<span class="hljs-code">            score.append(int(t[1]))</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 对prov和score中的数据进行排序</span>
+<span class="hljs-code">    temp = list(zip(prov, score)) # 把prov和score压缩为一个列表tmp</span>
+<span class="hljs-code">    '''</span>
+<span class="hljs-code">    对temp排序，当列表元素是元组时，</span>
+<span class="hljs-code">    需要以元组的第二个元素进行排序，即根据一本线分数排序，</span>
+<span class="hljs-code">    所以写了takeSecond()函数</span>
+<span class="hljs-code">    '''</span>
+<span class="hljs-code">    def takeSecond(elem):</span>
+<span class="hljs-code">        return elem[1]</span>
+<span class="hljs-code">    temp.sort(reverse=True, key=takeSecond) # 降序排序</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 获取 2016年一本线最高的的三个省份，并将其打印到控制台</span>
+<span class="hljs-code">    for i in range(3):</span>
+<span class="hljs-code">        p = str(temp[i][0])</span>
+<span class="hljs-code">        s = str(temp[i][1])</span>
+<span class="hljs-code">        print(p + '**********' + s)</span>
+<span class="hljs-code">        </span>
+效果：
+<span class="hljs-code">    海南**********602</span>
+<span class="hljs-code">    浙江**********600</span>
+<span class="hljs-code">    北京**********548</span></code></pre>
+
+<h3 id="download">图片批量下载（例题）<a class="post-anchor" href="#download"></a><a class="post-anchor" href="#download"></a></h3>
+<pre><code class="hljs markdown">以http://www.tencent.com/该网址为例，将网页上的所有图片批量下载到一个文件夹中。
+三个步骤就可以完成了
+<span class="hljs-code">    如何获取 HTML 源码，</span>
+<span class="hljs-code">    如何获取 HTML 源码上的指定标签，</span>
+<span class="hljs-code">    如何使用 OS 模块完成目录的创建。</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    import urllib.request as req</span>
+<span class="hljs-code">    import re</span>
+<span class="hljs-code">    import os</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 获取网页的HTML源码,返回HTML源码</span>
+<span class="hljs-code">    def getHTML(url):</span>
+<span class="hljs-code">        response = req.urlopen(url)</span>
+<span class="hljs-code">        return response.read().decode('utf-8')</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 从HTML代码中提取图片的网址,返回图片链接列表</span>
+<span class="hljs-code">    def getImgUrls(html):</span>
+<span class="hljs-code">        root = 'http://www.tencent.com/'</span>
+<span class="hljs-code">        imgUrls = re.findall(r'img src="(.*?)".*&gt;', html)</span>
+<span class="hljs-code">        temp = []</span>
+<span class="hljs-code">        for url in imgUrls:</span>
+<span class="hljs-code">            if url not in temp:</span>
+<span class="hljs-code">                temp.append(url)</span>
+<span class="hljs-code">        for index, url in enumerate(temp):</span>
+<span class="hljs-code">            if root not in url:</span>
+<span class="hljs-code">                temp[index] = root + url</span>
+<span class="hljs-code">        return temp</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 下载一幅图片，图片的链接为url，下载后的图片名字为name</span>
+<span class="hljs-code">    def downloadImg(url, name):</span>
+<span class="hljs-code">        response = req.urlopen(url)</span>
+<span class="hljs-code">        img = open(name, 'wb') # 以二进制形式写入</span>
+<span class="hljs-code">        img.write(response.read())</span>
+<span class="hljs-code">        img.close()</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    # 将url对应网页上所有图片下载到dirPath文件夹</span>
+<span class="hljs-code">    def downloadAllImg(url, dirPath):</span>
+<span class="hljs-code">        # 若文件夹不存在，则创建</span>
+<span class="hljs-code">        exists = os.path.exists(dirPath)</span>
+<span class="hljs-code">        if not exists:</span>
+<span class="hljs-code">           os.mkdir(dirPath) </span>
+<span class="hljs-code">        </span>
+<span class="hljs-code">        # 获取网页上所有图片的网址</span>
+<span class="hljs-code">        html = getHTML(url)</span>
+<span class="hljs-code">        imgUrls = getImgUrls(html)</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">        print(os.path)</span>
+<span class="hljs-code">        # 下载图片，注意异常处理</span>
+<span class="hljs-code">        for url in imgUrls:</span>
+<span class="hljs-code">            imgName = os.path.split(url)[1] # 获取文件名</span>
+<span class="hljs-code">            filePath = os.path.join(dirPath, imgName) # 存放入文件夹内的完整路径名</span>
+<span class="hljs-code">            try:</span>
+<span class="hljs-code">                downloadImg(url, filePath)</span>
+<span class="hljs-code">            except:</span>
+<span class="hljs-code">                continue</span>
+<span class="hljs-code">    </span>
+<span class="hljs-code">    if __name__ == '__main__':</span>
+<span class="hljs-code">        url = 'http://www.tencent.com/'</span>
+<span class="hljs-code">        dirPath = 'D:\imgs'</span>
+<span class="hljs-code">        downloadAllImg(url, dirPath)</span>
+
+
+<span class="hljs-code">    os.path.split(path) 以 path 中最后一个 / 作为分隔符，分隔后，将索引为0的视为目录（路径），将索引为1的视为文件名</span>
+<span class="hljs-code">    os.path.join(path1, path2, ...) 以/拼接参数</span></code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/06/25/cookie%E5%92%8Csession%E7%9A%84%E5%8C%BA%E5%88%AB/">cookie和session的区别</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/06/24/%E7%81%AB%E6%9F%B4%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">火柴软件使用说明</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/06/25/网页图片批量获取（Python教程）/">https://codermino.github.io/2020/06/25/网页图片批量获取（Python教程）/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

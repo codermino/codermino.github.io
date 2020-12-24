@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      ecahrts自适应和切换问题 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">ecahrts自适应和切换问题</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/14</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/echarts">echarts</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/ecahrts自适应和切换问题">ecahrts自适应和切换问题</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/echarts/echarts.png" data-caption data-fancybox="images"><img src="/images/echarts/echarts.png" alt></a></p>
+<p>1、解决方法：监听屏幕的 onresize() 事件调用Echarts的resize()事件,代码如下：</p>
+<pre><code class="hljs markdown">// 自适应屏幕宽度
+window.onresize = function() &#123;
+  myChart.resize();
+  myChart2.resize();
+  myChart3.resize();
+  myChart4.resize();
+&#125;;</code></pre>
+
+<p>2、不要页面一加载就全部把页面中的图表都加载好，<br>而是刚开始只渲染默认的第一个图表，<br>其他的图表在tabs选项卡切换的时候再加载渲染出来就可以了，具体代码如下：</p>
+<pre><code class="hljs javascript">&lt;template&gt;
+      <span class="xml"><span class="hljs-comment">&lt;!-- 使用tabs选项卡子组件 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">titleBar</span> <span class="hljs-attr">:indexRenshiMsg</span>=<span class="hljs-string">"renshiMsg"</span> @<span class="hljs-attr">func</span>=<span class="hljs-string">"changeHandle"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">titleBar</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-row</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-top:20px"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"renshichu"</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">"&#123;width: '100%', height: '400px'&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-row</span>&gt;</span> 
+      <span class="hljs-comment">&lt;!-- 使用子组件 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">titleBar</span> <span class="hljs-attr">:indexRenshiMsg</span>=<span class="hljs-string">"renshiMsg"</span> @<span class="hljs-attr">func</span>=<span class="hljs-string">"changeHandle2"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">titleBar</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-row</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-top:20px"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"zhinengbu"</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">"&#123;width: '100%', height: '400px'&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-row</span>&gt;</span>
+       <span class="hljs-comment">&lt;!-- 部门管理员权限 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">titleBar</span> <span class="hljs-attr">:indexRenshiMsg</span>=<span class="hljs-string">"renshiMsg"</span> @<span class="hljs-attr">func</span>=<span class="hljs-string">"changeHandle3"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">titleBar</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-row</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-top:20px"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"bumengguanli"</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">"&#123;width: '100%', height: '400px'&#125;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-row</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">import</span> titleBar <span class="hljs-keyword">from</span> <span class="hljs-string">"../components/titleBar"</span>;
+<span class="hljs-comment">// 指定图表的配置项和数据</span>
+<span class="hljs-keyword">var</span> option = &#123;
+  <span class="hljs-attr">tooltip</span>: &#123;
+    <span class="hljs-attr">trigger</span>: <span class="hljs-string">"axis"</span>,
+    <span class="hljs-attr">axisPointer</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"cross"</span>,
+      <span class="hljs-attr">crossStyle</span>: &#123;
+        <span class="hljs-attr">color</span>: <span class="hljs-string">"#999"</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-attr">toolbox</span>: &#123;
+    <span class="hljs-attr">feature</span>: &#123;
+      <span class="hljs-attr">dataView</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">readOnly</span>: <span class="hljs-literal">false</span> &#125;,
+      <span class="hljs-attr">magicType</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">type</span>: [<span class="hljs-string">"line"</span>, <span class="hljs-string">"bar"</span>] &#125;,
+      <span class="hljs-attr">restore</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> &#125;,
+      <span class="hljs-attr">saveAsImage</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-attr">color</span>: [<span class="hljs-string">"#3398DB"</span>],
+  <span class="hljs-attr">tooltip</span>: &#123;&#125;,
+  <span class="hljs-attr">legend</span>: &#123;
+    <span class="hljs-attr">data</span>: [<span class="hljs-string">"申报人数"</span>],
+    <span class="hljs-attr">left</span>: <span class="hljs-string">"left"</span>,
+    <span class="hljs-attr">top</span>: <span class="hljs-string">"10%"</span>,
+    <span class="hljs-attr">textStyle</span>: &#123;
+      <span class="hljs-attr">fontSize</span>: <span class="hljs-number">16</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">xAxis</span>: &#123;
+    <span class="hljs-attr">data</span>: [<span class="hljs-string">"教授"</span>, <span class="hljs-string">"副教授"</span>, <span class="hljs-string">"讲师"</span>, <span class="hljs-string">"研究员"</span>, <span class="hljs-string">"副研究员"</span>, <span class="hljs-string">"助理研究员"</span>],
+    <span class="hljs-attr">axisLabel</span>: &#123;
+      <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span> <span class="hljs-comment">//字体大小</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">yAxis</span>: [
+    &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"value"</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"人数"</span>,
+      <span class="hljs-attr">axisLabel</span>: &#123;
+        <span class="hljs-attr">formatter</span>: <span class="hljs-string">"&#123;value&#125;"</span>,
+        <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span> <span class="hljs-comment">//字体大小</span>
+      &#125;
+    &#125;
+  ],
+  <span class="hljs-attr">series</span>: [
+    &#123;
+      <span class="hljs-attr">barWidth</span>: <span class="hljs-number">50</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"申报人数"</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"bar"</span>,
+      <span class="hljs-attr">data</span>: [<span class="hljs-number">10</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>]
+    &#125;
+  ]
+&#125;;
+<span class="hljs-keyword">var</span> option2 = &#123;
+  <span class="hljs-attr">tooltip</span>: &#123;
+    <span class="hljs-attr">trigger</span>: <span class="hljs-string">"axis"</span>,
+    <span class="hljs-attr">axisPointer</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"cross"</span>,
+      <span class="hljs-attr">crossStyle</span>: &#123;
+        <span class="hljs-attr">color</span>: <span class="hljs-string">"#999"</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-attr">toolbox</span>: &#123;
+    <span class="hljs-attr">feature</span>: &#123;
+      <span class="hljs-attr">dataView</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">readOnly</span>: <span class="hljs-literal">false</span> &#125;,
+      <span class="hljs-attr">magicType</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">type</span>: [<span class="hljs-string">"line"</span>, <span class="hljs-string">"bar"</span>] &#125;,
+      <span class="hljs-attr">restore</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> &#125;,
+      <span class="hljs-attr">saveAsImage</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-attr">tooltip</span>: &#123;
+    <span class="hljs-attr">trigger</span>: <span class="hljs-string">"axis"</span>,
+    <span class="hljs-attr">axisPointer</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"cross"</span>,
+      <span class="hljs-attr">crossStyle</span>: &#123;
+        <span class="hljs-attr">color</span>: <span class="hljs-string">"#999"</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-attr">legend</span>: &#123;
+    <span class="hljs-attr">data</span>: [<span class="hljs-string">"已审核"</span>, <span class="hljs-string">"未审核"</span>, <span class="hljs-string">"退回"</span>],
+    <span class="hljs-attr">left</span>: <span class="hljs-string">"left"</span>,
+    <span class="hljs-attr">top</span>: <span class="hljs-string">"10%"</span>,
+    <span class="hljs-attr">orient</span>: <span class="hljs-string">"vertical"</span>,
+    <span class="hljs-attr">textStyle</span>: &#123;
+      <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">xAxis</span>: &#123;
+    <span class="hljs-attr">type</span>: <span class="hljs-string">"category"</span>,
+    <span class="hljs-attr">data</span>: [<span class="hljs-string">"论文著作"</span>, <span class="hljs-string">"项目获批"</span>, <span class="hljs-string">"荣誉获奖"</span>],
+    <span class="hljs-attr">axisPointer</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"shadow"</span>
+    &#125;,
+    <span class="hljs-attr">axisLabel</span>: &#123;
+      <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span> <span class="hljs-comment">//字体大小</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">yAxis</span>: [
+    &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"value"</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"人数"</span>,
+      <span class="hljs-attr">axisLabel</span>: &#123;
+        <span class="hljs-attr">formatter</span>: <span class="hljs-string">"&#123;value&#125;"</span>,
+        <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span> <span class="hljs-comment">//字体大小</span>
+      &#125;
+    &#125;
+  ],
+  <span class="hljs-attr">series</span>: [
+    &#123;
+      <span class="hljs-attr">barWidth</span>: <span class="hljs-number">50</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"已审核"</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"bar"</span>,
+      <span class="hljs-attr">color</span>: <span class="hljs-string">"#92d050"</span>,
+      <span class="hljs-attr">data</span>: [<span class="hljs-number">10</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>]
+    &#125;,
+    &#123;
+      <span class="hljs-attr">barWidth</span>: <span class="hljs-number">50</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"未审核"</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"bar"</span>,
+      <span class="hljs-attr">color</span>: <span class="hljs-string">"#ed7d31"</span>,
+      <span class="hljs-attr">data</span>: [<span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">3</span>]
+    &#125;,
+    &#123;
+      <span class="hljs-attr">barWidth</span>: <span class="hljs-number">50</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"退回"</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"bar"</span>,
+      <span class="hljs-attr">color</span>: <span class="hljs-string">"#9cc3e5"</span>,
+      <span class="hljs-attr">data</span>: [<span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>]
+    &#125;
+  ]
+&#125;;
+<span class="hljs-keyword">var</span> option4 = &#123;
+  <span class="hljs-attr">tooltip</span>: &#123;
+    <span class="hljs-attr">trigger</span>: <span class="hljs-string">"axis"</span>,
+    <span class="hljs-attr">axisPointer</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"cross"</span>,
+      <span class="hljs-attr">crossStyle</span>: &#123;
+        <span class="hljs-attr">color</span>: <span class="hljs-string">"#999"</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-attr">toolbox</span>: &#123;
+    <span class="hljs-attr">feature</span>: &#123;
+      <span class="hljs-attr">dataView</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">readOnly</span>: <span class="hljs-literal">false</span> &#125;,
+      <span class="hljs-attr">magicType</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">type</span>: [<span class="hljs-string">"line"</span>, <span class="hljs-string">"bar"</span>] &#125;,
+      <span class="hljs-attr">restore</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> &#125;,
+      <span class="hljs-attr">saveAsImage</span>: &#123; <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span> &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-attr">color</span>: [<span class="hljs-string">"#3398DB"</span>],
+  <span class="hljs-attr">tooltip</span>: &#123;&#125;,
+  <span class="hljs-attr">legend</span>: &#123;
+    <span class="hljs-attr">data</span>: [<span class="hljs-string">"数量"</span>],
+    <span class="hljs-attr">left</span>: <span class="hljs-string">"left"</span>,
+    <span class="hljs-attr">top</span>: <span class="hljs-string">"10%"</span>,
+    <span class="hljs-attr">textStyle</span>: &#123;
+      <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">xAxis</span>: &#123;
+    <span class="hljs-attr">data</span>: [<span class="hljs-string">"论文发表"</span>, <span class="hljs-string">"著作发表"</span>, <span class="hljs-string">"项目立项"</span>, <span class="hljs-string">"获奖荣誉"</span>, <span class="hljs-string">"教学课程"</span>],
+    <span class="hljs-attr">axisLabel</span>: &#123;
+      <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span> <span class="hljs-comment">//字体大小</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">yAxis</span>: [
+    &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"value"</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"数量"</span>,
+      <span class="hljs-attr">axisLabel</span>: &#123;
+        <span class="hljs-attr">formatter</span>: <span class="hljs-string">"&#123;value&#125;"</span>,
+        <span class="hljs-attr">fontSize</span>: <span class="hljs-number">20</span> <span class="hljs-comment">//字体大小</span>
+      &#125;
+    &#125;
+  ],
+  <span class="hljs-attr">series</span>: [
+    &#123;
+      <span class="hljs-attr">barWidth</span>: <span class="hljs-number">50</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">"数量"</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">"bar"</span>,
+      <span class="hljs-attr">data</span>: [<span class="hljs-number">12</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">9</span>, <span class="hljs-number">33</span>]
+    &#125;
+  ]
+&#125;;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">components</span>: &#123;
+    titleBar
+  &#125;,
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"index"</span>,
+  data() &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-attr">num</span>: <span class="hljs-number">115</span>,
+      <span class="hljs-attr">onePower</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">echartsTitle</span>: <span class="hljs-string">"评审年度 | 2020年"</span>,
+      <span class="hljs-attr">echartsTitle4</span>: <span class="hljs-string">"个人档案库内情况"</span>,
+      <span class="hljs-attr">xAxis</span>: [<span class="hljs-string">"教授"</span>, <span class="hljs-string">"副教授"</span>, <span class="hljs-string">"讲师"</span>, <span class="hljs-string">"研究员"</span>, <span class="hljs-string">"副研究员"</span>, <span class="hljs-string">"助理研究员"</span>],
+      <span class="hljs-attr">xAxis2</span>: [<span class="hljs-string">"论文著作"</span>, <span class="hljs-string">"项目获批"</span>, <span class="hljs-string">"荣誉获奖"</span>],
+      <span class="hljs-attr">xAxis4</span>: [<span class="hljs-string">"论文发表"</span>, <span class="hljs-string">"著作发表"</span>, <span class="hljs-string">"项目立项"</span>, <span class="hljs-string">"获奖荣誉"</span>, <span class="hljs-string">"教学课程"</span>],
+      <span class="hljs-attr">series</span>: [<span class="hljs-number">10</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>],
+      <span class="hljs-comment">// 步骤条进度</span>
+      <span class="hljs-attr">active</span>: <span class="hljs-number">1</span>,
+      <span class="hljs-comment">// 待办事项</span>
+      <span class="hljs-attr">backlog</span>: <span class="hljs-number">4</span>,
+      <span class="hljs-comment">// 传给子组件的参数</span>
+      <span class="hljs-attr">renshiMsg</span>: &#123;
+        <span class="hljs-attr">title</span>: <span class="hljs-string">"评审年度 | 2020年"</span>,
+        <span class="hljs-attr">msg</span>: <span class="hljs-string">"申报人数："</span>,
+        <span class="hljs-attr">number</span>: <span class="hljs-number">49</span>
+      &#125;,
+      <span class="hljs-attr">chartOptions</span>: [option, option2, option4],
+      <span class="hljs-attr">tableData</span>: [
+        &#123;
+          <span class="hljs-attr">category</span>: <span class="hljs-string">"论文"</span>,
+          <span class="hljs-attr">research</span>: <span class="hljs-string">"基于C51单片机的全球导弹发射控制系统"</span>,
+          <span class="hljs-attr">opinion</span>: <span class="hljs-string">"这是一个非常好的想法"</span>,
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"张三"</span>
+        &#125;,
+        &#123;
+          <span class="hljs-attr">category</span>: <span class="hljs-string">"项目"</span>,
+          <span class="hljs-attr">research</span>: <span class="hljs-string">"基于C51单片机的全球导弹发射控制系统"</span>,
+          <span class="hljs-attr">opinion</span>: <span class="hljs-string">"这是一个非常好的想法"</span>,
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"张三"</span>
+        &#125;,
+        &#123;
+          <span class="hljs-attr">category</span>: <span class="hljs-string">"获奖"</span>,
+          <span class="hljs-attr">research</span>: <span class="hljs-string">"全球和平伟大贡献奖"</span>,
+          <span class="hljs-attr">opinion</span>: <span class="hljs-string">"这是一个非常好的想法"</span>,
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"张三"</span>
+        &#125;,
+        &#123;
+          <span class="hljs-attr">category</span>: <span class="hljs-string">"论文"</span>,
+          <span class="hljs-attr">research</span>: <span class="hljs-string">"基于C51单片机的全球导弹发射控制系统"</span>,
+          <span class="hljs-attr">opinion</span>: <span class="hljs-string">"这是一个非常好的想法"</span>,
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"张三"</span>
+        &#125;,
+        &#123;
+          <span class="hljs-attr">category</span>: <span class="hljs-string">"论文"</span>,
+          <span class="hljs-attr">research</span>: <span class="hljs-string">"基于C51单片机的全球导弹发射控制系统"</span>,
+          <span class="hljs-attr">opinion</span>: <span class="hljs-string">"这是一个非常好的想法"</span>,
+          <span class="hljs-attr">name</span>: <span class="hljs-string">"张三"</span>
+        &#125;
+      ]
+    &#125;;
+  &#125;,
+  mounted() &#123;
+    <span class="hljs-comment">// 人事处管理员审核权限统计图</span>
+    <span class="hljs-keyword">var</span> dom = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"renshichu"</span>);
+    <span class="hljs-keyword">var</span> myChart = <span class="hljs-keyword">this</span>.echarts.init(dom);
+    myChart.setOption(<span class="hljs-keyword">this</span>.chartOptions[<span class="hljs-number">0</span>]);
+
+    <span class="hljs-comment">// 职能部门审核用户权限统计图</span>
+    <span class="hljs-keyword">var</span> dom2 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"zhinengbu"</span>);
+    <span class="hljs-keyword">var</span> myChart2 = <span class="hljs-keyword">this</span>.echarts.init(dom2);
+    myChart2.setOption(<span class="hljs-keyword">this</span>.chartOptions[<span class="hljs-number">1</span>]);
+
+    <span class="hljs-comment">// 部门管理员权限统计图</span>
+    <span class="hljs-keyword">var</span> dom3 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"bumengguanli"</span>);
+    <span class="hljs-keyword">var</span> myChart3 = <span class="hljs-keyword">this</span>.echarts.init(dom3);
+    myChart3.setOption(<span class="hljs-keyword">this</span>.chartOptions[<span class="hljs-number">2</span>]);
+
+    <span class="hljs-comment">// 普通教师权限统计图</span>
+    <span class="hljs-keyword">var</span> dom4 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"jiaoshiquanxian"</span>);
+    <span class="hljs-keyword">var</span> myChart4 = <span class="hljs-keyword">this</span>.echarts.init(dom4);
+    myChart4.setOption(<span class="hljs-keyword">this</span>.chartOptions[<span class="hljs-number">2</span>]);
+
+    <span class="hljs-comment">// 自适应屏幕宽度</span>
+    <span class="hljs-built_in">window</span>.onresize = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+      myChart.resize();
+      myChart2.resize();
+      myChart3.resize();
+      myChart4.resize();
+    &#125;;
+  &#125;,
+  <span class="hljs-attr">methods</span>: &#123;
+  <span class="hljs-comment">// 下面的几个函数都是tabs选项卡切换的点击事件</span>
+    changeHandle(e) &#123;
+      <span class="hljs-comment">// 人事处管理员审核权限统计图</span>
+      <span class="hljs-keyword">var</span> dom = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"renshichu"</span>);
+      <span class="hljs-keyword">var</span> myChart = <span class="hljs-keyword">this</span>.echarts.init(dom);
+      myChart.clear();
+      myChart.setOption(<span class="hljs-keyword">this</span>.chartOptions[e]);
+    &#125;,
+    changeHandle2(e) &#123;
+      <span class="hljs-comment">// 职能部门审核用户权限统计图</span>
+      <span class="hljs-keyword">var</span> dom2 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"zhinengbu"</span>);
+      <span class="hljs-keyword">var</span> myChart2 = <span class="hljs-keyword">this</span>.echarts.init(dom2);
+      myChart2.clear();
+      myChart2.setOption(<span class="hljs-keyword">this</span>.chartOptions[e]);
+    &#125;,
+    changeHandle3(e) &#123;
+      <span class="hljs-comment">// 职能部门审核用户权限统计图</span>
+      <span class="hljs-keyword">var</span> dom3 = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"bumengguanli"</span>);
+      <span class="hljs-keyword">var</span> myChart3 = <span class="hljs-keyword">this</span>.echarts.init(dom3);
+      myChart3.clear();
+      myChart3.setOption(<span class="hljs-keyword">this</span>.chartOptions[e]);
+    &#125;
+  &#125;
+&#125;;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/08/14/vue-config-js%E9%85%8D%E7%BD%AE/">vue.config.js配置</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/07/26/scrapy%E7%9A%84shell%E7%9A%84%E4%BD%BF%E7%94%A8/">scrapy的shell的使用</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/14/ecahrts自适应和切换问题/">https://codermino.github.io/2020/08/14/ecahrts自适应和切换问题/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

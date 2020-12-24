@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vitenote - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vite的优点"><span class="toc-text">vite的优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对编译的支持"><span class="toc-text">对编译的支持</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#TypeScript"><span class="toc-text">TypeScript</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS-JSON-Importing"><span class="toc-text">CSS / JSON Importing</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用xxx-module-css的方式引入"><span class="toc-text">使用xxx.module.css的方式引入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在-vue文件中使用"><span class="toc-text">在.vue文件中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dev-Server-Proxy"><span class="toc-text">Dev Server Proxy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#alias-设置别名"><span class="toc-text">alias(设置别名)</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vitenote</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/10/12</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vite">vite</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vite笔记">vite笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vite.jpg" data-caption data-fancybox="images"><img src="/images/vite.jpg" alt></a></p>
+<h3 id="vite的优点">vite的优点<a class="post-anchor" href="#vite的优点"></a></h3><ol>
+<li>快如闪电的轻量级的冷服务启动</li>
+<li>瞬间的热更新</li>
+<li>真正的随机应变的编译</li>
+<li>能够了解更多的细节和为什么</li>
+</ol>
+<h3 id="开始">开始<a class="post-anchor" href="#开始"></a></h3><p>note:目前vite只工作在vue3的版本上，也就是说vue2的版本是无法使用的</p>
+<pre><code class="hljs markdown">$ npm init vite-app <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">project-name</span>&gt;</span></span>
+$ cd <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">project-name</span>&gt;</span></span>
+$ npm install
+$ npm run dev</code></pre>
+
+<h3 id="对编译的支持">对编译的支持<a class="post-anchor" href="#对编译的支持"></a></h3><h4 id="TypeScript">TypeScript<a class="post-anchor" href="#TypeScript"></a></h4><pre><code class="hljs markdown">Vite supports importing .ts files and <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"ts"</span>&gt;</span></span> in Vue SFCs out of the box.</code></pre>
+
+<h4 id="CSS-JSON-Importing">CSS / JSON Importing<a class="post-anchor" href="#CSS-JSON-Importing"></a></h4><p><strong>官网介绍</strong></p>
+<pre><code class="hljs markdown">You can directly import .css and .json files from JavaScript (including <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span></span> tags of *.vue files, of course).
+<span class="hljs-bullet">* </span>.json files export their content as an object that is the default export.
+<span class="hljs-bullet">* </span>.css files do not export anything unless it ends with .module.css (See CSS Modules below). Importing them leads to the side effect of them being injected to the page during dev, and being included in the final style.css of the production build.
+Both CSS and JSON imports also support Hot Module Replacement.</code></pre>
+<ol>
+<li>vite对于css和json移入都是支持的</li>
+<li>.json文件内容作为对象导出</li>
+<li>.css文件不需要导出，除非它以.module.css结尾</li>
+<li>CSS和JSON引入也支持热更新</li>
+</ol>
+<h4 id="使用xxx-module-css的方式引入">使用xxx.module.css的方式引入<a class="post-anchor" href="#使用xxx-module-css的方式引入"></a></h4><p>son.module.css文件内容</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.son2</span> <span class="hljs-selector-class">.title</span>&#123;
+    <span class="hljs-attribute">color</span>: green;
+&#125;</code></pre>
+<p>引入</p>
+<pre><code class="hljs vue">import sonstyle from &#39;.&#x2F;css&#x2F;son.module.css&#39;
+
+composition API中使用并return
+setup(props,context)&#123;
+    return&#123;
+      sonstyle
+    &#125;
+&#125;</code></pre>
+<p>使用</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"son"</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"sonstyle.son2"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"sonstyle.title"</span>&gt;</span>456<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+
+<h4 id="在-vue文件中使用">在.vue文件中使用<a class="post-anchor" href="#在-vue文件中使用"></a></h4><p>style module的方式引入<br> <pre><code class="hljs vue">&lt;style scoped vars&#x3D;&quot;&#123; color &#125;&quot; module&gt;
+  .text &#123;
+    color: var(--color);
+  &#125;
+&lt;&#x2F;style&gt;</code></pre><br>使用</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">"$style.text"</span>&gt;</span>&#123;&#123;people.name&#125;&#125;-&#123;&#123;people.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></code></pre>
+
+<h4 id="Dev-Server-Proxy">Dev Server Proxy<a class="post-anchor" href="#Dev-Server-Proxy"></a></h4><pre><code class="hljs vue">const path &#x3D; require(&#39;path&#39;)
+
+module.exports &#x3D; &#123;
+  proxy: &#123;
+    &#39;&#x2F;api&#39;: &#123;
+      target: &#39;http:&#x2F;&#x2F;apis.juhe.cn&#39;,
+      changeOrigin: true,
+      rewrite: path &#x3D;&gt; path.replace(&#x2F;^\&#x2F;api&#x2F;, &#39;&#39;)
+    &#125;
+  &#125;,
+  alias: &#123;
+    &#x2F;&#x2F; 键必须以斜线开始和结束
+    &#39;&#x2F;@&#x2F;&#39;: path.resolve(__dirname, &#39;.&#x2F;src&#39;)
+    &#x2F;&#x2F; &#39;&#x2F;@components&#x2F;&#39;: path.resolve(__dirname, &#39;.&#x2F;src&#x2F;components&#39;)
+  &#125;
+&#125;</code></pre>
+
+<h4 id="alias-设置别名">alias(设置别名)<a class="post-anchor" href="#alias-设置别名"></a></h4><p>设置</p>
+<pre><code class="hljs vue">alias: &#123;
+    &#x2F;&#x2F; 键必须以斜线开始和结束
+    &#39;&#x2F;@&#x2F;&#39;: path.resolve(__dirname, &#39;.&#x2F;src&#39;)
+    &#x2F;&#x2F; &#39;&#x2F;@components&#x2F;&#39;: path.resolve(__dirname, &#39;.&#x2F;src&#x2F;components&#39;)
+  &#125;</code></pre>
+<p>使用</p>
+<pre><code class="hljs vue">import sonCom from &#39;&#x2F;@&#x2F;components&#x2F;sonCom.vue&#39;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/10/12/fetch%E7%94%A8%E6%B3%95/">fetch用法</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/10/09/vue3reactive-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AF%B9%E8%B1%A1-%E5%92%8CtoRefs/">vue3reactive(响应式对象)和toRefs</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/10/12/vitenote/">https://codermino.github.io/2020/10/12/vitenote/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      mysql知识点总结和应用1 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#索引概述"><span class="toc-text">索引概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引优势劣势"><span class="toc-text">索引优势劣势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引结构"><span class="toc-text">索引结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引分类"><span class="toc-text">索引分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引语法"><span class="toc-text">索引语法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#创建索引"><span class="toc-text">创建索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看索引"><span class="toc-text">查看索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除索引"><span class="toc-text">删除索引</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ALTER命令"><span class="toc-text">ALTER命令</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引设计原则"><span class="toc-text">索引设计原则</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">mysql知识点总结和应用1</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/14</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/mysql">mysql</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/mysql知识点总结和应用1">mysql知识点总结和应用1</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/mysql/mysql.png" data-caption data-fancybox="images"><img src="/images/mysql/mysql.png" alt></a></p>
+<h3 id="索引">索引<a class="post-anchor" href="#索引"></a></h3><h4 id="索引概述">索引概述<a class="post-anchor" href="#索引概述"></a></h4><p>MySQL官方对索引的定义为：索引（index）是帮助MySQL高效获取数据的数据结构（有序）。<br>在数据之外，数据库系统还维护者满足特定查找算法的数据结构，这些数据结构以某种方式引用（指向）数据，<br>这样就可以在这些数据结构上实现高级查找算法，这种数据结构就是索引。<br>如下面的==示意图==所示 : </p>
+<p><a href="/images/mysql/1555902055367.png" data-caption data-fancybox="images"><img src="/images/mysql/1555902055367.png" alt></a></p>
+<p>左边是数据表，一共有两列七条记录，最左边的是数据记录的物理地址（注意逻辑上相邻的记录在磁盘上也并不是一定物理相邻的）。<br>为了加快Col2的查找，可以维护一个右边所示的二叉查找树，每个节点分别包含索引键值和一个指向对应数据记录物理地址的指针，<br>这样就可以运用二叉查找快速获取到相应数据。</p>
+<p>一般来说索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储在磁盘上。<br>索引是数据库中用来提高性能的最常用的工具。</p>
+<h4 id="索引优势劣势">索引优势劣势<a class="post-anchor" href="#索引优势劣势"></a></h4><p>优势</p>
+<p>1） 类似于书籍的目录索引，提高数据检索的效率，降低数据库的IO成本。</p>
+<p>2） 通过索引列对数据进行排序，降低数据排序的成本，降低CPU的消耗。</p>
+<p>劣势</p>
+<p>1） 实际上索引也是一张表，该表中保存了主键与索引字段，并指向实体类的记录，所以索引列也是要占用空间的。</p>
+<p>2） 虽然索引大大提高了查询效率，同时却也降低更新表的速度，如对表进行INSERT、UPDATE、DELETE。<br>    因为更新表时，MySQL 不仅要保存数据，还要保存一下索引文件每次更新添加了索引列的字段，<br>    都会调整因为更新所带来的键值变化后的索引信息。</p>
+<h4 id="索引结构">索引结构<a class="post-anchor" href="#索引结构"></a></h4><p>索引是在MySQL的存储引擎层中实现的，而不是在服务器层实现的。所以每种存储引擎的索引都不一定完全相同，<br>也不是所有的存储引擎都支持所有的索引类型的。MySQL目前提供了以下4种索引：</p>
+<ul>
+<li>BTREE 索引 ： 最常见的索引类型，大部分索引都支持 B 树索引。</li>
+<li>HASH 索引：只有Memory引擎支持 ， 使用场景简单 。</li>
+<li>R-tree 索引（空间索引）：空间索引是MyISAM引擎的一个特殊索引类型，主要用于地理空间数据类型，通常使用较少，不做特别介绍。</li>
+<li>Full-text （全文索引） ：全文索引也是MyISAM的一个特殊索引类型，主要用于全文索引，InnoDB从Mysql5.6版本开始支持全文索引。</li>
+</ul>
+<h4 id="索引分类">索引分类<a class="post-anchor" href="#索引分类"></a></h4><p>1） 单值索引 ：即一个索引只包含单个列，一个表可以有多个单列索引</p>
+<p>2） 唯一索引 ：索引列的值必须唯一，但允许有空值</p>
+<p>3） 复合索引 ：即一个索引包含多个列</p>
+<h4 id="索引语法">索引语法<a class="post-anchor" href="#索引语法"></a></h4><h5 id="创建索引">创建索引<a class="post-anchor" href="#创建索引"></a></h5><p>CREATE     [UNIQUE|FULLTEXT|SPATIAL]  INDEX index_name<br>[USING  index_type]<br>ON tbl_name(index_col_name,…)</p>
+<p>index_col_name : column_name[(length)][ASC | DESC]<br>eq:create index idx_city_name on city(city_name);</p>
+<h5 id="查看索引">查看索引<a class="post-anchor" href="#查看索引"></a></h5><p>show index  from  table_name[\G];</p>
+<h5 id="删除索引">删除索引<a class="post-anchor" href="#删除索引"></a></h5><p>DROP  INDEX  index_name  ON  tbl_name;</p>
+<h5 id="ALTER命令">ALTER命令<a class="post-anchor" href="#ALTER命令"></a></h5><p>1). alter  table  tb_name  add  primary  key(column_list); </p>
+<pre><code>该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL</code></pre><p>2). alter  table  tb_name  add  unique index_name(column_list);</p>
+<pre><code>这条语句创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）</code></pre><p>3). alter  table  tb_name  add  index index_name(column_list);</p>
+<pre><code>添加普通索引， 索引值可以出现多次。</code></pre><p>4). alter  table  tb_name  add  fulltext  index_name(column_list);</p>
+<pre><code>该语句指定了索引为FULLTEXT， 用于全文索引</code></pre><h4 id="索引设计原则">索引设计原则<a class="post-anchor" href="#索引设计原则"></a></h4><p>索引的设计可以遵循一些已有的原则，创建索引的时候请尽量考虑符合这些原则，便于提升索引的使用效率，更高效的使用索引。</p>
+<ul>
+<li><p>对查询频次较高，且数据量比较大的表建立索引。</p>
+</li>
+<li><p>索引字段的选择，最佳候选列应当从where子句的条件中提取，如果where子句中的组合比较多，那么应当挑选最常用、过滤效果最好的列的组合。</p>
+</li>
+<li><p>使用唯一索引，区分度越高，使用索引的效率越高。</p>
+</li>
+<li><p>索引可以有效的提升查询数据的效率，但索引数量不是多多益善，索引越多，维护索引的代价自然也就水涨船高。<br>  对于插入、更新、删除等DML操作比较频繁的表来说，索引过多，会引入相当高的维护代价，降低DML操作的效率，增加相应操作的时间消耗。<br>  另外索引过多的话，MySQL也会犯选择困难病，虽然最终仍然会找到一个可用的索引，但无疑提高了选择的代价。</p>
+</li>
+<li><p>使用短索引，索引创建之后也是使用硬盘来存储的，因此提升索引访问的I/O效率，也可以提升总体的访问效率。假如构成索引的字段总长度比较短，<br>  那么在给定大小的存储块内可以存储更多的索引值，相应的可以有效的提升MySQL访问索引的I/O效率。</p>
+</li>
+<li><p>利用最左前缀，N个列组合而成的组合索引，那么相当于是创建了N个索引，如果查询时where子句中使用了组成该索引的前几个字段，<br>  那么这条查询SQL可以利用组合索引来提升查询效率。</p>
+<pre><code class="markdown">创建复合索引:
+
+  CREATE INDEX idx<span class="emphasis">_name_</span>email<span class="emphasis">_status ON tb_</span>seller(NAME,email,STATUS);
+</code></pre>
+</li>
+</ul>
+<p>就相当于<br>    对name 创建索引 ;<br>    对name , email 创建了索引 ;<br>    对name , email, status 创建了索引 ;</p>
+<pre><code></code></pre>
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/08/14/mysql%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93%E5%92%8C%E5%BA%94%E7%94%A82/">mysql知识点总结和应用2</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/14/%E6%89%BE%E5%9B%9E%E5%AF%86%E7%A0%81%E5%8A%9F%E8%83%BD%E6%B5%81%E7%A8%8B/">找回密码功能流程</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/14/mysql知识点总结和应用1/">https://codermino.github.io/2020/08/14/mysql知识点总结和应用1/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

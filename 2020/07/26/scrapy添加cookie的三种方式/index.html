@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      scrapy添加cookie的三种方式 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#commit"><span class="toc-text">settings中添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DownloadMiddleware"><span class="toc-text">DownloadMiddleware中添加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#start"><span class="toc-text">爬虫主文件中重写start_request</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">方法三的Demo1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">方法三的Demo1的最终cookie的dict形式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-text">方法三的Demo2</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">scrapy添加cookie的三种方式</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/07/26</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/scrapy">scrapy</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/scrapy添加cookie的三种方式">scrapy添加cookie的三种方式</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
+<h3 id="commit">settings中添加<a class="post-anchor" href="#commit"></a><a class="post-anchor" href="#commit"></a></h3>
+<pre><code class="hljs markdown">settings文件中给Cookies_enabled=False解注释
+settings的headers配置的cookie就可以用了
+这种方法最简单，同时cookie可以直接粘贴浏览器的。
+
+后两种方法添加的cookie是字典格式的，需要用json反序列化一下,
+而且需要设置settings中的Cookies_enabled=True
+eq:cookie = &#123;k1: v1, k2: v2&#125;</code></pre>
+
+<h3 id="DownloadMiddleware">DownloadMiddleware中添加<a class="post-anchor" href="#DownloadMiddleware"></a><a class="post-anchor" href="#DownloadMiddleware"></a></h3>
+<pre><code class="hljs markdown">settings中给downloadmiddleware解注释
+去中间件文件中找downloadmiddleware这个类，
+修改process_request，添加request.cookies=&#123;&#125;即可。</code></pre>
+
+<h3 id="start">爬虫主文件中重写start_request<a class="post-anchor" href="#start"></a><a class="post-anchor" href="#start"></a></h3>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start_requests</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">yield</span> scrapy.Request(url,dont_filter=<span class="hljs-literal">True</span>,cookies=&#123;自己的cookie&#125;)</code></pre>
+
+<h4>方法三的Demo1<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> scrapy
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ItaobaoSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span>
+    name = <span class="hljs-string">'itaobao'</span>
+    allowed_domains = [<span class="hljs-string">'taobao.com'</span>]
+
+    <span class="hljs-comment"># start_urls = ['https://cart.taobao.com/cart.htm?spm=a1z02.1.a2109.d1000367.OOeipq&amp;nekot=1470211439694']</span>
+    <span class="hljs-comment"># 需要重写start_requests方法</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start_requests</span><span class="hljs-params">(self)</span>:</span>
+        url = <span class="hljs-string">"https://cart.taobao.com/cart.htm?spm=a1z02.1.a2109.d1000367.OOeipq&amp;nekot=1470211439694"</span>
+        <span class="hljs-comment"># 此处的cookie为手动登录后从浏览器粘贴下来的值</span>
+        cookie = <span class="hljs-string">"thw=cn; cookie2=16b0fe13709f2a71dc06ab1f15dcc97b; _tb_token_=fe3431e5fe755;"</span> \
+                 <span class="hljs-string">" _samesite_flag_=true; ubn=p; ucn=center; t=538b39347231f03177d588275aba0e2f;"</span> \
+                 <span class="hljs-string">" tk_trace=oTRxOWSBNwn9dPyorMJE%2FoPdY8zfvmw%2Fq5hoqmmiKd74AJ%2Bt%2FNCZ%"</span> \
+                 <span class="hljs-string">"2FSIX9GYWSRq4bvicaWHhDMtcR6rWsf0P6XW5ZT%2FgUec9VF0Ei7JzUpsghuwA4cBMNO9EHkGK53r%"</span> \
+                 <span class="hljs-string">"2Bb%2BiCEx98Frg5tzE52811c%2BnDmTNlzc2ZBkbOpdYbzZUDLaBYyN9rEdp9BVnFGP1qVAAtbsnj35zfBVfe09E%"</span> \
+                 <span class="hljs-string">"2BvRfUU823q7j4IVyan1lagxILINo%2F%2FZK6omHvvHqA4cu2IaVAhy5MzzodyJhmXmOpBiz9Pg%3D%3D; "</span> \
+                 <span class="hljs-string">"cna=5c3zFvLEEkkCAW8SYSQ2GkGo; sgcookie=E3EkJ6LRpL%2FFRZIBoXfnf; unb=578051633; "</span> \
+                 <span class="hljs-string">"uc3=id2=Vvl%2F7ZJ%2BJYNu&amp;nk2=r7kpR6Vbl9KdZe14&amp;lg2=URm48syIIVrSKA%3D%3D&amp;vt3=F8dBxGJsy36E3EwQ%2BuQ%3D;"</span> \
+                 <span class="hljs-string">" csg=c99a3c3d; lgc=%5Cu5929%5Cu4ED9%5Cu8349%5Cu5929%5Cu4ED9%5Cu8349; cookie17=Vvl%2F7ZJ%2BJYNu;"</span> \
+                 <span class="hljs-string">" dnk=%5Cu5929%5Cu4ED9%5Cu8349%5Cu5929%5Cu4ED9%5Cu8349; skt=4257a8fa00b349a7; existShop=MTU5MzQ0MDI0MQ%3D%3D;"</span> \
+                 <span class="hljs-string">" uc4=nk4=0%40rVtT67i5o9%2Bt%2BQFc65xFQrUP0rGVA%2Fs%3D&amp;id4=0%40VH93OXG6vzHVZgTpjCrALOFhU4I%3D;"</span> \
+                 <span class="hljs-string">" tracknick=%5Cu5929%5Cu4ED9%5Cu8349%5Cu5929%5Cu4ED9%5Cu8349; _cc_=W5iHLLyFfA%3D%3D; "</span> \
+                 <span class="hljs-string">"_l_g_=Ug%3D%3D; sg=%E8%8D%893d; _nk_=%5Cu5929%5Cu4ED9%5Cu8349%5Cu5929%5Cu4ED9%5Cu8349;"</span> \
+                 <span class="hljs-string">" cookie1=VAmiexC8JqC30wy9Q29G2%2FMPHkz4fpVNRQwNz77cpe8%3D; tfstk=cddPBI0-Kbhyfq5IB_1FRmwX4zaRClfA"</span> \
+                 <span class="hljs-string">"_qSREdGTI7eLP5PGXU5c-kQm2zd2HGhcE; mt=ci=8_1; v=0; uc1=cookie21=VFC%2FuZ9ainBZ&amp;cookie15=VFC%2FuZ9ayeYq2g%3D%3D&amp;cookie"</span> \
+                 <span class="hljs-string">"16=WqG3DMC9UpAPBHGz5QBErFxlCA%3D%3D&amp;existShop=false&amp;pas=0&amp;cookie14=UoTV75eLMpKbpQ%3D%3D&amp;cart_m=0;"</span> \
+                 <span class="hljs-string">" _m_h5_tk=cbe3780ec220a82fe10e066b8184d23f_1593451560729; _m_h5_tk_enc=c332ce89f09d49c68e13db9d906c8fa3; "</span> \
+                 <span class="hljs-string">"l=eBxAcQbPQHureJEzBO5aourza7796IRb8sPzaNbMiInca6MC1hQ0PNQD5j-MRdtjgtChRe-PWBuvjdeBWN4dbNRMPhXJ_n0xnxvO.; "</span> \
+                 <span class="hljs-string">"isg=BJ2drKVLn8Ww-Ht9N195VKUWrHmXutEMHpgqKF9iKfRAFrxIJAhD3DbMRAoQ1unE"</span>
+        cookies = &#123;&#125;
+        <span class="hljs-comment"># 提取键值对 请求头中携带cookie必须是一个字典，所以要把原生的cookie字符串转换成cookie字典</span>
+        <span class="hljs-keyword">for</span> cookie <span class="hljs-keyword">in</span> cookie.split(<span class="hljs-string">';'</span>):
+            key, value = cookie.split(<span class="hljs-string">"="</span>, <span class="hljs-number">1</span>)
+            cookies[key] = value
+        <span class="hljs-keyword">yield</span> scrapy.Request(url=url, cookies=cookies, callback=self.parse)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span>
+        print(response.text)</code></pre>
+
+<h4>方法三的Demo1的最终cookie的dict形式<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs python">cookie = &#123;<span class="hljs-string">'ll'</span>: <span class="hljs-string">'"108090"'</span>, <span class="hljs-string">' bid'</span>: <span class="hljs-string">'LKyRKxbzn_E'</span>, <span class="hljs-string">' _pk_ses.100001.8cb4'</span>: <span class="hljs-string">'*'</span>, <span class="hljs-string">' __utma'</span>: <span class="hljs-string">'30149280.1348080368.1556600783.1556600783.1556600783.1'</span>, <span class="hljs-string">' __utmc'</span>: <span class="hljs-string">'30149280'</span>, <span class="hljs-string">' __utmz'</span>: <span class="hljs-string">'30149280.1556600783.1.1.utmcsr'</span>, <span class="hljs-string">' __utmt'</span>: <span class="hljs-string">'1'</span>, <span class="hljs-string">' dbcl2'</span>: <span class="hljs-string">'"177745320:ER12/4y8Vxk"'</span>, <span class="hljs-string">' ck'</span>: <span class="hljs-string">'9SGi'</span>, <span class="hljs-string">' _pk_id.100001.8cb4'</span>: <span class="hljs-string">'fc3beca6f0344a06.1556600779.1.1556600805.1556600779.'</span>, <span class="hljs-string">' push_noty_num'</span>: <span class="hljs-string">'0'</span>, <span class="hljs-string">' push_doumail_num'</span>: <span class="hljs-string">'0'</span>, <span class="hljs-string">' __utmv'</span>: <span class="hljs-string">'30149280.17774'</span>, <span class="hljs-string">' __utmb'</span>: <span class="hljs-string">'30149280.3.10.1556600783'</span>, <span class="hljs-string">' ap_v'</span>: <span class="hljs-string">'0,6.0'</span>&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start_requests</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">yield</span> scrapy.Request(self.profile_url, callback=self.parse_profile, cookies=self.cookie)</code></pre>
+
+<h4>方法三的Demo2<a class="post-anchor" href="#undefined"></a></h4>
+<pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">start_requests</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">"""
+        根据cookies模拟登陆人人网，注意settings.py文件的cookies必须是开启的
+        :return:
+        """</span>
+        cookies=<span class="hljs-string">"anonymid=jxcn09d5-vd52v0; depovince=GUZ; _r01_=1; ick_login=d41bb8a9-056b-41a7-b187-7c706f0f8702; ick=39b091b8-f882-499b-992b-34a682d3469a; JSESSIONID=abcHJrhG1CAIo64PJRrUw; jebe_key=9ca5b44f-aaec-4180-962e-bf7581ad6e5e%7Cc1d85b293dafa0e44367ceed107b877e%7C1561517245262%7C1%7C1561517244004; jebe_key=9ca5b44f-aaec-4180-962e-bf7581ad6e5e%7Cc1d85b293dafa0e44367ceed107b877e%7C1561517245262%7C1%7C1561517244011; wp_fold=0; td_cookie=18446744069457827825; jebecookies=e9de8580-fb15-4891-b7c3-7c08ebb41f5c|||||; _de=AE9934B6C85831351B86F7DDD5B20F8A; p=b25ab0edb69343d7f80c5e481864b8c30; first_login_flag=1; ln_uact=18620028487; ln_hurl=http://head.xiaonei.com/photos/0/0/men_main.gif; t=b8a0d848e228dd51d2c84609f814495b0; societyguester=b8a0d848e228dd51d2c84609f814495b0; id=971298880; xnsid=6e5116da; ver=7.0; loginfrom=null"</span>
+        cookies = &#123;i.split(<span class="hljs-string">"="</span>)[<span class="hljs-number">0</span>]:i.split(<span class="hljs-string">"="</span>)[<span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> cookies.split(<span class="hljs-string">"; "</span>)&#125;
+        <span class="hljs-keyword">yield</span> scrapy.Request(
+            self.start_urls[<span class="hljs-number">0</span>],
+            callback=self.parse,
+            cookies=cookies
+        )</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/07/26/scrapy%E7%9A%84shell%E7%9A%84%E4%BD%BF%E7%94%A8/">scrapy的shell的使用</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/07/25/scrapy%E7%88%AC%E8%99%AB%E7%BB%86%E8%8A%82/">scrapy爬虫细节</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/07/26/scrapy添加cookie的三种方式/">https://codermino.github.io/2020/07/26/scrapy添加cookie的三种方式/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

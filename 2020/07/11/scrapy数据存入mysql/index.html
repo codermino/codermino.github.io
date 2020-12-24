@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      scrapy数据存入mysql - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、同步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">同步方式Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">1、异步方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text">
+    最后的tip:
+</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">scrapy数据存入mysql</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/07/11</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/scrapy">scrapy</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/scrapy数据存入mysql">scrapy数据存入mysql</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/scrapy/scrapy.jpg" data-caption data-fancybox="images"><img src="/images/scrapy/scrapy.jpg" alt></a></p>
+<h3>1、同步方式<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> pymysql  <span class="hljs-comment">#引入相关库</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MysqlPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-string">"""
+    同步操作
+    """</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-comment"># 建立连接,下面是两种方式</span>
+        <span class="hljs-number">1.</span> self.conn = pymysql.connect(
+                    host=<span class="hljs-string">'localhost'</span>,
+                    db=<span class="hljs-string">'bole'</span>,
+                    user=<span class="hljs-string">'root'</span>,
+                    passwd=<span class="hljs-string">'123456'</span>,
+                    charset=<span class="hljs-string">'utf8'</span>,
+                    port=<span class="hljs-number">330</span>,
+                    use_unicode=<span class="hljs-literal">True</span>)
+        <span class="hljs-number">2.</span> self.conn = pymysql.connect(<span class="hljs-string">'localhost'</span>,<span class="hljs-string">'root'</span>,<span class="hljs-string">'Abcd1234'</span>,<span class="hljs-string">'test'</span>)  <span class="hljs-comment"># 有中文要存入数据库的话要加charset='utf8'</span>
+        <span class="hljs-comment"># 创建游标</span>
+        self.cursor = self.conn.cursor()
+     <span class="hljs-comment">#每爬取到一条数据就会调用一次process_item函数</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self,item,spider)</span>:</span>
+        <span class="hljs-comment"># sql语句</span>
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-comment"># 查重处理,根据表的主键进行一次查询，查看是否有重复数据</span>
+            self.cursor.execute(
+                <span class="hljs-string">"""select * from doubanmovie where img_url = %s"""</span>,
+                item[<span class="hljs-string">'img_url'</span>])
+            <span class="hljs-comment"># 是否有重复数据</span>
+            repetition = self.cursor.fetchone()
+            <span class="hljs-keyword">if</span> repetition:
+                <span class="hljs-comment">#两种方式丢弃无效数据</span>
+                <span class="hljs-number">1.</span> <span class="hljs-keyword">pass</span>
+                <span class="hljs-number">2.</span> <span class="hljs-keyword">raise</span> DropItem(<span class="hljs-string">"Missing price in %s"</span> % item) <span class="hljs-comment">#需要引入相关的模块from scrapy.exceptions import DropItem</span>
+            <span class="hljs-keyword">else</span>:
+                insert_sql = <span class="hljs-string">"""
+                insert into test_zxf(quote,author,tags,born_date,born_location) VALUES(%s,%s,%s,%s,%s)
+                """</span>
+                <span class="hljs-comment"># 执行插入数据到数据库操作</span>
+                self.cursor.execute(insert_sql,(item[<span class="hljs-string">'quote'</span>],item[<span class="hljs-string">'author'</span>],item[<span class="hljs-string">'tags'</span>],item[<span class="hljs-string">'born_date'</span>],
+                                                item[<span class="hljs-string">'born_location'</span>]))
+                <span class="hljs-comment"># 提交，不进行提交无法保存到数据库</span>
+                self.conn.commit()  
+        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> error:
+            <span class="hljs-comment"># 出现错误时打印错误日志</span>
+            self.conn.rollback()
+            log(error)
+        <span class="hljs-keyword">return</span> item
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self,spider)</span>:</span>
+        <span class="hljs-comment"># 关闭游标和连接</span>
+        self.cursor.close()
+        self.conn.close()</code></pre>
+
+<h3>同步方式Demo2<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WhfjPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        dbparams = &#123;
+            <span class="hljs-string">'host'</span>: <span class="hljs-string">'127.0.0.1'</span>,
+            <span class="hljs-string">'user'</span>: <span class="hljs-string">'root'</span>,
+            <span class="hljs-string">'password'</span>: <span class="hljs-string">'19980211'</span>,
+            <span class="hljs-string">'database'</span>: <span class="hljs-string">'fangjia'</span>,
+            <span class="hljs-string">'port'</span>: <span class="hljs-number">3306</span>,
+            <span class="hljs-string">'charset'</span>: <span class="hljs-string">'utf8'</span>
+        &#125;
+        self.conn = pymysql.connect(**dbparams)
+        self.cursor = self.conn.cursor()
+        self._sql = <span class="hljs-literal">None</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span>
+        self.cursor.execute(self.sql, (item[<span class="hljs-string">'xiaoqu_name'</span>],
+                                       item[<span class="hljs-string">'position'</span>],
+                                       item[<span class="hljs-string">'price'</span>]))
+        self.conn.commit()
+        <span class="hljs-keyword">return</span> item
+
+    <span class="hljs-comment">#将一个方法变为属性进行调用</span>
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sql</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self._sql:
+            self._sql = <span class="hljs-string">"""
+            insert into fangchan2(id,xiaoqu_name,position,price) values(null,%s,%s,%s);
+            """</span>
+            <span class="hljs-keyword">return</span> self._sql
+        <span class="hljs-keyword">return</span> self._sql</code></pre>
+
+<pre><code class="hljs python">tip:
+    <span class="hljs-comment">###</span>
+    <span class="hljs-comment">#   我们可以使用@property装饰器来创建只读属性，@property装饰器会将方法转换为相同名称的只读属性,可以与所定义的属性配合使用，这样可以防止属性被修改。</span>
+    <span class="hljs-comment">#   class DataSet(object):</span>
+    <span class="hljs-comment">#   @property</span>
+    <span class="hljs-comment">#   def method_with_property(self): ##含有@property</span>
+    <span class="hljs-comment">#       return 15</span>
+    <span class="hljs-comment">#   def method_without_property(self): ##不含@property</span>
+    <span class="hljs-comment">#       return 15</span>
+    <span class="hljs-comment"># </span>
+    <span class="hljs-comment">#   l = DataSet()</span>
+    <span class="hljs-comment">#   print(l.method_with_property) # 加了@property后，可以用调用属性的形式来调用方法,后面不需要加（）。</span>
+    <span class="hljs-comment">#   print(l.method_without_property())  #没有加@property , 必须使用正常的调用方法的形式，即在后面加()</span>
+    <span class="hljs-comment">###</span></code></pre>
+
+
+
+<h3>1、异步方式<a class="post-anchor" href="#undefined"></a></h3>
+<pre><code class="hljs python"><span class="hljs-comment">#piplines调用</span>
+<span class="hljs-keyword">from</span> scrapyDemo.db.dbhelper <span class="hljs-keyword">import</span> DBHelper
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScrapydemoPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-comment"># 连接数据库</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self.db = DBHelper()
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span>
+        <span class="hljs-comment"># 插入数据库</span>
+        self.db.insert(item)
+        <span class="hljs-keyword">return</span> item
+<span class="hljs-comment">#这里面我们用到了数据库的操作DBHelper类，那</span>
+<span class="hljs-comment">#么我们在scrapyDemo/db目录下创建dbhelper.py 模块，记得再创建一个__init__.py哦。</span>
+<span class="hljs-keyword">import</span> pymysql
+<span class="hljs-keyword">from</span> twisted.enterprise <span class="hljs-keyword">import</span> adbapi
+<span class="hljs-keyword">from</span> scrapy.utils.project <span class="hljs-keyword">import</span> get_project_settings  <span class="hljs-comment">#导入seetings配置</span>
+<span class="hljs-keyword">import</span> time
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DBHelper</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-string">'''这个类也是读取settings中的配置，自行修改代码进行操作'''</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        settings = get_project_settings()  <span class="hljs-comment">#获取settings配置，设置需要的信息</span>
+        <span class="hljs-comment">#或者使用这种方式来获取settings中定义的变量 userAgent = settings.get('USER_AGENT')</span>
+        dbparams = dict(
+            host=settings[<span class="hljs-string">'MYSQL_HOST'</span>],  <span class="hljs-comment">#读取settings中的配置</span>
+            db=settings[<span class="hljs-string">'MYSQL_DBNAME'</span>],
+            user=settings[<span class="hljs-string">'MYSQL_USER'</span>],
+            passwd=settings[<span class="hljs-string">'MYSQL_PASSWD'</span>],
+            charset=<span class="hljs-string">'utf8'</span>,  <span class="hljs-comment">#编码要加上，否则可能出现中文乱码问题</span>
+            cursorclass=pymysql.cursors.DictCursor,
+            use_unicode=<span class="hljs-literal">False</span>,
+        )
+        <span class="hljs-comment">#**表示将字典扩展为关键字参数,相当于host=xxx,db=yyy....</span>
+        dbpool = adbapi.ConnectionPool(<span class="hljs-string">'pymysql'</span>, **dbparams)
+        self.dbpool = dbpool
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">connect</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self.dbpool
+    <span class="hljs-comment">#创建数据库</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">insert</span><span class="hljs-params">(self, item)</span>:</span>
+        sql = <span class="hljs-string">"insert into tech_courses(title,image,brief,course_url,created_at) values(%s,%s,%s,%s,%s)"</span>
+        <span class="hljs-comment">#调用插入的方法</span>
+        query = self.dbpool.runInteraction(self._conditional_insert, sql, item)
+        <span class="hljs-comment">#调用异常处理方法</span>
+        query.addErrback(self._handle_error)
+        <span class="hljs-keyword">return</span> item
+    <span class="hljs-comment">#写入数据库中</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_conditional_insert</span><span class="hljs-params">(self, tx, sql, item)</span>:</span>
+        item[<span class="hljs-string">'created_at'</span>] = time.strftime(<span class="hljs-string">'%Y-%m-%d %H:%M:%S'</span>,
+                                           time.localtime(time.time()))
+        params = (item[<span class="hljs-string">"title"</span>], item[<span class="hljs-string">'image'</span>], item[<span class="hljs-string">'brief'</span>],
+                  item[<span class="hljs-string">'course_url'</span>], item[<span class="hljs-string">'created_at'</span>])
+        tx.execute(sql, params)
+    <span class="hljs-comment">#错误处理方法</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_handle_error</span><span class="hljs-params">(self, failue)</span>:</span>
+        print(<span class="hljs-string">'--------------database operation exception!!-----------------'</span>)
+        print(failue)</code></pre>
+
+<pre><code class="hljs python"><span class="hljs-comment">#demo2:</span>
+<span class="hljs-comment">#tip: </span>
+    <span class="hljs-number">1.</span> @classmethod不需要self参数，但第一个参数需要是表示自身类的cls参数。
+<span class="hljs-comment"># 用twisted库将数据进行异步插入到数据库</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MysqlTwistedPipeline</span><span class="hljs-params">(object)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, dbpool)</span>:</span>
+        self.dbpool = dbpool
+    <span class="hljs-comment">#这个函数会自动调用</span>
+<span class="hljs-meta">    @classmethod</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">from_settings</span><span class="hljs-params">(cls, settings)</span>:</span>
+        <span class="hljs-comment"># 需要在setting中设置数据库配置参数</span>
+        dbparms = dict(
+            host=settings[<span class="hljs-string">'MYSQL_HOST'</span>],
+            db=settings[<span class="hljs-string">'MYSQL_DBNAME'</span>],
+            user=settings[<span class="hljs-string">'MYSQL_USER'</span>],
+            passwd=settings[<span class="hljs-string">'MYSQL_PASSWORD'</span>],
+            charset=<span class="hljs-string">'utf8'</span>,
+            cursorclass=MySQLdb.cursors.DictCursor,
+            use_unicode=<span class="hljs-literal">True</span>,
+        )
+        <span class="hljs-comment"># 连接ConnectionPool（使用MySQLdb连接，或者pymysql）</span>
+        dbpool = adbapi.ConnectionPool(<span class="hljs-string">"pymysql"</span>, **dbparms)  <span class="hljs-comment"># **让参数变成可变化参数</span>
+        <span class="hljs-keyword">return</span> cls(dbpool)   <span class="hljs-comment"># # 返回一个pipeline实例化对象</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span>
+        <span class="hljs-comment"># 使用twisted将MySQL插入变成异步执行</span>
+        <span class="hljs-comment">#使用数据库连接池对象进行数据库操作,自动传递cursor对象到数据库操作方法的第一个参数</span>
+        query = self.dbpool.runInteraction(self.do_insert, item)
+        <span class="hljs-comment"># 添加异常处理</span>
+        query.addCallback(self.handle_error)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handle_error</span><span class="hljs-params">(self, failure)</span>:</span>
+        <span class="hljs-comment"># 处理异步插入时的异常</span>
+        print(failure)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">do_insert</span><span class="hljs-params">(self, cursor, item)</span>:</span>
+        <span class="hljs-comment"># 执行具体的插入</span>
+        insert_sql = <span class="hljs-string">"""
+                    insert into jobbole_artitle(name, base_url, date, comment)
+                    VALUES (%s, %s, %s, %s)
+                """</span>
+        <span class="hljs-comment">#这里不需要进行commit()提交，adbapi会进行自动的commit</span>
+        cursor.execute(insert_sql, (item[<span class="hljs-string">'name'</span>], item[<span class="hljs-string">'base_url'</span>], item[<span class="hljs-string">'date'</span>], item[<span class="hljs-string">'coment'</span>],))</code></pre>
+
+<h3>
+    最后的tip:
+<a class="post-anchor" href="#undefined"></a></h3>
+
+<pre><code class="hljs python">在python1.7以前的版本引入settings中定义的常量的方式可以使用:
+    from scrapy.conf import settings
+但是在1.7版本之后,scrapy.conf就被移除了，1.7以后的版本里，正确使用
+settings.py中配置的方法是:
+    from scrapy.utils.project import get_project_settings
+    settings = get_project_settings()
+    host = settings['MONGODB_HOST]
+    port = settings['MONGODB_PORT']</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/07/11/scrapy%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb/">scrapy数据存入mongodb</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/07/11/markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">markdown基本语法</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/07/11/scrapy数据存入mysql/">https://codermino.github.io/2020/07/11/scrapy数据存入mysql/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

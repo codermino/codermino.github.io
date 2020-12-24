@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      js学习笔记Promise - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise构造函数的基础使用"><span class="toc-text">Promise构造函数的基础使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#举一个简单的小栗子："><span class="toc-text">举一个简单的小栗子：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码："><span class="toc-text">代码：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise构造函数的静态方法"><span class="toc-text">Promise构造函数的静态方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#resolve和reject"><span class="toc-text">resolve和reject</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">js学习笔记Promise</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/18</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js学习笔记Promise">js学习笔记Promise</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="Promise构造函数的基础使用">Promise构造函数的基础使用<a class="post-anchor" href="#Promise构造函数的基础使用"></a></h3><p>Promise对象可以帮我们监听异步任务(函数)的执行结果。<br>并通过两种标记来通知我们任务的状态</p>
+<h4 id="举一个简单的小栗子：">举一个简单的小栗子：<a class="post-anchor" href="#举一个简单的小栗子："></a></h4><p>目标：我们在做一个登录功能。向服务端发起请求。我们需要服务端给我们响应200(yes)或者非200(no)<br>未知：由于网络因素。无法知道什么时候才可以得到回应。(异步任务)<br>已知：无论是yes还是no 当我们接收到响应时，都必须立刻马上使用alert来给用户反馈结果。</p>
+<h4 id="代码：">代码：<a class="post-anchor" href="#代码："></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">// 将登录任务交给Promise管理。并返回Promise实例  pro</span>
+<span class="hljs-keyword">var</span> pro = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;
+    $.ajax(&#123;
+        <span class="hljs-attr">success</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;
+            <span class="hljs-keyword">if</span>(res.status === <span class="hljs-number">200</span>)&#123;
+                <span class="hljs-comment">// 调用resolve或reject，会告诉标记任务完成。（标记并不会直接终止后续代码。如下面的console.log(111)仍然会执行）</span>
+
+                <span class="hljs-comment">// 标记任务完成。并通知Promise实例立即执行then的第一个回调函数</span>
+                resolve(<span class="hljs-string">'yes'</span>);
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-number">111</span>);
+            &#125;<span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-comment">// 标记任务完成。并通知Promise实例立即执行catch的回调函数，或者then的第二个回调函数</span>
+                reject(<span class="hljs-string">'no'</span>)
+            &#125;
+        &#125;,
+        <span class="hljs-attr">error</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>&#123;
+            <span class="hljs-comment">// 标记任务完成。并通知Promise实例立即执行catch的回调函数，或者then的第二个回调函数</span>
+            reject(<span class="hljs-string">'错误'</span>);
+        &#125;
+    &#125;)
+&#125;);
+
+<span class="hljs-comment">// pro是Promise实例。它会在任务标记完成时执行then或者catch</span>
+<span class="hljs-comment">// 具体执行then还是catch。取决于 是通过resolve标记还是reject标记</span>
+<span class="hljs-keyword">var</span> pro2 = pro.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">p</span>) </span>&#123;
+    <span class="hljs-comment">// 如果任务调用了resolve，则执行这里代码</span>
+    <span class="hljs-comment">// 形参p接收resolve传来的值</span>
+    alert(<span class="hljs-string">'登录成功'</span>);
+&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;
+    <span class="hljs-comment">// 如果任务调用了reject，则执行这里代码</span>
+    <span class="hljs-comment">// 形参e接收reject传来的值</span>
+    alert(<span class="hljs-string">'登录失败，请重试'</span>);
+    <span class="hljs-keyword">if</span> (e === <span class="hljs-string">'错误'</span>)&#123;
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'代码可能写错了。或者网路错误'</span>);
+    &#125;
+&#125;)
+
+<span class="hljs-comment">// -----------------分割线----------------------</span>
+<span class="hljs-comment">// 实例调用then和catch，也是有返回值的。返回值仍然是一个Promise所构造的对象。所以依然可以调用then</span>
+<span class="hljs-comment">// 比如上面我们用pro2接受了这种对象</span>
+pro2.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+    <span class="hljs-comment">// 这里的代码仍然会执行。可以理解为回调函数</span>
+&#125;);<span class="hljs-comment">// pro2.then仍然会返回一个Promise对象...........</span></code></pre>
+
+<p><strong>《《注意！：如果任务调用了reject来标记任务完成。但是实例并没有监听catch。那么代码将会报错》》</strong><br>catch的另一种写法：给then传两个回调函数</p>
+<pre><code class="hljs javascript">pro.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 这里，相当于上面的then</span>
+&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 这里相当于上面的catch</span>
+&#125;)</code></pre>
+
+<h3 id="Promise构造函数的静态方法">Promise构造函数的静态方法<a class="post-anchor" href="#Promise构造函数的静态方法"></a></h3><ul>
+<li>resolve和reject</li>
+<li>all</li>
+<li>race</li>
+</ul>
+<h4 id="resolve和reject">resolve和reject<a class="post-anchor" href="#resolve和reject"></a></h4><p>resolve和reject用法一样。<br>这里只拿reject来讲解，他们都是用来直接标记。并返回一个Promise对象</p>
+<p>例如：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> pro = <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-string">'一个惊喜'</span>);
+pro.then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 由于pro接收到的标记不是resolve，所以这里代码不会执行</span>
+&#125;, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;
+    <span class="hljs-comment">// 由于pro接收到的标记是reject，所以这里会执行</span>
+    <span class="hljs-built_in">console</span>.log(e === <span class="hljs-string">'一个惊喜'</span>);<span class="hljs-comment">// ---&gt;&gt; true</span>
+&#125;)</code></pre>
+
+<p><strong>all</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// Promise.all接收一个参数：&lt;Array&gt; 这个数组中元素都必须是Promise实例。</span>
+<span class="hljs-comment">// Promise.all会在数组中所有实例都标记了resolve时。并执行then，且then回调的参数是所有resolve所传的值组成的数组</span>
+<span class="hljs-comment">// 如果有任何一个实例标记了reject，则执行catch，且catch回调的参数是reject返回传来的参数。同时不再接受标记(意思是then</span>
+<span class="hljs-comment">// 和catch只有一个会执行。且只执行一次)</span>
+
+<span class="hljs-comment">// 简介：必须全部resolve才能执行then。否则执行catch。then回调形参接收数组，该数组是所有resolve值集合。catch是reject传来的值</span>
+<span class="hljs-keyword">var</span> pro1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res, rej</span>) </span>&#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span>.random() &gt; <span class="hljs-number">0.5</span>)&#123;
+            res(<span class="hljs-number">111111</span>);
+        &#125;<span class="hljs-keyword">else</span> &#123;
+            rej(<span class="hljs-number">1</span>);
+        &#125;
+    &#125;, <span class="hljs-number">100</span>);
+&#125;);
+<span class="hljs-keyword">var</span> pro2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res, rej</span>) </span>&#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span>.random() &gt; <span class="hljs-number">0.5</span>)&#123;
+            res(<span class="hljs-number">222222</span>);
+        &#125;<span class="hljs-keyword">else</span> &#123;
+            rej(<span class="hljs-number">2</span>);
+        &#125;
+    &#125;, <span class="hljs-number">200</span>);
+&#125;);
+
+<span class="hljs-comment">// 只有接收到标记就开始then或catch。</span>
+<span class="hljs-comment">// 同时不再接收标记(意思是then和catch只有一个会执行。且只执行一次)</span>
+<span class="hljs-built_in">Promise</span>.all([pro1, pro2]).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'真幸运，你连续两次都中奖了：'</span>, data);<span class="hljs-comment">// [&lt;Number&gt;, &lt;Number&gt;]</span>
+&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'很遗憾，你有至少一次未中奖：'</span>, e);<span class="hljs-comment">// &lt;Number&gt;</span>
+&#125;)</code></pre>
+
+<p>race</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// Promise.race接收一个参数：&lt;Array&gt; 这个数组中元素都必须是Promise实例。</span>
+<span class="hljs-comment">// Promise.race会接收到第一个标记时执行then或catch。</span>
+<span class="hljs-comment">// 同时不再接受标记(意思是then和catch只有一个会执行。且只执行一次)</span>
+<span class="hljs-keyword">var</span> pro1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res, rej</span>) </span>&#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span>.random() &gt; <span class="hljs-number">0.5</span>)&#123;
+            res(<span class="hljs-number">111111</span>);
+        &#125;<span class="hljs-keyword">else</span> &#123;
+            rej(<span class="hljs-number">1</span>);
+        &#125;
+    &#125;, <span class="hljs-number">100</span>);
+&#125;);
+<span class="hljs-keyword">var</span> pro2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">res, rej</span>) </span>&#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">Math</span>.random() &gt; <span class="hljs-number">0.5</span>)&#123;
+            res(<span class="hljs-number">222222</span>);
+        &#125;<span class="hljs-keyword">else</span> &#123;
+            rej(<span class="hljs-number">2</span>);
+        &#125;
+    &#125;, <span class="hljs-number">200</span>);
+&#125;);
+
+<span class="hljs-comment">// 只有接收到标记就开始then或catch。</span>
+<span class="hljs-comment">// 同时不再接收标记(意思是then和catch只有一个会执行。且只执行一次)</span>
+<span class="hljs-built_in">Promise</span>.race([pro1, pro2]).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'真幸运，你跑的很快。而且中将了：'</span>, data);
+&#125;).catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'虽然你跑的很快，但是并未中奖：'</span>, e);
+&#125;)</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/08/18/%E5%86%B7%E9%97%A8%E4%B8%94%E6%9C%89%E7%94%A8%E7%9A%84css/">冷门且有用的css</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">js学习笔记回收机制</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/18/js学习笔记Promise/">https://codermino.github.io/2020/08/18/js学习笔记Promise/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue.config.js配置 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue.config.js配置</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/08/14</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue.config.js配置">vue.config.js配置</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<p>简易版</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-keyword">const</span> resolve = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">dir</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> path.join(__dirname, dir);
+&#125;;
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-attr">publicPath</span>: process.env.NODE_ENV === <span class="hljs-string">"production"</span> ? <span class="hljs-string">"./"</span> : <span class="hljs-string">"./"</span>,
+  <span class="hljs-attr">outputDir</span>: <span class="hljs-string">"dist"</span>,
+  <span class="hljs-attr">assetsDir</span>: <span class="hljs-string">"static"</span>,
+  <span class="hljs-attr">lintOnSave</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否开启eslint保存检测</span>
+  <span class="hljs-attr">productionSourceMap</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否在构建生产包时生成sourcdeMap</span>
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    config.resolve.alias
+      .set(<span class="hljs-string">"@"</span>, resolve(<span class="hljs-string">"src"</span>))
+      .set(<span class="hljs-string">"@v"</span>, resolve(<span class="hljs-string">"src/views"</span>))
+      .set(<span class="hljs-string">"@c"</span>, resolve(<span class="hljs-string">"src/components"</span>))
+      .set(<span class="hljs-string">"@u"</span>, resolve(<span class="hljs-string">"src/utils"</span>))
+      .set(<span class="hljs-string">"@s"</span>, resolve(<span class="hljs-string">"src/service"</span>)); <span class="hljs-comment">/* 别名配置 */</span>
+    config.optimization.runtimeChunk(<span class="hljs-string">"single"</span>);
+  &#125;,
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-comment">// host: "localhost",</span>
+    <span class="hljs-comment">/* 本地ip地址 */</span>
+    <span class="hljs-comment">//host: "192.168.1.107",</span>
+    <span class="hljs-attr">host</span>: <span class="hljs-string">"0.0.0.0"</span>, <span class="hljs-comment">//局域网和本地访问</span>
+    <span class="hljs-attr">port</span>: <span class="hljs-string">"8080"</span>,
+    <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">/* 自动打开浏览器 */</span>
+    <span class="hljs-attr">open</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">overlay</span>: &#123;
+      <span class="hljs-attr">warning</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">error</span>: <span class="hljs-literal">true</span>
+    &#125;,
+    <span class="hljs-comment">/* 跨域代理 */</span>
+    <span class="hljs-attr">proxy</span>: &#123;
+      <span class="hljs-string">"/api"</span>: &#123;
+        <span class="hljs-comment">/* 目标代理服务器地址 */</span>
+        <span class="hljs-attr">target</span>: <span class="hljs-string">"http://xxx.com"</span>, <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// target: "http://localhost:8888", //</span>
+        <span class="hljs-comment">/* 允许跨域 */</span>
+        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">ws</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">pathRewrite</span>: &#123;
+          <span class="hljs-string">"^/api"</span>: <span class="hljs-string">""</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+&#125;;</code></pre>
+
+<p>完整版</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-keyword">const</span> UglifyPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"uglifyjs-webpack-plugin"</span>);
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-comment">// 基本路径</span>
+  <span class="hljs-comment">/* 部署生产环境和开发环境下的URL：可对当前环境进行区分，baseUrl 从 Vue CLI 3.3 起已弃用，要使用publicPath */</span>
+  <span class="hljs-comment">/* baseUrl: process.env.NODE_ENV === 'production' ? './' : '/' */</span>
+  <span class="hljs-attr">publicPath</span>: process.env.NODE_ENV === <span class="hljs-string">"production"</span> ? <span class="hljs-string">"./"</span> : <span class="hljs-string">"./"</span>,
+  <span class="hljs-comment">// 输出文件目录</span>
+  <span class="hljs-attr">outputDir</span>: <span class="hljs-string">"dist"</span>,
+  <span class="hljs-comment">// eslint-loader 是否在保存的时候检查</span>
+  <span class="hljs-attr">lintOnSave</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// use the full build with in-browser compiler?</span>
+  <span class="hljs-comment">// https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only</span>
+  <span class="hljs-comment">//   compiler: false,</span>
+  <span class="hljs-attr">runtimeCompiler</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">//关键点在这</span>
+  <span class="hljs-comment">// 调整内部的 webpack 配置。</span>
+  <span class="hljs-comment">// 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/webpack.md</span>
+  <span class="hljs-comment">// webpack配置</span>
+  <span class="hljs-comment">// see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md</span>
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;&#125;,
+  <span class="hljs-attr">configureWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">"production"</span>) &#123;
+      <span class="hljs-comment">// 为生产环境修改配置...</span>
+      config.mode = <span class="hljs-string">"production"</span>;
+      <span class="hljs-comment">// 将每个依赖包打包成单独的js文件</span>
+      <span class="hljs-keyword">var</span> optimization = &#123;
+        <span class="hljs-attr">runtimeChunk</span>: <span class="hljs-string">"single"</span>,
+        <span class="hljs-attr">splitChunks</span>: &#123;
+          <span class="hljs-attr">chunks</span>: <span class="hljs-string">"all"</span>,
+          <span class="hljs-attr">maxInitialRequests</span>: <span class="hljs-literal">Infinity</span>,
+          <span class="hljs-attr">minSize</span>: <span class="hljs-number">20000</span>, <span class="hljs-comment">// 依赖包超过20000bit将被单独打包</span>
+          <span class="hljs-attr">cacheGroups</span>: &#123;
+            <span class="hljs-attr">vendor</span>: &#123;
+              <span class="hljs-attr">test</span>: <span class="hljs-regexp">/[\\/]node_modules[\\/]/</span>,
+              name(<span class="hljs-built_in">module</span>) &#123;
+                <span class="hljs-comment">// get the name. E.g. node_modules/packageName/not/this/part.js</span>
+                <span class="hljs-comment">// or node_modules/packageName</span>
+                <span class="hljs-keyword">const</span> packageName = <span class="hljs-built_in">module</span>.context.match(
+                  <span class="hljs-regexp">/[\\/]node_modules[\\/](.*?)([\\/]|$)/</span>
+                )[<span class="hljs-number">1</span>];
+                <span class="hljs-comment">// npm package names are URL-safe, but some servers don't like @ symbols</span>
+                <span class="hljs-keyword">return</span> <span class="hljs-string">`npm.<span class="hljs-subst">$&#123;packageName.replace(<span class="hljs-string">"@"</span>, <span class="hljs-string">""</span>)&#125;</span>`</span>;
+              &#125;
+            &#125;
+          &#125;
+        &#125;,
+        <span class="hljs-attr">minimizer</span>: [
+          <span class="hljs-keyword">new</span> UglifyPlugin(&#123;
+            <span class="hljs-attr">uglifyOptions</span>: &#123;
+              <span class="hljs-attr">compress</span>: &#123;
+                <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">drop_console</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// console</span>
+                <span class="hljs-attr">drop_debugger</span>: <span class="hljs-literal">false</span>,
+                <span class="hljs-attr">pure_funcs</span>: [<span class="hljs-string">"console.log"</span>] <span class="hljs-comment">// 移除console</span>
+              &#125;
+            &#125;
+          &#125;)
+        ]
+      &#125;;
+      <span class="hljs-built_in">Object</span>.assign(config, &#123;
+        optimization
+      &#125;);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-comment">// 为开发环境修改配置...</span>
+      config.mode = <span class="hljs-string">"development"</span>;
+      <span class="hljs-keyword">var</span> optimization2 = &#123;
+        <span class="hljs-attr">runtimeChunk</span>: <span class="hljs-string">"single"</span>,
+        <span class="hljs-attr">splitChunks</span>: &#123;
+          <span class="hljs-attr">chunks</span>: <span class="hljs-string">"all"</span>,
+          <span class="hljs-attr">maxInitialRequests</span>: <span class="hljs-literal">Infinity</span>,
+          <span class="hljs-attr">minSize</span>: <span class="hljs-number">20000</span>, <span class="hljs-comment">// 依赖包超过20000bit将被单独打包</span>
+          <span class="hljs-attr">cacheGroups</span>: &#123;
+            <span class="hljs-attr">vendor</span>: &#123;
+              <span class="hljs-attr">test</span>: <span class="hljs-regexp">/[\\/]node_modules[\\/]/</span>,
+              name(<span class="hljs-built_in">module</span>) &#123;
+                <span class="hljs-comment">// get the name. E.g. node_modules/packageName/not/this/part.js</span>
+                <span class="hljs-comment">// or node_modules/packageName</span>
+                <span class="hljs-keyword">const</span> packageName = <span class="hljs-built_in">module</span>.context.match(
+                  <span class="hljs-regexp">/[\\/]node_modules[\\/](.*?)([\\/]|$)/</span>
+                )[<span class="hljs-number">1</span>];
+                <span class="hljs-comment">// npm package names are URL-safe, but some servers don't like @ symbols</span>
+                <span class="hljs-keyword">return</span> <span class="hljs-string">`npm.<span class="hljs-subst">$&#123;packageName.replace(<span class="hljs-string">"@"</span>, <span class="hljs-string">""</span>)&#125;</span>`</span>;
+              &#125;
+            &#125;
+          &#125;
+        &#125;
+      &#125;;
+    &#125;
+    <span class="hljs-built_in">Object</span>.assign(config, &#123;
+      <span class="hljs-comment">// 开发生产共同配置</span>
+ 
+      <span class="hljs-comment">// externals: &#123;</span>
+      <span class="hljs-comment">//   'vue': 'Vue',</span>
+      <span class="hljs-comment">//   'element-ui': 'ELEMENT',</span>
+      <span class="hljs-comment">//   'vue-router': 'VueRouter',</span>
+      <span class="hljs-comment">//   'vuex': 'Vuex'</span>
+      <span class="hljs-comment">// &#125; // 防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(用于csdn引入)</span>
+      <span class="hljs-attr">resolve</span>: &#123;
+        <span class="hljs-attr">extensions</span>: [<span class="hljs-string">".js"</span>, <span class="hljs-string">".vue"</span>, <span class="hljs-string">".json"</span>], <span class="hljs-comment">//文件优先解析后缀名顺序</span>
+        <span class="hljs-attr">alias</span>: &#123;
+          <span class="hljs-string">"@"</span>: path.resolve(__dirname, <span class="hljs-string">"./src"</span>),
+          <span class="hljs-string">"@c"</span>: path.resolve(__dirname, <span class="hljs-string">"./src/components"</span>),
+          <span class="hljs-string">"@v"</span>: path.resolve(__dirname, <span class="hljs-string">"./src/views"</span>),
+          <span class="hljs-string">"@u"</span>: path.resolve(__dirname, <span class="hljs-string">"./src/utils"</span>),
+          <span class="hljs-string">"@s"</span>: path.resolve(__dirname, <span class="hljs-string">"./src/service"</span>)
+        &#125;, <span class="hljs-comment">// 别名配置</span>
+        <span class="hljs-attr">plugins</span>: []
+      &#125;,
+      <span class="hljs-attr">optimization</span>: optimization2
+    &#125;);
+  &#125;,
+  <span class="hljs-comment">// vue-loader 配置项</span>
+  <span class="hljs-comment">// https://vue-loader.vuejs.org/en/options.html</span>
+  <span class="hljs-comment">// vueLoader: &#123;&#125;,</span>
+  <span class="hljs-comment">// 生产环境是否生成 sourceMap 文件</span>
+  <span class="hljs-attr">productionSourceMap</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-comment">// css相关配置</span>
+  <span class="hljs-attr">css</span>: &#123;
+    <span class="hljs-comment">// 是否使用css分离插件 ExtractTextPlugin</span>
+    <span class="hljs-comment">// extract: true, //注释css热更新生效</span>
+    <span class="hljs-comment">// 开启 CSS source maps?</span>
+    <span class="hljs-attr">sourceMap</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-comment">// css预设器配置项</span>
+    <span class="hljs-attr">loaderOptions</span>: &#123;&#125;,
+    <span class="hljs-comment">// 启用 CSS modules for all css / pre-processor files.</span>
+    <span class="hljs-attr">modules</span>: <span class="hljs-literal">false</span>
+  &#125;,
+  <span class="hljs-comment">// use thread-loader for babel &amp; TS in production build</span>
+  <span class="hljs-comment">// enabled by default if the machine has more than 1 cores</span>
+  <span class="hljs-attr">parallel</span>: <span class="hljs-built_in">require</span>(<span class="hljs-string">"os"</span>).cpus().length &gt; <span class="hljs-number">1</span>,
+  <span class="hljs-comment">// 是否启用dll</span>
+  <span class="hljs-comment">// See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode</span>
+  <span class="hljs-comment">// dll: false,</span>
+  <span class="hljs-comment">// PWA 插件相关配置</span>
+  <span class="hljs-comment">// see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa</span>
+  <span class="hljs-attr">pwa</span>: &#123;&#125;,
+  <span class="hljs-comment">// webpack-dev-server 相关配置</span>
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-comment">/* 自动打开浏览器 */</span>
+    <span class="hljs-attr">open</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-comment">// host: "192.168.0.137",</span>
+    <span class="hljs-attr">host</span>: <span class="hljs-string">"0.0.0.0"</span>, <span class="hljs-comment">//局域网和本地访问</span>
+    <span class="hljs-comment">//host: "192.168.1.137",</span>
+    <span class="hljs-attr">port</span>: <span class="hljs-number">8080</span>,
+    <span class="hljs-attr">https</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">hotOnly</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-comment">/* 使用代理 */</span>
+    <span class="hljs-attr">proxy</span>: &#123;
+      <span class="hljs-string">"/api"</span>: &#123;
+        <span class="hljs-comment">/* 目标代理服务器地址 */</span>
+        <span class="hljs-comment">// target: "http://192.168.0.106:8080/",</span>
+        <span class="hljs-attr">target</span>: <span class="hljs-string">"http://192.168.1.126:8080/"</span>, <span class="hljs-comment">//阳洋</span>
+        <span class="hljs-comment">/* 允许跨域 */</span>
+        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">ws</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">pathRewrite</span>: &#123;
+          <span class="hljs-string">"^/api"</span>: <span class="hljs-string">""</span>
+        &#125;
+      &#125;
+    &#125;,
+    <span class="hljs-attr">before</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;&#125;
+  &#125;,
+  <span class="hljs-comment">// 第三方插件配置</span>
+  <span class="hljs-attr">pluginOptions</span>: &#123;&#125;
+&#125;;</code></pre>
+
+<p>之后运行打包命令即可</p>
+<pre><code class="hljs javascript">npm run build</code></pre>
+
+
+<p>清除缓存</p>
+<p>tip:</p>
+<pre><code class="hljs markdown">直接在vue项目中新建vue.config.js，然后复制进去即可。</code></pre>
+
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+<span class="hljs-comment">// 获取当前时间戳</span>
+<span class="hljs-keyword">const</span> Timestamp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();
+<span class="hljs-comment">// 定义版本号</span>
+<span class="hljs-keyword">const</span> VUE_APP_Version = <span class="hljs-string">'1.0.0'</span>
+<span class="hljs-keyword">const</span> resolve = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">dir</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> path.join(__dirname, dir);
+&#125;;
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-attr">configureWebpack</span>: &#123;
+    <span class="hljs-attr">output</span>: &#123; <span class="hljs-comment">//输出重构，打包编译后的文件名称 【模块名称.版本号.时间戳】</span>
+      <span class="hljs-attr">filename</span>: <span class="hljs-string">`[name].<span class="hljs-subst">$&#123;VUE_APP_Version&#125;</span>.<span class="hljs-subst">$&#123;Timestamp&#125;</span>.js`</span>,
+      <span class="hljs-attr">chunkFilename</span>: <span class="hljs-string">`[name].<span class="hljs-subst">$&#123;VUE_APP_Version&#125;</span>.<span class="hljs-subst">$&#123;Timestamp&#125;</span>.js`</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">publicPath</span>: process.env.NODE_ENV === <span class="hljs-string">"production"</span> ? <span class="hljs-string">"./"</span> : <span class="hljs-string">"./"</span>,
+  <span class="hljs-comment">//   publicPath: './',</span>
+  <span class="hljs-attr">outputDir</span>: <span class="hljs-string">"dist"</span>,
+  <span class="hljs-attr">assetsDir</span>: <span class="hljs-string">"static"</span>,
+  <span class="hljs-attr">lintOnSave</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 是否开启eslint保存检测</span>
+  <span class="hljs-attr">productionSourceMap</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 是否在构建生产包时生成sourcdeMap</span>
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    config.resolve.alias
+      .set(<span class="hljs-string">"@"</span>, resolve(<span class="hljs-string">"src"</span>))
+      .set(<span class="hljs-string">"@v"</span>, resolve(<span class="hljs-string">"src/views"</span>))
+      .set(<span class="hljs-string">"@c"</span>, resolve(<span class="hljs-string">"src/components"</span>))
+      .set(<span class="hljs-string">"@u"</span>, resolve(<span class="hljs-string">"src/utils"</span>))
+      .set(<span class="hljs-string">"@s"</span>, resolve(<span class="hljs-string">"src/service"</span>)); <span class="hljs-comment">/* 别名配置 */</span>
+    config.optimization.runtimeChunk(<span class="hljs-string">"single"</span>);
+  &#125;,
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-comment">// host: "localhost",</span>
+    <span class="hljs-comment">/* 本地ip地址 */</span>
+    <span class="hljs-comment">//host: "192.168.1.107",</span>
+    <span class="hljs-attr">host</span>: <span class="hljs-string">"0.0.0.0"</span>, <span class="hljs-comment">//局域网和本地访问</span>
+    <span class="hljs-attr">port</span>: <span class="hljs-string">"8080"</span>,
+    <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">/* 自动打开浏览器 */</span>
+    <span class="hljs-attr">open</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">overlay</span>: &#123;
+      <span class="hljs-attr">warning</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">error</span>: <span class="hljs-literal">true</span>
+    &#125;,
+    <span class="hljs-comment">/* 跨域代理 */</span>
+    <span class="hljs-attr">proxy</span>: &#123;
+      <span class="hljs-string">"/api"</span>: &#123;
+        <span class="hljs-comment">/* 目标代理服务器地址 */</span>
+        <span class="hljs-attr">target</span>: <span class="hljs-string">"http://m260048y71.zicp.vip"</span>, <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// target: "http://192.168.1.102:8888", //</span>
+        <span class="hljs-comment">/* 允许跨域 */</span>
+        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">ws</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">pathRewrite</span>: &#123;
+          <span class="hljs-string">"^/api"</span>: <span class="hljs-string">""</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+&#125;;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/08/14/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E8%BF%90%E8%A1%8Cwebpack%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84vue%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6/">在本地运行webpack打包后的vue项目文件</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/08/14/ecahrts%E8%87%AA%E9%80%82%E5%BA%94%E5%92%8C%E5%88%87%E6%8D%A2%E9%97%AE%E9%A2%98/">ecahrts自适应和切换问题</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/08/14/vue-config-js配置/">https://codermino.github.io/2020/08/14/vue-config-js配置/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

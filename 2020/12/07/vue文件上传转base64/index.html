@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue文件上传转base64 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#上传页面"><span class="toc-text">上传页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#acceptFileType-js文件"><span class="toc-text">acceptFileType.js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件类型验证-Demo2"><span class="toc-text">文件类型验证 Demo2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-text">使用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用原生js进行文件上传转base64"><span class="toc-text">使用原生js进行文件上传转base64</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue文件上传转base64</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/07</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue文件上传转base64">vue文件上传转base64</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="上传页面">上传页面<a class="post-anchor" href="#上传页面"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;imageUpload&quot;&gt;
+    &lt;el-upload
+      class&#x3D;&quot;avatar-uploader&quot;
+      action&#x3D;&quot;&quot;
+      :accept&#x3D;&quot;this.acceptFile(&#39;file&#39;)&quot;
+      ref&#x3D;&quot;uploadAvatar&quot;
+      :show-file-list&#x3D;&quot;false&quot;
+      :auto-upload&#x3D;&quot;false&quot;
+      :on-change&#x3D;&quot;changeFile&quot;&gt;
+      &lt;i class&#x3D;&quot;el-icon-plus avatar-uploader-icon&quot;&gt;&lt;&#x2F;i&gt;
+    &lt;&#x2F;el-upload&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import acceptFileType from &#39;..&#x2F;util&#x2F;acceptFileType&#39;
+export default &#123;
+  name: &quot;imageUpload&quot;,
+  data() &#123;
+    return &#123;
+      acceptTypeList: []
+    &#125;
+  &#125;,
+  methods: &#123;
+    acceptFile(type)&#123;
+      this.acceptTypeList &#x3D; acceptFileType(type)
+      return this.acceptTypeList
+    &#125;,
+    changeFile(file, fileList) &#123;
+      console.log(file.raw)
+      const fileName &#x3D; file.name;
+      const m &#x3D; fileName.match(&#x2F;\.(\w+)(#|\?|$)&#x2F;);
+      const fileType &#x3D; (m &amp;&amp; m[1]).toString().toLowerCase();
+      if (!this.acceptTypeList.includes(fileType))&#123;
+        this.$message.info(&#39;上传的文件格式不对!&#39;);
+        return;
+      &#125;
+      const isLt5M &#x3D; file.size &#x2F; 1024 &#x2F; 1024 &lt; 5;
+      if (!isLt5M) &#123;
+        this.$message.info(&#39;上传头像图片大小不能超过 5MB!&#39;);
+        return;
+      &#125;
+      let This &#x3D; this;
+      let reader &#x3D; new FileReader();
+      reader.readAsDataURL(file.raw);
+      &#x2F;&#x2F;开始转
+      reader.onload &#x3D; function(e)&#123;
+        this.result; &#x2F;&#x2F;base64编码
+        console.log(this.result)
+        console.log(e.target.result)
+      &#125;
+      &#x2F;&#x2F;转 失败
+      reader.onerror &#x3D; function (error) &#123;
+        console.log(&#39;Error: &#39;, error)
+      &#125;
+      &#x2F;&#x2F;转 结束  咱就 resolve 出去
+      reader.onloadend &#x3D; function() &#123;
+        console.log(&#39;转换结束&#39;)
+      &#125;;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="acceptFileType-js文件">acceptFileType.js文件<a class="post-anchor" href="#acceptFileType-js文件"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">acceptFile</span>(<span class="hljs-params">e</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> allowHook = &#123;
+    <span class="hljs-attr">video</span>: <span class="hljs-string">'.mp4, .ogv, .ogg, .webm'</span>,
+    <span class="hljs-attr">audio</span>: <span class="hljs-string">'.wav, .mp3, .ogg, .acc, .webm, .amr'</span>,
+    <span class="hljs-attr">file</span>: <span class="hljs-string">'doc,.docx,.xlsx,.xls,.pdf'</span>,
+    <span class="hljs-attr">excel</span>: <span class="hljs-string">'xlsx,.xls'</span>,
+    <span class="hljs-attr">img</span>: <span class="hljs-string">'.jpg, .jpeg, .png, .gif'</span>
+  &#125;
+  <span class="hljs-keyword">if</span> (e) &#123;
+    <span class="hljs-keyword">return</span> allowHook[e];
+  &#125;
+  <span class="hljs-keyword">let</span> srt = <span class="hljs-literal">null</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> k <span class="hljs-keyword">in</span> allowHook) &#123;
+    srt += allowHook[k]
+  &#125;
+  <span class="hljs-keyword">return</span> srt
+&#125;</code></pre>
+
+<h3 id="文件类型验证-Demo2">文件类型验证 Demo2<a class="post-anchor" href="#文件类型验证-Demo2"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">/*
+*  校验上传文件
+* */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">validUploadFile</span>(<span class="hljs-params">type = <span class="hljs-string">'img'</span>, file</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (!file) &#123;
+    file = type;
+    type = <span class="hljs-string">'img'</span>
+  &#125;
+  <span class="hljs-keyword">const</span> fileName = file.name;
+  <span class="hljs-keyword">const</span> m = fileName.match(<span class="hljs-regexp">/\.(\w+)(#|\?|$)/</span>);
+  <span class="hljs-keyword">const</span> fileType = (m &amp;&amp; m[<span class="hljs-number">1</span>]).toString().toLowerCase();
+  <span class="hljs-keyword">const</span> allowHook = &#123;
+    <span class="hljs-attr">video</span>: [<span class="hljs-string">'mp4'</span>, <span class="hljs-string">'ogv'</span>, <span class="hljs-string">'ogg'</span>, <span class="hljs-string">'webm'</span>],
+    <span class="hljs-attr">audio</span>: [<span class="hljs-string">'wav'</span>, <span class="hljs-string">'mp3'</span>, <span class="hljs-string">'ogg'</span>, <span class="hljs-string">'acc'</span>, <span class="hljs-string">'webm'</span>, <span class="hljs-string">'amr'</span>],
+    <span class="hljs-attr">file</span>: [<span class="hljs-string">'doc'</span>, <span class="hljs-string">'docx'</span>, <span class="hljs-string">'xlsx'</span>, <span class="hljs-string">'xls'</span>, <span class="hljs-string">'pdf'</span>],
+    <span class="hljs-attr">excel</span>: [<span class="hljs-string">'xlsx'</span>, <span class="hljs-string">'xls'</span>],
+    <span class="hljs-attr">img</span>: [<span class="hljs-string">'jpg'</span>, <span class="hljs-string">'jpeg'</span>, <span class="hljs-string">'png'</span>, <span class="hljs-string">'gif'</span>]
+  &#125;
+  <span class="hljs-keyword">const</span> validType = (allowHook[type] || []).includes(fileType);
+  <span class="hljs-keyword">if</span> (!validType) &#123;
+    <span class="hljs-keyword">const</span> supprtTypes = allowHook[type].join(<span class="hljs-string">','</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`只支持<span class="hljs-subst">$&#123;supprtTypes&#125;</span>类型文件上传`</span>;
+  &#125;
+  <span class="hljs-keyword">if</span> (fileName.indexOf(<span class="hljs-string">'%'</span>) &gt; <span class="hljs-number">-1</span> || fileName.indexOf(<span class="hljs-string">'&amp;'</span>) &gt; <span class="hljs-number">-1</span>) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'上传文件名称不能带有字符"%","&amp;"'</span>;
+  &#125;
+  <span class="hljs-keyword">const</span> isLt10M = file.size / <span class="hljs-number">1024</span> / <span class="hljs-number">1024</span> &lt; <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">if</span> (type === file &amp;&amp; !isLt10M) &#123;
+    <span class="hljs-keyword">this</span>.$message.error(<span class="hljs-string">'上传资料大小不能超过 10MB!'</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+&#125;</code></pre>
+
+<h3 id="使用方式">使用方式<a class="post-anchor" href="#使用方式"></a></h3><pre><code class="hljs javascript">changeFile(file, fileList) &#123;
+  <span class="hljs-built_in">console</span>.log(file.raw)
+  <span class="hljs-built_in">console</span>.log(vavilidFileType(<span class="hljs-string">'file'</span>, file.raw))
+&#125;</code></pre>
+
+<h3 id="使用原生js进行文件上传转base64">使用原生js进行文件上传转base64<a class="post-anchor" href="#使用原生js进行文件上传转base64"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;imageUpload&quot;&gt;
+    &lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;file&quot; multiple&#x3D;&quot;multiple&quot; @change&#x3D;&quot;handleFile&quot; :accept&#x3D;&quot;acceptFile(&#39;file&#39;)&quot;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import acceptFileType from &#39;..&#x2F;util&#x2F;acceptFileType&#39;
+import vavilidFileType from &#39;..&#x2F;util&#x2F;vavilidFileType&#39;
+export default &#123;
+  name: &quot;imageUpload&quot;,
+  methods: &#123;
+    acceptFile(type)&#123;
+      this.acceptTypeList &#x3D; acceptFileType(type)
+      return this.acceptTypeList
+    &#125;,
+    handleFile(e)&#123;
+      const file &#x3D; e.target.files[0]
+      console.log(file)
+      const canAccept &#x3D; vavilidFileType(&#39;file&#39;, file)
+      if (!canAccept)&#123;
+        this.$message.info(&#39;上传的文件格式不对!&#39;);
+        return;
+      &#125;
+      const isLt5M &#x3D; file.size &#x2F; 1024 &#x2F; 1024 &lt; 5;
+      if (!isLt5M) &#123;
+        this.$message.info(&#39;上传头像图片大小不能超过 5MB!&#39;);
+        return;
+      &#125;
+      let This &#x3D; this;
+      let reader &#x3D; new FileReader();
+      reader.readAsDataURL(file);
+      &#x2F;&#x2F;开始转
+      reader.onload &#x3D; function(e)&#123;
+        this.result; &#x2F;&#x2F;base64编码
+        &#x2F;&#x2F; console.log(this.result)
+        console.log(e.target.result)
+      &#125;
+      &#x2F;&#x2F;转 失败
+      reader.onerror &#x3D; function (error) &#123;
+        console.log(&#39;Error: &#39;, error)
+      &#125;
+      &#x2F;&#x2F;转 结束  咱就 resolve 出去
+      reader.onloadend &#x3D; function() &#123;
+        console.log(&#39;转换结束&#39;)
+      &#125;;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/12/07/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B9%B6%E4%BC%A0%E9%80%92formdata/">vue自定义图片上传并传递formdata</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/07/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/">vue图片转base64</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/07/vue文件上传转base64/">https://codermino.github.io/2020/12/07/vue文件上传转base64/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

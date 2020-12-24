@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue的sync父子组件双向绑定 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-text">完整代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2"><span class="toc-text">Demo2</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue的sync父子组件双向绑定</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/11/08</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue的sync父子组件双向绑定">vue的sync父子组件双向绑定</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<p>官方推荐使用一种update:my-prop-name的模式来替代事件触发,<br>目的是为了优雅而不粗鲁的实现父子组件间的双向绑定！</p>
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><p>父组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+        &lt;input type&#x3D;&quot;button&quot; 
+               value&#x3D;&quot;我是父组件中的按钮&quot; 
+               @click&#x3D;&quot;show&quot;&gt;
+        &lt;child v-show&#x3D;&quot;isShow&quot;&#x2F;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    import child from &quot;@&#x2F;components&#x2F;child&quot;
+    export default &#123;
+        data() &#123;
+            return &#123;
+                isShow:false
+            &#125;
+        &#125;,
+        components:&#123;
+            child
+        &#125;,
+        methods:&#123;
+            show()&#123;
+                this.isShow&#x3D;true;
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>子组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+         我是一个子组件，我在红色的海洋里！
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;</code></pre>
+<p>接下来加个需求，在子组当中增加一个按钮，<br>通过该按钮来将自已隐藏起来！需要借助父子之间的传值了！</p>
+<h3 id="父组件">父组件<a class="post-anchor" href="#父组件"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+        &lt;input type&#x3D;&quot;button&quot;
+               value&#x3D;&quot;我是父组件中的按钮&quot;
+               @click&#x3D;&quot;show&quot;&gt;
+        &lt;child @upIsShow&#x3D;&quot;changeIsShow&quot; v-show&#x3D;&quot;isShow&quot;&#x2F;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    import child from &quot;@&#x2F;components&#x2F;child&quot;
+    export default &#123;
+        data() &#123;
+            return &#123;
+                isShow:false
+            &#125;
+        &#125;,
+        components:&#123;
+            child
+        &#125;,
+        methods:&#123;
+            show()&#123;
+                this.isShow&#x3D;true;
+            &#125;,
+            changeIsShow(bol)&#123;
+                this.isShow&#x3D;bol;
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>子组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+         我是一个子组件，我在红色的海洋里！
+        &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;点我隐身&quot; @click&#x3D;&quot;upIsShow&quot;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    export default &#123;
+        methods:&#123;
+            upIsShow()&#123;
+                this.$emit(&quot;upIsShow&quot;,false);
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>如果我要将父组件中的事@upIsShow修改为@update:isShow：</p>
+<pre><code class="hljs vue">&lt;child @update:isShow&#x3D;&quot;changeIsShow&quot; v-show&#x3D;&quot;isShow&quot;&#x2F;&gt;</code></pre>
+<p>子组件调整</p>
+<pre><code class="hljs vue">upIsShow()&#123;
+    this.$emit(&quot;update:isShow&quot;,false);
+&#125;</code></pre>
+<p>那么如果现在我将父组件的changeIsShow直接写成匿名函数</p>
+<pre><code class="hljs vue">&lt;child @update:isShow&#x3D;&quot;function(bol)&#123;isShow&#x3D;bol&#125;&quot; v-show&#x3D;&quot;isShow&quot;&#x2F;&gt;</code></pre>
+<p>现在我将那匿名函数改成箭头函数</p>
+<pre><code class="hljs vue">&lt;child @update:isShow&#x3D;&quot;bol&#x3D;&gt;isShow&#x3D;bol&quot; v-show&#x3D;&quot;isShow&quot;&#x2F;&gt;</code></pre>
+<p>最后我将上面那行代码做最后一次修改</p>
+<pre><code class="hljs vue">&lt;child :isShow.sync&#x3D;&quot;isShow&quot; v-show&#x3D;&quot;isShow&quot;&#x2F;&gt;</code></pre>
+<p>至此终于涉及到了sync了。<br>以上代码 :isShow.sync=”isShow”其实是<br>@update:isShow=”bol=&gt;isShow=bol”语法糖。<br>是其一种简写形式。</p>
+<h3 id="完整代码">完整代码<a class="post-anchor" href="#完整代码"></a></h3><p>父组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+        &lt;input type&#x3D;&quot;button&quot;
+               value&#x3D;&quot;我是父组件中的按钮&quot;
+               @click&#x3D;&quot;show&quot;&gt;
+        &lt;child :isShow.sync&#x3D;&quot;isShow&quot; v-show&#x3D;&quot;isShow&quot;&#x2F;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    import child from &quot;@&#x2F;components&#x2F;child&quot;
+    export default &#123;
+        data() &#123;
+            return &#123;
+                isShow:false
+            &#125;
+        &#125;,
+        components:&#123;
+            child
+        &#125;,
+        methods:&#123;
+            show()&#123;
+                this.isShow&#x3D;true;
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>子组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div&gt;
+         我是一个子组件，我在红色的海洋里！
+        &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;点我隐身&quot; @click&#x3D;&quot;upIsShow&quot;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+    export default &#123;
+        methods:&#123;
+            upIsShow()&#123;
+                this.$emit(&quot;update:isShow&quot;,false);
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="Demo2">Demo2<a class="post-anchor" href="#Demo2"></a></h3><p>父组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+&lt;div class&#x3D;&quot;father&quot;&gt;
+  &lt;son :msg.sync&#x3D;&quot;msg2&quot;&gt;&lt;&#x2F;son&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Son from &#39;.&#x2F;son&#39;
+export default &#123;
+  name: &quot;father&quot;,
+  components:&#123;
+    Son
+  &#125;,
+  data() &#123;
+    return &#123;
+      msg2: &#39;父组件传递过来的data&#39;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>子组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+&lt;div class&#x3D;&quot;son&quot;&gt;
+  &#123;&#123;msg&#125;&#125;
+  &lt;a-button @click&#x3D;&quot;changeMsgFather&quot;&gt;改变父组件的值&lt;&#x2F;a-button&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;son&quot;,
+  props: &#123;
+    msg: &#123;
+      type: String,
+      default: &#39;&#39;
+    &#125;,
+  &#125;,
+  methods: &#123;
+    changeMsgFather() &#123;
+      this.$emit(&#39;update:msg&#39;, &#39;123&#39;)
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>sync只是给大家伙提供了一种与父组件沟通的思路而已！<br>所以在后面日子里，<br>你如果只是单纯的在子组件当中修改父组件的某个数据时，<br>建议使用sync，简单，快捷，有档次！</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/11/08/less%E8%AF%AD%E6%B3%95/">less语法</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/11/07/js%E7%9A%84switch%E4%BC%98%E5%8C%96/">js的switch优化</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/11/08/vue的sync父子组件双向绑定/">https://codermino.github.io/2020/11/08/vue的sync父子组件双向绑定/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

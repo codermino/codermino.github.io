@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      mongodb操作 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#search"><span class="toc-text">查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#search_condition"><span class="toc-text">查询条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#re"><span class="toc-text">正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls"><span class="toc-text">limit和skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#man_made"><span class="toc-text">自定义查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ty"><span class="toc-text">投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tj"><span class="toc-text">统计个数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#xccf"><span class="toc-text">消除重复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data_recover"><span class="toc-text">数据备份和恢复</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aggregate"><span class="toc-text">聚合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common_aggregate"><span class="toc-text">常用管道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common_aggregate_express"><span class="toc-text">常用管道表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#project"><span class="toc-text">处理$project</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#example"><span class="toc-text">综合实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limit"><span class="toc-text">limit和skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unwind"><span class="toc-text">unwind</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#index"><span class="toc-text">索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#differ"><span class="toc-text">mongodb mysql redis的区别和使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#drop"><span class="toc-text">爬虫数据去重</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">mongodb操作</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/12</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/mongodb">mongodb</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/mongodb">mongodb</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="data:image/png;base64,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" target="_blank" rel="noopener" data-caption="git" data-fancybox="images"><img src="data:image/png;base64,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" alt="git"></a></p>
+<h3 id="search">查询<a class="post-anchor" href="#search"></a><a class="post-anchor" href="#search"></a></h3>
+<pre><code class="hljs markdown">find():
+<span class="hljs-code">    db.集合名称.find(&#123;条件文档&#125;)</span>
+findOne():
+<span class="hljs-code">    db.集合名称.findOne(&#123;条件文档&#125;)</span>
+pretty():将结果格式化
+<span class="hljs-code">    db.集合名称.find(&#123;条件文档&#125;).pretty()</span></code></pre>
+
+<h3 id="search_condition">查询条件<a class="post-anchor" href="#search_condition"></a><a class="post-anchor" href="#search_condition"></a></h3>
+<pre><code class="hljs markdown">等于:默认是等于判断，没有运算符
+小于:    $lt  (less than)
+小于等于:$lte (less than equal)
+大于:    $gt  (greater than)
+大于等于:$gte (greater than equal)
+不等于:  $ne  (not equal)
+eq:
+<span class="hljs-code">    db.集合名称.find(&#123;条件文档:&#123;查询条件&#125;&#125;)</span>
+<span class="hljs-code">    </span>
+使用"$in","$nin"判断是否在某个范围内
+eq:
+<span class="hljs-code">    查询年龄为18、28的学生</span>
+<span class="hljs-code">    db.stu.find(&#123;age:&#123;$in:[18,28]&#125;&#125;)</span>
+
+and: 在json中写多个条件即可
+<span class="hljs-code">     查询年龄大于或等于18，并且性别为true的学术</span>
+<span class="hljs-code">     db.stu.find(age:&#123;$gte:18&#125;,gender:true)</span>
+or:  使用$or,值为数组，数组中每个元素为json
+<span class="hljs-code">     查询年龄大于18，或性别为false的学生</span>
+<span class="hljs-code">     db.stu.find(&#123;$or:[&#123;age:&#123;$gt:18&#125;&#125;,&#123;gender:false&#125;]&#125;)</span>
+<span class="hljs-code">     查询年龄大于18或者性别为男生，并且姓名是Mark</span>
+<span class="hljs-code">     db.stu.find(&#123;$or:[&#123;age:&#123;$gt:18&#125;&#125;,&#123;gender:false&#125;],name:'Mark'&#125;)</span></code></pre>
+
+<h3 id="re">正则<a class="post-anchor" href="#re"></a><a class="post-anchor" href="#re"></a></h3>
+<pre><code class="hljs markdown">使用//或$regex编写正则表达式
+查询姓李的学生
+db.stu.find(&#123;last_name:/^李/&#125;)
+db.stu.find(&#123;last_name:&#123;$regex:'^李'&#125;&#125;)</code></pre>
+
+<h3 id="ls">limit和skip<a class="post-anchor" href="#ls"></a><a class="post-anchor" href="#ls"></a></h3>
+<pre><code class="hljs markdown">limit():用于等去指定数量的文档
+db.集合名称.find().limit(NUMBER)
+查询2条学生信息
+db.stu.find().limit(2)
+
+skip():用于跳过指定数量的文档
+db.集合名称.find().skip(NUMBER)
+db.stu.find().skip(2)
+
+同时使用
+db.stu.find().limit(3).skip(2)
+或
+db.stu.find().skip(3).limit(2) ★</code></pre>
+
+<h3 id="man_made">自定义查询<a class="post-anchor" href="#man_made"></a><a class="post-anchor" href="#man_made"></a></h3>
+<pre><code class="hljs markdown">在mongodb中支持js语法
+使用$where后面写一个函数，返回满足条件的数据
+查询年龄大于20的学生
+db.stu.find(&#123;
+<span class="hljs-code">    $where:function()&#123;</span>
+<span class="hljs-code">        return this.age&gt;20;</span>
+<span class="hljs-code">    &#125;</span>
+&#125;)</code></pre>
+
+<h3 id="ty">投影<a class="post-anchor" href="#ty"></a><a class="post-anchor" href="#ty"></a></h3>
+<pre><code class="hljs markdown">在查询到的返回结果中，只选择必要的字段
+db.集合名称.find(&#123;&#125;,&#123;字段名称:1,.....&#125;)
+参数为字段与值，值为1表示显示，值为0不显示
+特殊：对于_id列默认是显示的，如果不显示需要明确设置为0
+eq:
+<span class="hljs-code">    db.stu.find(&#123;&#125;,&#123;_id:0,name:1,age:1,gender:1&#125;)</span></code></pre>
+
+<h3 id="sort">排序<a class="post-anchor" href="#sort"></a><a class="post-anchor" href="#sort"></a></h3>
+<pre><code class="hljs markdown">方法sort(),用于对集合进行排序
+db.集合名称.find().sort(&#123;字段1,...&#125;)
+参数1位升序排列
+参数-1为降序排列
+根据性别降序，再根据年龄升序
+eq:
+<span class="hljs-code">    db.stu.find().sort(&#123;gender:-1,age:1&#125;)</span></code></pre>
+
+<h3 id="tj">统计个数<a class="post-anchor" href="#tj"></a><a class="post-anchor" href="#tj"></a></h3>
+<pre><code class="hljs markdown">方法count()用于统计结果集中文档条数
+db.集合名称.find(&#123;条件&#125;).count()
+db.集合名称.count(&#123;条件&#125;)
+db.stu.find(&#123;gender:true&#125;).count()
+db.stu.count(&#123;age:&#123;$gt:20&#125;&#125;,gender:true)</code></pre>
+
+<h3 id="xccf">消除重复<a class="post-anchor" href="#xccf"></a><a class="post-anchor" href="#xccf"></a></h3>
+<pre><code class="hljs markdown">方法distinct()对数据进行去重
+db.集合名称.distinct('去重字段',&#123;条件&#125;)
+db.stu.distinct('address',&#123;age:&#123;$gt:20&#125;&#125;)</code></pre>
+
+<h3 id="data_recover">数据备份和恢复<a class="post-anchor" href="#data_recover"></a><a class="post-anchor" href="#data_recover"></a></h3>
+<pre><code class="hljs markdown">备份的语法：
+<span class="hljs-code">    mongoddump -h host -d dbname -o dbdirectory</span>
+-h：服务器地址，也可以指定端口号
+-d：需要备份的数据库名称
+-o：备份的数据存放的位置，此目录中存放着备份出来的数据
+eq:
+<span class="hljs-code">    mongodump -h 地址 -d test -o 路径</span>
+<span class="hljs-code">    如何备份的是本地的服务器，那么-h可以省略不写</span>
+
+恢复语法：
+<span class="hljs-code">    mongorestore -g dbhost -d dbname --dir dbdirectory</span>
+-h：服务器地址
+-d：需要恢复的数据库实例
+--dir：备份数据所在的位置
+eq:
+<span class="hljs-code">    mongoretore -h 地址 -d test2 --dir 地址/test</span></code></pre>
+
+<h3 id="aggregate">聚合<a class="post-anchor" href="#aggregate"></a><a class="post-anchor" href="#aggregate"></a></h3>
+<pre><code class="hljs markdown">聚合(aggregate)是基于数据处理的聚合管道，每个文档通过一个由多个阶段(stage)
+组成的管道，可以对每个极端的管道进行分组、过滤等功能，然后经过一系列的处理，
+输出相应的结果。
+db.集合名称.aggregate(&#123;管道:&#123;表达式&#125;&#125;)</code></pre>
+
+<h3 id="common_aggregate">常用管道<a class="post-anchor" href="#common_aggregate"></a><a class="post-anchor" href="#common_aggregate"></a></h3>
+<pre><code class="hljs markdown">在mongodb中，文档处理完毕后，通过管道进行下一次处理
+常用管道如下：
+<span class="hljs-code">    $group：将集合中的文档分组，可用于统计结果</span>
+<span class="hljs-code">    $match：过滤数据，只输出符合条件的文档</span>
+<span class="hljs-code">    $project：修改输入文档的结构，如重命名、增加、删除字段、创建计算结果</span>
+<span class="hljs-code">    $sort：将输入文档排序后输出</span>
+<span class="hljs-code">    $limit：限制聚合管道返回的文档树</span>
+<span class="hljs-code">    $skip：跳过指定数量的文档，并返回余下的文档</span>
+<span class="hljs-code">    $unwind：将数组类型的字段进行拆分</span></code></pre>
+
+<h3 id="common_aggregate_express">常用管道表达式<a class="post-anchor" href="#common_aggregate_express"></a><a class="post-anchor" href="#common_aggregate_express"></a></h3>
+<pre><code class="hljs markdown">$sum：计算总和，$sum:1表示以一倍计数
+$avg：计算平均值
+$min：获取最小值
+$max：获取最大值
+$psuh：在结果文档中插入值到一个数组中
+$first：根据资源文档的排序获取第一个文档数据
+$last：根据资源文档的排序获取最后一个文档数据</code></pre>
+
+<h3 id="group">分组<a class="post-anchor" href="#group"></a><a class="post-anchor" href="#group"></a></h3>
+<pre><code class="hljs markdown">将集合中的文档分组，可用于统计结果
+_id表示分组的依据，使用某个字段的格式为'$字段'
+eq:统计男生、女生的总人数
+<span class="hljs-code">    db.stu.aggregate(&#123;</span>
+<span class="hljs-code">        $group:</span>
+<span class="hljs-code">        &#123;</span>
+<span class="hljs-code">            _id:'$gender',</span>
+<span class="hljs-code">            counter:&#123;$sum:1&#125;</span>
+<span class="hljs-code">        &#125;</span>
+<span class="hljs-code">    &#125;)</span>
+Group by null
+将集合中所有文档分为一组
+eq:求学生总人数、平均年靓
+
+<span class="hljs-code">    db.stu.aggregate(&#123;</span>
+<span class="hljs-code">        $group:</span>
+<span class="hljs-code">        &#123;</span>
+<span class="hljs-code">            _id:null,</span>
+<span class="hljs-code">            counter:&#123;$sum:1&#125;,</span>
+<span class="hljs-code">            avgAge:&#123;$avg:'$age'&#125;</span>
+<span class="hljs-code">        &#125;</span>
+<span class="hljs-code">    &#125;)</span></code></pre>
+
+<h3 id="project">处理$project<a class="post-anchor" href="#project"></a><a class="post-anchor" href="#project"></a></h3>
+<pre><code class="hljs markdown">修改输入文档的结构，如重命名、增加、删除字段、创建计算结果
+eq1:查询学生的姓名、年龄
+db.stu.aggregate(
+<span class="hljs-code">    &#123;$project:&#123;_id:0,name:1,age:1&#125;&#125;</span>
+)
+eq2:查询男生、女生人数，输出个数
+db.stu.aggregate(
+<span class="hljs-code">    &#123;$group:&#123;_id:'$gender',counter:&#123;$sum:1&#125;&#125;&#125;,</span>
+<span class="hljs-code">    &#123;$project:&#123;_id:0,counter:1&#125;&#125;</span>
+)</code></pre>
+
+<h3 id="example">综合实例<a class="post-anchor" href="#example"></a><a class="post-anchor" href="#example"></a></h3>
+<pre><code class="hljs markdown">选择年龄大于20的学生，观察男性和女性有多少人
+db.stu.aggregate(
+<span class="hljs-code">    &#123;$match:&#123;age:&#123;$gt:20&#125;&#125;&#125;,</span>
+<span class="hljs-code">    &#123;$group:&#123;_id:"$gender",count:&#123;$sum:1&#125;&#125;&#125;,</span>
+<span class="hljs-code">    &#123;$project:&#123;_id:0,gender:"$_id",count:1&#125;&#125;</span>
+)</code></pre>
+
+<h3 id="sort">排序<a class="post-anchor" href="#sort"></a><a class="post-anchor" href="#sort"></a></h3>
+<pre><code class="hljs markdown">$sort 
+ -将输入文档排序后输出
+eq1:
+<span class="hljs-code">    -查询学生信息，按照年龄升序排序</span>
+<span class="hljs-code">    b.stu.aggregate(&#123;$sort:&#123;age:1&#125;&#125;)</span>
+eq2:
+<span class="hljs-code">    -查询男生、女生人数。按人数降序排序</span>
+<span class="hljs-code">    db.stu.aggregate(</span>
+<span class="hljs-code">        &#123;$group:&#123;_id:'$gender',counter:&#123;$sum:1&#125;&#125;&#125;,</span>
+<span class="hljs-code">        &#123;$sort:&#123;counter:-1&#125;&#125;</span>
+<span class="hljs-code">    )</span></code></pre>
+
+<h3 id="limit">limit和skip<a class="post-anchor" href="#limit"></a><a class="post-anchor" href="#limit"></a></h3>
+<pre><code class="hljs markdown">$limit
+<span class="hljs-code">    -限制聚合管道返回的文数</span>
+<span class="hljs-code">    -eq</span>
+<span class="hljs-code">        -查询2条学生信息</span>
+<span class="hljs-code">        db.stu.aggregate(&#123;$limit:2&#125;)</span>
+$skip
+<span class="hljs-code">    -跳过指定数量的文档，并返回余下的文档</span>
+<span class="hljs-code">    -eq</span>
+<span class="hljs-code">        -查询从第3条开始的学生信息</span>
+<span class="hljs-code">        db.stu.aggregate(&#123;$skip:2&#125;)</span>
+<span class="hljs-code">    -eq</span>
+<span class="hljs-code">        统计男生、女生人数，按人数升序,取第二条数据</span>
+<span class="hljs-code">        db.stu.aggregate(</span>
+<span class="hljs-code">            &#123;$group:&#123;_id:'$gender',counter:&#123;$sum:1&#125;&#125;&#125;</span>
+<span class="hljs-code">            &#123;$sort:&#123;counter:1&#125;&#125;,</span>
+<span class="hljs-code">            &#123;$skip:1&#125;,</span>
+<span class="hljs-code">            &#123;$limit:1&#125;</span>
+<span class="hljs-code">        )</span>
+<span class="hljs-code">    tip:</span>
+<span class="hljs-code">        -注意顺序：先写skip，再写limit（这样做效率更高）</span>
+<span class="hljs-code">        -如果想要_id不显示出来，那么在$group中加上_id:null</span></code></pre>
+
+<h3 id="unwind">unwind<a class="post-anchor" href="#unwind"></a><a class="post-anchor" href="#unwind"></a></h3>
+<pre><code class="hljs markdown">$unwind
+<span class="hljs-code">    -属性值为false表示丢弃属性值为空的文档</span>
+<span class="hljs-code">    -属性preserveNullAndEmptyArrays值为true表示保留属性值为空的文档</span>
+<span class="hljs-code">    用法：</span>
+<span class="hljs-code">        db.invertory.aggregate(&#123;</span>
+<span class="hljs-code">            $unwind:&#123;</span>
+<span class="hljs-code">                path:'$字段名称',</span>
+<span class="hljs-code">                preserveNullAndEmptyArrays:&lt;boolean&gt;#防止数据丢失</span>
+<span class="hljs-code">            &#125;</span>
+<span class="hljs-code">        &#125;)</span></code></pre>
+
+<h3 id="index">索引<a class="post-anchor" href="#index"></a><a class="post-anchor" href="#index"></a></h3>
+<pre><code class="hljs markdown">索引：以提升查询速度
+测试：插入10万条数据到数据库中
+for(i=0;i<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">100000;i++)&#123;</span>
+    <span class="hljs-attr">db.t255.insert</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test</span>'+<span class="hljs-attr">i</span>,<span class="hljs-attr">age:i</span>&#125;)
+&#125;
+
+<span class="hljs-attr">db.t1.find</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test10000</span>'&#125;)
+<span class="hljs-attr">db.t1.find</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test10000</span>'&#125;)<span class="hljs-attr">.explain</span>('<span class="hljs-attr">executionStats</span>')
+
+建立索引之后的对比：
+语法：<span class="hljs-attr">db.</span>集合<span class="hljs-attr">.ensureIndex</span>(&#123;属性：<span class="hljs-attr">1</span>&#125;)，<span class="hljs-attr">1</span>表示升序，<span class="hljs-attr">-1</span>表示降序
+具体操作：<span class="hljs-attr">db.t255.ensureIndex</span>(&#123;<span class="hljs-attr">name:1</span>&#125;)
+<span class="hljs-attr">db.t1.find</span>(&#123;<span class="hljs-attr">name:</span>'<span class="hljs-attr">test10000</span>'&#125;)<span class="hljs-attr">.explain</span>('<span class="hljs-attr">executionStats</span>')
+
+在默认情况下索引字段的值可以相同
+创建唯一索引（索引的值是唯一的）：
+    <span class="hljs-attr">-db.t1.ensureIndex</span>(&#123;'<span class="hljs-attr">name</span>'<span class="hljs-attr">:1</span>&#125;,&#123;'<span class="hljs-attr">unique</span>'<span class="hljs-attr">:true</span>&#125;)
+建立联合索引（什么时候需要联合索引）：
+    <span class="hljs-attr">-db.t1.ensureIndex</span>(&#123;<span class="hljs-attr">name:1</span>,<span class="hljs-attr">age:1</span>&#125;)
+查看当前集合的所有索引<span class="hljs-attr">:</span>
+    <span class="hljs-attr">-db.t1.getIndexes</span>()
+删除索引：
+    <span class="hljs-attr">-db.t1.dropIndex</span>(&#123;'索引名称'<span class="hljs-attr">:1</span>&#125;)</span></span></code></pre>
+
+<h3 id="differ">mongodb mysql redis的区别和使用场景<a class="post-anchor" href="#differ"></a><a class="post-anchor" href="#differ"></a></h3>
+<pre><code class="hljs markdown">-mysql是关系型数据库，支持事务
+-MongoDB，redis非关系型数据库，不支持事务
+-mysql，mongodb,redis的使用根据如何方便进行选择
+ -希望速度快的时候，选择mongodb或者是redis
+ -数据量过大的时候，选择频繁使用的数据存入redis，其他的存入mongodb
+ -mongodb不用提前建表建数据库，使用方便，字段数量不确定的时候使用mongodb
+ -后续需要用到数据之间的关系，此时考虑mysql</code></pre>
+
+<h3 id="drop">爬虫数据去重<a class="post-anchor" href="#drop"></a><a class="post-anchor" href="#drop"></a></h3>
+<pre><code class="hljs markdown">使用数据库建立关键字段（一个或者多个）建立索引进行去重
+
+根据url地址进行去重
+ -使用场景：
+<span class="hljs-code">    url地址对应的数据不会变的情况，url地址能够唯一判别一条数据的情况</span>
+ -思路
+<span class="hljs-code">    url存在redis中</span>
+<span class="hljs-code">    拿到url地址，判断url在redis的url的集合中是否存在</span>
+<span class="hljs-code">    存在：</span>
+<span class="hljs-code">        说明url已经被请求过，不再请求</span>
+<span class="hljs-code">    不存在：</span>
+<span class="hljs-code">        url地址没有被请求过，请求，把该url存入redis的集合中</span>
+-布隆过滤器
+<span class="hljs-code">    使用多个加密算法加密url地址，得到多个值</span>
+<span class="hljs-code">    往对应值的位置把结果设置为1</span>
+<span class="hljs-code">    新来一个url地址，一样通过加密算法生成多个值</span>
+<span class="hljs-code">    如果对应的位置的值全为1，说明这个url地址已经抓取过</span>
+<span class="hljs-code">    否则没有抓过，就把对应位置的值设置为1</span>
+
+根据数据本身进行去重
+ 选择特定的字段，使用加密算法（md5,sha1）将字段进行加密，生成字符串，存入redis的集合中
+ 后续新来一条数据，同样的方法进行加密，如果得到的字符串在redis中存在，说明数据存在，对数据进行更新，否则说明数据不存在，直接插入</code></pre>
+
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/01/25/nodejs%E7%9A%84formidable/">nodejs的formidable</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">Git基本操作</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/01/12/mongodb操作/">https://codermino.github.io/2020/01/12/mongodb操作/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

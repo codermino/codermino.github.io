@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      better-scroll的使用 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#滚动原理"><span class="toc-text">滚动原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#纵向滚动"><span class="toc-text">纵向滚动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#横向滚动"><span class="toc-text">横向滚动</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#无法滚动的原因"><span class="toc-text">无法滚动的原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装better-scroll"><span class="toc-text">封装better-scroll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1"><span class="toc-text">Demo1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2"><span class="toc-text">Demo2</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">better-scroll的使用</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/09/06</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/better-scroll">better-scroll</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/better-scroll的使用">better-scroll的使用</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="滚动原理">滚动原理<a class="post-anchor" href="#滚动原理"></a></h3><p><a href="/images/bs/bs1.png" data-caption data-fancybox="images"><img src="/images/bs/bs1.png" alt></a></p>
+<pre><code class="hljs markdown">绿色部分为 wrapper，也就是父容器，它会有固定的高度。
+黄色部分为 content，它是父容器的第一个子元素，它的高度会随着内容的大小而撑高。
+那么，当 content 的高度不超过父容器的高度，是不能滚动的，而它一旦超过了父容器的高度，
+我们就可以滚动内容区了。横向滚动的原理一致就是将固定高度改为固定宽度。（这里就不啰嗦了）</code></pre>
+
+<h4 id="纵向滚动">纵向滚动<a class="post-anchor" href="#纵向滚动"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;wrapper&quot; ref&#x3D;&quot;wrapper&quot;&gt;
+      &lt;ul&gt;
+        &lt;li v-for&#x3D;&quot;item in 8&quot;&gt;&#123;&#123;item&#125;&#125;&lt;&#x2F;li&gt;
+      &lt;&#x2F;ul&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+  import BScroll from &#39;better-scroll&#39;;
+    export default &#123;
+      mounted() &#123;
+        this.$nextTick(() &#x3D;&gt; &#123;
+          this.scroll &#x3D; new BScroll(this.$refs.wrapper);
+        &#125;);
+      &#125;
+    &#125;;
+&lt;&#x2F;script&gt;
+&lt;style type&#x3D;&quot;text&#x2F;css&quot;&gt;
+  .wrapper&#123;
+    overflow:hidden;
+    height:100vh;
+  &#125;
+  ul li&#123;
+    height:400px;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+<p>这是一个Vue BetterScroll纵向滚动demo,这里需要注意的有两点。</p>
+<ul>
+<li>只能有一层父级div，也就是容器</li>
+<li>父级div要设置溢出隐藏，并且固定高度</li>
+</ul>
+<h4 id="横向滚动">横向滚动<a class="post-anchor" href="#横向滚动"></a></h4><p>横向滚动，相比纵向滚动需要动态的去获取滚动区的宽度，直接上代码。</p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;tab&quot; ref&#x3D;&quot;tab&quot;&gt;
+    &lt;ul class&#x3D;&quot;tab_content&quot; ref&#x3D;&quot;tabWrapper&quot;&gt;
+      &lt;li class&#x3D;&quot;tab_item&quot; v-for&#x3D;&quot;item in itemList&quot; ref&#x3D;&quot;tabitem&quot;&gt;
+          &#123;&#123;item.title&#125;&#125;
+      &lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+  &lt;&#x2F;div&gt;
+  &lt;&#x2F;template&gt;
+  &lt;script&gt;
+  import BScroll from &#39;better-scroll&#39;;
+    export default &#123;
+      data() &#123;
+        return&#123;
+          itemList:[
+          &#123;
+            &#39;title&#39;:&#39;关注&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;推荐&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;深圳&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;视频&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;音乐&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;热点&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;新时代&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;娱乐&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;头条号&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;问答&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;图片&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;科技&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;体育&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;财经&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;军事&#39;
+          &#125;,
+          &#123;
+            &#39;title&#39;:&#39;国际&#39;
+          &#125;
+          ]
+        &#125;
+      &#125;,
+      created() &#123;
+        this.$nextTick(() &#x3D;&gt; &#123;
+          this.InitTabScroll();
+        &#125;);
+      &#125;,
+      methods:&#123;
+        InitTabScroll()&#123;
+          let width&#x3D;0
+          for (let  i &#x3D; 0; i &lt;this.itemList.length; i++) &#123;
+              width+&#x3D;this.$refs.tabitem[0].getBoundingClientRect().width; &#x2F;&#x2F;getBoundingClientRect() 返回元素的大小及其相对于视口的位置
+          &#125;
+          this.$refs.tabWrapper.style.width&#x3D;width+&#39;px&#39;
+          this.$nextTick(()&#x3D;&gt;&#123;
+              if (!this.scroll) &#123;
+                this.scroll&#x3D;new BScroll(this.$refs.tab, &#123;
+                  startX:0,
+                  click:true,
+                  scrollX:true,
+                  scrollY:false,
+                  eventPassthrough:&#39;vertical&#39;
+                &#125;);
+              &#125;else&#123;
+                this.scroll.refresh()
+              &#125;
+          &#125;);
+        &#125;
+      &#125;
+    &#125;;
+  &lt;&#x2F;script&gt;
+  &lt;style lang&#x3D;&quot;scss&quot; scoped&gt;
+  .tab&#123;
+    width: 100vw;
+    overflow: hidden;
+    padding:5px;
+    .tab_content&#123;
+      line-height: 2rem;
+      display: flex;
+      .tab_item&#123;
+        flex: 0 0 60px;
+        width:60px;
+      &#125;  
+    &#125;
+  &#125;  
+  &lt;&#x2F;style&gt;</code></pre>
+<p>横向滚动需要注意。</p>
+<ul>
+<li>只能有一层父级div，也就是容器</li>
+<li>父容器要设置溢出隐藏并固定宽度</li>
+<li>动态获取滚动区的宽度</li>
+</ul>
+<h3 id="无法滚动的原因">无法滚动的原因<a class="post-anchor" href="#无法滚动的原因"></a></h3><p>一、 DOM层级关系</p>
+<pre><code class="hljs vue">&lt;div class&#x3D;&quot;wrapper&quot;&gt;
+  &lt;div class&#x3D;&quot;content&quot;&gt;
+    content...
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;</code></pre>
+<p>wrapper里面不能存在多个同级div，如果你这样写：</p>
+<pre><code class="hljs vue">&lt;div class&#x3D;&quot;classifyTitle&quot;  ref&#x3D;&quot;wrapper&quot;&gt;
+    &lt;div class&#x3D;&quot;&quot;&gt;
+	ss
+    &lt;&#x2F;div&gt;
+    &lt;ul&gt;
+	&lt;li v-for&#x3D;&quot;(item,index) in classifyData.products&quot;&gt;
+	    &lt;router-link :to&#x3D;&quot;&#123;name:&#39;详情&#39;&#125;&quot;&gt;&#123;&#123;item.title&#125;&#125;&lt;&#x2F;router-link&gt;
+	&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+&lt;&#x2F;div&gt;</code></pre>
+<p>那么ul中的元素将不能滚动</p>
+<p>二、content是否被成功添加滚动相关style</p>
+<pre><code class="hljs vue">&lt;div class&#x3D;&quot;classifyTitle&quot;  ref&#x3D;&quot;wrapper&quot;&gt;
+	&lt;ul&gt;
+	    &lt;li v-for&#x3D;&quot;(item,index) in classifyData.products&quot;&gt;
+		&lt;router-link :to&#x3D;&quot;&#123;name:&#39;详情&#39;&#125;&quot;&gt;&#123;&#123;item.title&#125;&#125;&lt;&#x2F;router-link&gt;
+	    &lt;&#x2F;li&gt;
+	&lt;&#x2F;ul&gt;				
+&lt;&#x2F;div&gt;</code></pre>
+<p>审查元素可以看到：<br><a href="/images/bs/bs2.jpg" data-caption data-fancybox="images"><img src="/images/bs/bs2.jpg" alt></a><br>这样即添加成功的</p>
+<p>三、wrapper 与 content 高度问题<br>只有content的高度大于wrapper高度时候，才可以滚动。<br>如何看？</p>
+<pre><code class="hljs vue">this.$nextTick(() &#x3D;&gt; &#123;
+    if (!this.scroll) &#123;
+	this.scroll &#x3D; new BScroll(this.$refs.wrapper, &#123;&#125;)
+	console.log(this.scroll)
+    &#125;
+ &#125;)</code></pre>
+<p>F12就可以看到打印结果：<br><a href="/images/bs/bs3.jpg" data-caption data-fancybox="images"><img src="/images/bs/bs3.jpg" alt></a></p>
+<pre><code class="hljs markdown">以上就是可以滚动的情况，wrapperHeight(616) <span class="xml"><span class="hljs-tag">&lt; <span class="hljs-attr">scrollHeight</span>(<span class="hljs-attr">750</span>)，<span class="hljs-attr">hasVerticalScroll</span>为<span class="hljs-attr">true</span>；
+那如果这些数据不对，检查是否<span class="hljs-attr">dom</span>没有更新完就初始化<span class="hljs-attr">BScroll</span>了，要等<span class="hljs-attr">dom</span>更新完才能初始化</span></span></code></pre>
+
+<p>四、wrapper样式<br>.wrapper元素上要给定位</p>
+<pre><code class="hljs vue">position: absolute;
+left: 0;
+top: 0;
+overflow: hidden;</code></pre>
+
+
+<h3 id="封装better-scroll">封装better-scroll<a class="post-anchor" href="#封装better-scroll"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div ref&#x3D;&quot;wrapper&quot; :class&#x3D;&quot;&#123;wrapper:hasClass,wrapper2:!hasClass&#125;&quot;&gt;
+    &lt;div class&#x3D;&quot;content&quot;&gt;
+      &lt;slot&gt;&lt;&#x2F;slot&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import BScroll from &#39;better-scroll&#39;
+
+export default &#123;
+  name: &quot;Scroll&quot;,
+  props:&#123;
+    &#x2F;&#x2F; 当默认值是一个对象或者是数组的时候，default必须是一个函数
+    probeType:&#123;
+      type:Number,
+      default:0
+    &#125;,
+    pullUpLoad:&#123;
+      type:Boolean,
+      default:false
+    &#125;,
+    hasClass:&#123;
+      type:Boolean,
+      default:false
+    &#125;
+  &#125;,
+  data()&#123;
+    return&#123;
+      scroll:null
+    &#125;
+  &#125;,
+  mounted() &#123;
+    this.$nextTick(()&#x3D;&gt;&#123;
+      this.scroll&#x3D;new BScroll(this.$refs.wrapper,&#123;
+        click:true,
+        probeType:this.probeType,
+        pullUpLoad:this.pullUpLoad
+      &#125;);
+      &#x2F;&#x2F; console.log(this.scroll);
+      &#x2F;&#x2F; new BScroll().on()
+
+
+      &#x2F;&#x2F; 监听滚动事件
+      if(this.probeType&#x3D;&#x3D;&#x3D;2||this.probeType&#x3D;&#x3D;&#x3D;3)&#123;
+        this.scroll.on(&#39;scroll&#39;,(position)&#x3D;&gt;&#123;
+          &#x2F;&#x2F; console.log(position);
+          &#x2F;&#x2F; 将scroll滚动的位置传递出去，因为真正使用的地方不是在这个组件中使用
+          this.$emit(&#39;scroll&#39;,position);
+        &#125;);
+      &#125;
+
+      &#x2F;&#x2F; 监听上拉事件
+      if(this.pullUpLoad)&#123;
+        this.scroll.on(&#39;pullingUp&#39;,()&#x3D;&gt;&#123;
+          &#x2F;&#x2F; console.log(&#39;上拉&#39;);
+          this.$emit(&#39;pullingUp&#39;);
+        &#125;)
+      &#125;
+    &#125;)
+
+  &#125;,
+  methods:&#123;
+    scrollTo(x,y,time&#x3D;300)&#123;
+      this.scroll&amp;&amp;this.scroll.scrollTo(x,y,time);
+    &#125;,
+    finishPullUp()&#123;
+      this.scroll&amp;&amp;this.scroll.finishPullUp();
+    &#125;,
+    refresh()&#123;
+      &#x2F;&#x2F; console.log(&#39;图片加载&#39;);
+      this.scroll&amp;&amp;this.scroll.refresh();
+    &#125;,
+    getScrollY()&#123;
+      &#x2F;&#x2F; return this.scroll&amp;&amp;this.scroll.y;
+      return this.scroll?this.scroll.y:0;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&#x2F;&#x2F;一定要给wrapper一个滚动区域的高度并且overflow:hidden
+&lt;style scoped lang&#x3D;&quot;scss&quot;&gt;
+  .wrapper&#123;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 44px+35px;
+    height: calc(100vh - 44px - 40px);
+  &#125;
+  .wrapper2&#123;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 44px;
+    height: calc(100vh - 44px);
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+<h3 id="Demo1">Demo1<a class="post-anchor" href="#Demo1"></a></h3><pre><code class="hljs vue">&lt;!--    内容区域--&gt;
+&lt;scroll ref&#x3D;&quot;scroll&quot; :probe-type&#x3D;&quot;3&quot; :pull-up-load&#x3D;&quot;true&quot; @scroll&#x3D;&quot;contentScroll&quot; @pullingUp&#x3D;&quot;loadMore&quot; :hasClass&#x3D;&quot;true&quot;&gt;
+  &lt;content-com :datalist&#x3D;&quot;datalist&quot;&gt;&lt;&#x2F;content-com&gt;
+&lt;&#x2F;scroll&gt;
+
+&#x2F;&#x2F;相关methods
+loadMore()&#123;
+  debounce(() &#x3D;&gt; &#123;
+    this.addData();
+  &#125;,1000);
+&#125;,
+addData() &#123;
+  this.showMask &#x3D; true;
+  this.urlTime -&#x3D; 86400;
+  this.getData();
+  this.$nextTick(()&#x3D;&gt;&#123;
+    setTimeout(()&#x3D;&gt;&#123;
+      this.showMask &#x3D; false;
+    &#125;,2000);
+    this.$refs.scroll.finishPullUp();
+  &#125;)
+&#125;,
+contentScroll(position)&#123;
+  &#x2F;&#x2F; 1.判断backTop是否显示
+  this.isShowBackTop&#x3D; (-position.y)&gt;1000;
+&#125;,
+
+
+&#x2F;&#x2F;contentCom组件内容
+&lt;template&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;div class&#x3D;&quot;u-f-ajc&quot; v-for&#x3D;&quot;(item,index) in datalist&quot; :key&#x3D;&quot;index&quot; style&#x3D;&quot;border-bottom: 1px solid #ccc;padding: 5px 0&quot;&gt;
+      &lt;div class&#x3D;&quot;left u-f2&quot;&gt;
+        &lt;img class&#x3D;&quot;u-f-noshrink&quot; :src&#x3D;&quot;item.thumb&quot; alt&#x3D;&quot;&quot; style&#x3D;&quot;height: 50px;width: 100%;margin-left: 3px&quot;&gt;
+      &lt;&#x2F;div&gt;
+      &lt;div class&#x3D;&quot;right&quot; style&#x3D;&quot;margin-left: 5px;flex: 7;&quot; @click&#x3D;&quot;toDetail(item)&quot;&gt;
+        &lt;div class&#x3D;&quot;right-top&quot; style&#x3D;&quot;padding-bottom: 10px;font-weight: 700;font-size: 17px;&quot;&gt;&#123;&#123;item.title&#125;&#125;&lt;&#x2F;div&gt;
+        &lt;div class&#x3D;&quot;right-bottom u-f u-f-liangduan&quot; style&#x3D;&quot;font-size: 13px;color: #bcbcbc;&quot;&gt;
+          &lt;div class&#x3D;&quot;time u-f-ajc&quot;&gt;
+            &#123;&#123;item.ctime|timeFormat&#125;&#125;
+            &lt;div v-limit&#x3D;&quot;3&quot; v-for&#x3D;&quot;(item2,index2) in item.labels_show&quot; :key&#x3D;&quot;index2&quot; style&#x3D;&quot;padding-left: 3px&quot;&gt;&#123;&#123;item2&#125;&#125;&lt;&#x2F;div&gt;
+          &lt;&#x2F;div&gt;
+          &lt;div class&#x3D;&quot;icon&quot; style&#x3D;&quot;font-size: 13px;color: #bcbcbc;padding-right: 10px&quot;&gt; &gt; &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+      &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;contentCom&quot;,
+  props: &#123;
+    datalist: &#123;
+      type: Array,
+      default: []
+    &#125;,
+  &#125;,
+  methods: &#123;
+    toDetail(item) &#123;
+      this.$router.push(&#123;
+        name: &#39;detail&#39;,
+        params: &#123;
+          item
+        &#125;
+      &#125;)
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="Demo2">Demo2<a class="post-anchor" href="#Demo2"></a></h3><pre><code class="hljs vue">&#x2F;&#x2F;滚动内容区域
+&lt;scroll ref&#x3D;&quot;scroll&quot; :probe-type&#x3D;&quot;3&quot; :pull-up-load&#x3D;&quot;true&quot;&gt;
+  &lt;div class&#x3D;&quot;container&quot; style&#x3D;&quot;padding: 0 3%;&quot;&gt;
+    &lt;div class&#x3D;&quot;content&quot; v-if&#x3D;&quot;hot_list.length&amp;&amp;cmntlist.length&quot;&gt;
+      &lt;detail-content :item&#x3D;&quot;item&quot;&gt;&lt;&#x2F;detail-content&gt;
+    &lt;&#x2F;div&gt;
+    &lt;comment :cmntlist&#x3D;&quot;hot_list&quot; title&#x3D;&quot;最热评论&quot; v-if&#x3D;&quot;hot_list.length&amp;&amp;cmntlist.length&quot;&gt;&lt;&#x2F;comment&gt;
+    &lt;comment :cmntlist&#x3D;&quot;cmntlist&quot; title&#x3D;&quot;最新评论&quot; v-if&#x3D;&quot;hot_list.length&amp;&amp;cmntlist.length&quot;&gt;&lt;&#x2F;comment&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;scroll&gt;
+
+&#x2F;&#x2F;在组件中有图片，如果图片没有加载完，那么图片加载之后将会有部分内容区域无法滚动
+&lt;template v-if&#x3D;&quot;item.thumbs&quot;&gt;
+  &lt;img :src&#x3D;&quot;item.thumbs[0]&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;u-f-jc&quot; style&#x3D;&quot;width: 100%;padding-bottom: 10px&quot; @load&#x3D;&quot;imgLoad&quot;&gt;
+&lt;&#x2F;template&gt;
+&#x2F;&#x2F;添加@load方法
+methods: &#123;
+    imgLoad() &#123;
+      this.$parent.scroll.refresh();
+    &#125;
+&#125;,</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/09/13/iview%E5%8F%AF%E7%BC%96%E8%BE%91%E8%A1%A8%E6%A0%BC/">iview可编辑表格</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/09/04/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/">vue自定义属性</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/09/06/better-scroll的使用/">https://codermino.github.io/2020/09/06/better-scroll的使用/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

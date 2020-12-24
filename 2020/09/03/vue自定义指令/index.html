@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue自定义指令 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#注册自定义指令"><span class="toc-text">注册自定义指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钩子函数"><span class="toc-text">钩子函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钩子区别"><span class="toc-text">钩子区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue自定义指令</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/09/03</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue自定义指令">vue自定义指令</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="注册自定义指令">注册自定义指令<a class="post-anchor" href="#注册自定义指令"></a></h3><pre><code class="hljs markdown">Vue自定义指令和组件一样存在着全局注册和局部注册两种方式。
+先来看看注册全局指令的方式，通过 Vue.directive( id, [definition] ) 方式注册全局指令，
+第一个参数为自定义指令名称（指令名称不需要加 v- 前缀，默认是自动加上前缀的，使用指令的时候一定要加上前缀），
+第二个参数可以是对象数据，也可以是一个指令函数。</code></pre>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot; class&#x3D;&quot;demo&quot;&gt;
+    &lt;!-- 全局注册 --&gt;
+    &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;我是全局自定义指令&quot; v-focus&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    Vue.directive(&quot;focus&quot;, &#123;
+        inserted: function(el)&#123;
+            el.focus();
+        &#125;
+    &#125;)
+    new Vue(&#123;
+        el: &quot;#app&quot;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<p>这个简单案例当中，我们通过注册一个 v-focus 指令，<br>实现了在页面加载完成之后自动让输入框获取到焦点的小功能。<br>其中 inserted 是自定义指令的钩子函数，后面的内容会详细讲解。</p>
+<hr>
+<p>全局注册好了，那么再来看看如何注册局部自定义指令，<br>通过在Vue实例中添加 directives 对象数据注册局部自定义指令。</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app&quot; class&#x3D;&quot;demo&quot;&gt;
+    &lt;!-- 局部注册 --&gt;
+    &lt;input type&#x3D;&quot;text&quot; placeholder&#x3D;&quot;我是局部自定义指令&quot; v-focus2&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    new Vue(&#123;
+        el: &quot;#app&quot;,
+        directives: &#123;
+            focus2: &#123;
+                inserted: function(el)&#123;
+                    el.focus();
+                &#125;
+            &#125;
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+<h3 id="钩子函数">钩子函数<a class="post-anchor" href="#钩子函数"></a></h3><p>一个指令定义对象可以提供如下几个钩子函数 (均为可选)：</p>
+<ul>
+<li>bind：只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置</li>
+<li>inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。</li>
+<li>update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，<br>  也可能没有。但是你可以通过比较更新前后的值来忽略不必要的模板更新 。</li>
+<li>componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。</li>
+<li>unbind：只调用一次，指令与元素解绑时调用。</li>
+</ul>
+<p>假设这样的看一个场景：当你在阅览某网站的图片时，可能会由于图片资源比较大而加载缓慢，<br>需要消耗一小段时间来呈现到眼前，这个体验肯定是不太友好的（就像网站切换页面，<br>有时候会加载资源比较慢，为了给用户较好的体验，一般都会先出一个正在加载的友好提示页面），<br>所以这个案例的功能就是在图片资源还没加载出来时，先显示默认背景图，当图片资源真正加载出来了之后，<br>再把真实图片放置到对应的位置上并显示出来。</p>
+<pre><code class="hljs vue">&lt;div id&#x3D;&quot;app2&quot; class&#x3D;&quot;demo&quot;&gt;
+    &lt;div v-for&#x3D;&quot;item in imageList&quot;&gt;
+        &lt;img src&#x3D;&quot;..&#x2F;assets&#x2F;image&#x2F;bg.png&quot; alt&#x3D;&quot;默认图&quot; v-image&#x3D;&quot;item.url&quot;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;script&gt;
+    Vue.directive(&quot;image&quot;, &#123;
+        inserted: function(el, binding) &#123;
+            &#x2F;&#x2F;为了真实体现效果，用了延时操作
+            setTimeout(function()&#123;
+                el.setAttribute(&quot;src&quot;, binding.value);
+            &#125;, Math.random() * 1200)
+        &#125;
+    &#125;)
+    new Vue(&#123;
+        el: &quot;#app2&quot;,
+        data: &#123;
+            imageList: [
+                &#123;
+                    url: &quot;http:&#x2F;&#x2F;consumer-img.huawei.com&#x2F;content&#x2F;dam&#x2F;huawei-cbg-site&#x2F;greate-china&#x2F;cn&#x2F;mkt&#x2F;homepage&#x2F;section4&#x2F;home-s4-p10-plus.jpg&quot;
+                &#125;,
+                &#123;
+                    url: &quot;http:&#x2F;&#x2F;consumer-img.huawei.com&#x2F;content&#x2F;dam&#x2F;huawei-cbg-site&#x2F;greate-china&#x2F;cn&#x2F;mkt&#x2F;homepage&#x2F;section4&#x2F;home-s4-watch2-pro-banner.jpg&quot;
+                &#125;,
+                &#123;
+                    url: &quot;http:&#x2F;&#x2F;consumer-img.huawei.com&#x2F;content&#x2F;dam&#x2F;huawei-cbg-site&#x2F;en&#x2F;mkt&#x2F;homepage&#x2F;section4&#x2F;home-s4-matebook-x.jpg&quot;
+                &#125;
+            ]
+        &#125;
+    &#125;)
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="钩子区别">钩子区别<a class="post-anchor" href="#钩子区别"></a></h3><p>update 和 componentUpdated</p>
+<ul>
+<li>共同点：组件更新都会调用，update在componentUpdated之前</li>
+<li>不同点：<br>  update 组件更新前的状态<br>  componentUpdated 组件更新后的状态</li>
+</ul>
+<p>场景：点击事件，div的内容追加 ！；</p>
+<pre><code class="hljs vue">update(el, binding,vnode,oldVnode)&#123;
+    console.log(el.innerHTML);       &#x2F;&#x2F; &lt;div&gt;！&lt;&#x2F;div&gt;
+&#125;
+
+componentUpdated(el, binding,vnode,oldVnode)&#123;
+    console.log(el.innerHTML);       &#x2F;&#x2F; &#x2F;&#x2F;&lt;div&gt;！！&lt;&#x2F;div&gt;
+&#125;
+
+&#x2F;&#x2F; 注意： 区别是div里面的！数量</code></pre>
+<p>bind 和 inserted</p>
+<ul>
+<li>共同点： dom插入都会调用，bind在inserted之前</li>
+<li>不同点：<br>  bind 时父节点为 null<br>  inserted 时父节点存在。<br>  bind是在dom树绘制前调用，inserted在dom树绘制后调用</li>
+</ul>
+<pre><code class="hljs vue">bind: function (el) &#123;
+    console.log(el.parentNode)  &#x2F;&#x2F; null
+    console.log(&#39;bind&#39;)
+&#125;,
+inserted: function (el) &#123;
+    console.log(el.parentNode)  &#x2F;&#x2F; &lt;div class&#x3D;&quot;directive-box&quot;&gt;...&lt;&#x2F;div&gt;
+    console.log(&#39;inserted&#39;)
+&#125;</code></pre>
+
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+	&lt;div&gt;
+		首页
+		&lt;input v-for&#x3D;&quot;item in list&quot; :key&#x3D;&quot;item&quot; v-test&#x3D;&quot;item&quot; type&#x3D;&quot;text&quot;&gt;
+	&lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+	export default &#123;
+		name:&#39;demo&#39;,
+		data() &#123;
+			return &#123;
+				list:[1,2]
+			&#125;
+		&#125;,
+		mounted()&#123;
+			setTimeout(()&#x3D;&gt;&#123;
+				console.log(&#39;-----------------------------------splice的分割线------------------------------------------&#39;)
+				this.list.splice(1,1)
+			&#125;,2000)
+			setTimeout(()&#x3D;&gt;&#123;
+				console.log(&#39;----------------------------------------push的分割线---------------------------------------------&#39;)
+				this.list.push(2)
+			&#125;,3000)
+		&#125;,
+		directives:&#123;
+			test:&#123;
+				&#x2F;&#x2F; 只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+				bind(el,bingding,vnode,oldVnode)&#123;
+					console.log(&#39;bing&#39;,el,bingding,vnode,oldVnode)
+				&#125;,
+				&#x2F;&#x2F; inserted 被绑定元素插入父节点时调用（仅保证父节点存在，但不一定已被插入文档中）
+				inserted(el,bingding,vnode,oldVnode)&#123;
+					console.log(&#39;inserted&#39;,el,bingding,vnode,oldVnode)
+				&#125;,
+				&#x2F;&#x2F; update 所在组件的VNode更新时调用，但是可能发生在其子VNode更新之前。指令的值可能发生了改变，也可能没有。
+				update(el,bingding,vnode,oldVnode)&#123;
+					console.log(&#39;update&#39;,el,bingding,vnode,oldVnode)
+				&#125;,
+				&#x2F;&#x2F; 指令所在组件的VNode及其子VNode全部更新后调用
+				componentUpdated(el,bingding,vnode,oldVnode)&#123;
+					console.log(&#39;componentUpdated&#39;,el,bingding,vnode,oldVnode)
+				&#125;,
+				&#x2F;&#x2F; 只调用一次，指令与元素解绑时调用
+				unbind(el,bingding,vnode,oldVnode)&#123;
+					console.log(&#39;unbind&#39;,el,bingding,vnode,oldVnode)
+				&#125;
+			&#125;
+		&#125;
+	&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<p><a href="/images/vuepic/directive.png" data-caption data-fancybox="images"><img src="/images/vuepic/directive.png" alt></a></p>
+<p><em>tip 注意：</em></p>
+<pre><code class="hljs markdown">自定义指令的钩子里面没有vue实例，this指向undefined；</code></pre>
+
+<h3 id="总结">总结<a class="post-anchor" href="#总结"></a></h3><p>1 初始化先执行bing钩子函数，被绑定元素插入父节点时调用inserted钩子函数<br>2 节点移除后会执行update和componentUpdate钩子函数，然后执行解绑的钩子函数unbind<br>3 有节点插入会先执行节点的更新和节点更新完毕的钩子函数，然后执行绑定和inserted 钩子函数</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/09/04/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/">vue自定义属性</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/">vue修改网站标题title的三种方法</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/09/03/vue自定义指令/">https://codermino.github.io/2020/09/03/vue自定义指令/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

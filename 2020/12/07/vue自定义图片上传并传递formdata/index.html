@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue自定义图片上传并传递formdata - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用element-ui组件"><span class="toc-text">使用element-ui组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主要函数"><span class="toc-text">主要函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片压缩js"><span class="toc-text">图片压缩js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fromData"><span class="toc-text">fromData</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue自定义图片上传并传递formdata</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/07</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue自定义图片上传并传递formdata">vue自定义图片上传并传递formdata</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="使用element-ui组件">使用element-ui组件<a class="post-anchor" href="#使用element-ui组件"></a></h3><pre><code class="hljs vue">&lt;div&gt;
+    &lt;el-upload
+            ref&#x3D;&quot;upload&quot;
+            :auto-upload&#x3D;&quot;false&quot;
+            :disabled&#x3D;&quot;$store.getters.user.identity_class &gt; 2&quot;
+            :before-remove&#x3D;&quot;(file, fileList)&#x3D;&gt;beforeRemove(file,fileList,props.row.id)&quot;
+            :class&#x3D;&quot;&#123;hide:hideUpload || $store.getters.user.identity_class &gt; 2&#125;&quot;
+            multiple
+            :file-list&#x3D;&quot;fileList&quot;
+            :before-upload&#x3D;&quot;uploadProductPicBefore&quot;
+            :data&#x3D;&quot;&#123;id:props.row.id&#125;&quot;
+            :http-request&#x3D;&quot;uploadProductPic&quot;
+            accept&#x3D;&quot;image&#x2F;jpeg,image&#x2F;gif,image&#x2F;png,image&#x2F;bmp,image&#x2F;jpg&quot;
+            list-type&#x3D;&quot;picture-card&quot;
+            :on-preview&#x3D;&quot;handleContImgPreview&quot;
+            :limit&#x3D;&quot;5&quot;
+            :on-exceed&#x3D;&quot;exceedTips&quot;
+            action&#x3D;&quot;&quot;&gt;
+        &lt;i slot&#x3D;&quot;default&quot; class&#x3D;&quot;el-icon-plus&quot;&gt;&lt;&#x2F;i&gt;
+    &lt;&#x2F;el-upload&gt;
+    &lt;el-dialog :visible.sync&#x3D;&quot;dialogVisible&quot;&gt;
+      &lt;img width&#x3D;&quot;100%&quot; :src&#x3D;&quot;dialogImageUrl&quot; alt&#x3D;&quot;&quot;&gt;
+    &lt;&#x2F;el-dialog&gt;
+&lt;&#x2F;div&gt;</code></pre>
+
+<h3 id="主要函数">主要函数<a class="post-anchor" href="#主要函数"></a></h3><ol>
+<li>删除图片<pre><code class="hljs vuejs">beforeRemove(file, fileList,_id) &#123;
+  &#x2F;&#x2F; 在fileList中查询是否包含选择要删除的图片
+  const result &#x3D; this.fileList.some(item&#x3D;&gt;&#123;
+    if(item.url&#x3D;&#x3D;&#x3D;file.url)&#123;
+      return true;
+    &#125;
+  &#125;);
+  if (result)&#123;
+    this.isDialog &#x3D; true;
+  &#125;
+  &#x2F;&#x2F; 显示删除对话框，确认是否删除对应的图片
+  if (this.isDialog)&#123;
+    this.$confirm(&#39;此操作将删除当前图片, 是否继续?&#39;, &#39;提示&#39;, &#123;
+      confirmButtonText: &#39;确定&#39;,
+      cancelButtonText: &#39;取消&#39;,
+      type: &#39;warning&#39;
+    &#125;).then(() &#x3D;&gt; &#123;
+      this.delPic(file,fileList,_id) &#x2F;&#x2F; 在这里真正的处理图片列表
+    &#125;).catch(() &#x3D;&gt; &#123;
+      this.$message(&#123;
+        type: &#39;info&#39;,
+        message: &#39;已取消删除&#39;
+      &#125;);
+    &#125;);
+    return false; &#x2F;&#x2F; 这是重点,不管上面的操作结果如何都返回false
+  &#125;
+&#125;,
+async delPic(file, fileList, _id) &#123;
+  const file_split &#x3D; file.url.split(&#39;&#x2F;&#39;);
+  const name &#x3D; file_split[file_split.length - 1];
+  &#x2F;&#x2F; 传递给后端的数据，后端进行图片删除
+  const result &#x3D; await this.axios.post(&#39;http:&#x2F;&#x2F;localhost:3000&#x2F;data&#x2F;delete_pic_f&#39;, &#123;_id, name&#125;);
+  if (result.data.code &#x3D;&#x3D;&#x3D; 200)&#123;
+    &#x2F;&#x2F; 前端的fileList过滤掉删除的图片
+    this.fileList &#x3D; this.fileList.filter((item, i) &#x3D;&gt; &#123;
+      return item.url !&#x3D;&#x3D; file.url;
+    &#125;);
+    &#x2F;&#x2F; 重新获取列表数据
+    this.getList();
+    this.$message.success(result.data.data.msg);
+  &#125; else&#123;
+    this.$message.error(result.data.msg);
+  &#125;
+&#125;,</code></pre></li>
+<li>上传图片<pre><code class="hljs vuejs">&#x2F;&#x2F;内容图上传前的大小 格式的校验
+uploadProductPicBefore(file) &#123;
+  const fileType &#x3D; file.type;
+  const is3M &#x3D; file.size &#x2F; 1024 &#x2F; 1024 &lt; 3; &#x2F;&#x2F; 限制小于3M
+  let isJpg &#x3D; false;
+  if (fileType &#x3D;&#x3D;&#x3D; &#39;image&#x2F;jpeg&#39; || fileType &#x3D;&#x3D;&#x3D; &#39;image&#x2F;png&#39; || fileType &#x3D;&#x3D;&#x3D; &#39;image&#x2F;gif&#39; ||  fileType &#x3D;&#x3D;&#x3D; &#39;image&#x2F;bmp&#39;) &#123;
+    isJpg &#x3D; true;
+  &#125;
+  if (!isJpg) &#123;
+    this.$message(&#123;
+      message: &#39;上传的图标只能是jpg、png、gif、bmp格式!&#39;,
+      type: &#39;warning&#39;
+    &#125;);
+  &#125;
+  if (!is3M) &#123;
+    this.$message(&#123;
+      message: &#39;上传大小不能超过3M!&#39;,
+      type: &#39;warning&#39;
+    &#125;);
+  &#125;
+  this.isDialog &#x3D; isJpg &amp;&amp; is3M;
+  return is3M &amp;&amp; isJpg;
+&#125;
+&#x2F;&#x2F;上传内容图
+uploadProductPic: async function (file) &#123;
+  const that &#x3D; this;
+  const reader &#x3D; new FileReader();
+  if (file) &#123;
+    reader.readAsDataURL(file.file)
+  &#125;
+  const id &#x3D; file.data.id;
+  reader.onload &#x3D; function (e) &#123;
+    const base64Code&#x3D;this.result;
+    &#x2F;&#x2F; 进行压缩，传递参数为base64文件和callback函数
+    compress(base64Code, async (file) &#x3D;&gt; &#123;
+      &#x2F;&#x2F; 创建一个FormData
+      const formData &#x3D; new FormData();
+      &#x2F;&#x2F; 添加file属性，后台使用file字段进行接收
+      formData.append(&quot;file&quot;, file);
+      &#x2F;&#x2F; 添加data属性，后台使用data字段进行接收
+      formData.append(&#39;data&#39;, id);
+      &#x2F;&#x2F; 向后盾发起请求，并且将headers改为form-data
+      const result &#x3D; await that.axios.post(&quot;http:&#x2F;&#x2F;localhost:3000&#x2F;data&#x2F;upload2&quot;, formData, &#123;
+        headers: &#123;&quot;content-type&quot;: &quot;multipart&#x2F;form-data&quot;&#125;,
+      &#125;);
+      if (result.data.code &#x3D;&#x3D;&#x3D; 200)&#123;
+        &#x2F;&#x2F; 上传成功之后将上传的文件路径，放在fileList中，进行展示
+        that.fileList.push(&#123;&#39;url&#39;:&#39;http:&#x2F;&#x2F;localhost:3000&#x2F;pic&#x2F;&#39;+result.data.data.uploadpic&#125;);
+        &#x2F;&#x2F; that.fileList.splice(that.fileList.length, 1, &#123;&#39;url&#39;:&#39;http:&#x2F;&#x2F;localhost:3000&#x2F;pic&#x2F;&#39;+result.data.data.uploadpic&#125;);
+        &#x2F;&#x2F; that.$set(that.fileList,that.fileList.length,&#123;&#39;url&#39;:&#39;http:&#x2F;&#x2F;localhost:3000&#x2F;pic&#x2F;&#39;+result.data.data.uploadpic&#125;);
+        &#x2F;&#x2F; that.fileList.concat([&#123;&#39;url&#39;:&#39;http:&#x2F;&#x2F;localhost:3000&#x2F;pic&#x2F;&#39;+result.data.data.uploadpic&#125;]);
+        that.$message.success(result.data.data.msg);
+        &#x2F;&#x2F; that.$nextTick(()&#x3D;&gt;&#123;
+        &#x2F;&#x2F; 重新获取列表数据
+        that.getList();
+        &#x2F;&#x2F; &#125;)
+      &#125; else&#123;
+        that.$message.error(result.data.msg);
+      &#125;
+    &#125;)
+  &#125;;
+&#125;,</code></pre>
+
+</li>
+</ol>
+<h3 id="图片压缩js">图片压缩js<a class="post-anchor" href="#图片压缩js"></a></h3><p><strong>接收一个base64</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// 压缩图片</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compress</span>(<span class="hljs-params">base64,callback</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> Image();
+  img.src = base64;
+  img.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">const</span> w = img.width;
+    <span class="hljs-keyword">const</span> h = img.height;
+    <span class="hljs-keyword">const</span> quality = <span class="hljs-number">0.5</span>;  <span class="hljs-comment">// 默认图片质量为0.92</span>
+    <span class="hljs-comment">// 生成canvas</span>
+    <span class="hljs-keyword">const</span> canvas = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'canvas'</span>);
+    <span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>);
+    <span class="hljs-comment">// 创建属性节点</span>
+    <span class="hljs-keyword">const</span> anw = <span class="hljs-built_in">document</span>.createAttribute(<span class="hljs-string">"width"</span>);
+    anw.nodeValue = w;
+    <span class="hljs-keyword">const</span> anh = <span class="hljs-built_in">document</span>.createAttribute(<span class="hljs-string">"height"</span>);
+    anh.nodeValue = h;
+    canvas.setAttributeNode(anw);
+    canvas.setAttributeNode(anh);
+
+    <span class="hljs-comment">// 铺底色 PNG转JPEG时透明区域会变黑色</span>
+    ctx.fillStyle = <span class="hljs-string">"#fff"</span>;
+    ctx.fillRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, w, h);
+
+    ctx.drawImage(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, w, h);
+    <span class="hljs-comment">// quality值越小，所绘制出的图像越模糊</span>
+    <span class="hljs-keyword">const</span> new_base64 = canvas.toDataURL(<span class="hljs-string">'image/jpeg'</span>, quality); <span class="hljs-comment">// 图片格式jpeg或webp可以选0-1质量区间</span>
+    callback(convertBase64UrlToBlob(new_base64));
+    <span class="hljs-comment">// callback(new_base64);</span>
+
+    <span class="hljs-comment">// 返回base64转blob的值</span>
+    <span class="hljs-comment">// console.log(`原图$&#123;(base64.length / 1024).toFixed(2)&#125;kb`, `新图$&#123;(new_base64.length / 1024).toFixed(2)&#125;kb`);</span>
+  &#125;
+&#125;
+<span class="hljs-comment">// 将base64的图片转换为file文件</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertBase64UrlToBlob</span>(<span class="hljs-params">urlData</span>) </span>&#123;
+  <span class="hljs-keyword">let</span> bytes = <span class="hljs-built_in">window</span>.atob(urlData.split(<span class="hljs-string">","</span>)[<span class="hljs-number">1</span>]); <span class="hljs-comment">//去掉url的头，并转换为byte</span>
+  <span class="hljs-comment">//处理异常,将ascii码小于0的转换为大于0</span>
+  <span class="hljs-keyword">let</span> ab = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ArrayBuffer</span>(bytes.length);
+  <span class="hljs-keyword">let</span> ia = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(ab);
+  <span class="hljs-keyword">let</span> type = urlData.split(<span class="hljs-string">","</span>)[<span class="hljs-number">0</span>].match(<span class="hljs-regexp">/:(.*?);/</span>)[<span class="hljs-number">1</span>];
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; bytes.length; i++) &#123;
+    ia[i] = bytes.charCodeAt(i);
+  &#125;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Blob([ab], &#123; <span class="hljs-attr">type</span>: type &#125;);
+&#125;
+
+<span class="hljs-keyword">export</span> &#123;compress&#125;</code></pre>
+
+<ol start="3">
+<li><p>内容图预览事件</p>
+<pre><code class="hljs vuejs">&#x2F;&#x2F;内容图片预览事件
+handleContImgPreview(file) &#123;
+  this.dialogImageUrl &#x3D; file.url;
+  this.dialogVisible &#x3D; true;
+&#125;,</code></pre>
+</li>
+<li><p>内容图超过5张限制提示</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">//内容图数量限制5张</span>
+<span class="hljs-attr">exceedTips</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+  <span class="hljs-keyword">this</span>.$message.error(<span class="hljs-string">'最多只能上传五张图片'</span>)
+&#125;,</code></pre>
+
+</li>
+</ol>
+<h3 id="fromData">fromData<a class="post-anchor" href="#fromData"></a></h3><p>FormData的主要用途有两个：<br>1、将form表单元素的name与value进行组合，实现表单数据的序列化，从而减少表单元素的拼接，提高工作效率。<br>2、异步上传文件<br>(创建一个空对象,可以通过append()方法来追加数据)</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/12/07/js%E5%B0%86%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/">js将多维数组转为一维数组</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/07/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%BD%ACbase64/">vue文件上传转base64</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/07/vue自定义图片上传并传递formdata/">https://codermino.github.io/2020/12/07/vue自定义图片上传并传递formdata/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue的render函数 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#理解createElement"><span class="toc-text">理解createElement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#理解深入data对象。"><span class="toc-text">理解深入data对象。</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#VNodes-不一定必须唯一-（文档中说要唯一）"><span class="toc-text">VNodes 不一定必须唯一 （文档中说要唯一）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟DOM"><span class="toc-text">虚拟DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#createElement参数"><span class="toc-text">createElement参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#深入data对象"><span class="toc-text">深入data对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何在render中实现v-model双向数据绑定的效果"><span class="toc-text">如何在render中实现v-model双向数据绑定的效果</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue的render函数</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/10/07</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue的render函数">vue的render函数</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="理解createElement">理解createElement<a class="post-anchor" href="#理解createElement"></a></h3><p>Vue通过建立一个虚拟DOM对真实的DOM发生变化保存追踪，如下代码：<br><strong>return createElement(‘h1’, this.title);</strong><br>createElement返回的是包含的信息会告诉VUE页面上需要渲染什么样的节点及其子节点。<br>我们称这样的节点为虚拟DOM，可以简写为VNode，</p>
+<pre><code class="hljs javascript">createElement 参数
+
+<span class="hljs-comment">// @return &#123;VNode&#125;</span>
+createElement(
+  <span class="hljs-comment">// &#123;String | Object | Function&#125;</span>
+  <span class="hljs-comment">// 一个HTML标签字符串，组件选项对象，或者一个返回值类型为String/Object的函数。该参数是必须的</span>
+  <span class="hljs-string">'div'</span>,
+
+  <span class="hljs-comment">// &#123;Object&#125;</span>
+  <span class="hljs-comment">// 一个包含模板相关属性的数据对象，这样我们可以在template中使用这些属性，该参数是可选的。</span>
+  &#123;
+
+  &#125;,
+
+  <span class="hljs-comment">// &#123;String | Array&#125;</span>
+  <span class="hljs-comment">// 子节点（VNodes）由 createElement() 构建而成。可选参数</span>
+  <span class="hljs-comment">// 或简单的使用字符串来生成的 "文本节点"。</span>
+  [
+    <span class="hljs-string">'xxxx'</span>,
+    createElement(<span class="hljs-string">'h1'</span>, <span class="hljs-string">'一则头条'</span>),
+    createElement(MyComponent, &#123;
+      <span class="hljs-attr">props</span>: &#123;
+        <span class="hljs-attr">someProp</span>: <span class="hljs-string">'xxx'</span>
+      &#125;
+    &#125;)
+  ]
+)</code></pre>
+<h3 id="理解深入data对象。">理解深入data对象。<a class="post-anchor" href="#理解深入data对象。"></a></h3><p>在模板语法中，我们可以使用 v-bind:class 和 v-bind:style 来绑定属性，<br>在VNode数据对象中，下面的属性名的字段级别是最高的。<br>该对象允许我们绑定普通的html特性，就像DOM属性一样。如下：</p>
+<pre><code class="hljs javascript">&#123;
+  <span class="hljs-comment">// 和`v-bind:class`一样的 API</span>
+  <span class="hljs-string">'class'</span>: &#123;
+    <span class="hljs-attr">foo</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">bar</span>: <span class="hljs-literal">false</span>
+  &#125;,
+  <span class="hljs-comment">// 和`v-bind:style`一样的 API</span>
+  <span class="hljs-attr">style</span>: &#123;
+    <span class="hljs-attr">color</span>: <span class="hljs-string">'red'</span>,
+    <span class="hljs-attr">fontSize</span>: <span class="hljs-string">'14px'</span>
+  &#125;,
+  <span class="hljs-comment">// 正常的 HTML 特性</span>
+  <span class="hljs-attr">attrs</span>: &#123;
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'foo'</span>
+  &#125;,
+  <span class="hljs-comment">// 组件 props</span>
+  <span class="hljs-attr">props</span>: &#123;
+    <span class="hljs-attr">myProp</span>: <span class="hljs-string">'bar'</span>
+  &#125;,
+  <span class="hljs-comment">// DOM 属性</span>
+  <span class="hljs-attr">domProps</span>: &#123;
+    <span class="hljs-attr">innerHTML</span>: <span class="hljs-string">'baz'</span>
+  &#125;,
+  <span class="hljs-comment">// 事件监听器基于 `on`</span>
+  <span class="hljs-comment">// 所以不再支持如 `v-on:keyup.enter` 修饰器</span>
+  <span class="hljs-comment">// 需要手动匹配 keyCode。</span>
+  <span class="hljs-attr">on</span>: &#123;
+    <span class="hljs-attr">click</span>: <span class="hljs-keyword">this</span>.clickHandler
+  &#125;,
+  <span class="hljs-comment">// 仅对于组件，用于监听原生事件，而不是组件内部使用 `vm.$emit` 触发的事件。</span>
+  <span class="hljs-attr">nativeOn</span>: &#123;
+    <span class="hljs-attr">click</span>: <span class="hljs-keyword">this</span>.nativeClickHandler
+  &#125;,
+  <span class="hljs-comment">// 自定义指令。注意事项：不能对绑定的旧值设值</span>
+  <span class="hljs-comment">// Vue 会为您持续追踪</span>
+  <span class="hljs-attr">directives</span>: [
+    &#123;
+      <span class="hljs-attr">name</span>: <span class="hljs-string">'my-custom-directive'</span>,
+      <span class="hljs-attr">value</span>: <span class="hljs-string">'2'</span>,
+      <span class="hljs-attr">expression</span>: <span class="hljs-string">'1 + 1'</span>,
+      <span class="hljs-attr">arg</span>: <span class="hljs-string">'foo'</span>,
+      <span class="hljs-attr">modifiers</span>: &#123;
+        <span class="hljs-attr">bar</span>: <span class="hljs-literal">true</span>
+      &#125;
+    &#125;
+  ],
+  <span class="hljs-comment">// Scoped slots in the form of</span>
+  <span class="hljs-comment">// &#123; name: props =&gt; VNode | Array&lt;VNode&gt; &#125;</span>
+  <span class="hljs-attr">scopedSlots</span>: &#123;
+    <span class="hljs-attr">default</span>: <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> createElement(<span class="hljs-string">'span'</span>, props.text)
+  &#125;,
+  <span class="hljs-comment">// 如果组件是其他组件的子组件，需为插槽指定名称</span>
+  <span class="hljs-attr">slot</span>: <span class="hljs-string">'name-of-slot'</span>,
+  <span class="hljs-comment">// 其他特殊顶层属性</span>
+  <span class="hljs-attr">key</span>: <span class="hljs-string">'myKey'</span>,
+  <span class="hljs-attr">ref</span>: <span class="hljs-string">'myRef'</span>
+&#125;</code></pre>
+<p>上面的data数据可能不太好理解，我们来看一个demo，就知道它是如何使用的了，如下代码：</p>
+<pre><code class="hljs javascript">&lt;!DOCTYPE html&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>演示Vue<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+      
+    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"container"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tb-heading</span> <span class="hljs-attr">:level</span>=<span class="hljs-string">"2"</span>&gt;</span>
+        Hello world!
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tb-heading</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> getChildrenTextContent = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">children</span>) </span>&#123;
+      <span class="hljs-keyword">return</span> children.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">node</span>) </span>&#123;
+        <span class="hljs-keyword">return</span> node.children ? getChildrenTextContent(node.children) : node.text
+      &#125;).join(<span class="hljs-string">''</span>)
+    &#125;;
+    Vue.component(<span class="hljs-string">'tb-heading'</span>, &#123;
+      <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">createElement</span>) </span>&#123;
+        <span class="hljs-keyword">var</span> headingId = getChildrenTextContent(<span class="hljs-keyword">this</span>.$slots.default)
+          .toLowerCase()
+          .replace(<span class="hljs-regexp">/\W+/g</span>, <span class="hljs-string">'-'</span>)
+          .replace(<span class="hljs-regexp">/(^\-|\-$)/g</span>, <span class="hljs-string">''</span>)
+        <span class="hljs-keyword">return</span> createElement(
+          <span class="hljs-string">'h'</span> + <span class="hljs-keyword">this</span>.level,
+          [
+            createElement(<span class="hljs-string">'a'</span>, &#123;
+              <span class="hljs-attr">attrs</span>: &#123;
+                <span class="hljs-attr">name</span>: headingId,
+                <span class="hljs-attr">href</span>: <span class="hljs-string">'#'</span> + headingId
+              &#125;,
+              <span class="hljs-attr">style</span>: &#123;
+                <span class="hljs-attr">color</span>: <span class="hljs-string">'red'</span>,
+                <span class="hljs-attr">fontSize</span>: <span class="hljs-string">'20px'</span>
+              &#125;,
+              <span class="hljs-string">'class'</span>: &#123;
+                <span class="hljs-attr">foo</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">bar</span>: <span class="hljs-literal">false</span>
+              &#125;,
+              <span class="hljs-comment">// DOM属性</span>
+              <span class="hljs-attr">domProps</span>: &#123;
+                <span class="hljs-attr">innerHTML</span>: <span class="hljs-string">'baz'</span>
+              &#125;,
+              <span class="hljs-comment">// 组件props</span>
+              <span class="hljs-attr">props</span>: &#123;
+                <span class="hljs-attr">myProp</span>: <span class="hljs-string">'bar'</span>
+              &#125;,
+              <span class="hljs-comment">// 事件监听基于 'on'</span>
+              <span class="hljs-comment">// 所以不再支持如 'v-on:keyup.enter' 修饰语</span>
+              <span class="hljs-comment">// 需要手动匹配 KeyCode  </span>
+              <span class="hljs-attr">on</span>: &#123;
+                <span class="hljs-attr">click</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>&#123;
+                  event.preventDefault();
+                  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">111</span>);
+                &#125;
+              &#125;
+            &#125;, <span class="hljs-keyword">this</span>.$slots.default)
+          ]
+        )
+      &#125;,
+      <span class="hljs-attr">props</span>: &#123;
+        <span class="hljs-attr">level</span>: &#123;
+          <span class="hljs-attr">type</span>: <span class="hljs-built_in">Number</span>,
+          <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>
+        &#125;
+      &#125;
+    &#125;);
+    <span class="hljs-keyword">new</span> Vue(&#123;
+      <span class="hljs-attr">el</span>: <span class="hljs-string">'#container'</span>
+    &#125;);
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></code></pre>
+<p>对应的属性使用方法和上面一样既可以了，我们可以打开页面查看下效果也是可以的。如下</p>
+<h4 id="VNodes-不一定必须唯一-（文档中说要唯一）">VNodes 不一定必须唯一 （文档中说要唯一）<a class="post-anchor" href="#VNodes-不一定必须唯一-（文档中说要唯一）"></a></h4><p>文档中说 VNode必须唯一；说 下面的 render function 是无效的：<br>但是我通过测试时可以的，如下代码：</p>
+<pre><code class="hljs javascript">&lt;!DOCTYPE html&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>演示Vue<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+      
+    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"container"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">tb-heading</span> <span class="hljs-attr">:level</span>=<span class="hljs-string">"2"</span>&gt;</span>
+        Hello world!
+      <span class="hljs-tag">&lt;/<span class="hljs-name">tb-heading</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    Vue.component(<span class="hljs-string">'tb-heading'</span>, &#123;
+      <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">createElement</span>) </span>&#123;
+        <span class="hljs-keyword">var</span> pElem = createElement(<span class="hljs-string">'p'</span>, <span class="hljs-string">'hello world'</span>);
+        <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>, [
+          pElem, pElem
+        ])
+      &#125;,
+      <span class="hljs-attr">props</span>: &#123;
+        <span class="hljs-attr">level</span>: &#123;
+          <span class="hljs-attr">type</span>: <span class="hljs-built_in">Number</span>,
+          <span class="hljs-attr">required</span>: <span class="hljs-literal">true</span>
+        &#125;
+      &#125;
+    &#125;);
+    <span class="hljs-keyword">new</span> Vue(&#123;
+      <span class="hljs-attr">el</span>: <span class="hljs-string">'#container'</span>
+    &#125;);
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span></code></pre>
+
+<h3 id="虚拟DOM">虚拟DOM<a class="post-anchor" href="#虚拟DOM"></a></h3><p>Vue通过建立一个虚拟DOM对真实DOM发生的变化保持追踪<br>上面的createElement 返回的不是一个实际的DOM元素，更准确的名字是createNodeDescription，它包含的信息<br>会告知vue页面上需要渲染出上面样的节点，这种节点描述为虚拟节点 Virtual Node ,简称 Vcode,<br>虚拟DOM是我们对有Vue组件建立起来的整个VNode树的称呼</p>
+<h4 id="createElement参数">createElement参数<a class="post-anchor" href="#createElement参数"></a></h4><p>需要了解在createElement函数中接受的参数<br><a href="/images/render/render1.png" data-caption data-fancybox="images"><img src="/images/render/render1.png" alt></a><br>接受两个参数:<br>    createElement(A,B,C);  A:可以是标签名，组件名<br>    B:就是标签/vue组件里面需要的数据 C :子节点</p>
+<h4 id="深入data对象">深入data对象<a class="post-anchor" href="#深入data对象"></a></h4><p>在vnode数据对象中，下列属性名是级别最高的字段，<br>vnode数据对象中允许绑定普通的HTML特性，<br>就像DOM属性一样，比如innerHTML会取代v-html指令,<br>下面贴出的是数据对象中常用的属性名称<br><a href="/images/render/render2.png" data-caption data-fancybox="images"><img src="/images/render/render2.png" alt></a><br>注意到 DOM属性的innerHTML和字节点的创建不能并存，innerHTML会覆盖子节点<br><a href="/images/render/render3.png" data-caption data-fancybox="images"><img src="/images/render/render3.png" alt></a><br>但是如果想要去动态渲染自己定义的模板呢，就需要先全局注册这个组件才行.<br>在动态渲染自定义的<br>组件的时候，创建的子节点是不生效的<br><a href="/images/render/render4.png" data-caption data-fancybox="images"><img src="/images/render/render4.png" alt></a><br>VNodes必须唯一<br>组件树中，所有的VNodes必须是唯一的，例如<br>var mc = createElement(‘p’,’hello world’);<br>return createElement(‘div’,[mc,mc]);//这种写法是无效的</p>
+<h4 id="如何在render中实现v-model双向数据绑定的效果">如何在render中实现v-model双向数据绑定的效果<a class="post-anchor" href="#如何在render中实现v-model双向数据绑定的效果"></a></h4><p><a href="/images/render/render5.png" data-caption data-fancybox="images"><img src="/images/render/render5.png" alt></a></p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/10/09/vue%E6%95%B0%E6%8D%AE%E8%B5%8B%E5%80%BC%E4%BD%86%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9B%B4%E6%96%B0/">vue数据赋值但视图没更新</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/10/07/es6%E8%A7%A3%E6%9E%84/">es6解构</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/10/07/vue的render函数/">https://codermino.github.io/2020/10/07/vue的render函数/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

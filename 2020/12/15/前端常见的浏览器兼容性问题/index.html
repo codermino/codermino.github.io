@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      前端常见的浏览器兼容性问题 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是兼容问题？"><span class="toc-text">什么是兼容问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不同浏览器的默认样式存在差异，可以使用-Normalize-css-抹平这些差异。"><span class="toc-text">不同浏览器的默认样式存在差异，可以使用 Normalize.css 抹平这些差异。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS里的兼容性问题"><span class="toc-text">CSS里的兼容性问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js兼容性问题"><span class="toc-text">js兼容性问题</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">前端常见的浏览器兼容性问题</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/15</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/前端常见的浏览器兼容性问题">前端常见的浏览器兼容性问题</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="什么是兼容问题？">什么是兼容问题？<a class="post-anchor" href="#什么是兼容问题？"></a></h3><p>所谓的浏览器兼容性问题，是指因为不同的浏览器对同一段代码有不同的解析，<br>造成页面显示效果不统一的情况。在大多数情况下，我们的需求是，<br>无论用户用什么浏览器来查看我们的网站或者登陆我们的系统，都应该是统一的显示效果。<br>所以浏览器的兼容性问题是前端开发人员经常会碰到和必须要解决的问题。</p>
+<h3 id="不同浏览器的默认样式存在差异，可以使用-Normalize-css-抹平这些差异。">不同浏览器的默认样式存在差异，可以使用 Normalize.css 抹平这些差异。<a class="post-anchor" href="#不同浏览器的默认样式存在差异，可以使用-Normalize-css-抹平这些差异。"></a></h3><h3 id="CSS里的兼容性问题">CSS里的兼容性问题<a class="post-anchor" href="#CSS里的兼容性问题"></a></h3><ol>
+<li><p>cursor:hand VS cursor:pointer</p>
+<pre><code class="hljs markdown">firefox 不支持hand，但ie支持 pointer
+解决方法:统一使用pointer</code></pre></li>
+<li><p>innerText在IE中能正常工作，但在FireFox中却不行<br>需用textContent</p>
+<pre><code class="hljs markdown">if(navigator.appName.indexOf("Explorer")&gt;-1)&#123;
+<span class="hljs-code">    document.getElementById('element').innerText = "xxx";</span>
+&#125;else&#123;
+<span class="hljs-code">    document.getElementById('element').textContent = "xxx";</span>
+&#125;</code></pre></li>
+<li><p>CSS透明</p>
+<pre><code class="hljs markdown">opacity:0~1 兼容主流浏览器
+filter:Alpha(opacity=0~100) 兼容IE8及以下
+
+IE：filter:alpha(opacity=60)。
+FF：opacity:0.6。
+
+.transparent_class &#123;  
+<span class="hljs-code">      filter:alpha(opacity=50);  </span>
+<span class="hljs-code">      -moz-opacity:0.5;  </span>
+<span class="hljs-code">      -khtml-opacity: 0.5;  </span>
+<span class="hljs-code">      opacity: 0.5;  </span>
+&#125;</code></pre></li>
+<li><p>盒子模型</p>
+<pre><code class="hljs markdown">标准 w3c 盒子模型的范围包括 margin、border、padding、content，
+并且 content 部分不包含其他部分； IE盒子模型的范围也包括
+margin、border、padding、content。和标准 w3c 盒子模型不同的是：
+ie 盒子模型的 content 部分包含了 border 和 padding。
+因此，问题主要表现在css中的width是否计算border和padding的问题，
+这个是默认的盒子解析模型不同导致的。
+IE6：中包括border和padding(box-sizing: border-box;)
+IE7和非IE：width宽度不包括border和padding(box-sizing: content-box;)
+解决方式： 根据使用方式，写好box-sizing属性。</code></pre>
+</li>
+<li><p>块属性标签float后，又有横行的margin情况下，在IE6显示margin比设置的大</p>
+<pre><code class="hljs markdown">问题症状:常见症状是IE6中后面的一块被顶到下一行
+解决方案：在float的标签样式控制中加入 display:inline;将其转化为行内属性
+备注：我们最常用的就是div+CSS布局了，而div就是一个典型的块属性标签，
+<span class="hljs-code">        横向布局的时候我们通常都是用div float实现的，横向的间距</span>
+设置如果用margin实现，这就是一个必然会碰到的兼容性问题。</code></pre>
+</li>
+<li><p>图片默认有间距</p>
+<pre><code class="hljs markdown">问题症状：几个img标签放在一起的时候，有些浏览器会有默认的间距。
+解决方案：使用float属性为img布局
+备注：因为img标签是行内属性标签，所以只要不超出容器宽度，img标签都会排在一行里，
+<span class="hljs-code">        但是部分浏览器的img标签之间会有个间距。去掉这</span>
+个间距使用float是正道。</code></pre>
+</li>
+<li><p>万能清除浮动</p>
+<pre><code class="hljs markdown">给父级元素添加clearfix类
+.clearfix:after &#123; 
+<span class="hljs-code">    content:"."; </span>
+<span class="hljs-code">    display:block; </span>
+<span class="hljs-code">    height:0; </span>
+<span class="hljs-code">    clear:both; </span>
+<span class="hljs-code">    visibility:hidden; </span>
+&#125;
+
+Demo
+.news &#123;
+  background-color: gray;
+  border: solid 1px black;
+  &#125;
+
+.news img &#123;
+  float: left;
+  &#125;
+
+.news p &#123;
+  float: right;
+  &#125;
+
+.clearfix:after&#123;
+  content: "020"; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;  
+  &#125;
+
+.clearfix &#123;
+  /<span class="hljs-emphasis">* 触发 hasLayout *</span>/ 
+  zoom: 1; 
+  &#125;
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"news clearfix"</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"news-pic.jpg"</span> /&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span>some text<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre>
+</li>
+<li><p>IE捉迷藏的问题</p>
+<pre><code class="hljs markdown">当div应用复杂的时候每个栏中又有一些链接，DIV等这个时候容易发生捉迷藏的问题。 
+有些内容显示不出来，当鼠标选择这个区域是发现内容确实在页面。 
+解决办法：对#layout使用line-height属性或者给#layout使用固定高和宽。页面结构尽量简单。</code></pre>
+</li>
+<li><p>溢出显示省略号 </p>
+<pre><code class="hljs markdown">select &#123; 
+<span class="hljs-code">    -o-text-overflow:ellipsis; </span>
+<span class="hljs-code">    text-overflow:ellipsis;</span>
+<span class="hljs-code">    white-space:nowrap;</span>
+<span class="hljs-code">    overflow:hidden; </span>
+<span class="hljs-code">    width:200px;</span>
+&#125;</code></pre>
+<p>这个是在越出长度后会自行的截掉多出部分的文字，并以省略号结尾，<br>很好的一个技术。只是目前Firefox并不支持。 </p>
+</li>
+<li><p>IE6下图片下有空隙产生<br>解决这个BUG的技巧有很多,可以是改变html的排版,或者设置img为display:block。</p>
+</li>
+<li><p>超链接访问过后hover样式就不出现的问题</p>
+<pre><code class="hljs markdown">a:link &#123;&#125; 
+a:visited &#123;&#125; 
+a:hover &#123;&#125; 
+a:active &#123;&#125;</code></pre>
+</li>
+<li><p>不同浏览器的标签默认的外补丁和内补丁不同</p>
+<pre><code class="hljs markdown">问题症状：随便写几个标签，不加样式控制的情况下，各自的margin 和padding差异较大。
+碰到频率:100%
+解决方案：CSS里*&#123;margin:0;padding:0;&#125;
+备注：这个是最常见的也是最易解决的一个浏览器兼容性问题，几乎所有的CSS文件开头都会用通配符*来设置各个标签的内外补丁是0。</code></pre>
+</li>
+<li><p>边距重叠问题；当相邻两个元素都设置了margin 边距时，margin 将取最大值，舍弃最小值</p>
+<pre><code class="hljs markdown">为了不让边重叠，可以给子元素增加一个父级元素，并设置父级元素为overflow:hidden；</code></pre>
+
+</li>
+</ol>
+<h3 id="js兼容性问题">js兼容性问题<a class="post-anchor" href="#js兼容性问题"></a></h3><ol>
+<li><p>const问题<br>说明:Firefox下,可以使用const关键字或var关键字来定义常量;<br>IE下,只能使用var关键字来定义常量.<br>解决方法：统一使用var关键字来定义常量.</p>
+</li>
+<li><p>event.srcElement问题<br>说明：IE下，event对象有srcElement属性，但是没有target属性；Firefox下，even对象有target属性，但是没有srcElement属性。<br>解决方法：使用srcObj =event.srcElement ?event.srcElement : event.target;</p>
+</li>
+</ol>
+<p><strong>监听输入框输入事件</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">chnputchang</span>(<span class="hljs-params">event</span>)</span>&#123;
+  <span class="hljs-keyword">let</span> eventObj = event.srcElement ? event.srcElement : event.target;
+  <span class="hljs-keyword">let</span> inputValue = eventObj.value;
+  <span class="hljs-built_in">console</span>.log(inputValue)
+&#125;</code></pre>
+
+<ol start="3">
+<li><p>事件绑定<br>IE：dom.attachEvent();<br>其他浏览器：dom.addEventListener();<br>标准浏览器采用事件捕获的方式对应IE的事件冒泡机制（即标准由最外元素至最内元素或者IE由最内元素到最外元素）最后标准方亦觉得IE这<br>方面的比较合理，所以便将事件冒泡纳入了标准，这也是addEventListener第三个参数的由来，而且事件冒泡作为了默认值。</p>
+</li>
+<li><p>ajax略有不同<br>IE:ActiveXObject (在IE 5和IE 6)<br>其他：xmlHttpReuest</p>
+</li>
+</ol>
+<ol start="5">
+<li><p>键盘事件 keyCode 兼容性写法</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> inp = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'inp'</span>)
+<span class="hljs-keyword">var</span> result = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'result'</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getKeyCode</span>(<span class="hljs-params">e</span>) </span>&#123;
+  e = e ? e : (<span class="hljs-built_in">window</span>.event ? <span class="hljs-built_in">window</span>.event : <span class="hljs-string">""</span>)
+  <span class="hljs-keyword">return</span> e.keyCode ? e.keyCode : e.which
+&#125;
+
+inp.onkeypress = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;
+  result.innerHTML = getKeyCode(e)
+&#125;</code></pre>
+</li>
+<li><p>求窗口大小的兼容写法</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// 浏览器窗口可视区域大小（不包括工具栏和滚动条等边线）</span>
+<span class="hljs-comment">// 1600 * 525</span>
+<span class="hljs-keyword">var</span> client_w = <span class="hljs-built_in">document</span>.documentElement.clientWidth || <span class="hljs-built_in">document</span>.body.clientWidth;
+<span class="hljs-keyword">var</span> client_h = <span class="hljs-built_in">document</span>.documentElement.clientHeight || <span class="hljs-built_in">document</span>.body.clientHeight;
+
+<span class="hljs-comment">// 网页内容实际宽高（包括工具栏和滚动条等边线）</span>
+<span class="hljs-comment">// 1600 * 8</span>
+<span class="hljs-keyword">var</span> scroll_w = <span class="hljs-built_in">document</span>.documentElement.scrollWidth || <span class="hljs-built_in">document</span>.body.scrollWidth;
+<span class="hljs-keyword">var</span> scroll_h = <span class="hljs-built_in">document</span>.documentElement.scrollHeight || <span class="hljs-built_in">document</span>.body.scrollHeight;
+
+<span class="hljs-comment">// 网页内容实际宽高 (不包括工具栏和滚动条等边线）</span>
+<span class="hljs-comment">// 1600 * 8</span>
+<span class="hljs-keyword">var</span> offset_w = <span class="hljs-built_in">document</span>.documentElement.offsetWidth || <span class="hljs-built_in">document</span>.body.offsetWidth;
+<span class="hljs-keyword">var</span> offset_h = <span class="hljs-built_in">document</span>.documentElement.offsetHeight || <span class="hljs-built_in">document</span>.body.offsetHeight;
+
+<span class="hljs-comment">// 滚动的高度</span>
+<span class="hljs-keyword">var</span> scroll_Top = <span class="hljs-built_in">document</span>.documentElement.scrollTop||<span class="hljs-built_in">document</span>.body.scrollTop;</code></pre>
+<p>页面具有 DTD，或者说指定了 DOCTYPE 时，使用 document.documentElement。<br>页面不具有 DTD，或者说没有指定了 DOCTYPE，时，使用 document.body。<br>在 IE 和 Firefox 中均是如此。<br>为了兼容，不管有没有 DTD，可以使用如下代码：<br>var scrollTop = window.pageYOffset (//用于FF)||</p>
+<pre><code>document.documentElement.scrollTop || document.body.scrollTop|| 0;</code></pre><p>body是DOM对象里的body子节点，即 <body> 标签；<br>documentElement 是整个节点树的根节点root，即<html> 标签；</html></body></p>
+</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/12/15/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/">HTML行内元素与块级元素</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/15/vue%E5%8D%95%E9%A1%B5%E9%9D%A2%E5%BA%94%E7%94%A8%E8%BF%87%E6%B8%A1%E5%8A%A8%E7%94%BB/">vue单页面应用过渡动画</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/15/前端常见的浏览器兼容性问题/">https://codermino.github.io/2020/12/15/前端常见的浏览器兼容性问题/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

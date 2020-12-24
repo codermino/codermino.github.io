@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      js的rAF的使用和优点 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#动画"><span class="toc-text">动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#requestAnimationFrame"><span class="toc-text">requestAnimationFrame</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优势"><span class="toc-text">优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#最大优势"><span class="toc-text">最大优势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setTimeout动画绘制过程"><span class="toc-text">setTimeout动画绘制过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现一个div滑动的动画，由快至慢5s结束"><span class="toc-text">实现一个div滑动的动画，由快至慢5s结束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点总结"><span class="toc-text">优点总结</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">js的rAF的使用和优点</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/12/16</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js的rAF的使用和优点">js的rAF的使用和优点</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="动画">动画<a class="post-anchor" href="#动画"></a></h3><p>我们经常通过setInterval或setTimeout定时修改DOM、CSS实现动画,</p>
+<p>利用seTimeout实现的动画在某些低端机上会出现卡顿、抖动的现象。<br>这种现象的产生有两个原因：</p>
+<ol>
+<li>setTimeout的执行时间并不是确定的。在Javascript中，<br> setTimeout 任务被放进了异步队列中，只有当主线程上的任务执行完以后，<br> 才会去检查该队列里的任务是否需要开始执行，<br> 因此 setTimeout 的实际执行时间一般要比其设定的时间晚一些。</li>
+<li>刷新频率受屏幕分辨率和屏幕尺寸的影响，因此不同设备的屏幕刷新频率可能会不同，<br> 而 setTimeout只能设置一个固定的时间间隔，<br> 这个时间不一定和屏幕的刷新时间相同。</li>
+</ol>
+<h3 id="requestAnimationFrame">requestAnimationFrame<a class="post-anchor" href="#requestAnimationFrame"></a></h3><h4 id="优势">优势<a class="post-anchor" href="#优势"></a></h4><ol>
+<li>经过浏览器优化，动画更流畅</li>
+<li>窗口没激活时，动画将停止，省计算资源</li>
+<li>更省电，尤其是对移动终端</li>
+</ol>
+<h4 id="最大优势">最大优势<a class="post-anchor" href="#最大优势"></a></h4><p><strong>由系统来决定回调函数的执行时机。</strong></p>
+<pre><code class="hljs markdown">具体一点讲，如果屏幕刷新率是60Hz,那么回调函数就每16.7ms被执行一次，
+如果刷新率是75Hz，那么这个时间间隔就变成了1000/75=13.3ms，
+换句话说就是，requestAnimationFrame的步伐跟着系统的刷新步伐走。
+它能保证回调函数在屏幕每一次的刷新间隔中只被执行一次，
+这样就不会引起丢帧现象，也不会导致动画出现卡顿的问题。</code></pre>
+
+<h3 id="setTimeout动画绘制过程">setTimeout动画绘制过程<a class="post-anchor" href="#setTimeout动画绘制过程"></a></h3><p>首先要明白，setTimeout的执行只是在内存中对图像属性进行改变，<br>这个变化必须要等到屏幕下次刷新时才会被更新到屏幕上。如果两者的步调不一致，<br>就可能会导致中间某一帧的操作被跨越过去，而直接更新下一帧的图像。<br>假设屏幕每隔16.7ms刷新一次，而setTimeout每隔10ms设置图像向左移动1px，<br>就会出现如下绘制过程：</p>
+<p>第0ms: 屏幕未刷新，等待中，setTimeout也未执行，等待中；<br>第10ms: 屏幕未刷新，等待中，setTimeout开始执行并设置图像属性left=1px；<br>第16.7ms: 屏幕开始刷新，屏幕上的图像向左移动了1px， setTimeout 未执行，继续等待中；<br>第20ms: 屏幕未刷新，等待中，setTimeout开始执行并设置left=2px;<br>第30ms: 屏幕未刷新，等待中，setTimeout开始执行并设置left=3px;<br>第33.4ms:屏幕开始刷新，屏幕上的图像向左移动了3px， setTimeout未执行，继续等待中；<br>…<br>从上面的绘制过程中可以看出，屏幕没有更新left=2px的那一帧画面，<br>图像直接从1px的位置跳到了3px的的位置，这就是丢帧现象，<br>这种现象就会引起动画卡顿。<br>所以丢帧现象可以说是因为屏幕刷新频率和代码执行不对称导致的。</p>
+<p>那如果屏幕刷新频率和代码执行对称的话，是不是就不会发生丢帧现象了？<br>raf的诞生就解决了这一点，raf的执行频率是根据屏幕刷新频率来说的，<br>有图像的变化就会刷新屏幕，刷新屏幕就会运行raf，这样就解决了丢帧的现象。</p>
+<h3 id="实现一个div滑动的动画，由快至慢5s结束">实现一个div滑动的动画，由快至慢5s结束<a class="post-anchor" href="#实现一个div滑动的动画，由快至慢5s结束"></a></h3><p>html部分</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sj"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sj"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p>css部分</p>
+<pre><code class="hljs css"><span class="hljs-selector-class">.sj</span>&#123;
+    <span class="hljs-attribute">width</span>:<span class="hljs-number">50px</span>;
+    <span class="hljs-attribute">height</span>:<span class="hljs-number">50px</span>;
+    <span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> solid red;
+    <span class="hljs-attribute">position</span>:absolute;
+    <span class="hljs-attribute">left</span>:<span class="hljs-number">0</span>
+&#125;</code></pre>
+<p>js部分</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">//ele为要移动的盒子，target为目标位置（像素），spd为计数器的频率</span>
+<span class="hljs-keyword">var</span> ele = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'sj'</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span>(<span class="hljs-params">ele,spd</span>)</span>&#123;
+    <span class="hljs-keyword">var</span> start = <span class="hljs-built_in">Date</span>.now(); <span class="hljs-comment">// remember start time</span>
+    <span class="hljs-keyword">var</span> timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">var</span> timePassed = <span class="hljs-built_in">Date</span>.now() - start;
+        <span class="hljs-keyword">var</span> step = <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-built_in">Math</span>.abs(timePassed - <span class="hljs-number">5000</span>)/<span class="hljs-number">10</span>)
+        <span class="hljs-built_in">console</span>.log(step)
+        <span class="hljs-keyword">if</span> (timePassed &gt;= <span class="hljs-number">5000</span>) &#123;
+            clearInterval(timer); <span class="hljs-comment">// finish the animation after 2 seconds</span>
+            <span class="hljs-keyword">return</span>;
+        &#125;
+        ele.style.left = ele.offsetLeft + step + <span class="hljs-string">'px'</span>
+    &#125;, spd);
+&#125;</code></pre>
+
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"zh-CN"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span>
+        .sj&#123;
+            width:50px;
+            height:50px;
+            border:1px solid red;
+            position: relative;;
+            left:0
+        &#125;
+        #button&#123;
+            float: right;
+        &#125;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sj"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sj"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"button"</span>&gt;</span>开始动画<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-comment">//ele为要移动的盒子，target为目标位置（像素），spd为计数器的频率</span>
+        <span class="hljs-comment">// var ele = document.getElementById('sj')</span>
+        <span class="hljs-comment">// var button = document.getElementById('button')</span>
+        <span class="hljs-comment">// button.onclick=()=&gt;&#123;</span>
+        <span class="hljs-comment">//     animateWidth();</span>
+        <span class="hljs-comment">// &#125;</span>
+        <span class="hljs-comment">// const startTime = +new Date();</span>
+        <span class="hljs-comment">// console.log(startTime)</span>
+        <span class="hljs-comment">// animate(ele,1000/60)</span>
+        <span class="hljs-comment">// function animate(ele,spd)&#123;</span>
+        <span class="hljs-comment">//     var start = Date.now(); // remember start time</span>
+        <span class="hljs-comment">//     var timer = setInterval(function() &#123;</span>
+        <span class="hljs-comment">//         var timePassed = Date.now() - start;</span>
+        <span class="hljs-comment">//         var step = Math.ceil(Math.abs(timePassed - 2000)/10)</span>
+        <span class="hljs-comment">//         if (timePassed &gt;= 2000) &#123;</span>
+        <span class="hljs-comment">//             clearInterval(timer); // finish the animation after 2 seconds</span>
+        <span class="hljs-comment">//             return;</span>
+        <span class="hljs-comment">//         &#125;</span>
+        <span class="hljs-comment">//         ele.style.left = ele.offsetLeft + step + 'px'</span>
+        <span class="hljs-comment">//     &#125;, spd);</span>
+        <span class="hljs-comment">// &#125;</span>
+
+
+        <span class="hljs-comment">// function animateWidth() &#123;</span>
+        <span class="hljs-comment">//     var ele = document.getElementById('sj')</span>
+        <span class="hljs-comment">//     let timePass = +new Date() - startTime;</span>
+        <span class="hljs-comment">//     const curOffsetLeft = ele.offsetLeft;</span>
+        <span class="hljs-comment">//     ele.style.left = 1 + curOffsetLeft + 'px';</span>
+        <span class="hljs-comment">//     if(timePass &lt; 3000) &#123;</span>
+        <span class="hljs-comment">//         requestAnimationFrame(animateWidth)</span>
+        <span class="hljs-comment">//     &#125;</span>
+        <span class="hljs-comment">// &#125;</span>
+
+
+        <span class="hljs-keyword">var</span> button = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'button'</span>)
+        <span class="hljs-keyword">var</span> ele = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'sj'</span>)
+        <span class="hljs-keyword">let</span> timer = <span class="hljs-literal">null</span>;
+        button.onclick=<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+            animateTimeout(ele);
+        &#125;
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animateTimeout</span>(<span class="hljs-params">ele</span>) </span>&#123;
+            <span class="hljs-keyword">const</span> startTime = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+            timer = setInterval(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+                <span class="hljs-keyword">const</span> nowtime = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();
+                <span class="hljs-keyword">const</span> spendTime = nowtime - startTime;
+                <span class="hljs-keyword">const</span> curOffsetLeft = ele.offsetLeft; 
+                ele.style.left = <span class="hljs-number">1</span> + curOffsetLeft + <span class="hljs-string">'px'</span>;
+                <span class="hljs-keyword">if</span>(spendTime &gt;= <span class="hljs-number">2000</span>)&#123;
+                    clearInterval(timer)
+                &#125;
+            &#125;,<span class="hljs-number">1000</span>/<span class="hljs-number">60</span>)
+        &#125;
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<h3 id="优点总结">优点总结<a class="post-anchor" href="#优点总结"></a></h3><p>requestAnimationFrame的优点：</p>
+<ol>
+<li>多个raf可以并行绘制。（这一点跟setTimeout和setInterval进入异步队列有关系。）</li>
+<li>在隐藏或者不可见的元素汇总，raf将不会进行重绘和回流，这就意味着更少的CPU和GPU以及内存使用量。</li>
+<li>由浏览器专门为动画提供的API，在运行时浏览器会自动优化方法的调用，并且如果页面不是激活状态的话，<br> 动画就会暂停，节省了CPU开销。（对于这一点，本人试了试setTimeout和setInterval，<br> 发现用这两者做的动画在不激活的状态下也会暂停，<br> 不知道是chrome浏览器做了优化还是说只有chrome是这样。）</li>
+<li>函数节流： 在高频率时间中（resize,scroll等），<br> 为了防止在一个刷新间隔内发生多次函数执行，使用raf可保证每个刷新间隔内，<br> 函数只能被执行一次，这样既能保证流浪性，也能更好的节省函数执行的开销。</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/12/17/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E8%BF%87%E7%A8%8B/">浏览器渲染过程</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/15/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/">HTML行内元素与块级元素</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2020/12/16/js的rAF的使用和优点/">https://codermino.github.io/2020/12/16/js的rAF的使用和优点/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
