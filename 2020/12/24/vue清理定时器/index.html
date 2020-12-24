@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue的mixin中异步函数 - Mino
+      vue清理定时器 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo1"><span class="toc-text">Demo1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mixin-js"><span class="toc-text">mixin.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面中使用mixin"><span class="toc-text">页面中使用mixin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo2"><span class="toc-text">Demo2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mixin"><span class="toc-text">mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面中内容"><span class="toc-text">页面中内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo3"><span class="toc-text">Demo3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#修改mixin"><span class="toc-text">修改mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改页面中的内容"><span class="toc-text">修改页面中的内容</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一："><span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二："><span class="toc-text">方法二：</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,7 +157,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue的mixin中异步函数</div>
+      <div class="title">vue清理定时器</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue的mixin中异步函数">vue的mixin中异步函数</a>
+                    <a href="/tags/vue清理定时器">vue清理定时器</a>
                   
                 
             </span>
@@ -196,171 +196,44 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h2 id="Demo1">Demo1<a class="post-anchor" href="#Demo1"></a></h2><h3 id="mixin-js">mixin.js<a class="post-anchor" href="#mixin-js"></a></h3><pre><code class="hljs vuejs">export default &#123;
+<h3 id="方法一：">方法一：<a class="post-anchor" href="#方法一："></a></h3><ol>
+<li>首先在vue实例的data中定义定时器的名称，</li>
+<li>在方法（methods）或者页面初始化（mounted()）的时候使用定时器</li>
+<li>然后在页面销毁的生命周期函数（beforeDestroy()）中销毁定时器<pre><code class="hljs vuejs">export default&#123;
   data()&#123;
-    return&#123;
-      username:&#39;&#39;
-    &#125;
+    timer:null  
   &#125;,
-  beforeCreate() &#123;
-    console.log(&#39;这是minx中的beforeCreate&#39;);
-  &#125;,
-  beforeMount() &#123;
-    console.log(&#39;这是minx中的beforeMount&#39;);
-  &#125;,
-  mounted() &#123;
-    console.log(&#39;这是minx中的mounted&#39;);
-  &#125;,
+  mounted()&#123;
+	  this.timer &#x3D; setInterval(()&#x3D;&gt;&#123;
+	  &#x2F;&#x2F;具体执行内容
+	  console.log(&#39;1&#39;);
+	&#125;,1000);
+  &#125;
+  beforeDestory()&#123;
+    clearInterval(this.timer);
+    this.timer &#x3D; null;
+  &#125;
+&#125;</code></pre>
+第一种方法存在的问题是：<pre><code class="hljs markdown">1、vue实例中需要有这个定时器的实例，感觉有点多余;
+2、 创建的定时器代码和销毁定时器的代码没有放在一起，通常很容易忘记去清理这个定时器，不容易维护;*</code></pre>
+
+</li>
+</ol>
+<h3 id="方法二：">方法二：<a class="post-anchor" href="#方法二："></a></h3><p>直接在需要定时器的方法或者生命周期函数中声明并销毁</p>
+<pre><code class="hljs vuejs">export default&#123;
   methods:&#123;
-    &#x2F;&#x2F; 这个是一个模拟异步操作的函数
-    getInitData()&#123;
-      setTimeout(()&#x3D;&gt;&#123;
-        this.username &#x3D; &#39;sunhe&#39;
+    fun1()&#123;
+      const timer &#x3D; setInterval(()&#x3D;&gt;&#123;
+      	&#x2F;&#x2F;具体执行代码
+        console.log(&#39;1&#39;);
+      &#125;,1000);
+      this.$once(&#39;hook:beforeDestory&#39;,()&#x3D;&gt;&#123;
+        clearInterval(timer);
+        timer &#x3D; null;
       &#125;)
     &#125;
   &#125;
 &#125;</code></pre>
-
-<h3 id="页面中使用mixin">页面中使用mixin<a class="post-anchor" href="#页面中使用mixin"></a></h3><pre><code class="hljs vue">&lt;template&gt;
-  &lt;div class&#x3D;&quot;container&quot;&gt;
-
-  &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-import mixin from &#39;..&#x2F;plugin&#x2F;mixin&#39;;
-export default &#123;
-  name: &quot;mixincreate&quot;,
-  mixins: [mixin],
-  beforeCreate() &#123;
-    console.log(&#39;这是page中的beforeCreate&#39;);
-  &#125;,
-  async created() &#123;
-    console.log(this.username); &#x2F;&#x2F;结果为空
-    console.log(&#39;这是page中的created&#39;);
-  &#125;,
-  beforeMount() &#123;
-    console.log(&#39;这是page中的beforeMount&#39;);
-  &#125;,
-  mounted() &#123;
-    console.log(&#39;这是page中的mounted&#39;);
-  &#125;
-&#125;
-&lt;&#x2F;script&gt;</code></pre>
-
-<h2 id="Demo2">Demo2<a class="post-anchor" href="#Demo2"></a></h2><h3 id="mixin">mixin<a class="post-anchor" href="#mixin"></a></h3><pre><code class="hljs vuejs">export default &#123;
-  data()&#123;
-    return&#123;
-      username:&#39;&#39;
-    &#125;
-  &#125;,
-  beforeCreate() &#123;
-    console.log(&#39;这是minx中的beforeCreate&#39;);
-  &#125;,
-  beforeMount() &#123;
-    console.log(&#39;这是minx中的beforeMount&#39;);
-  &#125;,
-  mounted() &#123;
-    console.log(&#39;这是minx中的mounted&#39;);
-  &#125;,
-  methods:&#123;
-    getInitData()&#123;
-      new Promise((resolve, reject)&#x3D;&gt;&#123;
-        setTimeout(()&#x3D;&gt;&#123;
-          const username &#x3D; &#39;sunhe&#39;
-          resolve(username)
-        &#125;)
-        console.log(&#39;这是minx中的created&#39;);
-      &#125;).then(value &#x3D;&gt; &#123;
-        this.username &#x3D; value
-      &#125;)
-    &#125;
-  &#125;
-&#125;</code></pre>
-<h3 id="页面中内容">页面中内容<a class="post-anchor" href="#页面中内容"></a></h3><pre><code class="hljs vue">&lt;template&gt;
-  &lt;div class&#x3D;&quot;container&quot;&gt;
-
-  &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-import mixin from &#39;..&#x2F;plugin&#x2F;mixin&#39;;
-export default &#123;
-  name: &quot;mixincreate&quot;,
-  mixins: [mixin],
-  beforeCreate() &#123;
-    console.log(&#39;这是page中的beforeCreate&#39;);
-  &#125;,
-  async created() &#123;
-    this.getInitData()
-    console.log(this.username); &#x2F;&#x2F;输出还是空
-    console.log(&#39;这是page中的created&#39;);
-  &#125;,
-  beforeMount() &#123;
-    console.log(&#39;这是page中的beforeMount&#39;);
-  &#125;,
-  mounted() &#123;
-    console.log(&#39;这是page中的mounted&#39;);
-  &#125;
-&#125;
-&lt;&#x2F;script&gt;</code></pre>
-
-<h2 id="Demo3">Demo3<a class="post-anchor" href="#Demo3"></a></h2><p><strong>解决方法</strong><br>直接返回整个异步函数。不要返回结果</p>
-<h3 id="修改mixin">修改mixin<a class="post-anchor" href="#修改mixin"></a></h3><pre><code class="hljs vuejs">export default &#123;
-  data()&#123;
-    return&#123;
-      username:&#39;&#39;
-    &#125;
-  &#125;,
-  beforeCreate() &#123;
-    console.log(&#39;这是minx中的beforeCreate&#39;);
-  &#125;,
-  beforeMount() &#123;
-    console.log(&#39;这是minx中的beforeMount&#39;);
-  &#125;,
-  mounted() &#123;
-    console.log(&#39;这是minx中的mounted&#39;);
-  &#125;,
-  methods:&#123;
-    getInitData()&#123;
-      return new Promise((resolve, reject)&#x3D;&gt;&#123;
-        setTimeout(()&#x3D;&gt;&#123;
-          this.username &#x3D; &#39;zhangsan&#39;
-          resolve(this.username)
-        &#125;)
-        console.log(&#39;这是minx中的created&#39;);
-      &#125;)
-    &#125;
-  &#125;
-&#125;</code></pre>
-
-<h3 id="修改页面中的内容">修改页面中的内容<a class="post-anchor" href="#修改页面中的内容"></a></h3><pre><code class="hljs vue">&lt;template&gt;
-  &lt;div class&#x3D;&quot;container&quot;&gt;
-
-  &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-import mixin from &#39;..&#x2F;plugin&#x2F;mixin&#39;;
-export default &#123;
-  name: &quot;mixincreate&quot;,
-  mixins: [mixin],
-  beforeCreate() &#123;
-    console.log(&#39;这是page中的beforeCreate&#39;);
-  &#125;,
-  async created() &#123;
-    await this.getInitData()
-    console.log(this.username); &#x2F;&#x2F;输出zhangsan
-    console.log(&#39;这是page中的created&#39;);
-  &#125;,
-  beforeMount() &#123;
-    console.log(&#39;这是page中的beforeMount&#39;);
-  &#125;,
-  mounted() &#123;
-    console.log(&#39;这是page中的mounted&#39;);
-  &#125;
-&#125;
-&lt;&#x2F;script&gt;</code></pre>
 
 
   
@@ -387,12 +260,10 @@ export default &#123;
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/12/24/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/">vue清理定时器</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2020/12/24/webstorm%E4%B8%ADgit%E5%9B%9E%E6%BB%9A/">webstorm中git回滚</a>
+          <a href="/2020/12/24/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/">vue的mixin中异步函数</a>
         
     </div>
   </div>
@@ -404,7 +275,7 @@ export default &#123;
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2020/12/24/vue的mixin中异步函数/">https://codermino.github.io/2020/12/24/vue的mixin中异步函数/</a>
+      永久链接：<a href="https://codermino.github.io/2020/12/24/vue清理定时器/">https://codermino.github.io/2020/12/24/vue清理定时器/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！

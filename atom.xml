@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-24T08:17:49.922Z</updated>
+  <updated>2020-12-24T09:26:18.702Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue清理定时器</title>
+    <link href="https://codermino.github.io/2020/12/24/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/"/>
+    <id>https://codermino.github.io/2020/12/24/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/</id>
+    <published>2020-12-24T09:24:28.000Z</published>
+    <updated>2020-12-24T09:26:18.702Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;方法一：&quot;&gt;方法一：&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue清理定时器" scheme="https://codermino.github.io/tags/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>vue的mixin中异步函数</title>
@@ -485,33 +510,6 @@
     
     
       <category term="前端HTTP协议知识" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端开发中常用图片格式</title>
-    <link href="https://codermino.github.io/2020/12/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/"/>
-    <id>https://codermino.github.io/2020/12/05/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/</id>
-    <published>2020-12-05T10:01:12.000Z</published>
-    <updated>2020-12-05T10:40:31.180Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;无压缩存储&quot;&gt;无压缩存储&lt;a class=&quot;post-anchor&quot; href=&quot;#无压缩存储&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;BMP（BMP 取自位图 BitMaP 的缩写，也称为 DIB（与设备无关的位图））&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端开发中常用图片格式" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/"/>
     
   </entry>
   
