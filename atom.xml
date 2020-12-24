@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-18T05:59:07.210Z</updated>
+  <updated>2020-12-24T08:17:49.922Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,105 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue的mixin中异步函数</title>
+    <link href="https://codermino.github.io/2020/12/24/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/"/>
+    <id>https://codermino.github.io/2020/12/24/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/</id>
+    <published>2020-12-24T07:40:39.000Z</published>
+    <updated>2020-12-24T08:17:49.922Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Demo1&quot;&gt;Demo1&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的mixin中异步函数" scheme="https://codermino.github.io/tags/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>webstorm中git回滚</title>
+    <link href="https://codermino.github.io/2020/12/24/webstorm%E4%B8%ADgit%E5%9B%9E%E6%BB%9A/"/>
+    <id>https://codermino.github.io/2020/12/24/webstorm%E4%B8%ADgit%E5%9B%9E%E6%BB%9A/</id>
+    <published>2020-12-24T05:35:40.000Z</published>
+    <updated>2020-12-24T05:52:51.181Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/webstorm/webstorm.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/webstorm/webstorm.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;l
+      
+    
+    </summary>
+    
+    
+      <category term="webstorm" scheme="https://codermino.github.io/categories/webstorm/"/>
+    
+    
+      <category term="webstorm中git回滚" scheme="https://codermino.github.io/tags/webstorm%E4%B8%ADgit%E5%9B%9E%E6%BB%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nvm管理node版本</title>
+    <link href="https://codermino.github.io/2020/12/24/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%AC/"/>
+    <id>https://codermino.github.io/2020/12/24/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%AC/</id>
+    <published>2020-12-24T02:54:59.000Z</published>
+    <updated>2020-12-24T03:27:51.843Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;下载&quot;&gt;下载&lt;a class=&quot;post-anchor&quot; href=&quot;#下载&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/coreybutler/nvm-windows/releases&quot; target=&quot;_blank&quot; re
+      
+    
+    </summary>
+    
+    
+      <category term="nvm" scheme="https://codermino.github.io/categories/nvm/"/>
+    
+    
+      <category term="nvm管理node版本" scheme="https://codermino.github.io/tags/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js的call,apply,bind</title>
+    <link href="https://codermino.github.io/2020/12/23/js%E7%9A%84callapplybind/"/>
+    <id>https://codermino.github.io/2020/12/23/js%E7%9A%84callapplybind/</id>
+    <published>2020-12-23T06:59:18.000Z</published>
+    <updated>2020-12-24T03:18:38.291Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
+    
+    
+      <category term="js改变this指向" scheme="https://codermino.github.io/tags/js%E6%94%B9%E5%8F%98this%E6%8C%87%E5%90%91/"/>
+    
+  </entry>
   
   <entry>
     <title>前端宏任务和微任务</title>
@@ -413,106 +512,6 @@
     
     
       <category term="前端开发中常用图片格式" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E5%9B%BE%E7%89%87%E6%A0%BC%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>css的position区别</title>
-    <link href="https://codermino.github.io/2020/12/05/css%E7%9A%84position%E5%8C%BA%E5%88%AB/"/>
-    <id>https://codermino.github.io/2020/12/05/css%E7%9A%84position%E5%8C%BA%E5%88%AB/</id>
-    <published>2020-12-05T07:35:17.000Z</published>
-    <updated>2020-12-05T10:00:00.262Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/css/css.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/css/css.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;各种定位&quot;&gt;各种定位&lt;a class=
-      
-    
-    </summary>
-    
-    
-      <category term="css" scheme="https://codermino.github.io/categories/css/"/>
-    
-    
-      <category term="css的position区别" scheme="https://codermino.github.io/tags/css%E7%9A%84position%E5%8C%BA%E5%88%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>css垂直居中</title>
-    <link href="https://codermino.github.io/2020/12/03/css%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/"/>
-    <id>https://codermino.github.io/2020/12/03/css%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/</id>
-    <published>2020-12-03T13:56:13.000Z</published>
-    <updated>2020-12-05T07:33:18.845Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/css/css.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/css/css.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;垂直居中&quot;&gt;垂直居中&lt;a class=
-      
-    
-    </summary>
-    
-    
-      <category term="css" scheme="https://codermino.github.io/categories/css/"/>
-    
-    
-      <category term="css垂直居中" scheme="https://codermino.github.io/tags/css%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue配置浏览器兼容性</title>
-    <link href="https://codermino.github.io/2020/12/02/vue%E9%85%8D%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
-    <id>https://codermino.github.io/2020/12/02/vue%E9%85%8D%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/</id>
-    <published>2020-12-02T00:52:56.000Z</published>
-    <updated>2020-12-02T05:34:24.327Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;官网解释&quot;&gt;官网解释&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue配置浏览器兼容性" scheme="https://codermino.github.io/tags/vue%E9%85%8D%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>axios取消上一个页面的请求</title>
-    <link href="https://codermino.github.io/2020/12/01/axios%E5%8F%96%E6%B6%88%E4%B8%8A%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AF%B7%E6%B1%82/"/>
-    <id>https://codermino.github.io/2020/12/01/axios%E5%8F%96%E6%B6%88%E4%B8%8A%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AF%B7%E6%B1%82/</id>
-    <published>2020-12-01T06:50:34.000Z</published>
-    <updated>2020-12-18T06:19:09.911Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;第一步&quot;&gt;第一步&lt;a cl
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="axios取消上一个页面的请求" scheme="https://codermino.github.io/tags/axios%E5%8F%96%E6%B6%88%E4%B8%8A%E4%B8%80%E4%B8%AA%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%AF%B7%E6%B1%82/"/>
     
   </entry>
   
