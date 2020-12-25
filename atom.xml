@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-24T09:26:18.702Z</updated>
+  <updated>2020-12-25T05:48:59.780Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>if判断语句把常量写左边</title>
+    <link href="https://codermino.github.io/2020/12/25/if%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5%E6%8A%8A%E5%B8%B8%E9%87%8F%E5%86%99%E5%B7%A6%E8%BE%B9/"/>
+    <id>https://codermino.github.io/2020/12/25/if%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5%E6%8A%8A%E5%B8%B8%E9%87%8F%E5%86%99%E5%B7%A6%E8%BE%B9/</id>
+    <published>2020-12-25T05:46:58.000Z</published>
+    <updated>2020-12-25T05:48:59.780Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
+    
+    
+      <category term="if判断语句把常量写左边" scheme="https://codermino.github.io/tags/if%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5%E6%8A%8A%E5%B8%B8%E9%87%8F%E5%86%99%E5%B7%A6%E8%BE%B9/"/>
+    
+  </entry>
   
   <entry>
     <title>vue清理定时器</title>
@@ -486,30 +510,6 @@
     
     
       <category term="vue图片转base64" scheme="https://codermino.github.io/tags/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端HTTP协议知识</title>
-    <link href="https://codermino.github.io/2020/12/05/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/"/>
-    <id>https://codermino.github.io/2020/12/05/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/</id>
-    <published>2020-12-05T10:43:39.000Z</published>
-    <updated>2020-12-07T09:09:15.905Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;HTTP协议&quot;&gt;HTTP协议&lt;a class=&quot;post-anchor&quot; href=&quot;#HTTP协议&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;HTTP&amp;lt;超文本传输协议&amp;gt;的缩写。&lt;br&gt;是用于从WWW服务器传输超文本到本地浏览器的传输协议.&lt;br&gt;HTTP是一个应用层
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端HTTP协议知识" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AFHTTP%E5%8D%8F%E8%AE%AE%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
