@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-25T05:48:59.780Z</updated>
+  <updated>2020-12-28T03:17:17.381Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iview的timepicker验证的坑</title>
+    <link href="https://codermino.github.io/2020/12/28/iview%E7%9A%84timepicker%E9%AA%8C%E8%AF%81%E7%9A%84%E5%9D%91/"/>
+    <id>https://codermino.github.io/2020/12/28/iview%E7%9A%84timepicker%E9%AA%8C%E8%AF%81%E7%9A%84%E5%9D%91/</id>
+    <published>2020-12-28T03:03:08.000Z</published>
+    <updated>2020-12-28T03:17:17.381Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;出错Demo1&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
+    
+    
+      <category term="iview的timepicker验证的坑" scheme="https://codermino.github.io/tags/iview%E7%9A%84timepicker%E9%AA%8C%E8%AF%81%E7%9A%84%E5%9D%91/"/>
+    
+  </entry>
   
   <entry>
     <title>if判断语句把常量写左边</title>
@@ -485,31 +510,6 @@
     
     
       <category term="vue文件上传转base64" scheme="https://codermino.github.io/tags/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%BD%ACbase64/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue图片转base64</title>
-    <link href="https://codermino.github.io/2020/12/07/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/"/>
-    <id>https://codermino.github.io/2020/12/07/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/</id>
-    <published>2020-12-07T02:21:38.000Z</published>
-    <updated>2020-12-07T08:24:18.889Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;使用原生的input&quot;&gt;使
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue图片转base64" scheme="https://codermino.github.io/tags/vue%E5%9B%BE%E7%89%87%E8%BD%ACbase64/"/>
     
   </entry>
   
