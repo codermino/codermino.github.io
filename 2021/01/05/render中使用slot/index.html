@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      render中使用slot - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在render函数中使用slot"><span class="toc-text">在render函数中使用slot</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他的render结合slot的Demo"><span class="toc-text">其他的render结合slot的Demo</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">render中使用slot</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/01/05</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/render中使用slot">render中使用slot</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="在render函数中使用slot">在render函数中使用slot<a class="post-anchor" href="#在render函数中使用slot"></a></h3><p><strong>需求：</strong><br>既能够根据key来创建对应的dom,<br>也能够根据slot，然后写对应的具名slot进行渲染</p>
+<h4 id="父组件">父组件<a class="post-anchor" href="#父组件"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;render-template :level&#x3D;&quot;4&quot; :tableData&#x3D;&quot;renderSonData&quot;&gt;
+&lt;!--      &lt;div class&#x3D;&quot;jah&quot; slot&#x3D;&quot;myslot&quot;&gt;render function&lt;&#x2F;div&gt;--&gt;
+&lt;!--      &lt;div class&#x3D;&quot;jah&quot; slot&#x3D;&quot;myslot2&quot;&gt;render function2&lt;&#x2F;div&gt;--&gt;
+      &lt;div class&#x3D;&quot;jah&quot; slot&#x3D;&quot;address&quot;&gt;render function2&lt;&#x2F;div&gt;
+      &lt;div class&#x3D;&quot;jah&quot; slot&#x3D;&quot;phone&quot;&gt;render function3&lt;&#x2F;div&gt;
+    &lt;&#x2F;render-template&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import renderTemplate from &#39;.&#x2F;slotsTestSon.vue&#39;
+export default &#123;
+  name: &quot;slotsTest&quot;,
+  components:&#123;
+    renderTemplate
+  &#125;,
+  data() &#123;
+    return &#123;
+      num: 123,
+      renderSonData:[
+        &#123;
+          title: &#39;Name&#39;,
+          key: &#39;name&#39;
+        &#125;,
+        &#123;
+          title: &#39;Age&#39;,
+          key: &#39;age&#39;
+        &#125;,
+        &#123;
+          title: &#39;Address&#39;,
+          slot: &#39;address&#39;,
+        &#125;,
+        &#123;
+          title: &#39;phone&#39;,
+          slot: &#39;phone&#39;,
+        &#125;
+      ]
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h4 id="子组件">子组件<a class="post-anchor" href="#子组件"></a></h4><pre><code class="hljs vue">&lt;script&gt;
+export default &#123;
+  name: &quot;slotsTestSon&quot;,
+  props: &#123;
+    level: &#123;
+      type: Number,
+      required: true
+    &#125;,
+    tableData: &#123;
+      type: Array,
+      required: true
+    &#125;
+  &#125;,
+  render: function (createElement) &#123;
+    return createElement(
+      &#x2F;&#x2F; &#39;h&#39; + this.level, &#123;
+      &#39;div&#39;, &#123;
+        &#39;class&#39;: &#123;
+          show: true,
+          hide: false,
+        &#125;,
+        style: &#123;
+          width: &#39;200px&#39;,
+          height: &#39;400px&#39;,
+          background: &#39;red&#39;,
+        &#125;,
+        attrs: &#123;
+          name: &#39;h-ex&#39;,
+          id: &#39;h-id&#39;
+        &#125;,
+        props: &#123;
+          myprops: true,
+        &#125;,
+        on: &#123;
+          click:  (event)&#x3D;&gt; &#123;
+            alert(this.level)
+          &#125;
+        &#125;,
+      &#125;,
+      &#x2F;&#x2F; 遍历tableData数组
+      this.tableData.map((item)&#x3D;&gt;&#123;
+        if (!item.slot &amp;&amp; item.key)&#123;
+          return createElement(&#39;span&#39;,
+            &#123;
+              domProps:&#123;
+                innerHTML:item.title
+              &#125;,
+              style: &#123;
+                display:&#39;block&#39;,
+                backgroundColor:&#39;blue&#39;
+              &#125;
+            &#125;)
+        &#125; else &#123;
+          &#x2F;&#x2F; 这样的形式是直接创建一个slot对应的内容
+          const slotName &#x3D; item.slot
+          return this.$slots[slotName]
+          &#x2F;&#x2F; 这样的形式是将slot对应的内容包裹在一个div中
+          &#x2F;&#x2F; return createElement(&#39;div&#39;,
+          &#x2F;&#x2F;   [this.$slots[slotName]])
+        &#125;
+      &#125;)
+      &#x2F;&#x2F; [
+      &#x2F;&#x2F;    this.$slots.myslot,
+      &#x2F;&#x2F;    this.$slots.myslot2,
+      &#x2F;&#x2F;   createElement(&#39;div&#39;, &#123;
+      &#x2F;&#x2F;     domProps: &#123;
+      &#x2F;&#x2F;       innerHTML: &#39;holle render&#39;
+      &#x2F;&#x2F;     &#125;
+      &#x2F;&#x2F;   &#125;)
+      &#x2F;&#x2F; ]
+    )
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="其他的render结合slot的Demo">其他的render结合slot的Demo<a class="post-anchor" href="#其他的render结合slot的Demo"></a></h3><p><strong>父组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;test&quot;&gt;
+&lt;!--    &lt;test&gt;--&gt;
+&lt;!--      &lt;div slot&#x3D;&quot;header&quot;&gt;slot: header&lt;&#x2F;div&gt;--&gt;
+&lt;!--      &lt;div slot&#x3D;&quot;header&quot;&gt;slot: header&lt;&#x2F;div&gt;--&gt;
+&lt;!--      &lt;div&gt;slot default&lt;&#x2F;div&gt;--&gt;
+&lt;!--      &lt;div slot&#x3D;&quot;footer&quot;&gt;slot: footer&lt;&#x2F;div&gt;--&gt;
+&lt;!--    &lt;&#x2F;test&gt;--&gt;
+
+    &lt;btn
+      v-for&#x3D;&quot;(btn, index) in testData&quot;
+      :type&#x3D;&quot;btn.type&quot;
+      :text&#x3D;&quot;btn.text&quot;
+      :key&#x3D;&quot;index&quot;&gt;
+      &#123;&#123;btn.text&#125;&#125;
+    &lt;&#x2F;btn&gt;
+&lt;!--    &#123;&#123;btn.text&#125;&#125;就相当于是default类型的slot--&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Test from &#39;.&#x2F;SlotTestSon&#39;
+import btn from &#39;.&#x2F;renderTest.vue&#39;
+export default &#123;
+  name: &quot;SlotTest&quot;,
+  components:&#123;
+    Test,
+    btn
+  &#125;,
+  data() &#123;
+    return &#123;
+      testData: [
+        &#123;type:&#39;default&#39;,text:&#39;999&#39;&#125;,
+        &#x2F;&#x2F; &#123;type:&#39;success&#39;,text:&#39;456&#39;&#125;,
+        &#x2F;&#x2F; &#123;type:&#39;error&#39;,text:&#39;789&#39;&#125;,
+        &#123;type:&#39;error&#39;,text:&#39;666&#39;&#125;
+      ]
+    &#125;
+  &#125;,
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped&gt;
+  .btn&#123;
+    font-weight: 700;
+  &#125;
+  .default&#123;
+    color: blue;
+  &#125;
+  .error&#123;
+    color: red;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+<p><strong>SlotTestSon子组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot v-if&#x3D;&quot;slots.header&quot; name&#x3D;&quot;header&quot;&gt;&lt;&#x2F;slot&gt;
+    &lt;slot&gt;&lt;&#x2F;slot&gt;
+    &lt;slot name&#x3D;&quot;footer&quot;&gt;&lt;&#x2F;slot&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &quot;SlotTestSon&quot;,
+  mounted() &#123;
+    console.log(this.$slots, &#39;$slots&#39;)
+  &#125;,
+  computed: &#123;
+    slots() &#123;
+      return this.$slots
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<p><strong>renderTest子组件</strong></p>
+<pre><code class="hljs vue">&lt;script&gt;
+export default &#123;
+  name: &quot;renderTest&quot;,
+  render(h) &#123;
+    console.log(this.$slots);
+    return h(&#39;div&#39;,&#123;
+      &#39;class&#39;: &#123;
+        btn: true,
+        success: this.type &#x3D;&#x3D;&#x3D; &#39;success&#39;,
+        error: this.type &#x3D;&#x3D;&#x3D; &#39;error&#39;,
+        warm: this.type &#x3D;&#x3D;&#x3D; &#39;warm&#39;,
+        default: this.type &#x3D;&#x3D;&#x3D; &#39;default&#39;
+      &#125;,
+      &#x2F;&#x2F; domProps: &#123;
+      &#x2F;&#x2F;   innerHTML: this.$slots.default[0].text
+      &#x2F;&#x2F; &#125;,
+      on: &#123;
+        click: this.clickHandle
+      &#125;
+    &#125;,this.text)
+  &#125;,
+  methods: &#123;
+    clickHandle() &#123;
+      &lt;!--    &#123;&#123;btn.text&#125;&#125;就相当于是default类型的slot--&gt;
+      console.log(this.$slots.default[0].text);
+    &#125;
+  &#125;,
+  props: &#123;
+    type: &#123;
+      type: String,
+      default: &#39;default&#39;
+    &#125;,
+    text: &#123;
+      type: String,
+      default: &#39;default&#39;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/12/28/iview%E7%9A%84timepicker%E9%AA%8C%E8%AF%81%E7%9A%84%E5%9D%91/">iview的timepicker验证的坑</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/01/05/render中使用slot/">https://codermino.github.io/2021/01/05/render中使用slot/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

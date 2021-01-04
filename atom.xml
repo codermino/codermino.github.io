@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2020-12-28T03:17:17.381Z</updated>
+  <updated>2021-01-04T16:49:10.946Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>render中使用slot</title>
+    <link href="https://codermino.github.io/2021/01/05/render%E4%B8%AD%E4%BD%BF%E7%94%A8slot/"/>
+    <id>https://codermino.github.io/2021/01/05/render%E4%B8%AD%E4%BD%BF%E7%94%A8slot/</id>
+    <published>2021-01-04T16:31:02.000Z</published>
+    <updated>2021-01-04T16:49:10.946Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;在render函数中使用s
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="render中使用slot" scheme="https://codermino.github.io/tags/render%E4%B8%AD%E4%BD%BF%E7%94%A8slot/"/>
+    
+  </entry>
   
   <entry>
     <title>iview的timepicker验证的坑</title>
@@ -485,31 +510,6 @@
     
     
       <category term="vue自定义图片上传并传递formdata" scheme="https://codermino.github.io/tags/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B9%B6%E4%BC%A0%E9%80%92formdata/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue文件上传转base64</title>
-    <link href="https://codermino.github.io/2020/12/07/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%BD%ACbase64/"/>
-    <id>https://codermino.github.io/2020/12/07/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%BD%ACbase64/</id>
-    <published>2020-12-07T06:28:08.000Z</published>
-    <updated>2020-12-07T07:12:31.323Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;上传页面&quot;&gt;上传页面&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue文件上传转base64" scheme="https://codermino.github.io/tags/vue%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%BD%ACbase64/"/>
     
   </entry>
   
