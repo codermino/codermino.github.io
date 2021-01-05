@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-01-04T16:49:10.946Z</updated>
+  <updated>2021-01-05T05:36:14.655Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nrm管理npm源</title>
+    <link href="https://codermino.github.io/2021/01/05/nrm%E7%AE%A1%E7%90%86npm%E6%BA%90/"/>
+    <id>https://codermino.github.io/2021/01/05/nrm%E7%AE%A1%E7%90%86npm%E6%BA%90/</id>
+    <published>2021-01-05T03:19:57.000Z</published>
+    <updated>2021-01-05T05:36:14.655Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;nrm&quot;&gt;nrm&lt;a class=&quot;post-anchor&quot; href=&quot;#nrm&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装nrm&lt;br&gt;npm install nrm -g&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;可以使用 nrm ls 命令查看默认配置, 带
+      
+    
+    </summary>
+    
+    
+      <category term="nvm" scheme="https://codermino.github.io/categories/nvm/"/>
+    
+    
+      <category term="nrm管理npm源" scheme="https://codermino.github.io/tags/nrm%E7%AE%A1%E7%90%86npm%E6%BA%90/"/>
+    
+  </entry>
   
   <entry>
     <title>render中使用slot</title>
@@ -485,31 +512,6 @@
     
     
       <category term="js将多维数组转为一维数组" scheme="https://codermino.github.io/tags/js%E5%B0%86%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E4%B8%BA%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue自定义图片上传并传递formdata</title>
-    <link href="https://codermino.github.io/2020/12/07/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B9%B6%E4%BC%A0%E9%80%92formdata/"/>
-    <id>https://codermino.github.io/2020/12/07/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B9%B6%E4%BC%A0%E9%80%92formdata/</id>
-    <published>2020-12-07T08:04:29.000Z</published>
-    <updated>2020-12-07T08:39:24.501Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;使用element-ui组
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue自定义图片上传并传递formdata" scheme="https://codermino.github.io/tags/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E5%B9%B6%E4%BC%A0%E9%80%92formdata/"/>
     
   </entry>
   
