@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在render函数中使用slot"><span class="toc-text">在render函数中使用slot</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他的render结合slot的Demo"><span class="toc-text">其他的render结合slot的Demo</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在render函数中使用slot"><span class="toc-text">在render函数中使用slot</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他的render结合slot的Demo"><span class="toc-text">其他的render结合slot的Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#render语法比template语法的优先级高"><span class="toc-text">render语法比template语法的优先级高</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -434,6 +434,23 @@ export default &#123;
   &#125;
 &#125;
 &lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="render语法比template语法的优先级高">render语法比template语法的优先级高<a class="post-anchor" href="#render语法比template语法的优先级高"></a></h3><p><strong>html</strong></p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<p><strong>vue</strong></p>
+<pre><code class="hljs vue">let vm &#x3D; new Vue(&#123;
+  el:&quot;#app&quot;,
+  data:&#123;
+      age:18
+  &#125;,
+  render:function(createElement)&#123;
+    &#x2F;&#x2F; return createElement(&#39;h1&#39;, &#39;我是render出来的HTML，年龄&#123;&#123;age&#125;&#125;&#39;);&#x2F;&#x2F;不能使用“Mustache”语法 (双大括号)
+     return createElement(&#39;h1&#39;, &#39;我是render出来的HTML，年龄&#39;+this.age);
+    &#125;,
+  template:&quot;&lt;div&gt;&lt;p&gt;我template出来的，年龄&#123;&#123;age&#125;&#125;&lt;&#x2F;p&gt;&lt;&#x2F;div&gt;&quot;,
+&#125;);</code></pre>
 
 
   
