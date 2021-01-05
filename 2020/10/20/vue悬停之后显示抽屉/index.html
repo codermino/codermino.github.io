@@ -199,7 +199,7 @@
 <h3 id="具体页面">具体页面<a class="post-anchor" href="#具体页面"></a></h3><pre><code class="hljs vue">&lt;template&gt;
   &lt;div class&#x3D;&quot;drawer&quot;&gt;
     &lt;div&gt;
-      &lt;Icon @mouseenter.native&#x3D;&quot;mouseenter&quot; @mouseleave.native&#x3D;&quot;mouseleave&quot; type&#x3D;&quot;ios-apps&quot; style&#x3D;&quot;font-size: 30px;cursor:pointer;&quot; @click&#x3D;&quot;value2&#x3D;true&quot;&#x2F;&gt;
+      &lt;Icon @mouseenter.native&#x3D;&quot;mouseenter&quot; @mouseleave.native&#x3D;&quot;mouseleave&quot; type&#x3D;&quot;ios-apps&quot; style&#x3D;&quot;font-size: 30px;cursor:pointer;&quot; @click&#x3D;&quot;iconClick&quot;&#x2F;&gt;
     &lt;&#x2F;div&gt;
     &lt;div class&#x3D;&quot;side-drawer&quot;&gt;
       &lt;Drawer title&#x3D;&quot;Basic Drawer&quot; placement&#x3D;&quot;left&quot; :closable&#x3D;&quot;false&quot; v-model&#x3D;&quot;value2&quot; :inner&#x3D;&quot;true&quot; :transfer&#x3D;&quot;false&quot;&gt;
@@ -221,6 +221,10 @@ export default &#123;
       value2: false
     &#125;
   &#125;,
+  components:&#123;
+    renderTest,
+    renderTest2
+  &#125;,
   methods: &#123;
     mouseenter(e) &#123;
       util.debounce(() &#x3D;&gt; &#123;
@@ -229,6 +233,10 @@ export default &#123;
     &#125;,
     mouseleave(e)&#123;
       util.cancelDebounce()
+    &#125;,
+    iconClick()&#123;
+      util.cancelDebounce()
+      this.value2&#x3D;!this.value2
     &#125;
   &#125;,
 &#125;
