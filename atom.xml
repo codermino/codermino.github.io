@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-01-05T09:03:18.891Z</updated>
+  <updated>2021-01-23T16:28:33.416Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue多个路由绑定同一组件造成created不执行的解决办法</title>
+    <link href="https://codermino.github.io/2021/01/23/Vue%E5%A4%9A%E4%B8%AA%E8%B7%AF%E7%94%B1%E7%BB%91%E5%AE%9A%E5%90%8C%E4%B8%80%E7%BB%84%E4%BB%B6%E9%80%A0%E6%88%90created%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>https://codermino.github.io/2021/01/23/Vue%E5%A4%9A%E4%B8%AA%E8%B7%AF%E7%94%B1%E7%BB%91%E5%AE%9A%E5%90%8C%E4%B8%80%E7%BB%84%E4%BB%B6%E9%80%A0%E6%88%90created%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</id>
+    <published>2021-01-23T11:41:52.000Z</published>
+    <updated>2021-01-23T16:28:33.416Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;出现的问题&quot;&gt;出现的问题&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="Vue多个路由绑定同一组件造成created不执行的解决办法" scheme="https://codermino.github.io/tags/Vue%E5%A4%9A%E4%B8%AA%E8%B7%AF%E7%94%B1%E7%BB%91%E5%AE%9A%E5%90%8C%E4%B8%80%E7%BB%84%E4%BB%B6%E9%80%A0%E6%88%90created%E4%B8%8D%E6%89%A7%E8%A1%8C%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>vue导出表格功能前端部分</title>
@@ -487,32 +512,6 @@
     
     
       <category term="==和===的使用场景" scheme="https://codermino.github.io/tags/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>meta标签用法</title>
-    <link href="https://codermino.github.io/2020/12/14/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/"/>
-    <id>https://codermino.github.io/2020/12/14/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/</id>
-    <published>2020-12-14T02:37:36.000Z</published>
-    <updated>2020-12-14T06:11:55.412Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;定义和用法&quot;&gt;定义和用法&lt;a class=&quot;post-anchor&quot; href=&quot;#定义和用法&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;meta&gt; 标签始终位于 head 元素中。&lt;meta&gt; 元素可提供有关页面的元信息（meta-information），
- 元
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="meta标签用法" scheme="https://codermino.github.io/tags/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95/"/>
     
   </entry>
   
