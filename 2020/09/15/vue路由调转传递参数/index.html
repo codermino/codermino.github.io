@@ -213,7 +213,10 @@
 &#125;
 
 接收
-&#x2F;&#x2F; this.id &#x3D; this.$route.params.id;</code></pre>
+&#x2F;&#x2F; this.id &#x3D; this.$route.params.id;
+
+这种形式在浏览器中是&#x2F;detail&#x2F;123的形式
+刷新页面之后传递的参数不丢失</code></pre>
 
 <h3 id="第二种方式">第二种方式<a class="post-anchor" href="#第二种方式"></a></h3><pre><code class="hljs vue">&#x2F;&#x2F;第二种方式
 todetail(id)&#123;
@@ -236,7 +239,10 @@ todetail(id)&#123;
 &#125;
 
 接收
-&#x2F;&#x2F; this.id &#x3D; this.$route.params.id;</code></pre>
+&#x2F;&#x2F; this.id &#x3D; this.$route.params.id;
+
+这种形式在浏览器中是&#x2F;detail的形式
+刷新页面之后传递的参数丢失</code></pre>
 
 <h3 id="第三种方式">第三种方式<a class="post-anchor" href="#第三种方式"></a></h3><pre><code class="hljs vue">&#x2F;&#x2F;第三种方式
 todetail(id)&#123;
@@ -258,7 +264,10 @@ todetail(id)&#123;
 &#125;
 
 &#x2F;&#x2F;接收
-this.id &#x3D; this.$route.query.id;</code></pre>
+this.id &#x3D; this.$route.query.id;
+
+这种形式在浏览器中是&#x2F;detail?id&#x3D;123的形式
+刷新页面之后传递的参数不丢失</code></pre>
 
 
   
