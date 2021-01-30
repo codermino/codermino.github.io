@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-01-30T14:11:08.270Z</updated>
+  <updated>2021-01-30T14:32:38.190Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>vue的动画和过渡3</title>
+    <title>vue的动画和过渡(3)</title>
     <link href="https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A13/"/>
     <id>https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A13/</id>
     <published>2021-01-30T13:45:51.000Z</published>
-    <updated>2021-01-30T14:11:08.270Z</updated>
+    <updated>2021-01-30T14:32:38.190Z</updated>
     
     <summary type="html">
     
@@ -37,7 +37,7 @@
       <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
     
     
-      <category term="vue的动画和过渡3" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A13/"/>
+      <category term="vue的动画和过渡" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/"/>
     
   </entry>
   
@@ -67,11 +67,11 @@
   </entry>
   
   <entry>
-    <title>vue的动画和过渡2</title>
+    <title>vue的动画和过渡(2)</title>
     <link href="https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A12/"/>
     <id>https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A12/</id>
     <published>2021-01-30T10:46:38.000Z</published>
-    <updated>2021-01-30T13:43:20.153Z</updated>
+    <updated>2021-01-30T14:32:38.064Z</updated>
     
     <summary type="html">
     
@@ -87,7 +87,7 @@
       <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
     
     
-      <category term="vue的动画和过渡2" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A12/"/>
+      <category term="vue的动画和过渡" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/"/>
     
   </entry>
   
