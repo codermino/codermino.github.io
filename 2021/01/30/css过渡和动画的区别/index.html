@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      css过渡和动画的区别 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#css过渡和动画的区别："><span class="toc-text">css过渡和动画的区别：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#过渡-transition"><span class="toc-text">过渡(transition)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动画-animation"><span class="toc-text">动画(animation)</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">css过渡和动画的区别</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/01/30</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/css">css</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/css过渡和动画的区别">css过渡和动画的区别</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/css/css.jpg" data-caption data-fancybox="images"><img src="/images/css/css.jpg" alt></a></p>
+<h3 id="css过渡和动画的区别：">css过渡和动画的区别：<a class="post-anchor" href="#css过渡和动画的区别："></a></h3><p>animation属性类似于transition，他们都是随着时间改变元素的属性值，那么区别是什么？<br>其主要区别在于：transition需要触发一个事件才会随着时间改变其CSS属性；<br>animation在不需要触发任何事件的情况下，也可以显式的随时间变化来改变元素CSS属性，达到一种动画的效果。</p>
+<ol>
+<li>动画不需要事件触发，过渡需要。</li>
+<li>过渡只有一组（两个：开始-结束） 关键帧，动画可以设置多个。</li>
+</ol>
+<h4 id="过渡-transition">过渡(transition)<a class="post-anchor" href="#过渡-transition"></a></h4><p>过渡就是使瞬间的样式变化，按照一定方式变得缓慢平缓；<br>例如鼠标划过超链接时颜色的变化，点击按钮后的颜色变化等，默认转化都是瞬间完成，<br>可能你已经习惯了这种变换，但有时候平缓一些看着还是比较舒适的；<br>要实现样式的过渡变化，那么首先就学要有样式变换，<br>例如鼠标划过，单击按钮，点击图片等操作，来实现颜色，尺寸，位置等样式的变化；<br>下面是鼠标划过段落使文本变红的操作，应用所有 transition属性：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+    <span class="hljs-attribute">color</span>: red;
+&#125;
+<span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">transition-property</span>: color;
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">transition-timing-function</span>: linear;
+    <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">0</span>;
+&#125;</code></pre>
+<p>一共四个值，功能基本都是字面翻译的意思：<br><strong>transition-property</strong><br>执行过渡的属性，例子设置为颜色color的变化，也可以是width, font-size等，<br>不设置的话默认是all，即所有属性；<br><strong>transition-duration</strong><br>过渡的时间，单位是秒，如1s, 2.3s，不设置的话默认 0s，即无过渡效果；<br><strong>transition-timing-function</strong><br>设置过渡时的变化方式，默认是 ease，即速度由慢到快再到慢，常用的还有 linear，<br>线性变化速度均匀，还有其他几个方式，过渡时间短的话看不出什么区别；<br><strong>transition-delay</strong><br>延迟时间，即多少秒后执行过渡效果，默认 0s，不延迟；</p>
+<p><strong>这么多单词可能记不住，一般使用快捷写法：</strong></p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">transition</span>: color <span class="hljs-number">2s</span> linear <span class="hljs-number">0</span>;
+&#125;
+<span class="hljs-comment">/*最少要指定过渡时间*/</span>
+<span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">transition</span>: <span class="hljs-number">2s</span>;
+&#125;</code></pre>
+<p>也可以设置每个样式分别过渡，例如：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">transition</span>: color <span class="hljs-number">2s</span> linear,
+                font-size .<span class="hljs-number">5s</span>,
+                background: <span class="hljs-number">1s</span>;
+&#125;</code></pre>
+<p>每个样式过渡之间用逗号隔开就行了。<br>最后，由于是新特性，为了兼容性需要加上浏览器厂商前缀：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">transition</span>: <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">-webkit-transition</span>: <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">-moz-transition</span>: <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">-ms-transition</span>: <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">-o-transition</span>: <span class="hljs-number">2s</span>;
+&#125;</code></pre>
+
+<h3 id="动画-animation">动画(animation)<a class="post-anchor" href="#动画-animation"></a></h3><p>CSS3的动画是个很不错的技术，基本能取代一些动图，JavaScript，flash等；<br>而动画里最重要的概念就是关键帧，也许你用PS做gif动图的时候看见过这个概念，<br>所谓动画就是一帧一帧图片连续切换实现的效果，关键帧就是里面主要的一些帧；<br>实现CSS动画也需要设置关键帧 @keyframes：</p>
+<pre><code class="hljs css">@<span class="hljs-keyword">keyframes</span> my-animation &#123;
+    0% &#123;
+        <span class="hljs-attribute">color</span>: red;
+    &#125;
+    50% &#123;
+        <span class="hljs-attribute">color</span>: green;
+    &#125;
+    100% &#123;
+        <span class="hljs-attribute">color</span>: blue;
+    &#125;
+&#125;</code></pre>
+<p>格式如上，@keyframes后面跟的是自定义的动画名称，后面会用到。<br>里面的0%，50%，100%便是设置的三个关键帧及其对应样式，<br>如果只需要设置首尾两个关键帧，可以这样写：</p>
+<pre><code class="hljs css">@<span class="hljs-keyword">keyframes</span> my-animation &#123;
+    <span class="hljs-selector-tag">from</span> &#123;
+        <span class="hljs-attribute">color</span>: green;
+    &#125;
+    <span class="hljs-selector-tag">to</span> &#123;
+        <span class="hljs-attribute">color</span>: blue;
+    &#125;
+&#125;</code></pre>
+<p>当然样式除了color还能设置多项样式；<br>定义好关键帧后就直接在需要应用动画的元素标签内使用就行了，<br>格式及所有属性如下：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">animation-name</span>: my-animation;
+    <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">3s</span>;
+    <span class="hljs-attribute">animation-timing-function</span>: ease;
+    <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">animation-iteration-count</span>: <span class="hljs-number">3</span>;
+    <span class="hljs-attribute">animation-direction</span>: normal;
+    <span class="hljs-attribute">animation-play-state</span>: running;
+&#125;</code></pre>
+<p>发现了吧，很多属性和transition里面一样，简单介绍下：</p>
+<ul>
+<li>animation-name<br>就是之前跟在@keyframea后面的自定义名称，之前设置的是 my-animation;</li>
+<li>animation-duration</li>
+<li>animation-timing-function</li>
+<li>animation-delay<br>和前面一样，默认分别为 0, ease, 0；</li>
+<li>animation-iteration-count<br>动画播放的次数，默认 1，但一般设置为 infinite，即无限循环；</li>
+<li>animation-direction<br>动画播放的方向，normal为默认，正向播放，reverse为反向播放，alternate为正向后反向，alternate-reverse为反向后正向；</li>
+<li>animation-play-state<br>播放状态，默认 running，运行，paused为暂停，可以在JavaScript中使用对动画进行控制；<br>当然，这个属性比之前的transition还多，也有简便写法：<pre><code class="hljs css"><span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">animation</span>: my-animation <span class="hljs-number">3s</span> linear infinite alternate;
+&#125;</code></pre>
+其中 animation-name 和 animation-duration为必须设置的属性；<br>同样，记得考虑浏览器兼容：<pre><code class="hljs css">@-<span class="hljs-keyword">webkit</span>-<span class="hljs-keyword">keyframes</span> mycanimation &#123;
+    <span class="hljs-selector-tag">from</span> &#123;
+        <span class="hljs-attribute">color</span>: green;
+    &#125;
+    <span class="hljs-selector-tag">to</span> &#123;
+        <span class="hljs-attribute">color</span>: blue;
+    &#125;
+&#125;
+<span class="hljs-selector-tag">p</span> &#123;
+    <span class="hljs-attribute">-webkit-animation</span>: my-animation <span class="hljs-number">3s</span> linear infinite;
+&#125;
+<span class="hljs-comment">/* -moz-, -ms-, -o- 格式类似 */</span></code></pre>
+</li>
+</ul>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A12/">vue的动画和过渡2</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/01/30/css过渡和动画的区别/">https://codermino.github.io/2021/01/30/css过渡和动画的区别/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
