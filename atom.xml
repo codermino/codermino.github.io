@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-01-23T16:28:33.416Z</updated>
+  <updated>2021-01-30T10:36:39.768Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue的动画和过渡(1)</title>
+    <link href="https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/"/>
+    <id>https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/</id>
+    <published>2021-01-30T10:00:03.000Z</published>
+    <updated>2021-01-30T10:36:39.768Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hlj
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的动画和过渡" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>Vue多个路由绑定同一组件造成created不执行的解决办法</title>
@@ -485,33 +510,6 @@
     
     
       <category term="BFC" scheme="https://codermino.github.io/tags/BFC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>==和===的使用场景</title>
-    <link href="https://codermino.github.io/2020/12/14/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
-    <id>https://codermino.github.io/2020/12/14/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/</id>
-    <published>2020-12-14T06:46:39.000Z</published>
-    <updated>2020-12-14T06:49:02.502Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;首先, == 隐含意思是尽量让等号两边转换后相等, 也就是发生类型转换;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;绝大多数场合应该使用===，&lt;br&gt;只有检测null/undefined的时候可以使用x==null，&lt;br&gt;因为一般我们不区分null和undefined，&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="==和===的使用场景" scheme="https://codermino.github.io/tags/%E5%92%8C-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/"/>
     
   </entry>
   
