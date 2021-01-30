@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-01-30T13:18:58.161Z</updated>
+  <updated>2021-01-30T14:11:08.270Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue的动画和过渡3</title>
+    <link href="https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A13/"/>
+    <id>https://codermino.github.io/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A13/</id>
+    <published>2021-01-30T13:45:51.000Z</published>
+    <updated>2021-01-30T14:11:08.270Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hlj
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的动画和过渡3" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A13/"/>
+    
+  </entry>
   
   <entry>
     <title>css过渡和动画的区别</title>
@@ -487,30 +512,6 @@
     
     
       <category term="HTML行内元素与块级元素" scheme="https://codermino.github.io/tags/HTML%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端常见的浏览器兼容性问题</title>
-    <link href="https://codermino.github.io/2020/12/15/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/"/>
-    <id>https://codermino.github.io/2020/12/15/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/</id>
-    <published>2020-12-15T05:44:21.000Z</published>
-    <updated>2020-12-15T07:49:08.277Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;什么是兼容问题？&quot;&gt;什么是兼容问题？&lt;a class=&quot;post-anchor&quot; href=&quot;#什么是兼容问题？&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;所谓的浏览器兼容性问题，是指因为不同的浏览器对同一段代码有不同的解析，&lt;br&gt;造成页面显示效果不统一的情况。在大多数情况下，
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端常见的浏览器兼容性问题" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
