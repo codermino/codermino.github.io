@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue的动画和过渡(6) - Mino
+      vue的动画和过渡(7) - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -152,7 +152,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue的动画和过渡(6)</div>
+      <div class="title">vue的动画和过渡(7)</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -196,65 +196,45 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>列表动画<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-      <span class="hljs-selector-class">.list</span> &#123;
-        <span class="hljs-attribute">display</span>: inline-block;
-        <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">10px</span>;
-      &#125;
-
-      <span class="hljs-comment">/* 刚刚进入的时候是不显示，在y轴30px处 */</span>
-      <span class="hljs-selector-class">.v-enter-from</span> &#123;
-        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;
-        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(30px);
-      &#125;
-
-      <span class="hljs-comment">/* 过程中是0.6s */</span>
-      <span class="hljs-selector-class">.v-enter-active</span> &#123;
-        <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.6s</span> ease-in;
-      &#125;
-
-      <span class="hljs-comment">/* 进入结束之后是显示，y轴位置是0px */</span>
-      <span class="hljs-selector-class">.v-enter-to</span> &#123;
-        <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;
-        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(0);
-      &#125;
-
-      <span class="hljs-comment">/* 当元素移动的时候是0.8s */</span>
-      <span class="hljs-selector-class">.v-move</span> &#123;
-        <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.8s</span> ease-in;
-      &#125;
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>状态动画<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.bootcdn.net/ajax/libs/vue/3.0.2/vue.global.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/vue@next"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"root"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">
-      const app = Vue.createApp(&#123;
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+      <span class="hljs-keyword">const</span> app = Vue.createApp(&#123;
         data() &#123;
-          return &#123;
-            list: [1, 2, 3],
+          <span class="hljs-keyword">return</span> &#123;
+            <span class="hljs-attr">number</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">animateNumber</span>: <span class="hljs-number">1</span>,
           &#125;;
         &#125;,
 
-        methods: &#123;
+        <span class="hljs-attr">methods</span>: &#123;
           handleClick() &#123;
-            // 向前追加的时候会触发元素的移动，这时候会触发v-move
-            this.list.unshift(this.list.length + 1);
+            <span class="hljs-keyword">this</span>.number = <span class="hljs-number">10</span>;
+
+            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.animateNumber &lt; <span class="hljs-keyword">this</span>.number) &#123;
+              <span class="hljs-keyword">const</span> timer = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+                <span class="hljs-keyword">this</span>.animateNumber += <span class="hljs-number">1</span>;
+
+                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.animateNumber === <span class="hljs-number">10</span>) &#123;
+                  clearInterval(timer);
+                &#125;
+              &#125;, <span class="hljs-number">100</span>);
+            &#125;
           &#125;,
         &#125;,
 
-        template: `
-                <span class="hljs-tag">&lt;<span class="hljs-name">transition-group</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list"</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"item in list"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"item"</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123;item&#125;&#125;</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">transition-group</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"handleClick"</span>&gt;</span>增加<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>  
-                `,
+        <span class="hljs-attr">template</span>: <span class="hljs-string">`
+                    &lt;div&gt;&#123;&#123;animateNumber&#125;&#125;&lt;/div&gt;
+                    &lt;button @click="handleClick"&gt;按钮&lt;/button&gt;  
+                `</span>,
       &#125;);
 
-      const vm = app.mount("#root");
-    </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+      <span class="hljs-keyword">const</span> vm = app.mount(<span class="hljs-string">"#root"</span>);
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
@@ -283,12 +263,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A17/">vue的动画和过渡(7)</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A15/">vue的动画和过渡(5)</a>
+          <a href="/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A16/">vue的动画和过渡(6)</a>
         
     </div>
   </div>
@@ -300,7 +278,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/01/31/vue的动画和过渡6/">https://codermino.github.io/2021/01/31/vue的动画和过渡6/</a>
+      永久链接：<a href="https://codermino.github.io/2021/01/31/vue的动画和过渡7/">https://codermino.github.io/2021/01/31/vue的动画和过渡7/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
