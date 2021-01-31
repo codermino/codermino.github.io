@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue的动画和过渡(3) - Mino
+      vue的动画和过渡(4) - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -152,11 +152,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue的动画和过渡(3)</div>
+      <div class="title">vue的动画和过渡(4)</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/01/30</span>
+          <span>2021/01/31</span>
         </span>
 
         
@@ -196,22 +196,20 @@
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>03-单元素/组件的入场和出场 过渡和动画<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>04-单元素/组件的入场和出场 过渡和动画<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span>
+      <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>
+      <span class="hljs-attr">href</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"</span>
+    /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
       @<span class="hljs-keyword">keyframes</span> move &#123;
         0% &#123;
-          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-100px);
+          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(100px);
         &#125;
 
         50% &#123;
-          <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-50px);
-        &#125;
-
-        75% &#123;
           <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(50px);
         &#125;
-
         100% &#123;
           <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(0);
         &#125;
@@ -220,32 +218,34 @@
       <span class="hljs-comment">/*.v-enter-from&#123;
           opacity: 0;
       &#125;*/</span>
-      <span class="hljs-selector-class">.hello</span>&#123;
-        <span class="hljs-attribute">animation</span>: move <span class="hljs-number">2s</span> ease-in;
+      <span class="hljs-comment">/*.hello&#123;
+        animation: move 2s ease-in;
       &#125;
 
-      <span class="hljs-selector-class">.bye</span>&#123;
-        <span class="hljs-attribute">animation</span>: move <span class="hljs-number">2s</span> ease-in;
-      &#125;
+      .bye&#123;
+        animation: move 2s ease-in;
+      &#125;*/</span>
 
-      <span class="hljs-comment">/* 进入的时候开始点的时候字体颜色是red */</span>
-      <span class="hljs-selector-class">.v-enter-from</span>&#123;
-          <span class="hljs-attribute">color</span>: red;
+      <span class="hljs-selector-class">.v-enter-from</span> &#123;
+        <span class="hljs-attribute">color</span>: red;
       &#125;
-      
 
       <span class="hljs-selector-class">.v-enter-active</span>,
       <span class="hljs-selector-class">.v-leave-active</span> &#123;
         <span class="hljs-comment">/*transition: opacity 2s ease;*/</span>
-        <span class="hljs-attribute">animation</span>: move <span class="hljs-number">2s</span> ease-in;
-        <span class="hljs-attribute">transition</span>: all <span class="hljs-number">2s</span> ease;
+        <span class="hljs-comment">/* 如果是animation是10s，transition是3s的话，则以时间长的为基准 */</span>
+        <span class="hljs-comment">/* 可以看到颜色有红色变为黑色是3s，移动是10s */</span>
+        <span class="hljs-attribute">animation</span>: move <span class="hljs-number">10s</span> ease-in;
+        <span class="hljs-attribute">transition</span>: all <span class="hljs-number">3s</span> ease;
+        <span class="hljs-comment">/* 如果是animation是3s，transition是10s的话，则以时间长的为基准 */</span>
+        <span class="hljs-comment">/* 可以看到颜色有红色变为黑色是10s，移动是3s */</span>
+        <span class="hljs-comment">/* animation: move 3s ease-in;
+        transition: all 10s ease; */</span>
       &#125;
 
-      <span class="hljs-comment">/* 出场时候的过程中字体颜色是red */</span>
-      <span class="hljs-selector-class">.v-leave-active</span>&#123;
-          <span class="hljs-attribute">color</span>: red;
+      <span class="hljs-selector-class">.v-leave-active</span> &#123;
+        <span class="hljs-attribute">color</span>: red;
       &#125;
-
 
       <span class="hljs-comment">/*.v-enter-to&#123;
           opacity: 1;
@@ -269,41 +269,81 @@
         &#125;,
 
         methods: &#123;
+
+
+
           handleClick() &#123;
             <span class="hljs-keyword">this</span>.show = !<span class="hljs-keyword">this</span>.show;
           &#125;,
+
+          <span class="hljs-comment">// 这里的钩子函数接收一个参数el，表示当前transition包裹的元素</span>
+          handleBeforeEnter(el)&#123;
+            el.style.color = <span class="hljs-string">"red"</span>;
+          &#125;,
+          
+          <span class="hljs-comment">// 这里的钩子函数接收第一个参数el，表示当前transition包裹的元素</span>
+          <span class="hljs-comment">// 这里的钩子函数接收第二个参数done，表示过程进行完成，如果没有则会一直处于过程中的状态</span>
+          handleEnterActive(el, done)&#123;
+            <span class="hljs-keyword">const</span> animation =  setInterval(() =&gt; &#123;
+                <span class="hljs-keyword">const</span> color = el.style.color;
+
+                <span class="hljs-keyword">if</span>(color === <span class="hljs-string">"red"</span>)&#123;
+                    el.style.color = <span class="hljs-string">"green"</span>;
+                &#125;<span class="hljs-keyword">else</span>&#123;
+                    el.style.color = <span class="hljs-string">"red"</span>;
+                &#125;
+              &#125;,<span class="hljs-number">1000</span>)
+
+              setTimeout(() =&gt; &#123;
+                  clearInterval(animation);
+                  done();
+              &#125;
+              ,<span class="hljs-number">4000</span>)
+          &#125;,
+
+
+          handleEnterEnd()&#123;
+            alert(<span class="hljs-number">666</span>);
+          &#125;
+        
+
+          
         &#125;,
 
-        <span class="hljs-comment">// 使用自定义的class，进入的时候过渡类为hello，离开的时候的过渡类为bye</span>
-      <span class="hljs-comment">//   template: `</span>
-      <span class="hljs-comment">//          &lt;transition name="sh"</span>
-      <span class="hljs-comment">//              enter-from-class=""</span>
-      <span class="hljs-comment">//              enter-active-class="hello"</span>
-      <span class="hljs-comment">//              enter-to-class=""</span>
+        <span class="hljs-comment">// 可以指定type是transition还是animation来确定以哪个为基准。</span>
+        <span class="hljs-comment">// type='transition'以transition为基准,transition结束那么animation也结束</span>
+        <span class="hljs-comment">// 同理type='animation'一样</span>
 
-      <span class="hljs-comment">//              leave-from-class=""</span>
-      <span class="hljs-comment">//              leave-active-class="bye"</span>
-      <span class="hljs-comment">//              leave-to-class=""</span>
-      <span class="hljs-comment">//          &gt;</span>
-      <span class="hljs-comment">//             &lt;div v-show="show"&gt;hello world&lt;/div&gt;</span>
-      <span class="hljs-comment">//          &lt;/transition&gt; </span>
-      <span class="hljs-comment">//             &lt;button @click="handleClick"&gt;切换&lt;/button&gt;  </span>
-      <span class="hljs-comment">//          `,</span>
-      <span class="hljs-comment">// &#125;);</span>
-        <span class="hljs-comment">// 结合animate.css使用，enter-active-class使用一个动画，leave-active-class使用一个动画</span>
-    <span class="hljs-comment">//    template: `</span>
-    <span class="hljs-comment">//            &lt;transition name="sh"  </span>
-    <span class="hljs-comment">//                enter-active-class="animate__animated animate__flash"</span>
-    <span class="hljs-comment">//                leave-active-class="animate__animated animate__swing"</span>
-       
-    <span class="hljs-comment">//            &gt;</span>
-    <span class="hljs-comment">//               &lt;div v-show="show"&gt;hello world&lt;/div&gt;</span>
-    <span class="hljs-comment">//            &lt;/transition&gt; </span>
-    <span class="hljs-comment">//               &lt;button @click="handleClick"&gt;切换&lt;/button&gt;  </span>
-    <span class="hljs-comment">//            `,</span>
-    <span class="hljs-comment">//  &#125;);</span>
+        <span class="hljs-comment">// 如果设置了duration，那么transition和animation的时间都失效。单位为ms</span>
+        <span class="hljs-comment">// 也可以分别设置入场和出场的时间:duration='&#123;enter:1000,leave:2000&#125;'</span>
+        <span class="hljs-comment">// &lt;transition type='transition'&gt;</span>
+        <span class="hljs-comment">// &lt;transition type='transition' :duration='1000'&gt;</span>
+        <span class="hljs-comment">// template: `</span>
+        <span class="hljs-comment">//       &lt;transition type='transition' :duration='&#123;enter:1000,leave:2000&#125;'&gt;</span>
+        <span class="hljs-comment">//           &lt;div v-show="show"&gt;hello world&lt;/div&gt;</span>
+        <span class="hljs-comment">//        &lt;/transition&gt; </span>
+        <span class="hljs-comment">//           &lt;button @click="handleClick"&gt;切换&lt;/button&gt;  </span>
+        <span class="hljs-comment">//        `,</span>
+
+        <span class="hljs-comment">// template: `</span>
+        <span class="hljs-comment">//        &lt;transition :duration="&#123;enter:1000, leave:3000&#125;"&gt;</span>
+        <span class="hljs-comment">//           &lt;div v-show="show"&gt;hello world&lt;/div&gt;</span>
+        <span class="hljs-comment">//        &lt;/transition&gt; </span>
+        <span class="hljs-comment">//           &lt;button @click="handleClick"&gt;切换&lt;/button&gt;  </span>
+        <span class="hljs-comment">//        `,</span>
+
+        <span class="hljs-comment">// 使用Js控制过渡和动画，需要将css禁止掉，css='false'</span>
         template: `
-                &lt;transition&gt;
+                &lt;transition
+                    :css=<span class="hljs-string">"false"</span>
+                    @before-enter=<span class="hljs-string">"handleBeforeEnter"</span>  
+                    @enter=<span class="hljs-string">"handleEnterActive"</span>  
+                    @after-enter=<span class="hljs-string">"handleEnterEnd"</span> 
+                    @before-leave=<span class="hljs-string">""</span>
+                    @leave = <span class="hljs-string">""</span>
+                    @after-leave =<span class="hljs-string">""</span>
+                    
+                &gt;
                    &lt;div v-show=<span class="hljs-string">"show"</span>&gt;hello world&lt;/div&gt;
                 &lt;/transition&gt; 
                    &lt;button @click=<span class="hljs-string">"handleClick"</span>&gt;切换&lt;/button&gt;  
@@ -340,12 +380,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A14/">vue的动画和过渡(4)</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/01/30/css%E8%BF%87%E6%B8%A1%E5%92%8C%E5%8A%A8%E7%94%BB%E7%9A%84%E5%8C%BA%E5%88%AB/">css过渡和动画的区别</a>
+          <a href="/2021/01/30/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A13/">vue的动画和过渡(3)</a>
         
     </div>
   </div>
@@ -357,7 +395,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/01/30/vue的动画和过渡3/">https://codermino.github.io/2021/01/30/vue的动画和过渡3/</a>
+      永久链接：<a href="https://codermino.github.io/2021/01/31/vue的动画和过渡4/">https://codermino.github.io/2021/01/31/vue的动画和过渡4/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
