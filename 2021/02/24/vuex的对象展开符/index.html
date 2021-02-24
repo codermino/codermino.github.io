@@ -313,7 +313,7 @@ computed:mapState(&#123;
 &#125;)</code></pre></li>
 <li>…mapState<br>事实上…mapState并不是mapState的扩展,而是…对象展开符的扩展.<br>当然如果你把他用在这里会发现他能使得代码看起来变得,更加符合常规逻辑了</li>
 </ol>
-<p><em>Demo</em></p>
+<p><strong>Demo</strong></p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">let</span> MapState = mapState(&#123;
   <span class="hljs-attr">count</span>: <span class="hljs-string">'count'</span>,
   <span class="hljs-attr">sex</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.sex
@@ -323,7 +323,7 @@ computed:mapState(&#123;
   ...MapState
 &#125;
 <span class="hljs-built_in">console</span>.log(json)</code></pre>
-<p>这里的json可以成功将mapState return的json格式,和json自带的a属性成功融合成一个新的对象.<br>你可以将这个称为对象混合.<br>这样,你就可以自由的使用mapState了.<br><em>Demo1</em></p>
+<p>这里的json可以成功将mapState return的json格式,和json自带的a属性成功融合成一个新的对象.<br>你可以将这个称为对象混合.<br>这样,你就可以自由的使用mapState了.<br><strong>Demo1</strong></p>
 <pre><code class="hljs vuejs">&#x2F;&#x2F;之前的computed
 computed:&#123;
     fn1()&#123; return ...&#125;,
@@ -342,7 +342,7 @@ computed:&#123;
         count:&#39;count&#39;
     &#125;)
 &#125;</code></pre>
-<p><em>Demo2</em></p>
+<p><strong>Demo2</strong></p>
 <pre><code class="hljs vue">computed: &#123;
     ...mapState([
         &#39;orderList&#39;,
@@ -353,7 +353,7 @@ mounted()&#123;
     console.log(typeof orderList); &#x3D;&#x3D;&gt;undefind
     console.log(typeof this.orderList)&#x3D;&#x3D;&gt;object
 &#125;</code></pre>
-<p><em>Demo3</em></p>
+<p><strong>Demo3</strong></p>
 <pre><code class="hljs vue">不同名时，将views起名为viewsCount
 ...mapState(&#123;
  viewsCount: &#39;views&#39;
