@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-01-31T15:35:57.257Z</updated>
+  <updated>2021-02-24T02:48:43.225Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vuex的对象展开符</title>
+    <link href="https://codermino.github.io/2021/02/24/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/"/>
+    <id>https://codermino.github.io/2021/02/24/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/</id>
+    <published>2021-02-24T00:50:47.000Z</published>
+    <updated>2021-02-24T02:48:43.225Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;state&lt;br&gt;定义:state(vuex) 
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vuex的对象展开符" scheme="https://codermino.github.io/tags/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>vue的动画和过渡(7)</title>
@@ -488,32 +514,6 @@
     
     
       <category term="js改变this指向" scheme="https://codermino.github.io/tags/js%E6%94%B9%E5%8F%98this%E6%8C%87%E5%90%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端宏任务和微任务</title>
-    <link href="https://codermino.github.io/2020/12/18/%E5%89%8D%E7%AB%AF%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/"/>
-    <id>https://codermino.github.io/2020/12/18/%E5%89%8D%E7%AB%AF%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/</id>
-    <published>2020-12-18T05:57:00.000Z</published>
-    <updated>2020-12-18T05:59:07.210Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;宏任务：&quot;&gt;宏任务：&lt;a class=&quot;post-anchor&quot; href=&quot;#宏任务：&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;分类：setTimeout setInterval requrestAnimationFrame&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;宏任务所处的队列就是宏任
-      
-    
-    </summary>
-    
-    
-      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="前端宏任务和微任务" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   

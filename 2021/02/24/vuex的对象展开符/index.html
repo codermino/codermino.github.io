@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue的动画和过渡(7) - Mino
+      vuex的对象展开符 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -152,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue的动画和过渡(7)</div>
+      <div class="title">vuex的对象展开符</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/01/31</span>
+          <span>2021/02/24</span>
         </span>
 
         
@@ -180,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue的动画和过渡">vue的动画和过渡</a>
+                    <a href="/tags/vuex的对象展开符">vuex的对象展开符</a>
                   
                 
             </span>
@@ -190,53 +195,174 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>状态动画<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://unpkg.com/vue@next"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"root"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <p><a href="/images/vuex.png" data-caption data-fancybox="images"><img src="/images/vuex.png" alt></a></p>
+<ol>
+<li>state<br>定义:state(vuex) ≈ data (vue)<br>vuex的state和vue的data有很多相似之处,都是用于存储一些数据,<br>或者说状态值.这些值都将被挂载 数据和dom的双向绑定事件,也就是当你改变值的时候可以触发dom的更新.</li>
+</ol>
+<p>虽然state和data有很多相似之处,但state在使用的时候一般被挂载到子组件的computed计算属性上,<br>这样有利于state的值发生改变的时候及时响应给子组件.如果你用data去接收$store.state,当然可以接收到值,<br>但由于这只是一个简单的赋值操作,因此state中的状态改变的时候不能被vue中的data监听到,<br>当然你也可以通过watch $store去解决这个问题.</p>
+<p>综上所述,请用computed去接收state,如下</p>
+<pre><code class="hljs vue">&#x2F;&#x2F;state.js
+let state &#x3D; &#123;
+  count: 1,
+  name: &#39;dkr&#39;,
+  sex: &#39;男&#39;,
+  from: &#39;china&#39;
+&#125;
+export default state</code></pre>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-      <span class="hljs-keyword">const</span> app = Vue.createApp(&#123;
-        data() &#123;
-          <span class="hljs-keyword">return</span> &#123;
-            <span class="hljs-attr">number</span>: <span class="hljs-number">1</span>,
-            <span class="hljs-attr">animateNumber</span>: <span class="hljs-number">1</span>,
-          &#125;;
-        &#125;,
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div id&#x3D;&quot;example&quot;&gt;
+    &lt;button @click&#x3D;&quot;decrement&quot;&gt;-&lt;&#x2F;button&gt;
+    &#123;&#123;count&#125;&#125;
+    &#123;&#123;dataCount&#125;&#125;
+    &lt;button @click&#x3D;&quot;increment&quot;&gt;+&lt;&#x2F;button&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  data () &#123;
+    return &#123;
+      dataCount: this.$store.state.count &#x2F;&#x2F;用data接收
+    &#125;
+  &#125;,
+  computed:&#123;
+    count()&#123;
+      return this.$store.state.count &#x2F;&#x2F;用computed接收
+    &#125;
+  &#125;
+  methods: &#123;
+    increment () &#123;
+      this.$store.commit(&#39;increment&#39;)
+    &#125;,
+    decrement () &#123;
+      this.$store.commit(&#39;decrement&#39;)
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>结果如下,用data接收的值不能及时响应更新,用computed就可以.</p>
+<ol start="2">
+<li>mapState辅助函数<br>mapState是什么?<br>表面意思:mapState是state的辅助函数.这么说可能很难理解<br>在使用mapState之前,要导入这个辅助函数.<pre><code class="hljs vue">import &#123; mapState &#125; from &#39;vuex&#39;</code></pre>
+使用<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div id&#x3D;&quot;example&quot;&gt;
+    &lt;button @click&#x3D;&quot;decrement&quot;&gt;-&lt;&#x2F;button&gt;
+    &#123;&#123;count&#125;&#125;
+    &#123;&#123;dataCount&#125;&#125;
+    &lt;button @click&#x3D;&quot;increment&quot;&gt;+&lt;&#x2F;button&gt;
+    &lt;div&gt;&#123;&#123;sex&#125;&#125;&lt;&#x2F;div&gt;
+    &lt;div&gt;&#123;&#123;from&#125;&#125;&lt;&#x2F;div&gt;
+    &lt;div&gt;&#123;&#123;myCmpted&#125;&#125;&lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+import &#123; mapState &#125; from &#39;vuex&#39;
+export default &#123;
+  data () &#123;
+    return &#123;
+      str: &#39;国籍&#39;,
+      dataCount: this.$store.state.count
+    &#125;
+  &#125;,
+  computed: mapState(&#123;
+    count: &#39;count&#39;, &#x2F;&#x2F; 第一种写法
+    sex: (state) &#x3D;&gt; state.sex, &#x2F;&#x2F; 第二种写法
+    from: function (state) &#123; &#x2F;&#x2F; 用普通函数this指向vue实例,要注意
+      return this.str + &#39;:&#39; + state.from
+    &#125;,
+    &#x2F;&#x2F; 注意下面的写法看起来和上面相同,事实上箭头函数的this指针并没有指向vue实例,因此不要滥用箭头函数
+    &#x2F;&#x2F; from: (state) &#x3D;&gt; this.str + &#39;:&#39; + state.from
+    myCmpted: function () &#123;
+      &#x2F;&#x2F; 这里不需要state,测试一下computed的原有用法
+      return &#39;测试&#39; + this.str
+    &#125;
+  &#125;),
+  methods: &#123;
+    increment () &#123;
+      this.$store.commit(&#39;increment&#39;)
+    &#125;,
+    decrement () &#123;
+      this.$store.commit(&#39;decrement&#39;)
+    &#125;
+  &#125;,
+  created () &#123;
+    &#x2F;&#x2F; 写个定时器，发现computed依旧保持了只要内部有相关属性发生改变不管是当前实例data中的改变，还是vuex中的值改变都会触发dom和值更新
+    setTimeout(() &#x3D;&gt; &#123;
+      this.str &#x3D; &#39;国家&#39;
+    &#125;, 1000)
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+当然computed不会因为引入mapState辅助函数而失去原有的功能—用于扩展当前vue的data,只是写法会有一些奇怪,<br>如果你已经写了一大堆的computed计算属性,做了一半发现你要引入vuex,<br>还想使用mapState辅助函数的方便,你可以需要做下列事情.<pre><code class="hljs vue">&#x2F;&#x2F;之前的computed
+computed:&#123;
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+    ........
+&#125;
+&#x2F;&#x2F;引入mapState辅助函数之后
+ 
+computed:mapState(&#123;
+    &#x2F;&#x2F;先复制粘贴
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+    ......
+    &#x2F;&#x2F;再维护vuex
+    count:&#39;count&#39;
+    .......
+&#125;)</code></pre></li>
+<li>…mapState<br>事实上…mapState并不是mapState的扩展,而是…对象展开符的扩展.<br>当然如果你把他用在这里会发现他能使得代码看起来变得,更加符合常规逻辑了</li>
+</ol>
+<p><em>Demo</em></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> MapState = mapState(&#123;
+  <span class="hljs-attr">count</span>: <span class="hljs-string">'count'</span>,
+  <span class="hljs-attr">sex</span>: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> state.sex
+&#125;)
+<span class="hljs-keyword">let</span> json = &#123;
+  <span class="hljs-string">'a'</span>: <span class="hljs-string">'我是json自带的'</span>,
+  ...MapState
+&#125;
+<span class="hljs-built_in">console</span>.log(json)</code></pre>
+<p>这里的json可以成功将mapState return的json格式,和json自带的a属性成功融合成一个新的对象.<br>你可以将这个称为对象混合.<br>这样,你就可以自由的使用mapState了.<br><em>Demo1</em></p>
+<pre><code class="hljs vuejs">&#x2F;&#x2F;之前的computed
+computed:&#123;
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+&#125;
+&#x2F;&#x2F;引入mapState辅助函数之后
+ 
+computed:&#123;
+    &#x2F;&#x2F;原来的继续保留
+    fn1()&#123; return ...&#125;,
+    fn2()&#123; return ...&#125;,
+    fn3()&#123; return ...&#125;
+    &#x2F;&#x2F;再维护vuex
+    ...mapState(&#123;  &#x2F;&#x2F;这里的...不是省略号了,是对象扩展符
+        count:&#39;count&#39;
+    &#125;)
+&#125;</code></pre>
+<p><em>Demo2</em></p>
+<pre><code class="hljs vue">computed: &#123;
+    ...mapState([
+        &#39;orderList&#39;,
+        &#39;login&#39;
+    ]),
+&#125;,   
+mounted()&#123;  
+    console.log(typeof orderList); &#x3D;&#x3D;&gt;undefind
+    console.log(typeof this.orderList)&#x3D;&#x3D;&gt;object
+&#125;</code></pre>
+<p><em>Demo3</em></p>
+<pre><code class="hljs vue">不同名时，将views起名为viewsCount
+...mapState(&#123;
+ viewsCount: &#39;views&#39;
+&#125;),
 
-        <span class="hljs-attr">methods</span>: &#123;
-          handleClick() &#123;
-            <span class="hljs-keyword">this</span>.number = <span class="hljs-number">10</span>;
-
-            <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.animateNumber &lt; <span class="hljs-keyword">this</span>.number) &#123;
-              <span class="hljs-keyword">const</span> timer = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
-                <span class="hljs-keyword">this</span>.animateNumber += <span class="hljs-number">1</span>;
-
-                <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.animateNumber === <span class="hljs-number">10</span>) &#123;
-                  clearInterval(timer);
-                &#125;
-              &#125;, <span class="hljs-number">100</span>);
-            &#125;
-          &#125;,
-        &#125;,
-
-        <span class="hljs-attr">template</span>: <span class="hljs-string">`
-                    &lt;div&gt;&#123;&#123;animateNumber&#125;&#125;&lt;/div&gt;
-                    &lt;button @click="handleClick"&gt;按钮&lt;/button&gt;  
-                `</span>,
-      &#125;);
-
-      <span class="hljs-keyword">const</span> vm = app.mount(<span class="hljs-string">"#root"</span>);
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+同名时
+...mapState(&#123;
+ &#39;views&#39;
+&#125;)</code></pre>
 
 
   
@@ -263,12 +389,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/02/24/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/">vuex的对象展开符</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A16/">vue的动画和过渡(6)</a>
+          <a href="/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A17/">vue的动画和过渡(7)</a>
         
     </div>
   </div>
@@ -280,7 +404,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/01/31/vue的动画和过渡7/">https://codermino.github.io/2021/01/31/vue的动画和过渡7/</a>
+      永久链接：<a href="https://codermino.github.io/2021/02/24/vuex的对象展开符/">https://codermino.github.io/2021/02/24/vuex的对象展开符/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
