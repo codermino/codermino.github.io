@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-02-24T02:52:43.528Z</updated>
+  <updated>2021-02-24T07:27:25.376Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iview中表单验证提示的红色*改为图片</title>
+    <link href="https://codermino.github.io/2021/02/24/iview%E4%B8%AD%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E6%8F%90%E7%A4%BA%E7%9A%84%E7%BA%A2%E8%89%B2-%E6%94%B9%E4%B8%BA%E5%9B%BE%E7%89%87/"/>
+    <id>https://codermino.github.io/2021/02/24/iview%E4%B8%AD%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E6%8F%90%E7%A4%BA%E7%9A%84%E7%BA%A2%E8%89%B2-%E6%94%B9%E4%B8%BA%E5%9B%BE%E7%89%87/</id>
+    <published>2021-02-24T03:16:59.000Z</published>
+    <updated>2021-02-24T07:27:25.376Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;h
+      
+    
+    </summary>
+    
+    
+      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
+    
+    
+      <category term="iview中表单验证提示的红色" scheme="https://codermino.github.io/tags/iview%E4%B8%AD%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E6%8F%90%E7%A4%BA%E7%9A%84%E7%BA%A2%E8%89%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>vuex的对象展开符</title>
@@ -490,30 +515,6 @@
     
     
       <category term="nvm管理node版本" scheme="https://codermino.github.io/tags/nvm%E7%AE%A1%E7%90%86node%E7%89%88%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js的call,apply,bind</title>
-    <link href="https://codermino.github.io/2020/12/23/js%E7%9A%84callapplybind/"/>
-    <id>https://codermino.github.io/2020/12/23/js%E7%9A%84callapplybind/</id>
-    <published>2020-12-23T06:59:18.000Z</published>
-    <updated>2020-12-24T03:18:38.291Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js改变this指向" scheme="https://codermino.github.io/tags/js%E6%94%B9%E5%8F%98this%E6%8C%87%E5%90%91/"/>
     
   </entry>
   
