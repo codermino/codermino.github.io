@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-02-25T05:50:36.887Z</updated>
+  <updated>2021-02-25T06:02:22.455Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>可以上网但是不显示为小电脑</title>
+    <link href="https://codermino.github.io/2021/02/25/%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BD%91%E4%BD%86%E6%98%AF%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%BA%E5%B0%8F%E7%94%B5%E8%84%91/"/>
+    <id>https://codermino.github.io/2021/02/25/%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BD%91%E4%BD%86%E6%98%AF%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%BA%E5%B0%8F%E7%94%B5%E8%84%91/</id>
+    <published>2021-02-25T06:00:25.000Z</published>
+    <updated>2021-02-25T06:02:22.455Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;点击右下角网络图标-网络配置-更改适配器选项-鼠标右键【以太网】-【属性】&lt;br&gt;-【配置】-【高级】-【分载选项】-【属性】-【IPv4校验和分载传输】/【IPV4硬件校验和】-&lt;br&gt;【禁用】-【确定】-【确定】-【已完成】，此时重启电脑或者重启网络都可以了，&lt;br&gt;禁
+      
+    
+    </summary>
+    
+    
+      <category term="win10" scheme="https://codermino.github.io/categories/win10/"/>
+    
+    
+      <category term="可以上网但是不显示为小电脑" scheme="https://codermino.github.io/tags/%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BD%91%E4%BD%86%E6%98%AF%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%BA%E5%B0%8F%E7%94%B5%E8%84%91/"/>
+    
+  </entry>
   
   <entry>
     <title>iview输入数字验证</title>
@@ -490,31 +514,6 @@
     
     
       <category term="vue清理定时器" scheme="https://codermino.github.io/tags/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的mixin中异步函数</title>
-    <link href="https://codermino.github.io/2020/12/24/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/"/>
-    <id>https://codermino.github.io/2020/12/24/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/</id>
-    <published>2020-12-24T07:40:39.000Z</published>
-    <updated>2020-12-24T08:17:49.922Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Demo1&quot;&gt;Demo1&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的mixin中异步函数" scheme="https://codermino.github.io/tags/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   
