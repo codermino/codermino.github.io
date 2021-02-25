@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证规则中添加正则"><span class="toc-text">验证规则中添加正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用transform"><span class="toc-text">使用transform</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证规则中添加正则"><span class="toc-text">验证规则中添加正则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用transform"><span class="toc-text">使用transform</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -205,6 +205,13 @@
         <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(value);
     &#125;&#125;
 ]</code></pre>
+
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs javascript">courseId: [&#123; <span class="hljs-attr">type</span>: <span class="hljs-string">'number'</span>,
+    <span class="hljs-attr">message</span>: <span class="hljs-string">'学科编码只能输入数字'</span>,
+    <span class="hljs-attr">trigger</span>: <span class="hljs-string">'blur,change'</span>,
+    transform (value) &#123;
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">Number</span>(value)
+    &#125; &#125;],</code></pre>
 
 
   
