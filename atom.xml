@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-02-25T02:13:20.028Z</updated>
+  <updated>2021-02-25T05:46:44.705Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iview输入数字验证</title>
+    <link href="https://codermino.github.io/2021/02/25/iview%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81/"/>
+    <id>https://codermino.github.io/2021/02/25/iview%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81/</id>
+    <published>2021-02-25T05:43:27.000Z</published>
+    <updated>2021-02-25T05:46:44.705Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;验证规则中添加正则&quot;&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
+    
+    
+      <category term="iview输入数字验证" scheme="https://codermino.github.io/tags/iview%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81/"/>
+    
+  </entry>
   
   <entry>
     <title>iview表单验证部分重置</title>
@@ -490,32 +515,6 @@
     
     
       <category term="vue的mixin中异步函数" scheme="https://codermino.github.io/tags/vue%E7%9A%84mixin%E4%B8%AD%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>webstorm中git回滚</title>
-    <link href="https://codermino.github.io/2020/12/24/webstorm%E4%B8%ADgit%E5%9B%9E%E6%BB%9A/"/>
-    <id>https://codermino.github.io/2020/12/24/webstorm%E4%B8%ADgit%E5%9B%9E%E6%BB%9A/</id>
-    <published>2020-12-24T05:35:40.000Z</published>
-    <updated>2020-12-24T05:52:51.181Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/webstorm/webstorm.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/webstorm/webstorm.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;l
-      
-    
-    </summary>
-    
-    
-      <category term="webstorm" scheme="https://codermino.github.io/categories/webstorm/"/>
-    
-    
-      <category term="webstorm中git回滚" scheme="https://codermino.github.io/tags/webstorm%E4%B8%ADgit%E5%9B%9E%E6%BB%9A/"/>
     
   </entry>
   
