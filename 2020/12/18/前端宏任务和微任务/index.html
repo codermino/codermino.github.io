@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#宏任务："><span class="toc-text">宏任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微任务："><span class="toc-text">微任务：</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#宏任务："><span class="toc-text">宏任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#微任务："><span class="toc-text">微任务：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -207,6 +207,71 @@
 <li>只有一个微任务队列</li>
 <li>在上一个宏任务队列执行完毕后如果有微任务队列就会执行微任务队列中所有的任务</li>
 </ol>
+<h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> r = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>)</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"a"</span>);
+    resolve()
+&#125;);
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span><span class="hljs-built_in">console</span>.log(<span class="hljs-string">"d"</span>), <span class="hljs-number">0</span>)
+r.then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"c"</span>));
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">"b"</span>)</code></pre>
+<p>打印a b c d</p>
+<p>再回头来看看开头的一段代码，会不会豁然开朗了呢。<br>JS 引擎首先会把Promise对象 和 console.log(“b”) 两个微观任务存入执行栈，<br>把 setTimeout（宏观任务）存入 “任务队列”</p>
+<p>所以在输出 a 和 b 以后并不会按照预期那样立即<br>从 “任务队列” 中读取 setTimeout，<br>因为 then方法是微观任务Promise对象的回调函数，先于 setTimeout 执行.</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1'</span>)
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2'</span>)
+    &#125;,<span class="hljs-number">0</span>)
+&#125;)
+
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3'</span>)
+    <span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'4'</span>)
+    &#125;)
+&#125;,<span class="hljs-number">0</span>)</code></pre>
+<p>打印1 3 4 2</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'1'</span>)
+  setTimeout(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'2'</span>)
+  &#125;,<span class="hljs-number">0</span>)
+&#125;)
+ 
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'3'</span>)
+  <span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'4'</span>)
+  &#125;)
+&#125;, <span class="hljs-number">3000</span>)</code></pre>
+<p>打印1 2 3 4</p>
+<pre><code class="hljs javascript">setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>)&#125;,<span class="hljs-number">0</span>); 
+
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>)</span>&#123; 
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>) 
+  <span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span> ; i&lt;<span class="hljs-number">10000</span> ; i++ )&#123;
+     i==<span class="hljs-number">9999</span> &amp;&amp; resolve() 
+  &#125; 
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>) 
+&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; 
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>) 
+&#125;); 
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);</code></pre>
+<p>另外一个会让人感到迷惑的地方就是 resolve回调函数内部的那几行代码，<br>输出1以后接着跑1000次循环才调用resolve方法，其实resolve()的意思是把<br>Promise对象实例的状态从pending变成 fulfilled（即成功）</p>
+<p>成功的回调就是对应的then方法。所以resolve()<br>后面的 console.log(2) 会先执行，因为 resolve()<br>回调函数是在本轮事件循环的末尾执行.<br>打印1 2 3 5 4</p>
+<pre><code class="hljs javascript">setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;<span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>)&#125;,<span class="hljs-number">0</span>); 
+
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>)</span>&#123; 
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>) 
+  <span class="hljs-keyword">for</span>( <span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span> ; i&lt;<span class="hljs-number">10000</span> ; i++ )&#123;
+    <span class="hljs-comment">//  i==9999 &amp;&amp; resolve() </span>
+  &#125; 
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>) 
+&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; 
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-number">5</span>) 
+&#125;); 
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);</code></pre>
+<p>打印1 2 3 4</p>
 
 
   
