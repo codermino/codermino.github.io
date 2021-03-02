@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-02-25T06:02:22.455Z</updated>
+  <updated>2021-03-02T00:49:15.098Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webstorm退出时提示</title>
+    <link href="https://codermino.github.io/2021/03/02/webstorm%E9%80%80%E5%87%BA%E6%97%B6%E6%8F%90%E7%A4%BA/"/>
+    <id>https://codermino.github.io/2021/03/02/webstorm%E9%80%80%E5%87%BA%E6%97%B6%E6%8F%90%E7%A4%BA/</id>
+    <published>2021-03-02T00:47:07.000Z</published>
+    <updated>2021-03-02T00:49:15.098Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/webstorm/webstorm.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/webstorm/webstorm.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=
+      
+    
+    </summary>
+    
+    
+      <category term="webstorm" scheme="https://codermino.github.io/categories/webstorm/"/>
+    
+    
+      <category term="webstorm退出时提示" scheme="https://codermino.github.io/tags/webstorm%E9%80%80%E5%87%BA%E6%97%B6%E6%8F%90%E7%A4%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>可以上网但是不显示为小电脑</title>
@@ -489,31 +514,6 @@
     
     
       <category term="if判断语句把常量写左边" scheme="https://codermino.github.io/tags/if%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5%E6%8A%8A%E5%B8%B8%E9%87%8F%E5%86%99%E5%B7%A6%E8%BE%B9/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue清理定时器</title>
-    <link href="https://codermino.github.io/2020/12/24/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/"/>
-    <id>https://codermino.github.io/2020/12/24/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/</id>
-    <published>2020-12-24T09:24:28.000Z</published>
-    <updated>2020-12-24T09:26:18.702Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;方法一：&quot;&gt;方法一：&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue清理定时器" scheme="https://codermino.github.io/tags/vue%E6%B8%85%E7%90%86%E5%AE%9A%E6%97%B6%E5%99%A8/"/>
     
   </entry>
   
