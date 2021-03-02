@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#可变插值"><span class="toc-text">可变插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#可变插值"><span class="toc-text">可变插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#符号"><span class="toc-text">~符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#可变插值-1"><span class="toc-text">可变插值</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/前端">前端</a>
+                  <a href="/categories/less">less</a>
                 
               
           </span>
@@ -214,6 +214,22 @@
 <h3 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h3><pre><code class="hljs less"><span class="hljs-variable">@deep:</span> <span class="hljs-string">~'&gt;&gt;&gt;'</span>;
 <span class="hljs-variable">@&#123;deep&#125;</span> <span class="hljs-selector-class">.ivu-input</span> &#123;
   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#dcdee2</span>;
+&#125;</code></pre>
+
+<h3 id="补充">补充<a class="post-anchor" href="#补充"></a></h3><h4 id="符号">~符号<a class="post-anchor" href="#符号"></a></h4><p>而在.less文件中写（加上~）：</p>
+<pre><code class="hljs less"><span class="hljs-selector-class">.test_03</span>&#123;
+	<span class="hljs-attribute">width</span>:<span class="hljs-string">~'calc(300px-30px)'</span>;
+&#125;</code></pre>
+<p>在相应的.css中会得到：</p>
+<pre><code class="hljs less"><span class="hljs-selector-class">.test_03</span> &#123;
+  <span class="hljs-attribute">width</span>: calc(<span class="hljs-number">300px</span>-<span class="hljs-number">30px</span>);
+&#125;</code></pre>
+<p>也就是说让浏览器去计算300px-30px。</p>
+<h4 id="可变插值-1">可变插值<a class="post-anchor" href="#可变插值-1"></a></h4><p>@{}可以引用一个变量使其插入到样式</p>
+<pre><code class="hljs less"><span class="hljs-variable">@my-selector:</span>banner;
+<span class="hljs-variable">@widthPro:</span>width;
+<span class="hljs-selector-class">.@&#123;my-selector&#125;</span>&#123;
+	<span class="hljs-attribute">@&#123;widthPro&#125;</span>:<span class="hljs-number">10px</span>;
 &#125;</code></pre>
 
 
