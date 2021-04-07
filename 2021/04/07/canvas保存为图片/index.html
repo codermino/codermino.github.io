@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2021/4 - Mino
+      canvas保存为图片 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -70,7 +70,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +120,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,52 +149,114 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2021/4
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2021" >
-                2021
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2021/04/07/canvas%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%9B%BE%E7%89%87/" title="canvas保存为图片">
-                <span>2021/04/07</span>
-                <span>canvas保存为图片</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/04/07/js%E7%9A%84Set%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/" title="js的Set集合操作">
-                <span>2021/04/07</span>
-                <span>js的Set集合操作</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+      <div class="title">canvas保存为图片</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/04/07</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/canvas">canvas</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/canvas保存为图片">canvas保存为图片</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <ol>
+<li><p>把canvas转为base64编码的数据</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> canvas = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'downloadcanvas'</span>);
+<span class="hljs-keyword">var</span> base64 = canvas.toDataURL(<span class="hljs-string">"image/png"</span>);
+<span class="hljs-comment">//canvas.toDataURL("image/jpeg");</span>
+<span class="hljs-comment">//canvas.toDataURL("image/bmp");</span></code></pre>
+</li>
+<li><p>生成下载连接</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"a"</span>);
+a.download = roomname+<span class="hljs-string">'-'</span>+getNowFormatDate();　　<span class="hljs-comment">//下载的文件名，默认是'下载'</span>
+a.href =base64; 
+<span class="hljs-built_in">document</span>.body.appendChild(a); a.click(); a.remove();　　<span class="hljs-comment">//下载之后把创建的元素删除</span></code></pre>
+</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/04/07/js%E7%9A%84Set%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/">js的Set集合操作</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/04/07/canvas保存为图片/">https://codermino.github.io/2021/04/07/canvas保存为图片/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
