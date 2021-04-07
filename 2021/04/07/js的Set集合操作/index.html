@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map集合的操作方法"><span class="toc-text">Map集合的操作方法</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map集合的操作方法"><span class="toc-text">Map集合的操作方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set集合的操作方法"><span class="toc-text">Set集合的操作方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-集合与数组的相互转换"><span class="toc-text">Set 集合与数组的相互转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实际应用"><span class="toc-text">实际应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set集合和filter-方法相结合可以很容易地实现数组的并集、交集和差集。"><span class="toc-text">Set集合和filter()方法相结合可以很容易地实现数组的并集、交集和差集。</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -232,6 +232,64 @@
 <td>按插入顺序返回所有的value</td>
 </tr>
 </tbody></table>
+<h3 id="Set集合的操作方法">Set集合的操作方法<a class="post-anchor" href="#Set集合的操作方法"></a></h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>size</td>
+<td>返回Set 集合的成员总数</td>
+</tr>
+<tr>
+<td>add(‘value’)</td>
+<td>添加某个值，返回Set集合本身</td>
+</tr>
+<tr>
+<td>delete(‘key’)</td>
+<td>删除某个值，返回一个布尔值，表示删除是否成功</td>
+</tr>
+<tr>
+<td>has(‘value’)</td>
+<td>set中是否包含键对应的值，如果包含返回true</td>
+</tr>
+<tr>
+<td>clear();</td>
+<td>清除所有成员，没有返回值</td>
+</tr>
+</tbody></table>
+<h3 id="Set-集合与数组的相互转换">Set 集合与数组的相互转换<a class="post-anchor" href="#Set-集合与数组的相互转换"></a></h3><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])));
+<span class="hljs-comment">//输出：[object Set]</span></code></pre>
+<p>使用展开运算符（…）或者Array.from()方法也可以很方便的把Set集合转换为数组。</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call([...new <span class="hljs-built_in">Set</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])]));
+<span class="hljs-comment">//输出：[object Array]</span>
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-built_in">Array</span>.from(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]))));
+<span class="hljs-comment">//输出：[object Array]</span></code></pre>
+
+<h3 id="实际应用">实际应用<a class="post-anchor" href="#实际应用"></a></h3><p>展开运算符和 Set 集合相结合，轻松去除数组的重复元素。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-string">"A"</span>, <span class="hljs-string">"A"</span>];
+<span class="hljs-built_in">console</span>.log([...new <span class="hljs-built_in">Set</span>(arr)]);
+<span class="hljs-comment">//输出：[1, "A"]</span></code></pre>
+
+<h3 id="Set集合和filter-方法相结合可以很容易地实现数组的并集、交集和差集。">Set集合和filter()方法相结合可以很容易地实现数组的并集、交集和差集。<a class="post-anchor" href="#Set集合和filter-方法相结合可以很容易地实现数组的并集、交集和差集。"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> arr1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>],
+      arr2 = [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>];
+
+<span class="hljs-comment">//数组并集</span>
+<span class="hljs-built_in">console</span>.log([...new <span class="hljs-built_in">Set</span>([...arr1, ...arr2])]);
+<span class="hljs-comment">//输出：[1, 2, 3, 4, 5]</span>
+
+<span class="hljs-comment">//数组交集</span>
+<span class="hljs-built_in">console</span>.log(arr1.filter(<span class="hljs-function">(<span class="hljs-params">v</span>) =&gt;</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr2).has(v)));
+<span class="hljs-comment">//输出：[3]</span>
+
+<span class="hljs-comment">//数组差集</span>
+<span class="hljs-built_in">console</span>.log(arr1.filter(<span class="hljs-function">(<span class="hljs-params">v</span>) =&gt;</span> !<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr2).has(v)));
+<span class="hljs-comment">//输出：[1, 2]</span>
+<span class="hljs-built_in">console</span>.log(arr2.filter(<span class="hljs-function">(<span class="hljs-params">v</span>) =&gt;</span> !<span class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>(arr1).has(v)));
+<span class="hljs-comment">//输出：[4, 5]</span></code></pre>
 
 
   
