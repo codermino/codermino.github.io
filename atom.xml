@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-06-15T14:45:23.133Z</updated>
+  <updated>2021-06-15T14:56:38.739Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github提交ssl报错解决方法</title>
+    <link href="https://codermino.github.io/2021/06/15/github%E6%8F%90%E4%BA%A4ssl%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>https://codermino.github.io/2021/06/15/github%E6%8F%90%E4%BA%A4ssl%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</id>
+    <published>2021-06-15T14:55:22.000Z</published>
+    <updated>2021-06-15T14:56:38.739Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAt1BMVEX////1hHB3bEz1fmn0fGb1gW1xZUL3no76w7ptYDt1akns6+b1gm
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="https://codermino.github.io/categories/git/"/>
+    
+    
+      <category term="git" scheme="https://codermino.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>vue的$prop和$attrs和$listener</title>
@@ -486,31 +510,6 @@
     
     
       <category term="vue的动画和过渡" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>css过渡和动画的区别</title>
-    <link href="https://codermino.github.io/2021/01/30/css%E8%BF%87%E6%B8%A1%E5%92%8C%E5%8A%A8%E7%94%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>https://codermino.github.io/2021/01/30/css%E8%BF%87%E6%B8%A1%E5%92%8C%E5%8A%A8%E7%94%BB%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
-    <published>2021-01-30T11:01:55.000Z</published>
-    <updated>2021-01-30T13:19:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/css/css.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/css/css.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;css过渡和动画的区别：&quot;&gt;css过渡
-      
-    
-    </summary>
-    
-    
-      <category term="css" scheme="https://codermino.github.io/categories/css/"/>
-    
-    
-      <category term="css过渡和动画的区别" scheme="https://codermino.github.io/tags/css%E8%BF%87%E6%B8%A1%E5%92%8C%E5%8A%A8%E7%94%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     
   </entry>
   
