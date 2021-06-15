@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      css去除浏览器滚动条 - Mino
+      vue的$prop和$attrs和$listener - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#孙子组件"><span class="toc-text">孙子组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举例说明"><span class="toc-text">举例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码示例"><span class="toc-text">代码示例</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -152,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">css去除浏览器滚动条</div>
+      <div class="title">vue的$prop和$attrs和$listener</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/05/26</span>
+          <span>2021/06/15</span>
         </span>
 
         
@@ -167,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/css">css</a>
+                  <a href="/categories/vue">vue</a>
                 
               
           </span>
@@ -180,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/css去除浏览器滚动条">css去除浏览器滚动条</a>
+                    <a href="/tags/vue的$prop和$attrs和$listener">vue的$prop和$attrs和$listener</a>
                   
                 
             </span>
@@ -190,26 +195,123 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/css/css.jpg" data-caption data-fancybox="images"><img src="/images/css/css.jpg" alt></a></p>
-<pre><code class="hljs less">&lt;style lang="less" scoped&gt;
-  @deep: ~'&gt;&gt;&gt;';
-  //去除谷歌浏览器滚动条
-  @&#123;deep&#125; .main-sider.menu-scrollbar::-webkit-scrollbar&#123;
-    display: none;
-  &#125;
-  @&#123;deep&#125; .main-sider.menu-scrollbar&#123;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  &#125;
-  //去除火狐、ie10+浏览器滚动条
-  @&#123;deep&#125; .main-content.common-scrollbar::-webkit-scrollbar&#123;
-    display: none;
-  &#125;
-  @&#123;deep&#125; .main-content.common-scrollbar&#123;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  &#125;
-&lt;/style&gt;</code></pre>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<pre><code class="hljs markdown">1.v-bind="$props": 可以将父组件的所有props下发给它的子组件,子组件需要在其props:&#123;&#125; 中定义要接受的props。
+　　vm.$props: 当前组件接收到的 props 对象。Vue 实例代理了对其 props 对象属性的访问。
+2.v-bind="$attrs": 将调用组件时的组件标签上绑定的非props的特性(class和style除外)向下传递。
+在子组件中应当添加inheritAttrs: false(避免父作用域的不被认作props的特性绑定应用在子组件的根元素上)。
+　　vm.$attrs :包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。
+<span class="hljs-code">    当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，</span>
+<span class="hljs-code">    并且可以通过 v-bind="$attrs" 传入内部组件——在创建高级别的组件时非常有用。</span>
+ 
+3.v-on="将父组件标签上的自定义事件向下传递其子组件可以直接通过emit(eventName)的方式调用。
+　　vm.$listeners: 包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。
+<span class="hljs-code">    它可以通过 v-on="$listeners" 传入内部组件——在创建更高层次的组件时非常有用。</span></code></pre>
+
+<h3 id="父组件">父组件<a class="post-anchor" href="#父组件"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;Test&quot;&gt;
+        &lt;test-son name&#x3D;&quot;name&quot;
+                  age&#x3D;&quot;18&quot;
+                  gender&#x3D;&quot;666&quot;
+                  sdf&#x3D;&quot;asd&quot;
+                  @isClick&#x3D;&quot;isClick&quot;
+                  @asd&#x3D;&quot;asd&quot;&#x2F;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    import testSon from &#39;..&#x2F;components&#x2F;Test&#x2F;testSon&#39;
+    export default &#123;
+        name: &quot;Test&quot;,
+        components: &#123;testSon&#125;,
+        comments:&#123;
+            testSon
+        &#125;,
+        methods: &#123;
+            asd() &#123;
+                console.log(999);
+            &#125;,
+            isClick() &#123;
+                console.log(666);
+            &#125;
+        &#125;,
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="子组件">子组件<a class="post-anchor" href="#子组件"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;testSon&quot;&gt;
+        &lt;test-grand-son v-bind&#x3D;&quot;$attrs&quot; v-on&#x3D;&quot;$listeners&quot;&gt;&lt;&#x2F;test-grand-son&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    import testGrandSon from &#39;.&#x2F;testGrandSon&#39;
+    export default &#123;
+        name: &quot;testSon&quot;,
+        components: &#123;testGrandSon&#125;,
+        comments:&#123;
+            testGrandSon
+        &#125;,
+        props: &#123;
+            name: &#123;
+                type: String,
+                default: &#39;default&#39;
+            &#125;,
+            age: &#123;
+                type: String,
+                default: &#39;default&#39;
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="孙子组件">孙子组件<a class="post-anchor" href="#孙子组件"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;testGrandSon&quot;&gt;
+        &lt;div&gt;
+            &#123;&#123; $attrs[&#39;gender&#39;] &#125;&#125;  在$attrs里面只会有props没有注册的属性
+            &lt;br&gt;
+            &#123;&#123; gender &#125;&#125;
+        &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    export default &#123;
+        name: &quot;testGrandSon&quot;,
+        props: &#123;
+            gender: &#123;
+                type: String,
+                default: &#39;&#39;
+            &#125;
+        &#125;,
+        mounted() &#123;
+            console.log(this.$attrs);
+            console.log(this.$listeners);
+            this.$listeners.isClick();
+            this.$listeners.asd();
+            this.$emit(&#39;isClick&#39;)
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="结果">结果<a class="post-anchor" href="#结果"></a></h3><pre><code class="hljs markdown">&#123;sdf: "asd"&#125;
+&#123;isClick: ƒ, asd: ƒ&#125;
+666
+999</code></pre>
+
+<h3 id="举例说明">举例说明<a class="post-anchor" href="#举例说明"></a></h3><pre><code class="hljs markdown">4.举例说明：
+　　4.1.如上实例代码中，top组件传值给center可以全部不接收，然后直接通过 v-bind="$attrs" 传给bottom，
+<span class="hljs-code">        然后bottom组件直接使用props接收top传过来的所有属性</span>
+　　4.2.在别人组件的基础上进行二次封装的时候，定义好自己的属性，然后在自己的组件上直接传值，
+<span class="hljs-code">        然后通过 v-bind="$attrs" 把值传给别人的组件即可，例如</span>
+5.vm.$attrs和vm.$listeners获取到的值都是json的形式，对应每一个属性和取值，可以直接使用实例验证一下~</code></pre>
+<h3 id="代码示例">代码示例<a class="post-anchor" href="#代码示例"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;el-button v-bind&#x3D;&quot;$attrs&quot;&gt;确定&lt;&#x2F;el-button&gt;
+  &lt;div&gt;
+&lt;&#x2F;template&gt;
+&lt;!--父组件使用--&gt;
+&lt;my-button type&#x3D;&#39;primary&#39; size&#x3D;&#39;mini&#39;&#x2F;&gt;</code></pre>
 
 
   
@@ -236,12 +338,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/06/15/vue%E7%9A%84-prop%E5%92%8C-attrs%E5%92%8C-listener/">vue的$prop和$attrs和$listener</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/04/24/js%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">js复习笔记</a>
+          <a href="/2021/05/26/css%E5%8E%BB%E9%99%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BB%9A%E5%8A%A8%E6%9D%A1/">css去除浏览器滚动条</a>
         
     </div>
   </div>
@@ -253,7 +353,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/05/26/css去除浏览器滚动条/">https://codermino.github.io/2021/05/26/css去除浏览器滚动条/</a>
+      永久链接：<a href="https://codermino.github.io/2021/06/15/vue的-prop和-attrs和-listener/">https://codermino.github.io/2021/06/15/vue的-prop和-attrs和-listener/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
