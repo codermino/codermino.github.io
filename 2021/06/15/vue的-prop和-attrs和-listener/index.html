@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#孙子组件"><span class="toc-text">孙子组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举例说明"><span class="toc-text">举例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码示例"><span class="toc-text">代码示例</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#孙子组件"><span class="toc-text">孙子组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结果"><span class="toc-text">结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#举例说明"><span class="toc-text">举例说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码示例"><span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inheritAttrs属性"><span class="toc-text">inheritAttrs属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -312,6 +312,40 @@
 &lt;&#x2F;template&gt;
 &lt;!--父组件使用--&gt;
 &lt;my-button type&#x3D;&#39;primary&#39; size&#x3D;&#39;mini&#39;&#x2F;&gt;</code></pre>
+
+
+<h3 id="inheritAttrs属性">inheritAttrs属性<a class="post-anchor" href="#inheritAttrs属性"></a></h3><pre><code class="hljs markdown">默认为true,继承所有的父组件属性（除props的特定绑定）作为普通的HTML特性应用在子组件的根元素上，
+如果你不希望组件的根元素继承特性设置inheritAttrs: false,但是class属性会继承。</code></pre>
+
+<h3 id="例子">例子<a class="post-anchor" href="#例子"></a></h3><p><strong>父组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;test-button type&#x3D;&quot;primary&quot; size&#x3D;&quot;small&quot;&gt;&lt;&#x2F;test-button&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    import testButton from &#39;..&#x2F;components&#x2F;test2&#x2F;button&#39;
+    export default &#123;
+        name: &quot;test2&quot;,
+        components:&#123;
+            testButton
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p><strong>子组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;button&quot;&gt;
+        &lt;Button v-bind&#x3D;&quot;$attrs&quot;&gt;点击&lt;&#x2F;Button&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    export default &#123;
+        inheritAttrs: false,
+        name: &quot;testButton&quot;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<p><strong>inheritAttrs属性为true时</strong><br><a href="/images/$attrs/attrs2.png" data-caption data-fancybox="images"><img src="/images/$attrs/attrs2.png" alt></a><br><strong>inheritAttrs属性为false时</strong><br><a href="/images/$attrs/attrs1.png" data-caption data-fancybox="images"><img src="/images/$attrs/attrs1.png" alt></a></p>
 
 
   
