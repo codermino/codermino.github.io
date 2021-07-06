@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      iView的Tabs组件使用Render自定义标签 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -70,7 +70,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +120,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,110 +149,167 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/01/29/body-parser%E7%9A%84%E4%BD%BF%E7%94%A8/" title="body-parser的使用">
-                <span>2020/01/29</span>
-                <span>body-parser的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/express%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="express模板的使用">
-                <span>2020/01/28</span>
-                <span>express模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/" title="ejs模板的使用">
-                <span>2020/01/28</span>
-                <span>ejs模板的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/" title="formidable上传文件改名">
-                <span>2020/01/25</span>
-                <span>formidable上传文件改名</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/25/nodejs%E7%9A%84formidable/" title="nodejs的formidable">
-                <span>2020/01/25</span>
-                <span>nodejs的formidable</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/" title="mongodb操作">
-                <span>2020/01/12</span>
-                <span>mongodb操作</span>
-            </a>
-            </article>
-            
-
-
-    
-    </div>
-    </section>
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2019" >
-                2019
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="Git基本操作">
-                <span>2019/12/05</span>
-                <span>Git基本操作</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/19/">19</a><a class="page-number" href="/archives/page/20/">20</a><span class="page-number current">21</span>
-</div>
-</div>
+      <div class="title">iView的Tabs组件使用Render自定义标签</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/07/06</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/iview">iview</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/iView的Tabs组件使用Render自定义标签">iView的Tabs组件使用Render自定义标签</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/iview/iview.jpg" data-caption data-fancybox="images"><img src="/images/iview/iview.jpg" alt></a></p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;Tabs :value&#x3D;&quot;tabsName&quot;&gt;
+      &lt;TabPane :name&#x3D;&quot;item.tabsName&quot; :label&#x3D;&quot;tabsTabel(item)&quot; v-for&#x3D;&quot;(item,index) in tabsData&quot; :key&#x3D;&quot;index&quot;&gt;
+        &#123;&#123;item.tabsCon&#125;&#125;
+      &lt;&#x2F;TabPane&gt;
+    &lt;&#x2F;Tabs&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  data() &#123;
+    return &#123;
+      &#x2F;&#x2F; tabs数据
+      tabsData: [],
+      tabsName: &#39;&#39;,
+      &#x2F;&#x2F; tabs自定义Label
+      tabsTabel(data)&#123;
+        return (h)&#x3D;&gt;&#123;
+          return h(&#39;div&#39;, [
+              &#x2F;&#x2F; 加载图标 - 由于用的是iconfont图标, 所以无法显示
+              h(&#39;i&#39;, &#123;
+                class: [&#39;iconfont&#39;, data.tabsIcon]
+              &#125;),
+              &#x2F;&#x2F; 加载标题
+              h(&#39;span&#39;, data.tabsName),
+              &#x2F;&#x2F; 加载数字
+              h(&#39;Badge&#39;, &#123;
+                props: &#123;
+                  count: data.tabsNum
+                &#125;
+              &#125;)
+          ]);
+        &#125;;
+      &#125;
+    &#125;;
+  &#125;,
+  mounted: function() &#123;
+    &#x2F;&#x2F; 获取标签数据
+    this.initTabsData()
+  &#125;,
+  methods: &#123;
+    initTabsData: function () &#123;
+      &#x2F;&#x2F; 假装从接口返回来的数据
+      this.tabsData &#x3D; [&#123;
+        &#39;tabsName&#39;: &#39;标签1&#39;,
+        &#39;tabsCon&#39;: &#39;标签1的内容&#39;,
+        &#39;tabsNum&#39;: 3,
+        &#39;tabsIcon&#39;: &#39;ios-american-football&#39;
+      &#125;, &#123;
+        &#39;tabsName&#39;: &#39;标签2&#39;,
+        &#39;tabsCon&#39;: &#39;标签2的内容&#39;,
+        &#39;tabsNum&#39;: 10,
+        &#39;tabsIcon&#39;: &#39;md-analytics&#39;
+      &#125;, &#123;
+        &#39;tabsName&#39;: &#39;标签3&#39;,
+        &#39;tabsCon&#39;: &#39;标签3的内容&#39;,
+        &#39;tabsNum&#39;: 20,
+        &#39;tabsIcon&#39;: &#39;ios-american-football&#39;
+      &#125;]
+      &#x2F;&#x2F; 设置默认展示的TAB
+      this.tabsName &#x3D; this.tabsData[0].tabsName
+    &#125;
+  &#125;
+&#125;;
+&lt;&#x2F;script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/07/06/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8window-onresize%E6%97%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8/">vue父子组件中同时使用window.onresize时子组件中的不起作用</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/07/06/iView的Tabs组件使用Render自定义标签/">https://codermino.github.io/2021/07/06/iView的Tabs组件使用Render自定义标签/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
