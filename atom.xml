@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-06-25T14:16:45.985Z</updated>
+  <updated>2021-07-06T08:28:39.514Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue父子组件中同时使用window.onresize时子组件中的不起作用</title>
+    <link href="https://codermino.github.io/2021/07/06/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8window-onresize%E6%97%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8/"/>
+    <id>https://codermino.github.io/2021/07/06/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8window-onresize%E6%97%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8/</id>
+    <published>2021-07-06T08:13:06.000Z</published>
+    <updated>2021-07-06T08:28:39.514Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hlj
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue父子组件中同时使用window.onresize时子组件中的不起作用" scheme="https://codermino.github.io/tags/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8window-onresize%E6%97%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>axios取消上一个页面未完成的请求</title>
@@ -470,31 +495,6 @@
     <id>https://codermino.github.io/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A15/</id>
     <published>2021-01-31T14:40:00.000Z</published>
     <updated>2021-01-31T14:52:46.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hlj
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的动画和过渡" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的动画和过渡(4)</title>
-    <link href="https://codermino.github.io/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A14/"/>
-    <id>https://codermino.github.io/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A14/</id>
-    <published>2021-01-31T14:14:14.000Z</published>
-    <updated>2021-01-31T14:16:26.000Z</updated>
     
     <summary type="html">
     
