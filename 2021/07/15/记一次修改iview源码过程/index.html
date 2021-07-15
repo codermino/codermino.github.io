@@ -292,7 +292,7 @@
 <li>修改完代码之后，重新启动项目，但是发现拖拽的时候发现还是会出现之前的错误</li>
 </ol>
 <p><strong>查找原因</strong><br>发现刚刚修改的文件并没有生效。<br><a href="/images/dragtable/dragtable5.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable5.png" alt></a></p>
-<p><strong>找到问题的原因</strong><br>iview是加载的打包之后的iview.js文件.查找iview.js文件发现，并没有我们修改过后的<br>方法，和对应的调用。</p>
+<p><strong>找到问题的原因</strong><br>iview是加载的打包之后的iview.js文件.查找iview.js文件发现，并没有我们修改过后的<br>方法，和对应的调用。<br><a href="/images/dragtable/dragtable10.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable10.png" alt></a></p>
 <h3 id="改变另一种思路">改变另一种思路<a class="post-anchor" href="#改变另一种思路"></a></h3><p>clone iview的源码，安装项目，然后进行源码的修改，然后重新打包生成dist文件；<br>将生成的iview.js对原有项目的iview.js文件进行overwrite</p>
 <ol>
 <li>clone源码<br>git clone <a href="https://github.com.cnpmjs.org/view-design/ViewUI.git" target="_blank" rel="noopener">https://github.com.cnpmjs.org/view-design/ViewUI.git</a></li>
