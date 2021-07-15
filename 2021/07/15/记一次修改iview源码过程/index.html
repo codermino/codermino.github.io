@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      iView的Tabs组件使用Render自定义标签 - Mino
+      记一次修改iview源码过程 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求：iview的table多级表头进行拖拽改变列宽"><span class="toc-text">需求：iview的table多级表头进行拖拽改变列宽</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改iview的源码"><span class="toc-text">修改iview的源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改变另一种思路"><span class="toc-text">改变另一种思路</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -152,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">iView的Tabs组件使用Render自定义标签</div>
+      <div class="title">记一次修改iview源码过程</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/07/06</span>
+          <span>2021/07/15</span>
         </span>
 
         
@@ -180,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/iView的Tabs组件使用Render自定义标签">iView的Tabs组件使用Render自定义标签</a>
+                    <a href="/tags/记一次修改iview源码过程">记一次修改iview源码过程</a>
                   
                 
             </span>
@@ -191,72 +196,116 @@
       </div>
     </div>
     <p><a href="/images/iview/iview.jpg" data-caption data-fancybox="images"><img src="/images/iview/iview.jpg" alt></a></p>
+<h3 id="需求：iview的table多级表头进行拖拽改变列宽">需求：iview的table多级表头进行拖拽改变列宽<a class="post-anchor" href="#需求：iview的table多级表头进行拖拽改变列宽"></a></h3><p>查找官方文档发现，需要设置对应的column的resizable: true,并且要设置width，<br>同时table要设置border:true。<br><a href="/images/dragtable/dragtable1.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable1.png" alt></a></p>
+<p><strong>实现代码</strong></p>
 <pre><code class="hljs vue">&lt;template&gt;
-  &lt;div&gt;
-    &lt;Tabs :value&#x3D;&quot;tabsName&quot;&gt;
-      &lt;TabPane :name&#x3D;&quot;item.tabsName&quot; :label&#x3D;&quot;tabsTabel(item)&quot; v-for&#x3D;&quot;(item,index) in tabsData&quot; :key&#x3D;&quot;index&quot;&gt;
-        &#123;&#123;item.tabsCon&#125;&#125;
-      &lt;&#x2F;TabPane&gt;
-    &lt;&#x2F;Tabs&gt;
+  &lt;div class&#x3D;&quot;container&quot;&gt;
+    &lt;Table border :columns&#x3D;&quot;columns&quot; :data&#x3D;&quot;tableDataList&quot; disabled-hover&gt;&lt;&#x2F;Table&gt;
   &lt;&#x2F;div&gt;
 &lt;&#x2F;template&gt;
+
 &lt;script&gt;
-export default &#123;
-  data() &#123;
-    return &#123;
-      &#x2F;&#x2F; tabs数据
-      tabsData: [],
-      tabsName: &#39;&#39;,
-      &#x2F;&#x2F; tabs自定义Label
-      tabsTabel(data)&#123;
-        return (h)&#x3D;&gt;&#123;
-          return h(&#39;div&#39;, [
-              &#x2F;&#x2F; 加载图标 - 由于用的是iconfont图标, 所以无法显示
-              h(&#39;i&#39;, &#123;
-                class: [&#39;iconfont&#39;, data.tabsIcon]
-              &#125;),
-              &#x2F;&#x2F; 加载标题
-              h(&#39;span&#39;, data.tabsName),
-              &#x2F;&#x2F; 加载数字
-              h(&#39;Badge&#39;, &#123;
-                props: &#123;
-                  count: data.tabsNum
-                &#125;
-              &#125;)
-          ]);
-        &#125;;
+  export default &#123;
+    name: &quot;tableDrag&quot;,
+    data() &#123;
+      return &#123;
+        columns: [
+          &#123;
+            title: &#39;Name&#39;,
+            key: &#39;name&#39;,
+            className: &#39;draggable hand&#39;,
+            resizable: true,
+            width: 150
+          &#125;,
+          &#123;
+            title: &#39;Age&#39;,
+            key: &#39;age&#39;,
+            className: &#39;draggable hand&#39;,
+            children: [
+              &#123;
+                title: &#39;Address&#39;,
+                key: &#39;address&#39;,
+                className: &#39;draggable hand&#39;,
+                resizable: true,
+                width: 150
+              &#125;,
+              &#123;
+                title: &#39;Address&#39;,
+                key: &#39;address&#39;,
+                className: &#39;draggable hand&#39;,
+                resizable: true,
+                width: 150
+              &#125;
+            ]
+          &#125;,
+          &#123;
+            title: &#39;Address&#39;,
+            key: &#39;address&#39;,
+            className: &#39;draggable hand&#39;
+          &#125;
+        ],
+        tableDataList: [
+          &#123;
+            id: &#39;1&#39;,
+            name: &#39;John Brown&#39;,
+            age: 18,
+            address: &#39;New York No. 1 Lake Park&#39;,
+            date: &#39;2016-10-03&#39;
+          &#125;,
+          &#123;
+            id: &#39;2&#39;,
+            name: &#39;Jim Green&#39;,
+            age: 24,
+            address: &#39;London No. 1 Lake Park&#39;,
+            date: &#39;2016-10-01&#39;
+          &#125;,
+          &#123;
+            id: &#39;3&#39;,
+            name: &#39;Joe Black&#39;,
+            age: 30,
+            address: &#39;Sydney No. 1 Lake Park&#39;,
+            date: &#39;2016-10-02&#39;
+          &#125;,
+          &#123;
+            id: &#39;4&#39;,
+            name: &#39;Jon Snow&#39;,
+            age: 26,
+            address: &#39;Ottawa No. 2 Lake Park&#39;,
+            date: &#39;2016-10-04&#39;
+          &#125;
+        ]
       &#125;
-    &#125;;
-  &#125;,
-  mounted: function() &#123;
-    &#x2F;&#x2F; 获取标签数据
-    this.initTabsData()
-  &#125;,
-  methods: &#123;
-    initTabsData: function () &#123;
-      &#x2F;&#x2F; 假装从接口返回来的数据
-      this.tabsData &#x3D; [&#123;
-        &#39;tabsName&#39;: &#39;标签1&#39;,
-        &#39;tabsCon&#39;: &#39;标签1的内容&#39;,
-        &#39;tabsNum&#39;: 3,
-        &#39;tabsIcon&#39;: &#39;ios-american-football&#39;
-      &#125;, &#123;
-        &#39;tabsName&#39;: &#39;标签2&#39;,
-        &#39;tabsCon&#39;: &#39;标签2的内容&#39;,
-        &#39;tabsNum&#39;: 10,
-        &#39;tabsIcon&#39;: &#39;md-analytics&#39;
-      &#125;, &#123;
-        &#39;tabsName&#39;: &#39;标签3&#39;,
-        &#39;tabsCon&#39;: &#39;标签3的内容&#39;,
-        &#39;tabsNum&#39;: 20,
-        &#39;tabsIcon&#39;: &#39;ios-american-football&#39;
-      &#125;]
-      &#x2F;&#x2F; 设置默认展示的TAB
-      this.tabsName &#x3D; this.tabsData[0].tabsName
     &#125;
   &#125;
-&#125;;
 &lt;&#x2F;script&gt;</code></pre>
+
+<p>代码的column中每一个对象，设置了resizable: true,并且设置了对应的width.<br>但是运行代码之后拖拽发现.<br><strong>出现这样的错误</strong><br><a href="/images/dragtable/dragtable2.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable2.png" alt></a></p>
+<p><strong>出现错误的原因</strong><br>查看源码发现<br>const _column = table.columns.find(item =&gt; item.<strong>id === column.</strong>id);</p>
+<p><strong>解决方法</strong></p>
+<pre><code class="hljs markdown">iview  源码里没有考虑 column 存在children的情况，所以我的解决办法是， 
+<span class="hljs-code">    修改源码   table-head.vue 这个文件的 </span>
+<span class="hljs-code">    const _column = table.columns.find(item =&gt; item.__id === column.__id);</span>
+   改成一个递归find, 只要column 有children 属性，就进行递归find，直到找到符合条件的column</code></pre>
+
+<h3 id="修改iview的源码">修改iview的源码<a class="post-anchor" href="#修改iview的源码"></a></h3><ol>
+<li>在table-head.vue中找到对应的语句，写一个递归查找的方法，然后调用。<br><a href="/images/dragtable/dragtable3.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable3.png" alt></a><br><a href="/images/dragtable/dragtable4.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable4.png" alt></a></li>
+<li>修改完代码之后，重新启动项目，但是发现拖拽的时候发现还是会出现之前的错误</li>
+</ol>
+<p><strong>查找原因</strong><br>发现刚刚修改的文件并没有生效。<br><a href="/images/dragtable/dragtable5.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable5.png" alt></a></p>
+<p><strong>找到问题的原因</strong><br>iview是加载的打包之后的iview.js文件.查找iview.js文件发现，并没有我们修改过后的<br>方法，和对应的调用。</p>
+<h3 id="改变另一种思路">改变另一种思路<a class="post-anchor" href="#改变另一种思路"></a></h3><p>clone iview的源码，安装项目，然后进行源码的修改，然后重新打包生成dist文件；<br>将生成的iview.js对原有项目的iview.js文件进行overwrite</p>
+<ol>
+<li>clone源码<br>git clone <a href="https://github.com.cnpmjs.org/view-design/ViewUI.git" target="_blank" rel="noopener">https://github.com.cnpmjs.org/view-design/ViewUI.git</a></li>
+<li>打开对应的项目，安装依赖<br>npm i</li>
+</ol>
+<p><strong>如果出现这样的错误</strong><br><a href="/images/dragtable/dragtable6.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable6.png" alt></a><br>会出现安装gulp使用不了插件的问题，此问题为gulp版本和node版本不兼容。<br>2.1 解决方法<br>在对应的package.json中添加对应的代码<br><a href="/images/dragtable/dragtable7.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable7.png" alt></a><br>重新npm i解决了问题。</p>
+<ol start="3">
+<li>修改对应的table-head.vue中的代码。具体代码同上。</li>
+<li>npm run dist进行打包</li>
+<li>生成了dist文件夹<br><a href="/images/dragtable/dragtable8.png" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable8.png" alt></a></li>
+<li>将iview.js文件替换掉自己项目的node_modules中的对应的iview.js文件</li>
+<li>运行项目检查效果<br><a href="/images/dragtable/dragtable9.gif" data-caption data-fancybox="images"><img src="/images/dragtable/dragtable9.gif" alt></a><br>多级表头可以进行拖拽改变列宽，并且没有报错，完美解决。</li>
+</ol>
 
 
   
@@ -283,12 +332,10 @@ export default &#123;
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/07/15/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9iview%E6%BA%90%E7%A0%81%E8%BF%87%E7%A8%8B/">记一次修改iview源码过程</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/07/06/vue%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8window-onresize%E6%97%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8/">vue父子组件中同时使用window.onresize时子组件中的不起作用</a>
+          <a href="/2021/07/06/iView%E7%9A%84Tabs%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8Render%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E7%AD%BE/">iView的Tabs组件使用Render自定义标签</a>
         
     </div>
   </div>
@@ -300,7 +347,7 @@ export default &#123;
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/07/06/iView的Tabs组件使用Render自定义标签/">https://codermino.github.io/2021/07/06/iView的Tabs组件使用Render自定义标签/</a>
+      永久链接：<a href="https://codermino.github.io/2021/07/15/记一次修改iview源码过程/">https://codermino.github.io/2021/07/15/记一次修改iview源码过程/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
