@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-07-15T14:38:07.785Z</updated>
+  <updated>2021-07-29T08:35:58.958Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue的hook:beforedestroy</title>
+    <link href="https://codermino.github.io/2021/07/29/vue%E7%9A%84hook-beforedestroy/"/>
+    <id>https://codermino.github.io/2021/07/29/vue%E7%9A%84hook-beforedestroy/</id>
+    <published>2021-07-29T08:27:28.000Z</published>
+    <updated>2021-07-29T08:35:58.958Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;vue中hook的两点使用
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的hook:beforedestroy" scheme="https://codermino.github.io/tags/vue%E7%9A%84hook-beforedestroy/"/>
+    
+  </entry>
   
   <entry>
     <title>记一次修改iview源码过程</title>
@@ -486,31 +511,6 @@
     
     
       <category term="vuex的对象展开符" scheme="https://codermino.github.io/tags/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的动画和过渡(7)</title>
-    <link href="https://codermino.github.io/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A17/"/>
-    <id>https://codermino.github.io/2021/01/31/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A17/</id>
-    <published>2021-01-31T15:34:18.000Z</published>
-    <updated>2021-01-31T15:35:58.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hlj
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的动画和过渡" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E5%8A%A8%E7%94%BB%E5%92%8C%E8%BF%87%E6%B8%A1/"/>
     
   </entry>
   
