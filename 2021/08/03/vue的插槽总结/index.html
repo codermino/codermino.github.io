@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue的hook:beforedestroy - Mino
+      vue的插槽总结 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue中hook的两点使用"><span class="toc-text">vue中hook的两点使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue中使用-once-‘hook-beforeDestory’-gt-清理定时器"><span class="toc-text">vue中使用$.once(‘hook:beforeDestory’,() =&gt; {})清理定时器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在vue项目清理定时器，通常有两种方法"><span class="toc-text">在vue项目清理定时器，通常有两种方法</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#父组件"><span class="toc-text">父组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue的hook:beforedestroy</div>
+      <div class="title">vue的插槽总结</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/07/29</span>
+          <span>2021/08/03</span>
         </span>
 
         
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue的hook:beforedestroy">vue的hook:beforedestroy</a>
+                    <a href="/tags/vue的插槽总结">vue的插槽总结</a>
                   
                 
             </span>
@@ -196,82 +196,111 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="vue中hook的两点使用">vue中hook的两点使用<a class="post-anchor" href="#vue中hook的两点使用"></a></h3><ol>
-<li>在同一个组件中</li>
-</ol>
-<p>例如：在mounted中添加一个监听需要在beforeDestroy中移除这个监听，<br>考虑到某些原因你不想再写个beforeDestroy去实现，这时候hook就该登场了</p>
-<pre><code class="hljs vuejs">mounted () &#123;
-  window.addEventListener(&#39;xxx&#39;, this.handleOnline)
-  this.$once(&#39;hook:beforeDestroy&#39;, function () &#123;
-    window.removeEventListener(&#39;xxx&#39;, this.handlexxx)
-  &#125;)
-&#125;</code></pre>
+<h3 id="父组件">父组件<a class="post-anchor" href="#父组件"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;slotSummary&quot;&gt;
+        &lt;slot-summary-son&gt;
+            &lt;template v-slot&gt;
+                666
+            &lt;&#x2F;template&gt;
+            &lt;div slot&#x3D;&quot;header&quot;&gt;
+                444
+            &lt;&#x2F;div&gt;
+            &lt;template v-slot:footer&gt;
+                555
+            &lt;&#x2F;template&gt;
+            &lt;!-- 注意：slot-scope会把插槽中的属性都传入prop中，如果没有slot默认会是default的属性 --&gt;
+            &lt;div slot&#x3D;&quot;header2&quot; slot-scope&#x3D;&quot;prop&quot;&gt;
+                &lt;h1&gt;插入到插槽中的元素需要设置根标签，template或div都可&lt;&#x2F;h1&gt;
+                &#123;&#123;prop&#125;&#125;
+                &#123;&#123;prop.prop_herder&#125;&#125;
+            &lt;&#x2F;div&gt;
+            &lt;template v-slot:header3&#x3D;&quot;data&quot;&gt;
+                &lt;h1&gt;v-slot需要放置在template中&lt;&#x2F;h1&gt;
+                &#123;&#123;data&#125;&#125;
+                &#123;&#123;data.prop_herder&#125;&#125;
+            &lt;&#x2F;template&gt;
+            &lt;template v-slot:default&#x3D;&quot;data&quot;&gt;
+                default:
+                &#123;&#123;data&#125;&#125;
+                &#123;&#123;data.prop_herder&#125;&#125;
+            &lt;&#x2F;template&gt;
+            &lt;template v-slot&#x3D;&quot;data&quot;&gt;
+                缩写:
+                &#123;&#123;data&#125;&#125;
+                &#123;&#123;data.prop_herder&#125;&#125;
+            &lt;&#x2F;template&gt;
+            &lt;template v-slot:default&#x3D;&quot;&#123;prop_herder&#125;&quot;&gt;
+                解构：&#123;&#123;prop_herder&#125;&#125;
+            &lt;&#x2F;template&gt;
+            &lt;template v-slot:default&#x3D;&quot;&#123;prop_herder:data&#125;&quot;&gt;
+                解构重命名：&#123;&#123;data&#125;&#125;
+            &lt;&#x2F;template&gt;
+            &lt;template v-slot:default&#x3D;&quot;&#123;header&#x3D;999&#125;&quot;&gt;
+                解构设置默认值：&#123;&#123;header&#125;&#125;
+            &lt;&#x2F;template&gt;
+            &lt;template v-slot:[slotName]&gt;
+                &lt;h1&gt;v-slot需要放置在template中&lt;&#x2F;h1&gt;
+                header4
+            &lt;&#x2F;template&gt;
+            &lt;template #header5&gt;
+                &lt;h1&gt;具名插槽的缩写&lt;&#x2F;h1&gt;
+            &lt;&#x2F;template&gt;
+            &lt;template #default&#x3D;&quot;user&quot;&gt;
+                默认插槽缩写
+                &#123;&#123;user&#125;&#125;
+                &#123;&#123;user.prop_herder&#125;&#125;
+            &lt;&#x2F;template&gt;
+        &lt;&#x2F;slot-summary-son&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
 
-<p>就是你在任意地方用 this.$on/$once(‘hook:生命周期’，callback),<br>就可以监听到生命周期的变化了</p>
-<ol start="2">
-<li>在父组件监听子组件的生命周期方法<br>如果你站在父组件里想在子组件的mounted方法里边做一些事情你会怎么办呢？<pre><code class="hljs vuejs">&#x2F;&#x2F;父组件中这样写
-&lt;rl-child
-  :value&#x3D;&quot;40&quot;
-  @childMounted&#x3D;&quot;handleChildMounted&quot;
-&#x2F;&gt;
-&#x2F;&#x2F; 子组件中这样写
-mounted () &#123;
-  this.$emit(&#39;childMounted&#39;)
-&#125;,</code></pre>
-这样确实可以实现，那有没有更好的方式呢？有！！<pre><code class="hljs vuejs">&#x2F;&#x2F;父组件中这样写
-&lt;rl-child
-  :value&#x3D;&quot;40&quot;
-  @hook:mounted&#x3D;&quot;handleChildMounted&quot;
-&#x2F;&gt;
- 
-&#x2F;&#x2F; 子组件中不用写东西
-mounted () &#123;
-   
-&#125;,</code></pre>
-这样就实现了！是不是还简洁一点呢？<br>你可能会说，好鸡肋啊，不用你浩克也都能实现啊？这不是脱裤子放屁么？<br>那如果：你用的是第三方的组件库，你需要在这个组件发生改变时候做一些操作，<br>巧了这个组件还没有实现@change回调，<br>你怎么获取呢，这个时候你转身发现hook真香唉！</li>
-</ol>
-<h3 id="vue中使用-once-‘hook-beforeDestory’-gt-清理定时器">vue中使用$.once(‘hook:beforeDestory’,() =&gt; {})清理定时器<a class="post-anchor" href="#vue中使用-once-‘hook-beforeDestory’-gt-清理定时器"></a></h3><h4 id="在vue项目清理定时器，通常有两种方法">在vue项目清理定时器，通常有两种方法<a class="post-anchor" href="#在vue项目清理定时器，通常有两种方法"></a></h4><p><strong>方法一：</strong></p>
-<ol>
-<li>首先在vue实例的data中定义定时器的名称，</li>
-<li>在方法（methods）或者页面初始化（mounted()）的时候使用定时器</li>
-<li>然后在页面销毁的生命周期函数（beforeDestroy()）中销毁定时器<br>实现代码:<pre><code class="hljs vuejs">export default&#123;
-  data()&#123;
-    timer:null  
-  &#125;,
-  mounted()&#123;
-	  this.timer &#x3D; setInterval(()&#x3D;&gt;&#123;
-	  &#x2F;&#x2F;具体执行内容
-	  console.log(&#39;1&#39;);
-	&#125;,1000);
-  &#125;
-  beforeDestory()&#123;
-    clearInterval(this.timer);
-    this.timer &#x3D; null;
-  &#125;
-&#125;</code></pre>
-
-</li>
-</ol>
-<p>注： 第一种方法存在的问题是：</p>
-<ol>
-<li>vue实例中需要有这个定时器的实例，感觉有点多余;</li>
-<li>创建的定时器代码和销毁定时器的代码没有放在一起，<br>通常很容易忘记去清理这个定时器，不容易维护;<br>因此，更推荐第二种方法，使用this.$once(‘hook:beforeDestory’,()=&gt;{});</li>
-</ol>
-<p><strong>方法二：</strong><br>直接在需要定时器的方法或者生命周期函数中声明并销毁<br>实现代码：</p>
-<pre><code class="hljs vuejs">export default&#123;
-  methods:&#123;
-    fun1()&#123;
-      const timer &#x3D; setInterval(()&#x3D;&gt;&#123;
-      	&#x2F;&#x2F;具体执行代码
-        console.log(&#39;1&#39;);
-      &#125;,1000);
-      this.$once(&#39;hook:beforeDestory&#39;,()&#x3D;&gt;&#123;
-        clearInterval(timer);
-        timer &#x3D; null;
-      &#125;)
+&lt;script&gt;
+    export default &#123;
+        name: &quot;slotSummary&quot;,
+        data() &#123;
+            return &#123;
+                slotName: &#39;header4&#39;
+            &#125;
+        &#125;,
     &#125;
-  &#125;
-&#125;</code></pre>
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="子组件">子组件<a class="post-anchor" href="#子组件"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;slotSummarySon&quot;&gt;
+        &lt;slot :prop_herder&#x3D;&quot;data&quot;&gt;
+            &lt;h2&gt;default插槽的默认值，当没有插入内容时将会渲染该元素&lt;&#x2F;h2&gt;
+        &lt;&#x2F;slot&gt;
+        &lt;slot name&#x3D;&quot;header&quot;&gt;
+            &lt;h2&gt;name:header插槽的默认值，当没有插入内容时将会渲染该元素&lt;&#x2F;h2&gt;
+        &lt;&#x2F;slot&gt;
+        &lt;slot name&#x3D;&quot;footer&quot;&gt;
+            &lt;h2&gt;name:footer插槽的默认值，当没有插入内容时将会渲染该元素&lt;&#x2F;h2&gt;
+        &lt;&#x2F;slot&gt;
+        &lt;slot name&#x3D;&quot;header2&quot; :prop_herder&#x3D;&quot;data&quot;&gt;
+            &lt;h2&gt;header2插槽的默认值，当没有插入内容时将会渲染该元素&lt;&#x2F;h2&gt;
+        &lt;&#x2F;slot&gt;
+        &lt;slot name&#x3D;&quot;header3&quot; :prop_herder&#x3D;&quot;data&quot;&gt;
+            &lt;h2&gt;header3插槽的默认值，当没有插入内容时将会渲染该元素&lt;&#x2F;h2&gt;
+        &lt;&#x2F;slot&gt;
+        &lt;slot name&#x3D;&quot;header4&quot; :prop_herder&#x3D;&quot;data&quot;&gt;
+            &lt;h2&gt;header4插槽的默认值，当没有插入内容时将会渲染该元素&lt;&#x2F;h2&gt;
+        &lt;&#x2F;slot&gt;
+        &lt;slot name&#x3D;&quot;header5&quot; :prop_herder&#x3D;&quot;data&quot;&gt;
+            &lt;h2&gt;header5插槽的默认值，当没有插入内容时将会渲染该元素&lt;&#x2F;h2&gt;
+        &lt;&#x2F;slot&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    export default &#123;
+        name: &quot;slotSummarySon&quot;,
+        data() &#123;
+            return &#123;
+                data: 444
+            &#125;
+        &#125;,
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
 
 
   
@@ -298,12 +327,10 @@ mounted () &#123;
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/08/03/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/">vue的插槽总结</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/07/15/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9iview%E6%BA%90%E7%A0%81%E8%BF%87%E7%A8%8B/">记一次修改iview源码过程</a>
+          <a href="/2021/07/29/vue%E7%9A%84hook-beforedestroy/">vue的hook:beforedestroy</a>
         
     </div>
   </div>
@@ -315,7 +342,7 @@ mounted () &#123;
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/07/29/vue的hook-beforedestroy/">https://codermino.github.io/2021/07/29/vue的hook-beforedestroy/</a>
+      永久链接：<a href="https://codermino.github.io/2021/08/03/vue的插槽总结/">https://codermino.github.io/2021/08/03/vue的插槽总结/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！

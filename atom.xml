@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-07-29T08:35:58.958Z</updated>
+  <updated>2021-08-03T08:59:45.589Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue的插槽总结</title>
+    <link href="https://codermino.github.io/2021/08/03/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/"/>
+    <id>https://codermino.github.io/2021/08/03/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/</id>
+    <published>2021-08-03T08:57:26.000Z</published>
+    <updated>2021-08-03T08:59:45.589Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;父组件&quot;&gt;父组件&lt;a cl
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的插槽总结" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/"/>
+    
+  </entry>
   
   <entry>
     <title>vue的hook:beforedestroy</title>
@@ -485,32 +510,6 @@
     
     
       <category term="iview中表单验证提示的红色" scheme="https://codermino.github.io/tags/iview%E4%B8%AD%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E6%8F%90%E7%A4%BA%E7%9A%84%E7%BA%A2%E8%89%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vuex的对象展开符</title>
-    <link href="https://codermino.github.io/2021/02/24/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/"/>
-    <id>https://codermino.github.io/2021/02/24/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/</id>
-    <published>2021-02-24T00:50:47.000Z</published>
-    <updated>2021-02-24T02:52:44.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuex.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuex.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;state&lt;br&gt;定义:state(vuex) 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vuex的对象展开符" scheme="https://codermino.github.io/tags/vuex%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%B1%95%E5%BC%80%E7%AC%A6/"/>
     
   </entry>
   
