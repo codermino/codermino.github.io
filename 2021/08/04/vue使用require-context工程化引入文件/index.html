@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#自动注册全局组件"><span class="toc-text">自动注册全局组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动加载css-less文件"><span class="toc-text">自动加载css|less文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在main-js中引入使用"><span class="toc-text">在main.js中引入使用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#原理"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动注册全局组件"><span class="toc-text">自动注册全局组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自动加载css-less文件"><span class="toc-text">自动加载css|less文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在main-js中引入使用"><span class="toc-text">在main.js中引入使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -196,6 +196,64 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="前言">前言<a class="post-anchor" href="#前言"></a></h3><p>webpack 给我们提供了一个批量导入函数 require.context() ，该函数签名如下：<br>require.context(directory, useSubdirectories, regExp)</p>
+<ul>
+<li>directory: 批量导入目标文件夹路径</li>
+<li>useSubdirectories: 是否遍历子目录</li>
+<li>regExp: 匹配需要导入文件名时的正则</li>
+<li><em>eq*</em><pre><code class="hljs javascript"><span class="hljs-comment">// 导入当前目录 resources 文件夹内的所有 .js 文件（不包括子目录）</span>
+<span class="hljs-built_in">require</span>.context(<span class="hljs-string">"./resources"</span>, <span class="hljs-literal">false</span>, /\.js$/);</code></pre>
+
+</li>
+</ul>
+<h3 id="原理">原理<a class="post-anchor" href="#原理"></a></h3><p>要实现万能导入，需要先了解 require.context() 的返回值，他将返回一个函数：<br><a href="/images/context/context1.png" data-caption data-fancybox="images"><img src="/images/context/context1.png" alt></a><br>该函数传入一个文件的 path 后（函数里形参叫 req ），<br>将把 path 传入 webpackContextResolve() 函数，<br>之后执行 <strong>webpack_require</strong> 导入模块。<br>那 webpackContextResolve() 是什么原理？<br><a href="/images/context/context2.png" data-caption data-fancybox="images"><img src="/images/context/context2.png" alt></a><br>我们发现 webpackContextResolve() 只是去 map 这个对象中取了属性 path 对应的值，<br>并且保证他一定可以导入（如果不能导入会抛出 Error ）<br>那 map 这个对象是什么？<br>我们看一下完整代码：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> map = &#123;
+	<span class="hljs-string">"./a.js"</span>: <span class="hljs-string">"./src/require/resources/a.js"</span>,
+	<span class="hljs-string">"./b.js"</span>: <span class="hljs-string">"./src/require/resources/b.js"</span>,
+	<span class="hljs-string">"./c.js"</span>: <span class="hljs-string">"./src/require/resources/c.js"</span>
+&#125;;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webpackContext</span>(<span class="hljs-params">req</span>) </span>&#123;
+	<span class="hljs-keyword">var</span> id = webpackContextResolve(req);
+	<span class="hljs-keyword">return</span> __webpack_require__(id);
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webpackContextResolve</span>(<span class="hljs-params">req</span>) </span>&#123;
+	<span class="hljs-keyword">if</span>(!__webpack_require__.o(map, req)) &#123;
+		<span class="hljs-keyword">var</span> e = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Cannot find module '"</span> + req + <span class="hljs-string">"'"</span>);
+		e.code = <span class="hljs-string">'MODULE_NOT_FOUND'</span>;
+		<span class="hljs-keyword">throw</span> e;
+	&#125;
+	<span class="hljs-keyword">return</span> map[req];
+&#125;
+
+webpackContext.keys = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">webpackContextKeys</span>(<span class="hljs-params"></span>) </span>&#123;
+	<span class="hljs-keyword">return</span> <span class="hljs-built_in">Object</span>.keys(map);
+&#125;;
+
+webpackContext.resolve = webpackContextResolve;
+
+<span class="hljs-built_in">module</span>.exports = webpackContext;
+
+webpackContext.id = <span class="hljs-string">"./src/require/resources sync \\.js$"</span>;</code></pre>
+<p>到此为止，我们终于知道了 map 原来是可以取得相对项目根目录文件路径的一个对象。<br>回过头来，我们重点只需关注如何传入 path ，因为只要给 require.context 传入了 path ，<br>他就会去执行导入模块。</p>
+<h3 id="使用">使用<a class="post-anchor" href="#使用"></a></h3><p>在上文源代码中，我们发现 require.context 的返回函数<br>webpackContext 有一个 keys 方法，它可以给我们提供所有的 path<br>于是，得到我们的万能批量导入方法：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> req = <span class="hljs-built_in">require</span>.context(<span class="hljs-string">"./common"</span>, <span class="hljs-literal">false</span>, /\.js$/)
+
+req.keys().map(<span class="hljs-function"><span class="hljs-params">path</span> =&gt;</span> &#123;
+  <span class="hljs-comment">// 兼容 cjs 和 esm 模块导入</span>
+  req(path).default || req(path)
+&#125;)</code></pre>
+<p>./common 文件夹内的所有 .js 文件均已被自动批量导入。</p>
+<p>如果要操作此处导入的文件内容，可以在 req(path) 返回值处操作：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> req = <span class="hljs-built_in">require</span>.context(<span class="hljs-string">"./common"</span>, <span class="hljs-literal">false</span>, /\.js$/);
+
+req.keys().map(<span class="hljs-function"><span class="hljs-params">path</span> =&gt;</span> &#123;
+  <span class="hljs-keyword">const</span> context = req(path).default || req(path);
+  <span class="hljs-comment">// 此处 context 即为每个 .js 文件的导出内容</span>
+  <span class="hljs-built_in">console</span>.log(context);
+&#125;);</code></pre>
+
 <h3 id="自动注册全局组件">自动注册全局组件<a class="post-anchor" href="#自动注册全局组件"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
 
 <span class="hljs-keyword">const</span> requireComponent = <span class="hljs-built_in">require</span>.context( <span class="hljs-comment">// webpack的api，一个函数方法，匹配文件</span>
@@ -231,6 +289,9 @@ requireAll(requireComponent);</code></pre>
 <h3 id="在main-js中引入使用">在main.js中引入使用<a class="post-anchor" href="#在main-js中引入使用"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 自定义全局组件和样式</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">'./components/index'</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">'./components/commonStyle'</span></code></pre>
+
+<h3 id="总结">总结<a class="post-anchor" href="#总结"></a></h3><p>require.context 可以被用在各种需要大量 import 或者 require 的地方，<br>比如导入一大批 .svg 文件，亦或是导入大量分模块的路由表，<br>Vuex module 等等（此时将 req() 返回值组装进相应的对象即可）。<br>做一个不再手写 import 的打工人。</p>
+
 
   
     <div class="post-reward">
