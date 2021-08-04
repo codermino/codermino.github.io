@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-08-04T08:56:31.620Z</updated>
+  <updated>2021-08-04T09:37:41.559Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue使用require.context工程化引入文件</title>
+    <link href="https://codermino.github.io/2021/08/04/vue%E4%BD%BF%E7%94%A8require-context%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6/"/>
+    <id>https://codermino.github.io/2021/08/04/vue%E4%BD%BF%E7%94%A8require-context%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6/</id>
+    <published>2021-08-04T09:33:15.000Z</published>
+    <updated>2021-08-04T09:37:41.559Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;自动注册全局组件&quot;&gt;自动注
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue使用require.context工程化引入文件" scheme="https://codermino.github.io/tags/vue%E4%BD%BF%E7%94%A8require-context%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>vue的img显示占位图和错误图片和load事件</title>
@@ -485,31 +510,6 @@
     
     
       <category term="iview输入数字验证" scheme="https://codermino.github.io/tags/iview%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iview表单验证部分重置</title>
-    <link href="https://codermino.github.io/2021/02/25/iview%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E9%83%A8%E5%88%86%E9%87%8D%E7%BD%AE/"/>
-    <id>https://codermino.github.io/2021/02/25/iview%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E9%83%A8%E5%88%86%E9%87%8D%E7%BD%AE/</id>
-    <published>2021-02-25T01:44:26.000Z</published>
-    <updated>2021-02-25T02:13:22.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;表单验证重置部分表单项
-      
-    
-    </summary>
-    
-    
-      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
-    
-    
-      <category term="iview表单验证部分重置" scheme="https://codermino.github.io/tags/iview%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E9%83%A8%E5%88%86%E9%87%8D%E7%BD%AE/"/>
     
   </entry>
   
