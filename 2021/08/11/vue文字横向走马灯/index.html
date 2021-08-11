@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue文字横向走马灯 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#直接使用"><span class="toc-text">直接使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装成组件"><span class="toc-text">封装成组件</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue文字横向走马灯</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/08/11</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue文字横向走马灯">vue文字横向走马灯</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="直接使用">直接使用<a class="post-anchor" href="#直接使用"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;roll&quot;&gt;
+        &lt;div class&#x3D;&quot;cont&quot; ref&#x3D;&#39;cont&#39;&gt;
+            &lt;div class&#x3D;&quot;contlist&quot; ref&#x3D;&#39;contlist&#39; @mouseover&#x3D;&quot;stopScroll&quot; @mouseout&#x3D;&quot;startScroll&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li v-for&#x3D;&quot;(item, index) in list&quot; :key&#x3D;&quot;index&quot;&gt;
+                        &#123;&#123; index + 1 &#125;&#125; 、&lt;em&gt;&#123;&#123; item.name &#125;&#125;&lt;&#x2F;em&gt; &#123;&#123; item.time &#125;&#125;
+                    &lt;&#x2F;li&gt;
+                &lt;&#x2F;ul&gt;
+            &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    export default &#123;
+        name: &quot;roll&quot;,
+        data() &#123;
+            return &#123;
+                list: [
+                    &#123;name: &#39;负限位报警&#39;, time: &#39;2019-12-18 16:20:34&#39;&#125;
+                ],
+                contentWidth: 0,
+                scrollW: 0,
+                flag: true &#x2F;&#x2F; true代表目前是right负的，false代表是正的
+            &#125;
+        &#125;,
+        methods: &#123;
+            &#x2F;&#x2F;鼠标悬停，停止滚动
+            stopScroll () &#123;
+                clearInterval(this.scrollTime)
+            &#125;,
+            &#x2F;&#x2F; &#x2F;&#x2F;鼠标移开 ，接着滚动
+            startScroll () &#123;
+                var target &#x3D; this.$refs.contlist;
+                const currentRight &#x3D; target.style.right.split(&#39;px&#39;)[0]
+                &#x2F;&#x2F; right为正数的情况
+                if (currentRight.indexOf(&#39;-&#39;) &#x3D;&#x3D;&#x3D; -1)&#123;
+                    this.flag &#x3D; false
+                    this.scrollW &#x3D; Number(currentRight)
+                &#125; else &#123;
+                    &#x2F;&#x2F; right为负数的情况
+                    this.flag &#x3D; true
+                    let temp &#x3D; currentRight.split(&#39;-&#39;)[currentRight.split(&#39;-&#39;).length - 1]
+                    this.scrollW &#x3D; Number(temp)
+                &#125;
+                this.scroll()
+            &#125;,
+            scroll ()&#123;
+                var initRight &#x3D; this.flag ? -this.scrollW : this.scrollW;
+                const target &#x3D; this.$refs.contlist
+                &#x2F;&#x2F;定时器
+                this.scrollTime &#x3D; setInterval(()&#x3D;&gt;&#123;
+                    initRight ++;
+                    &#x2F;&#x2F; if(initRight &gt;&#x3D; target.offsetWidth + this.contentWidth )&#123;
+                    if(initRight &gt;&#x3D; this.contentWidth )&#123;
+                        initRight &#x3D;  -target.offsetWidth;
+                    &#125;
+                    target.style.right &#x3D; initRight +&#39;px&#39;;&#x2F;&#x2F;获取不到translateX的值改用 left
+                &#125;,10)
+            &#125;
+        &#125;,
+        mounted() &#123;
+            &#x2F;&#x2F;实例挂载完毕前
+            &#x2F;&#x2F;调用滚动代码
+            &#x2F;&#x2F;整个大的整体的宽度
+            this.contentWidth &#x3D; this.$refs.cont.offsetWidth
+            &#x2F;&#x2F; 滚动内容的宽度
+            const target &#x3D; this.$refs.contlist
+            this.scrollW &#x3D; target.offsetWidth
+            &#x2F;&#x2F; 让滚动的内容在整个容器的最右边
+            target.style.right &#x3D; -this.scrollW +&#39;px&#39;;
+            this.scroll()
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped lang&#x3D;&quot;less&quot;&gt;
+    ul,li,em&#123;
+        margin:0;
+        padding: 0;
+    &#125;
+    .cont&#123;
+        height: 20px;
+        background-color:#000;
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+    &#125;
+    .contlist&#123;
+        position: absolute;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+    &#125;
+    .contlist ul&#123;
+        display: flex;
+        flex-direction: row;
+    &#125;
+    .contlist ul li&#123;
+        font-size: 12px;
+        margin-right: 25px;
+        height: 20px;
+        line-height: 20px;
+        display: flex;
+        flex-direction: row;
+    &#125;
+    .contlist ul li em&#123;
+        color:#f80;
+        font-size: 12px;
+        padding-right: 10px;
+    &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+<h3 id="封装成组件">封装成组件<a class="post-anchor" href="#封装成组件"></a></h3><p><strong>父组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;roll&quot;&gt;
+        &lt;roll-com3 :list&#x3D;&quot;list&quot;&gt;&lt;&#x2F;roll-com3&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    export default &#123;
+        name: &quot;roll&quot;,
+        data() &#123;
+            return &#123;
+                list: [
+                    &#123;name: &#39;负限位报警&#39;, time: &#39;2019-12-18 16:20:34&#39;&#125;
+                ]
+            &#125;
+        &#125;,
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p><strong>子组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;roll&quot;&gt;
+        &lt;div class&#x3D;&quot;cont&quot; ref&#x3D;&#39;cont&#39;&gt;
+            &lt;div class&#x3D;&quot;contlist&quot; ref&#x3D;&#39;contlist&#39; @mouseover&#x3D;&quot;stopScroll&quot; @mouseout&#x3D;&quot;startScroll&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li v-for&#x3D;&quot;(item, index) in list&quot; :key&#x3D;&quot;index&quot;&gt;
+                        &#123;&#123; index + 1 &#125;&#125; 、&lt;em&gt;&#123;&#123; item.name &#125;&#125;&lt;&#x2F;em&gt; &#123;&#123; item.time &#125;&#125;
+                    &lt;&#x2F;li&gt;
+                &lt;&#x2F;ul&gt;
+            &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    export default &#123;
+        name: &quot;rollCom3&quot;,
+        props: &#123;
+            list: &#123;
+                type: Array,
+                required: true
+            &#125;,
+        &#125;,
+        data() &#123;
+            return &#123;
+                contentWidth: 0,
+                scrollW: 0,
+                flag: true &#x2F;&#x2F; true代表目前是right负的，false代表是正的
+            &#125;
+        &#125;,
+        methods: &#123;
+            &#x2F;&#x2F;鼠标悬停，停止滚动
+            stopScroll () &#123;
+                clearInterval(this.scrollTime)
+            &#125;,
+            &#x2F;&#x2F; &#x2F;&#x2F;鼠标移开 ，接着滚动
+            startScroll () &#123;
+                var target &#x3D; this.$refs.contlist;
+                const currentRight &#x3D; target.style.right.split(&#39;px&#39;)[0]
+                &#x2F;&#x2F; right为正数的情况
+                if (currentRight.indexOf(&#39;-&#39;) &#x3D;&#x3D;&#x3D; -1)&#123;
+                    this.flag &#x3D; false
+                    this.scrollW &#x3D; Number(currentRight)
+                &#125; else &#123;
+                    &#x2F;&#x2F; right为负数的情况
+                    this.flag &#x3D; true
+                    let temp &#x3D; currentRight.split(&#39;-&#39;)[currentRight.split(&#39;-&#39;).length - 1]
+                    this.scrollW &#x3D; Number(temp)
+                &#125;
+                this.scroll()
+            &#125;,
+            scroll ()&#123;
+                var initRight &#x3D; this.flag ? -this.scrollW : this.scrollW;
+                const target &#x3D; this.$refs.contlist
+                &#x2F;&#x2F;定时器
+                this.scrollTime &#x3D; setInterval(()&#x3D;&gt;&#123;
+                    initRight ++;
+                    &#x2F;&#x2F; if(initRight &gt;&#x3D; target.offsetWidth + this.contentWidth )&#123;
+                    if(initRight &gt;&#x3D; this.contentWidth )&#123;
+                        initRight &#x3D;  -target.offsetWidth;
+                    &#125;
+                    target.style.right &#x3D; initRight +&#39;px&#39;;&#x2F;&#x2F;获取不到translateX的值改用 left
+                &#125;,10)
+            &#125;
+        &#125;,
+        mounted() &#123;
+            this.contentWidth &#x3D; this.$refs.cont.offsetWidth
+            const target &#x3D; this.$refs.contlist
+            this.scrollW &#x3D; target.offsetWidth
+            target.style.right &#x3D; -this.scrollW +&#39;px&#39;;
+            this.scroll()
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped lang&#x3D;&quot;less&quot;&gt;
+    ul,li,em&#123;
+        margin:0;
+        padding: 0;
+    &#125;
+    .cont&#123;
+        height: 20px;
+        background-color:#000;
+        color: #fff;
+        overflow: hidden;
+        position: relative;
+    &#125;
+    .contlist&#123;
+        position: absolute;
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+    &#125;
+    .contlist ul&#123;
+        display: flex;
+        flex-direction: row;
+    &#125;
+    .contlist ul li&#123;
+        font-size: 12px;
+        margin-right: 25px;
+        height: 20px;
+        line-height: 20px;
+        display: flex;
+        flex-direction: row;
+    &#125;
+    .contlist ul li em&#123;
+        color:#f80;
+        font-size: 12px;
+        padding-right: 10px;
+    &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/08/04/vue%E4%BD%BF%E7%94%A8require-context%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6/">vue使用require.context工程化引入文件</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/08/11/vue文字横向走马灯/">https://codermino.github.io/2021/08/11/vue文字横向走马灯/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

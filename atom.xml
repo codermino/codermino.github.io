@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-08-04T17:13:07.806Z</updated>
+  <updated>2021-08-11T01:23:25.639Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue文字横向走马灯</title>
+    <link href="https://codermino.github.io/2021/08/11/vue%E6%96%87%E5%AD%97%E6%A8%AA%E5%90%91%E8%B5%B0%E9%A9%AC%E7%81%AF/"/>
+    <id>https://codermino.github.io/2021/08/11/vue%E6%96%87%E5%AD%97%E6%A8%AA%E5%90%91%E8%B5%B0%E9%A9%AC%E7%81%AF/</id>
+    <published>2021-08-11T00:43:41.000Z</published>
+    <updated>2021-08-11T01:23:25.639Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;直接使用&quot;&gt;直接使用&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue文字横向走马灯" scheme="https://codermino.github.io/tags/vue%E6%96%87%E5%AD%97%E6%A8%AA%E5%90%91%E8%B5%B0%E9%A9%AC%E7%81%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>vue使用require.context工程化引入文件</title>
@@ -485,31 +510,6 @@
     
     
       <category term="可以上网但是不显示为小电脑" scheme="https://codermino.github.io/tags/%E5%8F%AF%E4%BB%A5%E4%B8%8A%E7%BD%91%E4%BD%86%E6%98%AF%E4%B8%8D%E6%98%BE%E7%A4%BA%E4%B8%BA%E5%B0%8F%E7%94%B5%E8%84%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iview输入数字验证</title>
-    <link href="https://codermino.github.io/2021/02/25/iview%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81/"/>
-    <id>https://codermino.github.io/2021/02/25/iview%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81/</id>
-    <published>2021-02-25T05:43:27.000Z</published>
-    <updated>2021-02-25T05:50:38.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;验证规则中添加正则&quot;&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
-    
-    
-      <category term="iview输入数字验证" scheme="https://codermino.github.io/tags/iview%E8%BE%93%E5%85%A5%E6%95%B0%E5%AD%97%E9%AA%8C%E8%AF%81/"/>
     
   </entry>
   
