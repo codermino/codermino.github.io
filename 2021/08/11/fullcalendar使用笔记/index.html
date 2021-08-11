@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      fullcalendar使用笔记 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现效果截图"><span class="toc-text">实现效果截图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体前端代码实现"><span class="toc-text">具体前端代码实现</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">fullcalendar使用笔记</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/08/11</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/fullcalendar">fullcalendar</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/fullcalendar使用笔记">fullcalendar使用笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/fullcalendar/fullcalendar1.png" data-caption data-fancybox="images"><img src="/images/fullcalendar/fullcalendar1.png" alt></a></p>
+<h3 id="前言">前言<a class="post-anchor" href="#前言"></a></h3><p>要实现一个开放课堂的一个周的时间段选择功能。<br>具体需求：<br>选择周一到周日的某个时间段，<br>那么以后的选择日期内的对应的时间段都是开放课堂的时间</p>
+<h3 id="实现效果截图">实现效果截图<a class="post-anchor" href="#实现效果截图"></a></h3><ol>
+<li>进入页面获取后端数据，进行之前选择的事件的展示<br> 开放的为绿色，关闭的为红色<br><a href="/images/fullcalendar/fullcalendar2.png" data-caption data-fancybox="images"><img src="/images/fullcalendar/fullcalendar2.png" alt></a></li>
+<li>编辑事件，开放课堂时间段<br><a href="/images/fullcalendar/fullcalendar3.png" data-caption data-fancybox="images"><img src="/images/fullcalendar/fullcalendar3.png" alt></a></li>
+<li>新建事件，开放课堂时间段<br><a href="/images/fullcalendar/fullcalendar4.png" data-caption data-fancybox="images"><img src="/images/fullcalendar/fullcalendar4.png" alt></a></li>
+</ol>
+<h3 id="具体前端代码实现">具体前端代码实现<a class="post-anchor" href="#具体前端代码实现"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;openClass&quot;&gt;
+    &lt;delete-modal :deleteModal&#x3D;&quot;deleteModal&quot; @confirmDel&#x3D;&quot;confirmDel&quot; @cancelDel&#x3D;&quot;cancelDel&quot;&gt;&lt;&#x2F;delete-modal&gt;
+    &lt;Modal
+      class&#x3D;&quot;openClassForm&quot;
+      :mask-closable&#x3D;&quot;false&quot;
+      v-model&#x3D;&quot;showCalendarModal&quot;
+      :title&#x3D;&quot;title&quot;
+      :closable&#x3D;&quot;false&quot;&gt;
+      &lt;Form ref&#x3D;&quot;calendarForm&quot; :model&#x3D;&quot;calendarForm&quot; :rules&#x3D;&quot;openClassValidate&quot; label-position&#x3D;&quot;right&quot; :label-width&#x3D;&quot;80&quot;&gt;
+        &lt;FormItem label&#x3D;&quot;星期&quot; prop&#x3D;&quot;weekDay&quot;&gt;
+          &lt;Select :disabled&#x3D;&quot;operateType &#x3D;&#x3D;&#x3D; &#39;edit&#39;&quot; v-model&#x3D;&quot;calendarForm.weekDay&quot;&gt;
+            &lt;Option v-for&#x3D;&quot;item in weekDayList&quot; :value&#x3D;&quot;item.value&quot; :key&#x3D;&quot;item.value&quot;&gt;&#123;&#123; item.label &#125;&#125;&lt;&#x2F;Option&gt;
+          &lt;&#x2F;Select&gt;
+        &lt;&#x2F;FormItem&gt;
+        &lt;FormItem label&#x3D;&quot;设置类型&quot; prop&#x3D;&quot;isOpen&quot;&gt;
+          &lt;Select v-model&#x3D;&quot;calendarForm.isOpen&quot;&gt;
+            &lt;Option v-for&#x3D;&quot;item in settingTypeList&quot; :value&#x3D;&quot;item.value&quot; :key&#x3D;&quot;item.value&quot;&gt;&#123;&#123; item.label &#125;&#125;&lt;&#x2F;Option&gt;
+          &lt;&#x2F;Select&gt;
+        &lt;&#x2F;FormItem&gt;
+        &lt;FormItem label&#x3D;&quot;时间段&quot; prop&#x3D;&quot;timeRange&quot;&gt;
+          &lt;DatePicker v-model&#x3D;&quot;calendarForm.timeRange&quot; type&#x3D;&quot;daterange&quot; format&#x3D;&quot;yyyy-MM-dd&quot;&gt;&lt;&#x2F;DatePicker&gt;
+        &lt;&#x2F;FormItem&gt;
+      &lt;&#x2F;Form&gt;
+      &lt;div slot&#x3D;&quot;footer&quot;&gt;
+        &lt;Button @click&#x3D;&quot;cancel(&#39;calendarForm&#39;)&quot;&gt;取消&lt;&#x2F;Button&gt;
+        &lt;Button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;ok(&#39;calendarForm&#39;)&quot;&gt;确定&lt;&#x2F;Button&gt;
+        &lt;Button type&#x3D;&quot;error&quot; v-if&#x3D;&quot;operateType &#x3D;&#x3D;&#x3D; &#39;edit&#39;&quot; @click&#x3D;&quot;delOpenClass&quot;&gt;删除&lt;&#x2F;Button&gt;
+      &lt;&#x2F;div&gt;
+    &lt;&#x2F;Modal&gt;
+    &lt;FullCalendar ref&#x3D;&quot;fullCalendar&quot; :options&#x3D;&quot;calendarOptions&quot;&#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import DeleteModal from &#39;..&#x2F;components&#x2F;DeleteModal&#39;
+import FullCalendar from &#39;@fullcalendar&#x2F;vue&#39;
+import dayGridPlugin from &#39;@fullcalendar&#x2F;daygrid&#39;
+import interactionPlugin from &#39;@fullcalendar&#x2F;interaction&#39;
+import timeGridPlugin from &#39;@fullcalendar&#x2F;timegrid&#39;
+import moment from &#39;moment&#39;
+import &#123; openClassValidate &#125; from &#39;.&#x2F;validate&#x2F;Validate&#39;
+
+export default &#123;
+  name: &#39;openClass&#39;,
+  components: &#123;
+    FullCalendar,
+    DeleteModal
+  &#125;,
+  mounted () &#123;
+    &#x2F;&#x2F; 使用fullcalendar的api
+    this.calendarApi &#x3D; this.$refs.fullCalendar.getApi()
+    &#x2F;&#x2F; 获取后台数据
+    this.getData()
+  &#125;,
+  data () &#123;
+    return &#123;
+      &#x2F;&#x2F; Form表单验证规则
+      openClassValidate,
+      data: [],
+      classInfo: &#123;&#125;,
+      title: &#39;&#39;,
+      calendarApi: null,
+      settingTypeList: [
+        &#123;
+          value: &#39;0&#39;,
+          label: &#39;开放&#39;
+        &#125;,
+        &#123;
+          value: &#39;1&#39;,
+          label: &#39;关闭&#39;
+        &#125;
+      ],
+      calendarForm: &#123;
+        weekDay: &#39;1&#39;,
+        isOpen: &#39;0&#39;,
+        timeRange: []
+      &#125;,
+      weekDayList: [
+        &#123;
+          value: &#39;1&#39;,
+          label: &#39;星期一&#39;
+        &#125;,
+        &#123;
+          value: &#39;2&#39;,
+          label: &#39;星期二&#39;
+        &#125;,
+        &#123;
+          value: &#39;3&#39;,
+          label: &#39;星期三&#39;
+        &#125;,
+        &#123;
+          value: &#39;4&#39;,
+          label: &#39;星期四&#39;
+        &#125;,
+        &#123;
+          value: &#39;5&#39;,
+          label: &#39;星期五&#39;
+        &#125;,
+        &#123;
+          value: &#39;6&#39;,
+          label: &#39;星期六&#39;
+        &#125;,
+        &#123;
+          value: &#39;0&#39;,
+          label: &#39;星期日&#39;
+        &#125;
+      ],
+      showCalendarModal: false,
+      calendarOptions: &#123;
+        &#x2F;&#x2F; 使用对应的fullcalendar的插件
+        plugins: [ dayGridPlugin, interactionPlugin, timeGridPlugin ],
+        &#x2F;&#x2F; 自定义顶部日期表头的内容，显示周一、周二、周三....
+        dayHeaderContent: function (arg) &#123;
+          return arg.text.slice(-2)
+        &#125;,
+        &#x2F;&#x2F; 设置允许拖动的范围，这里设置为同一天内,即不允许跨天选择
+        selectAllow: this.selectAllow,
+        &#x2F;&#x2F; 如果您有一个“创建事件”表单来响应用户的选择，则此选项很有用。
+        &#x2F;&#x2F; 当用户单击此表单时，您可能不希望当前选择消失。
+        &#x2F;&#x2F; 因此，您应该在表单中添加一个类，例如“my-form”，
+        &#x2F;&#x2F; 并将unselectCancel选项设置为&quot;.my-form&quot;.
+        unselectCancel: &#39;.openClassForm&#39;,
+        &#x2F;&#x2F; 设置整个日历的高度，包括页眉和页脚。
+        height: &#39;100%&#39;,
+        &#x2F;&#x2F; 是否在任何日历视图中包含周六&#x2F;周日列。
+        weekends: true,
+        &#x2F;&#x2F; 允许用户通过单击和拖动来突出显示多个日期或时间段。
+        &#x2F;&#x2F; 必须加载interaction插件
+        selectable: true,
+        &#x2F;&#x2F; 确定是否可以将来自其他日历的外部可拖动元素或事件拖放到日历上。
+        droppable: false,
+        &#x2F;&#x2F; 单击页面上的其他地方是否会导致当前选择被清除。
+        &#x2F;&#x2F; 在这里已经被unselectCancel覆盖阻止
+        unselectAuto: true,
+        &#x2F;&#x2F; 确定 TimeGrid 视图中的定时事件是否应该在视觉上重叠。
+        slotEventOverlap: false,
+        &#x2F;&#x2F; 确定“全天”时段是否显示在日历顶部。
+        allDaySlot: false,
+        &#x2F;&#x2F; 是否在用户拖动时绘制“占位符”事件。
+        selectMirror: true,
+        &#x2F;&#x2F; 确定是否可以修改日历上的事件。这决定了事件是否可以拖动和调整大小。
+        editable: true,
+        &#x2F;&#x2F; 允许通过拖动来编辑事件的开始时间。
+        &#x2F;&#x2F; 就是不允许进行移动
+        eventStartEditable: false,
+        &#x2F;&#x2F; 用户是否可以从其起始边缘调整事件的大小。
+        eventResizableFromStart: true,
+        &#x2F;&#x2F; 允许通过调整大小来编辑事件的持续时间。
+        eventDurationEditable: true,
+        &#x2F;&#x2F; 每周开始的那一天。这里是星期一
+        firstDay: 1,
+        &#x2F;&#x2F; 当可选选项被激活并被false给出时，
+        &#x2F;&#x2F; 将不允许用户选择与日历上的事件相交的时间段。
+        selectOverlap: false,
+        &#x2F;&#x2F; 显示时隙的频率。
+        slotDuration: &#39;00:10&#39;,
+        &#x2F;&#x2F; 定义日历顶部的按钮和标题。
+        headerToolbar: &#123;
+          start: &#39;&#39;,
+          center: &#39;&#39;,
+          end: &#39;&#39;
+        &#125;,
+        &#x2F;&#x2F; 确定将在时间段内显示的文本。
+        slotLabelFormat: &#123;
+          hour: &#39;2-digit&#39;,
+          minute: &#39;2-digit&#39;,
+          omitZeroMinute: true,
+          meridiem: &#39;short&#39;
+        &#125;,
+        &#x2F;&#x2F; 将显示在 headerToolbar&#x2F;footerToolbar 按钮上的文本。
+        &#x2F;&#x2F; 这里已经被slotLabelFormat给阻止覆盖
+        buttonText: &#123;
+          today: &#39;今天&#39;
+        &#125;,
+        &#x2F;&#x2F; 确定将在 headerToolbar 的标题中显示的文本。
+        titleFormat: &#123;
+          month: &#39;long&#39;,
+          year: &#39;numeric&#39;,
+          day: &#39;2-digit&#39;,
+          weekday: &#39;long&#39;
+        &#125;,
+        &#x2F;&#x2F; 日历加载时的初始视图。
+        initialView: &#39;timeGridWeek&#39;,
+        &#x2F;&#x2F; 在dayGrid视图中，给定日期内的最大事件数，
+        &#x2F;&#x2F; 不包括 +more 链接。其余的将显示在弹出窗口中。
+        dayMaxEvents: 3,
+        &#x2F;&#x2F; 在进行日期&#x2F;时间选择时触发。
+        select: this.handleSelect,
+        &#x2F;&#x2F; 当调整大小停止并且事件持续时间改变时触发。
+        eventResize: this.eventResize,
+        &#x2F;&#x2F; 当用户点击事件时触发。
+        eventClick: this.eventClick,
+        &#x2F;&#x2F; 设置语言
+        locale: &#39;zh&#39;,
+        &#x2F;&#x2F; 是否显示事件日期&#x2F;时间的文本。
+        &#x2F;&#x2F; 此设置仅适用于具有时间（allDay等于false）的事件。
+        &#x2F;&#x2F; 如果设置为true，时间文本将始终显示在事件上。
+        &#x2F;&#x2F; 如果设置为false，则永远不会在事件上显示时间文本。
+        displayEventTime: true,
+        &#x2F;&#x2F; 在列表视图中，“无事件显示”消息。
+        noEventsContent: &#39;暂无开放时间段&#39;
+      &#125;,
+      currentOperateEvent: null,
+      currentOperateDetail: null,
+      operateType: &#39;add&#39;,
+      deleteModal: false
+    &#125;
+  &#125;,
+  methods: &#123;
+    &#x2F;&#x2F; 设置允许拖动的范围，这里设置为同一天内,即不允许跨天选择
+    selectAllow (info) &#123;
+      const startDate &#x3D; moment(info.startStr).format(&#39;YYYY-MM-DD&#39;)
+      const endDate &#x3D; moment(info.endStr).format(&#39;YYYY-MM-DD&#39;)
+      return startDate &#x3D;&#x3D;&#x3D; endDate
+    &#125;,
+    async getData () &#123;
+      try &#123;
+        const response &#x3D; await this.$http.post(&#96;api&#x2F;classOpenTime&#x2F;queryPageOpenTime&#96;, &#123; all: true, t: &#123; classId: this.classInfo.id &#125; &#125;)
+        if (response.data.success) &#123;
+          const currentTimeStamp &#x3D; +new Date()
+          const currentDay &#x3D; new Date().getDay()
+          response.data.data.data.forEach(item &#x3D;&gt; &#123;
+            const dayDifferent &#x3D; parseInt(item.week) - currentDay
+            const startTime &#x3D; item.startTime.split(&#39; &#39;)[1]
+            const endTime &#x3D; item.endTime.split(&#39; &#39;)[1]
+            const itemEventStamp &#x3D; currentTimeStamp + dayDifferent * 86400000
+            const itemEventDate &#x3D; moment(itemEventStamp).format(&#39;YYYY-MM-DD&#39;)
+            const eventStartTime &#x3D; itemEventDate + &#39; &#39; + startTime
+            const eventEndTime &#x3D; itemEventDate + &#39; &#39; + endTime
+            const backgroundColor &#x3D; item.isOpen &#x3D;&#x3D;&#x3D; &#39;0&#39; ? &#39;green&#39; : &#39;red&#39;
+            const event &#x3D; &#123;
+              id: item.id,
+              title: &#39;开放课堂&#39;,
+              start: eventStartTime,
+              end: eventEndTime,
+              backgroundColor: backgroundColor
+            &#125;
+            this.calendarApi.addEvent(event)
+          &#125;)
+        &#125; else &#123;
+          this.$Message.error(response.data.msg)
+          return null
+        &#125;
+      &#125; catch (e) &#123;
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 当用户点击事件时触发。
+    eventClick (eventClickInfo) &#123;
+      this.operateType &#x3D; &#39;edit&#39;
+      &#x2F;&#x2F; 设置当前点击的事件
+      this.currentOperateEvent &#x3D; eventClickInfo.event
+      &#x2F;&#x2F; 根据事件的id获取当前事件的详情
+      this.getEventDetail(eventClickInfo.event.id)
+    &#125;,
+    &#x2F;&#x2F; 根据事件的id获取当前事件的详情
+    async getEventDetail (id) &#123;
+      try &#123;
+        const response &#x3D; await this.$http.get(&#96;api&#x2F;classOpenTime&#x2F;getOpenTimeInfo&#x2F;$&#123;id&#125;&#96;)
+        if (response.data.success) &#123;
+          const detail &#x3D; response.data.data
+          &#x2F;&#x2F; 保存当前点击事件的详细信息，从后台获取到的详细信息
+          this.currentOperateDetail &#x3D; detail
+          &#x2F;&#x2F; 对返回的数据进行处理，回显数据
+          if (detail.week &#x3D;&#x3D; &#39;7&#39;) &#123;
+            detail.week &#x3D; &#39;0&#39;
+          &#125;
+          const startTime &#x3D; (detail.startTime.split(&#39; &#39;)[1]).slice(0, -3)
+          const endTime &#x3D; (detail.endTime.split(&#39; &#39;)[1]).slice(0, -3)
+          this.title &#x3D; startTime + &#39;-&#39; + endTime + &#39; &#39; + &#39;编辑设置&#39;
+          this.calendarForm &#x3D; &#123;
+            weekDay: detail.week,
+            isOpen: detail.isOpen,
+            timeRange: [detail.startTime.split(&#39; &#39;)[0], detail.endTime.split(&#39; &#39;)[0]]
+          &#125;
+          this.showCalendarModal &#x3D; true
+        &#125; else &#123;
+          this.$Message.error(response.data.msg)
+          return null
+        &#125;
+      &#125; catch (e) &#123;
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 在进行日期&#x2F;时间选择时触发。
+    handleSelect (info) &#123;
+      this.operateType &#x3D; &#39;add&#39;
+      &#x2F;&#x2F; 设置对话框的标题
+      let startHours &#x3D; info.start.getHours().toString().length &lt; 2 ? &#39;0&#39; + info.start.getHours().toString() : info.start.getHours().toString()
+      let startMinutes &#x3D; info.start.getMinutes().toString().length &lt; 2 ? &#39;0&#39; + info.start.getMinutes().toString() : info.start.getMinutes().toString()
+      let endHours &#x3D; info.end.getHours().toString().length &lt; 2 ? &#39;0&#39; + info.end.getHours().toString() : info.end.getHours().toString()
+      let endMinutes &#x3D; info.end.getMinutes().toString().length &lt; 2 ? &#39;0&#39; + info.end.getMinutes().toString() : info.end.getMinutes().toString()
+      const startTime &#x3D; startHours + &#39;:&#39; + startMinutes
+      const endTime &#x3D; endHours + &#39;:&#39; + endMinutes
+      &#x2F;&#x2F; 设置modal的标题
+      this.title &#x3D; startTime + &#39;-&#39; + endTime + &#39; &#39; + &#39;新建设置&#39;
+      &#x2F;&#x2F; 设置下拉选择是星期几
+      this.calendarForm.weekDay &#x3D; info.start.getDay().toString()
+      &#x2F;&#x2F; 显示对话框进行，然后进行后台接口的请求等操作
+      this.showCalendarModal &#x3D; true
+    &#125;,
+    &#x2F;&#x2F; 当拖拽调整事件的大小的时候，根据事件的id获取事件的详情
+    async getEventDetailWhenResize (id) &#123;
+      try &#123;
+        const response &#x3D; await this.$http.get(&#96;api&#x2F;classOpenTime&#x2F;getOpenTimeInfo&#x2F;$&#123;id&#125;&#96;)
+        if (response.data.success) &#123;
+          const detail &#x3D; response.data.data
+          if (detail.week &#x3D;&#x3D; &#39;7&#39;) &#123;
+            detail.week &#x3D; &#39;0&#39;
+          &#125;
+          return detail
+        &#125; else &#123;
+          this.$Message.error(response.data.msg)
+          return null
+        &#125;
+      &#125; catch (e) &#123;
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 当调整大小停止并且事件持续时间改变时触发。
+    &#x2F;&#x2F; 将修改后的数据，调用后台接口进行修改
+    async eventResize (info) &#123;
+      &#x2F;&#x2F; 根据事件的id获取事件的详情
+      const detail &#x3D; await this.getEventDetailWhenResize(info.event.id)
+      &#x2F;&#x2F; 对返回的数据进行处理，然后调用后台接口进行数据的修改
+      let startHours &#x3D; info.event.start.getHours().toString().length &lt; 2 ? &#39;0&#39; + info.event.start.getHours().toString() : info.event.start.getHours().toString()
+      let startMinutes &#x3D; info.event.start.getMinutes().toString().length &lt; 2 ? &#39;0&#39; + info.event.start.getMinutes().toString() : info.event.start.getMinutes().toString()
+      let endHours &#x3D; info.event.end.getHours().toString().length &lt; 2 ? &#39;0&#39; + info.event.end.getHours().toString() : info.event.end.getHours().toString()
+      let endMinutes &#x3D; info.event.end.getMinutes().toString().length &lt; 2 ? &#39;0&#39; + info.event.end.getMinutes().toString() : info.event.end.getMinutes().toString()
+      const startTime &#x3D; startHours + &#39;:&#39; + startMinutes + &#39;:00&#39;
+      const endTime &#x3D; endHours + &#39;:&#39; + endMinutes + &#39;:00&#39;
+      const startDateTime &#x3D; detail.startTime.split(&#39; &#39;)[0] + &#39; &#39; + startTime
+      const endDateTime &#x3D; detail.endTime.split(&#39; &#39;)[0] + &#39; &#39; + endTime
+      const sendData &#x3D; &#123;
+        &#39;schoolId&#39;: detail.schoolId,
+        &#39;gradeId&#39;: detail.gradeId,
+        &#39;classId&#39;: detail.classId,
+        &#39;id&#39;: detail.id,
+        &#39;week&#39;: detail.week,
+        &#39;isOpen&#39;: detail.isOpen,
+        &#39;startTime&#39;: startDateTime,
+        &#39;endTime&#39;: endDateTime
+      &#125;
+      try &#123;
+        const response &#x3D; await this.$http.post(&#96;api&#x2F;classOpenTime&#x2F;insertAndUpdateInfo&#96;, sendData)
+        if (response.data.success) &#123;
+          this.$Message.success(response.data.msg)
+          &#x2F;&#x2F; 重置表单验证
+          this.cancel(&#39;calendarForm&#39;)
+        &#125; else &#123;
+          this.$Message.error(response.data.msg)
+          return null
+        &#125;
+      &#125; catch (e) &#123;
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 点击modal的确认按钮之后进行事件的提交,包括新增和编辑
+    ok (name) &#123;
+      const startTime &#x3D; this.title.split(&#39;-&#39;)[0]
+      const endTime &#x3D; (this.title.split(&#39;-&#39;)[1]).split(&#39; &#39;)[0]
+      const startDate &#x3D; moment(this.calendarForm.timeRange[0]).format(&#39;YYYY-MM-DD&#39;)
+      const endDate &#x3D; moment(this.calendarForm.timeRange[1]).format(&#39;YYYY-MM-DD&#39;)
+      const start &#x3D; startDate + &#39; &#39; + startTime + &#39;:00&#39;
+      const end &#x3D; endDate + &#39; &#39; + endTime + &#39;:00&#39;
+      let week &#x3D; this.calendarForm.weekDay
+      if (week &#x3D;&#x3D; &#39;0&#39;) &#123;
+        week &#x3D; 7
+      &#125;
+      const sendData &#x3D; &#123;
+        &#39;schoolId&#39;: this.classInfo.schoolId,
+        &#39;gradeId&#39;: this.classInfo.gradeId,
+        &#39;classId&#39;: this.classInfo.id,
+        &#39;week&#39;: week,
+        &#39;isOpen&#39;: this.calendarForm.isOpen,
+        &#39;startTime&#39;: start,
+        &#39;endTime&#39;: end
+      &#125;
+      if (this.operateType &#x3D;&#x3D;&#x3D; &#39;add&#39;) &#123;
+        this.$refs[name].validate(async (valid) &#x3D;&gt; &#123;
+          if (valid) &#123;
+            try &#123;
+              const response &#x3D; await this.$http.post(&#96;api&#x2F;classOpenTime&#x2F;insertAndUpdateInfo&#96;, sendData)
+              if (response.data.success) &#123;
+                const currentTimeStamp &#x3D; +new Date()
+                const currentDay &#x3D; new Date().getDay()
+                const item &#x3D; response.data.data
+                const dayDifferent &#x3D; parseInt(item.week) - currentDay
+                const startTime &#x3D; item.startTime.split(&#39; &#39;)[1]
+                const endTime &#x3D; item.endTime.split(&#39; &#39;)[1]
+                const itemEventStamp &#x3D; currentTimeStamp + dayDifferent * 86400000
+                const itemEventDate &#x3D; moment(itemEventStamp).format(&#39;YYYY-MM-DD&#39;)
+                const eventStartTime &#x3D; itemEventDate + &#39; &#39; + startTime
+                const eventEndTime &#x3D; itemEventDate + &#39; &#39; + endTime
+                const backgroundColor &#x3D; item.isOpen &#x3D;&#x3D;&#x3D; &#39;0&#39; ? &#39;green&#39; : &#39;red&#39;
+                const event &#x3D; &#123;
+                  id: item.id,
+                  title: &#39;开放课堂&#39;,
+                  start: eventStartTime,
+                  end: eventEndTime,
+                  backgroundColor: backgroundColor
+                &#125;
+                &#x2F;&#x2F; 添加一个事件
+                this.calendarApi.addEvent(event)
+                this.$Message.success(response.data.msg)
+                this.cancel(name)
+              &#125; else &#123;
+                this.$Message.error(response.data.msg)
+                return null
+              &#125;
+            &#125; catch (e) &#123;
+            &#125;
+          &#125; else &#123;
+            this.$Message.error(this.$t(&#39;errorText&#39;))
+          &#125;
+        &#125;)
+      &#125; else if (this.operateType &#x3D;&#x3D;&#x3D; &#39;edit&#39;) &#123;
+        this.$refs[name].validate(async (valid) &#x3D;&gt; &#123;
+          if (valid) &#123;
+            try &#123;
+              sendData.id &#x3D; this.currentOperateDetail.id
+              const response &#x3D; await this.$http.post(&#96;api&#x2F;classOpenTime&#x2F;insertAndUpdateInfo&#96;, sendData)
+              if (response.data.success) &#123;
+                const currentTimeStamp &#x3D; +new Date()
+                const currentDay &#x3D; new Date().getDay()
+                const item &#x3D; response.data.data
+                const dayDifferent &#x3D; parseInt(item.week) - currentDay
+                const startTime &#x3D; item.startTime.split(&#39; &#39;)[1]
+                const endTime &#x3D; item.endTime.split(&#39; &#39;)[1]
+                const itemEventStamp &#x3D; currentTimeStamp + dayDifferent * 86400000
+                const itemEventDate &#x3D; moment(itemEventStamp).format(&#39;YYYY-MM-DD&#39;)
+                const eventStartTime &#x3D; itemEventDate + &#39; &#39; + startTime
+                const eventEndTime &#x3D; itemEventDate + &#39; &#39; + endTime
+                const backgroundColor &#x3D; item.isOpen &#x3D;&#x3D;&#x3D; &#39;0&#39; ? &#39;green&#39; : &#39;red&#39;
+                const event &#x3D; &#123;
+                  id: item.id,
+                  title: &#39;开放课堂&#39;,
+                  start: eventStartTime,
+                  end: eventEndTime,
+                  backgroundColor: backgroundColor
+                &#125;
+                &#x2F;&#x2F; 编辑的时候将原来的事件remove,将新的事件event添加
+                this.currentOperateEvent.remove()
+                this.calendarApi.addEvent(event)
+                this.$Message.success(response.data.msg)
+                this.cancel(name)
+              &#125; else &#123;
+                this.$Message.error(response.data.msg)
+                return null
+              &#125;
+            &#125; catch (e) &#123;
+            &#125;
+          &#125; else &#123;
+            this.$Message.error(this.$t(&#39;errorText&#39;))
+          &#125;
+        &#125;)
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 点击modal的取消按钮之后触发，进行重置表单的数据验证和表单验证，
+    &#x2F;&#x2F; 并且取消当前拖拽产生选择的事件
+    cancel (name) &#123;
+      this.$refs[name].resetFields()
+      &#x2F;&#x2F; 取消当前拖拽产生选择的事件
+      this.calendarApi.unselect()
+      this.showCalendarModal &#x3D; false
+      this.calendarForm &#x3D; &#123;
+        weekDay: &#39;1&#39;,
+        isOpen: &#39;0&#39;,
+        timeRange: []
+      &#125;
+      this.currentOperateEvent &#x3D; null
+      this.currentOperateDetail &#x3D; null
+      this.operateType &#x3D; &#39;add&#39;
+    &#125;,
+    &#x2F;&#x2F; 删除当前选择的事件之前触发，显示对应的确认框
+    delOpenClass () &#123;
+      this.deleteModal &#x3D; true
+    &#125;,
+    &#x2F;&#x2F; 删除确认框的确定按钮触发
+    confirmDel () &#123;
+      try &#123;
+        this.$http.delete(&#96;api&#x2F;classOpenTime&#x2F;deleteOpenTimeById&#x2F;$&#123;this.currentOperateDetail.id&#125;&#96;).then(response &#x3D;&gt; &#123;
+          if (response.data.success) &#123;
+            this.$Message.success(response.data.msg)
+            &#x2F;&#x2F; 将当前选择的事件remove
+            this.currentOperateEvent.remove()
+            this.cancelDel()
+          &#125; else &#123;
+            this.$Message.error(response.data.msg)
+          &#125;
+        &#125;).catch()
+      &#125; catch (e) &#123;
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 删除确认框的取消按钮触发
+    cancelDel () &#123;
+      this.deleteModal &#x3D; false
+      this.showCalendarModal &#x3D; false
+      this.currentOperateEvent &#x3D; null
+      this.currentOperateDetail &#x3D; null
+      this.calendarForm &#x3D; &#123;
+        weekDay: &#39;1&#39;,
+        isOpen: &#39;0&#39;,
+        timeRange: []
+      &#125;
+      this.operateType &#x3D; &#39;add&#39;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped lang&#x3D;&quot;less&quot;&gt;
+  @deep: ~&#39;&gt;&gt;&gt;&#39;;
+  @&#123;deep&#125; .fc-day-today &#123;
+    background-color: transparent !important;
+  &#125;
+  @&#123;deep&#125; .fc&#123;
+    height: calc(100% - 32px) !important;
+  &#125;
+  @&#123;deep&#125; .ivu-date-picker&#123;
+    width: 100%;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/08/11/vue%E6%96%87%E5%AD%97%E6%A8%AA%E5%90%91%E8%B5%B0%E9%A9%AC%E7%81%AF/">vue文字横向走马灯</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/08/11/fullcalendar使用笔记/">https://codermino.github.io/2021/08/11/fullcalendar使用笔记/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
