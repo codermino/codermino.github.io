@@ -301,18 +301,18 @@ t1();     <span class="hljs-comment">//2 </span>
 t1();     <span class="hljs-comment">//3</span></code></pre>
 
 <h3 id="例九">例九<a class="post-anchor" href="#例九"></a></h3><p><strong>alert 只接受字符串 如果传入非字符串会调用 传入对象的toString 方法转换为字符串</strong></p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>&#123; 
-  <span class="hljs-keyword">var</span> sum = <span class="hljs-number">1</span>; 
-  <span class="hljs-keyword">var</span> tmp = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>&#123; 
-      sum = sum + x; 
-      <span class="hljs-keyword">return</span> tmp;    
-  &#125; 
-  tmp.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; 
-      <span class="hljs-keyword">return</span> sum; 
-  &#125;
-  <span class="hljs-keyword">return</span> tmp; 
-&#125; 
-alert(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>));     <span class="hljs-comment">//6</span></code></pre>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a</span>) </span>&#123;
+    <span class="hljs-keyword">var</span> tmp = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">b</span>) </span>&#123;
+        a = a + b;
+        <span class="hljs-keyword">return</span> tmp
+    &#125;
+    tmp.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">return</span> a;
+    &#125;
+    <span class="hljs-keyword">return</span> tmp;
+&#125;
+alert(add(<span class="hljs-number">3</span>))
+alert(add(<span class="hljs-number">3</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>));</code></pre>
 
 <h3 id="例十">例十<a class="post-anchor" href="#例十"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> lis = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"li"</span>);
 <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;lis.length;i++)&#123;
