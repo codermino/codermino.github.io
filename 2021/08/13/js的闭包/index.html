@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      js的闭包 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例1"><span class="toc-text">例1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例二"><span class="toc-text">例二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例三"><span class="toc-text">例三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例四"><span class="toc-text">例四</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例五"><span class="toc-text">例五</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例六"><span class="toc-text">例六</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例七"><span class="toc-text">例七</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例八"><span class="toc-text">例八</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例九"><span class="toc-text">例九</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例十"><span class="toc-text">例十</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例十一"><span class="toc-text">例十一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例十二"><span class="toc-text">例十二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例十三"><span class="toc-text">例十三</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例十四"><span class="toc-text">例十四</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例十五"><span class="toc-text">例十五</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例十六"><span class="toc-text">例十六</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">js的闭包</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/08/13</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js的闭包">js的闭包</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="前言">前言<a class="post-anchor" href="#前言"></a></h3><ol>
+<li><p>概念<br>闭包函数：声明在一个函数中的函数，叫做闭包函数。<br>闭包：内部函数总是可以访问其所在的外部函数中声明的参数和变量，</p>
+<pre><code>即使在其外部函数被返回（寿命终结）了之后。</code></pre></li>
+<li><p>特点<br>让外部访问函数内部变量成为可能；<br>局部变量会常驻在内存中；<br>可以避免使用全局变量，防止全局变量污染；<br>会造成内存泄漏（有一块内存空间被长期占用，而不被释放）</p>
+</li>
+</ol>
+<p>3、闭包的创建：<br>闭包就是可以创建一个独立的环境，每个闭包里面的环境都是独立的，互不干扰。<br>闭包会发生内存泄漏，每次外部函数执行的时候，外部函数的引用地址不同，<br>都会重新创建一个新的地址。但凡是当前活动对象中有被内部子集引用的数据，<br>那么这个时候，这个数据不删除，保留一根指针给内部活动对象。<br>闭包内存泄漏为： key = value，key 被删除了 value 常驻内存中;<br>局部变量闭包升级版（中间引用的变量） =&gt; 自由变量；</p>
+<p>4、闭包的应用场景<br>结论：闭包找到的是同一地址中父级函数中对应变量最终的值<br>最终秘诀就这一句话，每个例子请自行带入这个结论.</p>
+<h3 id="例1">例1<a class="post-anchor" href="#例1"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">funA</span>(<span class="hljs-params"></span>)</span>&#123;
+  <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;  <span class="hljs-comment">// funA的活动对象之中;</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;   <span class="hljs-comment">//匿名函数的活动对象;</span>
+        alert(a);
+  &#125;
+&#125;
+<span class="hljs-keyword">var</span> b = funA();
+b();  <span class="hljs-comment">//10</span></code></pre>
+
+<h3 id="例二">例二<a class="post-anchor" href="#例二"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outerFn</span>(<span class="hljs-params"></span>)</span>&#123;
+  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; 
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innerFn</span>(<span class="hljs-params"></span>)</span>&#123;
+      i++;
+      <span class="hljs-built_in">console</span>.log(i);
+  &#125;
+  <span class="hljs-keyword">return</span> innerFn;
+&#125;
+<span class="hljs-keyword">var</span> inner = outerFn();  <span class="hljs-comment">//每次外部函数执行的时候,都会开辟一块内存空间,外部函数的地址不同，都会重新创建一个新的地址</span>
+inner();
+inner();
+inner();
+<span class="hljs-keyword">var</span> inner2 = outerFn();
+inner2();
+inner2();
+inner2();   <span class="hljs-comment">//1 2 3 1 2 3</span></code></pre>
+
+<h3 id="例三">例三<a class="post-anchor" href="#例三"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outerFn</span>(<span class="hljs-params"></span>)</span>&#123;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innnerFn</span>(<span class="hljs-params"></span>)</span>&#123;
+       i++;
+       <span class="hljs-built_in">console</span>.log(i);
+  &#125;
+  <span class="hljs-keyword">return</span> innnerFn;
+&#125;
+<span class="hljs-keyword">var</span> inner1 = outerFn();
+<span class="hljs-keyword">var</span> inner2 = outerFn();
+inner1();
+inner2();
+inner1();
+inner2();     <span class="hljs-comment">//1 2 3 4</span></code></pre>
+
+<h3 id="例四">例四<a class="post-anchor" href="#例四"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>&#123;
+	<span class="hljs-keyword">var</span> a = <span class="hljs-number">3</span>;
+	<span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+		<span class="hljs-keyword">return</span>  ++a;                                     
+	&#125;
+&#125;
+alert(fn()());  <span class="hljs-comment">//4</span>
+alert(fn()());  <span class="hljs-comment">//4</span></code></pre>
+
+<h3 id="例五">例五<a class="post-anchor" href="#例五"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outerFn</span>(<span class="hljs-params"></span>)</span>&#123;
+<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">innnerFn</span>(<span class="hljs-params"></span>)</span>&#123;
+      i++;
+      <span class="hljs-built_in">console</span>.log(i);
+  &#125;
+  <span class="hljs-keyword">return</span> innnerFn;
+&#125;
+<span class="hljs-keyword">var</span> inner1 = outerFn();
+<span class="hljs-keyword">var</span> inner2 = outerFn();
+inner1();
+inner2();
+inner1();
+inner2();    <span class="hljs-comment">//1 1 2 2</span></code></pre>
+
+<h3 id="例六">例六<a class="post-anchor" href="#例六"></a></h3><pre><code class="hljs javascript">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; 
+  <span class="hljs-keyword">var</span> m = <span class="hljs-number">0</span>; 
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getM</span>(<span class="hljs-params"></span>) </span>&#123; <span class="hljs-keyword">return</span> m; &#125; 
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">seta</span>(<span class="hljs-params">val</span>) </span>&#123; m = val; &#125; 
+  <span class="hljs-built_in">window</span>.g = getM; 
+  <span class="hljs-built_in">window</span>.f = seta; 
+&#125;)(); 
+f(<span class="hljs-number">100</span>);
+<span class="hljs-built_in">console</span>.info(g());   <span class="hljs-comment">//100  闭包找到的是同一地址中父级函数中对应变量最终的值</span></code></pre>
+
+<h3 id="例七">例七<a class="post-anchor" href="#例七"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">a</span>(<span class="hljs-params"></span>) </span>&#123; 
+  <span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; 
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">b</span>(<span class="hljs-params"></span>) </span>&#123; alert(++i); &#125; 
+  <span class="hljs-keyword">return</span> b; 
+&#125; 
+<span class="hljs-keyword">var</span> c = a(); 
+c();      <span class="hljs-comment">//1 </span>
+c();      <span class="hljs-comment">//2</span></code></pre>
+
+<h3 id="例八">例八<a class="post-anchor" href="#例八"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f</span>(<span class="hljs-params"></span>) </span>&#123; 
+  <span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>; 
+  <span class="hljs-keyword">return</span>  <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; 
+      count++; 
+      <span class="hljs-built_in">console</span>.info(count); 
+  &#125; 
+&#125; 
+<span class="hljs-keyword">var</span> t1 = f();
+t1();     <span class="hljs-comment">//1 </span>
+t1();     <span class="hljs-comment">//2 </span>
+t1();     <span class="hljs-comment">//3</span></code></pre>
+
+<h3 id="例九">例九<a class="post-anchor" href="#例九"></a></h3><p><strong>alert 只接受字符串 如果传入非字符串会调用 传入对象的toString 方法转换为字符串</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> add = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>&#123; 
+  <span class="hljs-keyword">var</span> sum = <span class="hljs-number">1</span>; 
+  <span class="hljs-keyword">var</span> tmp = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">x</span>) </span>&#123; 
+      sum = sum + x; 
+      <span class="hljs-keyword">return</span> tmp;    
+  &#125; 
+  tmp.toString = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123; 
+      <span class="hljs-keyword">return</span> sum; 
+  &#125;
+  <span class="hljs-keyword">return</span> tmp; 
+&#125; 
+alert(add(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>));     <span class="hljs-comment">//6</span></code></pre>
+
+<h3 id="例十">例十<a class="post-anchor" href="#例十"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> lis = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"li"</span>);
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;lis.length;i++)&#123;
+  (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>)</span>&#123;
+      lis[i].onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+           <span class="hljs-built_in">console</span>.log(i);
+      &#125;;
+  &#125;)(i);       <span class="hljs-comment">//事件处理函数中闭包的写法</span>
+&#125;</code></pre>
+
+<h3 id="例十一">例十一<a class="post-anchor" href="#例十一"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">m1</span>(<span class="hljs-params"></span>)</span>&#123;
+     <span class="hljs-keyword">var</span> x = <span class="hljs-number">1</span>;
+     <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+          <span class="hljs-built_in">console</span>.log(++x);
+     &#125;
+&#125;
+ 
+m1()();   <span class="hljs-comment">//2</span>
+m1()();   <span class="hljs-comment">//2</span>
+m1()();   <span class="hljs-comment">//2</span>
+ 
+<span class="hljs-keyword">var</span> m2 = m1();
+m2();   <span class="hljs-comment">//2</span>
+m2();   <span class="hljs-comment">//3</span>
+m2();   <span class="hljs-comment">//4</span></code></pre>
+
+<h3 id="例十二">例十二<a class="post-anchor" href="#例十二"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">var</span>  fn=(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+   <span class="hljs-keyword">var</span>  i=<span class="hljs-number">10</span>;
+   <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>&#123;
+      <span class="hljs-built_in">console</span>.log(++i);
+   &#125;
+   <span class="hljs-keyword">return</span>   fn;
+&#125;)() 
+fn();   <span class="hljs-comment">//11</span>
+fn();   <span class="hljs-comment">//12</span></code></pre>
+
+<h3 id="例十三">例十三<a class="post-anchor" href="#例十三"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">love1</span>(<span class="hljs-params"></span>)</span>&#123;
+     <span class="hljs-keyword">var</span> num = <span class="hljs-number">223</span>;
+     <span class="hljs-keyword">var</span> me1 = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;
+           <span class="hljs-built_in">console</span>.log(num);
+     &#125;
+     num++;
+     <span class="hljs-keyword">return</span> me1;
+&#125;
+<span class="hljs-keyword">var</span> loveme1 = love1();
+loveme1();   <span class="hljs-comment">//输出224</span></code></pre>
+
+<h3 id="例十四">例十四<a class="post-anchor" href="#例十四"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fun</span>(<span class="hljs-params">n,o</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(o);
+    <span class="hljs-keyword">return</span> &#123;
+         <span class="hljs-attr">fun</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">m</span>) </span>&#123;
+               <span class="hljs-keyword">return</span> fun(m,n);
+         &#125;
+    &#125;;
+&#125;
+<span class="hljs-keyword">var</span> a = fun(<span class="hljs-number">0</span>);  <span class="hljs-comment">//undefined</span>
+a.fun(<span class="hljs-number">1</span>);  <span class="hljs-comment">//0  </span>
+a.fun(<span class="hljs-number">2</span>);  <span class="hljs-comment">//0  </span>
+a.fun(<span class="hljs-number">3</span>);  <span class="hljs-comment">//0  </span>
+<span class="hljs-keyword">var</span> b = fun(<span class="hljs-number">0</span>).fun(<span class="hljs-number">1</span>).fun(<span class="hljs-number">2</span>).fun(<span class="hljs-number">3</span>);   <span class="hljs-comment">//undefined  0  1  2</span>
+<span class="hljs-keyword">var</span> c = fun(<span class="hljs-number">0</span>).fun(<span class="hljs-number">1</span>);  
+c.fun(<span class="hljs-number">2</span>);  
+c.fun(<span class="hljs-number">3</span>);  <span class="hljs-comment">//undefined  0  1  1</span></code></pre>
+
+<h3 id="例十五">例十五<a class="post-anchor" href="#例十五"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>&#123;
+   <span class="hljs-keyword">var</span> arr = [];
+   <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i ++)&#123;
+	 arr[i] = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;
+		 <span class="hljs-keyword">return</span> i;
+	 &#125;
+   &#125;
+   <span class="hljs-keyword">return</span> arr;
+&#125;
+<span class="hljs-keyword">var</span> list = fn();
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>,len = list.length;i &lt; len ; i ++)&#123;
+   <span class="hljs-built_in">console</span>.log(list[i]());
+&#125;  <span class="hljs-comment">//5 5 5 5 5</span></code></pre>
+
+<h3 id="例十六">例十六<a class="post-anchor" href="#例十六"></a></h3><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>&#123;
+  <span class="hljs-keyword">var</span> arr = [];
+  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i ++)&#123;
+	arr[i] = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i</span>)</span>&#123;
+		<span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>&#123;
+			<span class="hljs-keyword">return</span> i;
+		&#125;;
+	&#125;)(i);
+  &#125;
+  <span class="hljs-keyword">return</span> arr;
+&#125;
+<span class="hljs-keyword">var</span> list = fn();
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>,len = list.length;i &lt; len ; i ++)&#123;
+  <span class="hljs-built_in">console</span>.log(list[i]());
+&#125;  <span class="hljs-comment">//0 1 2 3 4</span></code></pre>
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/08/13/vviewer%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">vviewer使用笔记</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/08/13/js的闭包/">https://codermino.github.io/2021/08/13/js的闭包/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
