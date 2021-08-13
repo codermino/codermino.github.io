@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-08-11T10:25:45.625Z</updated>
+  <updated>2021-08-13T01:11:49.800Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vviewer使用笔记</title>
+    <link href="https://codermino.github.io/2021/08/13/vviewer%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>https://codermino.github.io/2021/08/13/vviewer%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-08-13T01:02:50.000Z</published>
+    <updated>2021-08-13T01:11:49.800Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;前言&quot;&gt;前言&lt;a class=&quot;post-anchor&quot; href=&quot;#前言&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;用于图片浏览的Vue组件，支持旋转、缩放、翻转等操作，基于viewer.js。&lt;/p&gt;
+&lt;h3 id=&quot;具体使用代码&quot;&gt;具体使用代码&lt;a class=&quot;post
+      
+    
+    </summary>
+    
+    
+      <category term="v-viewer" scheme="https://codermino.github.io/categories/v-viewer/"/>
+    
+    
+      <category term="v-viewer使用笔记" scheme="https://codermino.github.io/tags/v-viewer%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>fullcalendar使用笔记</title>
@@ -485,31 +510,6 @@
     
     
       <category term="webstorm更新时显示updateproject" scheme="https://codermino.github.io/tags/webstorm%E6%9B%B4%E6%96%B0%E6%97%B6%E6%98%BE%E7%A4%BAupdateproject/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>webstorm退出时提示</title>
-    <link href="https://codermino.github.io/2021/03/02/webstorm%E9%80%80%E5%87%BA%E6%97%B6%E6%8F%90%E7%A4%BA/"/>
-    <id>https://codermino.github.io/2021/03/02/webstorm%E9%80%80%E5%87%BA%E6%97%B6%E6%8F%90%E7%A4%BA/</id>
-    <published>2021-03-02T00:47:07.000Z</published>
-    <updated>2021-03-02T00:49:16.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/webstorm/webstorm.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/webstorm/webstorm.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=
-      
-    
-    </summary>
-    
-    
-      <category term="webstorm" scheme="https://codermino.github.io/categories/webstorm/"/>
-    
-    
-      <category term="webstorm退出时提示" scheme="https://codermino.github.io/tags/webstorm%E9%80%80%E5%87%BA%E6%97%B6%E6%8F%90%E7%A4%BA/"/>
     
   </entry>
   
