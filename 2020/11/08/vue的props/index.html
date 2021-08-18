@@ -266,6 +266,21 @@
           &#125;
         &#125;
       &#125;,
+    propF:&#123;
+        type:String,
+        validator:function (t) &#123;
+          return t &#x3D;&#x3D;&#x3D; &#39;fade&#39; || t &#x3D;&#x3D;&#x3D; &#39;slide&#39;
+        &#125;,
+        default: &#39;slide&#39;
+    &#125;,
+    type: &#123;
+          validator: function (value) &#123;
+            &#x2F;&#x2F; 这个值必须匹配下列字符串中的一个
+            return [&quot;exact&quot;, &quot;temp&quot;].indexOf(value) !&#x3D;&#x3D; -1;
+          &#125;,
+          type: String,
+          default: &quot;temp&quot;,
+    &#125;
 &#125;</code></pre>
 <p>还可以在 props 定义的数据中加入自定义验证函数，当函数返回 false 时，输出警告。<br>比如我们把上述例子中的 childNode 的for-child-msg修改成一个对象，<br>并包含一个名叫validator的函数，<br>该命名是规定叫validator的，自定义函数名不会生效。</p>
 <pre><code class="hljs vuejs">let childNode &#x3D; &#123;
