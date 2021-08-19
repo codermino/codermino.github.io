@@ -218,7 +218,7 @@ fatal: unable to access 'https://github.com/<span class="xml"><span class="hljs-
 <p>然后再执行git pull，世界又恢复原样了。</p>
 <h3 id="对于全新版本，克隆的时候也在github-com前面加个令牌就好了。">对于全新版本，克隆的时候也在github.com前面加个令牌就好了。<a class="post-anchor" href="#对于全新版本，克隆的时候也在github-com前面加个令牌就好了。"></a></h3><pre><code class="hljs markdown">git clone https://<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TOKEN</span>&gt;</span></span>@github.com/<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">user_name</span>&gt;</span></span>/<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">repo_name</span>&gt;</span></span>.git</code></pre>
 
-<h3 id="hexo-g-d的时候也是403">hexo g -d的时候也是403<a class="post-anchor" href="#hexo-g-d的时候也是403"></a></h3><p>更改_config.yml配置文件的：<br>deploy:<br>  type: git<br>  repo: 修改未携带token</p>
+<h3 id="hexo-g-d的时候也是403">hexo g -d的时候也是403<a class="post-anchor" href="#hexo-g-d的时候也是403"></a></h3><p>更改_config.yml配置文件的：<br>deploy:<br>  type: git<br>  repo: 修改为携带token</p>
 
 
   
