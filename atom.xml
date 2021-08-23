@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-08-23T12:32:20.812Z</updated>
+  <updated>2021-08-23T12:54:24.888Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue表单验证失去焦点和改变时同时触发</title>
+    <link href="https://codermino.github.io/2021/08/23/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/"/>
+    <id>https://codermino.github.io/2021/08/23/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/</id>
+    <published>2021-08-23T12:53:50.000Z</published>
+    <updated>2021-08-23T12:54:24.888Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;hlj
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue表单验证失去焦点和改变时同时触发" scheme="https://codermino.github.io/tags/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>vue2的provide和inject</title>
@@ -485,30 +510,6 @@
     
     
       <category term="canvas保存为图片" scheme="https://codermino.github.io/tags/canvas%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%9B%BE%E7%89%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js的Set集合操作</title>
-    <link href="https://codermino.github.io/2021/04/07/js%E7%9A%84Set%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/"/>
-    <id>https://codermino.github.io/2021/04/07/js%E7%9A%84Set%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/</id>
-    <published>2021-04-07T02:08:41.000Z</published>
-    <updated>2021-04-07T06:01:26.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js的Set集合操作" scheme="https://codermino.github.io/tags/js%E7%9A%84Set%E9%9B%86%E5%90%88%E6%93%8D%E4%BD%9C/"/>
     
   </entry>
   
