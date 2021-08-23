@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue2的provide和inject - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#示例"><span class="toc-text">示例</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue2的provide和inject</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/08/23</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue2的provide和inject">vue2的provide和inject</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<p>我们可以总结下组件通信的几大方法：</p>
+<ol>
+<li>props属性传递数据</li>
+<li>$emit、@on，事件触发与事件监听</li>
+<li>状态管理 vuex，或者 Vue.observale()进行状态管理</li>
+<li>ref引用获取组件实例</li>
+<li>$parent、$children，获取当前组件的父组件、子组件</li>
+<li>通过 provide / inject 来实现共享数据</li>
+</ol>
+<h3 id="总结">总结<a class="post-anchor" href="#总结"></a></h3><p>provider/inject：简单的来说就是在父组件中通过provider来提供变量，<br>    然后在子组件中通过inject来注入变量。<br>　　这种方式可以避免在使用props传值时，<br>    必须将每一个属性都传递给子组件的写法，<br>    当使用的公共组件不确定会被传递什么值的时候，使用这种写法非常方便。</p>
+<h3 id="示例">示例<a class="post-anchor" href="#示例"></a></h3><p><strong>父组件</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+    &lt;childCom&gt;&lt;&#x2F;childCom&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+  import childCom from &#39;..&#x2F;components&#x2F;childCom&#39;
+  export default &#123;
+    name: &quot;Parent&quot;,
+    provide: &#123;      &#x2F;&#x2F;重要一步，在父组件中注入一个变量
+      msg: &quot;demo&quot;
+    &#125;,
+    components:&#123;
+      childCom
+    &#125;
+  &#125;</code></pre>
+<p><strong>子组件</strong><br>子组件示例，这个不管嵌套了多少层，都能请求到父组件中注册的变量</p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div&gt;
+      &#123;&#123;msg&#125;&#125;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+  export default &#123;
+    name: &quot;childCom&quot;,
+    inject: [&#39;msg&#39;],&#x2F;&#x2F;子孙组件中使用inject接住变量即可
+  &#125;
+&lt;&#x2F;script&gt;</code></pre>
+<ol>
+<li>基本使用方法：<pre><code class="hljs javascript"><span class="hljs-comment">// 祖先组件 提供foo</span>
+<span class="hljs-comment">//第一种</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"grandfather"</span>,
+  provide()&#123;
+    <span class="hljs-keyword">return</span>&#123;
+      <span class="hljs-attr">foo</span>:<span class="hljs-string">'halo'</span>
+    &#125;
+  &#125;,
+&#125;
+<span class="hljs-comment">//第二种</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">"grandfather"</span>,
+  <span class="hljs-attr">provide</span>:&#123;
+    <span class="hljs-attr">foo</span>:<span class="hljs-string">'halo~~~~'</span>
+  &#125;,
+&#125;
+
+<span class="hljs-comment">//后代组件 注入foo</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">inject</span>:[<span class="hljs-string">'foo'</span>],
+&#125;</code></pre>
+上面两种的区别：如果你只是传一个字符串，像上面的‘halo’，<br>那么是没有区别的，后代都能读到。如果你需要传一个对象（如下所示代码），<br>那么第二种是传不了的，后代组件拿不到数据。所以建议只写第一种</li>
+</ol>
+<p><strong>当你传递对象给后代时</strong></p>
+<pre><code class="hljs javascript">provide()&#123;
+    <span class="hljs-keyword">return</span>&#123;
+      <span class="hljs-attr">test</span>:<span class="hljs-keyword">this</span>.msg
+    &#125;
+  &#125;,</code></pre>
+<p><strong>注意：</strong><br>    一旦注入了某个数据，比如上面示例中的 msg、foo，<br>    那这个组件中就不能再声明 msg、foo 这个数据了，因为它已经被父级占有。</p>
+<ol start="2">
+<li>实例<br>　　我们来看个例子：孙组件 D、E 和 F 获取 A 组件传递过来的 color 值，<br> 并能实现数据响应式变化，即 A 组件的 color 变化后，<br> 组件 D、E、F 跟着变（核心代码如下：）<br><a href="/images/provide/provide.png" data-caption data-fancybox="images"><img src="/images/provide/provide.png" alt></a></li>
+<li>方法一：<br> provide 祖先组件的实例，然后在子孙组件中注入依赖，<br> 这样就可以在子孙组件中直接修改祖先组件的实例的属性，<br> 不过这种方法有个缺点就是这个实例上挂载很多没有必要的东西比如 props，methods</li>
+<li>方法二：<br> 使用 2.6 最新 API Vue.observable 优化响应式 provide(推荐)</li>
+</ol>
+<p><strong>父组件</strong></p>
+<pre><code class="hljs vue">&#x2F;&#x2F; A 组件
+&lt;div&gt;
+      &lt;h1&gt;A 组件&lt;&#x2F;h1&gt;
+      &lt;button @click&#x3D;&quot;() &#x3D;&gt; changeColor()&quot;&gt;改变color&lt;&#x2F;button&gt;
+      &lt;ChildrenB &#x2F;&gt;
+      &lt;ChildrenC &#x2F;&gt;
+&lt;&#x2F;div&gt;
+......
+  data() &#123;
+    return &#123;
+      color: &quot;blue&quot;
+    &#125;;
+  &#125;,
+  &#x2F;&#x2F; provide() &#123;
+  &#x2F;&#x2F;   return &#123;
+  &#x2F;&#x2F;     theme: &#123;
+  &#x2F;&#x2F;       color: this.color &#x2F;&#x2F;这种方式绑定的数据并不是可响应的
+  &#x2F;&#x2F;     &#125; &#x2F;&#x2F; 即A组件的color变化后，组件D、E、F不会跟着变
+  &#x2F;&#x2F;   &#125;;
+  &#x2F;&#x2F; &#125;,
+  provide() &#123;
+    return &#123;
+      theme: this &#x2F;&#x2F;方法一：提供祖先组件的实例
+    &#125;;
+  &#125;,
+  methods: &#123;
+    changeColor(color) &#123;
+      if (color) &#123;
+        this.color &#x3D; color;
+      &#125; else &#123;
+        this.color &#x3D; this.color &#x3D;&#x3D;&#x3D; &quot;blue&quot; ? &quot;red&quot; : &quot;blue&quot;;
+      &#125;
+    &#125;
+  &#125;</code></pre>
+<p><strong>子组件</strong></p>
+<pre><code class="hljs vue">&lt;template functional&gt;
+  &lt;div class&#x3D;&quot;border2&quot;&gt;
+    &lt;h3 :style&#x3D;&quot;&#123; color: injections.theme.color &#125;&quot;&gt;F 组件&lt;&#x2F;h3&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  inject: &#123;
+    theme: &#123;
+      &#x2F;&#x2F;函数式组件取值不一样
+      default: () &#x3D;&gt; (&#123;&#125;)
+    &#125;
+  &#125;
+&#125;;
+&lt;&#x2F;script&gt;</code></pre>
+<p><strong>原理</strong></p>
+<pre><code class="hljs markdown">方案1的方法就是因为provide提供的数据不是双向绑定的，
+所以祖父组件变化，孙组件获取的inject注入的值不变。
+为了实现双向绑定呢，
+就采用了直接在provide里把整个祖父组件的实例都传给了孙组件，
+那么祖父组件的值变化了，孙组件从祖父组件实例里拿的值也变化了。
+缺点就是这个祖父组件实例挂载了太多不需要的东西。</code></pre>
+<p>方法二:使用2.6最新API Vue.observable 优化响应式 provide</p>
+<pre><code class="hljs vue">provide () &#123;
+  this.theme &#x3D; Vue.observable(&#123;
+    color: &quot;blue&quot;
+  &#125;);
+  return &#123;
+    theme: this.theme
+  &#125;;
+&#125;,
+methods: &#123;
+  changeColor(color) &#123;
+    if (color) &#123;
+      this.theme.color &#x3D; color;
+    &#125; else &#123;
+      this.theme.color &#x3D; this.theme.color &#x3D;&#x3D;&#x3D; &quot;blue&quot; ? &quot;red&quot; : &quot;blue&quot;;
+    &#125;
+  &#125;
+&#125;</code></pre>
+
+<p>方法三：provide里返回一个函数，获取组件的动态数据。<br>　　实际情况中往往我们需要的是共享父组件里面的动态数据，<br>    这些数据可能来自于data 或者 store。<br>    就是说父组件里面的数据发生变化之后，<br>    需要同步到子孙组件里面。这时候该怎么做呢？<br>我想的是将一个函数赋值给provide的一个值，<br>这个函数返回父组件的动态数据，然后在子孙组件里面调用这个函数。<br>实际上这个函数存储了父组件实例的引用，所以每次子组件都能获取到最新的数据。<br>代码长下面的样子：<br><strong>Parent组件：</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;parent-container&quot;&gt;
+      Parent组件
+      &lt;br&#x2F;&gt;
+      &lt;button type&#x3D;&quot;button&quot; @click&#x3D;&quot;changeName&quot;&gt;改变name&lt;&#x2F;button&gt;
+      &lt;br&#x2F;&gt;
+      Parent组件中 name的值: &#123;&#123;name&#125;&#125;
+      &lt;Child  v-bind&#x3D;&quot;&#123;name: &#39;k3vvvv&#39;&#125;&quot; &#x2F;&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Child from &#39;.&#x2F;Child&#39;
+export default &#123;
+  name: &#39;Parent&#39;,
+  data () &#123;
+    return &#123;
+      name: &#39;Kevin&#39;
+    &#125;
+  &#125;,
+  methods: &#123;
+    changeName (val) &#123;
+      this.name &#x3D; &#39;Kev&#39;
+    &#125;
+  &#125;,
+  provide: function () &#123;
+    return &#123;
+      nameFromParent: this.name,
+      getReaciveNameFromParent: () &#x3D;&gt; this.name
+    &#125;
+  &#125;,
+  components: &#123;
+    Child
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<p><strong>GrandSon组件：</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;grandson-container&quot;&gt;
+    Grandson组件
+    &lt;br&#x2F;&gt;
+    &#123;&#123;nameFromParent&#125;&#125;
+    &lt;br&#x2F;&gt;
+    &#123;&#123;reactiveNameFromParent&#125;&#125;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+    &#x2F;&#x2F; nameFromParent是非响应式的
+    &#x2F;&#x2F; getReaciveNameFromParent是响应式的
+  inject: [&#39;nameFromParent&#39;, &#39;getReaciveNameFromParent&#39;],
+  computed: &#123;
+    reactiveNameFromParent () &#123;
+      return this.getReaciveNameFromParent()
+    &#125;
+  &#125;,
+  mounted () &#123;
+    console.log(this.nameFromParent, &#39;nameFromParent&#39;)
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+<p>第一个kevin 是来自于非响应式的 provide变量 nameFromParent<br>第二个来自于reactiveNameFromParent ，随着祖先组件变化而变化了</p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/08/19/github%E5%87%BA%E7%8E%B0403%E9%94%99%E8%AF%AF/">github出现403错误</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/08/23/vue2的provide和inject/">https://codermino.github.io/2021/08/23/vue2的provide和inject/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
