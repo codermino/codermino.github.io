@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue表单验证失去焦点和改变时同时触发 - Mino
+      vue组件的按需加载 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue异步组件懒加载-按需加载"><span class="toc-text">vue异步组件懒加载(按需加载)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么需要懒加载"><span class="toc-text">为什么需要懒加载?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步组件的描述："><span class="toc-text">异步组件的描述：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#法一：结合webpack"><span class="toc-text">法一：结合webpack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#法二：通过webpack2-es2015返回一个promise"><span class="toc-text">法二：通过webpack2+es2015返回一个promise</span></a></li></ol></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -152,92 +157,79 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue表单验证失去焦点和改变时同时触发</div>
+      <div class="title">vue组件的按需加载</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/08/23</span>
+          <span>2021/08/24</span>
         </span>
 
         
 
-         
-        <span class="item">
-          <span class="iconfont icon-folder"></span>
-          <span>
-              
-                
-                  <a href="/categories/vue">vue</a>
-                
-              
-          </span>
-        </span>
         
         
-         
-          <span class="item">
-            <span class="iconfont icon-tag1"></span>
-            <span>
-                
-                  
-                    <a href="/tags/vue表单验证失去焦点和改变时同时触发">vue表单验证失去焦点和改变时同时触发</a>
-                  
-                
-            </span>
-          </span>
-         
+        
       </div>
       <div>
       </div>
     </div>
-    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<pre><code class="hljs vue">&lt;template&gt;
-    &lt;div class&#x3D;&quot;validator&quot;&gt;
-        &lt;Form ref&#x3D;&quot;formValidate&quot; :model&#x3D;&quot;formValidate&quot; :rules&#x3D;&quot;ruleValidate&quot; :label-width&#x3D;&quot;80&quot;&gt;
-            &lt;FormItem label&#x3D;&quot;E-mail&quot; prop&#x3D;&quot;mail&quot;&gt;
-                &lt;Input v-model&#x3D;&quot;formValidate.mail&quot; placeholder&#x3D;&quot;Enter your e-mail&quot;&gt;&lt;&#x2F;Input&gt;
-            &lt;&#x2F;FormItem&gt;
-            &lt;FormItem&gt;
-                &lt;Button type&#x3D;&quot;primary&quot; @click&#x3D;&quot;handleSubmit(&#39;formValidate&#39;)&quot;&gt;Submit&lt;&#x2F;Button&gt;
-                &lt;Button @click&#x3D;&quot;handleReset(&#39;formValidate&#39;)&quot; style&#x3D;&quot;margin-left: 8px&quot;&gt;Reset&lt;&#x2F;Button&gt;
-            &lt;&#x2F;FormItem&gt;
-        &lt;&#x2F;Form&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-&lt;script&gt;
-    export default &#123;
-        name: &#39;validator&#39;,
-        data () &#123;
-            return &#123;
-                formValidate: &#123;
-                    mail: &#39;&#39;
-                &#125;,
-                ruleValidate: &#123;
-                    mail: [
-                        &#123; required: true, message: &#39;Mailbox cannot be empty&#39;, trigger: &#39;blur&#39; &#125;,
-                        &#x2F;&#x2F; &#123; type: &#39;email&#39;, message: &#39;Incorrect email format&#39;, trigger: &#39;blur,change&#39; &#125;
-                        &#123; type: &#39;email&#39;, message: &#39;Incorrect email format&#39;, trigger: [&quot;blur&quot;, &quot;change&quot;] &#125;
-                    ]
-                &#125;
-            &#125;
-        &#125;,
-        methods: &#123;
-            handleSubmit (name) &#123;
-                this.$refs[name].validate((valid) &#x3D;&gt; &#123;
-                    if (valid) &#123;
-                        this.$Message.success(&#39;Success!&#39;);
-                    &#125; else &#123;
-                        this.$Message.error(&#39;Fail!&#39;);
-                    &#125;
-                &#125;)
-            &#125;,
-            handleReset (name) &#123;
-                this.$refs[name].resetFields();
-            &#125;
-        &#125;
-    &#125;
-&lt;&#x2F;script&gt;</code></pre>
+    <h3 id="vue异步组件懒加载-按需加载">vue异步组件懒加载(按需加载)<a class="post-anchor" href="#vue异步组件懒加载-按需加载"></a></h3><p>利用webpack对代码进行分割是懒加载的前提，<br>懒加载就是异步调用组件，需要时候才下载（按需加载）。</p>
+<h3 id="为什么需要懒加载">为什么需要懒加载?<a class="post-anchor" href="#为什么需要懒加载"></a></h3><p>在单页应用中，如果没有应用懒加载，运<br>用webpack打包后的文件将会异常的大，造成进入首页时，<br>需要加载的内容过多，延时过长，不利于用户体验，<br>而运用懒加载则可以将页面进行划分，需要的时候加载页面，<br>可以有效的分担首页所承担的加载压力，减少首页加载用时。</p>
+<p>vue开发过程中，我们会做出特别多特别多的组件，<br>包括login,header,footer,main等等。<br>这样使整个网站看起来就十分的庞大，<br>当我们在打开网页的时候，突然一下子把这些所有的组件加载上来，<br>这么多的请求全部同时开始请求，势必会造成网页打开很慢，<br>使客户得到的是非常差劲的体验。</p>
+<p>因此，vue为我们专门设立了异步组件，通过异步组件，我们可以得到两点好处：</p>
+<ol>
+<li>用不到的组件不会加载，因此网页打开速度会很快，<br>当你用到这个组件的时候，才会通过异步请求进行加载；</li>
+<li>缓存组件，通过异步加载的组件会缓存起来，<br>当你下一次再用到这个组件时，丝毫不会有任何的疑迟，<br>组件很快会从缓存中加载出来。</li>
+</ol>
+<p>异步组件=原理同webpack的按需加载<br>好处：<br>1）按需加载，可以节省首次加载时间，提高速度，性能优化<br>2）第一次加载完成会缓存</p>
+<h3 id="异步组件的描述：">异步组件的描述：<a class="post-anchor" href="#异步组件的描述："></a></h3><pre><code class="hljs markdown">Vue允许将组件定义为一个异步解析（加载）组件定义的工厂函数，
+即Vue只在实际需要渲染组件时，
+才会触发调用工厂函数，并且将结果缓存起来，用于将来再次渲染。</code></pre>
 
+<h4 id="法一：结合webpack">法一：结合webpack<a class="post-anchor" href="#法一：结合webpack"></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">//1）全局：</span>
+ Vue.component(<span class="hljs-string">'component-name'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>)</span>&#123;
+ <span class="hljs-comment">//require 语法告诉 webpack自动将编译后的代码分割成不同的块</span>
+ <span class="hljs-comment">//这些块将通过 Ajax 请求自动下载</span>
+   <span class="hljs-built_in">require</span>([<span class="hljs-string">'./my-async-componnet'</span>],resolve)
+ &#125;)
+ <span class="hljs-comment">//注册全局组件名，但只有一个名字，没有实体，相当于空的</span>
+<span class="hljs-comment">//当需要这个组件时，调用上面的工厂函数，触发webpack的异步加载模块方法</span>
+<span class="hljs-comment">//然后异步请求一个模块，请求成功后，这个模块内容即为组件实体部分，并对应地方渲染，加载内容也缓存下来。</span>
+ 
+<span class="hljs-comment">//2）局部</span>
+ <span class="hljs-keyword">new</span> Vue(&#123;
+   <span class="hljs-attr">components</span>: &#123;
+        <span class="hljs-string">'component-name'</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
+           <span class="hljs-built_in">require</span>([<span class="hljs-string">'./my-component'</span>], resolve)
+        &#125;,
+        <span class="hljs-comment">// "component-name": (resolve) =&gt; &#123;</span>
+            <span class="hljs-comment">// import('./my-component').then((module) =&gt; &#123;</span>
+               <span class="hljs-comment">// resolve(module)</span>
+            <span class="hljs-comment">// &#125;)</span>
+        <span class="hljs-comment">// &#125;</span>
+   &#125;
+ &#125;)
+ 
+ 
+<span class="hljs-comment">//例子</span>
+&#123;
+    <span class="hljs-attr">path</span>: <span class="hljs-string">'/mainPage'</span>,<span class="hljs-comment">//测试</span>
+    <span class="hljs-attr">name</span>: <span class="hljs-string">'mainPage'</span>,
+    <span class="hljs-attr">component</span>: <span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>([<span class="hljs-string">'../views/mainPage/mainPage.vue'</span>], resolve)
+    &#125;,
+  &#125;,</code></pre>
+
+<h4 id="法二：通过webpack2-es2015返回一个promise">法二：通过webpack2+es2015返回一个promise<a class="post-anchor" href="#法二：通过webpack2-es2015返回一个promise"></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">//1）全局：</span>
+Vue.component(<span class="hljs-string">'component-name'</span>,
+ （）=&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./my-async-componnet'</span>)
+ )
+<span class="hljs-comment">//2） 局部：</span>
+ <span class="hljs-keyword">new</span> Vue(&#123;
+   <span class="hljs-attr">components</span>: &#123;
+       <span class="hljs-string">'component-name'</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>  <span class="hljs-keyword">import</span>(<span class="hljs-string">'./my-async-componnet'</span>)
+   &#125;
+ &#125;)</code></pre>
 
   
     <div class="post-reward">
@@ -263,12 +255,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">vue组件的按需加载</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/08/23/vue2%E7%9A%84provide%E5%92%8Cinject/">vue2的provide和inject</a>
+          <a href="/2021/08/23/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/">vue表单验证失去焦点和改变时同时触发</a>
         
     </div>
   </div>
@@ -280,7 +270,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/08/23/vue表单验证失去焦点和改变时同时触发/">https://codermino.github.io/2021/08/23/vue表单验证失去焦点和改变时同时触发/</a>
+      永久链接：<a href="https://codermino.github.io/2021/08/24/vue组件的按需加载/">https://codermino.github.io/2021/08/24/vue组件的按需加载/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！

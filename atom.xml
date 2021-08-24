@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-08-23T12:54:24.888Z</updated>
+  <updated>2021-08-24T15:00:45.151Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue组件的按需加载</title>
+    <link href="https://codermino.github.io/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/"/>
+    <id>https://codermino.github.io/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/</id>
+    <published>2021-08-24T14:50:01.000Z</published>
+    <updated>2021-08-24T15:00:45.151Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;vue异步组件懒加载-按需加载&quot;&gt;vue异步组件懒加载(按需加载)&lt;a class=&quot;post-anchor&quot; href=&quot;#vue异步组件懒加载-按需加载&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;利用webpack对代码进行分割是懒加载的前提，&lt;br&gt;懒加载就是异步调用组件，
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>vue表单验证失去焦点和改变时同时触发</title>
@@ -484,32 +504,6 @@
     
     
       <category term="js复习笔记" scheme="https://codermino.github.io/tags/js%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>canvas保存为图片</title>
-    <link href="https://codermino.github.io/2021/04/07/canvas%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%9B%BE%E7%89%87/"/>
-    <id>https://codermino.github.io/2021/04/07/canvas%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%9B%BE%E7%89%87/</id>
-    <published>2021-04-07T06:17:17.000Z</published>
-    <updated>2021-04-07T06:23:14.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;把canvas转为base64编码的数据&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs javascript&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; canvas = &lt;span class=&quot;hljs-bui
-      
-    
-    </summary>
-    
-    
-      <category term="canvas" scheme="https://codermino.github.io/categories/canvas/"/>
-    
-    
-      <category term="canvas保存为图片" scheme="https://codermino.github.io/tags/canvas%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%9B%BE%E7%89%87/"/>
     
   </entry>
   
