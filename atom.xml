@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-08-24T15:00:45.151Z</updated>
+  <updated>2021-08-24T16:19:32.288Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -17,22 +17,52 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>vue组件的按需加载</title>
-    <link href="https://codermino.github.io/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/"/>
-    <id>https://codermino.github.io/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/</id>
-    <published>2021-08-24T14:50:01.000Z</published>
-    <updated>2021-08-24T15:00:45.151Z</updated>
+    <title>vue的observable定义响应式数据</title>
+    <link href="https://codermino.github.io/2021/08/25/vue%E7%9A%84observable%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/"/>
+    <id>https://codermino.github.io/2021/08/25/vue%E7%9A%84observable%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/</id>
+    <published>2021-08-24T16:12:54.000Z</published>
+    <updated>2021-08-24T16:19:32.288Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;vue异步组件懒加载-按需加载&quot;&gt;vue异步组件懒加载(按需加载)&lt;a class=&quot;post-anchor&quot; href=&quot;#vue异步组件懒加载-按需加载&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;利用webpack对代码进行分割是懒加载的前提，&lt;br&gt;懒加载就是异步调用组件，
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用场景&quot;&gt;使用场景&lt;a 
       
     
     </summary>
     
     
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue的observable定义响应式数据" scheme="https://codermino.github.io/tags/vue%E7%9A%84observable%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue组件的按需加载</title>
+    <link href="https://codermino.github.io/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/"/>
+    <id>https://codermino.github.io/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/</id>
+    <published>2021-08-24T14:50:01.000Z</published>
+    <updated>2021-08-24T16:15:45.030Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;vue异步组件懒加载-按需
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue组件的按需加载" scheme="https://codermino.github.io/tags/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/"/>
     
   </entry>
   
@@ -480,30 +510,6 @@
     
     
       <category term="css去除浏览器滚动条" scheme="https://codermino.github.io/tags/css%E5%8E%BB%E9%99%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BB%9A%E5%8A%A8%E6%9D%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js复习笔记</title>
-    <link href="https://codermino.github.io/2021/04/24/js%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://codermino.github.io/2021/04/24/js%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
-    <published>2021-04-24T06:17:07.000Z</published>
-    <updated>2021-04-24T06:18:00.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js复习笔记" scheme="https://codermino.github.io/tags/js%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

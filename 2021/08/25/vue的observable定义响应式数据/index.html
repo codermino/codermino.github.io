@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue组件的按需加载 - Mino
+      vue的observable定义响应式数据 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue异步组件懒加载-按需加载"><span class="toc-text">vue异步组件懒加载(按需加载)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么需要懒加载"><span class="toc-text">为什么需要懒加载?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步组件的描述："><span class="toc-text">异步组件的描述：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#法一：结合webpack"><span class="toc-text">法一：结合webpack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#法二：通过webpack2-es2015返回一个promise"><span class="toc-text">法二：通过webpack2+es2015返回一个promise</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用场景"><span class="toc-text">使用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个js文件，用来存储需要共享的数据"><span class="toc-text">定义一个js文件，用来存储需要共享的数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个父组件"><span class="toc-text">定义一个父组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个子组件观察数据的变化"><span class="toc-text">定义一个子组件观察数据的变化</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue组件的按需加载</div>
+      <div class="title">vue的observable定义响应式数据</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/08/24</span>
+          <span>2021/08/25</span>
         </span>
 
         
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue组件的按需加载">vue组件的按需加载</a>
+                    <a href="/tags/vue的observable定义响应式数据">vue的observable定义响应式数据</a>
                   
                 
             </span>
@@ -196,63 +196,97 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="vue异步组件懒加载-按需加载">vue异步组件懒加载(按需加载)<a class="post-anchor" href="#vue异步组件懒加载-按需加载"></a></h3><p>利用webpack对代码进行分割是懒加载的前提，<br>懒加载就是异步调用组件，需要时候才下载（按需加载）。</p>
-<h3 id="为什么需要懒加载">为什么需要懒加载?<a class="post-anchor" href="#为什么需要懒加载"></a></h3><p>在单页应用中，如果没有应用懒加载，运<br>用webpack打包后的文件将会异常的大，造成进入首页时，<br>需要加载的内容过多，延时过长，不利于用户体验，<br>而运用懒加载则可以将页面进行划分，需要的时候加载页面，<br>可以有效的分担首页所承担的加载压力，减少首页加载用时。</p>
-<p>vue开发过程中，我们会做出特别多特别多的组件，<br>包括login,header,footer,main等等。<br>这样使整个网站看起来就十分的庞大，<br>当我们在打开网页的时候，突然一下子把这些所有的组件加载上来，<br>这么多的请求全部同时开始请求，势必会造成网页打开很慢，<br>使客户得到的是非常差劲的体验。</p>
-<p>因此，vue为我们专门设立了异步组件，通过异步组件，我们可以得到两点好处：</p>
-<ol>
-<li>用不到的组件不会加载，因此网页打开速度会很快，<br>当你用到这个组件的时候，才会通过异步请求进行加载；</li>
-<li>缓存组件，通过异步加载的组件会缓存起来，<br>当你下一次再用到这个组件时，丝毫不会有任何的疑迟，<br>组件很快会从缓存中加载出来。</li>
-</ol>
-<p>异步组件=原理同webpack的按需加载<br>好处：<br>1）按需加载，可以节省首次加载时间，提高速度，性能优化<br>2）第一次加载完成会缓存</p>
-<h3 id="异步组件的描述：">异步组件的描述：<a class="post-anchor" href="#异步组件的描述："></a></h3><pre><code class="hljs markdown">Vue允许将组件定义为一个异步解析（加载）组件定义的工厂函数，
-即Vue只在实际需要渲染组件时，
-才会触发调用工厂函数，并且将结果缓存起来，用于将来再次渲染。</code></pre>
+<h3 id="使用场景">使用场景<a class="post-anchor" href="#使用场景"></a></h3><p>随着组件的细化，就会遇到多组件状态共享的情况，<br>Vuex当然可以解决这类问题，不过就像 Vuex官方文档所说的，<br>如果应用不够大，为避免代码繁琐冗余，最好不要使用它，<br>今天我们介绍的是 vue.js 2.6 新增加的 Observable API ，<br>通过使用这个 api 我们可以应对一些简单的跨组件数据状态共享的情况。</p>
+<h3 id="定义一个js文件，用来存储需要共享的数据">定义一个js文件，用来存储需要共享的数据<a class="post-anchor" href="#定义一个js文件，用来存储需要共享的数据"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
 
-<h4 id="法一：结合webpack">法一：结合webpack<a class="post-anchor" href="#法一：结合webpack"></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">//1）全局：</span>
- Vue.component(<span class="hljs-string">'component-name'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>)</span>&#123;
- <span class="hljs-comment">//require 语法告诉 webpack自动将编译后的代码分割成不同的块</span>
- <span class="hljs-comment">//这些块将通过 Ajax 请求自动下载</span>
-   <span class="hljs-built_in">require</span>([<span class="hljs-string">'./my-async-componnet'</span>],resolve)
- &#125;)
- <span class="hljs-comment">//注册全局组件名，但只有一个名字，没有实体，相当于空的</span>
-<span class="hljs-comment">//当需要这个组件时，调用上面的工厂函数，触发webpack的异步加载模块方法</span>
-<span class="hljs-comment">//然后异步请求一个模块，请求成功后，这个模块内容即为组件实体部分，并对应地方渲染，加载内容也缓存下来。</span>
- 
-<span class="hljs-comment">//2）局部</span>
- <span class="hljs-keyword">new</span> Vue(&#123;
-   <span class="hljs-attr">components</span>: &#123;
-        <span class="hljs-string">'component-name'</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve</span>) </span>&#123;
-           <span class="hljs-built_in">require</span>([<span class="hljs-string">'./my-component'</span>], resolve)
-        &#125;,
-        <span class="hljs-comment">// "component-name": (resolve) =&gt; &#123;</span>
-            <span class="hljs-comment">// import('./my-component').then((module) =&gt; &#123;</span>
-               <span class="hljs-comment">// resolve(module)</span>
-            <span class="hljs-comment">// &#125;)</span>
-        <span class="hljs-comment">// &#125;</span>
-   &#125;
- &#125;)
- 
- 
-<span class="hljs-comment">//例子</span>
-&#123;
-    <span class="hljs-attr">path</span>: <span class="hljs-string">'/mainPage'</span>,<span class="hljs-comment">//测试</span>
-    <span class="hljs-attr">name</span>: <span class="hljs-string">'mainPage'</span>,
-    <span class="hljs-attr">component</span>: <span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;
-      <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>([<span class="hljs-string">'../views/mainPage/mainPage.vue'</span>], resolve)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> store =Vue.observable(&#123;
+    <span class="hljs-attr">count</span>:<span class="hljs-number">0</span>,
+    <span class="hljs-attr">name</span>:<span class="hljs-string">'李四'</span>
+&#125;);
+<span class="hljs-comment">// export let store =&#123;</span>
+<span class="hljs-comment">//     count:0,</span>
+<span class="hljs-comment">//     name:'李四'</span>
+<span class="hljs-comment">// &#125;</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> mutations = &#123;
+    setName (data) &#123;
+        store.name = data
     &#125;,
-  &#125;,</code></pre>
+    setCount(count)&#123;
+        store.count=count;
+    &#125;,
+    changeName(name)&#123;
+        store.name=name;
+    &#125;
+&#125;</code></pre>
 
-<h4 id="法二：通过webpack2-es2015返回一个promise">法二：通过webpack2+es2015返回一个promise<a class="post-anchor" href="#法二：通过webpack2-es2015返回一个promise"></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">//1）全局：</span>
-Vue.component(<span class="hljs-string">'component-name'</span>,
- （）=&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">'./my-async-componnet'</span>)
- )
-<span class="hljs-comment">//2） 局部：</span>
- <span class="hljs-keyword">new</span> Vue(&#123;
-   <span class="hljs-attr">components</span>: &#123;
-       <span class="hljs-string">'component-name'</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span>  <span class="hljs-keyword">import</span>(<span class="hljs-string">'./my-async-componnet'</span>)
-   &#125;
- &#125;)</code></pre>
+<h3 id="定义一个父组件">定义一个父组件<a class="post-anchor" href="#定义一个父组件"></a></h3><p><strong>在父组件中使用引用对应的js文件</strong><br>可以发现在更改了数据之后父组件的试图也进行了更新</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;observable&quot;&gt;
+        &lt;button @click&#x3D;&quot;findClick&quot;&gt;改变&lt;&#x2F;button&gt;
+        &lt;span&gt;&#123;&#123;name&#125;&#125;&lt;&#x2F;span&gt;
+        &lt;hr&#x2F;&gt;
+        &lt;button @click&#x3D;&quot;setCount(count+1)&quot;&gt;+1&lt;&#x2F;button&gt;
+        &lt;button @click&#x3D;&quot;setCount(count-1)&quot;&gt;-1&lt;&#x2F;button&gt;
+        &lt;div&gt;store中count：&#123;&#123;count&#125;&#125;&lt;&#x2F;div&gt;
+        &lt;button @click&#x3D;&quot;changeName(name1)&quot;&gt;父页面修改name&lt;&#x2F;button&gt;
+        &lt;div&gt;store中name：&#123;&#123;name&#125;&#125;&lt;&#x2F;div&gt;
+        &lt;hr&#x2F;&gt;
+        &lt;observable-child&gt;&lt;&#x2F;observable-child&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    import &#123;store, mutations&#125; from &quot;..&#x2F;observable&quot;;
+    export default &#123;
+        name: &quot;observable&quot;,
+        components:&#123;
+          &#39;observableChild&#39;: ()&#x3D;&gt; import(&#39;.&#x2F;observableChild&#39;)
+        &#125;,
+        computed:&#123;
+            count()&#123;
+                return store.count
+            &#125;,
+            name()&#123;
+                return store.name
+            &#125;
+        &#125;,
+        data() &#123;
+            return &#123;
+                name1: &#39;zs&#39;
+            &#125;
+        &#125;,
+        methods: &#123;
+            findClick() &#123;
+                mutations.setName(&#39;我改了&#39;) &#x2F;&#x2F; 引入store.js 通过定义的mutations下边的方法修改
+            &#125;,
+            setCount:mutations.setCount,
+            changeName:mutations.changeName
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="定义一个子组件观察数据的变化">定义一个子组件观察数据的变化<a class="post-anchor" href="#定义一个子组件观察数据的变化"></a></h3><p><strong>在子组件中也可以发现数据发生了改变</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;observable&quot;&gt;
+        &lt;div&gt;子组件中的数据: store中count：&#123;&#123;count&#125;&#125;&lt;&#x2F;div&gt;
+        &lt;div&gt;子组件中的数据: store中name：&#123;&#123;name&#125;&#125;&lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+    import &#123;store&#125; from &quot;..&#x2F;observable&quot;;
+    export default &#123;
+        name: &quot;observable&quot;,
+        computed:&#123;
+            count()&#123;
+                return store.count
+            &#125;,
+            name()&#123;
+                return store.name
+            &#125;
+        &#125;
+    &#125;
+&lt;&#x2F;script&gt;</code></pre>
 
   
     <div class="post-reward">
@@ -278,12 +312,10 @@ Vue.component(<span class="hljs-string">'component-name'</span>,
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/08/25/vue%E7%9A%84observable%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/">vue的observable定义响应式数据</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/08/23/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/">vue表单验证失去焦点和改变时同时触发</a>
+          <a href="/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/">vue组件的按需加载</a>
         
     </div>
   </div>
@@ -295,7 +327,7 @@ Vue.component(<span class="hljs-string">'component-name'</span>,
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/08/24/vue组件的按需加载/">https://codermino.github.io/2021/08/24/vue组件的按需加载/</a>
+      永久链接：<a href="https://codermino.github.io/2021/08/25/vue的observable定义响应式数据/">https://codermino.github.io/2021/08/25/vue的observable定义响应式数据/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
