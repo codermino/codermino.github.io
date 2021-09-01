@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-08-24T16:19:32.288Z</updated>
+  <updated>2021-09-01T09:11:19.951Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>发布自己的npm插件和引入具体仓库的插件</title>
+    <link href="https://codermino.github.io/2021/09/01/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84npm%E6%8F%92%E4%BB%B6%E5%92%8C%E5%BC%95%E5%85%A5%E5%85%B7%E4%BD%93%E4%BB%93%E5%BA%93%E7%9A%84%E6%8F%92%E4%BB%B6/"/>
+    <id>https://codermino.github.io/2021/09/01/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84npm%E6%8F%92%E4%BB%B6%E5%92%8C%E5%BC%95%E5%85%A5%E5%85%B7%E4%BD%93%E4%BB%93%E5%BA%93%E7%9A%84%E6%8F%92%E4%BB%B6/</id>
+    <published>2021-09-01T08:28:55.000Z</published>
+    <updated>2021-09-01T09:11:19.951Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;发布自己的npm插件&quot;&gt;发布自己的npm插件&lt;a class=&quot;post-anchor&quot; href=&quot;#发布自己的npm插件&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;注册自己的npm账号并且&lt;strong&gt;激活邮箱&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;创建自己的np
+      
+    
+    </summary>
+    
+    
+      <category term="npm" scheme="https://codermino.github.io/categories/npm/"/>
+    
+    
+      <category term="发布自己的npm插件和引入具体仓库的插件" scheme="https://codermino.github.io/tags/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84npm%E6%8F%92%E4%BB%B6%E5%92%8C%E5%BC%95%E5%85%A5%E5%85%B7%E4%BD%93%E4%BB%93%E5%BA%93%E7%9A%84%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>vue的observable定义响应式数据</title>
@@ -485,31 +511,6 @@
     
     
       <category term="vue的$prop和$attrs和$listener" scheme="https://codermino.github.io/tags/vue%E7%9A%84-prop%E5%92%8C-attrs%E5%92%8C-listener/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>css去除浏览器滚动条</title>
-    <link href="https://codermino.github.io/2021/05/26/css%E5%8E%BB%E9%99%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BB%9A%E5%8A%A8%E6%9D%A1/"/>
-    <id>https://codermino.github.io/2021/05/26/css%E5%8E%BB%E9%99%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BB%9A%E5%8A%A8%E6%9D%A1/</id>
-    <published>2021-05-26T07:07:48.000Z</published>
-    <updated>2021-05-26T07:11:42.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/css/css.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/css/css.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hljs less
-      
-    
-    </summary>
-    
-    
-      <category term="css" scheme="https://codermino.github.io/categories/css/"/>
-    
-    
-      <category term="css去除浏览器滚动条" scheme="https://codermino.github.io/tags/css%E5%8E%BB%E9%99%A4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%BB%9A%E5%8A%A8%E6%9D%A1/"/>
     
   </entry>
   

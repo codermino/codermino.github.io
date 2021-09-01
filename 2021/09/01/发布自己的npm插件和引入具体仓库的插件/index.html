@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      发布自己的npm插件和引入具体仓库的插件 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#发布自己的npm插件"><span class="toc-text">发布自己的npm插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用npm安装github仓库中的代码"><span class="toc-text">使用npm安装github仓库中的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装方法"><span class="toc-text">安装方法</span></a></li></ol></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,150 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/10/15/vue%E6%95%B0%E6%8D%AE%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/" title="vue数据双向绑定原理">
-                <span>2020/10/15</span>
-                <span>vue数据双向绑定原理</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/15/vue%E7%9A%84is%E5%B1%9E%E6%80%A7/" title="vue的is属性">
-                <span>2020/10/15</span>
-                <span>vue的is属性</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/14/proxy%E7%AC%94%E8%AE%B0/" title="proxy笔记">
-                <span>2020/10/14</span>
-                <span>proxy笔记</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/13/js%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/" title="js深拷贝和浅拷贝">
-                <span>2020/10/13</span>
-                <span>js深拷贝和浅拷贝</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/12/fetch%E7%94%A8%E6%B3%95/" title="fetch用法">
-                <span>2020/10/12</span>
-                <span>fetch用法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/12/vitenote/" title="vitenote">
-                <span>2020/10/12</span>
-                <span>vitenote</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/vue3reactive-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%AF%B9%E8%B1%A1-%E5%92%8CtoRefs/" title="vue3reactive(响应式对象)和toRefs">
-                <span>2020/10/09</span>
-                <span>vue3reactive(响应式对象)和toRefs</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/js%E4%B8%AD%E7%9A%84this%E6%80%BB%E7%BB%93/" title="js中的this总结">
-                <span>2020/10/09</span>
-                <span>js中的this总结</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/css3%E7%9A%84animation-fill-mode/" title="css3的animation-fill-mode">
-                <span>2020/10/09</span>
-                <span>css3的animation-fill-mode</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/10/09/vue%E6%95%B0%E6%8D%AE%E8%B5%8B%E5%80%BC%E4%BD%86%E8%A7%86%E5%9B%BE%E6%B2%A1%E6%9B%B4%E6%96%B0/" title="vue数据赋值但视图没更新">
-                <span>2020/10/09</span>
-                <span>vue数据赋值但视图没更新</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="page-number" href="/archives/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/archives/page/14/">14</a><a class="page-number" href="/archives/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/23/">23</a>
-</div>
-</div>
+      <div class="title">发布自己的npm插件和引入具体仓库的插件</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/09/01</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/npm">npm</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/发布自己的npm插件和引入具体仓库的插件">发布自己的npm插件和引入具体仓库的插件</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="发布自己的npm插件">发布自己的npm插件<a class="post-anchor" href="#发布自己的npm插件"></a></h3><ol>
+<li>注册自己的npm账号并且<strong>激活邮箱</strong></li>
+<li>创建自己的npm包</li>
+<li>1 创建一个空的文件夹,进入</li>
+<li>2 创建一个默认的npm包 npm init或者直接npm init -y</li>
+<li>3 创建一个index.js文件作为包入口文件<br>  当然这是默认的入口文件,如果有其他想法的话，<br>  完全可以在package.json中进行修改。</li>
+<li>4 index.js`<br>  index.js就是你这个包的入口文件,你可以在里面做你想要的操作</li>
+<li>5 node index.js<br>  最简单的内容就是打印一个日志,这时候你可以通过执行node index.js<br>  来执行index.js中的内容,可以看到控制台中打印出了你想要的信息</li>
+<li>6 写自己的插件index.js,例如下面的例子，随便写点</li>
+</ol>
+<p><strong>eq:</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>&#123;
+    <span class="hljs-keyword">constructor</span>() &#123;
+            
+    &#125;
+&#125;</code></pre>
+<ol start="3">
+<li>发布npm包</li>
+<li>1 登录npm(添加用户)<pre><code class="hljs markdown">添加npm用户,或者说登录你的npm账号
+执行： npm adduser
+然后会提示你输入你的用户名和密码以及邮箱,如果输入正确会提示你成功登录</code></pre></li>
+<li>2 npm publish<pre><code class="hljs markdown">当你成功登录之后,就可以发布你的npm包了。
+执行： npm publish</code></pre></li>
+<li>3 注意：如果出现错误<pre><code class="hljs markdown">那么可能性有两个：
+1、你没有执行npm adduser进行登录
+2、可能你的包名重复了。
+如这里的包名可能重复了所以导致无法publish上,
+这时最简单的方法是改包名,加上一个特殊的标志即可,
+改包名只需要对package.json中的name进行修改即可。</code></pre></li>
+<li>引用npm包</li>
+<li>1 下载依赖包<br>可以像其他插件一样使用npm进行安装</li>
+<li>更新npm包</li>
+<li>1 更改版本号<pre><code class="hljs markdown">最简单方式无非就是改package.json关于版本
+或者可以执行命令： npm version 1.0.1 同样可以起到作用</code></pre></li>
+<li>2 更新版本——发布版本<pre><code class="hljs markdown">更新npm包同样是执行npm publish即可，
+可以看到publish的包已经更新了</code></pre></li>
+<li>3 更新依赖包<pre><code class="hljs markdown">同样是执行： npm install -save-dev xxx
+这样会更新最新的包到node_module中
+当然可能由于各种原因导致你更新的包还没有在npm上更新或者说你更新下来的依旧是旧的包。</code></pre></li>
+<li>撤销发布的npm包<pre><code class="hljs markdown">我们现在发布的这个npm包只是测试用的或者只是用作其他作用而不是要发布到网上真的使用的，
+最好还是撤销下来。
+执行命令： npm --force unpublish xxx
+需要注意的是：
+1、撤销npm包需要加上 --force强制执行才可以实现;
+2、撤销的包不能立马再次发布</code></pre>
+
+</li>
+</ol>
+<h3 id="使用npm安装github仓库中的代码">使用npm安装github仓库中的代码<a class="post-anchor" href="#使用npm安装github仓库中的代码"></a></h3><p>我们在使用npm下载包的时候，一般是下载在npm官网发布过的。可以指定版本，指定依赖等等。<br>但是，对于一个团队或公司，需要从自己的工作账号拉取代码，npm是直接支持从git仓库安装的。</p>
+<h4 id="安装方法">安装方法<a class="post-anchor" href="#安装方法"></a></h4><p>npm install <a href="https://github.com/xxx/xxx.git" target="_blank" rel="noopener">https://github.com/xxx/xxx.git</a> -S<br>或者<br>npm install git://git@github.com/xxx/xxx.git<br>此时，package.json文件中，会出现对应的项目依赖，后面的版本号会替换成git地址<br><a href="/images/gitself.jpg" data-caption data-fancybox="images"><img src="/images/gitself.jpg" alt></a></p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/08/25/vue%E7%9A%84observable%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/">vue的observable定义响应式数据</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/09/01/发布自己的npm插件和引入具体仓库的插件/">https://codermino.github.io/2021/09/01/发布自己的npm插件和引入具体仓库的插件/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
