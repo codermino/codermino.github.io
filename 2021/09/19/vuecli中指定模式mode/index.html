@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      分类 - Mino
+      vuecli中指定模式mode - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用mode"><span class="toc-text">使用mode</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Demo"><span class="toc-text">Demo</span></a></li></ol></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -66,7 +71,7 @@
           标签
         </a>
         
-        <a href="/categories" class="current">
+        <a href="/categories" class="">
           分类
         </a>
         
@@ -116,7 +121,7 @@
             标签
           </a>
           
-          <a href="/categories" class="current">
+          <a href="/categories" class="">
             分类
           </a>
           
@@ -149,123 +154,131 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-     
-        <div class="title">
-            分类 - vue
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2021" >
-                2021
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2021/09/19/vuecli%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%BC%8Fmode/" title="vuecli中指定模式mode">
-                <span>2021/09/19</span>
-                <span>vuecli中指定模式mode</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/25/vue%E7%9A%84observable%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/" title="vue的observable定义响应式数据">
-                <span>2021/08/25</span>
-                <span>vue的observable定义响应式数据</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/" title="vue组件的按需加载">
-                <span>2021/08/24</span>
-                <span>vue组件的按需加载</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/23/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/" title="vue表单验证失去焦点和改变时同时触发">
-                <span>2021/08/23</span>
-                <span>vue表单验证失去焦点和改变时同时触发</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/23/vue2%E7%9A%84provide%E5%92%8Cinject/" title="vue2的provide和inject">
-                <span>2021/08/23</span>
-                <span>vue2的provide和inject</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/11/vue%E6%96%87%E5%AD%97%E6%A8%AA%E5%90%91%E8%B5%B0%E9%A9%AC%E7%81%AF/" title="vue文字横向走马灯">
-                <span>2021/08/11</span>
-                <span>vue文字横向走马灯</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/04/vue%E4%BD%BF%E7%94%A8require-context%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6/" title="vue使用require.context工程化引入文件">
-                <span>2021/08/04</span>
-                <span>vue使用require.context工程化引入文件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/04/vue%E7%9A%84img%E7%9A%84load%E4%BA%8B%E4%BB%B6/" title="vue的img显示占位图和错误图片和load事件">
-                <span>2021/08/04</span>
-                <span>vue的img显示占位图和错误图片和load事件</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/03/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/" title="vue的插槽总结">
-                <span>2021/08/03</span>
-                <span>vue的插槽总结</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/07/29/vue%E7%9A%84hook-beforedestroy/" title="vue的hook:beforedestroy">
-                <span>2021/07/29</span>
-                <span>vue的hook:beforedestroy</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span><a class="page-number" href="/categories/vue/page/2/">2</a><a class="page-number" href="/categories/vue/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/categories/vue/page/8/">8</a>
-</div>
-</div>
+      <div class="title">vuecli中指定模式mode</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/09/19</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vuecli中指定模式mode">vuecli中指定模式mode</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="使用mode">使用mode<a class="post-anchor" href="#使用mode"></a></h3><p>vue-cli –mode 可以通过传递 –mode 选项参数为命令行覆写默认的模式</p>
+<h4 id="Demo">Demo<a class="post-anchor" href="#Demo"></a></h4><p>在vue cli项目中的package.json中进行如下配置</p>
+<ol>
+<li>test 指定模式为test –mode test</li>
+<li>production 指定模式为production –mode production<pre><code class="hljs markdown">&#123;
+  "scripts": &#123;
+<span class="hljs-code">    "serve": "vue-cli-service serve",</span>
+<span class="hljs-code">    "build": "vue-cli-service build",</span>
+<span class="hljs-code">    "lint": "vue-cli-service lint",</span>
+<span class="hljs-code">    "test": "vue-cli-service build --mode test",</span>
+<span class="hljs-code">    "production": "vue-cli-service build --mode production"</span>
+  &#125;
+&#125;</code></pre>
+
+</li>
+</ol>
+<p>可以在配置公共的ip和端口的时候进行不同模式的判断</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> API_PREFIX = &#123;
+	<span class="hljs-attr">USER</span>: <span class="hljs-string">'http://localhost:8210'</span> <span class="hljs-comment">//运维总线</span>
+&#125;;
+
+<span class="hljs-comment">// 测试环境</span>
+<span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">'test'</span>) &#123;
+	API_PREFIX.USER = <span class="hljs-string">'http://192.168.31.171:8210'</span>;
+&#125;
+
+<span class="hljs-comment">// 生产环境</span>
+<span class="hljs-keyword">if</span> (process.env.NODE_ENV === <span class="hljs-string">'production'</span>) &#123;
+	API_PREFIX.USER = <span class="hljs-string">'http://192.168.31.167:8210'</span>;
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/09/01/%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84npm%E6%8F%92%E4%BB%B6%E5%92%8C%E5%BC%95%E5%85%A5%E5%85%B7%E4%BD%93%E4%BB%93%E5%BA%93%E7%9A%84%E6%8F%92%E4%BB%B6/">发布自己的npm插件和引入具体仓库的插件</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/09/19/vuecli中指定模式mode/">https://codermino.github.io/2021/09/19/vuecli中指定模式mode/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
