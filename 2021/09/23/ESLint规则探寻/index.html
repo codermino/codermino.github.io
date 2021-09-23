@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      ESLint规则探寻 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ESLint代码规范总结"><span class="toc-text">ESLint代码规范总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#强制-“for”-循环中更新子句的计数器朝着正确的方向移动"><span class="toc-text">强制 “for” 循环中更新子句的计数器朝着正确的方向移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强制在-getter-属性中出现一个-return-语句"><span class="toc-text">强制在 getter 属性中出现一个 return 语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#禁止使用异步函数作为-Promise-executor-no-async-promise-executor"><span class="toc-text">禁止使用异步函数作为 Promise executor (no-async-promise-executor)</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">ESLint规则探寻</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/09/23</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/ESLint">ESLint</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/ESLint规则探寻">ESLint规则探寻</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h1 id="ESLint代码规范总结">ESLint代码规范总结<a class="post-anchor" href="#ESLint代码规范总结"></a></h1><h2 id="强制-“for”-循环中更新子句的计数器朝着正确的方向移动">强制 “for” 循环中更新子句的计数器朝着正确的方向移动<a class="post-anchor" href="#强制-“for”-循环中更新子句的计数器朝着正确的方向移动"></a></h2><p><strong>(推荐) 配置文件中的 “extends”: “eslint:recommended” 属性启用此规则。</strong><br>如果一个 for 循环的停止条件永远无法到达，比如，计数器在错误的方向上移动，将陷入无限循环。当存在这样的无限循环时，惯例是改用 while 循环。更典型的是，无限循环是个 bug。<br><strong>错误代码示例</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*eslint for-direction: "error"*/</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i--) &#123;
+&#125;
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">10</span>; i &gt;= <span class="hljs-number">0</span>; i++) &#123;
+&#125;</code></pre>
+<p><strong>正确代码示例</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*eslint for-direction: "error"*/</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;
+&#125;</code></pre>
+<h2 id="强制在-getter-属性中出现一个-return-语句">强制在 getter 属性中出现一个 return 语句<a class="post-anchor" href="#强制在-getter-属性中出现一个-return-语句"></a></h2><p><strong>配置文件中的 “extends”: “eslint:recommended” 属性启用了此规则。</strong><br>get 语法将对象属性绑定到一个函数，该函数在查找该属性时将被调用。这是首次在 ECMAScript 5 中引入：</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> p = &#123;
+	<span class="hljs-keyword">get</span> name()&#123;
+	<span class="hljs-keyword">return</span> <span class="hljs-string">"nicholas"</span>;
+	&#125;
+&#125;;
+
+<span class="hljs-built_in">Object</span>.defineProperty(p, <span class="hljs-string">"age"</span>, &#123;
+	<span class="hljs-attr">get</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>&#123;
+	<span class="hljs-keyword">return</span> <span class="hljs-number">17</span>;
+	&#125;
+&#125;);</code></pre>
+
+<h2 id="禁止使用异步函数作为-Promise-executor-no-async-promise-executor">禁止使用异步函数作为 Promise executor (no-async-promise-executor)<a class="post-anchor" href="#禁止使用异步函数作为-Promise-executor-no-async-promise-executor"></a></h2><p><strong>配置文件中的 “extends”: “eslint:recommended” 属性启用了此规则。</strong><br>new Promise 构造函数接收一个 executor 函数作为参数，该函数具有 resolve 和 reject 两个参数，<br>可用于控制创建的 Promise 的状态。例如:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> result = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">executor</span>(<span class="hljs-params">resolve, reject</span>) </span>&#123;
+  readFile(<span class="hljs-string">'foo.txt'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (err) &#123;
+      reject(err);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      resolve(result);
+    &#125;
+  &#125;);
+&#125;);</code></pre>
+<p>executor 函数也可以是 async function。然而，这通常是一个错误，原因如下:</p>
+<ul>
+<li>如果异步 executor 函数抛出一个错误，这个错误将会丢失，并且不会导致新构造的 Promise 被拒绝。<br>  这可能使会调试和处理一些错误变得困难。</li>
+<li>如果一个 Promise executor 函数使用了 await，<br>  这通常表示实际上没有必要使用 new Promise 构造函数，<br>  或者可以减少 new Promise 构造函数的范围。</li>
+<li><em>错误代码示例*</em><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> foo = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-keyword">async</span> (resolve, reject) =&gt; &#123;
+  readFile(<span class="hljs-string">'foo.txt'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (err) &#123;
+      reject(err);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      resolve(result);
+    &#125;
+  &#125;);
+&#125;);
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-keyword">async</span> (resolve, reject) =&gt; &#123;
+  resolve(<span class="hljs-keyword">await</span> foo);
+&#125;);</code></pre></li>
+<li><em>正确代码示例*</em><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> foo = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+  readFile(<span class="hljs-string">'foo.txt'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (err) &#123;
+      reject(err);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      resolve(result);
+    &#125;
+  &#125;);
+&#125;);
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-built_in">Promise</span>.resolve(foo);
+
+<span class="hljs-keyword">async</span> test2 () &#123;
+  <span class="hljs-keyword">const</span> foo = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.key &gt; <span class="hljs-number">3</span>) &#123;
+        resolve(&#123; <span class="hljs-attr">code</span>: <span class="hljs-number">200</span> &#125;)
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-comment">// eslint-disable-next-line prefer-promise-reject-errors</span>
+        reject(<span class="hljs-string">'出错!!!'</span>)
+        <span class="hljs-comment">// reject(new Error('出错了'))</span>
+      &#125;
+    &#125;, <span class="hljs-number">1000</span>)
+  &#125;)
+
+  <span class="hljs-keyword">const</span> result = <span class="hljs-built_in">Promise</span>.resolve(foo)
+  result.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;
+    <span class="hljs-built_in">console</span>.log(res)
+  &#125;).catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> &#123;
+    <span class="hljs-built_in">console</span>.log(err)
+  &#125;)
+  <span class="hljs-comment">// const foo = new Promise((resolve, reject) =&gt; &#123;</span>
+  <span class="hljs-comment">//   axios.get('http://localhost:3000/login').then(res =&gt; &#123;</span>
+  <span class="hljs-comment">//     if (res.status === 200) &#123;</span>
+  <span class="hljs-comment">//       res.data &amp;&amp; resolve(res.data)</span>
+  <span class="hljs-comment">//     &#125; else &#123;</span>
+  <span class="hljs-comment">//       reject(new Error('error!!!'))</span>
+  <span class="hljs-comment">//     &#125;</span>
+  <span class="hljs-comment">//   &#125;)</span>
+  <span class="hljs-comment">// &#125;)</span>
+  <span class="hljs-comment">// const result = Promise.resolve(foo)</span>
+  <span class="hljs-comment">// console.log(result)</span>
+&#125;
+test3 () &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">this</span>.$http.get(<span class="hljs-string">'/api/userCount/getGroupUserId'</span>, &#123;
+      <span class="hljs-attr">params</span>: &#123;
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">'26'</span>
+      &#125;
+    &#125;).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;
+      <span class="hljs-keyword">if</span> (res.status === <span class="hljs-number">200</span>) &#123;
+        res.data &amp;&amp; resolve(res.data)
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        reject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'error!!!'</span>))
+      &#125;
+    &#125;)
+  &#125;)
+&#125;</code></pre>
+</li>
+</ul>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/09/19/vuecli%E4%B8%AD%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%BC%8Fmode/">vuecli中指定模式mode</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/09/23/ESLint规则探寻/">https://codermino.github.io/2021/09/23/ESLint规则探寻/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
