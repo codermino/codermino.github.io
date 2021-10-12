@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      前端页面添加水印 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#watermark-js文件"><span class="toc-text">watermark.js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面中使用"><span class="toc-text">页面中使用</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">前端页面添加水印</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/10/13</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/前端页面添加水印">前端页面添加水印</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="watermark-js文件">watermark.js文件<a class="post-anchor" href="#watermark-js文件"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> watermark = <span class="hljs-function">(<span class="hljs-params">settings</span>) =&gt;</span> &#123;
+<span class="hljs-comment">// 默认设置</span>
+
+  <span class="hljs-keyword">var</span> defaultSettings = &#123;
+
+    <span class="hljs-attr">watermark_txt</span>: <span class="hljs-string">''</span>,
+
+    <span class="hljs-attr">watermark_x</span>: <span class="hljs-number">20</span>, <span class="hljs-comment">// 水印起始位置x轴坐标</span>
+
+    <span class="hljs-attr">watermark_y</span>: <span class="hljs-number">20</span>, <span class="hljs-comment">// 水印起始位置Y轴坐标</span>
+
+    <span class="hljs-attr">watermark_rows</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 水印行数</span>
+
+    <span class="hljs-attr">watermark_cols</span>: <span class="hljs-number">0</span>, <span class="hljs-comment">// 水印列数</span>
+
+    <span class="hljs-attr">watermark_x_space</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 水印x轴间隔</span>
+
+    <span class="hljs-attr">watermark_y_space</span>: <span class="hljs-number">80</span>, <span class="hljs-comment">// 水印y轴间隔</span>
+
+    <span class="hljs-attr">watermark_color</span>: <span class="hljs-string">'#aaa'</span>, <span class="hljs-comment">// 水印字体颜色</span>
+
+    <span class="hljs-attr">watermark_alpha</span>: <span class="hljs-number">0.2</span>, <span class="hljs-comment">// 水印透明度</span>
+
+    <span class="hljs-attr">watermark_fontsize</span>: <span class="hljs-string">'15px'</span>, <span class="hljs-comment">// 水印字体大小</span>
+
+    <span class="hljs-attr">watermark_font</span>: <span class="hljs-string">'微软雅黑'</span>, <span class="hljs-comment">// 水印字体</span>
+
+    <span class="hljs-attr">watermark_width</span>: <span class="hljs-number">300</span>, <span class="hljs-comment">// 水印宽度</span>
+
+    <span class="hljs-attr">watermark_height</span>: <span class="hljs-number">120</span>, <span class="hljs-comment">// 水印长度</span>
+
+    <span class="hljs-attr">watermark_angle</span>: <span class="hljs-number">15</span>, <span class="hljs-comment">// 水印倾斜度数</span>
+
+    <span class="hljs-attr">element</span>: <span class="hljs-built_in">document</span>.body
+
+  &#125;
+
+  <span class="hljs-comment">// 采用配置项替换默认值，作用类似jquery.extend</span>
+
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> settings === <span class="hljs-string">'object'</span>) &#123;
+    <span class="hljs-keyword">var</span> src = settings || &#123;&#125;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> src) &#123;
+      <span class="hljs-keyword">if</span> (src[key] &amp;&amp; defaultSettings[key] &amp;&amp; src[key] === defaultSettings[key]) &#123; <span class="hljs-keyword">continue</span> &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (src[key]) &#123; defaultSettings[key] = src[key] &#125;
+    &#125;
+  &#125;
+
+  <span class="hljs-keyword">var</span> oTemp = <span class="hljs-built_in">document</span>.createDocumentFragment()
+
+  <span class="hljs-comment">// 获取页面最大宽度</span>
+
+  <span class="hljs-keyword">var</span> pageWidth = <span class="hljs-built_in">Math</span>.max(<span class="hljs-built_in">document</span>.body.scrollWidth, <span class="hljs-built_in">document</span>.body.clientWidth) || <span class="hljs-number">1280</span>
+
+  <span class="hljs-keyword">var</span> cutWidth = pageWidth * <span class="hljs-number">0.0150</span>
+
+  pageWidth = pageWidth - cutWidth
+
+  <span class="hljs-comment">// 获取页面最大高度</span>
+
+  <span class="hljs-keyword">var</span> pageHeight = <span class="hljs-built_in">Math</span>.min(<span class="hljs-built_in">document</span>.body.scrollHeight, <span class="hljs-built_in">document</span>.body.clientHeight) || <span class="hljs-number">768</span>
+
+  <span class="hljs-comment">// var pageHeight = document.body.scrollHeight+document.body.scrollTop;</span>
+
+  <span class="hljs-comment">// 如果将水印列数设置为0，或水印列数设置过大，超过页面最大宽度，则重新计算水印列数和水印x轴间隔</span>
+
+  <span class="hljs-keyword">if</span> (defaultSettings.watermark_cols === <span class="hljs-number">0</span> || (<span class="hljs-built_in">parseInt</span>(defaultSettings.watermark_x + defaultSettings.watermark_width * defaultSettings.watermark_cols + defaultSettings.watermark_x_space * (defaultSettings.watermark_cols - <span class="hljs-number">1</span>)) &gt; pageWidth)) &#123;
+    defaultSettings.watermark_cols = <span class="hljs-built_in">parseInt</span>((pageWidth - defaultSettings.watermark_x + defaultSettings.watermark_x_space) / (defaultSettings.watermark_width + defaultSettings.watermark_x_space))
+
+    defaultSettings.watermark_x_space = <span class="hljs-built_in">parseInt</span>((pageWidth - defaultSettings.watermark_x - defaultSettings.watermark_width * defaultSettings.watermark_cols) / (defaultSettings.watermark_cols - <span class="hljs-number">1</span>))
+  &#125;
+
+  <span class="hljs-comment">// 如果将水印行数设置为0，或水印行数设置过大，超过页面最大长度，则重新计算水印行数和水印y轴间隔</span>
+
+  <span class="hljs-keyword">if</span> (defaultSettings.watermark_rows === <span class="hljs-number">0</span> || (<span class="hljs-built_in">parseInt</span>(defaultSettings.watermark_y + defaultSettings.watermark_height * defaultSettings.watermark_rows + defaultSettings.watermark_y_space * (defaultSettings.watermark_rows - <span class="hljs-number">1</span>)) &gt; pageHeight)) &#123;
+    defaultSettings.watermark_rows = <span class="hljs-built_in">parseInt</span>((defaultSettings.watermark_y_space + pageHeight - defaultSettings.watermark_y) / (defaultSettings.watermark_height + defaultSettings.watermark_y_space))
+
+    defaultSettings.watermark_y_space = <span class="hljs-built_in">parseInt</span>(((pageHeight - defaultSettings.watermark_y) - defaultSettings.watermark_height * defaultSettings.watermark_rows) / (defaultSettings.watermark_rows - <span class="hljs-number">1</span>))
+  &#125;
+
+  <span class="hljs-keyword">var</span> x
+
+  <span class="hljs-keyword">var</span> y
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; defaultSettings.watermark_rows; i++) &#123;
+    y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; defaultSettings.watermark_cols; j++) &#123;
+      x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j
+
+      <span class="hljs-keyword">var</span> maskDiv = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>)
+
+      maskDiv.id = <span class="hljs-string">'maskDiv'</span> + i + j
+
+      maskDiv.className = <span class="hljs-string">'maskDiv'</span>
+
+      <span class="hljs-keyword">var</span> txtSpan = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'span'</span>)
+
+      txtSpan.innerHTML = defaultSettings.watermark_txt
+
+      txtSpan.style.setProperty(<span class="hljs-string">'font-size'</span>, defaultSettings.watermark_fontsize, <span class="hljs-string">'important'</span>)
+
+      maskDiv.appendChild(txtSpan)
+
+      <span class="hljs-comment">// 设置水印div倾斜显示</span>
+
+      maskDiv.style.webkitTransform = <span class="hljs-string">'rotate(-'</span> + defaultSettings.watermark_angle + <span class="hljs-string">'deg)'</span>
+
+      maskDiv.style.MozTransform = <span class="hljs-string">'rotate(-'</span> + defaultSettings.watermark_angle + <span class="hljs-string">'deg)'</span>
+
+      maskDiv.style.msTransform = <span class="hljs-string">'rotate(-'</span> + defaultSettings.watermark_angle + <span class="hljs-string">'deg)'</span>
+
+      maskDiv.style.OTransform = <span class="hljs-string">'rotate(-'</span> + defaultSettings.watermark_angle + <span class="hljs-string">'deg)'</span>
+
+      maskDiv.style.transform = <span class="hljs-string">'rotate(-'</span> + defaultSettings.watermark_angle + <span class="hljs-string">'deg)'</span>
+
+      maskDiv.style.visibility = <span class="hljs-string">''</span>
+
+      maskDiv.style.position = <span class="hljs-string">'absolute'</span>
+
+      maskDiv.style.left = x + <span class="hljs-string">'px'</span>
+
+      maskDiv.style.top = y + <span class="hljs-number">260</span> + <span class="hljs-string">'px'</span>
+
+      maskDiv.style.overflow = <span class="hljs-string">'hidden'</span>
+
+      maskDiv.style.zIndex = <span class="hljs-string">'9999'</span>
+
+      maskDiv.style.pointerEvents = <span class="hljs-string">'none'</span><span class="hljs-comment">// pointer-events:none 让水印不遮挡页面的点击事件</span>
+
+      <span class="hljs-comment">// maskDiv.style.border="solid #eee 1px";</span>
+
+      maskDiv.style.opacity = defaultSettings.watermark_alpha
+
+      maskDiv.style.fontFamily = defaultSettings.watermark_font
+
+      maskDiv.style.color = defaultSettings.watermark_color
+
+      maskDiv.style.textAlign = <span class="hljs-string">'center'</span>
+
+      maskDiv.style.width = defaultSettings.watermark_width + <span class="hljs-string">'px'</span>
+
+      maskDiv.style.height = defaultSettings.watermark_height + <span class="hljs-string">'px'</span>
+
+      maskDiv.style.display = <span class="hljs-string">'block'</span>
+
+      oTemp.appendChild(maskDiv)
+    &#125;
+  &#125;
+
+  defaultSettings.element.appendChild(oTemp)
+&#125;</code></pre>
+
+<h3 id="页面中使用">页面中使用<a class="post-anchor" href="#页面中使用"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; watermark &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./watermark'</span>
+mounted () &#123;
+    watermark(&#123;
+      <span class="hljs-attr">watermark_txt</span>: <span class="hljs-string">'xxx'</span>,
+      <span class="hljs-attr">watermark_fontsize</span>: <span class="hljs-string">'20px'</span>,
+      <span class="hljs-attr">element</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'app'</span>)
+    &#125;)
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/10/12/js%E9%A1%B5%E9%9D%A2%E7%A6%81%E6%AD%A2%E5%8F%B3%E9%94%AE%E8%A1%8C%E4%B8%BA/">js页面禁止右键行为</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/10/13/vue页面添加水印/">https://codermino.github.io/2021/10/13/vue页面添加水印/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-10-12T16:21:49.170Z</updated>
+  <updated>2021-10-12T16:24:30.688Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端页面添加水印</title>
+    <link href="https://codermino.github.io/2021/10/13/vue%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
+    <id>https://codermino.github.io/2021/10/13/vue%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/</id>
+    <published>2021-10-12T16:22:17.000Z</published>
+    <updated>2021-10-12T16:24:30.688Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;watermark-js文
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="前端页面添加水印" scheme="https://codermino.github.io/tags/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>js页面禁止右键行为</title>
@@ -483,31 +508,6 @@
     
     
       <category term="记一次修改iview源码过程" scheme="https://codermino.github.io/tags/%E8%AE%B0%E4%B8%80%E6%AC%A1%E4%BF%AE%E6%94%B9iview%E6%BA%90%E7%A0%81%E8%BF%87%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iView的Tabs组件使用Render自定义标签</title>
-    <link href="https://codermino.github.io/2021/07/06/iView%E7%9A%84Tabs%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8Render%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E7%AD%BE/"/>
-    <id>https://codermino.github.io/2021/07/06/iView%E7%9A%84Tabs%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8Render%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E7%AD%BE/</id>
-    <published>2021-07-06T08:38:36.000Z</published>
-    <updated>2021-07-06T08:39:25.555Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;h
-      
-    
-    </summary>
-    
-    
-      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
-    
-    
-      <category term="iView的Tabs组件使用Render自定义标签" scheme="https://codermino.github.io/tags/iView%E7%9A%84Tabs%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8Render%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%87%E7%AD%BE/"/>
     
   </entry>
   
