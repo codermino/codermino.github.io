@@ -332,7 +332,7 @@ export default &#123;
   methods: &#123;
     handleScroll () &#123;
       const scrollTop &#x3D; window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      this.showAnother &#x3D; Math.ceil(scrollTop) &gt; this.offsetTop
+      this.showAnother &#x3D; Math.ceil(scrollTop) &gt; document.querySelector(&#39;#searchBar&#39;).offsetTop
     &#125;,
     navBarClick () &#123;
       console.log(1)
