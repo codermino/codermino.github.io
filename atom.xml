@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-10-13T07:55:04.554Z</updated>
+  <updated>2021-10-14T09:13:12.502Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何中断Promise</title>
+    <link href="https://codermino.github.io/2021/10/14/%E5%A6%82%E4%BD%95%E4%B8%AD%E6%96%ADPromise/"/>
+    <id>https://codermino.github.io/2021/10/14/%E5%A6%82%E4%BD%95%E4%B8%AD%E6%96%ADPromise/</id>
+    <published>2021-10-14T08:02:14.000Z</published>
+    <updated>2021-10-14T09:13:12.502Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Promise 有个缺点就是一旦创建就无法取消，&lt;br&gt;所以本质上 Promise 是无法被终止的，&lt;br&gt;但我们在开发过程中可能会遇到下面两个需求：&lt;/p&gt;
+&lt;h3 id=&quot;中断调用链&quot;&gt;中断调用链&lt;a class=&quot;post-anchor&quot; href=&quot;#中断调用链&quot;&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="如何中断Promise" scheme="https://codermino.github.io/tags/%E5%A6%82%E4%BD%95%E4%B8%AD%E6%96%ADPromise/"/>
+    
+  </entry>
   
   <entry>
     <title>tabbar吸顶效果</title>
@@ -483,31 +508,6 @@
     
     
       <category term="vue的插槽总结" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的hook:beforedestroy</title>
-    <link href="https://codermino.github.io/2021/07/29/vue%E7%9A%84hook-beforedestroy/"/>
-    <id>https://codermino.github.io/2021/07/29/vue%E7%9A%84hook-beforedestroy/</id>
-    <published>2021-07-29T08:27:28.000Z</published>
-    <updated>2021-07-29T08:35:58.958Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;vue中hook的两点使用
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的hook:beforedestroy" scheme="https://codermino.github.io/tags/vue%E7%9A%84hook-beforedestroy/"/>
     
   </entry>
   

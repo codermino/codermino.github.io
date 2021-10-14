@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      tabbar吸顶效果 - Mino
+      如何中断Promise - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路"><span class="toc-text">实现思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#中断调用链"><span class="toc-text">中断调用链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中断Promise"><span class="toc-text">中断Promise</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">tabbar吸顶效果</div>
+      <div class="title">如何中断Promise</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/10/13</span>
+          <span>2021/10/14</span>
         </span>
 
         
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/vue">vue</a>
+                  <a href="/categories/前端">前端</a>
                 
               
           </span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/tabbar吸顶效果">tabbar吸顶效果</a>
+                    <a href="/tags/如何中断Promise">如何中断Promise</a>
                   
                 
             </span>
@@ -195,162 +195,51 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/vue.png" data-caption data-fancybox="images"><img src="/images/vue.png" alt></a></p>
-<h3 id="实现思路">实现思路<a class="post-anchor" href="#实现思路"></a></h3><pre><code class="hljs markdown">通过两个tabbar一个用变量来控制显示和隐藏
-并且position:fixed;top: 0;
-另一个tabbar不进行显示和隐藏切换</code></pre>
+    <p>Promise 有个缺点就是一旦创建就无法取消，<br>所以本质上 Promise 是无法被终止的，<br>但我们在开发过程中可能会遇到下面两个需求：</p>
+<h3 id="中断调用链">中断调用链<a class="post-anchor" href="#中断调用链"></a></h3><p>就是在某个 then/catch 执行之后，不想让后续的链式调用继续执行了，即：<br>答案就是在 then/catch 的最后一行返回一个永远 pending 的 promise 即可：<br>这样的话后面所有的 then、catch 和 finally 都不会执行了。</p>
+<pre><code class="hljs javascript">somePromise()
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;&#125;)
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    <span class="hljs-comment">// 终止 Promise 链，让下面的 then、catch 和 finally 都不执行</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;&#125;)
+  &#125;)
+  .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'then'</span>))
+  .catch(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'catch'</span>))
+  .finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finally'</span>))</code></pre>
 
-<h3 id="代码实现">代码实现<a class="post-anchor" href="#代码实现"></a></h3><pre><code class="hljs vue">&lt;template&gt;
-    &lt;div class&#x3D;&quot;FixedCom&quot; style&#x3D;&quot;background-color:red;overflow-y: auto;&quot;&gt;
-      &lt;div class&#x3D;&quot;header&quot; style&#x3D;&quot;height: 200px;background-color:green;&quot;&gt;
-        333
-      &lt;&#x2F;div&gt;
-      &lt;div class&#x3D;&quot;content&quot;&gt;
-        &lt;div @click&#x3D;&quot;navBarClick&quot; id&#x3D;&quot;searchBar&quot; style&#x3D;&quot;background-color:pink;width: 100%;position:relative;&quot;&gt;
-          6666666666666
-        &lt;&#x2F;div&gt;
-        &lt;div @click&#x3D;&quot;navBarClick2&quot; v-show&#x3D;&quot;showAnother&quot; style&#x3D;&quot;background-color:pink;width: 100%;position:fixed;top: 0;&quot;&gt;
-          6666666666666
-        &lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-        &lt;div&gt;1&lt;&#x2F;div&gt;
-      &lt;&#x2F;div&gt;
-    &lt;&#x2F;div&gt;
-&lt;&#x2F;template&gt;
-
-&lt;script&gt;
-export default &#123;
-  name: &#39;FixedCom&#39;,
-  data () &#123;
-    return &#123;
-      searchBarFixed: false,
-      showAnother: false,
-      offsetTop: 0
-    &#125;
-  &#125;,
-  mounted () &#123;
-    window.addEventListener(&#39;scroll&#39;, this.handleScroll, true)
-    this.offsetTop &#x3D; document.querySelector(&#39;#searchBar&#39;).offsetTop
-  &#125;,
-  destroyed () &#123;
-    window.removeEventListener(&#39;scroll&#39;, this.handleScroll, true)
-  &#125;,
-  methods: &#123;
-    handleScroll () &#123;
-      const scrollTop &#x3D; window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      this.showAnother &#x3D; Math.ceil(scrollTop) &gt; document.querySelector(&#39;#searchBar&#39;).offsetTop
-    &#125;,
-    navBarClick () &#123;
-      console.log(1)
-    &#125;,
-    navBarClick2 () &#123;
-      console.log(2)
-    &#125;
-  &#125;
+<h3 id="中断Promise">中断Promise<a class="post-anchor" href="#中断Promise"></a></h3><p>注意这里是中断而不是终止，因为 Promise 无法终止，这个中断的意思是：<br>在合适的时候，把 pending 状态的 promise 给 reject 掉。<br>例如一个常见的应用场景就是希望给网络请求设置超时时间，<br>一旦超时就就中断，我们这里用定时器模拟一个网络请求，随机 3 秒之内返回：</p>
+<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">timeoutWrapper</span>(<span class="hljs-params">p, timeout = <span class="hljs-number">2000</span></span>) </span>&#123;
+<span class="hljs-keyword">const</span> wait = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+        reject(<span class="hljs-string">'请求超时'</span>)
+    &#125;, timeout)
+&#125;)
+<span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.race([p, wait])
 &#125;
-&lt;&#x2F;script&gt;
 
-&lt;style scoped lang&#x3D;&quot;less&quot;&gt;
-  .isFixed&#123;
-    position:fixed !important;
-    top:0;
-    z-index:999;
-  &#125;
-&lt;&#x2F;style&gt;</code></pre>
+<span class="hljs-keyword">const</span> req = timeoutWrapper(
+    <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;
+        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> resolve(<span class="hljs-number">123</span>), <span class="hljs-number">2500</span>)
+    &#125;))
+req.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res)).catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(e))</code></pre>
+
+<p>不过这种方式并不灵活，因为终止 promise 的原因可能有很多，<br>例如当用户点击某个按钮或者出现其他事件时手动终止。<br>所以应该写一个包装函数，提供 abort 方法，让使用者自己决定何时终止：</p>
+<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">abortWrapper</span>(<span class="hljs-params">p1</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> abort
+    <span class="hljs-keyword">let</span> p2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> (abort = reject))
+    <span class="hljs-keyword">let</span> p = <span class="hljs-built_in">Promise</span>.race([p1, p2])
+    p.abort = abort
+    <span class="hljs-keyword">return</span> p
+&#125;
+<span class="hljs-keyword">let</span> request = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>&#123;
+    setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> resolve(<span class="hljs-number">123</span>), <span class="hljs-number">2500</span>)
+&#125;)
+
+
+<span class="hljs-keyword">const</span> req = abortWrapper(request)
+req.then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(res)).catch(<span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(e))
+setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> req.abort(<span class="hljs-string">'用户手动终止请求'</span>), <span class="hljs-number">2000</span>) <span class="hljs-comment">// 这里可以是用户主动点击</span></code></pre>
+<p><strong>tip:</strong><br>最后，再次强调一下，虽然 promise 被中断了，<br>但是 promise 并没有终止，网络请求依然可能返回，<br>只不过那时我们已经不关心请求结果了。</p>
 
 
   
@@ -377,12 +266,10 @@ export default &#123;
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/10/14/%E5%A6%82%E4%BD%95%E4%B8%AD%E6%96%ADPromise/">如何中断Promise</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/10/13/vue%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E6%B0%B4%E5%8D%B0/">前端页面添加水印</a>
+          <a href="/2021/10/13/tabbar%E5%90%B8%E9%A1%B6%E6%95%88%E6%9E%9C/">tabbar吸顶效果</a>
         
     </div>
   </div>
@@ -394,7 +281,7 @@ export default &#123;
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/10/13/tabbar吸顶效果/">https://codermino.github.io/2021/10/13/tabbar吸顶效果/</a>
+      永久链接：<a href="https://codermino.github.io/2021/10/14/如何中断Promise/">https://codermino.github.io/2021/10/14/如何中断Promise/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
