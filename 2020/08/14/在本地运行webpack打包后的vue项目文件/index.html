@@ -25,6 +25,11 @@
 </head>
   <body>
     
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种方式"><span class="toc-text">第一种方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种方式"><span class="toc-text">第二种方式</span></a></li></ol>
+    </div>
+    
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
       <span class="icon-toc menu-reset">Toc</span>
@@ -191,13 +196,18 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<pre><code class="hljs markdown">那么如何用最简单的方法就可以让打包后的文件正常运行呢？
+<h3 id="第一种方式">第一种方式<a class="post-anchor" href="#第一种方式"></a></h3><pre><code class="hljs markdown">那么如何用最简单的方法就可以让打包后的文件正常运行呢？
 解决这个问题首先要安装server，在cmd中输入命令：
 npm install -g serve
 
 进入项目目录使用：serve -s dist
 
 这时会提示要访问的网址，在浏览器中输入网址就可以打开了！</code></pre>
+
+<h3 id="第二种方式">第二种方式<a class="post-anchor" href="#第二种方式"></a></h3><pre><code class="hljs markdown">使用http-server
+npm install -g http-server
+
+进入项目目录使用：http-server ./dist -p 5000</code></pre>
 
 
   
