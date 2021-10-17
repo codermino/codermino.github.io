@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-10-14T09:13:12.502Z</updated>
+  <updated>2021-10-17T16:43:28.516Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vuecli3项目打包优化</title>
+    <link href="https://codermino.github.io/2021/10/17/vuecli3%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/"/>
+    <id>https://codermino.github.io/2021/10/17/vuecli3%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/</id>
+    <published>2021-10-17T06:50:35.000Z</published>
+    <updated>2021-10-17T16:43:28.516Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;打包优化&quot;&gt;打包优化&lt;a 
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vuecli3项目打包优化" scheme="https://codermino.github.io/tags/vuecli3%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>如何中断Promise</title>
@@ -483,31 +508,6 @@
     
     
       <category term="vue的img的load事件" scheme="https://codermino.github.io/tags/vue%E7%9A%84img%E7%9A%84load%E4%BA%8B%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的插槽总结</title>
-    <link href="https://codermino.github.io/2021/08/03/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/"/>
-    <id>https://codermino.github.io/2021/08/03/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/</id>
-    <published>2021-08-03T08:57:26.000Z</published>
-    <updated>2021-08-03T08:59:45.589Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;父组件&quot;&gt;父组件&lt;a cl
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的插槽总结" scheme="https://codermino.github.io/tags/vue%E7%9A%84%E6%8F%92%E6%A7%BD%E6%80%BB%E7%BB%93/"/>
     
   </entry>
   

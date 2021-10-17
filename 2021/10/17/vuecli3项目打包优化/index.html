@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vuecli3项目打包优化 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#打包优化"><span class="toc-text">打包优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体配置"><span class="toc-text">具体配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#优化打包体积"><span class="toc-text">优化打包体积</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析工具"><span class="toc-text">分析工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方式："><span class="toc-text">使用方式：</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vuecli3项目打包优化</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/10/17</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vuecli3项目打包优化">vuecli3项目打包优化</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="打包优化">打包优化<a class="post-anchor" href="#打包优化"></a></h3><p>要优化项目，首先我们得了解vue-cli已经替我们做过了哪些优化，<br>也就是需要查看webpack已经配置了哪些选项。<br>使用vue inpsect输出webpack配置，还可以指定输出的文件：vue inspect &gt; output.js。<br>vue-cli提供了两种方式来更改webpack配置：</p>
+<ol>
+<li>原生配置方式，配置的结果将会被 webpack-merge 合并入最终的 webpack 配置。<pre><code class="hljs vuejs">&#x2F;&#x2F; vue.config.js
+module.exports &#x3D; &#123;
+    configureWebpack: &#123;
+        &#x2F;&#x2F; 在这里直接书写webpack配置项...
+    &#125;
+&#125;</code></pre></li>
+<li>链式配置方式，vue-cli内部是使用webpack-chain这个插件来维护webpack配置的，<br>因为能更细粒度的控制其内部配置，因此也是官方比较推荐的一个方式。<pre><code class="hljs vuejs">&#x2F;&#x2F; vue.config.js
+module.exports &#x3D; &#123;
+    chainWebpack: config &#x3D;&gt; &#123;
+        config.resolve.alias.set(&#39;@assets&#39;, resolve(&#96;src&#x2F;assets&#96;));
+    &#125;
+&#125;</code></pre>
+<h3 id="具体配置">具体配置<a class="post-anchor" href="#具体配置"></a></h3><h4 id="优化打包体积">优化打包体积<a class="post-anchor" href="#优化打包体积"></a></h4></li>
+<li>配置 gzip 压缩，打出来一个待 gzip 后缀的文件</li>
+</ol>
+<p><strong>npm i compression-webpack-plugin -D</strong></p>
+<pre><code class="hljs vuejs">const CompressionWebpackPlugin &#x3D; require(&#39;compression-webpack-plugin&#39;)
+module.exports &#x3D; &#123;
+    configureWebpack: config &#x3D;&gt; &#123;
+        if (process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#39;production&#39;) &#123;
+            config.plugin(&#39;compressionPlugin&#39;)
+                    .use(new CompressionWebpackPlugin(&#123;
+                      filename: &#39;[path].gz[query]&#39;,
+                      algorithm: &#39;gzip&#39;,
+                      test: &#x2F;\.(js|css|html|svg)$&#x2F;i,
+                      threshold: 2048,
+                      minRatio: 0.8
+                    &#125;))
+            &#x2F;&#x2F;config.plugins.push(
+              &#x2F;&#x2F;  ...[
+                &#x2F;&#x2F;    new CompressionWebpackPlugin(&#123;
+                  &#x2F;&#x2F;      filename: &#39;[path].gz[query]&#39;,
+                    &#x2F;&#x2F;    algorithm: &#39;gzip&#39;,
+                      &#x2F;&#x2F;  test: &#x2F;\.(js|css|html|svg)$&#x2F;i,
+                        &#x2F;&#x2F;threshold: 2048,
+                        &#x2F;&#x2F;minRatio: 0.8
+                    &#x2F;&#x2F;&#125;)
+                &#x2F;&#x2F;]
+            &#x2F;&#x2F;);
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<ol start="2">
+<li>webpack-bundle-analyzer 分析包<br>使用webpack-bundle-analyzer分析打包体积<br>webpack官方提供一些插件分析打包性能。</li>
+</ol>
+<ul>
+<li>webpack-chart：webpack stats 可交互饼图。</li>
+<li>webpack-visualizer：可视化并分析你的 bundle，检查哪些模块占用空间，<br>  哪些可能是重复使用的。</li>
+<li>webpack-bundle-analyzer：一个 plugin 和 CLI 工具，<br>  它将 bundle 内容展示为便捷的、交互式、可缩放的树状图形式。</li>
+<li>webpack bundle optimize helper：此工具会分析你的bundle，<br>  并为你提供可操作的改进措施建议，以减少 bundle 体积大小。</li>
+<li><em>npm i webpack-bundle-analyzer -D*</em><pre><code class="hljs vuejs">module.exports &#x3D; &#123;
+    &#x2F;&#x2F;configureWebpack: &#123;
+        &#x2F;&#x2F;plugins: [
+          &#x2F;&#x2F;new AnalyzeWebpackPlugin(&#123;&#125;),
+        &#x2F;&#x2F;],
+      &#x2F;&#x2F;&#125;
+    chainWebpack: config &#x3D;&gt; &#123;
+        if (process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#39;production&#39;) &#123;
+            &#x2F;&#x2F;config
+            &#x2F;&#x2F;      .plugin(&#39;webpack-bundle-analyzer&#39;)
+            &#x2F;&#x2F;      .use(require(&#39;webpack-bundle-analyzer&#39;).BundleAnalyzerPlugin)
+            
+            &#x2F;&#x2F; config.plugin(&#39;webpack-bundle-analyzer&#39;).use(require(&#39;webpack-bundle-analyzer&#39;).BundleAnalyzerPlugin);
+            
+            &#x2F;&#x2F; 启动时动态创建一个html：http:&#x2F;&#x2F;localhost:8888&#x2F;report.html
+            &#x2F;&#x2F; config.plugin(&#39;webpack-bundle-analyzer&#39;).use(require(&#39;webpack-bundle-analyzer&#39;).BundleAnalyzerPlugin);
+            &#x2F;&#x2F; 生成一个静态html，report.html
+            config.plugin(&#39;webpack-report&#39;).use(require(&#39;webpack-bundle-analyzer&#39;).BundleAnalyzerPlugin, [
+                &#123;
+                    analyzerMode: &#39;static&#39;
+                &#125;
+            ]);
+        &#125;
+    &#125;
+&#125;</code></pre>
+vue-cli-service build –report<br>or<br>vue-cli-service build –report-json</li>
+<li><em>默认配置*</em><pre><code class="hljs javascript"><span class="hljs-keyword">new</span> BundleAnalyzerPlugin(&#123;
+  <span class="hljs-comment">//  可以是`server`，`static`或`disabled`。</span>
+  <span class="hljs-comment">//  在`server`模式下，分析器将启动HTTP服务器来显示软件包报告。</span>
+  <span class="hljs-comment">//  在“静态”模式下，会生成带有报告的单个HTML文件。</span>
+  <span class="hljs-comment">//  在`disabled`模式下，你可以使用这个插件来将`generateStatsFile`设置为`true`来生成Webpack Stats JSON文件。</span>
+  <span class="hljs-attr">analyzerMode</span>: <span class="hljs-string">'server'</span>,
+  <span class="hljs-comment">//  将在“服务器”模式下使用的主机启动HTTP服务器。</span>
+  <span class="hljs-attr">analyzerHost</span>: <span class="hljs-string">'127.0.0.1'</span>,
+  <span class="hljs-comment">//  将在“服务器”模式下使用的端口启动HTTP服务器。</span>
+  <span class="hljs-attr">analyzerPort</span>: <span class="hljs-number">8888</span>, 
+  <span class="hljs-comment">//  路径捆绑，将在`static`模式下生成的报告文件。</span>
+  <span class="hljs-comment">//  相对于捆绑输出目录。</span>
+  <span class="hljs-attr">reportFilename</span>: <span class="hljs-string">'report.html'</span>,
+  <span class="hljs-comment">//  模块大小默认显示在报告中。</span>
+  <span class="hljs-comment">//  应该是`stat`，`parsed`或者`gzip`中的一个。</span>
+  <span class="hljs-comment">//  有关更多信息，请参见“定义”一节。</span>
+  <span class="hljs-attr">defaultSizes</span>: <span class="hljs-string">'parsed'</span>,
+  <span class="hljs-comment">//  在默认浏览器中自动打开报告</span>
+  <span class="hljs-attr">openAnalyzer</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">//  如果为true，则Webpack Stats JSON文件将在bundle输出目录中生成</span>
+  <span class="hljs-attr">generateStatsFile</span>: <span class="hljs-literal">false</span>, 
+  <span class="hljs-comment">//  如果`generateStatsFile`为`true`，将会生成Webpack Stats JSON文件的名字。</span>
+  <span class="hljs-comment">//  相对于捆绑输出目录。</span>
+  <span class="hljs-attr">statsFilename</span>: <span class="hljs-string">'stats.json'</span>,
+  <span class="hljs-comment">//  stats.toJson（）方法的选项。</span>
+  <span class="hljs-comment">//  例如，您可以使用`source：false`选项排除统计文件中模块的来源。</span>
+  <span class="hljs-comment">//  在这里查看更多选项：https：  //github.com/webpack/webpack/blob/webpack-1/lib/Stats.js#L21</span>
+  <span class="hljs-attr">statsOptions</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">logLevel</span>: <span class="hljs-string">'info'</span> <span class="hljs-comment">// 日志级别。可以是'信息'，'警告'，'错误'或'沉默'。</span>
+&#125;)</code></pre>
+</li>
+</ul>
+<ol start="3">
+<li>momentjs 优化</li>
+</ol>
+<p><strong>方案 1：只打包使用的文件（目前用的这个）</strong><br>首先选择合适的语言包设置语言环境：</p>
+<pre><code class="hljs vuejs">import moment from &#39;moment&#39;
+import &#39;moment&#x2F;locale&#x2F;zh-cn&#39;
+moment.locale(&#39;zh-cn&#39;)</code></pre>
+<p>ContextReplacementPlugin插件的作用是改变某个模块的打包上下文，<br>通过修改正则，来让webpack只打包我们想要的文件。</p>
+<pre><code class="hljs vuejs">const webpack &#x3D; require(&#39;webpack&#39;)
+module.exports &#x3D; &#123;
+    chainWebpack: config &#x3D;&gt; &#123;
+            config.plugin(&#39;ignore&#39;)
+                .use(new webpack.IgnorePlugin(&#x2F;^\.\&#x2F;locale$&#x2F;, &#x2F;moment$&#x2F;));&#x2F;&#x2F;忽略&#x2F;moment&#x2F;locale下的所有文件
+        &#125;
+    &#x2F;&#x2F; configureWebpack: &#123;
+    &#x2F;&#x2F;     plugins: [
+    &#x2F;&#x2F;       new webpack.ContextReplacementPlugin(
+    &#x2F;&#x2F;         &#x2F;moment[&#x2F;\\]locale$&#x2F;, &#x2F;&#x2F; 这个参数表明了我们要改变的打包上下文
+    &#x2F;&#x2F;         &#x2F;zh-cn&#x2F; &#x2F;&#x2F; 这个参数表示我们只想打包这个正则匹配的文件
+    &#x2F;&#x2F;       )
+    &#x2F;&#x2F;     ]
+    &#x2F;&#x2F;   &#125;
+&#125;</code></pre>
+<p><strong>方案 2：使用 dayjs 替代 moment，代码不用变，把 lodash 配置别名为 dayjs</strong><br><a href="https://zhuanlan.zhihu.com/p/61031739?utm_source=wechat_timeline" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61031739?utm_source=wechat_timeline</a></p>
+<pre><code class="hljs vuejs">module.exports &#x3D; &#123;
+    chainWebpack: config &#x3D;&gt; &#123;
+        config.resolve.alias
+        &#x2F;&#x2F; set第一个参数：设置的别名，第二个参数：真实的名称（默认都是从node_modules中读取
+        .set(&#39;moment&#39;,&#39;dayjs&#39;))
+    &#125;
+&#125;</code></pre>
+<p><strong>具体过程</strong><br>由于 dayjs API 设置和 momentjs 保持了一致，所以迁移成本将低了很多，<br>基本只需要 2 步</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">1. </span>npm i dayjs -S
+<span class="hljs-bullet">2. </span>设置alias
+<span class="hljs-code">    见上方</span></code></pre>
+
+<ol start="4">
+<li>lodash 优化<br>需要使用两个插件：</li>
+</ol>
+<ul>
+<li>babel-plugin-lodash 用来精简Lodash模块的，只保留用到的方法。</li>
+<li>lodash-webpack-plugin<br>这个插件通过用noop, identity, 或其他更简单的替代品来替换一些模块的特性，<br>使得打包后的体积更小（翻译）。<br>注意：这个插件默认会关闭一些lodash不常用的特性，<br>可以给插件传递options来开启某些特性。<br>这两个插件配合使用来使效果最大化。只需要在Babel插件中添加lodash，<br>并在webpack配置中添加一个插件：</li>
+<li><em>npm i lodash-webpack-plugin babel-plugin-lodash -D*</em><br>babel.config.js<pre><code class="hljs vuejs">module.exports &#x3D; &#123;
+    presets: [&#39;@vue&#x2F;app&#39;],
+    plugins: [
+        &#39;lodash&#39;,
+        [
+            &#39;component&#39;,
+            &#123;
+                libraryName: &#39;element-ui&#39;,
+                styleLibraryName: &#39;theme-chalk&#39;
+            &#125;
+        ]
+    ]
+&#125;</code></pre>
+vue.config.js<pre><code class="hljs vuejs">const LodashModuleReplacementPlugin &#x3D; require(&#39;lodash-webpack-plugin&#39;)
+module.exports &#x3D; &#123;
+    &#x2F;&#x2F; chainWebpack: config &#x3D;&gt; &#123;
+    &#x2F;&#x2F;     config.plugin(&quot;loadshReplace&quot;)
+    &#x2F;&#x2F;         .use(new LodashModuleReplacementPlugin());&#x2F;&#x2F;优化lodash
+    &#x2F;&#x2F; &#125;
+    configureWebpack: &#123;
+        plugins: [
+          new LodashModuleReplacementPlugin()
+        ]
+    &#125;
+&#125;</code></pre>
+</li>
+</ul>
+<ol start="5">
+<li><p>小图片压缩成 base64 格式</p>
+<pre><code class="hljs vuejs">module.exports &#x3D; &#123;
+    chainWebpack: config &#x3D;&gt; &#123;
+        &#x2F;&#x2F; 10kb以内的图片会被打包成内联元素
+        config.module
+            .rule(&#39;images&#39;)
+            .use(&#39;url-loader&#39;)
+            .loader(&#39;url-loader&#39;)
+            .tap(options &#x3D;&gt; Object.assign(options, &#123;limit: 10240&#125;));
+    &#125;
+&#125;</code></pre>
+</li>
+<li><p>xlsx 改为 xlsx.mini.min</p>
+<pre><code class="hljs markdown">把所有
+import XLSX from 'xlsx';
+改为以下的方式引入
+import XLSX from 'xlsx/dist/xlsx.mini.min.js';</code></pre>
+</li>
+<li><p>SEO 优化</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"vue,element-ui,nodejs,express,nginx全栈管理后台项目"</span> /&gt;</span></code></pre>
+
+</li>
+</ol>
+<h3 id="分析工具">分析工具<a class="post-anchor" href="#分析工具"></a></h3><p>speed-measure-webpack-plugin<br>通过smp输出的分析可以清楚的了解到webpack构建过程中，<br>每一阶段的loader以及plugin的工作花费的时间。</p>
+<h4 id="使用方式：">使用方式：<a class="post-anchor" href="#使用方式："></a></h4><p>npm i -D speed-measure-webpack-plugin</p>
+<pre><code class="hljs vuejs">const SpeedMeasurePlugin &#x3D; require(&#39;speed-measure-webpack-plugin&#39;)
+module.exports &#x3D; &#123;
+  chainWebpack: config &#x3D;&gt; &#123;
+    config
+      .plugin(&#39;speed-measure-webpack-plugin&#39;)
+      .use(SpeedMeasurePlugin)
+      .end()
+  &#125;
+&#125;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/10/14/%E5%A6%82%E4%BD%95%E4%B8%AD%E6%96%ADPromise/">如何中断Promise</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/10/17/vuecli3项目打包优化/">https://codermino.github.io/2021/10/17/vuecli3项目打包优化/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
