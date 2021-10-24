@@ -263,6 +263,9 @@
   &#125;)
 &#125;</code></pre>
 </li>
+<li><p>例子<br>这里显示的是一个用户的头像，头像图片是一个url<br>rowDetail.id是不会变化的，这就到这用户修改了头像之后，<br>头像并没有及时的更新。<br>所以在头像图片的地址上面加上timeStamp，这样就能保证<br>头像图片的地址每一次请求都是最新的。</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">"url + '/api/vsInfos/' + rowDetail.id + '?time=' + +new Date().getTime()"</span> <span class="hljs-attr">size</span>=<span class="hljs-string">"large"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">'width:100px;height:100px;'</span>/&gt;</span></code></pre>
+</li>
 </ol>
 
 
