@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      防止接口缓存 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#接口统一加时间戳（接口避免缓存）"><span class="toc-text">接口统一加时间戳（接口避免缓存）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如何获取时间戳"><span class="toc-text">如何获取时间戳</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">防止接口缓存</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/10/24</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/防止接口缓存">防止接口缓存</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="接口统一加时间戳（接口避免缓存）">接口统一加时间戳（接口避免缓存）<a class="post-anchor" href="#接口统一加时间戳（接口避免缓存）"></a></h3><h4 id="如何获取时间戳">如何获取时间戳<a class="post-anchor" href="#如何获取时间戳"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> time = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime();</code></pre>
+
+<ol>
+<li><p>axios<br>如果你们请求接口用的是axios的话，可以用路由拦截器来统一加，<br>在config.url后面统一加时间戳就可以<br>我们在请求数据的时候，会出现几种情况，判断权限或者loading的显隐。<br>这些在每一个请求都会做的事情，我们可以封装一个service的请求函数，<br>将axios+interceptors封装在内！<br>(1)当有不符合的请求，拦截后取消请求！<br>(2)当请求反映没有权限，重新去登录！<br>这样就实现了所有请求的数据拦截和请求的响应拦截<br><a href="/images/timeStamp/timestamp1.png" data-caption data-fancybox="images"><img src="/images/timeStamp/timestamp1.png" alt></a><br>以下仅做参考：<br><a href="/images/timeStamp/timestamp2.png" data-caption data-fancybox="images"><img src="/images/timeStamp/timestamp2.png" alt></a></p>
+</li>
+<li><p>fetch<br>这个项目里面封装了fetch请求的post,get方法，<br>我只要在请求之前，把时间戳加进去就好了，<br>get是加在url里面的，post是加在body里面</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// get post 两种方式的fetch</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> fetchPromise = <span class="hljs-function">(<span class="hljs-params">method, url, data, contentType</span>) =&gt;</span> &#123;
+  <span class="hljs-keyword">let</span> headers = <span class="hljs-keyword">new</span> Headers()
+  <span class="hljs-keyword">let</span> body = <span class="hljs-string">''</span>
+  <span class="hljs-keyword">let</span> config = &#123;&#125;
+  <span class="hljs-keyword">if</span> (method.toLowerCase() === <span class="hljs-string">'get'</span>) &#123;
+    headers.append(<span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'text/plain'</span>)
+    <span class="hljs-comment">// get请求创建时间戳</span>
+    <span class="hljs-keyword">let</span> time = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime()
+    url += <span class="hljs-string">'?time='</span> + time + <span class="hljs-string">'&amp;'</span>
+    <span class="hljs-keyword">if</span> (data) &#123;
+      <span class="hljs-comment">// url += '?'</span>
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> attr <span class="hljs-keyword">in</span> data) &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> data[attr] === <span class="hljs-string">'string'</span>) &#123;
+          data[attr] = data[attr].replace(<span class="hljs-regexp">/%/g</span>, <span class="hljs-string">'%25'</span>)
+          data[attr] = data[attr].replace(<span class="hljs-regexp">/&amp;/g</span>, <span class="hljs-string">'%26'</span>)
+          data[attr] = data[attr].replace(<span class="hljs-regexp">/\+/g</span>, <span class="hljs-string">'%2B'</span>)
+        &#125;
+        url += attr + <span class="hljs-string">'='</span> + data[attr] + <span class="hljs-string">'&amp;'</span>
+      &#125;
+      url = url.substring(<span class="hljs-number">0</span>, url.length - <span class="hljs-number">1</span>)
+    &#125;
+    config = &#123;
+      <span class="hljs-attr">method</span>: <span class="hljs-string">'get'</span>,
+      <span class="hljs-attr">headers</span>: headers,
+      <span class="hljs-attr">credentials</span>: <span class="hljs-string">'same-origin'</span>
+    &#125;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    headers.append(<span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'application/x-www-form-urlencoded'</span>)
+    <span class="hljs-keyword">if</span> (data) &#123;
+      body = getQuery(data)
+      <span class="hljs-comment">// 给post请求加时间戳</span>
+      <span class="hljs-keyword">let</span> time = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getTime()
+      body += <span class="hljs-string">'time='</span> + time
+    &#125;
+    config = &#123;
+      <span class="hljs-attr">method</span>: method,
+      <span class="hljs-attr">headers</span>: headers,
+      <span class="hljs-attr">credentials</span>: <span class="hljs-string">'same-origin'</span>,
+      <span class="hljs-attr">body</span>: body
+    &#125;
+  &#125;
+  url = fullUrlAhead + url
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> &#123;
+    fetch(url, config)
+      .then(<span class="hljs-function">(<span class="hljs-params">response</span>) =&gt;</span> &#123;
+        <span class="hljs-keyword">if</span> (response.ok) &#123;
+          <span class="hljs-keyword">return</span> response.json()
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          reject(response)
+          <span class="hljs-keyword">return</span> response
+        &#125;
+      &#125;)
+      .then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+        resolve(res)
+      &#125;)
+      .catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> &#123;
+        reject(err)
+      &#125;)
+  &#125;)
+&#125;</code></pre>
+</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/10/17/vuecli3%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/">vuecli3项目打包优化</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/10/24/防止接口缓存/">https://codermino.github.io/2021/10/24/防止接口缓存/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

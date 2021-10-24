@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-10-17T16:43:28.516Z</updated>
+  <updated>2021-10-24T09:22:41.732Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>防止接口缓存</title>
+    <link href="https://codermino.github.io/2021/10/24/%E9%98%B2%E6%AD%A2%E6%8E%A5%E5%8F%A3%E7%BC%93%E5%AD%98/"/>
+    <id>https://codermino.github.io/2021/10/24/%E9%98%B2%E6%AD%A2%E6%8E%A5%E5%8F%A3%E7%BC%93%E5%AD%98/</id>
+    <published>2021-10-24T06:35:46.000Z</published>
+    <updated>2021-10-24T09:22:41.732Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;接口统一加时间戳（接口避免缓存）&quot;&gt;接口统一加时间戳（接口避免缓存）&lt;a class=&quot;post-anchor&quot; href=&quot;#接口统一加时间戳（接口避免缓存）&quot;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4 id=&quot;如何获取时间戳&quot;&gt;如何获取时间戳&lt;a class=&quot;post-an
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="https://codermino.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="防止接口缓存" scheme="https://codermino.github.io/tags/%E9%98%B2%E6%AD%A2%E6%8E%A5%E5%8F%A3%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
   
   <entry>
     <title>vuecli3项目打包优化</title>
@@ -483,31 +507,6 @@
     
     
       <category term="vue使用require.context工程化引入文件" scheme="https://codermino.github.io/tags/vue%E4%BD%BF%E7%94%A8require-context%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue的img显示占位图和错误图片和load事件</title>
-    <link href="https://codermino.github.io/2021/08/04/vue%E7%9A%84img%E7%9A%84load%E4%BA%8B%E4%BB%B6/"/>
-    <id>https://codermino.github.io/2021/08/04/vue%E7%9A%84img%E7%9A%84load%E4%BA%8B%E4%BB%B6/</id>
-    <published>2021-08-04T01:31:52.000Z</published>
-    <updated>2021-08-04T08:56:31.620Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;hlj
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue的img的load事件" scheme="https://codermino.github.io/tags/vue%E7%9A%84img%E7%9A%84load%E4%BA%8B%E4%BB%B6/"/>
     
   </entry>
   
