@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-       Mino&#39;s personal blog  - Mino
+      vue仿京喜登录 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#仿京喜的登录界面"><span class="toc-text">仿京喜的登录界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -149,297 +154,235 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        
-<div class="posts">
-  <ul>
-     
-
-    
-
-  <li class="item">
-
+        <article class="post-entry">
+    <div class="header">
       
-
-      
-      <div class="describe">
-        <div class="title">
-          <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/">ejs模板的使用</a>
-        </div>
-        <div class="date">
+      <div class="title">vue仿京喜登录</div>
+      <div class="meta">
+        <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>20/01/28</span>
-        </div>
-        
-        <div class="meta">
-          <div class="l">
-            <div class="warp">
-              
-              <span class="iconfont icon-folder"></span>
-              <span class="desp">
-                 
-                <a href="/categories/nodejs">nodejs</a>
-                 
-              </span>
-              
-            </div>
+          <span>2021/10/26</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue仿京喜登录">vue仿京喜登录</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="仿京喜的登录界面">仿京喜的登录界面<a class="post-anchor" href="#仿京喜的登录界面"></a></h3><p>点击下面那个图标，<br>之前点击的图标就替换对应位置的图标</p>
+<h3 id="代码实现">代码实现<a class="post-anchor" href="#代码实现"></a></h3><p>组件内部的代码不进行实现，只实现外面的大框</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;jingxi&quot;&gt;
+      &lt;div class&#x3D;&quot;content&quot;&gt;
+        &lt;div class&#x3D;&quot;content-top&quot;&gt;
+          &lt;template v-for&#x3D;&quot;item in bottomIconsList&quot;&gt;
+            &lt;component :key&#x3D;&quot;item.type&quot; v-if&#x3D;&quot;item.type &#x3D;&#x3D;&#x3D; currentLoginType&quot; :is&#x3D;&quot;item.component&quot;&gt;&lt;&#x2F;component&gt;
+          &lt;&#x2F;template&gt;
+        &lt;&#x2F;div&gt;
+        &lt;div class&#x3D;&quot;content-bottom&quot;&gt;
+          &lt;div class&#x3D;&quot;content-bottom-other&quot;&gt;
+            &lt;span&gt;其他方式登录&lt;&#x2F;span&gt;
+          &lt;&#x2F;div&gt;
+          &lt;div class&#x3D;&quot;content-bottom-icon&quot;&gt;
+            &lt;template v-for&#x3D;&quot;(item, index) in bottomIconsList&quot; &gt;
+              &lt;i style&#x3D;&quot;cursor: pointer;&quot; @click&#x3D;&quot;iconClick(item, index)&quot; :key&#x3D;&quot;item.type&quot; v-show&#x3D;&quot;currentLoginType !&#x3D;&#x3D; item.type&quot; :class&#x3D;&quot;[&#39;iconfont&#39;, item.icon]&quot;&gt;&lt;&#x2F;i&gt;
+            &lt;&#x2F;template&gt;
+          &lt;&#x2F;div&gt;
+        &lt;&#x2F;div&gt;
+      &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import wxLogin from &#39;.&#x2F;jingxiCom&#x2F;wxLogin&#39;
+import shoujiLogin from &#39;.&#x2F;jingxiCom&#x2F;shoujiLogin&#39;
+import mimaLogin from &#39;.&#x2F;jingxiCom&#x2F;mimaLogin&#39;
+import qqLogin from &#39;.&#x2F;jingxiCom&#x2F;qqLogin&#39;
+import jdLogin from &#39;.&#x2F;jingxiCom&#x2F;jdLogin&#39;
+export default &#123;
+  name: &#39;jingxi&#39;,
+  components: &#123;
+    wxLogin,
+    shoujiLogin,
+    mimaLogin,
+    qqLogin,
+    jdLogin
+  &#125;,
+  data () &#123;
+    return &#123;
+      lastLoginType: &#39;jd&#39;,
+      currentLoginType: &#39;jd&#39;,
+      bottomIconsList: [
+        &#123;
+          type: &#39;wx&#39;,
+          icon: &#39;icon-weixin&#39;,
+          component: &#39;wxLogin&#39;
+        &#125;,
+        &#123;
+          type: &#39;sj&#39;,
+          icon: &#39;icon-shouji1&#39;,
+          component: &#39;shoujiLogin&#39;
+        &#125;,
+        &#123;
+          type: &#39;zh&#39;,
+          icon: &#39;icon-ATG-mimasz&#39;,
+          component: &#39;mimaLogin&#39;
+        &#125;,
+        &#123;
+          type: &#39;qq&#39;,
+          icon: &#39;icon-11qq&#39;,
+          component: &#39;qqLogin&#39;
+        &#125;,
+        &#123;
+          type: &#39;jd&#39;,
+          icon: &#39;icon-jingdong-&#39;,
+          component: &#39;jdLogin&#39;
+        &#125;
+      ]
+    &#125;
+  &#125;,
+  methods: &#123;
+    iconClick (item, index) &#123;
+      if (this.currentLoginType !&#x3D;&#x3D; this.lastLoginType) &#123;
+        this.lastLoginType &#x3D; this.currentLoginType
+      &#125;
+      const newBottomIconList &#x3D; [...this.bottomIconsList]
+      const clickItem &#x3D; newBottomIconList[index]
+      const lastItem &#x3D; newBottomIconList.find(item &#x3D;&gt; &#123;
+        return item.type &#x3D;&#x3D;&#x3D; this.lastLoginType
+      &#125;)
+      if (!lastItem) &#123;
+        return
+      &#125;
+      newBottomIconList[index] &#x3D; lastItem
+      newBottomIconList[newBottomIconList.length - 1] &#x3D; clickItem
+      this.bottomIconsList &#x3D; newBottomIconList
+      this.currentLoginType &#x3D; item.type
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped lang&#x3D;&quot;less&quot;&gt;
+  .jingxi&#123;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    .content&#123;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      &amp;-bottom&#123;
+        height: 15%;
+        border-top: 1px solid #ccc;
+        position: relative;
+        &amp;-other&#123;
+          position: absolute;
+          left: 50%;
+          top: -10px;
+          transform: translateX(-50%);
+          z-index: 999;
+          background-color: #fff;
+          padding: 0 5px;
+        &#125;
+        &amp;-icon&#123;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          i&#123;
+            font-size: 30px;
+            width: 25%;
+          &#125;
+        &#125;
+      &#125;
+      &amp;-top&#123;
+        flex-grow: 1;
+      &#125;
+    &#125;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
             
-            <div class="warp">
-              <span class="iconfont icon-tag1"></span>
-              <span class="desp">
-                 
-                <a href="/tags/ejs模板的基本使用">ejs模板的基本使用</a>
-                 
-              </span>
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
             </div>
             
-            <div class="warp">
-              <div class="share" data-url="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/">
-                <span class="iconfont icon-share"></span>
-              </div>
-              <div class="desp share" data-url="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/">
-                <a href="#">分享</a>
-              </div>
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
             </div>
-          </div>
-          <div class="r">
-            <a href="/2020/01/28/ejs%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/">Read More</a>
-          </div>
+            
         </div>
       </div>
-    </li>
-     
-
-    
-
-  <li class="item">
-
-      
-
-      
-      <div class="describe">
-        <div class="title">
-          <a href="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/">formidable上传文件改名</a>
-        </div>
-        <div class="date">
-          <span class="iconfont icon-time-circle"></span>
-          <span>20/01/25</span>
-        </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
         
-        <div class="meta">
-          <div class="l">
-            <div class="warp">
-              
-              <span class="iconfont icon-folder"></span>
-              <span class="desp">
-                 
-                <a href="/categories/nodejs">nodejs</a>
-                 
-              </span>
-              
-            </div>
-
-            
-            <div class="warp">
-              <span class="iconfont icon-tag1"></span>
-              <span class="desp">
-                 
-                <a href="/tags/formidable文件改名">formidable文件改名</a>
-                 
-              </span>
-            </div>
-            
-            <div class="warp">
-              <div class="share" data-url="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/">
-                <span class="iconfont icon-share"></span>
-              </div>
-              <div class="desp share" data-url="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/">
-                <a href="#">分享</a>
-              </div>
-            </div>
-          </div>
-          <div class="r">
-            <a href="/2020/01/25/formidable%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E6%94%B9%E5%90%8D/">Read More</a>
-          </div>
-        </div>
-      </div>
-    </li>
-     
-
-    
-
-  <li class="item">
-
-      
-
-      
-      <div class="describe">
-        <div class="title">
-          <a href="/2020/01/25/nodejs%E7%9A%84formidable/">nodejs的formidable</a>
-        </div>
-        <div class="date">
-          <span class="iconfont icon-time-circle"></span>
-          <span>20/01/25</span>
-        </div>
+    </div>
+    <div class="item right">
         
-        <div class="meta">
-          <div class="l">
-            <div class="warp">
-              
-              <span class="iconfont icon-folder"></span>
-              <span class="desp">
-                 
-                <a href="/categories/nodejs">nodejs</a>
-                 
-              </span>
-              
-            </div>
-
-            
-            <div class="warp">
-              <span class="iconfont icon-tag1"></span>
-              <span class="desp">
-                 
-                <a href="/tags/formidable文件上传">formidable文件上传</a>
-                 
-              </span>
-            </div>
-            
-            <div class="warp">
-              <div class="share" data-url="/2020/01/25/nodejs%E7%9A%84formidable/">
-                <span class="iconfont icon-share"></span>
-              </div>
-              <div class="desp share" data-url="/2020/01/25/nodejs%E7%9A%84formidable/">
-                <a href="#">分享</a>
-              </div>
-            </div>
-          </div>
-          <div class="r">
-            <a href="/2020/01/25/nodejs%E7%9A%84formidable/">Read More</a>
-          </div>
-        </div>
-      </div>
-    </li>
-     
-
-    
-
-  <li class="item">
-
-      
-
-      
-      <div class="describe">
-        <div class="title">
-          <a href="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/">mongodb操作</a>
-        </div>
-        <div class="date">
-          <span class="iconfont icon-time-circle"></span>
-          <span>20/01/12</span>
-        </div>
+          <a href="/2021/10/25/%E5%9F%BA%E4%BA%8Eiview%E7%9A%84menu%E5%B7%A6%E4%BE%A7%E5%B1%95%E5%BC%80/">基于iview的menu左侧展开</a>
         
-        <div class="meta">
-          <div class="l">
-            <div class="warp">
-              
-              <span class="iconfont icon-folder"></span>
-              <span class="desp">
-                 
-                <a href="/categories/mongodb">mongodb</a>
-                 
-              </span>
-              
-            </div>
+    </div>
+  </div>
 
-            
-            <div class="warp">
-              <span class="iconfont icon-tag1"></span>
-              <span class="desp">
-                 
-                <a href="/tags/mongodb">mongodb</a>
-                 
-              </span>
-            </div>
-            
-            <div class="warp">
-              <div class="share" data-url="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/">
-                <span class="iconfont icon-share"></span>
-              </div>
-              <div class="desp share" data-url="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/">
-                <a href="#">分享</a>
-              </div>
-            </div>
-          </div>
-          <div class="r">
-            <a href="/2020/01/12/mongodb%E6%93%8D%E4%BD%9C/">Read More</a>
-          </div>
-        </div>
-      </div>
-    </li>
-     
+  
 
-    
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/10/26/vue仿京喜登录/">https://codermino.github.io/2021/10/26/vue仿京喜登录/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
 
-  <li class="item">
+  <div id="comment"></div>
 
-      
-
-      
-      <div class="describe">
-        <div class="title">
-          <a href="/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">Git基本操作</a>
-        </div>
-        <div class="date">
-          <span class="iconfont icon-time-circle"></span>
-          <span>19/12/05</span>
-        </div>
-        
-        <div class="meta">
-          <div class="l">
-            <div class="warp">
-              
-              <span class="iconfont icon-folder"></span>
-              <span class="desp">
-                 
-                <a href="/categories/git">git</a>
-                 
-              </span>
-              
-            </div>
-
-            
-            <div class="warp">
-              <span class="iconfont icon-tag1"></span>
-              <span class="desp">
-                 
-                <a href="/tags/git">git</a>
-                 
-              </span>
-            </div>
-            
-            <div class="warp">
-              <div class="share" data-url="/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
-                <span class="iconfont icon-share"></span>
-              </div>
-              <div class="desp share" data-url="/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
-                <a href="#">分享</a>
-              </div>
-            </div>
-          </div>
-          <div class="r">
-            <a href="/2019/12/05/Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">Read More</a>
-          </div>
-        </div>
-      </div>
-    </li>
-    
-  </ul>
-</div>
-
-<div class="paginator">
-  <a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="page-number current">24</span>
-</div>
-
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
