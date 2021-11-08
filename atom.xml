@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-10-25T16:35:18.453Z</updated>
+  <updated>2021-11-08T05:54:22.866Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>解决ie11的兼容性问题</title>
+    <link href="https://codermino.github.io/2021/11/08/%E8%A7%A3%E5%86%B3ie11%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/"/>
+    <id>https://codermino.github.io/2021/11/08/%E8%A7%A3%E5%86%B3ie11%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/</id>
+    <published>2021-11-08T05:46:18.000Z</published>
+    <updated>2021-11-08T05:54:22.866Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;qiankun框架本身对ie11的兼容性并不好或者没有兼容&lt;br&gt;知识点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;babel-polyfill 的作用&lt;/li&gt;
+&lt;li&gt;webpack的transpileDependencies属性的作用&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;关于ba
+      
+    
+    </summary>
+    
+    
+      <category term="ie" scheme="https://codermino.github.io/categories/ie/"/>
+    
+    
+      <category term="解决ie11的兼容性问题" scheme="https://codermino.github.io/tags/%E8%A7%A3%E5%86%B3ie11%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>vue仿京喜登录</title>
@@ -484,30 +513,6 @@
     
     
       <category term="git" scheme="https://codermino.github.io/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>js的闭包</title>
-    <link href="https://codermino.github.io/2021/08/13/js%E7%9A%84%E9%97%AD%E5%8C%85/"/>
-    <id>https://codermino.github.io/2021/08/13/js%E7%9A%84%E9%97%AD%E5%8C%85/</id>
-    <published>2021-08-13T01:32:44.000Z</published>
-    <updated>2021-08-13T07:13:50.542Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/javascript/javascript.png&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/javascript/javascript.png&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="javascript" scheme="https://codermino.github.io/categories/javascript/"/>
-    
-    
-      <category term="js的闭包" scheme="https://codermino.github.io/tags/js%E7%9A%84%E9%97%AD%E5%8C%85/"/>
     
   </entry>
   
