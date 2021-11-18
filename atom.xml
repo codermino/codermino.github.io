@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-11-18T15:18:07.769Z</updated>
+  <updated>2021-11-18T16:07:23.271Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vuecli3的打包配置</title>
+    <link href="https://codermino.github.io/2021/11/18/vuecli3%E7%9A%84%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE/"/>
+    <id>https://codermino.github.io/2021/11/18/vuecli3%E7%9A%84%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE/</id>
+    <published>2021-11-18T15:22:24.000Z</published>
+    <updated>2021-11-18T16:07:23.271Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;去除map文件&quot;&gt;去除ma
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vuecli3的打包配置最终版本1.0" scheme="https://codermino.github.io/tags/vuecli3%E7%9A%84%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE%E6%9C%80%E7%BB%88%E7%89%88%E6%9C%AC1-0/"/>
+    
+  </entry>
   
   <entry>
     <title>ES6中的await和then的区别</title>
@@ -488,31 +513,6 @@
     
     
       <category term="vue表单验证失去焦点和改变时同时触发" scheme="https://codermino.github.io/tags/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue2的provide和inject</title>
-    <link href="https://codermino.github.io/2021/08/23/vue2%E7%9A%84provide%E5%92%8Cinject/"/>
-    <id>https://codermino.github.io/2021/08/23/vue2%E7%9A%84provide%E5%92%8Cinject/</id>
-    <published>2021-08-23T11:52:34.000Z</published>
-    <updated>2021-08-23T12:32:20.812Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;我们可以总结下组件通信的几大方法：&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue2的provide和inject" scheme="https://codermino.github.io/tags/vue2%E7%9A%84provide%E5%92%8Cinject/"/>
     
   </entry>
   

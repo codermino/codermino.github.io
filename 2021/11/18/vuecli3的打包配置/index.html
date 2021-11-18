@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vuecli3的打包配置 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#去除map文件"><span class="toc-text">去除map文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-text">CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#去除debugger、console等"><span class="toc-text">去除debugger、console等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多进程构建，加快速度"><span class="toc-text">多进程构建，加快速度</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vuecli3的打包配置</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/11/18</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vuecli3的打包配置最终版本1.0">vuecli3的打包配置最终版本1.0</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="去除map文件">去除map文件<a class="post-anchor" href="#去除map文件"></a></h3><pre><code class="hljs javascript">productionSourceMap: <span class="hljs-literal">false</span></code></pre>
+
+<h3 id="CDN">CDN<a class="post-anchor" href="#CDN"></a></h3><p>一共有两种方式<br>第一种方式是使用了2个插件<br>第二种方式是使用1个插件和直接修改index.html文件<br><strong>第一种方式</strong><br>vue.config.js</p>
+<pre><code class="hljs markdown">// 是否为生产环境
+const isProduction = process.env.NODE_ENV !== 'development'
+// 本地环境是否需要使用cdn
+const devNeedCdn = true
+// cdn链接
+const cdn = &#123;
+  // cdn：模块名称和模块作用域命名（对应window里面挂载的变量名称）
+  externals: &#123;
+<span class="hljs-code">    vue: 'Vue',</span>
+<span class="hljs-code">    vuex: 'Vuex',</span>
+<span class="hljs-code">    'vue-router': 'VueRouter'</span>
+  &#125;,
+  // cdn的css链接
+  css: [],
+  // cdn的js链接
+  js: [
+<span class="hljs-code">    'https://cdn.staticfile.org/vue/2.6.10/vue.min.js',</span>
+<span class="hljs-code">    'https://cdn.staticfile.org/vuex/3.0.1/vuex.min.js',</span>
+<span class="hljs-code">    'https://cdn.staticfile.org/vue-router/3.1.1/vue-router.min.js'</span>
+  ]
+&#125;
+module.exports = &#123;
+  productionSourceMap: false,
+  chainWebpack: config =&gt; &#123;
+<span class="hljs-code">    config.plugin('html').tap(args =&gt; &#123;</span>
+<span class="hljs-code">      // 生产环境或本地需要cdn时，才注入cdn</span>
+<span class="hljs-code">      if (isProduction || devNeedCdn) args[0].cdn = cdn</span>
+<span class="hljs-code">      return args</span>
+<span class="hljs-code">    &#125;)</span>
+  &#125;,
+  configureWebpack: config =&gt; &#123;
+<span class="hljs-code">    // 用cdn方式引入，则构建时要忽略相关资源</span>
+<span class="hljs-code">    if (isProduction || devNeedCdn) config.externals = cdn.externals</span>
+  &#125;
+&#125;</code></pre>
+<p>index.html</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,initial-scale=1.0"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"vue,supermall"</span> /&gt;</span>
+<span class="hljs-comment">&lt;!--    &lt;%=BASE_URL%&gt;是为了获取当前文件所在的路径--&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%= BASE_URL %&gt;favicon.ico"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 使用CDN的CSS文件 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">for</span> (<span class="hljs-attr">var</span> <span class="hljs-attr">i</span> <span class="hljs-attr">in</span> <span class="hljs-attr">htmlWebpackPlugin.options.cdn</span> &amp;&amp;
+    <span class="hljs-attr">htmlWebpackPlugin.options.cdn.css</span>) &#123; %&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span>
+      <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;"</span>
+      <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> &#125; %&gt;</span>
+    <span class="hljs-comment">&lt;!-- 使用CDN的CSS文件 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>supermall<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>We're sorry but supermall doesn't work properly without JavaScript enabled. Please enable it to continue.<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- 使用CDN的JS文件 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">for</span> (<span class="hljs-attr">var</span> <span class="hljs-attr">i</span> <span class="hljs-attr">in</span> <span class="hljs-attr">htmlWebpackPlugin.options.cdn</span> &amp;&amp;
+    <span class="hljs-attr">htmlWebpackPlugin.options.cdn.js</span>) &#123; %&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"&lt;%= htmlWebpackPlugin.options.cdn.js[i] %&gt;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> &#125; %&gt;</span>
+    <span class="hljs-comment">&lt;!-- 使用CDN的JS文件 --&gt;</span>
+    <span class="hljs-comment">&lt;!-- built files will be auto injected --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+<p><strong>第二种方式</strong><br>vue.config.js</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> htmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'html-webpack-plugin'</span>);
+<span class="hljs-keyword">const</span> HtmlWebpackExternalsPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'html-webpack-externals-plugin'</span>);
+<span class="hljs-comment">// 是否为生产环境</span>
+<span class="hljs-keyword">const</span> isProduction = process.env.NODE_ENV !== <span class="hljs-string">'development'</span>
+<span class="hljs-comment">// 本地环境是否需要使用cdn</span>
+<span class="hljs-keyword">const</span> devNeedCdn = <span class="hljs-literal">true</span>
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-attr">productionSourceMap</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">configureWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (isProduction || devNeedCdn) &#123;
+      config.plugins.push(<span class="hljs-keyword">new</span> htmlWebpackPlugin(&#123;
+        <span class="hljs-attr">filename</span>: <span class="hljs-string">'./public/index.html'</span>,
+      &#125;))
+      config.plugins.push(<span class="hljs-keyword">new</span> HtmlWebpackExternalsPlugin(&#123;
+        <span class="hljs-attr">externals</span>: [
+          &#123;
+            <span class="hljs-attr">module</span>: <span class="hljs-string">'vue'</span>,
+            <span class="hljs-attr">entry</span>: <span class="hljs-string">'https://cdn.staticfile.org/vue/2.6.10/vue.min.js'</span>,
+            <span class="hljs-attr">global</span>: <span class="hljs-string">'Vue'</span>,
+          &#125;,
+          &#123;
+            <span class="hljs-attr">module</span>: <span class="hljs-string">'vue-router'</span>,
+            <span class="hljs-attr">entry</span>: <span class="hljs-string">'https://cdn.staticfile.org/vue-router/3.1.1/vue-router.min.js'</span>,
+            <span class="hljs-attr">global</span>: <span class="hljs-string">'VueRouter'</span>
+          &#125;,
+          &#123;
+            <span class="hljs-attr">module</span>: <span class="hljs-string">'vuex'</span>,
+            <span class="hljs-attr">entry</span>: <span class="hljs-string">'https://cdn.staticfile.org/vuex/3.0.1/vuex.min.js'</span>,
+            <span class="hljs-attr">global</span>: <span class="hljs-string">'Vuex'</span>
+          &#125;
+        ]
+      &#125;))
+    &#125;
+  &#125;,
+  <span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+  &#125;
+&#125;</code></pre>
+
+<h3 id="去除debugger、console等">去除debugger、console等<a class="post-anchor" href="#去除debugger、console等"></a></h3><p><strong>优化压缩 多进程多实例并行压缩</strong><br>1.使用UglifyJsPlugin</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> UglifyJsPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'uglifyjs-webpack-plugin'</span>)
+<span class="hljs-comment">// 使用UglifyJsPlugin</span>
+config.plugins.push(<span class="hljs-keyword">new</span> UglifyJsPlugin(&#123;
+  <span class="hljs-attr">uglifyOptions</span>: &#123;
+    <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">compress</span>: &#123;
+      <span class="hljs-attr">drop_debugger</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">drop_console</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">pure_funcs</span>:[<span class="hljs-string">'console.log'</span>]
+    &#125;,
+  &#125;,
+  <span class="hljs-attr">sourceMap</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">parallel</span>: <span class="hljs-literal">true</span>,
+&#125;)
+)</code></pre>
+<p>2.使用ParallelUglifyPlugin</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> ParallelUglifyPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-parallel-uglify-plugin'</span>)
+<span class="hljs-comment">// 使用ParallelUglifyPlugin</span>
+config.plugins.push(<span class="hljs-keyword">new</span> ParallelUglifyPlugin(&#123;
+    <span class="hljs-attr">uglifyJS</span>:&#123;
+      <span class="hljs-attr">output</span>: &#123;
+        <span class="hljs-attr">beautify</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">comments</span>: <span class="hljs-literal">false</span>
+      &#125;,
+      <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">compress</span>: &#123;
+        <span class="hljs-attr">drop_debugger</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">drop_console</span>: <span class="hljs-literal">true</span>
+      &#125;
+    &#125;
+&#125;))</code></pre>
+<p>3.使用TerserPlugin<br>推荐使用 支持 ES6 语法压缩<br>下面的写法相当于自定义terser的压缩对象</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> TerserPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'terser-webpack-plugin'</span>)
+<span class="hljs-comment">// webpack v3写法</span>
+config.optimization.minimizer([
+    <span class="hljs-keyword">new</span> TerserPlugin(&#123;
+      <span class="hljs-attr">terserOptions</span>: &#123;
+        <span class="hljs-attr">compress</span>: &#123;
+          <span class="hljs-attr">drop_console</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">drop_debugger</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">pure_funcs</span>: [
+            <span class="hljs-string">'console.log'</span>
+          ]
+        &#125;,
+        <span class="hljs-attr">output</span>: &#123;
+          <span class="hljs-attr">comments</span>: <span class="hljs-literal">false</span>
+        &#125;
+      &#125;
+    &#125;)
+])
+      <span class="hljs-comment">// webpack v4的写法</span>
+config.optimization.minimizer(<span class="hljs-string">'terser'</span>).tap(<span class="hljs-function"><span class="hljs-params">args</span> =&gt;</span> &#123;
+    <span class="hljs-comment">// remove debugger</span>
+    args[<span class="hljs-number">0</span>].terserOptions.compress.drop_debugger = <span class="hljs-literal">true</span>
+    <span class="hljs-comment">// 移除 console.log</span>
+    args[<span class="hljs-number">0</span>].terserOptions.compress.pure_funcs = [<span class="hljs-string">'console.log'</span>]
+    <span class="hljs-comment">// 去掉注释 如果需要看chunk-vendors公共部分插件，可以注释掉就可以看到注释了</span>
+    args[<span class="hljs-number">0</span>].terserOptions.output = &#123;
+      <span class="hljs-attr">comments</span>: <span class="hljs-literal">false</span>
+    &#125;
+    <span class="hljs-keyword">return</span> args
+&#125;)
+<span class="hljs-comment">// 使用TerserPlugin</span>
+config.plugins.push(<span class="hljs-keyword">new</span> TerserPlugin(&#123;
+    <span class="hljs-attr">cache</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">sourceMap</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">parallel</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">terserOptions</span>: &#123;
+      <span class="hljs-attr">ecma</span>: <span class="hljs-literal">undefined</span>,
+      <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">parse</span>: &#123;&#125;,
+      <span class="hljs-attr">compress</span>: &#123;
+        <span class="hljs-comment">// 删除无用的代码</span>
+        <span class="hljs-attr">unused</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-comment">// 删掉 debugger</span>
+        <span class="hljs-attr">drop_debugger</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-comment">// 移除 console</span>
+        <span class="hljs-attr">drop_console</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-comment">// 移除无用的代码</span>
+        <span class="hljs-attr">dead_code</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">pure_funcs</span>: [<span class="hljs-string">'console.log'</span>],
+      &#125;,
+    &#125;
+&#125;))</code></pre>
+<p>下面的这种方式相当于修改webpack的默认的terser</p>
+<pre><code class="hljs javascript">config.optimization = &#123;
+  <span class="hljs-attr">minimizer</span>: [
+    <span class="hljs-comment">// 使用TerserPlugin</span>
+    <span class="hljs-keyword">new</span> TerserPlugin(&#123;
+      <span class="hljs-attr">cache</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">sourceMap</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">parallel</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">terserOptions</span>: &#123;
+        <span class="hljs-attr">ecma</span>: <span class="hljs-literal">undefined</span>,
+        <span class="hljs-attr">warnings</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">parse</span>: &#123;&#125;,
+        <span class="hljs-attr">compress</span>: &#123;
+          <span class="hljs-attr">drop_console</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">drop_debugger</span>: <span class="hljs-literal">true</span>,
+          <span class="hljs-attr">pure_funcs</span>: [<span class="hljs-string">'console.log'</span>],
+        &#125;,
+      &#125;,
+    &#125;)
+  ]
+&#125;
+或
+config.optimization.minimizer[<span class="hljs-number">0</span>].options.terserOptions.compress.warnings = <span class="hljs-literal">false</span>
+config.optimization.minimizer[<span class="hljs-number">0</span>].options.terserOptions.compress.drop_console = <span class="hljs-literal">true</span>
+config.optimization.minimizer[<span class="hljs-number">0</span>].options.terserOptions.compress.drop_debugger = <span class="hljs-literal">true</span>
+config.optimization.minimizer[<span class="hljs-number">0</span>].options.terserOptions.compress.pure_funcs = [<span class="hljs-string">'console.log'</span>]
+或
+config.optimization.minimize(<span class="hljs-literal">true</span>)</code></pre>
+<p><strong>tip:</strong></p>
+<ol>
+<li>mode=’production’会自动添加ugly的压缩功能，不需要额外的配置</li>
+<li>mode=’development’，就算添加了ugly的配置，也不会起作用</li>
+<li>使用ParallelUglifyPlugin时候如果打包的时候出错，可能是插件的版本没有对应<br>，尝试降低版本<br>npm install -D <a href="mailto:webpack-parallel-uglify-plugin@1.0.0" target="_blank" rel="noopener">webpack-parallel-uglify-plugin@1.0.0</a></li>
+<li>使用config.optimization进行配置在configureWebpack</li>
+</ol>
+<h3 id="多进程构建，加快速度">多进程构建，加快速度<a class="post-anchor" href="#多进程构建，加快速度"></a></h3><p>多进程多实例构建，资源并行解析</p>
+<ol>
+<li>使用happyPack进行打包</li>
+</ol>
+<p><strong>从webpack4发表之后，happypack已经不维护了，<br>退出历史舞台了，有新的thread-loader代替。<br>另外，如果你只是单纯地想加快编译打包速度的话，<br>不如上dllplugin，这个比thread-loader快。</strong><br><strong>vuecli3不需要使用happypack，<br>vuecli3脚手架默认采用了thread-loader（与happypack作用相同）<br>加快编译<br> <a href="https://cli.vuejs.org/zh/config/#parallel" target="_blank" rel="noopener">https://cli.vuejs.org/zh/config/#parallel</a></strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> HappyPack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'happypack'</span>);
+<span class="hljs-keyword">const</span> os = <span class="hljs-built_in">require</span>(<span class="hljs-string">'os'</span>);
+<span class="hljs-keyword">const</span> happyThreadPool = HappyPack.ThreadPool(&#123; <span class="hljs-attr">size</span>: os.cpus().length &#125;);
+<span class="hljs-keyword">new</span> HappyPack(&#123;
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'js'</span>,
+    <span class="hljs-attr">threadPool</span>: happyThreadPool,
+    <span class="hljs-attr">loaders</span>: [ <span class="hljs-string">'babel-loader'</span> ]
+    &#125;),
+    <span class="hljs-keyword">new</span> HappyPack(&#123;
+    <span class="hljs-attr">id</span>: <span class="hljs-string">'styles'</span>,
+    <span class="hljs-attr">threadPool</span>: happyThreadPool,
+    <span class="hljs-attr">loaders</span>: [ <span class="hljs-string">'css-loader'</span> ]
+&#125;)</code></pre>
+<ol start="2">
+<li>vuecli3开启thread-loader<pre><code class="hljs javascript">parallel: <span class="hljs-literal">true</span></code></pre>
+</li>
+</ol>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/11/18/ES6%E4%B8%AD%E7%9A%84await%E5%92%8Cthen%E7%9A%84%E5%8C%BA%E5%88%AB/">ES6中的await和then的区别</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/11/18/vuecli3的打包配置/">https://codermino.github.io/2021/11/18/vuecli3的打包配置/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
