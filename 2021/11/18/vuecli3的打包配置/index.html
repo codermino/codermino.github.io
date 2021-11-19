@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#去除map文件"><span class="toc-text">去除map文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-text">CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#去除debugger、console等"><span class="toc-text">去除debugger、console等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多进程构建，加快速度"><span class="toc-text">多进程构建，加快速度</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#去除map文件"><span class="toc-text">去除map文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN"><span class="toc-text">CDN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#去除debugger、console等"><span class="toc-text">去除debugger、console等</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多进程构建，加快速度"><span class="toc-text">多进程构建，加快速度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开启gzip压缩"><span class="toc-text">开启gzip压缩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将小图片压缩成base64格式"><span class="toc-text">将小图片压缩成base64格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#去除无用的css"><span class="toc-text">去除无用的css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化moment-js"><span class="toc-text">优化moment.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化lodash"><span class="toc-text">优化lodash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用打包分析工具"><span class="toc-text">使用打包分析工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用hard-source-webpack-plugin"><span class="toc-text">使用hard-source-webpack-plugin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决ie11的兼容性问题"><span class="toc-text">解决ie11的兼容性问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置热更新"><span class="toc-text">配置热更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化xlsx"><span class="toc-text">优化xlsx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用speed-measure-webpack-plugin插件测量打包各环节耗费的时间"><span class="toc-text">使用speed-measure-webpack-plugin插件测量打包各环节耗费的时间</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -448,8 +448,134 @@ config.optimization.minimize(<span class="hljs-literal">true</span>)</code></pre
 &#125;)</code></pre>
 <ol start="2">
 <li>vuecli3开启thread-loader<pre><code class="hljs javascript">parallel: <span class="hljs-literal">true</span></code></pre>
+
 </li>
 </ol>
+<h3 id="开启gzip压缩">开启gzip压缩<a class="post-anchor" href="#开启gzip压缩"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> compressionWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'compression-webpack-plugin'</span>);
+config.plugins.push(<span class="hljs-keyword">new</span> compressionWebpackPlugin(&#123;
+    <span class="hljs-comment">//[file] 会被替换成原始资源。[path] 会被替换成原始资源的路径， [query] 会被替换成查询字符串。默认值是 "[path].gz[query]"。</span>
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">'[path].gz[query]'</span>, <span class="hljs-comment">// 提示compression-webpack-plugin@3.0.0的话asset改为filename</span>
+    <span class="hljs-comment">//可以是 function(buf, callback) 或者字符串。对于字符串来说依照 zlib 的算法(或者 zopfli 的算法)。默认值是 "gzip"。</span>
+    <span class="hljs-attr">algorithm</span>: <span class="hljs-string">'gzip'</span>,
+    <span class="hljs-comment">//所有匹配该正则的资源都会被处理。默认值是全部资源。</span>
+    <span class="hljs-attr">test</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'\\.('</span> + productionGZipExtensions.join(<span class="hljs-string">'|'</span>) + <span class="hljs-string">')$'</span>),
+    <span class="hljs-comment">//只有大小大于该值的资源会被处理。单位是 bytes。默认值是 0。</span>
+    <span class="hljs-attr">threshold</span>: <span class="hljs-number">10240</span>,
+    <span class="hljs-comment">//只有压缩率小于这个值的资源才会被处理。默认值是 0.8。</span>
+    <span class="hljs-attr">minRatio</span>: <span class="hljs-number">0.8</span>
+&#125;))</code></pre>
+
+<h3 id="将小图片压缩成base64格式">将小图片压缩成base64格式<a class="post-anchor" href="#将小图片压缩成base64格式"></a></h3><p>使用rule(‘image’)的limit进行小图片大小限制例如：{limit:20000}<br>则小于20000/1024k的图片在打包的时候将会被转成base64格式进行内联<br>相比于不进行压缩的打包之后的文件，css文件夹变大，img文件夹变小</p>
+<pre><code class="hljs javascript">config.module
+      .rule(<span class="hljs-string">'images'</span>)
+      .use(<span class="hljs-string">'url-loader'</span>)
+      .loader(<span class="hljs-string">'url-loader'</span>)
+      .tap(<span class="hljs-function"><span class="hljs-params">options</span> =&gt;</span> <span class="hljs-built_in">Object</span>.assign(options, &#123; <span class="hljs-attr">limit</span>: <span class="hljs-number">20000</span> &#125;))</code></pre>
+
+<h3 id="去除无用的css">去除无用的css<a class="post-anchor" href="#去除无用的css"></a></h3><p><strong>安装</strong></p>
+<pre><code class="hljs markdown">npm i -D @fullhuman/postcss-purgecss@3.00 postcss@7.0.35
+然后配置css的loaderOptions</code></pre>
+<p><strong>使用</strong></p>
+<pre><code class="hljs javascript">css: &#123;
+    loaderOptions: &#123;
+      postcss: &#123;
+        plugins: [
+          // 出现这个错误PostCSS plugin postcss-purgecss requires PostCSS 8.
+          // 安装npm i -D @fullhuman/postcss-purgecss@3.0.0 postcss@7.0.35
+          purgecss(&#123;
+            content: [`./public/**/*.html`, `./src/**/*.vue`],
+            defaultExtractor(content) &#123;
+              const contentWithoutStyleBlocks = content.replace(/&lt;style[^]+?&lt;\/style&gt;/gi, '')
+              return contentWithoutStyleBlocks.match(/[A-Za-z0-9-_/:]*[A-Za-z0-9-_/]+/g) || []
+            &#125;,
+            safelist: [/-(leave|enter|appear)(|-(to|from|active))$/, /^(?!(|.*?:)cursor-move).+-move$/,
+              /^router-link(|-exact)-active$/, /data-v-.*/
+            ],
+          &#125;)
+        ]
+      &#125;
+    &#125;
+&#125;</code></pre>
+
+<h3 id="优化moment-js">优化moment.js<a class="post-anchor" href="#优化moment-js"></a></h3><p>使用contextReplacementPlugin<br>进行moment.js优化<br>原理是对moment.js的指定语言包进行打包，其他的不打包</p>
+<p>如果未用到moment.js的复杂功能可以使用day.js进行代替<br><strong>第一种方式</strong></p>
+<pre><code class="hljs javascript">config.plugins.push(<span class="hljs-keyword">new</span> webpack.ContextReplacementPlugin(
+    <span class="hljs-regexp">/moment[/\\]locale$/</span>,
+    /zh-cn/
+))</code></pre>
+<p><strong>第二种方式</strong><br>具体的说明看<br><a href="https://zhuanlan.zhihu.com/p/61031739?utm_source=wechat_timeline" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/61031739?utm_source=wechat_timeline</a></p>
+<pre><code class="hljs javascript">npm i dayjs -S
+<span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resolve</span>(<span class="hljs-params">dir</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> path.join(__dirname, dir)
+&#125;
+config.resolve.alias = &#123;
+  <span class="hljs-string">'moment'</span>: <span class="hljs-string">'dayjs'</span>
+&#125;</code></pre>
+
+<h3 id="优化lodash">优化lodash<a class="post-anchor" href="#优化lodash"></a></h3><p>使用babel-plugin-lodash和lodash-webpack-plugin进行lodash的优化<br>现在babel.config.js的plugins进行lodash的配置<br>然后在vue.config.js中进行plugins的配置<br><strong>babel.config.js</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-attr">presets</span>: [
+    <span class="hljs-string">'@vue/app'</span>
+  ],
+  <span class="hljs-attr">plugins</span>: [<span class="hljs-string">'lodash'</span>]
+&#125;</code></pre>
+<p><strong>vue.config.js</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> LodashModuleReplacementPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'lodash-webpack-plugin'</span>);
+config.plugins.push(<span class="hljs-keyword">new</span> LodashModuleReplacementPlugin())</code></pre>
+
+<h3 id="使用打包分析工具">使用打包分析工具<a class="post-anchor" href="#使用打包分析工具"></a></h3><p>可以使用webpack-bundle-analyzer来进行webpack打包分析，也可以使用<br>vue-cli-service build –report生成report.html文件进行查看打包之后分析结果<br><strong>第一种方式</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> BundleAnalyzerPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-bundle-analyzer'</span>).BundleAnalyzerPlugin
+<span class="hljs-keyword">new</span> BundleAnalyzerPlugin()</code></pre>
+<p><strong>第二种方式</strong><br>package.json中</p>
+<pre><code class="hljs javascript"><span class="hljs-string">"scripts"</span>: &#123;
+    <span class="hljs-string">"serve"</span>: <span class="hljs-string">"vue-cli-service serve"</span>,
+    <span class="hljs-string">"build"</span>: <span class="hljs-string">"vue-cli-service build --report"</span>
+  &#125;,</code></pre>
+
+<h3 id="使用hard-source-webpack-plugin">使用hard-source-webpack-plugin<a class="post-anchor" href="#使用hard-source-webpack-plugin"></a></h3><p>进行构建缓存，添加之后第一次进行还是原来的速度，之后就会变成优化之后的速度，<br>提高90%左右。原理就是在启动项目的时候针对项目生成缓存。<br>node_modules/.cache/hard-source</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> HardSourceWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'hard-source-webpack-plugin'</span>);
+config.plugins.push(<span class="hljs-keyword">new</span> HardSourceWebpackPlugin())</code></pre>
+
+<h3 id="解决ie11的兼容性问题">解决ie11的兼容性问题<a class="post-anchor" href="#解决ie11的兼容性问题"></a></h3><p>使用babel-polyfill进行提供垫片，进行语法转换。<br>如果该依赖基于一个目标环境不支持的ES版本撰写：<br>将其添加到vue.config.js中的transpileDependencies选项。<br>这会为该依赖同时开启语法转换和根据情况检测polyfill</p>
+<pre><code class="hljs javascript">transpileDependencies: [
+    <span class="hljs-string">'ofd.js'</span>
+]</code></pre>
+<p>解决兼容性(与上边的transpileDependencies无关)</p>
+<pre><code class="hljs javascript">npm i babel-polyfill -S
+<span class="hljs-attr">chainWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span> =&gt;</span> &#123;
+    config.entry().add(<span class="hljs-string">'babel-polyfill'</span>).end()
+&#125;</code></pre>
+
+<h3 id="配置热更新">配置热更新<a class="post-anchor" href="#配置热更新"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack'</span>)
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-attr">configureWebpack</span>: &#123;
+    <span class="hljs-attr">plugins</span>: [
+      <span class="hljs-keyword">new</span> webpack.HotModuleReplacementPlugin()
+    ]
+  &#125;,
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-attr">hot</span>: <span class="hljs-literal">true</span>
+  &#125;
+&#125;</code></pre>
+
+<h3 id="优化xlsx">优化xlsx<a class="post-anchor" href="#优化xlsx"></a></h3><p>使用了xlsx进行excel的生成和下载等功能，原来直接使用引入<br>import {utils, writeFile} from ‘xlsx’<br>打包之后体积非常庞大可以使用<br>import {utils, writeFile} from ‘xlsx.mini.min.js’<br>如果使用的是typescript会报错：<br>声明一下模块即可：<br>declare module ‘xlsx/dist/xlsx.mini.min.js’;<br>注意，官方解释这个xlsx这么大是有原因的，因为涉及到读取文件，<br>要支持一些比较老的格式。如果你的项目中只是用来生成excel，<br>不涉及读取文件，就可以用这个mini版本；<br>如果有涉及到读取excel文件的操作，还是老老实实全量引入吧。<br>官方未来或许会提供只支持现代文件格式的轻量级版本。</p>
+<h3 id="使用speed-measure-webpack-plugin插件测量打包各环节耗费的时间">使用speed-measure-webpack-plugin插件测量打包各环节耗费的时间<a class="post-anchor" href="#使用speed-measure-webpack-plugin插件测量打包各环节耗费的时间"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> SpeedMeasurePlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">"speed-measure-webpack-plugin"</span>);
+<span class="hljs-keyword">const</span> smp = <span class="hljs-keyword">new</span> SpeedMeasurePlugin();
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-comment">// 这里无法使用链式写法chainWebpack，会报错</span>
+  <span class="hljs-attr">configureWebpack</span>: smp.wrap(&#123;
+    <span class="hljs-comment">// ... webpack config goes here ...</span>
+  &#125;)
+&#125;
+或
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-comment">// 这里无法使用链式写法chainWebpack，会报错</span>
+  <span class="hljs-attr">configureWebpack</span>: <span class="hljs-function"><span class="hljs-params">config</span>=&gt;</span>&#123;
+      config.plugin(<span class="hljs-string">'speed-measure-webpack-plugin'</span>).use(SpeedMeasurePlugin).end()
+  &#125;
+&#125;</code></pre>
 
 
   
