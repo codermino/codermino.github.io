@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      分类 - Mino
+      vue项目禁用ie提示 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#index-html文件"><span class="toc-text">index.html文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#App-vue文件"><span class="toc-text">App.vue文件</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -66,7 +71,7 @@
           标签
         </a>
         
-        <a href="/categories" class="current">
+        <a href="/categories" class="">
           分类
         </a>
         
@@ -116,7 +121,7 @@
             标签
           </a>
           
-          <a href="/categories" class="current">
+          <a href="/categories" class="">
             分类
           </a>
           
@@ -149,123 +154,144 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-     
-        <div class="title">
-            分类 - vue
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/09/04/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/" title="vue自定义属性">
-                <span>2020/09/04</span>
-                <span>vue自定义属性</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/09/03/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" title="vue自定义指令">
-                <span>2020/09/03</span>
-                <span>vue自定义指令</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/" title="vue修改网站标题title的三种方法">
-                <span>2020/09/03</span>
-                <span>vue修改网站标题title的三种方法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/09/03/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/" title="keepalive的使用">
-                <span>2020/09/03</span>
-                <span>keepalive的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/24/Math-max-apply%E5%92%8CMath-max%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Math.max.apply和Math.max的区别">
-                <span>2020/08/24</span>
-                <span>Math.max.apply和Math.max的区别</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/24/created%E5%92%8Cmounted%E4%B8%AD%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%88%AB/" title="created和mounted中请求数据区别">
-                <span>2020/08/24</span>
-                <span>created和mounted中请求数据区别</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/15/computed%E7%9A%84get%E5%92%8Cset/" title="computed的get和set">
-                <span>2020/08/15</span>
-                <span>computed的get和set</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/vue%E5%88%AB%E5%90%8D%E5%92%8C%E6%B3%A2%E6%B5%AA%E5%8F%B7%E7%9A%84%E4%BD%BF%E7%94%A8/" title="vue别名和波浪号的使用">
-                <span>2020/08/14</span>
-                <span>vue别名和波浪号的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/vuex%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1%E9%97%AE%E9%A2%98/" title="vuex页面刷新数据丢失问题">
-                <span>2020/08/14</span>
-                <span>vuex页面刷新数据丢失问题</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/14/vuex%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" title="vuex知识点总结">
-                <span>2020/08/14</span>
-                <span>vuex知识点总结</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/categories/vue/">1</a><span class="space">&hellip;</span><a class="page-number" href="/categories/vue/page/6/">6</a><a class="page-number" href="/categories/vue/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/categories/vue/page/9/">9</a>
-</div>
-</div>
+      <div class="title">vue项目禁用ie提示</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/11/29</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue项目禁用ie提示">vue项目禁用ie提示</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="index-html文件">index.html文件<a class="post-anchor" href="#index-html文件"></a></h3><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">""</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width,initial-scale=1.0"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"&lt;%= BASE_URL %&gt;favicon.ico"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">htmlWebpackPlugin.options.title</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>123<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">id</span>=<span class="hljs-string">'IEIframe'</span> <span class="hljs-attr">style</span>=<span class="hljs-string">'display: none;'</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"100%"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"700px"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/static/ie.html"</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"0"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
+    <span class="hljs-comment">/* 如果是ie浏览器 */</span>
+  <span class="hljs-keyword">if</span> (!!<span class="hljs-built_in">window</span>.ActiveXObject || <span class="hljs-string">"ActiveXObject"</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">window</span>) &#123;
+    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#IEIframe'</span>).style.display = <span class="hljs-string">'block'</span>
+  &#125;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- built files will be auto injected --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<h3 id="App-vue文件">App.vue文件<a class="post-anchor" href="#App-vue文件"></a></h3><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div id&#x3D;&quot;app&quot; v-if&#x3D;&#39;!isShow&#39;&gt;
+    &lt;router-view&#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  data () &#123;
+    return &#123;
+      isShow: false
+    &#125;
+  &#125;,
+  mounted () &#123;
+    this.isShow &#x3D; !!window.ActiveXObject || &#39;ActiveXObject&#39; in window
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/11/29/vue%E8%AF%B7%E6%B1%82%E6%8B%A6%E6%88%AA%E6%B7%BB%E5%8A%A0%E5%85%B6%E4%BB%96%E5%8F%82%E6%95%B0/">vue请求拦截添加其他参数</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/11/29/vue项目禁用ie提示/">https://codermino.github.io/2021/11/29/vue项目禁用ie提示/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
