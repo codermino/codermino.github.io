@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      vue文件下载 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求和原理"><span class="toc-text">需求和原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装一个工具方法"><span class="toc-text">封装一个工具方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局引入-添加到Vue的原型上"><span class="toc-text">全局引入(添加到Vue的原型上)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-text">使用方式</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,146 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2021" >
-                2021
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2021/08/25/vue%E7%9A%84observable%E5%AE%9A%E4%B9%89%E5%93%8D%E5%BA%94%E5%BC%8F%E6%95%B0%E6%8D%AE/" title="vue的observable定义响应式数据">
-                <span>2021/08/25</span>
-                <span>vue的observable定义响应式数据</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/24/vue%E7%BB%84%E4%BB%B6%E7%9A%84%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD/" title="vue组件的按需加载">
-                <span>2021/08/24</span>
-                <span>vue组件的按需加载</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/23/vue%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E5%A4%B1%E5%8E%BB%E7%84%A6%E7%82%B9%E5%92%8C%E6%94%B9%E5%8F%98%E6%97%B6%E5%90%8C%E6%97%B6%E8%A7%A6%E5%8F%91/" title="vue表单验证失去焦点和改变时同时触发">
-                <span>2021/08/23</span>
-                <span>vue表单验证失去焦点和改变时同时触发</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/23/vue2%E7%9A%84provide%E5%92%8Cinject/" title="vue2的provide和inject">
-                <span>2021/08/23</span>
-                <span>vue2的provide和inject</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/19/github%E5%87%BA%E7%8E%B0403%E9%94%99%E8%AF%AF/" title="github出现403错误">
-                <span>2021/08/19</span>
-                <span>github出现403错误</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/13/js%E7%9A%84%E9%97%AD%E5%8C%85/" title="js的闭包">
-                <span>2021/08/13</span>
-                <span>js的闭包</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/13/vviewer%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="vviewer使用笔记">
-                <span>2021/08/13</span>
-                <span>vviewer使用笔记</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/11/fullcalendar%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="fullcalendar使用笔记">
-                <span>2021/08/11</span>
-                <span>fullcalendar使用笔记</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/11/vue%E6%96%87%E5%AD%97%E6%A8%AA%E5%90%91%E8%B5%B0%E9%A9%AC%E7%81%AF/" title="vue文字横向走马灯">
-                <span>2021/08/11</span>
-                <span>vue文字横向走马灯</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/08/04/vue%E4%BD%BF%E7%94%A8require-context%E5%B7%A5%E7%A8%8B%E5%8C%96%E5%BC%95%E5%85%A5%E6%96%87%E4%BB%B6/" title="vue使用require.context工程化引入文件">
-                <span>2021/08/04</span>
-                <span>vue使用require.context工程化引入文件</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/25/">25</a>
-</div>
-</div>
+      <div class="title">vue文件下载</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/12/01</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue文件下载">vue文件下载</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="需求和原理">需求和原理<a class="post-anchor" href="#需求和原理"></a></h3><p>调用一个接口，后端返回的是stream数据<br>接收到数据之后装成二进制，然后转成url，并且进行下载</p>
+<h3 id="封装一个工具方法">封装一个工具方法<a class="post-anchor" href="#封装一个工具方法"></a></h3><pre><code class="hljs javascript">util.ajaxWithFile = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, method, params</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolver, reject</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">var</span> res = resolver
+    util.http(&#123;
+      <span class="hljs-attr">baseURL</span>: util.baseUrl,
+      <span class="hljs-attr">method</span>: method,
+      <span class="hljs-attr">url</span>: url,
+      <span class="hljs-attr">data</span>: params,
+      <span class="hljs-attr">responseType</span>: <span class="hljs-string">'blob'</span>
+    &#125;).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;
+      res(response)
+    &#125;).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;
+      reject(error)
+    &#125;)
+  &#125;)
+&#125;
+util.downloadDoc = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, fileName</span>) </span>&#123;
+  <span class="hljs-keyword">var</span> blob = <span class="hljs-keyword">new</span> Blob([data])
+  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.navigator.msSaveBlob) &#123;
+    <span class="hljs-keyword">try</span> &#123;
+      <span class="hljs-comment">// window.navigator.msSaveBlob(blob, fileName+'.doc')</span>
+      <span class="hljs-built_in">window</span>.navigator.msSaveBlob(blob, fileName)
+    &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+      <span class="hljs-built_in">console</span>.log(e)
+    &#125;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">const</span> url = <span class="hljs-built_in">window</span>.URL.createObjectURL(blob)
+    <span class="hljs-keyword">const</span> link = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>)
+    link.style.display = <span class="hljs-string">'none'</span>
+    link.href = url
+    link.setAttribute(<span class="hljs-string">'download'</span>, fileName)
+    <span class="hljs-built_in">document</span>.body.appendChild(link)
+    link.click()
+  &#125;
+&#125;</code></pre>
+
+<h3 id="全局引入-添加到Vue的原型上">全局引入(添加到Vue的原型上)<a class="post-anchor" href="#全局引入-添加到Vue的原型上"></a></h3><pre><code class="hljs javascript">Vue.prototype.$util = util</code></pre>
+
+<h3 id="使用方式">使用方式<a class="post-anchor" href="#使用方式"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">this</span>.$util.ajaxWithFile(<span class="hljs-string">'/api/webFiles/selectApps'</span>, <span class="hljs-string">'post'</span>, params).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">const</span> fileName = <span class="hljs-built_in">decodeURI</span>(res.headers[<span class="hljs-string">'content-disposition'</span>].split(<span class="hljs-string">';'</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">'='</span>)[<span class="hljs-number">1</span>])
+    <span class="hljs-keyword">this</span>.$util.downloadDoc(res.data, fileName)
+  &#125;)</code></pre>
+
+
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/11/29/vue%E9%A1%B9%E7%9B%AE%E7%A6%81%E7%94%A8ie%E6%8F%90%E7%A4%BA/">vue项目禁用ie提示</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/12/01/vue文件下载/">https://codermino.github.io/2021/12/01/vue文件下载/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
