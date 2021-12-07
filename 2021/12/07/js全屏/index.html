@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue文件下载 - Mino
+      js全屏 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#需求和原理"><span class="toc-text">需求和原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装一个工具方法"><span class="toc-text">封装一个工具方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局引入-添加到Vue的原型上"><span class="toc-text">全局引入(添加到Vue的原型上)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方式"><span class="toc-text">使用方式</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#html代码"><span class="toc-text">html代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全屏和退出全屏"><span class="toc-text">全屏和退出全屏</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue文件下载</div>
+      <div class="title">js全屏</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/12/01</span>
+          <span>2021/12/07</span>
         </span>
 
         
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/vue">vue</a>
+                  <a href="/categories/javascript">javascript</a>
                 
               
           </span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue文件下载">vue文件下载</a>
+                    <a href="/tags/js全屏">js全屏</a>
                   
                 
             </span>
@@ -195,52 +195,119 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="需求和原理">需求和原理<a class="post-anchor" href="#需求和原理"></a></h3><p>调用一个接口，后端返回的是stream数据<br>接收到数据之后装成二进制，然后转成url，并且进行下载</p>
-<h3 id="封装一个工具方法">封装一个工具方法<a class="post-anchor" href="#封装一个工具方法"></a></h3><pre><code class="hljs javascript">util.ajaxWithFile = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, method, params</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolver, reject</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">var</span> res = resolver
-    util.http(&#123;
-      <span class="hljs-attr">baseURL</span>: util.baseUrl,
-      <span class="hljs-attr">method</span>: method,
-      <span class="hljs-attr">url</span>: url,
-      <span class="hljs-attr">data</span>: params,
-      <span class="hljs-attr">responseType</span>: <span class="hljs-string">'blob'</span>
-    &#125;).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;
-      res(response)
-    &#125;).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;
-      reject(error)
-    &#125;)
-  &#125;)
-&#125;
-util.downloadDoc = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, fileName</span>) </span>&#123;
-  <span class="hljs-keyword">var</span> blob = <span class="hljs-keyword">new</span> Blob([data])
-  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.navigator.msSaveBlob) &#123;
-    <span class="hljs-keyword">try</span> &#123;
-      <span class="hljs-comment">// window.navigator.msSaveBlob(blob, fileName+'.doc')</span>
-      <span class="hljs-built_in">window</span>.navigator.msSaveBlob(blob, fileName)
-    &#125; <span class="hljs-keyword">catch</span> (e) &#123;
-      <span class="hljs-built_in">console</span>.log(e)
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="html代码">html代码<a class="post-anchor" href="#html代码"></a></h3><pre><code class="hljs vue">&lt;Icon color&#x3D;&quot;#FFF&quot; @click&#x3D;&quot;toggleFullScreen&quot; style&#x3D;&quot;cursor: pointer&quot;
+                :type&#x3D;&quot;isFullScreen ? &#39;md-contract&#39; : &#39;md-expand&#39;&quot;&gt;&lt;&#x2F;Icon&gt;</code></pre>
+
+<h3 id="全屏和退出全屏">全屏和退出全屏<a class="post-anchor" href="#全屏和退出全屏"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 默认值</span>
+<span class="hljs-attr">canFullScreen</span>: <span class="hljs-literal">false</span>,
+<span class="hljs-attr">isFullScreen</span>: <span class="hljs-literal">false</span>,
+created () &#123;
+    <span class="hljs-comment">// 检查浏览器是否支持全屏</span>
+    <span class="hljs-keyword">this</span>.canFullScreen = <span class="hljs-built_in">document</span>.fullscreenEnabled ||
+      <span class="hljs-built_in">document</span>.webkitFullscreenEnabled ||
+      <span class="hljs-built_in">document</span>.mozFullScreenEnabled ||
+      <span class="hljs-built_in">document</span>.msFullscreenEnabled
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.webkitFullscreenEnabled) &#123;
+      <span class="hljs-keyword">this</span>.browserKernel = <span class="hljs-string">'webkit'</span>
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.mozFullScreenEnabled) &#123;
+      <span class="hljs-keyword">this</span>.browserKernel = <span class="hljs-string">'gecko'</span>
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.msFullscreenEnabled) &#123;
+      <span class="hljs-keyword">this</span>.browserKernel = <span class="hljs-string">'trident'</span>
+    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.fullscreenEnabled) &#123;
+      <span class="hljs-keyword">this</span>.browserKernel = <span class="hljs-string">'others'</span>
     &#125;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.canFullScreen) &#123;
+      <span class="hljs-keyword">this</span>.addFullScreenListener()
+    &#125;
+  &#125;,
+toggleFullScreen() &#123;
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.canFullScreen) &#123;
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.isFullScreen) &#123;
+          <span class="hljs-comment">// 关闭全屏</span>
+          <span class="hljs-keyword">this</span>.exitFullScreen()
+          <span class="hljs-keyword">this</span>.isFullScreen = <span class="hljs-literal">false</span>
+      &#125; <span class="hljs-keyword">else</span> &#123;
+          <span class="hljs-comment">// 打开全屏</span>
+          <span class="hljs-keyword">this</span>.requestFullScreen(<span class="hljs-built_in">document</span>.body)
+          <span class="hljs-keyword">this</span>.isFullScreen = <span class="hljs-literal">true</span>
+      &#125;
   &#125; <span class="hljs-keyword">else</span> &#123;
-    <span class="hljs-keyword">const</span> url = <span class="hljs-built_in">window</span>.URL.createObjectURL(blob)
-    <span class="hljs-keyword">const</span> link = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>)
-    link.style.display = <span class="hljs-string">'none'</span>
-    link.href = url
-    link.setAttribute(<span class="hljs-string">'download'</span>, fileName)
-    <span class="hljs-built_in">document</span>.body.appendChild(link)
-    link.click()
+      <span class="hljs-keyword">this</span>.$Message.warning(&#123;
+          <span class="hljs-attr">content</span>: <span class="hljs-string">'当前浏览器暂不支持全屏模式，请切换浏览器后重新尝试！'</span>,
+          <span class="hljs-attr">duration</span>: <span class="hljs-number">3</span>
+      &#125;)
+  &#125;
+&#125;,
+requestFullScreen(element) &#123;
+  <span class="hljs-comment">// 判断各种浏览器，找到正确的方法</span>
+  <span class="hljs-keyword">const</span> requestMethod = element.requestFullScreen || <span class="hljs-comment">// W3C</span>
+      element.webkitRequestFullScreen || <span class="hljs-comment">// Chrome, safari</span>
+      element.mozRequestFullScreen || <span class="hljs-comment">// FireFox</span>
+      element.msRequestFullscreen <span class="hljs-comment">// IE11</span>
+  <span class="hljs-keyword">if</span> (requestMethod) &#123;
+      requestMethod.call(element)
+  &#125;
+&#125;,
+exitFullScreen() &#123;
+  <span class="hljs-keyword">var</span> exitMethod = <span class="hljs-built_in">document</span>.exitFullscreen || <span class="hljs-comment">// W3C</span>
+      <span class="hljs-built_in">document</span>.mozCancelFullScreen || <span class="hljs-comment">// FireFox</span>
+      <span class="hljs-built_in">document</span>.webkitExitFullscreen || <span class="hljs-comment">// Chrome等</span>
+      <span class="hljs-built_in">document</span>.msExitFullscreen <span class="hljs-comment">// IE11</span>
+  <span class="hljs-keyword">if</span> (exitMethod) &#123;
+      exitMethod.call(<span class="hljs-built_in">document</span>)
+  &#125;
+&#125;
+addFullScreenListener () &#123;
+  <span class="hljs-keyword">const</span> self = <span class="hljs-keyword">this</span>
+  <span class="hljs-built_in">document</span>.onkeydown = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (e &amp;&amp; e.keyCode === <span class="hljs-number">122</span>) &#123; <span class="hljs-comment">// 捕捉F11键盘动作</span>
+      e.preventDefault() <span class="hljs-comment">// 阻止F11默认动作</span>
+      self.toggleFullScreen()
+    &#125;
+  &#125;
+  <span class="hljs-comment">// 监听不同浏览器的全屏事件，并件执行相应的代码</span>
+  <span class="hljs-keyword">switch</span> (self.browserKernel) &#123;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'webkit'</span>:
+      <span class="hljs-built_in">document</span>.onwebkitfullscreenchange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.webkitIsFullScreen) &#123;
+          self.isFullScreen = <span class="hljs-literal">true</span>
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          self.isFullScreen = <span class="hljs-literal">false</span>
+        &#125;
+      &#125;
+      <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'gecko'</span>:
+      <span class="hljs-built_in">document</span>.onmozfullscreenchange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.mozFullScreen) &#123;
+          self.isFullScreen = <span class="hljs-literal">true</span>
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          self.isFullScreen = <span class="hljs-literal">false</span>
+        &#125;
+      &#125;
+      <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'trident'</span>:
+      <span class="hljs-built_in">document</span>.onmsfullscreenchange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.msFullscreenElement) &#123;
+          self.isFullScreen = <span class="hljs-literal">true</span>
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          self.isFullScreen = <span class="hljs-literal">false</span>
+        &#125;
+      &#125;
+      <span class="hljs-keyword">break</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'others'</span>:
+      <span class="hljs-built_in">document</span>.onfullscreenchange = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.fullscreen) &#123;
+          self.isFullScreen = <span class="hljs-literal">true</span>
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          self.isFullScreen = <span class="hljs-literal">false</span>
+        &#125;
+      &#125;
+      <span class="hljs-keyword">break</span>
+    <span class="hljs-attr">default</span>:
+      <span class="hljs-keyword">break</span>
   &#125;
 &#125;</code></pre>
-
-<h3 id="全局引入-添加到Vue的原型上">全局引入(添加到Vue的原型上)<a class="post-anchor" href="#全局引入-添加到Vue的原型上"></a></h3><pre><code class="hljs javascript">Vue.prototype.$util = util</code></pre>
-
-<h3 id="使用方式">使用方式<a class="post-anchor" href="#使用方式"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">this</span>.$util.ajaxWithFile(<span class="hljs-string">'/api/webFiles/selectApps'</span>, <span class="hljs-string">'post'</span>, params).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;
-    <span class="hljs-keyword">const</span> fileName = <span class="hljs-built_in">decodeURI</span>(res.headers[<span class="hljs-string">'content-disposition'</span>].split(<span class="hljs-string">';'</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">'='</span>)[<span class="hljs-number">1</span>])
-    <span class="hljs-keyword">this</span>.$util.downloadDoc(res.data, fileName)
-  &#125;)</code></pre>
-
-
 
 
   
@@ -267,12 +334,10 @@ util.downloadDoc = <span class="hljs-function"><span class="hljs-keyword">functi
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/12/07/js%E5%85%A8%E5%B1%8F/">js全屏</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/11/29/vue%E9%A1%B9%E7%9B%AE%E7%A6%81%E7%94%A8ie%E6%8F%90%E7%A4%BA/">vue项目禁用ie提示</a>
+          <a href="/2021/12/01/vue%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/">vue文件下载</a>
         
     </div>
   </div>
@@ -284,7 +349,7 @@ util.downloadDoc = <span class="hljs-function"><span class="hljs-keyword">functi
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/12/01/vue文件下载/">https://codermino.github.io/2021/12/01/vue文件下载/</a>
+      永久链接：<a href="https://codermino.github.io/2021/12/07/js全屏/">https://codermino.github.io/2021/12/07/js全屏/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
