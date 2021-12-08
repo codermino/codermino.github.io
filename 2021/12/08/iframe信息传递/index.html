@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档2021/12 - Mino
+      iframe信息传递 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#html的iframe页面"><span class="toc-text">html的iframe页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue页面试用iframe-并进行通信"><span class="toc-text">vue页面试用iframe,并进行通信</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,61 +154,180 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2021/12
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2021" >
-                2021
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2021/12/08/iframe%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%92/" title="iframe信息传递">
-                <span>2021/12/08</span>
-                <span>iframe信息传递</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/12/07/js%E5%85%A8%E5%B1%8F/" title="js全屏">
-                <span>2021/12/07</span>
-                <span>js全屏</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2021/12/01/vue%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/" title="vue文件下载">
-                <span>2021/12/01</span>
-                <span>vue文件下载</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+      <div class="title">iframe信息传递</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/12/08</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/iframe信息传递">iframe信息传递</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="html的iframe页面">html的iframe页面<a class="post-anchor" href="#html的iframe页面"></a></h3><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>iframetest<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+  <span class="hljs-comment">//监听信息</span>
+  <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">"message"</span>,handleMessage);
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleMessage</span> (<span class="hljs-params">data</span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(data)
+  &#125;
+  <span class="hljs-comment">//传递信息</span>
+  <span class="hljs-comment">// window.parent.postMessage('123123123token', '*');</span>
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMessageToFather</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">window</span>.parent.postMessage(&#123;
+      <span class="hljs-attr">msg</span>: <span class="hljs-string">'son father'</span>
+    &#125;, <span class="hljs-string">'*'</span>);
+  &#125;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"iframetest"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">"sendMessageToFather()"</span>&gt;</span>向父亲传递消息<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<h3 id="vue页面试用iframe-并进行通信">vue页面试用iframe,并进行通信<a class="post-anchor" href="#vue页面试用iframe-并进行通信"></a></h3><pre><code class="vue">&lt;template&gt;
+    &lt;div class=&quot;iframeprac&quot;&gt;
+      &lt;el-button @click=&quot;sendMessage1&quot;&gt;消息1&lt;/el-button&gt;
+      &lt;iframe style=&quot;width: 100%;height: 100vh;&quot;
+              src=&quot;static/iframetest.html&quot;
+              id=&quot;iframe&quot;
+              class=&quot;iframe&quot;&gt;
+      &lt;/iframe&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+const IFRAME_HOST = &apos;http://localhost:8080&apos;
+export default {
+  name: &apos;iframeprac&apos;,
+  mounted () {
+    window.addEventListener(&apos;message&apos;, e =&gt; {
+      if (e &amp;&amp; e.data &amp;&amp; e.origin === IFRAME_HOST) {
+        if (typeof e.data === &apos;string&apos;) {
+          console.log(&apos;message===============&apos;, e)
+          if (e.data === &apos;token&apos;) {
+            const token = {
+              type: &apos;token&apos;,
+              value: localStorage.getItem(&apos;token&apos;)
+            }
+            document.getElementById(&apos;iframe&apos;).contentWindow.postMessage(token, IFRAME_HOST)
+            return
+          }
+          if (e.data === &apos;hysInfo&apos;) {
+            console.log(&apos;hysInfo&apos;)
+            return
+          }
+          if (e.data.includes(&apos;Board&apos;)) {
+            console.log(&apos;Board&apos;)
+          }
+        } else if (typeof e.data === &apos;object&apos;) {
+          console.log(e.data)
+        }
+      }
+    })
+  },
+  methods: {
+    sendMessage1 () {
+      document.getElementById(&apos;myIframe&apos;).contentWindow.postMessage({
+        type: &apos;message-1&apos;,
+        body: {
+          args: &apos;消息内容 可以是任何对象&apos;
+        }
+      }, IFRAME_HOST)
+    }
+  }
+}
+&lt;/script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/12/07/js%E5%85%A8%E5%B1%8F/">js全屏</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/12/08/iframe信息传递/">https://codermino.github.io/2021/12/08/iframe信息传递/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
