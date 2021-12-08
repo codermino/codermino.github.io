@@ -222,59 +222,59 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
 
-<h3 id="vue页面使用iframe-并进行通信">vue页面使用iframe,并进行通信<a class="post-anchor" href="#vue页面使用iframe-并进行通信"></a></h3><pre><code class="vue">&lt;template&gt;
-    &lt;div class=&quot;iframeprac&quot;&gt;
-      &lt;el-button @click=&quot;sendMessage1&quot;&gt;消息1&lt;/el-button&gt;
-      &lt;iframe style=&quot;width: 100%;height: 100vh;&quot;
-              src=&quot;static/iframetest.html&quot;
-              id=&quot;iframe&quot;
-              class=&quot;iframe&quot;&gt;
-      &lt;/iframe&gt;
-    &lt;/div&gt;
-&lt;/template&gt;
+<h3 id="vue页面使用iframe-并进行通信">vue页面使用iframe,并进行通信<a class="post-anchor" href="#vue页面使用iframe-并进行通信"></a></h3><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"iframeprac"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"sendMessage1"</span>&gt;</span>消息1<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 100%;height: 100vh;"</span>
+              <span class="hljs-attr">src</span>=<span class="hljs-string">"static/iframetest.html"</span>
+              <span class="hljs-attr">id</span>=<span class="hljs-string">"iframe"</span>
+              <span class="hljs-attr">class</span>=<span class="hljs-string">"iframe"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
 
-&lt;script&gt;
-const IFRAME_HOST = &apos;http://localhost:8080&apos;
-export default {
-  name: &apos;iframeprac&apos;,
-  mounted () {
-    window.addEventListener(&apos;message&apos;, e =&gt; {
-      if (e &amp;&amp; e.data &amp;&amp; e.origin === IFRAME_HOST) {
-        if (typeof e.data === &apos;string&apos;) {
-          console.log(&apos;message===============&apos;, e)
-          if (e.data === &apos;token&apos;) {
-            const token = {
-              type: &apos;token&apos;,
-              value: localStorage.getItem(&apos;token&apos;)
-            }
-            document.getElementById(&apos;iframe&apos;).contentWindow.postMessage(token, IFRAME_HOST)
-            return
-          }
-          if (e.data === &apos;hysInfo&apos;) {
-            console.log(&apos;hysInfo&apos;)
-            return
-          }
-          if (e.data.includes(&apos;Board&apos;)) {
-            console.log(&apos;Board&apos;)
-          }
-        } else if (typeof e.data === &apos;object&apos;) {
-          console.log(e.data)
-        }
-      }
-    })
-  },
-  methods: {
-    sendMessage1 () {
-      document.getElementById(&apos;myIframe&apos;).contentWindow.postMessage({
-        type: &apos;message-1&apos;,
-        body: {
-          args: &apos;消息内容 可以是任何对象&apos;
-        }
-      }, IFRAME_HOST)
-    }
-  }
-}
-&lt;/script&gt;</code></pre>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-keyword">const</span> IFRAME_HOST = <span class="hljs-string">'http://localhost:8080'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'iframeprac'</span>,
+  mounted () &#123;
+    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'message'</span>, e =&gt; &#123;
+      <span class="hljs-keyword">if</span> (e &amp;&amp; e.data &amp;&amp; e.origin === IFRAME_HOST) &#123;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> e.data === <span class="hljs-string">'string'</span>) &#123;
+          <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'message==============='</span>, e)
+          <span class="hljs-keyword">if</span> (e.data === <span class="hljs-string">'token'</span>) &#123;
+            <span class="hljs-keyword">const</span> token = &#123;
+              <span class="hljs-attr">type</span>: <span class="hljs-string">'token'</span>,
+              <span class="hljs-attr">value</span>: localStorage.getItem(<span class="hljs-string">'token'</span>)
+            &#125;
+            <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'iframe'</span>).contentWindow.postMessage(token, IFRAME_HOST)
+            <span class="hljs-keyword">return</span>
+          &#125;
+          <span class="hljs-keyword">if</span> (e.data === <span class="hljs-string">'hysInfo'</span>) &#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hysInfo'</span>)
+            <span class="hljs-keyword">return</span>
+          &#125;
+          <span class="hljs-keyword">if</span> (e.data.includes(<span class="hljs-string">'Board'</span>)) &#123;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Board'</span>)
+          &#125;
+        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> e.data === <span class="hljs-string">'object'</span>) &#123;
+          <span class="hljs-built_in">console</span>.log(e.data)
+        &#125;
+      &#125;
+    &#125;)
+  &#125;,
+  <span class="hljs-attr">methods</span>: &#123;
+    sendMessage1 () &#123;
+      <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myIframe'</span>).contentWindow.postMessage(&#123;
+        <span class="hljs-attr">type</span>: <span class="hljs-string">'message-1'</span>,
+        <span class="hljs-attr">body</span>: &#123;
+          <span class="hljs-attr">args</span>: <span class="hljs-string">'消息内容 可以是任何对象'</span>
+        &#125;
+      &#125;, IFRAME_HOST)
+    &#125;
+  &#125;
+&#125;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 
 
   
