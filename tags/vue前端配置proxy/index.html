@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue保证输入框只能是数字 - Mino
+      标签 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,11 +24,6 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
-    
-    <div id="post-toc" class="animated hiddenToc hide">
-      <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#html代码"><span class="toc-text">html代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript代码"><span class="toc-text">javascript代码</span></a></li></ol>
-    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -67,7 +62,7 @@
           关于
         </a>
         
-        <a href="/tags" class="">
+        <a href="/tags" class="current">
           标签
         </a>
         
@@ -117,7 +112,7 @@
             关于
           </a>
           
-          <a href="/tags" class="">
+          <a href="/tags" class="current">
             标签
           </a>
           
@@ -154,111 +149,42 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <article class="post-entry">
-    <div class="header">
-      
-      <div class="title">vue保证输入框只能是数字</div>
-      <div class="meta">
-        <span class="item">
-          <span class="iconfont icon-time-circle"></span>
-          <span>2021/12/09</span>
-        </span>
-
-        
-
-         
-        <span class="item">
-          <span class="iconfont icon-folder"></span>
-          <span>
-              
-                
-                  <a href="/categories/vue">vue</a>
-                
-              
-          </span>
-        </span>
-        
-        
-         
-          <span class="item">
-            <span class="iconfont icon-tag1"></span>
-            <span>
-                
-                  
-                    <a href="/tags/vue保证输入框只能是数字">vue保证输入框只能是数字</a>
-                  
-                
-            </span>
-          </span>
-         
-      </div>
-      <div>
-      </div>
-    </div>
-    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="html代码">html代码<a class="post-anchor" href="#html代码"></a></h3><pre><code class="hljs vue">&lt;el-input @input.native&#x3D;&quot;proving&quot; style&#x3D;&quot;width: 70%;&quot; placeholder&#x3D;&quot;请输入间隔时间&quot; v-model&#x3D;&quot;creditForm.time&quot;&gt;
-    &lt;template slot&#x3D;&quot;append&quot;&gt;天&lt;&#x2F;template&gt;
-&lt;&#x2F;el-input&gt;</code></pre>
-
-<h3 id="javascript代码">javascript代码<a class="post-anchor" href="#javascript代码"></a></h3><pre><code class="hljs javascript">proving () &#123;
-  <span class="hljs-keyword">this</span>.creditForm.time = <span class="hljs-keyword">this</span>.creditForm.time.replace(<span class="hljs-regexp">/[^\.\d]/g</span>, <span class="hljs-string">''</span>)
-  <span class="hljs-keyword">this</span>.creditForm.time = <span class="hljs-keyword">this</span>.creditForm.time.replace(<span class="hljs-string">'.'</span>, <span class="hljs-string">''</span>)
-&#125;</code></pre>
-
-
-  
-    <div class="post-reward">
-    <div id="reward-button">打赏</div>
-      <div id="qr">
-        <div class="wrap">
-            
-            <div class="bg-wrap">
-              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
-              支付宝
-            </div>
-            
-            
-            <div class="bg-wrap">
-                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
-              微信
-            </div>
-            
+        <div id="archives">
+    
+        <div class="title">
+            标签 - vue前端配置proxy
         </div>
-      </div>
-    </div>
-  
-  <div class="post-guide">
-    <div class="item left">
-        
-          <a href="/2021/12/09/vue%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEproxy/">vue前端配置proxy</a>
-        
-    </div>
-    <div class="item right">
-        
-          <a href="/2021/12/08/iframe%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%92/">iframe信息传递</a>
-        
-    </div>
-  </div>
+    
 
-  
 
-  <div class="post-copyright">
-    <div class="auth">
-      本文作者：<a href="https://codermino.github.io">Mino</a>
-    </div>
-    <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/12/09/vue保证输入框只能是数字/">https://codermino.github.io/2021/12/09/vue保证输入框只能是数字/</a>
-    </div>
-    <div class="declare">
-      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
-    </div>
-  </div>
 
-  <div id="comment"></div>
 
-  
-  
-</article>
+    
+    
+    <section class="wrap">
+        <div class="meta">
+            <a href="/archives/2021" >
+                2021
+            </a>
+        </div>
+        <div class="year">
+            
+            <article class="item">
+            <a href="/2021/12/09/vue%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEproxy/" title="vue前端配置proxy">
+                <span>2021/12/09</span>
+                <span>vue前端配置proxy</span>
+            </a>
+            </article>
+            
+    
+        </div>
+    </section>
+      
+<div class="paginator">
+    <span class="page-number current">1</span>
+</div>
+</div>
+
         <footer>
           <div class="copyright">
             ©2021

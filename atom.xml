@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-12-09T05:40:04.523Z</updated>
+  <updated>2021-12-09T09:26:03.330Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue前端配置proxy</title>
+    <link href="https://codermino.github.io/2021/12/09/vue%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEproxy/"/>
+    <id>https://codermino.github.io/2021/12/09/vue%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEproxy/</id>
+    <published>2021-12-09T09:21:49.000Z</published>
+    <updated>2021-12-09T09:26:03.330Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;vue-cli3使用web
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue前端配置proxy" scheme="https://codermino.github.io/tags/vue%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEproxy/"/>
+    
+  </entry>
   
   <entry>
     <title>vue保证输入框只能是数字</title>
@@ -487,30 +512,6 @@
     
     
       <category term="js页面禁止右键行为" scheme="https://codermino.github.io/tags/js%E9%A1%B5%E9%9D%A2%E7%A6%81%E6%AD%A2%E5%8F%B3%E9%94%AE%E8%A1%8C%E4%B8%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Promise对象的函数</title>
-    <link href="https://codermino.github.io/2021/09/30/Promise%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%BD%E6%95%B0/"/>
-    <id>https://codermino.github.io/2021/09/30/Promise%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%BD%E6%95%B0/</id>
-    <published>2021-09-30T08:33:33.000Z</published>
-    <updated>2021-09-30T08:35:05.556Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;pre&gt;&lt;code class=&quot;hljs javascript&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;let&lt;/span&gt; p1 = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;hljs-built_
-      
-    
-    </summary>
-    
-    
-      <category term="Promise" scheme="https://codermino.github.io/categories/Promise/"/>
-    
-    
-      <category term="Promise对象的函数" scheme="https://codermino.github.io/tags/Promise%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%87%BD%E6%95%B0/"/>
     
   </entry>
   

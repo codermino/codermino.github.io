@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue保证输入框只能是数字 - Mino
+      vue前端配置proxy - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#html代码"><span class="toc-text">html代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript代码"><span class="toc-text">javascript代码</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-cli3使用webpack配置proxy进行跨域请求"><span class="toc-text">vue cli3使用webpack配置proxy进行跨域请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-text">例子</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,7 +157,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue保证输入框只能是数字</div>
+      <div class="title">vue前端配置proxy</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue保证输入框只能是数字">vue保证输入框只能是数字</a>
+                    <a href="/tags/vue前端配置proxy">vue前端配置proxy</a>
                   
                 
             </span>
@@ -196,14 +196,52 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="html代码">html代码<a class="post-anchor" href="#html代码"></a></h3><pre><code class="hljs vue">&lt;el-input @input.native&#x3D;&quot;proving&quot; style&#x3D;&quot;width: 70%;&quot; placeholder&#x3D;&quot;请输入间隔时间&quot; v-model&#x3D;&quot;creditForm.time&quot;&gt;
-    &lt;template slot&#x3D;&quot;append&quot;&gt;天&lt;&#x2F;template&gt;
-&lt;&#x2F;el-input&gt;</code></pre>
-
-<h3 id="javascript代码">javascript代码<a class="post-anchor" href="#javascript代码"></a></h3><pre><code class="hljs javascript">proving () &#123;
-  <span class="hljs-keyword">this</span>.creditForm.time = <span class="hljs-keyword">this</span>.creditForm.time.replace(<span class="hljs-regexp">/[^\.\d]/g</span>, <span class="hljs-string">''</span>)
-  <span class="hljs-keyword">this</span>.creditForm.time = <span class="hljs-keyword">this</span>.creditForm.time.replace(<span class="hljs-string">'.'</span>, <span class="hljs-string">''</span>)
+<h3 id="vue-cli3使用webpack配置proxy进行跨域请求">vue cli3使用webpack配置proxy进行跨域请求<a class="post-anchor" href="#vue-cli3使用webpack配置proxy进行跨域请求"></a></h3><pre><code class="hljs javascript"><span class="hljs-comment">// 自动打开网页，设置端口号</span>
+<span class="hljs-built_in">module</span>.exports = &#123;
+  <span class="hljs-attr">lintOnSave</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">devServer</span>: &#123;
+    <span class="hljs-attr">port</span>: <span class="hljs-number">8888</span>,
+    <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">proxy</span>: &#123; <span class="hljs-comment">// 配置跨域</span>
+      <span class="hljs-comment">// '/api': &#123;</span>
+      <span class="hljs-comment">//   // 如果是这种方式的target那么在前端请求的时候的/api(会把/api替换为'')/user/login，那么就会被跨域成为后端的/user/login</span>
+      <span class="hljs-comment">//   // 根路径还是http://localhost:5000/api/,请求的路径就是http://localhost:5000/api/user/login</span>
+      <span class="hljs-comment">//   // target: 'http://localhost:5000/api/',</span>
+      <span class="hljs-comment">//</span>
+      <span class="hljs-comment">//   // 如果是这种方式的target那么在前端请求的时候的/api(会把/api替换为'')/user/login，那么就会被跨域成为后端的/user/login</span>
+      <span class="hljs-comment">//   // 对应的请求路径就是http://localhost:5000/user/login</span>
+      <span class="hljs-comment">//   target: 'http://localhost:5000/',</span>
+      <span class="hljs-comment">//   // ws: true,        //如果要代理 websockets，配置这个参数</span>
+      <span class="hljs-comment">//   secure: false, // 如果是https接口，需要配置这个参数</span>
+      <span class="hljs-comment">//   changOrigin: true,</span>
+      <span class="hljs-comment">//   pathRewrite: &#123;</span>
+      <span class="hljs-comment">//     '^/api': ''</span>
+      <span class="hljs-comment">//   &#125;</span>
+      <span class="hljs-comment">// &#125;,</span>
+      <span class="hljs-comment">// 相当于碰到/api开头的，转为向http://172.20.233.36:3000发送请求,并且将/api变为''</span>
+      <span class="hljs-string">'/api'</span>: &#123;
+        <span class="hljs-attr">target</span>: <span class="hljs-string">'http://172.20.233.36:3000'</span>,
+        <span class="hljs-attr">changeOrigin</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">pathRewrite</span>: &#123;
+          <span class="hljs-string">'^/api'</span>: <span class="hljs-string">''</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;
 &#125;</code></pre>
+
+<h3 id="例子">例子<a class="post-anchor" href="#例子"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">'axios'</span>
+axios.post(<span class="hljs-string">'/api/login'</span>).then(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+  <span class="hljs-built_in">console</span>.log(res)
+&#125;)
+<span class="hljs-comment">// 后端接口地址是/login,port:3000</span>
+app.post(<span class="hljs-string">'/login'</span>,(req,res)=&gt;&#123;
+    res.send(&#123;
+        <span class="hljs-attr">code</span>: <span class="hljs-number">200</span>,
+        <span class="hljs-attr">msg</span>: <span class="hljs-string">'登录成功'</span>,
+        <span class="hljs-attr">token</span>: <span class="hljs-string">'asfkosdfjsijdhfsuighriehhhhhhhhguiehrguirehgerigksdn'</span>
+    &#125;)
+&#125;)</code></pre>
 
 
   
@@ -230,12 +268,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/12/09/vue%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEproxy/">vue前端配置proxy</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/12/08/iframe%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%92/">iframe信息传递</a>
+          <a href="/2021/12/09/vue%E4%BF%9D%E8%AF%81%E8%BE%93%E5%85%A5%E6%A1%86%E5%8F%AA%E8%83%BD%E6%98%AF%E6%95%B0%E5%AD%97/">vue保证输入框只能是数字</a>
         
     </div>
   </div>
@@ -247,7 +283,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/12/09/vue保证输入框只能是数字/">https://codermino.github.io/2021/12/09/vue保证输入框只能是数字/</a>
+      永久链接：<a href="https://codermino.github.io/2021/12/09/vue前端配置proxy/">https://codermino.github.io/2021/12/09/vue前端配置proxy/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
