@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      js的+运算符详解 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#加号-运算符"><span class="toc-text">加号+运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类型转换"><span class="toc-text">类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-ToPrimitive-将值转换为原始值"><span class="toc-text">通过 ToPrimitive() 将值转换为原始值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-ToNumber-将值转换为数字"><span class="toc-text">通过 ToNumber() 将值转换为数字</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过ToString-将值转换为字符串"><span class="toc-text">通过ToString()将值转换为字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实践一下"><span class="toc-text">实践一下</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加法"><span class="toc-text">加法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加法的示例"><span class="toc-text">加法的示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#预料到的结果"><span class="toc-text">预料到的结果</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">js的+运算符详解</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/12/10</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/javascript">javascript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/js的+运算符详解">js的+运算符详解</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/javascript/javascript.png" data-caption data-fancybox="images"><img src="/images/javascript/javascript.png" alt></a></p>
+<h3 id="加号-运算符">加号+运算符<a class="post-anchor" href="#加号-运算符"></a></h3><p>在 JavaScript 中，加法的规则其实很简单，只有两种情况:</p>
+<ul>
+<li>把数字和数字相加</li>
+<li>把字符串和字符串相加<br>所有其他类型的值都会被自动转换成这两种类型的值。<br>为了能够弄明白这种隐式转换是如何进行的，<br>我们首先需要搞懂一些基础知识。</li>
+</ul>
+<p>让我们快速的复习一下。 在 JavaScript 中，一共有两种类型的值:<br>原始值(primitives)<br>undefined<br>null<br>boolean<br>number<br>string<br>对象值(objects)：除了原始值外，其他的所有值都是对象类型的值，<br>包括数组(array)和函数(function)。</p>
+<h3 id="类型转换">类型转换<a class="post-anchor" href="#类型转换"></a></h3><p>加法运算符会触发三种类型转换：</p>
+<ol>
+<li>转换为原始值</li>
+<li>转换为数字</li>
+<li>转换为字符串</li>
+</ol>
+<h4 id="通过-ToPrimitive-将值转换为原始值">通过 ToPrimitive() 将值转换为原始值<a class="post-anchor" href="#通过-ToPrimitive-将值转换为原始值"></a></h4><p>JavaScript 引擎内部的抽象操作 ToPrimitive() 有着这样的签名:</p>
+<pre><code class="hljs javascript">ToPrimitive(input，PreferredType?)</code></pre>
+<p>可选参数 PreferredType 可以是 Number 或者 String。 它只代表了一个转换的偏好，转换结果不一定必须是这个参数所指的类型（汗），但转换结果一定是一个原始值。 如果 PreferredType 被标志为 Number，则会进行下面的操作来转换input</p>
+<ol>
+<li>如果 input 是个原始值，则直接返回它。</li>
+<li>否则，如果 input 是一个对象。则调用 obj.valueOf() 方法。 如果返回值是一个原始值，则返回这个原始值。</li>
+<li>否则，调用 obj.toString() 方法。 如果返回值是一个原始值，则返回这个原始值。</li>
+<li>否则，抛出 TypeError 异常。<br>如果 PreferredType 被标志为 String，则转换操作的第二步和第三步的顺序会调换。<br>如果没有 PreferredType 这个参数，则 PreferredType 的值会按照这样的规则来自动设置：</li>
+</ol>
+<ul>
+<li>Date 类型的对象会被设置为 String</li>
+<li>其它类型的值会被设置为 Number</li>
+</ul>
+<h4 id="通过-ToNumber-将值转换为数字">通过 ToNumber() 将值转换为数字<a class="post-anchor" href="#通过-ToNumber-将值转换为数字"></a></h4><p>下面的表格解释了 ToNumber() 是如何将原始值转换成数字的<br>参数    结果<br>undefined    NaN<br>null        +0<br>boolean        true被转换为1,false转换为+0<br>number        无需转换<br>string        由字符串解析为数字。例如，”324”被转换为324</p>
+<p>如果输入的值是一个对象，<br>则会首先会调用 ToPrimitive(obj, Number) 将该对象转换为原始值，<br>然后在调用 ToNumber() 将这个原始值转换为数字。</p>
+<h4 id="通过ToString-将值转换为字符串">通过ToString()将值转换为字符串<a class="post-anchor" href="#通过ToString-将值转换为字符串"></a></h4><p>下面的表格解释了 ToString() 是如何将原始值转换成字符串的<br>参数    结果<br>undefined    “undefined”<br>null        “null”<br>boolean        “true” 或者 “false”<br>number        数字作为字符串。比如，”1.765”<br>string        无需转换<br>如果输入的值是一个对象，<br>则会首先会调用 ToPrimitive(obj, String) 将该对象转换为原始值，<br>然后再调用 ToString() 将这个原始值转换为字符串。</p>
+<h4 id="实践一下">实践一下<a class="post-anchor" href="#实践一下"></a></h4><p>下面的对象可以让你看到引擎内部的转换过程。</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj = &#123;
+<span class="hljs-attr">valueOf</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"valueOf"</span>);
+    <span class="hljs-keyword">return</span> &#123;&#125;; <span class="hljs-comment">// not a primitive</span>
+    &#125;，
+    <span class="hljs-attr">toString</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"toString"</span>);
+    <span class="hljs-keyword">return</span> &#123;&#125;; <span class="hljs-comment">// not a primitive</span>
+    &#125;
+&#125;</code></pre>
+<p>Number 作为一个函数被调用(而不是作为构造函数调用)时，<br>会在引擎内部调用 ToNumber() 操作:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; Number(obj)</span>
+valueOf
+toString
+TypeError: Cannot convert object to primitive value</code></pre>
+
+<h3 id="加法">加法<a class="post-anchor" href="#加法"></a></h3><p>有下面这样的一个加法操作。<br>value1 + value2<br>在计算这个表达式时，内部的操作步骤是这样的</p>
+<ol>
+<li>将两个操作数转换为原始值 (以下是数学表示法的伪代码，不是可以运行的 JavaScript 代码):<pre><code class="hljs markdown">prim1 := ToPrimitive(value1)
+prim2 := ToPrimitive(value2)</code></pre>
+PreferredType 被省略，因此 Date 类型的值采用 String，其他类型的值采用 Number。</li>
+</ol>
+<h3 id="加法的示例">加法的示例<a class="post-anchor" href="#加法的示例"></a></h3><h4 id="预料到的结果">预料到的结果<a class="post-anchor" href="#预料到的结果"></a></h4><p>当你将两个数组相加时，结果正是我们期望的:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; [] + []</span>
+''</code></pre>
+<p>[] 被转换成一个原始值：首先尝试 valueOf() 方法，<br>该方法返回数组本身(this):</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; var arr = [];</span>
+<span class="hljs-quote">&gt; arr.valueOf() === arr</span>
+true</code></pre>
+<p>此时结果不是原始值，所以再调用 toString() 方法，<br>返回一个空字符串(string 是原始值)。<br>因此，[] + [] 的结果实际上是两个空字符串的连接。</p>
+<p>将一个数组和一个对象相加，结果依然符合我们的期望:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; [] + &#123;&#125;</span>
+'[object Object]'</code></pre>
+<p>解析：将空对象转换成字符串时，产生如下结果。</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; String(&#123;&#125;)</span>
+'[object Object]'</code></pre>
+<p>所以最终的结果其实是把 “” 和 “[object Object]” 两个字符串连接起来。</p>
+<p>更多的对象转换为原始值的例子:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; 5 + new Number(7)</span>
+12
+<span class="hljs-quote">&gt; 6 + &#123; valueOf: function () &#123; return 2 &#125; &#125;</span>
+8
+<span class="hljs-quote">&gt; "abc" + &#123; toString: function () &#123; return "def" &#125; &#125;</span>
+'abcdef'</code></pre>
+<p>意想不到的结果<br>如果 + 加法运算的第一个操作数是个空对象字面量，<br>则会出现诡异的结果(Firefox console 中的运行结果):</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; &#123;&#125; + &#123;&#125;</span>
+NaN</code></pre>
+<p>这个问题的原因是，JavaScript<br>把第一个 {} 解释成了一个空的代码块（code block）并忽略了它。<br>NaN 其实是表达式 +{} 计算的结果 (+ 加号以及第二个 {})。<br> 你在这里看到的 + 加号并不是二元运算符「加法」，<br> 而是一个一元运算符，作用是将它后面的操作数转换成数字，<br> 和 Number() 函数完全一样。例如:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; +"3.65"</span>
+3.65</code></pre>
+<p>以下的表达式是它的等价形式:</p>
+<pre><code class="hljs markdown">+&#123;&#125;
+Number(&#123;&#125;)
+Number(&#123;&#125;.toString())  // &#123;&#125;.valueOf() isn’t primitive
+Number("[object Object]")
+NaN</code></pre>
+<p>为什么第一个 {} 会被解析成代码块（code block）呢？<br>因为整个输入被解析成了一个语句：如果左大括号出现在一条语句的开头，<br>则这个左大括号会被解析成一个代码块的开始。<br>所以，你也可以通过强制把输入解析成一个表达式来修复这样的计算结果:<br>（译注：我们期待它是个表达式，结果却被解析成了语句）</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; (&#123;&#125; + &#123;&#125;)</span>
+'[<span class="hljs-string">object Object</span>][<span class="hljs-symbol">object Object</span>]'</code></pre>
+<p>一个函数或方法的参数也会被解析成一个表达式:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; console.log(&#123;&#125; + &#123;&#125;)</span>
+[<span class="hljs-string">object Object</span>][<span class="hljs-symbol">object Object</span>]</code></pre>
+<p>经过前面的讲解，对于下面这样的计算结果，你也应该不会感到吃惊了:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; &#123;&#125; + []</span>
+0</code></pre>
+<p>在解释一次，上面的输入被解析成了一个代码块后跟一个表达式 +[]。 转换的步骤是这样的:</p>
+<pre><code class="hljs markdown">+[]
+Number([])
+Number([].toString())  // [].valueOf() isn’t primitive
+Number("")
+0</code></pre>
+<p>有趣的是，Node.js 的 REPL 在解析类似的输入时，<br>与 Firefox 和 Chrome(和Node.js 一样使用 V8 引擎) 的解析结果不同。<br>下面的输入会被解析成一个表达式，结果更符合我们的预料:</p>
+<pre><code class="hljs markdown"><span class="hljs-quote">&gt; &#123;&#125; + &#123;&#125;</span>
+'[<span class="hljs-string">object Object</span>][<span class="hljs-symbol">object Object</span>]'
+<span class="hljs-quote">&gt; &#123;&#125; + []</span>
+'[object Object]'</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/12/10/Vue-set-%E5%92%8Cthis-set-%E4%BB%8B%E7%BB%8D/">Vue.set()和this.$set()介绍</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/12/10/js的-运算符详解/">https://codermino.github.io/2021/12/10/js的-运算符详解/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
