@@ -584,6 +584,7 @@ app.all(<span class="hljs-string">"*"</span>,<span class="hljs-function"><span c
 
 app.use(bodyParser.urlencoded(&#123;<span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span>&#125;))
 app.use(bodyParser.json())
+<span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser-xml'</span>)(bodyParser)
 app.use(bodyParser.xml(&#123;
     <span class="hljs-attr">limit</span>: <span class="hljs-string">'1MB'</span>,
     <span class="hljs-attr">xmlParseOptions</span>: &#123;
