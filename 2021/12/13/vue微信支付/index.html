@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#部分代码"><span class="toc-text">部分代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-text">完整代码</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端逻辑"><span class="toc-text">前端逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#部分代码"><span class="toc-text">部分代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-text">完整代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后端逻辑-node"><span class="toc-text">后端逻辑(node)</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -196,7 +196,7 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="部分代码">部分代码<a class="post-anchor" href="#部分代码"></a></h3><p>相比较微信的其他方式支付扫描二维码支付算是比较便捷的</p>
+<h2 id="前端逻辑">前端逻辑<a class="post-anchor" href="#前端逻辑"></a></h2><h3 id="部分代码">部分代码<a class="post-anchor" href="#部分代码"></a></h3><p>相比较微信的其他方式支付扫描二维码支付算是比较便捷的</p>
 <ol>
 <li><p>首先有一个生成订单的按钮，点击按钮调用后台接口生成一个订单ID</p>
 <pre><code class="hljs javascript">btnZhiFuClick() &#123;
@@ -375,6 +375,226 @@
     &#125;
   &#125;
 &lt;&#x2F;script&gt;</code></pre>
+
+<h2 id="后端逻辑-node">后端逻辑(node)<a class="post-anchor" href="#后端逻辑-node"></a></h2><p><strong>这里只是演示代码，并不代表真实情况</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/*
+1. AppID
+2. AppSecret
+3. 确保获取微信支付接口的权限
+4. 获取微信支付的商户号
+5. 获取微信支付接口的秘钥(账户中心-&gt;api安全)
+6. 同时在产品中心-&gt;开发配置页面，将支付域名配置好：
+ */</span>
+
+<span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
+<span class="hljs-keyword">const</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>)
+<span class="hljs-keyword">const</span> crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>)
+<span class="hljs-keyword">const</span> xml2js = <span class="hljs-built_in">require</span>(<span class="hljs-string">'xml2js'</span>)
+<span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">'axios'</span>)
+<span class="hljs-comment">// 微信支付接口的数据都是xml, 为了方便, 需要将 xml 转换成 json</span>
+<span class="hljs-keyword">const</span> xmlParser = <span class="hljs-keyword">new</span> xml2js.Parser()
+
+<span class="hljs-comment">// 一些需要用的变量</span>
+<span class="hljs-comment">// 接收支付结果通知的地址</span>
+<span class="hljs-comment">// 后端回调地址是验证这笔订单已经成功付款的服务器间交互的依据，该地址不应该随意泄露或告知他人</span>
+<span class="hljs-keyword">const</span> payNotifyUrl = <span class="hljs-string">'https:xxx.com/notify'</span>
+<span class="hljs-comment">// 微信公众号的 appid</span>
+<span class="hljs-keyword">const</span> appId = <span class="hljs-string">'xxxxxxxx'</span>
+<span class="hljs-comment">// 商户号</span>
+<span class="hljs-keyword">const</span> mchId = <span class="hljs-string">'yyyyyy'</span>
+<span class="hljs-comment">// 支付密钥</span>
+<span class="hljs-keyword">const</span> PAY_API_KEY = <span class="hljs-string">'xyxyxyxyx'</span>
+
+<span class="hljs-comment">// md5 加密算法</span>
+<span class="hljs-keyword">const</span> md5 = <span class="hljs-function"><span class="hljs-params">str</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">let</span> m = crypto.createHash(<span class="hljs-string">'md5'</span>)
+    <span class="hljs-keyword">return</span> m.update(str).digest(<span class="hljs-string">'hex'</span>)
+&#125;
+
+<span class="hljs-comment">// 生成一个随机字符串</span>
+<span class="hljs-keyword">const</span> getNonceStr = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">let</span> text = <span class="hljs-string">""</span>
+    <span class="hljs-keyword">const</span> possible = <span class="hljs-string">"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span>; i++) &#123;
+        text += possible.charAt(<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * possible.length))
+    &#125;
+    <span class="hljs-keyword">return</span> text
+&#125;
+
+<span class="hljs-comment">/*参数说明
+* appId: 微信支付分配的公众账号ID（企业号corpid即为此appid）
+* attach: 附加数据，在查询API和支付通知中原样返回，可作为自定义参数使用。
+* productIntro:商品简单描述，该字段请按照规范传递，具体请见参数规定
+* mchId: 微信支付分配的商户号
+* nonceStr:随机字符串，长度要求在32位以内。推荐随机数生成算法
+* notifyUrl: body异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。公网域名必须为https，如果是走专线接入，使用专线NAT IP或者私有回调域名可使用http
+* openId: 非必填
+* tradeId:商户系统内部订单号，要求32个字符内（最少6个字符），只能是数字、大小写字母_-|*且在同一个商户号下唯一。详见商户订单号
+* ip:终端ip 支持IPV4和IPV6两种格式的IP地址。用户的客户端IP
+* price:订单总金额，单位为分，详见支付金额
+* trade_type: JSAPI -JSAPI支付 NATIVE -Native支付 APP -APP支付
+* PAY_API_KEY: 商户支付密钥
+* */</span>
+
+<span class="hljs-comment">// 生成预支付签名, 将会发到微信支付接口</span>
+<span class="hljs-keyword">const</span> getPcPrePaySignForWX = <span class="hljs-function">(<span class="hljs-params">appId, attach, productIntro, mchId, nonceStr, notifyUrl, openId, tradeId, ip, price, PAY_API_KEY</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">let</span> stringA = <span class="hljs-string">'appid='</span> + appId +
+        <span class="hljs-string">'&amp;attach='</span> + attach +
+        <span class="hljs-string">'&amp;body='</span> + productIntro +
+        <span class="hljs-string">'&amp;mch_id='</span> + mchId +
+        <span class="hljs-string">'&amp;nonce_str='</span> + nonceStr +
+        <span class="hljs-string">'&amp;notify_url='</span> + payNotifyUrl +
+        <span class="hljs-string">'&amp;out_trade_no='</span> + tradeId +
+        <span class="hljs-string">'&amp;spbill_create_ip='</span> + ip +
+        <span class="hljs-string">'&amp;total_fee='</span> + price +
+        <span class="hljs-string">'&amp;trade_type=NATIVE'</span>
+    <span class="hljs-keyword">let</span> stringSignTemp = stringA + <span class="hljs-string">'&amp;key='</span> + PAY_API_KEY
+    <span class="hljs-keyword">return</span> md5(stringSignTemp).toUpperCase()
+&#125;
+
+<span class="hljs-comment">// 按照要求的格式打包将要发送给微信的数据</span>
+<span class="hljs-keyword">const</span> wxPcSendData = <span class="hljs-function">(<span class="hljs-params">appId, attach, productIntro, mchId, nonceStr, openId, tradeId, ip, price, sign</span>) =&gt;</span> &#123;
+    <span class="hljs-comment">// attach 将会在通知支付结果时返回</span>
+    <span class="hljs-keyword">return</span> sendData = <span class="hljs-string">'&lt;xml&gt;'</span> +
+        <span class="hljs-string">'&lt;appid&gt;'</span> + appId + <span class="hljs-string">'&lt;/appid&gt;'</span> +
+        <span class="hljs-string">'&lt;attach&gt;'</span> + attach + <span class="hljs-string">'&lt;/attach&gt;'</span> +
+        <span class="hljs-string">'&lt;body&gt;'</span> + productIntro + <span class="hljs-string">'&lt;/body&gt;'</span> +
+        <span class="hljs-string">'&lt;mch_id&gt;'</span> + mchId + <span class="hljs-string">'&lt;/mch_id&gt;'</span> +
+        <span class="hljs-string">'&lt;nonce_str&gt;'</span> + nonceStr + <span class="hljs-string">'&lt;/nonce_str&gt;'</span> +
+        <span class="hljs-string">'&lt;notify_url&gt;'</span> + payNotifyUrl + <span class="hljs-string">'&lt;/notify_url&gt;'</span> +
+        <span class="hljs-string">'&lt;out_trade_no&gt;'</span> + tradeId + <span class="hljs-string">'&lt;/out_trade_no&gt;'</span> +
+        <span class="hljs-string">'&lt;spbill_create_ip&gt;'</span> + ip + <span class="hljs-string">'&lt;/spbill_create_ip&gt;'</span> +
+        <span class="hljs-string">'&lt;total_fee&gt;'</span> + price + <span class="hljs-string">'&lt;/total_fee&gt;'</span> +
+        <span class="hljs-string">'&lt;trade_type&gt;NATIVE&lt;/trade_type&gt;'</span> +
+        <span class="hljs-string">'&lt;sign&gt;'</span> + sign + <span class="hljs-string">'&lt;/sign&gt;'</span> +
+        <span class="hljs-string">'&lt;/xml&gt;'</span>
+&#125;
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pcPaySign</span>(<span class="hljs-params">tradeId, ip</span>) </span>&#123;
+    <span class="hljs-keyword">const</span> nonceStr = getNonceStr()
+    <span class="hljs-comment">// 交易的费用, 单位是分</span>
+    <span class="hljs-keyword">let</span> price = <span class="hljs-number">1</span>
+    <span class="hljs-comment">// 交易的描述, 将会出现在用户的微信支付详情中</span>
+    <span class="hljs-keyword">let</span> productIntro = <span class="hljs-string">'productIntro'</span>
+    <span class="hljs-keyword">const</span> prePaySign = getPcPrePaySignForWX(appId, <span class="hljs-string">'xxx'</span>, productIntro, mchId, nonceStr, payNotifyUrl, openId, tradeId, ip, price, PAY_API_KEY)
+    <span class="hljs-keyword">const</span> data = wxPcSendData(appId, <span class="hljs-string">'gankerex'</span>, productIntro, mchId, nonceStr, openId, tradeId, ip, price, prePaySign)
+    <span class="hljs-keyword">let</span> wxResponse
+    <span class="hljs-keyword">try</span> &#123;
+        wxResponse = <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">'https://api.mch.weixin.qq.com/pay/unifiedorder'</span>, data)
+        xmlParser.parseString(wxResponse.data, (err, success) =&gt; &#123;
+            <span class="hljs-keyword">if</span> (err) &#123;
+                <span class="hljs-comment">//</span>
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-keyword">if</span> (success.xml.return_code[<span class="hljs-number">0</span>] === <span class="hljs-string">'SUCCESS'</span>) &#123;
+                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'pc pay'</span>, success.xml)
+                    <span class="hljs-keyword">const</span> prepayId = success.xml.prepay_id[<span class="hljs-number">0</span>]
+                    <span class="hljs-comment">// 这里拿到的这个地址, 将它返回给前端同学即可</span>
+                    <span class="hljs-keyword">const</span> codeUrl = success.xml.code_url[<span class="hljs-number">0</span>]
+                &#125;
+            &#125;
+        &#125;)
+    &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 生成查询签名, 将会发到微信查询接口</span>
+<span class="hljs-keyword">const</span> getPcCheckSignForWX = <span class="hljs-function">(<span class="hljs-params">out_trade_no, appid, mch_id, nonce_str</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">let</span> stringA = <span class="hljs-string">'appid='</span> + appid +
+        <span class="hljs-string">'&amp;mch_id='</span> + mch_id +
+        <span class="hljs-string">'&amp;nonce_str='</span> + nonce_str +
+        <span class="hljs-string">'&amp;out_trade_no='</span> + out_trade_no
+    <span class="hljs-keyword">let</span> stringSignTemp = stringA + <span class="hljs-string">'&amp;key='</span> + PAY_API_KEY
+    <span class="hljs-keyword">return</span> md5(stringSignTemp).toUpperCase()
+&#125;
+
+<span class="hljs-comment">// 按照要求的格式打包将要发送给微信的数据</span>
+<span class="hljs-keyword">const</span> wxPcSendCheckData = <span class="hljs-function">(<span class="hljs-params">out_trade_no, appid, mch_id, nonce_str, sign</span>) =&gt;</span> &#123;
+    <span class="hljs-comment">// attach 将会在通知支付结果时返回</span>
+    <span class="hljs-keyword">return</span> sendData = <span class="hljs-string">'&lt;xml&gt;'</span> +
+        <span class="hljs-string">'&lt;appid&gt;'</span> + appid + <span class="hljs-string">'&lt;/appid&gt;'</span> +
+        <span class="hljs-string">'&lt;mch_id&gt;'</span> + mch_id + <span class="hljs-string">'&lt;/mch_id&gt;'</span> +
+        <span class="hljs-string">'&lt;nonce_str&gt;'</span> + nonce_str + <span class="hljs-string">'&lt;/nonce_str&gt;'</span> +
+        <span class="hljs-string">'&lt;out_trade_no&gt;'</span> + out_trade_no + <span class="hljs-string">'&lt;/out_trade_no&gt;'</span> +
+        <span class="hljs-string">'&lt;sign&gt;'</span> + sign + <span class="hljs-string">'&lt;/sign&gt;'</span> +
+        <span class="hljs-string">'&lt;/xml&gt;'</span>
+&#125;
+
+<span class="hljs-comment">// 支付成功之后，我们还需要对交易进行确认，所以根据微信官方文档，调用统一查询接口：</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">wx_check</span>(<span class="hljs-params">out_trade_no, key, appid, mch_id, nonce_str</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> wxResponse
+    <span class="hljs-keyword">try</span> &#123;
+        <span class="hljs-keyword">const</span> checkSign = getPcCheckSignForWX(out_trade_no, appid, mch_id, nonce_str)
+        <span class="hljs-keyword">const</span> data = wxPcSendCheckData(out_trade_no, appid, mch_id, nonce_str, checkSign)
+        wxResponse = <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">'https://api.mch.weixin.qq.com/pay/orderquery'</span>, data)
+        xmlParser.parseString(wxResponse.data, (err, success) =&gt; &#123;
+            <span class="hljs-keyword">if</span> (err) &#123;
+                <span class="hljs-comment">//</span>
+            &#125; <span class="hljs-keyword">else</span> &#123;
+                <span class="hljs-keyword">if</span> (success.xml.return_code[<span class="hljs-number">0</span>] === <span class="hljs-string">'SUCCESS'</span>) &#123;
+                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'pc pay'</span>, success.xml)
+                &#125;
+            &#125;
+        &#125;)
+    &#125; <span class="hljs-keyword">catch</span> (e) &#123;
+
+    &#125;
+&#125;
+
+<span class="hljs-comment">// 该链接是通过【统一下单API】中提交的参数notify_url设置，如果链接无法访问，商户将无法接收到微信通知。</span>
+<span class="hljs-comment">//通知url必须为直接可访问的url，不能携带参数。</span>
+<span class="hljs-comment">// 公网域名必须为https，如果是走专线接入，使用专线NAT IP或者私有回调域名可使用http。</span>
+<span class="hljs-comment">// 示例：notify_url：“https://pay.weixin.qq.com/wxpay/pay.action”</span>
+
+<span class="hljs-comment">// 支付完成后，微信会把相关支付结果和用户信息发送给商户，商户需要接收处理，并返回应答</span>
+<span class="hljs-comment">// 微信支付的文档请点击这里 ，这里用 js 把它写出来了 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7</span>
+<span class="hljs-comment">// 微信发送的数据是一个 xml ，首先需要吧 xml 转换成 js 的对象</span>
+<span class="hljs-comment">// 在 express 中，可以使用 body-parser 这个插件达到效果</span>
+
+<span class="hljs-comment">// 验证签名</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkWXNotifySign</span>(<span class="hljs-params">xmlObj, PAY_API_KEY</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> string = <span class="hljs-string">''</span>
+    <span class="hljs-keyword">const</span> keys = <span class="hljs-built_in">Object</span>.keys(xmlObj)
+    keys.sort()
+    keys.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =&gt;</span> &#123;
+        <span class="hljs-keyword">if</span> (xmlObj[key] &amp;&amp; key !== <span class="hljs-string">'sign'</span>) &#123;
+            string = string + key + <span class="hljs-string">'='</span> + xmlObj[key] + <span class="hljs-string">'&amp;'</span>
+        &#125;
+    &#125;)
+    string = string + <span class="hljs-string">'key='</span> + PAY_API_KEY
+    <span class="hljs-keyword">const</span> localSign = md5(string).toUpperCase()
+    <span class="hljs-keyword">return</span> localSign === xmlObj.sign
+&#125;
+
+
+<span class="hljs-keyword">const</span> app = express()
+
+app.all(<span class="hljs-string">"*"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req,res,next</span>)</span>&#123;
+    <span class="hljs-comment">//设置允许跨域的域名，*代表允许任意域名跨域</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Origin"</span>,<span class="hljs-string">"*"</span>);
+    <span class="hljs-comment">//允许的header类型</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Headers"</span>,<span class="hljs-string">"content-type"</span>);
+    <span class="hljs-comment">//跨域允许的请求方式</span>
+    res.header(<span class="hljs-string">"Access-Control-Allow-Methods"</span>,<span class="hljs-string">"DELETE,PUT,POST,GET,OPTIONS"</span>);
+    <span class="hljs-keyword">if</span> (req.method.toLowerCase() == <span class="hljs-string">'options'</span>)
+        res.sendStatus(<span class="hljs-number">200</span>);  <span class="hljs-comment">//让options尝试请求快速结束</span>
+    <span class="hljs-keyword">else</span>
+        next();
+&#125;)
+
+app.use(bodyParser.urlencoded(&#123;<span class="hljs-attr">extended</span>: <span class="hljs-literal">true</span>&#125;))
+app.use(bodyParser.json())
+app.use(bodyParser.xml(&#123;
+    <span class="hljs-attr">limit</span>: <span class="hljs-string">'1MB'</span>,
+    <span class="hljs-attr">xmlParseOptions</span>: &#123;
+        <span class="hljs-attr">normalize</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">normalizeTags</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">explicitArray</span>: <span class="hljs-literal">false</span>
+    &#125;
+&#125;))
+
+app.listen(<span class="hljs-number">3000</span>)
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'listen 3000'</span>)</code></pre>
 
 
   
