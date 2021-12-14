@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-12-13T15:20:12.220Z</updated>
+  <updated>2021-12-14T02:52:29.447Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue路由跳转传递一个对象</title>
+    <link href="https://codermino.github.io/2021/12/14/Vue%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1/"/>
+    <id>https://codermino.github.io/2021/12/14/Vue%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1/</id>
+    <published>2021-12-14T02:47:55.000Z</published>
+    <updated>2021-12-14T02:52:29.447Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;路由跳转传递对象&quot;&gt;路由跳
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="Vue路由跳转传递一个对象" scheme="https://codermino.github.io/tags/Vue%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>vue微信支付</title>
@@ -486,31 +511,6 @@
     
     
       <category term="防止接口缓存" scheme="https://codermino.github.io/tags/%E9%98%B2%E6%AD%A2%E6%8E%A5%E5%8F%A3%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vuecli3项目打包优化</title>
-    <link href="https://codermino.github.io/2021/10/17/vuecli3%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/"/>
-    <id>https://codermino.github.io/2021/10/17/vuecli3%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/</id>
-    <published>2021-10-17T06:50:35.000Z</published>
-    <updated>2021-10-17T16:43:28.516Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;打包优化&quot;&gt;打包优化&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vuecli3项目打包优化" scheme="https://codermino.github.io/tags/vuecli3%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   
