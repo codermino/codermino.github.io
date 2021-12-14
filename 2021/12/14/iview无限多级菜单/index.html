@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      Vue路由跳转传递一个对象 - Mino
+      iview无限多级菜单 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#路由跳转传递对象"><span class="toc-text">路由跳转传递对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#跳转的页面"><span class="toc-text">跳转的页面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#跳转到的页面"><span class="toc-text">跳转到的页面</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#iview的无限多级菜单"><span class="toc-text">iview的无限多级菜单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#菜单父组件"><span class="toc-text">菜单父组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#菜单子组件"><span class="toc-text">菜单子组件</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,7 +157,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">Vue路由跳转传递一个对象</div>
+      <div class="title">iview无限多级菜单</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/vue">vue</a>
+                  <a href="/categories/iview">iview</a>
                 
               
           </span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/Vue路由跳转传递一个对象">Vue路由跳转传递一个对象</a>
+                    <a href="/tags/iview无限多级菜单">iview无限多级菜单</a>
                   
                 
             </span>
@@ -195,14 +195,207 @@
       <div>
       </div>
     </div>
-    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="路由跳转传递对象">路由跳转传递对象<a class="post-anchor" href="#路由跳转传递对象"></a></h3><h4 id="跳转的页面">跳转的页面<a class="post-anchor" href="#跳转的页面"></a></h4><p>在传的一方使用：JSON.stringify() 以及encodeURIComponent()进行转换</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> arr=<span class="hljs-built_in">JSON</span>.stringify(e)
-<span class="hljs-keyword">this</span>.$router.push(<span class="hljs-string">"/details?obj="</span>+<span class="hljs-built_in">encodeURIComponent</span>(arr))</code></pre>
+    <p><a href="/images/iview/iview.jpg" data-caption data-fancybox="images"><img src="/images/iview/iview.jpg" alt></a></p>
+<h3 id="iview的无限多级菜单">iview的无限多级菜单<a class="post-anchor" href="#iview的无限多级菜单"></a></h3><p>主要是采用组件递归的方式进行</p>
+<h4 id="菜单父组件">菜单父组件<a class="post-anchor" href="#菜单父组件"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;!-- 无限级 --&gt;
+  &lt;div class&#x3D;&#39;con&#39;&gt;
+    &lt;Menu class&#x3D;&quot;sider-menu&quot; :theme&#x3D;&quot;theme2&quot; accordion&gt;
+      &lt;template :name&#x3D;&quot;item.name&quot; v-for&#x3D;&quot;item in menuList&quot;&gt;
+        &lt;!-- 有子菜单 --&gt;
+        &lt;left-menu-nav v-if&#x3D;&quot;item.children&amp;&amp;item.children.length!&#x3D;&#x3D;0&quot; :menuList&#x3D;&#39;item&#39; :key&#x3D;&#39;item.name&#39;&gt;&lt;&#x2F;left-menu-nav&gt;
+        &lt;!-- 无子菜单 --&gt;
+        &lt;menu-item v-else :name&#x3D;&quot;item.name&quot; :to&#x3D;&quot;item.to&quot; :key&#x3D;&#39;item.name&#39;&gt;&#123;&#123;item.title&#125;&#125;&lt;&#x2F;menu-item&gt;
+      &lt;&#x2F;template&gt;
+    &lt;&#x2F;Menu&gt;
+    &lt;div class&#x3D;&#39;pad&#39;&gt;
+      &lt;router-view &#x2F;&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
 
-<h4 id="跳转到的页面">跳转到的页面<a class="post-anchor" href="#跳转到的页面"></a></h4><p>在接收的一方使用：decodeURIComponent() 以及 JSON.parse()进行转换</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> list = <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-keyword">this</span>.$route.query.obj);
-<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.parse(list));</code></pre>
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+import leftMenuNav from &#39;.&#x2F;InfiniteMenuCom.vue&#39;
+export default &#123;
+  name: &#39;infiniteMenu&#39;,
+  components: &#123;
+    leftMenuNav
+  &#125;,
+  data () &#123;
+    return &#123;
+      name: &#39;menu&#39;,
+      theme2: &#39;light&#39;,
+      menuList: [
+        &#123;
+          title: &#39;oralinge&#39;,
+          name: &#39;0&#39;,
+          to: &#39;&#x2F;oralinge&#39;
+        &#125;,
+        &#123;
+          title: &#39;模块管理&#39;,
+          name: &#39;1&#39;,
+          children: [
+            &#123;
+              title: &#39;文件管理&#39;,
+              name: &#39;1-1&#39;,
+              children: [
+                &#123;
+                  title: &#39;路由管理&#39;,
+                  name: &#39;1-1-1&#39;,
+                  children: [
+                    &#123;
+                      title: &#39;代码管理&#39;,
+                      name: &#39;1-1-1-1&#39;,
+                      to: &#39;&#x2F;code&#39;
+                    &#125;
+                  ]
+                &#125;,
+                &#123;
+                  title: &#39;组件管理&#39;,
+                  name: &#39;1-1-2&#39;,
+                  to: &#39;&#x2F;con&#39;
+                &#125;
+              ]
+            &#125;,
+            &#123;
+              title: &#39;产品管理&#39;,
+              name: &#39;1-2&#39;,
+              to: &#39;&#x2F;pro&#39;
+            &#125;,
+            &#123;
+              title: &#39;商户管理&#39;,
+              name: &#39;1-3&#39;,
+              to: &#39;&#x2F;mer&#39;
+            &#125;,
+            &#123;
+              title: &#39;合同信息&#39;,
+              name: &#39;1-4&#39;,
+              to: &#39;&#x2F;contract&#39;
+            &#125;
+          ]
+        &#125;,
+        &#123;
+          title: &#39;架构管理&#39;,
+          name: &#39;2&#39;,
+          children: [
+            &#123;
+              title: &#39;webpack&#39;,
+              name: &#39;2-1&#39;,
+              children: [
+                &#123;
+                  title: &#39;webpack2&#39;,
+                  name: &#39;2-1-1&#39;,
+                  to: &#39;&#x2F;webpack&#39;
+                &#125;
+              ]
+            &#125;,
+            &#123;
+              title: &#39;gulp&#39;,
+              name: &#39;2-2&#39;,
+              to: &#39;&#x2F;gulp&#39;
+            &#125;
+          ]
+        &#125;,
+        &#123;
+          title: &#39;生死簿&#39;,
+          name: &#39;3&#39;,
+          children: [
+            &#123;
+              title: &#39;白名单&#39;,
+              name: &#39;3-1&#39;,
+              to: &#39;&#x2F;Whitelist&#39;
+            &#125;,
+            &#123;
+              title: &#39;黑名单&#39;,
+              name: &#39;3-2&#39;,
+              to: &#39;blacklist&#39;
+            &#125;
+          ]
+        &#125;,
+        &#123;
+          title: &#39;数据中心&#39;,
+          name: &#39;4&#39;,
+          children: [
+            &#123;
+              title: &#39;报表数据&#39;,
+              name: &#39;4-1&#39;,
+              to: &#39;&#x2F;data&#39;
+            &#125;
+          ]
+        &#125;
+      ]
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+&lt;style lang&#x3D;&quot;less&quot; scoped&gt;
+  .con &#123;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    .pad &#123;
+      margin: 5px;
+      float: left;
+      background: red;
+      flex: 1;
+    &#125;
+  &#125;
+  &#x2F;deep&#x2F; .sider-menu &#123;
+    text-align: left;
+    overflow: auto;
+    .menu-item-title &#123;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;&#x2F;**不换行**&#x2F;
+      display: inline-block;
+    &#125;
+    .menu-slected &#123;
+      background-color: #3C74D3 !important;
+      color: #fff !important;
+    &#125;
+    .ivu-menu-submenu-title&gt;i&#123;
+      margin-right: 0;
+    &#125;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+<h4 id="菜单子组件">菜单子组件<a class="post-anchor" href="#菜单子组件"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;side-menu-com&quot;&gt;
+    &lt;Submenu :name&#x3D;&quot;menuList.name&quot;&gt;
+      &lt;!-- 父级菜单 --&gt;
+      &lt;template slot&#x3D;&quot;title&quot;&gt;
+        &lt;Icon :type&#x3D;&quot;menuList.icon&quot; &#x2F;&gt;
+        &lt;span&gt;&#123;&#123; menuList.title &#125;&#125;&lt;&#x2F;span&gt;
+      &lt;&#x2F;template&gt;
+      &lt;template v-for&#x3D;&quot;item in menuList.children&quot;&gt;
+        &lt;!-- 如果还有子集，继续调用   --&gt;
+        &lt;left-menu-nav v-if&#x3D;&quot;item.children&amp;&amp;item.children.length!&#x3D;&#x3D;0&quot; :menuList&#x3D;&#39;item&#39; :key&#x3D;&#39;item.index&#39;&gt;&lt;&#x2F;left-menu-nav&gt;
+        &lt;!-- 子菜单  --&gt;
+        &lt;menu-item v-else :key&#x3D;&quot;item.id&quot; :name&#x3D;&quot;item.name&quot; :to&#x3D;&quot;item.to&quot;&gt;
+          &#123;&#123;item.title&#125;&#125;
+        &lt;&#x2F;menu-item&gt;
+      &lt;&#x2F;template&gt;
+    &lt;&#x2F;Submenu&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+export default &#123;
+  name: &#39;leftMenuNav&#39;,
+  props: &#123;
+    menuList: &#123;
+      type: Object,
+      default: () &#x3D;&gt; &#123; &#125;
+    &#125;
+  &#125;,
+  data () &#123;
+    return &#123;
+      theme2: &#39;light&#39;
+
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
 
 
   
@@ -229,12 +422,10 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/12/14/iview%E6%97%A0%E9%99%90%E5%A4%9A%E7%BA%A7%E8%8F%9C%E5%8D%95/">iview无限多级菜单</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/12/13/vue%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98/">vue微信支付</a>
+          <a href="/2021/12/14/Vue%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E4%BC%A0%E9%80%92%E4%B8%80%E4%B8%AA%E5%AF%B9%E8%B1%A1/">Vue路由跳转传递一个对象</a>
         
     </div>
   </div>
@@ -246,7 +437,7 @@
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/12/14/Vue路由跳转传递一个对象/">https://codermino.github.io/2021/12/14/Vue路由跳转传递一个对象/</a>
+      永久链接：<a href="https://codermino.github.io/2021/12/14/iview无限多级菜单/">https://codermino.github.io/2021/12/14/iview无限多级菜单/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
