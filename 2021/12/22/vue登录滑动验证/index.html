@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue登录滑动验证 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#登录拖拽滑动验证"><span class="toc-text">登录拖拽滑动验证</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#子组件"><span class="toc-text">子组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-父组件"><span class="toc-text">使用(父组件)</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue登录滑动验证</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/12/22</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue登录滑动验证">vue登录滑动验证</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="登录拖拽滑动验证">登录拖拽滑动验证<a class="post-anchor" href="#登录拖拽滑动验证"></a></h3><h4 id="子组件">子组件<a class="post-anchor" href="#子组件"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+  &lt;div
+      class&#x3D;&quot;drag_verify&quot;
+      :style&#x3D;&quot;dragVerifyStyle&quot;
+      @mousemove&#x3D;&quot;dragMoving&quot;
+      @mouseup&#x3D;&quot;dragFinish&quot;
+      @touchmove&#x3D;&quot;dragMoving&quot;
+      @touchend&#x3D;&quot;dragFinish&quot;&gt;
+    &lt;div class&#x3D;&quot;dv_progress_bar&quot; ref&#x3D;&quot;progressBar&quot; :style&#x3D;&quot;progressBarStyle&quot;&gt;&lt;&#x2F;div&gt;
+    &lt;div class&#x3D;&quot;dv_text&quot; :style&#x3D;&quot;textStyle&quot; ref&#x3D;&quot;message&quot;&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;div&gt;
+    &lt;div
+        class&#x3D;&quot;dv_handler dv_handler_bg&quot;
+        @mousedown&#x3D;&quot;dragStart&quot;
+        ref&#x3D;&quot;handler&quot;
+        :style&#x3D;&quot;handlerStyle&quot;
+        @touchstart&#x3D;&quot;dragStart&quot;&gt;
+      &lt;i :class&#x3D;&quot;handlerIcon&quot;&gt;&lt;&#x2F;i&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+export default &#123;
+  name: &#39;DragVerify&#39;,
+  props: &#123;
+    width: &#123;
+      type: Number,
+      default: 300
+    &#125;,
+    height: &#123;
+      type: Number,
+      default: 42
+    &#125;,
+    text: &#123;
+      type: String,
+      default: &#39;swiping to the right side&#39;
+    &#125;,
+    successText: &#123;
+      type: String,
+      default: &#39;success&#39;
+    &#125;,
+    background: &#123;
+      type: String,
+      default: &#39;#9C9C9C&#39;
+    &#125;,
+    progressBarBg: &#123;
+      type: String,
+      default: &#39;#FFFF99&#39;
+    &#125;,
+    completedBg: &#123;
+      type: String,
+      default: &#39;#66CC66&#39;
+    &#125;,
+    circle: &#123;
+      type: Boolean,
+      default: true
+    &#125;,
+    handlerIcon: &#123;
+      type: String
+    &#125;,
+    successIcon: &#123;
+      type: String
+    &#125;,
+    handlerBg: &#123;
+      type: String,
+      default: &#39;#FFF&#39;
+    &#125;,
+    textSize: &#123;
+      type: String,
+      default: &#39;14px&#39;
+    &#125;
+  &#125;,
+  computed: &#123;
+    handlerStyle: function () &#123;
+      return &#123;
+        left: &#39;0px&#39;,
+        width: &#39;36px&#39;,
+        height: &#39;36px&#39;,
+        margin: &#39;3px&#39;,
+        borderRadius: this.circle ? &#39;50%&#39; : 0,
+        background: this.handlerBg
+      &#125;
+    &#125;,
+    message: function () &#123;
+      return this.isPassing ? this.successText : this.text
+    &#125;,
+    dragVerifyStyle: function () &#123;
+      return &#123;
+        width: this.width + &#39;px&#39;,
+        height: this.height + &#39;px&#39;,
+        lineHeight: this.height + &#39;px&#39;,
+        background: this.background,
+        borderRadius: this.circle ? this.height &#x2F; 2 + &#39;px&#39; : 0
+      &#125;
+    &#125;,
+    progressBarStyle: function () &#123;
+      return &#123;
+        background: this.progressBarBg,
+        height: this.height + &#39;px&#39;,
+        borderRadius: this.circle
+          ? this.height &#x2F; 2 + &#39;px 0 0 &#39; + this.height &#x2F; 2 + &#39;px&#39;
+          : 0
+      &#125;
+    &#125;,
+    textStyle: function () &#123;
+      return &#123;
+        height: this.height + &#39;px&#39;,
+        width: this.width + &#39;px&#39;,
+        fontSize: this.textSize
+      &#125;
+    &#125;,
+    handlerIconClass: function () &#123;
+      return this.isPassing ? this.handlerIcon : this.successIcon
+    &#125;
+  &#125;,
+  data () &#123;
+    return &#123;
+      isMoving: false,
+      x: 0,
+      isPassing: false
+    &#125;
+  &#125;,
+  mounted: function () &#123;
+    this.init()
+  &#125;,
+  methods: &#123;
+    init: function () &#123;
+    &#125;,
+    dragStart: function (e) &#123;
+      window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
+      if (!this.isPassing) &#123;
+        this.isMoving &#x3D; true
+        var handler &#x3D; this.$refs.handler
+        this.x &#x3D;
+            (e.pageX || e.touches[0].pageX) -
+            parseInt(handler.style.left.replace(&#39;px&#39;, &#39;&#39;), 10)
+      &#125;
+    &#125;,
+    dragMoving: function (e) &#123;
+      window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
+      if (this.isMoving &amp;&amp; !this.isPassing) &#123;
+        var _x &#x3D; (e.pageX || e.touches[0].pageX) - this.x
+        var handler &#x3D; this.$refs.handler
+        if (_x &gt; 0 &amp;&amp; _x &lt;&#x3D; this.width - this.height) &#123;
+          handler.style.left &#x3D; _x + &#39;px&#39;
+          this.$refs.progressBar.style.width &#x3D; _x + this.height &#x2F; 2 + &#39;px&#39;
+        &#125; else if (_x &gt; this.width - this.height) &#123;
+          handler.style.left &#x3D; this.width - this.height + &#39;px&#39;
+          this.$refs.progressBar.style.width &#x3D;
+              this.width - this.height &#x2F; 2 + &#39;px&#39;
+          this.passVerify()
+        &#125;
+      &#125;
+    &#125;,
+    dragFinish: function (e) &#123;
+      window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
+      if (this.isMoving &amp;&amp; !this.isPassing) &#123;
+        var _x &#x3D; (e.pageX || e.changedTouches[0].pageX) - this.x
+        if (_x &lt; this.width - this.height) &#123;
+          this.$refs.handler.style.left &#x3D; &#39;0&#39;
+          this.$refs.progressBar.style.width &#x3D; &#39;0&#39;
+        &#125;
+        this.isMoving &#x3D; false
+      &#125;
+    &#125;,
+    passVerify: function () &#123;
+      this.isPassing &#x3D; true
+      this.isMoving &#x3D; false
+      var handler &#x3D; this.$refs.handler
+      handler.className +&#x3D; &#39; dv_handler_ok_bg&#39;
+      handler.children[0].className &#x3D; this.successIcon
+      this.$refs.progressBar.style.background &#x3D; this.completedBg
+      this.$refs.message.style.color &#x3D; &#39;#FFF&#39;
+      this.$emit(&#39;pass-callback&#39;)
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style lang&#x3D;&quot;less&quot; scoped&gt;
+  .drag_verify &#123;
+    position: relative;
+    background-color: #E8E8E8;
+    text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100% !important;
+    .dv_handler &#123;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid #ccc;
+      cursor: move;
+
+      i &#123;
+        color: #666;
+        font-size: 1.5em;
+      &#125;
+    &#125;
+
+    .dv_progress_bar &#123;
+      position: absolute;
+      height: 36px;
+      width: 0;
+      transition: background 0.5s ease-in;
+    &#125;
+
+    .dv_text &#123;
+      position: absolute;
+      top: 0;
+      color: #fff;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -ms-user-select: none;
+      width: 100% !important;
+    &#125;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+<h4 id="使用-父组件">使用(父组件)<a class="post-anchor" href="#使用-父组件"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;dragCheck&quot; style&#x3D;&quot;width: 310px;height: 500px;margin: auto;display: flex;flex-direction: column;justify-content: center;align-items: center;&quot;&gt;
+      &lt;drag-verify
+        v-if&#x3D;&quot;!validateFlag&quot;
+        style&#x3D;&quot;width: 310px;&quot;
+        text&#x3D;&quot;拖动验证&quot;
+        success-text&#x3D;&quot;验证成功&quot;
+        progress-bar-bg&#x3D;&quot;#B71C1C&quot;
+        @pass-callback&#x3D;&quot;validateFlag &#x3D; true&quot;
+      &gt;&lt;&#x2F;drag-verify&gt;
+      &lt;el-button style&#x3D;&quot;width: 100% !important;&quot; v-else size&#x3D;&quot;normal&quot;&gt;登录&lt;&#x2F;el-button&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import DragVerify from &#39;..&#x2F;components&#x2F;DragVerify&#39;
+export default &#123;
+  name: &#39;dragCheck&#39;,
+  components: &#123;
+    DragVerify
+  &#125;,
+  data () &#123;
+    return &#123;
+      validateFlag: false
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/12/20/vue%E8%A1%A8%E6%A0%BC%E4%BA%A4%E6%8D%A2%E5%88%97/">vue表格交换列</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/12/22/vue登录滑动验证/">https://codermino.github.io/2021/12/22/vue登录滑动验证/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

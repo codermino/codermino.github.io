@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-12-20T15:31:41.204Z</updated>
+  <updated>2021-12-22T01:58:27.886Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue登录滑动验证</title>
+    <link href="https://codermino.github.io/2021/12/22/vue%E7%99%BB%E5%BD%95%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/"/>
+    <id>https://codermino.github.io/2021/12/22/vue%E7%99%BB%E5%BD%95%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/</id>
+    <published>2021-12-22T01:55:26.000Z</published>
+    <updated>2021-12-22T01:58:27.886Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;登录拖拽滑动验证&quot;&gt;登录拖
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue登录滑动验证" scheme="https://codermino.github.io/tags/vue%E7%99%BB%E5%BD%95%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/"/>
+    
+  </entry>
   
   <entry>
     <title>vue表格交换列</title>
@@ -486,31 +511,6 @@
     
     
       <category term="vue仿京喜登录" scheme="https://codermino.github.io/tags/vue%E4%BB%BF%E4%BA%AC%E5%96%9C%E7%99%BB%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>基于iview的menu左侧展开</title>
-    <link href="https://codermino.github.io/2021/10/25/%E5%9F%BA%E4%BA%8Eiview%E7%9A%84menu%E5%B7%A6%E4%BE%A7%E5%B1%95%E5%BC%80/"/>
-    <id>https://codermino.github.io/2021/10/25/%E5%9F%BA%E4%BA%8Eiview%E7%9A%84menu%E5%B7%A6%E4%BE%A7%E5%B1%95%E5%BC%80/</id>
-    <published>2021-10-25T07:48:03.000Z</published>
-    <updated>2021-10-25T08:14:11.458Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/iview/iview.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/iview/iview.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;效果图&quot;&gt;效果图&lt;a 
-      
-    
-    </summary>
-    
-    
-      <category term="iview" scheme="https://codermino.github.io/categories/iview/"/>
-    
-    
-      <category term="基于iview的menu左侧展开" scheme="https://codermino.github.io/tags/%E5%9F%BA%E4%BA%8Eiview%E7%9A%84menu%E5%B7%A6%E4%BE%A7%E5%B1%95%E5%BC%80/"/>
     
   </entry>
   
