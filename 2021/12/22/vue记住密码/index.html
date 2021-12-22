@@ -261,10 +261,10 @@ export default &#123;
       &#x2F;&#x2F; 判断用户是否勾选记住密码，如果勾选，向cookie中储存登录信息，
       &#x2F;&#x2F; 如果没有勾选，储存的信息为空
       if (this.loginForm.remember) &#123;
-        this.setCookie(&#39;account&#39;, this.loginForm.account)
+        this.setCookie(&#39;account&#39;, this.loginForm.account, 1)
         &#x2F;&#x2F; base64加密密码
         const passWord &#x3D; Base64.encode(this.loginForm.password)
-        this.setCookie(&#39;password&#39;, passWord)
+        this.setCookie(&#39;password&#39;, passWord, 1)
       &#125; else &#123;
         this.setCookie(&#39;account&#39;, &#39;&#39;)
         this.setCookie(&#39;password&#39;, &#39;&#39;)
