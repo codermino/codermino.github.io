@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      vue记住密码 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#记住密码功能"><span class="toc-text">记住密码功能</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,213 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/09/03/vue%E4%BF%AE%E6%94%B9%E7%BD%91%E7%AB%99%E6%A0%87%E9%A2%98title%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/" title="vue修改网站标题title的三种方法">
-                <span>2020/09/03</span>
-                <span>vue修改网站标题title的三种方法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/09/03/keepalive%E7%9A%84%E4%BD%BF%E7%94%A8/" title="keepalive的使用">
-                <span>2020/09/03</span>
-                <span>keepalive的使用</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/25/js%E4%BC%A0%E9%80%92%E5%A4%9A%E4%B8%AA%E5%8F%82%E6%95%B0/" title="js传递多个参数">
-                <span>2020/08/25</span>
-                <span>js传递多个参数</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/24/Math-max-apply%E5%92%8CMath-max%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Math.max.apply和Math.max的区别">
-                <span>2020/08/24</span>
-                <span>Math.max.apply和Math.max的区别</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/24/created%E5%92%8Cmounted%E4%B8%AD%E8%AF%B7%E6%B1%82%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%88%AB/" title="created和mounted中请求数据区别">
-                <span>2020/08/24</span>
-                <span>created和mounted中请求数据区别</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/24/localstorage%E5%92%8Csessionstorage%E5%8C%BA%E5%88%AB/" title="localstorage和sessionstorage区别">
-                <span>2020/08/24</span>
-                <span>localstorage和sessionstorage区别</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/21/%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%B8%B2%E6%9F%93%E5%92%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/" title="客户端渲染和服务端渲染">
-                <span>2020/08/21</span>
-                <span>客户端渲染和服务端渲染</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/19/win10%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="win10快捷键">
-                <span>2020/08/19</span>
-                <span>win10快捷键</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/19/mongoose%E6%93%8D%E4%BD%9C%E6%95%B0%E7%BB%84/" title="mongoose操作数组">
-                <span>2020/08/19</span>
-                <span>mongoose操作数组</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/19/mongoose%E6%93%8D%E4%BD%9C/" title="mongoose操作">
-                <span>2020/08/19</span>
-                <span>mongoose操作</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/17/">17</a><a class="page-number" href="/archives/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/archives/page/20/">20</a><a class="page-number" href="/archives/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/26/">26</a>
-</div>
-</div>
+      <div class="title">vue记住密码</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/12/22</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue记住密码">vue记住密码</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="记住密码功能">记住密码功能<a class="post-anchor" href="#记住密码功能"></a></h3><p>原理就是存储到cookie中</p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;form class&#x3D;&quot;main&quot;&gt;
+    &lt;!-- 账号 --&gt;
+    &lt;div class&#x3D;&quot;item&quot;&gt;
+      &lt;label for&#x3D;&quot;account&quot;&gt;账号&lt;&#x2F;label&gt;
+      &lt;input type&#x3D;&quot;text&quot; style&#x3D;&quot;display:none&quot;&gt;
+      &lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;loginForm.account&quot;  id&#x3D;&quot;account&quot;&gt;
+    &lt;&#x2F;div&gt;
+    &lt;!--密码--&gt;
+    &lt;div class&#x3D;&quot;item&quot;&gt;
+      &lt;label for&#x3D;&quot;password&quot;&gt;密码&lt;&#x2F;label&gt;
+      &lt;input type&#x3D;&quot;password&quot; style&#x3D;&quot;display:none&quot;&gt;
+      &lt;input type&#x3D;&quot;password&quot; v-model&#x3D;&quot;loginForm.password&quot; id&#x3D;&quot;password&quot;&gt;
+    &lt;&#x2F;div&gt;
+    &lt;!-- 记住密码 --&gt;
+    &lt;div class&#x3D;&quot;item&quot;&gt;
+      &lt;label&gt;记住密码&lt;&#x2F;label&gt;
+      &lt;input type&#x3D;&quot;checkbox&quot; v-model&#x3D;&quot;loginForm.remember&quot;&gt;
+    &lt;&#x2F;div&gt;
+    &lt;!--登录按钮--&gt;
+    &lt;button @click&#x3D;&quot;submit&quot;&gt;登录&lt;&#x2F;button&gt;
+  &lt;&#x2F;form&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+&#x2F;&#x2F; 引入base64
+const Base64 &#x3D; require(&#39;js-base64&#39;).Base64
+export default &#123;
+  data () &#123;
+    return &#123;
+      &#x2F;&#x2F; 登陆表单
+      loginForm: &#123;
+        account: &#39;&#39;,
+        password: &#39;&#39;,
+        remember: &#39;&#39;
+      &#125;
+    &#125;
+  &#125;,
+  created () &#123;
+    &#x2F;&#x2F; 在页面加载时从cookie获取登录信息
+    const account &#x3D; this.getCookie(&#39;account&#39;)
+    const password &#x3D; Base64.decode(this.getCookie(&#39;password&#39;))
+    &#x2F;&#x2F; 如果存在赋值给表单，并且将记住密码勾选
+    if (account) &#123;
+      this.loginForm.account &#x3D; account
+      this.loginForm.password &#x3D; password
+      this.loginForm.remember &#x3D; true
+    &#125;
+  &#125;,
+  methods: &#123;
+    &#x2F;&#x2F; 登录
+    submit: function () &#123;
+      this.setUserInfo()
+      &#x2F;&#x2F; 点击登陆向后台提交登陆信息
+      &#x2F;&#x2F; axios.post(&#39;url&#39;, this.loginForm).then(res &#x3D;&gt; &#123;
+      &#x2F;&#x2F;   this.$router.push(&#39;&#x2F;home&#39;)
+      &#x2F;&#x2F;   this.setUserInfo()
+      &#x2F;&#x2F; &#125;)
+    &#125;,
+    &#x2F;&#x2F; 储存表单信息
+    setUserInfo: function () &#123;
+      &#x2F;&#x2F; 判断用户是否勾选记住密码，如果勾选，向cookie中储存登录信息，
+      &#x2F;&#x2F; 如果没有勾选，储存的信息为空
+      if (this.loginForm.remember) &#123;
+        this.setCookie(&#39;account&#39;, this.loginForm.account)
+        &#x2F;&#x2F; base64加密密码
+        const passWord &#x3D; Base64.encode(this.loginForm.password)
+        this.setCookie(&#39;password&#39;, passWord)
+      &#125; else &#123;
+        this.setCookie(&#39;account&#39;, &#39;&#39;)
+        this.setCookie(&#39;password&#39;, &#39;&#39;)
+      &#125;
+    &#125;,
+    &#x2F;&#x2F; 获取cookie
+    getCookie: function (key) &#123;
+      if (document.cookie.length &gt; 0) &#123;
+        var start &#x3D; document.cookie.indexOf(key + &#39;&#x3D;&#39;)
+        if (start !&#x3D;&#x3D; -1) &#123;
+          start &#x3D; start + key.length + 1
+          var end &#x3D; document.cookie.indexOf(&#39;;&#39;, start)
+          if (end &#x3D;&#x3D;&#x3D; -1) end &#x3D; document.cookie.length
+          return unescape(document.cookie.substring(start, end))
+        &#125;
+      &#125;
+      return &#39;&#39;
+    &#125;,
+    &#x2F;&#x2F; 保存cookie
+    setCookie: function (cName, value, expiredays) &#123;
+      var exdate &#x3D; new Date()
+      exdate.setDate(exdate.getDate() + expiredays)
+      document.cookie &#x3D; cName + &#39;&#x3D;&#39; + decodeURIComponent(value) +
+          ((expiredays &#x3D;&#x3D; null) ? &#39;&#39; : &#39;;expires&#x3D;&#39; + exdate.toGMTString())
+    &#125;
+
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style&gt;
+  .main &#123;
+    width: 300px;
+  &#125;
+  .main .item &#123;
+    display: flex;
+    align-items: center;
+    line-height: 30px;
+  &#125;
+  .main .item label &#123;
+    width: 100px;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/12/22/vue%E7%99%BB%E5%BD%95%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81/">vue登录滑动验证</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/12/22/vue记住密码/">https://codermino.github.io/2021/12/22/vue记住密码/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021

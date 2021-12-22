@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-12-22T01:58:27.886Z</updated>
+  <updated>2021-12-22T03:27:40.615Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue记住密码</title>
+    <link href="https://codermino.github.io/2021/12/22/vue%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81/"/>
+    <id>https://codermino.github.io/2021/12/22/vue%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81/</id>
+    <published>2021-12-22T03:26:44.000Z</published>
+    <updated>2021-12-22T03:27:40.615Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;记住密码功能&quot;&gt;记住密码功
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue记住密码" scheme="https://codermino.github.io/tags/vue%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>vue登录滑动验证</title>
@@ -486,31 +511,6 @@
     
     
       <category term="解决ie11的兼容性问题" scheme="https://codermino.github.io/tags/%E8%A7%A3%E5%86%B3ie11%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue仿京喜登录</title>
-    <link href="https://codermino.github.io/2021/10/26/vue%E4%BB%BF%E4%BA%AC%E5%96%9C%E7%99%BB%E5%BD%95/"/>
-    <id>https://codermino.github.io/2021/10/26/vue%E4%BB%BF%E4%BA%AC%E5%96%9C%E7%99%BB%E5%BD%95/</id>
-    <published>2021-10-25T16:33:49.000Z</published>
-    <updated>2021-10-25T16:35:18.453Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;仿京喜的登录界面&quot;&gt;仿京喜
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue仿京喜登录" scheme="https://codermino.github.io/tags/vue%E4%BB%BF%E4%BA%AC%E5%96%9C%E7%99%BB%E5%BD%95/"/>
     
   </entry>
   
