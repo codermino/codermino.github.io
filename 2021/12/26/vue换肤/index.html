@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      vue换肤 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种iview-less换肤"><span class="toc-text">第一种iview+less换肤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种element-ui-scss换肤-推荐"><span class="toc-text">第二种element-ui+scss换肤(推荐)</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">vue换肤</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/12/26</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/vue">vue</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue换肤">vue换肤</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="第一种iview-less换肤">第一种iview+less换肤<a class="post-anchor" href="#第一种iview-less换肤"></a></h3><p>具体项目代码参考自己的github或者码云<br><strong>这种方式是借助less的less.modifyVars()方法进行颜色的更换</strong><br>需要在color.less中列出需要进行主题颜色更改的类并且绑定同一个变量<br>vue.config.js文件</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">module</span>.exports = &#123;
+    <span class="hljs-attr">css</span>: &#123;
+        <span class="hljs-attr">loaderOptions</span>: &#123;
+            <span class="hljs-attr">less</span>: &#123;
+                <span class="hljs-attr">javascriptEnabled</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">modifyVars</span>: &#123;
+                    <span class="hljs-string">'my-primary-color'</span>: <span class="hljs-string">'#2264A0'</span>,
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+&#125;</code></pre>
+
+<p>main.js文件</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App.vue'</span>
+<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">'./router'</span>
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>
+<span class="hljs-keyword">import</span> ViewUI <span class="hljs-keyword">from</span> <span class="hljs-string">'view-design'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'view-design/dist/styles/iview.css'</span>;
+<span class="hljs-keyword">import</span> ElementUI <span class="hljs-keyword">from</span> <span class="hljs-string">'element-ui'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'element-ui/lib/theme-chalk/index.css'</span>;
+
+<span class="hljs-keyword">import</span> &#123;updateTheme&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/scheme'</span>
+Vue.prototype.$setScheme = updateTheme;
+
+Vue.config.productionTip = <span class="hljs-literal">false</span>
+Vue.use(ViewUI);
+Vue.use(ElementUI);
+
+<span class="hljs-keyword">new</span> Vue(&#123;
+  router,
+  store,
+  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h(App)
+&#125;).$mount(<span class="hljs-string">'#app'</span>)</code></pre>
+
+<p>scheme.js文件</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> lessNodesAppended;
+
+<span class="hljs-keyword">const</span> updateTheme = <span class="hljs-function">(<span class="hljs-params">primaryColor=<span class="hljs-string">'#2264A0'</span></span>) =&gt;</span> &#123;
+  <span class="hljs-built_in">console</span>.log(primaryColor)
+  <span class="hljs-comment">// debugger;</span>
+  <span class="hljs-keyword">if</span> (!primaryColor) &#123;
+    <span class="hljs-comment">// return;</span>
+    primaryColor = <span class="hljs-string">'#2264A0'</span>;
+  &#125;
+  <span class="hljs-keyword">if</span>(primaryColor == <span class="hljs-string">'null'</span>) primaryColor = <span class="hljs-string">'#2264A0'</span>;
+  <span class="hljs-built_in">console</span>.info(<span class="hljs-string">`正在编译主题!`</span>)
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">buildIt</span>(<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-comment">// 正确的判定less是否已经加载less.modifyVars可用</span>
+    <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">window</span>.less || !<span class="hljs-built_in">window</span>.less.modifyVars) &#123;
+      <span class="hljs-keyword">return</span>;
+    &#125;
+    <span class="hljs-comment">// less.modifyVars可用</span>
+    <span class="hljs-built_in">window</span>.less.modifyVars(&#123;
+      <span class="hljs-string">'@my-primary-color'</span>: primaryColor,
+    &#125;)
+      .then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+        <span class="hljs-comment">// console.log(`成功`);</span>
+
+        <span class="hljs-comment">// this.$Message.success('换肤成功!');</span>
+      &#125;)
+      .catch(<span class="hljs-function">(<span class="hljs-params">reason</span>) =&gt;</span> &#123;
+        <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`失败<span class="hljs-subst">$&#123;reason&#125;</span>`</span>);
+      &#125;);
+  &#125;
+  <span class="hljs-keyword">if</span> (!lessNodesAppended) &#123;
+    <span class="hljs-comment">// insert less.js and color.less</span>
+    <span class="hljs-keyword">const</span> lessStyleNode = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
+    <span class="hljs-keyword">const</span> lessConfigNode = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+    <span class="hljs-keyword">const</span> lessScriptNode = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+    lessStyleNode.setAttribute(<span class="hljs-string">'rel'</span>, <span class="hljs-string">'stylesheet/less'</span>);
+    <span class="hljs-comment">// 下方这个color.less位置大家也可以按需修改</span>
+    lessStyleNode.setAttribute(<span class="hljs-string">'href'</span>, __webpack_public_path__ + <span class="hljs-string">'static/color.less'</span>)
+    lessConfigNode.innerHTML = <span class="hljs-string">`
+      window.less = &#123;
+        async: true,
+        env: 'production',
+        javascriptEnabled: true
+      &#125;;
+    `</span>;
+    <span class="hljs-comment">// less的src地址也可以是cdn地址</span>
+    lessScriptNode.src = <span class="hljs-string">'/static/less.min.js'</span>;
+    lessScriptNode.async = <span class="hljs-literal">true</span>;
+    lessScriptNode.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+      buildIt();
+      lessScriptNode.onload = <span class="hljs-literal">null</span>;
+    &#125;;
+    <span class="hljs-built_in">document</span>.body.appendChild(lessStyleNode);
+    <span class="hljs-built_in">document</span>.body.appendChild(lessConfigNode);
+    <span class="hljs-built_in">document</span>.body.appendChild(lessScriptNode);
+    lessNodesAppended = <span class="hljs-literal">true</span>;
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    buildIt();
+  &#125;
+&#125;;
+<span class="hljs-keyword">export</span> &#123; updateTheme &#125;</code></pre>
+
+<p>color.less</p>
+<pre><code class="hljs less"><span class="hljs-variable">@my-primary-color:</span> <span class="hljs-number">#2264A0</span>;
+
+<span class="hljs-selector-class">.header-nav</span>, <span class="hljs-selector-class">.ivu-radio-group-button</span> <span class="hljs-selector-class">.ivu-radio-wrapper-checked</span>, <span class="hljs-selector-class">.ivu-input-group-append</span>,
+<span class="hljs-comment">// 表格内的按钮</span>
+<span class="hljs-selector-class">.ivu-table-cell</span> <span class="hljs-selector-class">.ivu-btn-primary</span>&#123;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">@my-primary-color</span> <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-variable">@my-primary-color</span>;
+&#125;
+<span class="hljs-selector-class">.ivu-btn-primary</span> &#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span> <span class="hljs-meta">!important</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">@my-primary-color</span>
+&#125;
+<span class="hljs-selector-class">.ivu-menu-item-active</span><span class="hljs-selector-pseudo">:not(.ivu-menu-submenu)</span><span class="hljs-selector-pseudo">:after</span> <span class="hljs-comment">// 活动侧边栏</span>
+&#123;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">@my-primary-color</span> <span class="hljs-meta">!important</span>;
+&#125;
+<span class="hljs-selector-class">.ivu-btn-primary</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-class">.ivu-btn-info</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-variable">@my-primary-color</span>;
+&#125;
+
+<span class="hljs-selector-class">.ivu-btn-info</span>, <span class="hljs-selector-class">.print-list-content-text</span> <span class="hljs-comment">// info 按钮</span>
+&#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@my-primary-color</span>
+&#125;
+<span class="hljs-selector-class">.print-list-content-text</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+  <span class="hljs-attribute">text-decoration</span>: underline;
+  <span class="hljs-attribute">text-underline</span>: <span class="hljs-variable">@my-primary-color</span>;
+&#125;
+
+<span class="hljs-comment">/*侧边栏*/</span>
+<span class="hljs-selector-class">.ivu-menu-submenu-title</span><span class="hljs-selector-pseudo">:hover</span>,
+<span class="hljs-selector-class">.ivu-menu-item-active</span><span class="hljs-selector-pseudo">:not(.ivu-menu-submenu)</span>,<span class="hljs-comment">// 侧边栏</span>
+<span class="hljs-selector-class">.ivu-menu-item</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-comment">//指向</span>
+<span class="hljs-selector-class">.ivu-page-item-active</span>, <span class="hljs-comment">// 选中页码</span>
+<span class="hljs-selector-class">.ivu-menu-horizontal</span> <span class="hljs-selector-class">.ivu-menu-item-active</span>
+&#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@my-primary-color</span> <span class="hljs-meta">!important</span>;
+&#125;
+<span class="hljs-selector-class">.tab_wrap</span> <span class="hljs-selector-class">.active</span> &#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@my-primary-color</span> <span class="hljs-meta">!important</span>;
+&#125;
+<span class="hljs-comment">// 横向菜单</span>
+<span class="hljs-selector-class">.ivu-menu-light</span><span class="hljs-selector-class">.ivu-menu-horizontal</span> <span class="hljs-selector-class">.ivu-menu-item-active</span>,
+<span class="hljs-selector-class">.ivu-menu-light</span><span class="hljs-selector-class">.ivu-menu-horizontal</span> <span class="hljs-selector-class">.ivu-menu-item</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-comment">//指向横向菜单底部</span>
+&#123;
+  <span class="hljs-attribute">border-bottom-color</span>: <span class="hljs-variable">@my-primary-color</span> <span class="hljs-meta">!important</span>;
+&#125;
+<span class="hljs-selector-class">.ivu-menu-light</span><span class="hljs-selector-class">.ivu-menu-horizontal</span> <span class="hljs-selector-class">.ivu-menu-submenu</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-comment">//指向横向菜单底部（有子菜单）</span>
+&#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@my-primary-color</span>;
+  <span class="hljs-attribute">border-bottom-color</span>: <span class="hljs-variable">@my-primary-color</span>;
+&#125;
+<span class="hljs-selector-class">.el-button-default</span><span class="hljs-selector-pseudo">:focus</span>, <span class="hljs-selector-class">.el-button-default</span><span class="hljs-selector-pseudo">:hover</span> &#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2264A0</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-number">#2264A0</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#E9F0F6</span>;
+&#125;
+<span class="hljs-selector-class">.el-button-default</span><span class="hljs-selector-pseudo">:active</span> &#123;
+  <span class="hljs-attribute">color</span>: <span class="hljs-number">#2264A0</span>;
+  <span class="hljs-attribute">border-color</span>:<span class="hljs-number">#2264A0</span>;
+&#125;</code></pre>
+
+<p>使用组件</p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;hello&quot;&gt;
+    &lt;Button type&#x3D;&quot;primary&quot;&gt;Primary&lt;&#x2F;Button&gt;
+    &lt;color-picker&gt;&lt;&#x2F;color-picker&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+  import colorPicker from &#39;.&#x2F;colorsPicker&#x2F;colorPicker&#39;
+export default &#123;
+  name: &#39;HelloWorld&#39;,
+  components: &#123;
+    colorPicker
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="第二种element-ui-scss换肤-推荐">第二种element-ui+scss换肤(推荐)<a class="post-anchor" href="#第二种element-ui-scss换肤-推荐"></a></h3><p>具体项目细节还是看自己的github和码云<br>这种方式主要是基于webpack-theme-color-replacer<br>这种方式不需要提前将element-ui的组件的class提前列出。<br>可以直接修改element-ui的组件颜色等，同时也可以修改自定义的<br>class颜色等，只需要将颜色改为主题颜色的scss变量即可。<br>vue.config.js</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> ThemeColorReplacer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-theme-color-replacer'</span>);
+<span class="hljs-keyword">const</span> forElementUI = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-theme-color-replacer/forElementUI'</span>);
+
+<span class="hljs-built_in">module</span>.exports = &#123;
+    <span class="hljs-comment">// eslint-loader 是否在保存的时候检查</span>
+    <span class="hljs-attr">lintOnSave</span>: process.env.NODE_ENV === <span class="hljs-string">'development'</span>,
+    <span class="hljs-comment">//生产环境是否生成 sourceMap 文件，一般情况不建议打开</span>
+    <span class="hljs-attr">productionSourceMap</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-comment">// webpack配置</span>
+    <span class="hljs-attr">configureWebpack</span>: &#123;
+        <span class="hljs-attr">plugins</span>: [
+            <span class="hljs-keyword">new</span> ThemeColorReplacer(&#123;
+                <span class="hljs-attr">fileName</span>: <span class="hljs-string">'css/theme-colors.[contenthash:8].css'</span>,
+                <span class="hljs-attr">matchColors</span>: forElementUI.getElementUISeries(<span class="hljs-string">'#2264A0'</span>),
+                <span class="hljs-attr">changeSelector</span>: forElementUI.changeSelector,
+                <span class="hljs-comment">// 防止history模式刷新丢失颜色</span>
+                <span class="hljs-attr">injectCss</span>:<span class="hljs-literal">true</span>
+            &#125;)
+        ]
+    &#125;,
+    <span class="hljs-attr">css</span>: &#123;
+        <span class="hljs-attr">loaderOptions</span>: &#123;
+            <span class="hljs-attr">sass</span>: &#123;
+                <span class="hljs-attr">prependData</span>: <span class="hljs-string">`@import "~@/styles/element-variables.scss";`</span>
+            &#125;
+        &#125;,
+        <span class="hljs-comment">// 启用 CSS modules</span>
+        <span class="hljs-comment">// requireModuleExtension: false,</span>
+        <span class="hljs-comment">// 是否使用 CSS 分离插件</span>
+        <span class="hljs-attr">extract</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-comment">// 开启 CSS source maps, 一般不建议开启</span>
+        <span class="hljs-attr">sourceMap</span>: <span class="hljs-literal">false</span>
+    &#125;
+&#125;;</code></pre>
+
+<p>main.js</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App.vue'</span>
+<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">'./router'</span>
+<span class="hljs-keyword">import</span> store <span class="hljs-keyword">from</span> <span class="hljs-string">'./store'</span>
+<span class="hljs-keyword">import</span> ElementUI <span class="hljs-keyword">from</span> <span class="hljs-string">'element-ui'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'./styles/index.scss'</span>
+
+Vue.config.productionTip = <span class="hljs-literal">false</span>
+Vue.use(ElementUI);
+
+<span class="hljs-keyword">import</span> init <span class="hljs-keyword">from</span> <span class="hljs-string">'./utils/theme'</span>
+
+init.init();
+
+<span class="hljs-keyword">new</span> Vue(&#123;
+  router,
+  store,
+  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h(App)
+&#125;).$mount(<span class="hljs-string">'#app'</span>)</code></pre>
+
+<p>index.scss</p>
+<pre><code class="hljs scss">@<span class="hljs-keyword">import</span> <span class="hljs-string">"~element-ui/packages/theme-chalk/src/index"</span>;
+
+<span class="hljs-selector-tag">body</span> &#123;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  -moz-osx-<span class="hljs-attribute">font</span>-smoothing: grayscale;
+  -webkit-<span class="hljs-attribute">font</span>-smoothing: antialiased;
+  <span class="hljs-attribute">text-rendering</span>: optimizeLegibility;
+  <span class="hljs-attribute">font-family</span>: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+&#125;
+
+@<span class="hljs-keyword">media</span> (max-width: 1280px) &#123;
+  <span class="hljs-selector-class">.app-main-content</span> &#123;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">1366px</span> <span class="hljs-meta">!important</span>;
+  &#125;
+  <span class="hljs-selector-class">.app-main</span> &#123;
+    <span class="hljs-attribute">overflow-x</span>: scroll <span class="hljs-meta">!important</span>;
+  &#125;
+&#125;
+
+@<span class="hljs-keyword">media</span> (max-width: 600px) &#123;
+  <span class="hljs-selector-tag">html</span> &#123;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">1366px</span>;
+  &#125;
+&#125;
+
+<span class="hljs-selector-tag">iframe</span> &#123;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">0</span>;
+&#125;
+
+<span class="hljs-selector-tag">html</span> &#123;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">box-sizing</span>: border-box;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;
+&#125;
+
+<span class="hljs-selector-tag">ul</span> &#123;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">list-style</span>: none;
+&#125;
+
+<span class="hljs-selector-id">#app</span> &#123;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+&#125;
+
+*,
+*:before,
+*:after &#123;
+  <span class="hljs-attribute">box-sizing</span>: inherit;
+&#125;
+
+<span class="hljs-selector-tag">a</span>:focus,
+<span class="hljs-selector-tag">a</span>:active &#123;
+  <span class="hljs-attribute">outline</span>: none;
+&#125;
+
+<span class="hljs-selector-tag">a</span>,
+<span class="hljs-selector-tag">a</span>:focus,
+<span class="hljs-selector-tag">a</span>:hover &#123;
+  <span class="hljs-attribute">cursor</span>: pointer;
+  <span class="hljs-attribute">color</span>: inherit;
+  <span class="hljs-attribute">text-decoration</span>: none;
+&#125;
+
+<span class="hljs-selector-tag">div</span>:focus &#123;
+  <span class="hljs-attribute">outline</span>: none;
+&#125;</code></pre>
+
+<p>const.js</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> LOCAL_STORAGE_KEY = &#123;
+  <span class="hljs-attr">TOKEN_KEY</span>: <span class="hljs-string">'token'</span>,
+  <span class="hljs-attr">SIDEBAR_STATUS</span>: <span class="hljs-string">'sidebar_status'</span>,
+  <span class="hljs-attr">MENU_STYLE</span>: <span class="hljs-string">'menu_style'</span>,
+  <span class="hljs-attr">THEME_COLOR</span>: <span class="hljs-string">'theme_color'</span>,
+  <span class="hljs-attr">LOGIN_TYPE</span>: <span class="hljs-string">'login_type'</span>
+&#125;;</code></pre>
+
+<p>storage.js</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> storage = &#123;
+  <span class="hljs-keyword">get</span>(key) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(localStorage.getItem(key));
+  &#125;,
+  <span class="hljs-keyword">set</span>(key, value) &#123;
+    localStorage.setItem(key, <span class="hljs-built_in">JSON</span>.stringify(value));
+  &#125;,
+  remove(key) &#123;
+    localStorage.removeItem(key);
+  &#125;
+&#125;;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> storage;</code></pre>
+
+<p>theme.js</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> forElementUI <span class="hljs-keyword">from</span> <span class="hljs-string">'webpack-theme-color-replacer/forElementUI'</span>;
+<span class="hljs-keyword">import</span> client <span class="hljs-keyword">from</span> <span class="hljs-string">'webpack-theme-color-replacer/client'</span>;
+<span class="hljs-keyword">import</span> &#123;Message&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'element-ui'</span>
+<span class="hljs-keyword">import</span> &#123;LOCAL_STORAGE_KEY&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./const'</span>
+<span class="hljs-keyword">import</span> Storage <span class="hljs-keyword">from</span> <span class="hljs-string">'./storage'</span>
+<span class="hljs-keyword">import</span> variables <span class="hljs-keyword">from</span> <span class="hljs-string">'../styles/element-variables.scss'</span>
+<span class="hljs-comment">// import store from '@/store/index.js';</span>
+
+<span class="hljs-keyword">const</span> theme = &#123;
+  <span class="hljs-keyword">get</span>() &#123;
+    <span class="hljs-comment">//return Storage.get(LOCAL_STORAGE_KEY.THEME_COLOR) || variables.theme</span>
+    <span class="hljs-comment">// if(Storage.get(LOCAL_STORAGE_KEY.THEME_COLOR))&#123;</span>
+    <span class="hljs-keyword">if</span>(localStorage.getItem(LOCAL_STORAGE_KEY.THEME_COLOR))&#123;
+      <span class="hljs-comment">// return JSON.parse(Storage.get(LOCAL_STORAGE_KEY.THEME_COLOR))[store.state.user.userInfo.userId] || variables.theme</span>
+      <span class="hljs-keyword">return</span> variables.theme
+    &#125;<span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-keyword">return</span> variables.theme
+    &#125;
+  &#125;,
+  <span class="hljs-comment">// 初始化，设置主题颜色</span>
+  init() &#123;
+    <span class="hljs-keyword">const</span> options = &#123;
+      <span class="hljs-attr">newColors</span>: forElementUI.getElementUISeries(<span class="hljs-keyword">this</span>.get())
+    &#125;;
+    client.changer.changeColor(options, <span class="hljs-built_in">Promise</span>)
+  &#125;,
+  <span class="hljs-comment">// 修改主题颜色</span>
+  change(themeColor) &#123;
+    <span class="hljs-comment">// let userId = store.state.user.userInfo.userId</span>
+    <span class="hljs-comment">// let loclThemeColor = Storage.get(LOCAL_STORAGE_KEY.THEME_COLOR)</span>
+    <span class="hljs-comment">// if(loclThemeColor)&#123;</span>
+    <span class="hljs-comment">//   let themeColorObj = JSON.parse(loclThemeColor)</span>
+    <span class="hljs-comment">//   themeColorObj[userId] = themeColor</span>
+    <span class="hljs-comment">//   Storage.set(LOCAL_STORAGE_KEY.THEME_COLOR, JSON.stringify(themeColorObj))</span>
+    <span class="hljs-comment">// &#125;else &#123;</span>
+    <span class="hljs-comment">//   let i = &#123; [userId]: themeColor &#125;</span>
+    <span class="hljs-comment">//   Storage.set(LOCAL_STORAGE_KEY.THEME_COLOR, JSON.stringify(i))</span>
+    <span class="hljs-comment">// &#125;</span>
+    localStorage.removeItem(LOCAL_STORAGE_KEY.THEME_COLOR)
+    localStorage.setItem(LOCAL_STORAGE_KEY.THEME_COLOR, themeColor)
+    <span class="hljs-keyword">const</span> options = &#123;
+      <span class="hljs-attr">newColors</span>: forElementUI.getElementUISeries(themeColor)
+    &#125;;
+    client.changer.changeColor(options, <span class="hljs-built_in">Promise</span>).finally(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> Message(&#123;
+      <span class="hljs-attr">message</span>: <span class="hljs-string">'换肤成功'</span>,
+      <span class="hljs-attr">type</span>: <span class="hljs-string">'success'</span>
+    &#125;))
+  &#125;
+&#125;;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> theme;</code></pre>
+
+<p>element-variables.scss</p>
+<pre><code class="hljs scss"><span class="hljs-comment">/* theme color */</span>
+<span class="hljs-variable">$--color-primary</span>: <span class="hljs-number">#2264A0</span>;
+<span class="hljs-variable">$--color-success</span>: <span class="hljs-number">#13CE66</span>;
+<span class="hljs-variable">$--color-warning</span>: <span class="hljs-number">#FFBA00</span>;
+<span class="hljs-variable">$--color-danger</span>: <span class="hljs-number">#FF4949</span>;
+<span class="hljs-variable">$--color-20warning</span>:<span class="hljs-number">#FFE6E6</span>;
+<span class="hljs-variable">$--color-20success</span>:<span class="hljs-number">#CBFBE2</span>;
+<span class="hljs-comment">// $--color-info: #1E1E1E;</span>
+
+<span class="hljs-variable">$--color-primary-hover</span>: <span class="hljs-number">#4E83B3</span>;
+<span class="hljs-variable">$--color-plain-hover</span>: <span class="hljs-number">#E9F0F6</span>;
+
+<span class="hljs-variable">$--button-font-weight</span>: <span class="hljs-number">400</span>;
+
+<span class="hljs-comment">// $--color-text-regular: #1F2D3D;</span>
+
+<span class="hljs-variable">$--border-color</span>: <span class="hljs-number">#CCC</span>;
+<span class="hljs-variable">$--border-color-light</span>: <span class="hljs-number">#DFE4ED</span>;
+<span class="hljs-variable">$--border-color-lighter</span>: <span class="hljs-number">#E6EBF5</span>;
+
+<span class="hljs-variable">$--table-border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#DFE6EC</span>;
+<span class="hljs-comment">/* Font
+-------------------------- */</span>
+<span class="hljs-variable">$--font-size-base</span>: <span class="hljs-number">14px</span> !default;
+<span class="hljs-variable">$--font-size-small</span>: <span class="hljs-number">14px</span> !default;
+<span class="hljs-variable">$--font-size-large</span>: <span class="hljs-number">14px</span> !default;
+<span class="hljs-comment">/* Size
+-------------------------- */</span>
+<span class="hljs-variable">$--size-base</span>: <span class="hljs-number">14px</span> !default;
+<span class="hljs-comment">/* Select
+-------------------------- */</span>
+<span class="hljs-variable">$--select-group-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* Message Box
+-------------------------- */</span>
+<span class="hljs-variable">$--msgbox-error-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* Input
+-------------------------- */</span>
+<span class="hljs-variable">$--input-medium-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-variable">$--input-small-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-variable">$--input-mini-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* Button
+-------------------------- */</span>
+<span class="hljs-variable">$--button-medium-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-variable">$--button-small-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-variable">$--button-mini-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-variable">$--button-small-padding-vertical</span>: <span class="hljs-number">8px</span> !default;
+<span class="hljs-comment">/* Pagination
+-------------------------- */</span>
+<span class="hljs-variable">$--pagination-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* Tooltip
+-------------------------- */</span>
+<span class="hljs-variable">$--tooltip-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* Tag
+-------------------------- */</span>
+<span class="hljs-variable">$--tag-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* Badge
+-------------------------- */</span>
+<span class="hljs-variable">$--badge-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* Carousel
+--------------------------*/</span>
+<span class="hljs-variable">$--carousel-arrow-font-size</span>: <span class="hljs-variable">$--font-size-base</span> !default;
+<span class="hljs-comment">/* icon font path, required */</span>
+<span class="hljs-variable">$--font-path</span>: <span class="hljs-string">'~element-ui/lib/theme-chalk/fonts'</span>;
+
+<span class="hljs-comment">// the :export directive is the magic sauce for webpack</span>
+<span class="hljs-comment">// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass</span>
+:export &#123;
+  theme: <span class="hljs-variable">$--color-primary</span>;
+&#125;</code></pre>
+
+<p>使用</p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;hello&quot;&gt;
+    &lt;el-tooltip effect&#x3D;&quot;dark&quot; content&#x3D;&quot;主题切换&quot; placement&#x3D;&quot;bottom-start&quot;&gt;
+      &lt;theme-picker class&#x3D;&quot;opt_icon&quot; &#x2F;&gt;
+    &lt;&#x2F;el-tooltip&gt;
+    &lt;el-button&gt;默认按钮&lt;&#x2F;el-button&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import ThemePicker from &#39;..&#x2F;components&#x2F;ThemePicker&#39;
+export default &#123;
+  name: &#39;HelloWorld&#39;,
+  components: &#123;
+    ThemePicker
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<p>使用方式二</p>
+<pre><code class="hljs scss">&lt;template&gt;
+  &lt;div class="home"&gt;
+    &lt;div class="content" style="height: 100px;width: 100%;"&gt;123&lt;/div&gt;
+    &lt;HelloWorld /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import HelloWorld from '@/components/HelloWorld.vue'
+
+export default &#123;
+  name: 'Home',
+  components: &#123;
+    HelloWorld
+  &#125;
+&#125;
+&lt;/script&gt;
+
+&lt;style scoped lang="scss"&gt;
+  .content&#123;
+    background-color: $--color-primary;
+  &#125;
+&lt;/style&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/12/22/vue%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81/">vue记住密码</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/12/26/vue换肤/">https://codermino.github.io/2021/12/26/vue换肤/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
