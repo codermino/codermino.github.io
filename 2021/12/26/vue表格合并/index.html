@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue和axios文件流下载 - Mino
+      vue表格合并 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#后端返回文件流，前端进行下载"><span class="toc-text">后端返回文件流，前端进行下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#main-js文件中引入-并且挂载在vue的原型上"><span class="toc-text">main.js文件中引入,并且挂载在vue的原型上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#具体文件使用"><span class="toc-text">具体文件使用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#el-table表格合并"><span class="toc-text">el-table表格合并</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#公共方法"><span class="toc-text">公共方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页面使用"><span class="toc-text">页面使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iview的Table表格合并"><span class="toc-text">iview的Table表格合并</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#公共方法-1"><span class="toc-text">公共方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页面使用-1"><span class="toc-text">页面使用</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,7 +157,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue和axios文件流下载</div>
+      <div class="title">vue表格合并</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -172,7 +172,7 @@
           <span>
               
                 
-                  <a href="/categories/vue3">vue3</a>
+                  <a href="/categories/vue">vue</a>
                 
               
           </span>
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue和axios文件流下载">vue和axios文件流下载</a>
+                    <a href="/tags/vue表格合并">vue表格合并</a>
                   
                 
             </span>
@@ -196,85 +196,151 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="后端返回文件流，前端进行下载">后端返回文件流，前端进行下载<a class="post-anchor" href="#后端返回文件流，前端进行下载"></a></h3><p>封装一个工具js文件和工具函数</p>
-<pre><code class="hljs javascript"><span class="hljs-comment">// 导入axios</span>
-<span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">'axios'</span>
-<span class="hljs-keyword">import</span> &#123; url, productionBaseUrl &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'./ajaxUrl'</span>
-<span class="hljs-keyword">const</span> env = <span class="hljs-built_in">window</span>.$env ? <span class="hljs-built_in">window</span>.$env : process.env.NODE_ENV
-
-<span class="hljs-keyword">const</span> util = &#123;&#125;
-
-util.baseUrl = env === <span class="hljs-string">'development'</span> ? url : productionBaseUrl
-
-util.http = axios.create(&#123;
-  <span class="hljs-attr">baseURL</span>: util.baseUrl,
-  <span class="hljs-attr">timeout</span>: <span class="hljs-number">50000</span>
-&#125;)
-
-util.ajaxWithFile = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, method, params</span>) </span>&#123;
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolver, reject</span>) =&gt;</span> &#123;
-    <span class="hljs-keyword">var</span> res = resolver
-    util.http(&#123;
-      <span class="hljs-attr">baseURL</span>: util.baseUrl,
-      <span class="hljs-attr">method</span>: method,
-      <span class="hljs-attr">url</span>: url,
-      <span class="hljs-attr">data</span>: params,
-      <span class="hljs-attr">responseType</span>: <span class="hljs-string">'blob'</span>
-    &#125;).then(<span class="hljs-function"><span class="hljs-params">response</span> =&gt;</span> &#123;
-      res(response)
-    &#125;).catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> &#123;
-      reject(error)
-    &#125;)
-  &#125;)
-&#125;
-util.downloadDoc = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data, fileName</span>) </span>&#123;
-  <span class="hljs-keyword">var</span> blob = <span class="hljs-keyword">new</span> Blob([data])
-  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.navigator.msSaveBlob) &#123;
-    <span class="hljs-keyword">try</span> &#123;
-      <span class="hljs-comment">// window.navigator.msSaveBlob(blob, fileName+'.doc')</span>
-      <span class="hljs-built_in">window</span>.navigator.msSaveBlob(blob, fileName)
-    &#125; <span class="hljs-keyword">catch</span> (e) &#123;
-      <span class="hljs-built_in">console</span>.log(e)
+<h3 id="el-table表格合并">el-table表格合并<a class="post-anchor" href="#el-table表格合并"></a></h3><h4 id="公共方法">公共方法<a class="post-anchor" href="#公共方法"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSpanArr</span> (<span class="hljs-params">data, field</span>) </span>&#123;
+  <span class="hljs-keyword">const</span> spanArr = []
+  <span class="hljs-keyword">let</span> pos = <span class="hljs-number">0</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; data.length; i++) &#123;
+    <span class="hljs-keyword">if</span> (i === <span class="hljs-number">0</span>) &#123;
+      spanArr.push(<span class="hljs-number">1</span>)
+      pos = <span class="hljs-number">0</span>
+    &#125; <span class="hljs-keyword">else</span> &#123;
+      <span class="hljs-keyword">if</span> (data[i][field] === data[i - <span class="hljs-number">1</span>][field]) &#123;
+        spanArr[pos] += <span class="hljs-number">1</span>
+        spanArr.push(<span class="hljs-number">0</span>)
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        spanArr.push(<span class="hljs-number">1</span>)
+        pos = i
+      &#125;
     &#125;
-  &#125; <span class="hljs-keyword">else</span> &#123;
-    <span class="hljs-keyword">const</span> url = <span class="hljs-built_in">window</span>.URL.createObjectURL(blob)
-    <span class="hljs-keyword">const</span> link = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>)
-    link.style.display = <span class="hljs-string">'none'</span>
-    link.href = url
-    link.setAttribute(<span class="hljs-string">'download'</span>, fileName)
-    <span class="hljs-built_in">document</span>.body.appendChild(link)
-    link.click()
   &#125;
+  <span class="hljs-keyword">return</span> spanArr
 &#125;
 
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> util</code></pre>
+<span class="hljs-comment">/*
+    labelArr 合并字段Array
+    field 参照合并的字段
+    如果field对应的字段相同，那么九江labelArr数组中所对应的
+    表格数据合并。
+*/</span>
 
-<h3 id="main-js文件中引入-并且挂载在vue的原型上">main.js文件中引入,并且挂载在vue的原型上<a class="post-anchor" href="#main-js文件中引入-并且挂载在vue的原型上"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>;
-<span class="hljs-keyword">import</span> App <span class="hljs-keyword">from</span> <span class="hljs-string">'./App.vue'</span>;
-<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">'./router'</span>;
-<span class="hljs-keyword">import</span> util <span class="hljs-keyword">from</span> <span class="hljs-string">'./http/index'</span>
-
-Vue.config.productionTip = <span class="hljs-literal">false</span>
-
-Vue.prototype.$util = util
-Vue.prototype.$http = util.http
-
-<span class="hljs-keyword">new</span> Vue(&#123;
-  router,
-  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> h(App)
-&#125;).$mount(<span class="hljs-string">'#app'</span>)</code></pre>
-
-<h3 id="具体文件使用">具体文件使用<a class="post-anchor" href="#具体文件使用"></a></h3><pre><code class="hljs javascript">runAccessory (datas) &#123;
-  <span class="hljs-keyword">const</span> params = &#123;
-    <span class="hljs-attr">newsId</span>: datas.newsId
-  &#125;
-  <span class="hljs-keyword">this</span>.$util.ajaxWithFile(<span class="hljs-string">''</span>, <span class="hljs-string">'post'</span>, params).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;
-    <span class="hljs-keyword">if</span> (res.headers[<span class="hljs-string">'content-disposition'</span>]) &#123;
-      <span class="hljs-keyword">const</span> fileName = <span class="hljs-built_in">decodeURI</span>(res.headers[<span class="hljs-string">'content-disposition'</span>].split(<span class="hljs-string">';'</span>)[<span class="hljs-number">1</span>].split(<span class="hljs-string">'='</span>)[<span class="hljs-number">1</span>])
-      <span class="hljs-comment">// rea.data是后端返回来的流数据</span>
-      <span class="hljs-keyword">this</span>.$util.downloadDoc(res.data, fileName)
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objectSpanMethod</span> (<span class="hljs-params">&#123; column, rowIndex &#125;, data, field, labelArr</span>) </span>&#123;
+  <span class="hljs-keyword">if</span> (labelArr.includes(column.label)) &#123;
+    <span class="hljs-keyword">const</span> _row = getSpanArr(data, field)[rowIndex]
+    <span class="hljs-keyword">const</span> _col = _row &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-attr">rowspan</span>: _row,
+      <span class="hljs-attr">colspan</span>: _col
     &#125;
-  &#125;)
+  &#125;
+&#125;</code></pre>
+
+<h4 id="页面使用">页面使用<a class="post-anchor" href="#页面使用"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;tableCollapse&quot;&gt;
+      &lt;el-table
+        :span-method&#x3D;&quot;objectSpanMethod&quot;
+        :data&#x3D;&quot;tableData&quot;
+        style&#x3D;&quot;width: 100%&quot;&gt;
+        &lt;el-table-column
+          prop&#x3D;&quot;date&quot;
+          label&#x3D;&quot;日期&quot;
+          width&#x3D;&quot;180&quot;&gt;
+        &lt;&#x2F;el-table-column&gt;
+        &lt;el-table-column
+          prop&#x3D;&quot;name&quot;
+          label&#x3D;&quot;姓名&quot;
+          width&#x3D;&quot;180&quot;&gt;
+        &lt;&#x2F;el-table-column&gt;
+        &lt;el-table-column
+          prop&#x3D;&quot;address&quot;
+          label&#x3D;&quot;地址&quot;&gt;
+        &lt;&#x2F;el-table-column&gt;
+      &lt;&#x2F;el-table&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import &#123; objectSpanMethod &#125; from &#39;..&#x2F;util&#x2F;spanMethod&#39;
+export default &#123;
+  name: &#39;tableCollapse&#39;,
+  data () &#123;
+    return &#123;
+      tableData: [&#123;
+        date: &#39;2016-05-02&#39;,
+        name: &#39;王小虎&#39;,
+        address: &#39;上海市普陀区金沙江路 1518 弄&#39;
+      &#125;, &#123;
+        date: &#39;2016-05-02&#39;,
+        name: &#39;王小虎&#39;,
+        address: &#39;上海市普陀区金沙江路 1518 弄&#39;
+      &#125;, &#123;
+        date: &#39;2016-05-04&#39;,
+        name: &#39;王小虎&#39;,
+        address: &#39;上海市普陀区金沙江路 1517 弄&#39;
+      &#125;, &#123;
+        date: &#39;2016-05-01&#39;,
+        name: &#39;王小虎&#39;,
+        address: &#39;上海市普陀区金沙江路 1519 弄&#39;
+      &#125;, &#123;
+        date: &#39;2016-05-03&#39;,
+        name: &#39;王小虎&#39;,
+        address: &#39;上海市普陀区金沙江路 1516 弄&#39;
+      &#125;, &#123;
+        date: &#39;2016-05-03&#39;,
+        name: &#39;王大虎&#39;,
+        address: &#39;上海市普陀区金沙江路 1516 弄&#39;
+      &#125;, &#123;
+        date: &#39;2016-05-03&#39;,
+        name: &#39;王大虎&#39;,
+        address: &#39;上海市普陀区金沙江路 1516 弄&#39;
+      &#125;]
+    &#125;
+  &#125;,
+  methods: &#123;
+    objectSpanMethod (&#123; column, rowIndex &#125;) &#123;
+      return objectSpanMethod(&#123; column, rowIndex &#125;, this.tableData, &#39;name&#39;, [&#39;姓名&#39;, &#39;地址&#39;])
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
+<h3 id="iview的Table表格合并">iview的Table表格合并<a class="post-anchor" href="#iview的Table表格合并"></a></h3><h4 id="公共方法-1">公共方法<a class="post-anchor" href="#公共方法-1"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSpanArr</span>(<span class="hljs-params">data,field</span>) </span>&#123;
+    <span class="hljs-keyword">let</span> spanArr = [];
+    <span class="hljs-keyword">let</span> pos = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; data.length; i++) &#123;
+      <span class="hljs-keyword">if</span> (i === <span class="hljs-number">0</span>) &#123;
+        spanArr.push(<span class="hljs-number">1</span>);
+        pos = <span class="hljs-number">0</span>;
+      &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">if</span> (data[i][field] === data[i - <span class="hljs-number">1</span>][field]) &#123;
+          spanArr[pos] += <span class="hljs-number">1</span>;
+          spanArr.push(<span class="hljs-number">0</span>);
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          spanArr.push(<span class="hljs-number">1</span>);
+          pos = i;
+        &#125;
+      &#125;
+    &#125;
+    <span class="hljs-keyword">return</span> spanArr
+&#125;
+
+<span class="hljs-comment">/*
+    labelArr 合并字段Array
+*/</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">objectSpanMethod</span>(<span class="hljs-params">&#123;  column , rowIndex  &#125; , data , field , labelArr</span>) </span>&#123;
+    <span class="hljs-keyword">if</span> ( labelArr.includes(column.title) ) &#123;
+        <span class="hljs-keyword">let</span> _row = getSpanArr(data , field)[rowIndex];
+        <span class="hljs-keyword">let</span> _col = _row &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">return</span> &#123;
+            <span class="hljs-attr">rowspan</span>: _row,
+            <span class="hljs-attr">colspan</span>: _col,
+        &#125;;
+    &#125;
+&#125;</code></pre>
+
+<h4 id="页面使用-1">页面使用<a class="post-anchor" href="#页面使用-1"></a></h4><pre><code class="hljs javascript">objectSpanMethod(&#123; column, rowIndex &#125;)&#123;
+    <span class="hljs-keyword">return</span> objectSpanMethod(&#123; column, rowIndex &#125;, <span class="hljs-keyword">this</span>.dataList, <span class="hljs-string">'organizationName'</span>,
+      [<span class="hljs-string">'序号'</span>,<span class="hljs-string">'单位名称'</span>,<span class="hljs-string">'省份'</span>,<span class="hljs-string">'地址'</span>])
 &#125;</code></pre>
 
 
@@ -302,12 +368,10 @@ Vue.prototype.$http = util.http
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/12/26/vue%E8%A1%A8%E6%A0%BC%E5%90%88%E5%B9%B6/">vue表格合并</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/12/26/vue%E6%8D%A2%E8%82%A4/">vue换肤</a>
+          <a href="/2021/12/26/vue%E5%92%8Caxios%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%8B%E8%BD%BD/">vue和axios文件流下载</a>
         
     </div>
   </div>
@@ -319,7 +383,7 @@ Vue.prototype.$http = util.http
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/12/26/vue和axios文件流下载/">https://codermino.github.io/2021/12/26/vue和axios文件流下载/</a>
+      永久链接：<a href="https://codermino.github.io/2021/12/26/vue表格合并/">https://codermino.github.io/2021/12/26/vue表格合并/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
