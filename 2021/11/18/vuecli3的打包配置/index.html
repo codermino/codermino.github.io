@@ -340,7 +340,7 @@ config.plugins.push(<span class="hljs-keyword">new</span> ParallelUglifyPlugin(&
       &#125;
     &#125;
 &#125;))</code></pre>
-<p>3.使用TerserPlugin<br>推荐使用 支持 ES6 语法压缩<br>下面的写法相当于自定义terser的压缩对象</p>
+<p>3.使用TerserPlugin<br>推荐使用 支持 ES6 语法压缩<br>下面的写法相当于自定义terser的压缩对象<br>npm install -D <a href="mailto:terser-webpack-plugin@4.2.3" target="_blank" rel="noopener">terser-webpack-plugin@4.2.3</a></p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">const</span> TerserPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'terser-webpack-plugin'</span>)
 <span class="hljs-comment">// webpack v3写法</span>
 config.optimization.minimizer([
