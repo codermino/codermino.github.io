@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      vue表格合并 - Mino
+      vue下拉加载更多 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#el-table表格合并"><span class="toc-text">el-table表格合并</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#公共方法"><span class="toc-text">公共方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页面使用"><span class="toc-text">页面使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#iview的Table表格合并"><span class="toc-text">iview的Table表格合并</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#公共方法-1"><span class="toc-text">公共方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#页面使用-1"><span class="toc-text">页面使用</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#封装debounce和throttle函数"><span class="toc-text">封装debounce和throttle函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一种throttle函数"><span class="toc-text">第一种throttle函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二种debounce和throttle函数"><span class="toc-text">第二种debounce和throttle函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下拉加载更多"><span class="toc-text">下拉加载更多</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -157,11 +157,11 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">vue表格合并</div>
+      <div class="title">vue下拉加载更多</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2021/12/26</span>
+          <span>2021/12/27</span>
         </span>
 
         
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/vue表格合并">vue表格合并</a>
+                    <a href="/tags/vue下拉加载更多">vue下拉加载更多</a>
                   
                 
             </span>
@@ -196,152 +196,192 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="el-table表格合并">el-table表格合并<a class="post-anchor" href="#el-table表格合并"></a></h3><h4 id="公共方法">公共方法<a class="post-anchor" href="#公共方法"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSpanArr</span> (<span class="hljs-params">data, field</span>) </span>&#123;
-  <span class="hljs-keyword">const</span> spanArr = []
-  <span class="hljs-keyword">let</span> pos = <span class="hljs-number">0</span>
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; data.length; i++) &#123;
-    <span class="hljs-keyword">if</span> (i === <span class="hljs-number">0</span>) &#123;
-      spanArr.push(<span class="hljs-number">1</span>)
-      pos = <span class="hljs-number">0</span>
-    &#125; <span class="hljs-keyword">else</span> &#123;
-      <span class="hljs-keyword">if</span> (data[i][field] === data[i - <span class="hljs-number">1</span>][field]) &#123;
-        spanArr[pos] += <span class="hljs-number">1</span>
-        spanArr.push(<span class="hljs-number">0</span>)
-      &#125; <span class="hljs-keyword">else</span> &#123;
-        spanArr.push(<span class="hljs-number">1</span>)
-        pos = i
-      &#125;
+<h3 id="封装debounce和throttle函数">封装debounce和throttle函数<a class="post-anchor" href="#封装debounce和throttle函数"></a></h3><h4 id="第一种throttle函数">第一种throttle函数<a class="post-anchor" href="#第一种throttle函数"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> flag = <span class="hljs-literal">true</span>
+<span class="hljs-keyword">const</span> throttle = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">f, t</span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+    <span class="hljs-keyword">if</span> (flag) &#123;
+      f()
+      flag = <span class="hljs-literal">false</span>
+      setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;
+        flag = <span class="hljs-literal">true</span>
+      &#125;, t)
     &#125;
   &#125;
-  <span class="hljs-keyword">return</span> spanArr
 &#125;
 
-<span class="hljs-comment">/*
-    labelArr 合并字段Array
-    field 参照合并的字段
-    如果field对应的字段相同，那么九江labelArr数组中所对应的
-    表格数据合并。
-*/</span>
-
-<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objectSpanMethod</span> (<span class="hljs-params">&#123; column, rowIndex &#125;, data, field, labelArr</span>) </span>&#123;
-  <span class="hljs-keyword">if</span> (labelArr.includes(column.label)) &#123;
-    <span class="hljs-keyword">const</span> _row = getSpanArr(data, field)[rowIndex]
-    <span class="hljs-keyword">const</span> _col = _row &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>
-    <span class="hljs-keyword">return</span> &#123;
-      <span class="hljs-attr">rowspan</span>: _row,
-      <span class="hljs-attr">colspan</span>: _col
-    &#125;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> throttle</code></pre>
+<h4 id="第二种debounce和throttle函数">第二种debounce和throttle函数<a class="post-anchor" href="#第二种debounce和throttle函数"></a></h4><pre><code class="hljs javascript"><span class="hljs-comment">/* 防抖节流函数 */</span>
+<span class="hljs-keyword">let</span> timeout = <span class="hljs-literal">null</span> <span class="hljs-comment">// 创建一个标记用来存放定时器的返回值</span>
+<span class="hljs-keyword">let</span> canRun = <span class="hljs-literal">true</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span> (<span class="hljs-params">fn, time = <span class="hljs-number">500</span></span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    clearTimeout(timeout) <span class="hljs-comment">// 每当用户输入的时候把前一个 setTimeout clear 掉</span>
+    timeout = setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123; <span class="hljs-comment">// 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数</span>
+      fn.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>)
+    &#125;, time)
   &#125;
+&#125;
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span> (<span class="hljs-params">fn, time = <span class="hljs-number">500</span></span>) </span>&#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+    <span class="hljs-keyword">if</span> (!canRun) <span class="hljs-keyword">return</span>
+    canRun = <span class="hljs-literal">false</span>
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;
+      fn.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>)
+      canRun = <span class="hljs-literal">true</span>
+    &#125;, time)
+  &#125;
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  debounce,
+  throttle
 &#125;</code></pre>
 
-<h4 id="页面使用">页面使用<a class="post-anchor" href="#页面使用"></a></h4><pre><code class="hljs vue">&lt;template&gt;
-    &lt;div class&#x3D;&quot;tableCollapse&quot;&gt;
-      &lt;el-table
-        :span-method&#x3D;&quot;objectSpanMethod&quot;
-        :data&#x3D;&quot;tableData&quot;
-        style&#x3D;&quot;width: 100%&quot;&gt;
-        &lt;el-table-column
-          prop&#x3D;&quot;date&quot;
-          label&#x3D;&quot;日期&quot;
-          width&#x3D;&quot;180&quot;&gt;
-        &lt;&#x2F;el-table-column&gt;
-        &lt;el-table-column
-          prop&#x3D;&quot;name&quot;
-          label&#x3D;&quot;姓名&quot;
-          width&#x3D;&quot;180&quot;&gt;
-        &lt;&#x2F;el-table-column&gt;
-        &lt;el-table-column
-          prop&#x3D;&quot;address&quot;
-          label&#x3D;&quot;地址&quot;&gt;
-        &lt;&#x2F;el-table-column&gt;
-      &lt;&#x2F;el-table&gt;
+<h4 id="下拉加载更多">下拉加载更多<a class="post-anchor" href="#下拉加载更多"></a></h4><pre><code class="hljs vue">&lt;template&gt;
+    &lt;div @scroll.passive&#x3D;&quot;handleScroll&quot; class&#x3D;&quot;scrollMore&quot; style&#x3D;&quot;height: 300px;overflow-y: scroll;&quot;&gt;
+      &lt;div class&#x3D;&quot;content&quot; style&#x3D;&quot;background-color:red;display: flex;align-items: center;justify-content: center;flex-direction: column;&quot;&gt;
+        &lt;div style&#x3D;&quot;width: 100%;background-color:#fff;border: 1px solid #ccc;&quot; class&#x3D;&quot;content-item&quot; v-for&#x3D;&quot;(item, index) in dataList&quot; :key&#x3D;&quot;index&quot;&gt;
+          &#123;&#123;item.content&#125;&#125;
+        &lt;&#x2F;div&gt;
+      &lt;&#x2F;div&gt;
     &lt;&#x2F;div&gt;
 &lt;&#x2F;template&gt;
 
 &lt;script&gt;
-import &#123; objectSpanMethod &#125; from &#39;..&#x2F;util&#x2F;spanMethod&#39;
+&#x2F;&#x2F; import throttle from &#39;..&#x2F;util&#x2F;methods&#39;
+import util from &#39;..&#x2F;util&#x2F;methods2&#39;
 export default &#123;
-  name: &#39;tableCollapse&#39;,
+  name: &#39;scrollMore&#39;,
   data () &#123;
     return &#123;
-      tableData: [&#123;
-        date: &#39;2016-05-02&#39;,
-        name: &#39;王小虎&#39;,
-        address: &#39;上海市普陀区金沙江路 1518 弄&#39;
-      &#125;, &#123;
-        date: &#39;2016-05-02&#39;,
-        name: &#39;王小虎&#39;,
-        address: &#39;上海市普陀区金沙江路 1518 弄&#39;
-      &#125;, &#123;
-        date: &#39;2016-05-04&#39;,
-        name: &#39;王小虎&#39;,
-        address: &#39;上海市普陀区金沙江路 1517 弄&#39;
-      &#125;, &#123;
-        date: &#39;2016-05-01&#39;,
-        name: &#39;王小虎&#39;,
-        address: &#39;上海市普陀区金沙江路 1519 弄&#39;
-      &#125;, &#123;
-        date: &#39;2016-05-03&#39;,
-        name: &#39;王小虎&#39;,
-        address: &#39;上海市普陀区金沙江路 1516 弄&#39;
-      &#125;, &#123;
-        date: &#39;2016-05-03&#39;,
-        name: &#39;王大虎&#39;,
-        address: &#39;上海市普陀区金沙江路 1516 弄&#39;
-      &#125;, &#123;
-        date: &#39;2016-05-03&#39;,
-        name: &#39;王大虎&#39;,
-        address: &#39;上海市普陀区金沙江路 1516 弄&#39;
-      &#125;]
+      dataList: [],
+      currentIndex: 1,
+      pageSize: 10
     &#125;
   &#125;,
+  created () &#123;
+    this.getData()
+  &#125;,
+  mounted () &#123;
+    &#x2F;&#x2F; window.addEventListener(&#39;scroll&#39;, this.handleScroll)
+  &#125;,
   methods: &#123;
-    objectSpanMethod (&#123; column, rowIndex &#125;) &#123;
-      return objectSpanMethod(&#123; column, rowIndex &#125;, this.tableData, &#39;name&#39;, [&#39;姓名&#39;, &#39;地址&#39;])
+    getData () &#123;
+      const backData &#x3D; [
+        &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;, &#123;
+          id: 1,
+          content: &#39;123&#39;
+        &#125;
+      ]
+      if (this.currentIndex &#x3D;&#x3D;&#x3D; 1) &#123;
+        this.dataList &#x3D; backData
+      &#125; else &#123;
+        this.dataList &#x3D; [...this.dataList, ...backData]
+      &#125;
+      this.currentIndex++
+      console.log(this.dataList.length)
+    &#125;,
+    handleScroll (e) &#123;
+      &#x2F;&#x2F; console.log(e.target.scrollTop, e.target.scrollHeight, e.target.clientHeight)
+      this.$nextTick(() &#x3D;&gt; &#123;
+        if (parseInt(e.target.scrollHeight - e.target.scrollTop - 5) &lt; e.target.clientHeight) &#123;
+          console.log(&#39;到底部了&#39;)
+          setTimeout(() &#x3D;&gt; &#123;
+            &#x2F;&#x2F; throttle(this.getData, 500)()
+            util.throttle(this.getData)()
+          &#125;, 2000)
+        &#125;
+      &#125;)
+      &#x2F;&#x2F; this.$nextTick(() &#x3D;&gt; &#123;
+      &#x2F;&#x2F;   const el &#x3D; document.querySelector(&#39;.act-not&#39;)
+      &#x2F;&#x2F;   const offsetHeight &#x3D; el.offsetHeight
+      &#x2F;&#x2F;   el.onscroll &#x3D; () &#x3D;&gt; &#123;
+      &#x2F;&#x2F;     const scrollTop &#x3D; el.scrollTop
+      &#x2F;&#x2F;     const scrollHeight &#x3D; el.scrollHeight
+      &#x2F;&#x2F;     if ((offsetHeight + scrollTop) - scrollHeight &gt;&#x3D; -1) &#123;
+      &#x2F;&#x2F;       &#x2F;&#x2F; 需要执行的代码
+      &#x2F;&#x2F;     &#125;
+      &#x2F;&#x2F;   &#125;
+      &#x2F;&#x2F; &#125;)
     &#125;
   &#125;
 &#125;
 &lt;&#x2F;script&gt;</code></pre>
-
-<h3 id="iview的Table表格合并">iview的Table表格合并<a class="post-anchor" href="#iview的Table表格合并"></a></h3><h4 id="公共方法-1">公共方法<a class="post-anchor" href="#公共方法-1"></a></h4><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSpanArr</span>(<span class="hljs-params">data,field</span>) </span>&#123;
-    <span class="hljs-keyword">let</span> spanArr = [];
-    <span class="hljs-keyword">let</span> pos = <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; data.length; i++) &#123;
-      <span class="hljs-keyword">if</span> (i === <span class="hljs-number">0</span>) &#123;
-        spanArr.push(<span class="hljs-number">1</span>);
-        pos = <span class="hljs-number">0</span>;
-      &#125; <span class="hljs-keyword">else</span> &#123;
-        <span class="hljs-keyword">if</span> (data[i][field] === data[i - <span class="hljs-number">1</span>][field]) &#123;
-          spanArr[pos] += <span class="hljs-number">1</span>;
-          spanArr.push(<span class="hljs-number">0</span>);
-        &#125; <span class="hljs-keyword">else</span> &#123;
-          spanArr.push(<span class="hljs-number">1</span>);
-          pos = i;
-        &#125;
-      &#125;
-    &#125;
-    <span class="hljs-keyword">return</span> spanArr
-&#125;
-
-<span class="hljs-comment">/*
-    labelArr 合并字段Array
-*/</span>
-
-<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">objectSpanMethod</span>(<span class="hljs-params">&#123;  column , rowIndex  &#125; , data , field , labelArr</span>) </span>&#123;
-    <span class="hljs-keyword">if</span> ( labelArr.includes(column.title) ) &#123;
-        <span class="hljs-keyword">let</span> _row = getSpanArr(data , field)[rowIndex];
-        <span class="hljs-keyword">let</span> _col = _row &gt; <span class="hljs-number">0</span> ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">return</span> &#123;
-            <span class="hljs-attr">rowspan</span>: _row,
-            <span class="hljs-attr">colspan</span>: _col,
-        &#125;;
-    &#125;
-&#125;</code></pre>
-
-<h4 id="页面使用-1">页面使用<a class="post-anchor" href="#页面使用-1"></a></h4><pre><code class="hljs javascript">objectSpanMethod(&#123; column, rowIndex &#125;)&#123;
-    <span class="hljs-keyword">return</span> objectSpanMethod(&#123; column, rowIndex &#125;, <span class="hljs-keyword">this</span>.dataList, <span class="hljs-string">'organizationName'</span>,
-      [<span class="hljs-string">'序号'</span>,<span class="hljs-string">'单位名称'</span>,<span class="hljs-string">'省份'</span>,<span class="hljs-string">'地址'</span>])
-&#125;</code></pre>
 
 
   
@@ -368,12 +408,10 @@ export default &#123;
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2021/12/27/vue%E4%B8%8B%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A/">vue下拉加载更多</a>
-        
     </div>
     <div class="item right">
         
-          <a href="/2021/12/26/vue%E5%92%8Caxios%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%8B%E8%BD%BD/">vue和axios文件流下载</a>
+          <a href="/2021/12/26/vue%E8%A1%A8%E6%A0%BC%E5%90%88%E5%B9%B6/">vue表格合并</a>
         
     </div>
   </div>
@@ -385,7 +423,7 @@ export default &#123;
       本文作者：<a href="https://codermino.github.io">Mino</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://codermino.github.io/2021/12/26/vue表格合并/">https://codermino.github.io/2021/12/26/vue表格合并/</a>
+      永久链接：<a href="https://codermino.github.io/2021/12/27/vue下拉加载更多/">https://codermino.github.io/2021/12/27/vue下拉加载更多/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
