@@ -16,7 +16,7 @@
     <meta name="description" content="Mino&#39;s personal blog" />
     
     <title>
-      归档 - Mino
+      vue页面分页引导 - Mino
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -24,6 +24,11 @@
   <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
 </head>
   <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用driver-js"><span class="toc-text">使用driver.js</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -70,7 +75,7 @@
           分类
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -120,7 +125,7 @@
             分类
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -149,124 +154,193 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-            
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%95%B0%E7%BB%84array/" title="js学习笔记数组array">
-                <span>2020/08/18</span>
-                <span>js学习笔记数组array</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AF%B9%E8%B1%A1object/" title="js学习笔记对象object">
-                <span>2020/08/18</span>
-                <span>js学习笔记对象object</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/18/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%AD%97%E7%AC%A6%E4%B8%B2string/" title="js学习笔记字符串string">
-                <span>2020/08/18</span>
-                <span>js学习笔记字符串string</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8Bes6/" title="js学习笔记之es6">
-                <span>2020/08/17</span>
-                <span>js学习笔记之es6</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="js学习笔记之正则表达式">
-                <span>2020/08/17</span>
-                <span>js学习笔记之正则表达式</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95/" title="js学习笔记之数组方法">
-                <span>2020/08/17</span>
-                <span>js学习笔记之数组方法</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%87%BD%E6%95%B0/" title="js学习笔记之函数">
-                <span>2020/08/17</span>
-                <span>js学习笔记之函数</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/17/js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E7%B1%BB/" title="js学习笔记之类">
-                <span>2020/08/17</span>
-                <span>js学习笔记之类</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/16/webstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" title="webstorm常用快捷键">
-                <span>2020/08/16</span>
-                <span>webstorm常用快捷键</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/08/15/computed%E7%9A%84get%E5%92%8Cset/" title="computed的get和set">
-                <span>2020/08/15</span>
-                <span>computed的get和set</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/19/">19</a><a class="page-number" href="/archives/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/archives/page/22/">22</a><a class="page-number" href="/archives/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/26/">26</a>
-</div>
-</div>
+      <div class="title">vue页面分页引导</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2021/12/28</span>
+        </span>
 
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/前端">前端</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/vue页面分页引导">vue页面分页引导</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
+<h3 id="使用driver-js">使用driver.js<a class="post-anchor" href="#使用driver-js"></a></h3><p><strong>效果</strong><br><a href="/images/driver.png" data-caption data-fancybox="images"><img src="/images/driver.png" alt></a><br>封装一个js文件，定义每一步的数组对象(steps.js)</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">/**
+ * 引导元素信息配置
+ * 上一步下一步按钮文字都可以配置
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> [
+  &#123;
+    <span class="hljs-attr">element</span>: <span class="hljs-string">'#EHRCode'</span>, <span class="hljs-comment">// 设置需要引导的元素id</span>
+    <span class="hljs-attr">popover</span>: &#123;
+      <span class="hljs-attr">title</span>: <span class="hljs-string">'第一步'</span>,
+      <span class="hljs-attr">description</span>: <span class="hljs-string">'描述信息'</span>, <span class="hljs-comment">// 这里是内容，支持HTML字符串</span>
+      <span class="hljs-attr">position</span>: <span class="hljs-string">'bottom-center'</span>,
+      <span class="hljs-attr">className</span>: <span class="hljs-string">'ehrcodestyle'</span>, <span class="hljs-comment">// 自定义样式</span>
+      <span class="hljs-attr">nextBtnText</span>: <span class="hljs-string">'(1/2)已知晓，下一个'</span> <span class="hljs-comment">// 这里也可以自定义下一步按钮上的文字哦</span>
+    &#125;
+  &#125;,
+  &#123;
+    <span class="hljs-attr">element</span>: <span class="hljs-string">'#SpareEmail'</span>,
+    <span class="hljs-attr">popover</span>: &#123;
+      <span class="hljs-attr">title</span>: <span class="hljs-string">'第二步'</span>,
+      <span class="hljs-attr">description</span>: <span class="hljs-string">'描述信息'</span>,
+      <span class="hljs-attr">position</span>: <span class="hljs-string">'bottom-center'</span>,
+      <span class="hljs-attr">className</span>: <span class="hljs-string">'spareemailstyle'</span>,
+      <span class="hljs-attr">doneBtnText</span>: <span class="hljs-string">'(2/2)我知道了'</span>
+    &#125;
+  &#125;
+]</code></pre>
+<p>单页面引入</p>
+<pre><code class="hljs vue">&lt;template&gt;
+    &lt;div class&#x3D;&quot;guidePage&quot;&gt;
+      &lt;div class&#x3D;&quot;guidePageHeader&quot;&gt;
+        &lt;div id&#x3D;&quot;EHRCode&quot; style&#x3D;&quot;height: 100px;&quot;&gt;
+          &lt;p&gt;描述信息12312321212231132&lt;&#x2F;p&gt;
+        &lt;&#x2F;div&gt;
+        &lt;div id&#x3D;&quot;SpareEmail&quot; style&#x3D;&quot;height: 100px;&quot;&gt;
+          &lt;p&gt;描述信息66666666666666&lt;&#x2F;p&gt;
+        &lt;&#x2F;div&gt;
+      &lt;&#x2F;div&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+
+&lt;script&gt;
+import Driver from &#39;driver.js&#39;
+import &#39;driver.js&#x2F;dist&#x2F;driver.min.css&#39;
+import steps from &#39;..&#x2F;util&#x2F;steps&#39;
+export default &#123;
+  name: &#39;guidePage&#39;,
+  created () &#123;
+    this.driver &#x3D; new Driver(&#123;
+      classname: &#39;driver&#39;, &#x2F;&#x2F; 为你的指示模块添加类名 如果你要取消 某一个按钮（比如：“上一步””下一步“，”完成“）的 这个类名还是要加上的
+      animate: true, &#x2F;&#x2F; 在更改突出显示的元素时设置动画
+      opacity: 0.65, &#x2F;&#x2F; 背景不透明度（0表示只有弹出窗口，没有覆盖）
+      padding: 10, &#x2F;&#x2F; 元素与边缘的距离
+      allowClose: false, &#x2F;&#x2F; 单击覆盖是否应关闭
+      overlayClickNext: false, &#x2F;&#x2F; 单击overlay click是否转到下一步
+      doneBtnText: &#39;完成&#39;, &#x2F;&#x2F; 最后一个按钮上的文本
+      closeBtnText: &#39;关闭&#39;, &#x2F;&#x2F; 此步骤的关闭”按钮上的文本
+      nextBtnText: &#39;下一步&#39;, &#x2F;&#x2F; 此步骤的下一步按钮文本
+      prevBtnText: &#39;上一步&#39;, &#x2F;&#x2F; 此步骤的上一个按钮文本
+      showButtons: true, &#x2F;&#x2F; 不在页脚中显示控件按钮
+      onReset: (data) &#x3D;&gt; &#123;&#125;, &#x2F;&#x2F; 引导结束触发
+      onNext: (data) &#x3D;&gt; &#123;&#125;&#x2F;&#x2F; 引导进入下一步触发
+    &#125;)
+  &#125;,
+  mounted () &#123;
+    this.driver.defineSteps(steps)
+    this.driver.start()
+  &#125;,
+  data () &#123;
+    return &#123;
+      driver: null
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;
+
+&lt;style scoped lang&#x3D;&quot;less&quot;&gt;
+.guidePageHeader&#123;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  #EHRCode,#SpareEmail&#123;
+    flex-grow: 1;
+  &#125;
+&#125;
+&lt;&#x2F;style&gt;
+
+&lt;style lang&#x3D;&quot;less&quot;&gt;
+  .driver-close-btn&#123;
+    background-color: red !important;
+  &#125;
+&lt;&#x2F;style&gt;</code></pre>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/12/27/vue%E4%B8%8B%E6%8B%89%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%A4%9A/">vue下拉加载更多</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2021/12/28/vue页面分页引导/">https://codermino.github.io/2021/12/28/vue页面分页引导/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2021
