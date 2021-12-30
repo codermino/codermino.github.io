@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codermino.github.io/"/>
-  <updated>2021-12-28T02:44:21.597Z</updated>
+  <updated>2021-12-30T07:44:27.374Z</updated>
   <id>https://codermino.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vueconfigjs的publicPath</title>
+    <link href="https://codermino.github.io/2021/12/30/vueconfigjs%E7%9A%84publicPath/"/>
+    <id>https://codermino.github.io/2021/12/30/vueconfigjs%E7%9A%84publicPath/</id>
+    <published>2021-12-30T01:36:15.000Z</published>
+    <updated>2021-12-30T07:44:27.374Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;br&gt;一般在vue项目当中，都有一个vue.con
+      
+    
+    </summary>
+    
+    
+      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
+    
+    
+      <category term="vue.config.js的publicPath" scheme="https://codermino.github.io/tags/vue-config-js%E7%9A%84publicPath/"/>
+    
+  </entry>
   
   <entry>
     <title>vue页面分页引导</title>
@@ -483,31 +507,6 @@
     
     
       <category term="js全屏" scheme="https://codermino.github.io/tags/js%E5%85%A8%E5%B1%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue文件下载</title>
-    <link href="https://codermino.github.io/2021/12/01/vue%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/"/>
-    <id>https://codermino.github.io/2021/12/01/vue%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/</id>
-    <published>2021-12-01T07:40:58.000Z</published>
-    <updated>2021-12-01T08:12:45.930Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;a href=&quot;/images/vuepic/vue.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/images/vuepic/vue.jpg&quot; alt&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;需求和原理&quot;&gt;需求和原理&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="vue" scheme="https://codermino.github.io/categories/vue/"/>
-    
-    
-      <category term="vue文件下载" scheme="https://codermino.github.io/tags/vue%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD/"/>
     
   </entry>
   
