@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#watermark-js文件"><span class="toc-text">watermark.js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面中使用"><span class="toc-text">页面中使用</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#页面添加水印"><span class="toc-text">页面添加水印</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#watermark-js文件"><span class="toc-text">watermark.js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页面中使用"><span class="toc-text">页面中使用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片添加水印"><span class="toc-text">图片添加水印</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -185,7 +185,7 @@
             <span>
                 
                   
-                    <a href="/tags/前端页面添加水印">前端页面添加水印</a>
+                    <a href="/tags/前端页面或图片添加水印">前端页面或图片添加水印</a>
                   
                 
             </span>
@@ -196,7 +196,7 @@
       </div>
     </div>
     <p><a href="/images/vuepic/vue.jpg" data-caption data-fancybox="images"><img src="/images/vuepic/vue.jpg" alt></a></p>
-<h3 id="watermark-js文件">watermark.js文件<a class="post-anchor" href="#watermark-js文件"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> watermark = <span class="hljs-function">(<span class="hljs-params">settings</span>) =&gt;</span> &#123;
+<h2 id="页面添加水印">页面添加水印<a class="post-anchor" href="#页面添加水印"></a></h2><h3 id="watermark-js文件">watermark.js文件<a class="post-anchor" href="#watermark-js文件"></a></h3><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> watermark = <span class="hljs-function">(<span class="hljs-params">settings</span>) =&gt;</span> &#123;
 <span class="hljs-comment">// 默认设置</span>
 
   <span class="hljs-keyword">var</span> defaultSettings = &#123;
@@ -357,6 +357,79 @@ mounted () &#123;
     &#125;)
 &#125;</code></pre>
 
+<h2 id="图片添加水印">图片添加水印<a class="post-anchor" href="#图片添加水印"></a></h2><p>使用插件@codermino/vue-img-watermark<br>npm i @codermino/vue-img-watermark -S</p>
+<p><strong>main.js</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> watermark, &#123; registerCustomStrategy &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'@codermino/vue-img-watermark'</span>
+<span class="hljs-comment">// 也可以自定义一个mode</span>
+registerCustomStrategy(<span class="hljs-string">'test'</span>, (ctx, options) =&gt; &#123;
+  <span class="hljs-keyword">const</span> getRadian = <span class="hljs-function">(<span class="hljs-params">degree</span>) =&gt;</span> (degree * <span class="hljs-built_in">Math</span>.PI) / <span class="hljs-number">180</span>
+  ctx.textAlign = <span class="hljs-string">'center'</span>
+  <span class="hljs-keyword">const</span> width = ctx.canvas.width
+  <span class="hljs-keyword">const</span> height = ctx.canvas.height
+  <span class="hljs-keyword">const</span> padding = <span class="hljs-number">100</span>
+  ctx.translate(
+    (width / <span class="hljs-number">2</span>) * <span class="hljs-built_in">Math</span>.tan(getRadian(options.rotate)),
+    (-height / <span class="hljs-number">2</span>) * <span class="hljs-built_in">Math</span>.tan(getRadian(options.rotate))
+  )
+
+  ctx.rotate((options.rotate * <span class="hljs-built_in">Math</span>.PI) / <span class="hljs-number">180</span>)
+
+  <span class="hljs-keyword">let</span> x = <span class="hljs-number">20</span>
+  <span class="hljs-keyword">let</span> y = <span class="hljs-number">20</span>
+  <span class="hljs-keyword">let</span> addingX = <span class="hljs-literal">true</span>
+  <span class="hljs-keyword">while</span> (y &lt; height * <span class="hljs-number">2</span>) &#123;
+    ctx.fillText(options.content, x, y)
+
+    <span class="hljs-keyword">if</span> (x &gt; width * <span class="hljs-number">2</span>) &#123;
+      x = <span class="hljs-number">20</span>
+      addingX = <span class="hljs-literal">false</span>
+    &#125;
+
+    <span class="hljs-keyword">if</span> (addingX) x += padding
+    <span class="hljs-keyword">else</span> &#123;
+      y += padding
+      addingX = <span class="hljs-literal">true</span>
+    &#125;
+  &#125;
+&#125;)
+Vue.use(watermark)</code></pre>
+
+<p><strong>页面中使用</strong></p>
+<pre><code class="hljs vue">&lt;template&gt;
+  &lt;div class&#x3D;&quot;wrap&quot;&gt;
+&lt;!--    &lt;img src&#x3D;&quot;..&#x2F;assets&#x2F;logo.png&quot; v-watermark  alt&#x3D;&quot;&quot;&#x2F;&gt;--&gt;
+&lt;!--    &lt;img src&#x3D;&quot;..&#x2F;assets&#x2F;logo.png&quot; v-watermark&#x3D;&quot;OptionConfig&quot;  alt&#x3D;&quot;&quot;&#x2F;&gt;--&gt;
+    &lt;img src&#x3D;&quot;..&#x2F;assets&#x2F;2.jpg&quot; v-watermark&#x3D;&quot;OptionConfig&quot;  alt&#x3D;&quot;&quot;&#x2F;&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;template&gt;
+&lt;script&gt;
+&#x2F;&#x2F; import &#123; setScopedConfig &#125; from &#39;@codermino&#x2F;vue-img-watermark&#39;
+export default &#123;
+  beforeCreate () &#123;
+    &#x2F;&#x2F; setScopedConfig(
+    &#x2F;&#x2F;   &#123;
+    &#x2F;&#x2F;     &#x2F;&#x2F; mode: &#39;bottomright&#39;,
+    &#x2F;&#x2F;     mode: &#39;test&#39;,
+    &#x2F;&#x2F;     content: &#39;dadasdasdsadasd&#39;,
+    &#x2F;&#x2F;     fillStyle: &#39;black&#39;
+    &#x2F;&#x2F;   &#125;,
+    &#x2F;&#x2F;   this
+    &#x2F;&#x2F; )
+  &#125;,
+  data () &#123;
+    return &#123;
+      OptionConfig: &#123;
+        content: &#39;好哥哥&#39;,
+        mode: &#39;fill&#39;,
+        fillStyle: &#39;#ccc&#39;,
+        rotate: 45,
+        font: &#39;30px Ariel&#39;
+      &#125;
+    &#125;
+  &#125;
+&#125;
+&lt;&#x2F;script&gt;</code></pre>
+
 
   
     <div class="post-reward">
@@ -413,7 +486,7 @@ mounted () &#123;
 </article>
         <footer>
           <div class="copyright">
-            ©2021
+            ©2022
             <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
 <!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
           </div>
