@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种方式直接发布到npmjs上"><span class="toc-text">第一种方式直接发布到npmjs上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布自己的npm插件"><span class="toc-text">发布自己的npm插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用npm安装github仓库中的代码"><span class="toc-text">使用npm安装github仓库中的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装方法"><span class="toc-text">安装方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种提交到github上"><span class="toc-text">第二种提交到github上</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更改配置文件"><span class="toc-text">更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#npm发布"><span class="toc-text">npm发布</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种方式直接发布到npmjs上"><span class="toc-text">第一种方式直接发布到npmjs上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布自己的npm插件"><span class="toc-text">发布自己的npm插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用npm安装github仓库中的代码"><span class="toc-text">使用npm安装github仓库中的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装方法"><span class="toc-text">安装方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种提交到github上"><span class="toc-text">第二种提交到github上</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更改配置文件"><span class="toc-text">更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#npm发布"><span class="toc-text">npm发布</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他例子"><span class="toc-text">其他例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#npm发布-1"><span class="toc-text">npm发布</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -386,6 +386,16 @@
 <li><p>npm ERR! you must verify your email before publishing a new package: <a href="https://www.npmjs.com/email-edit" target="_blank" rel="noopener">https://www.npmjs.com/email-edit</a> : your-package<br>这是邮箱没有校验，登录<a href="https://www.npmjs.com" target="_blank" rel="noopener">https://www.npmjs.com</a>   重新发起邮箱验证</p>
 </li>
 </ol>
+<h3 id="其他例子">其他例子<a class="post-anchor" href="#其他例子"></a></h3><p>vue create xxxx<br>创建项目（文档地址：<a href="https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create）" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/creating-a-project.html#vue-create）</a><br>按正常开发写一个组件.<br>使用install函数把组件做成插件方便调用<br>例:<br>文件目录:<br><a href="/images/publishNpm/npm3.png" data-caption data-fancybox="images"><img src="/images/publishNpm/npm3.png" alt></a><br><strong>index.js 代码  （自己针对自己的组件做灵活改动）</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> UnifiedValidator <span class="hljs-keyword">from</span> <span class="hljs-string">'./index.vue'</span>
+<span class="hljs-comment">/* istanbul ignore next */</span>
+UnifiedValidator.install = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">Vue</span>) </span>&#123;<span class="hljs-literal">undefined</span>
+  Vue.component(UnifiedValidator.name, UnifiedValidator);
+&#125;;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> UnifiedValidator;</code></pre>
+<p>打包命令查看 文档 <a href="https://cli.vuejs.org/zh/guide/build-targets.html#%E5%BA%94%E7%94%A8" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/build-targets.html#%E5%BA%94%E7%94%A8</a></p>
+<p>到此组件写完了，  运行npm run component 就打包完成组件了</p>
+<h4 id="npm发布-1">npm发布<a class="post-anchor" href="#npm发布-1"></a></h4><p>重复上面的步骤</p>
 
 
   
