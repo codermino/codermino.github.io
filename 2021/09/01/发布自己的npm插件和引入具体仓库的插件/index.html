@@ -27,7 +27,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#发布自己的npm插件"><span class="toc-text">发布自己的npm插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用npm安装github仓库中的代码"><span class="toc-text">使用npm安装github仓库中的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装方法"><span class="toc-text">安装方法</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一种方式直接发布到npmjs上"><span class="toc-text">第一种方式直接发布到npmjs上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布自己的npm插件"><span class="toc-text">发布自己的npm插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用npm安装github仓库中的代码"><span class="toc-text">使用npm安装github仓库中的代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装方法"><span class="toc-text">安装方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二种提交到github上"><span class="toc-text">第二种提交到github上</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更改配置文件"><span class="toc-text">更改配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#npm发布"><span class="toc-text">npm发布</span></a></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -195,7 +195,7 @@
       <div>
       </div>
     </div>
-    <h3 id="发布自己的npm插件">发布自己的npm插件<a class="post-anchor" href="#发布自己的npm插件"></a></h3><ol>
+    <h3 id="第一种方式直接发布到npmjs上">第一种方式直接发布到npmjs上<a class="post-anchor" href="#第一种方式直接发布到npmjs上"></a></h3><h3 id="发布自己的npm插件">发布自己的npm插件<a class="post-anchor" href="#发布自己的npm插件"></a></h3><ol>
 <li>注册自己的npm账号并且<strong>激活邮箱</strong></li>
 <li>创建自己的npm包</li>
 <li>1 创建一个空的文件夹,进入</li>
@@ -245,6 +245,147 @@
 </ol>
 <h3 id="使用npm安装github仓库中的代码">使用npm安装github仓库中的代码<a class="post-anchor" href="#使用npm安装github仓库中的代码"></a></h3><p>我们在使用npm下载包的时候，一般是下载在npm官网发布过的。可以指定版本，指定依赖等等。<br>但是，对于一个团队或公司，需要从自己的工作账号拉取代码，npm是直接支持从git仓库安装的。</p>
 <h4 id="安装方法">安装方法<a class="post-anchor" href="#安装方法"></a></h4><p>npm install <a href="https://github.com/xxx/xxx.git" target="_blank" rel="noopener">https://github.com/xxx/xxx.git</a> -S<br>或者<br>npm install git://git@github.com/xxx/xxx.git<br>此时，package.json文件中，会出现对应的项目依赖，后面的版本号会替换成git地址<br><a href="/images/gitself.jpg" data-caption data-fancybox="images"><img src="/images/gitself.jpg" alt></a></p>
+<h3 id="第二种提交到github上">第二种提交到github上<a class="post-anchor" href="#第二种提交到github上"></a></h3><p>从GitHub上面新建一个仓库，然后将自己的项目上传到github上。</p>
+<p>编写插件内容不提，只说一下如何发布。</p>
+<h4 id="更改配置文件">更改配置文件<a class="post-anchor" href="#更改配置文件"></a></h4><p>现在就是核心部分了 上面或多或少还是与怎样去生成一个插件相关的<br><strong>在index.js（新建）内</strong><br><strong>发布的是组件的形式</strong><br>使用的时候是import xx from ‘xxx’</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> vueCom <span class="hljs-keyword">from</span> <span class="hljs-string">'./vue-com.vue'</span>
+<span class="hljs-keyword">const</span> vueCom = &#123;
+  install(Vue, options) &#123;
+    Vue.component(vueCom.name, vueCom)
+  &#125;
+&#125;
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> !== <span class="hljs-string">'undefined'</span> &amp;&amp; <span class="hljs-built_in">window</span>.Vue) &#123;
+  <span class="hljs-built_in">window</span>.vueCom = vueCom
+  Vue.use(vueCom)
+&#125;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> vueCom</code></pre>
+<p><strong>发布指令的形式</strong><br>使用的时候是v-xxx</p>
+<pre><code class="hljs typescript"><span class="hljs-keyword">const</span> vueImgWatermark = &#123;
+  install: <span class="hljs-function">(<span class="hljs-params">Vue: VueConstructor</span>) =&gt;</span> &#123;
+    Vue.directive(<span class="hljs-string">"watermark"</span>, &#123;
+      bind(
+        element: HTMLImageElement,
+        binding: DirectiveBinding,
+        VNode: VNode
+      ) &#123;
+        <span class="hljs-keyword">let</span> options: WatermarkOptionConfig;
+
+        <span class="hljs-keyword">const</span> bindingOptions: Partial&lt;WatermarkOptionConfig&gt; = binding.value;
+
+        <span class="hljs-keyword">if</span> (scopedConfigMap.has(VNode.context)) &#123;
+          options = &#123;
+            ...scopedConfigMap.get(VNode.context),
+            ...bindingOptions,
+          &#125;;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          options = &#123; ...globalOptions, ...bindingOptions &#125;;
+        &#125;
+
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loader</span>(<span class="hljs-params"></span>) </span>&#123;
+          element.removeEventListener(<span class="hljs-string">"load"</span>, loader);
+          <span class="hljs-keyword">const</span> &#123; width, height &#125; = element;
+          <span class="hljs-keyword">const</span> ctx = getCanvas().getContext(<span class="hljs-string">"2d"</span>);
+
+          <span class="hljs-keyword">const</span> &#123; textBaseline, fillStyle, font, mode &#125; = options;
+
+          getCanvas().width = width;
+          getCanvas().height = height;
+
+          ctx.clearRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width, height);
+          ctx.drawImage(element, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width, height);
+
+          ctx.textBaseline = textBaseline;
+          ctx.font = font;
+          ctx.fillStyle = fillStyle;
+
+          selectStrategy(mode)(ctx, options);
+
+          <span class="hljs-keyword">const</span> url = ctx.canvas.toDataURL();
+
+          <span class="hljs-comment">//@ts-ignore</span>
+          VNode.__url ? VNode.__url.push(url) : (VNode.__url = [url]);
+
+          element.src = url;
+
+          VNode.context.$emit(<span class="hljs-string">"img:watermarked"</span>, element, options);
+          element.addEventListener(<span class="hljs-string">"load"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">temp</span>(<span class="hljs-params"></span>) </span>&#123;
+            element.removeEventListener(<span class="hljs-string">"load"</span>, temp);
+            element.addEventListener(<span class="hljs-string">"load"</span>, loader);
+          &#125;);
+        &#125;
+        element.setAttribute(<span class="hljs-string">"crossorigin"</span>, <span class="hljs-string">"anonymous"</span>);
+        element.addEventListener(<span class="hljs-string">"load"</span>, loader);
+      &#125;,
+
+      unbind(el, binding, VNode) &#123;
+        <span class="hljs-comment">//@ts-ignore</span>
+        VNode.__url &amp;&amp; VNode.__url.map(URL.revokeObjectURL);
+      &#125;,
+    &#125;);
+  &#125;,
+&#125;;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> vueImgWatermark;</code></pre>
+
+<p><strong>package.json</strong><br>version后添加版本号，可自定<br>private值设为false（必须）<br>在repository内的url字段 填上该项目的github地址，可以把项目传到自己的GitHub上<br>修改箭头中所指</p>
+<ol>
+<li>你的插件版本号，以后每次上传npm都需要更改</li>
+<li>不设为false无法发布</li>
+<li>填写你自己的github托管地址<br><a href="/images/publishNpm/npm1.png" data-caption data-fancybox="images"><img src="/images/publishNpm/npm1.png" alt></a><pre><code class="hljs markdown">&#123;
+  "version": "1.0.1",
+  "private": false,
+  "repository": &#123;
+<span class="hljs-code">    "type": "git",</span>
+<span class="hljs-code">    "url": "https://xxx.git"</span>
+  &#125;,
+  "author": "@codermino"
+&#125;</code></pre></li>
+</ol>
+<p><strong>webpack.config.js</strong><br>修改entry和filename<br>entry是你一开始的index.js的路径</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">"path"</span>);
+
+<span class="hljs-keyword">var</span> PATHS = &#123;
+  <span class="hljs-attr">entryPoint</span>: path.resolve(__dirname, <span class="hljs-string">"src/index.ts"</span>),
+  <span class="hljs-attr">bundles</span>: path.resolve(__dirname, <span class="hljs-string">"lib"</span>),
+&#125;;
+
+<span class="hljs-keyword">var</span> config = &#123;
+  <span class="hljs-attr">optimization</span>: &#123;
+    <span class="hljs-attr">minimize</span>: <span class="hljs-literal">true</span>,
+  &#125;,
+
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">"production"</span>,
+  <span class="hljs-comment">// entry: &#123;</span>
+    <span class="hljs-comment">// vueImageWatermark: [PATHS.entryPoint],</span>
+  <span class="hljs-comment">// &#125;,</span>
+  <span class="hljs-attr">entry</span>: PATHS.entryPoint,
+
+  <span class="hljs-attr">output</span>: &#123;
+    <span class="hljs-attr">path</span>: PATHS.bundles,
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">"[name].js"</span>,
+    <span class="hljs-attr">libraryTarget</span>: <span class="hljs-string">"umd"</span>,
+    <span class="hljs-attr">library</span>: <span class="hljs-string">"vueImageWatermark"</span>,
+    <span class="hljs-attr">umdNamedDefine</span>: <span class="hljs-literal">true</span>,
+  &#125;
+&#125;;
+
+<span class="hljs-built_in">module</span>.exports = config;</code></pre>
+
+<h4 id="npm发布">npm发布<a class="post-anchor" href="#npm发布"></a></h4><p>和上面一样的步骤，可能遇见的问题:</p>
+<ol>
+<li><p>code E402<br>402 Payment Required - PUT <a href="http://registry.npmjs.org/@dinghx%2funifiedValidator" target="_blank" rel="noopener">http://registry.npmjs.org/@dinghx%2funifiedValidator</a> - You must sign up for private packages<br>这是因为包名是 @xxx/xxxx   npm会认为要发布私包，私包需要收费，需将发布命令改成： npm publish –access public</p>
+</li>
+<li><p>code E403  没权限发布<br>npm ERR! [no_perms] Private mode enable, only admin can publish this module [no_perms] Private mode enable, only admin can publish this module: your-package<br>这个是你的源设置成第三方源的时候才有可能发生，比如设置了淘宝源就可能会导致该问题。只要把源改回默认的就可以了，如下： npm config set registry <a href="http://registry.npmjs.org" target="_blank" rel="noopener">http://registry.npmjs.org</a></p>
+</li>
+<li><p>you must verify your email before publishing a new package: <a href="https://www.npmjs.com/email-edit" target="_blank" rel="noopener">https://www.npmjs.com/email-edit</a><br>这是组件需要重新打包</p>
+</li>
+</ol>
+<ol start="4">
+<li><p>npm ERR! Package name too similar to existing packages; try renaming your package to ‘@dinghx/captcha’ and publishing with ‘npm publish –access=public’ instead : your-package<br>这是包名过于相似，需要修改包名</p>
+</li>
+<li><p>npm ERR! you must verify your email before publishing a new package: <a href="https://www.npmjs.com/email-edit" target="_blank" rel="noopener">https://www.npmjs.com/email-edit</a> : your-package<br>这是邮箱没有校验，登录<a href="https://www.npmjs.com" target="_blank" rel="noopener">https://www.npmjs.com</a>   重新发起邮箱验证</p>
+</li>
+</ol>
 
 
   
