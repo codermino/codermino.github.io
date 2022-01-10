@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="Mino,前端,后端,全栈,NodeJs,JavaScript" />
+    <meta name="description" content="Mino&#39;s personal blog" />
+    
+    <title>
+      发布npm插件2 - Mino
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/style/style.css">
+  <link rel="alternate" href="/atom.xml" title="Mino" type="application/atom+xml">
+</head>
+  <body>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个新项目，并且写好组件"><span class="toc-text">创建一个新项目，并且写好组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在组件文件夹下添加index-js"><span class="toc-text">在组件文件夹下添加index.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在组件父文件夹下添加index-js"><span class="toc-text">在组件父文件夹下添加index.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改项目中的package-json"><span class="toc-text">修改项目中的package.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进行打包"><span class="toc-text">进行打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#抽离文件"><span class="toc-text">抽离文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改package-json文件夹下的package-json文件"><span class="toc-text">修改package.json文件夹下的package.json文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在publishNpm文件夹下进行npm提交"><span class="toc-text">在publishNpm文件夹下进行npm提交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm查看"><span class="toc-text">npm查看</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <div class="author">Mino</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Mino</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/codermino" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="1227657064@qq.com" target="_block">
+              <span class="iconfont icon-QQ"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">发布npm插件2</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2022/01/10</span>
+        </span>
+
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/npm">npm</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/发布npm插件2">发布npm插件2</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <h3 id="创建一个新项目，并且写好组件">创建一个新项目，并且写好组件<a class="post-anchor" href="#创建一个新项目，并且写好组件"></a></h3><p><strong>项目目录如下图所示:</strong><br><a href="/images/npm/1.png" data-caption data-fancybox="images"><img src="/images/npm/1.png" alt></a></p>
+<h3 id="在组件文件夹下添加index-js">在组件文件夹下添加index.js<a class="post-anchor" href="#在组件文件夹下添加index-js"></a></h3><p>导出和注册对应组件</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> vueCascade <span class="hljs-keyword">from</span> <span class="hljs-string">'./index.vue'</span>;
+<span class="hljs-comment">//.name就是开始说的vue文件暴露出来的name名，ldcPagination整个组件</span>
+vueCascade.install = <span class="hljs-function"><span class="hljs-params">Vue</span> =&gt;</span> Vue.component(vueCascade.name, vueCascade);
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> vueCascade;</code></pre>
+
+<h3 id="在组件父文件夹下添加index-js">在组件父文件夹下添加index.js<a class="post-anchor" href="#在组件父文件夹下添加index-js"></a></h3><p>批量注册组件，同时也是打包的入口文件</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> vueCascade <span class="hljs-keyword">from</span> <span class="hljs-string">'./vue-cascade/index.js'</span>
+<span class="hljs-keyword">const</span> components = [
+    vueCascade
+]
+
+<span class="hljs-keyword">const</span> install = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">Vue, opts = &#123;&#125;</span>) </span>&#123;
+    components.forEach(<span class="hljs-function"><span class="hljs-params">component</span> =&gt;</span> &#123;
+        Vue.component(component.name, component);
+    &#125;);
+&#125;
+
+<span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span> !== <span class="hljs-string">'undefined'</span> &amp;&amp; <span class="hljs-built_in">window</span>.Vue) &#123;
+    install(<span class="hljs-built_in">window</span>.Vue);
+&#125;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+    install,
+    vueCascade
+&#125;</code></pre>
+
+<h3 id="修改项目中的package-json">修改项目中的package.json<a class="post-anchor" href="#修改项目中的package-json"></a></h3><pre><code class="hljs markdown">&#123;
+  "name": "@codermino/vue-cascade",
+  "version": "1.0.2",
+  "author": "codermino",
+  "description": "使用vue结合element-ui左侧选择影响右侧类型。",
+  "keyword": "vue cascade components",
+  "main": "dist/vue-cascade.js",
+  "repository": &#123;
+<span class="hljs-code">    "url": "https://github.com/codermino/vueCascadeCodermino.git"</span>
+  &#125;,
+  "private": false,
+  "license": "MIT",
+  "scripts": &#123;
+<span class="hljs-code">    "serve": "vue-cli-service serve",</span>
+<span class="hljs-code">    "build": "vue-cli-service build",</span>
+<span class="hljs-code">    //    --target lib： 指定入口文件</span>
+<span class="hljs-code">    //    --name： 生成的文件名</span>
+<span class="hljs-code">    //    --dest：生成的文件夹名</span>
+<span class="hljs-code">    "component": "vue-cli-service build --target lib ./src/components/index.js --name vue-cascade --dest vue-cascade-codermino"</span>
+  &#125;,
+  "dependencies": &#123;
+<span class="hljs-code">    "core-js": "^3.6.5",</span>
+<span class="hljs-code">    "element-ui": "^2.15.6",</span>
+<span class="hljs-code">    "vue": "^2.6.11"</span>
+  &#125;,
+  "devDependencies": &#123;
+<span class="hljs-code">    "@vue/cli-plugin-babel": "~4.5.0",</span>
+<span class="hljs-code">    "@vue/cli-service": "~4.5.0",</span>
+<span class="hljs-code">    "vue-template-compiler": "^2.6.11"</span>
+  &#125;,
+  "browserslist": [
+<span class="hljs-code">    "&gt; 1%",</span>
+<span class="hljs-code">    "last 2 versions",</span>
+<span class="hljs-code">    "not dead"</span>
+  ]
+&#125;</code></pre>
+
+<h3 id="进行打包">进行打包<a class="post-anchor" href="#进行打包"></a></h3><p>npm run component<br>生成如下文件夹<br><a href="/images/npm/2.png" data-caption data-fancybox="images"><img src="/images/npm/2.png" alt></a></p>
+<h3 id="抽离文件">抽离文件<a class="post-anchor" href="#抽离文件"></a></h3><p>在任意地方新建publishNpm文件夹<br>将打包生成的vue-cascade.umd.min.js和vue-cascade.css<br>复制到publishNpm文件夹<br>进入publishNpm文件夹，npm init -y新建package.json文件<br><a href="/images/npm/3.png" data-caption data-fancybox="images"><img src="/images/npm/3.png" alt></a></p>
+<h3 id="修改package-json文件夹下的package-json文件">修改package.json文件夹下的package.json文件<a class="post-anchor" href="#修改package-json文件夹下的package-json文件"></a></h3><p>repository.url为github项目地址</p>
+<pre><code class="hljs markdown">&#123;
+  "name": "@codermino/vue-cascade-codermino",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "codermino",
+  "description": "使用vue结合element-ui左侧选择影响右侧类型。",
+  "keyword": ["vue", "cascade", "components"],
+  "scripts": &#123;
+<span class="hljs-code">    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+  &#125;,
+  "repository": &#123;
+<span class="hljs-code">    "url": "https://github.com/codermino/vueCascadeCodermino.git"</span>
+  &#125;,
+  "license": "ISC"
+&#125;</code></pre>
+
+<h3 id="在publishNpm文件夹下进行npm提交">在publishNpm文件夹下进行npm提交<a class="post-anchor" href="#在publishNpm文件夹下进行npm提交"></a></h3><p>npm login<br>npm publish –access public</p>
+<h3 id="npm查看">npm查看<a class="post-anchor" href="#npm查看"></a></h3><p>去npm官网查看，可以看到刚刚发布的插件<br>点进去，可以进行验证是否成功和有效。<br><a href="/images/npm/4.png" data-caption data-fancybox="images"><img src="/images/npm/4.png" alt></a></p>
+
+
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2021/12/30/vueconfigjs%E7%9A%84publicPath/">vueconfigjs的publicPath</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://codermino.github.io">Mino</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://codermino.github.io/2022/01/10/发布npm插件2/">https://codermino.github.io/2022/01/10/发布npm插件2/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://codermino.github.io">Mino</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2022
+            <a href="https://codermino.github.io">Mino</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Mino</a> |
+<!--            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>-->
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
